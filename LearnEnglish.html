@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎈 مدرّب الكلمات الانجليزية للمبتدئين</title>
+  <style>
+    :root{
+      --bg1:#fdf2f8; --bg2:#e9d5ff; --panel:#ffffff; --border:rgba(2,6,23,.10);
+      --text:#1f2937; --muted:#6b7280; --accent:#f472b6; --accent2:#a78bfa;
+      --ok:#16a34a; --warn:#d97706; --bad:#dc2626; --radius:20px; --shadow:0 14px 36px rgba(2,6,23,.12);
+    }
+    html[data-theme="day"]{ --bg1:#f1f5f9; --bg2:#e2e8f0; --panel:#ffffff; --text:#0f172a; --muted:#475569; --accent:#38bdf8; --accent2:#22d3ee }
+    html[data-theme="morning"]{ --bg1:#e0f2fe; --bg2:#ede9fe; --panel:#ffffff; --text:#0f172a; --muted:#334155; --accent:#818cf8; --accent2:#38bdf8 }
+    html[data-theme="dark"]{ --bg1:#000; --bg2:#000; --panel:#000; --text:#e5e7eb; --muted:#9ca3af; --accent:#ffffff; --accent2:#00ffff; --border:rgba(255,255,255,.16) }
+    html[data-theme="ocean"]{ --bg1:#dbeafe; --bg2:#bfdbfe; --panel:#ffffff; --text:#0f172a; --muted:#334155; --accent:#60a5fa; --accent2:#06b6d4 }
+    html[data-theme="sunset"]{ --bg1:#ffe4e6; --bg2:#fde68a; --panel:#ffffff; --text:#111827; --muted:#4b5563; --accent:#fb7185; --accent2:#f59e0b }
+    html[data-theme="forest"]{ --bg1:#dcfce7; --bg2:#bbf7d0; --panel:#ffffff; --text:#052e16; --muted:#14532d; --accent:#10b981; --accent2:#84cc16 }
+    html[data-theme="kids"]{ --bg1:#fdf2f8; --bg2:#e9d5ff; --panel:#ffffff; --text:#1f2937; --muted:#6b7280; --accent:#f472b6; --accent2:#a78bfa }
+    html[data-theme="high-contrast"]{ --bg1:#000; --bg2:#000; --panel:#000; --text:#fff; --muted:#e5e7eb; --accent:#fff000; --accent2:#00ffff }
+
+    html,body{height:100%}
+    body{margin:0; background:linear-gradient(180deg,var(--bg1),var(--bg2)); color:var(--text); font-family:"Segoe UI", system-ui, -apple-system, Tahoma, Arial, sans-serif; padding:16px 16px 120px}
+    .app{width:min(1100px,100%); margin:0 auto}
+    h1{margin:0 0 10px; font-size:clamp(22px,4.5vw,36px)}
+
+    .topbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; background:rgba(255,255,255,.75); border:1px solid var(--border); border-radius:18px; padding:10px 12px; box-shadow:var(--shadow); margin:10px 0 14px}
+    html[data-theme="dark"] .topbar{ background:rgba(0,0,0,.85) }
+    .label{font-size:14px; color:var(--muted)}
+    select,input,button{border-radius:14px; border:1px solid rgba(2,6,23,.14); padding:12px 14px; background:#f8fafc; color:var(--text)}
+    html[data-theme="dark"] select, html[data-theme="dark"] input, html[data-theme="dark"] button{ background:#000; color:#e5e7eb; border-color:rgba(255,255,255,.16)}
+    .theme-select{font-weight:800}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-inline-start:auto}
+    .chip{background:#f1f5f9; border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:12px}
+
+    .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:14px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    .card{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:12px; box-shadow:var(--shadow)}
+    .card h2{margin:8px 0 10px; font-size:20px}
+
+    .viewer{display:grid; gap:12px}
+    .media{display:grid; grid-template-columns: 240px 1fr; gap:14px; align-items:center}
+    @media (max-width:720px){ .media{grid-template-columns:1fr} }
+    .imgwrap{position:relative; width:100%; aspect-ratio:1/1; background:#f1f5f9; border:1px solid var(--border); border-radius:18px; overflow:hidden}
+    .imgwrap img{width:100%; height:100%; object-fit:cover}
+    .badge{position:absolute; inset:10px auto auto 10px; background:rgba(0,0,0,.6); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px}
+
+    .word{font-size:40px; font-weight:900}
+    .tr{color:var(--muted); font-size:22px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; padding:4px 10px; border-radius:999px; font-size:12px}
+
+    .bigbar{display:flex; flex-wrap:wrap; gap:8px}
+    .btn{cursor:pointer; border:none; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0b1220; font-weight:900; box-shadow:0 10px 24px rgba(2,6,23,.14)}
+    .ghost{background:transparent; border:1px solid rgba(2,6,23,.2); color:var(--text)}
+    .pill{background:#f1f5f9; border:1px solid var(--border); border-radius:999px; padding:8px 12px; font-size:14px}
+
+    .row{display:grid; grid-template-columns: repeat(3,1fr); gap:10px}
+    @media (max-width:680px){ .row{grid-template-columns:1fr 1fr} }
+    @media (max-width:480px){ .row{grid-template-columns:1fr} }
+
+    .list{display:grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap:10px}
+    .item{border:1px solid var(--border); border-radius:14px; padding:10px; background:var(--panel)}
+    .section{margin-top:10px;}
+    .sec{display:flex; align-items:center; justify-content:space-between; margin:14px 0 8px; font-size:16px}
+    .sec small{color:var(--muted)}
+    .list.online .item{background:linear-gradient(180deg, rgba(167,139,250,.08), rgba(56,189,248,.08)); border-style:dashed}
+    .badge-mini{display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:#f8fafc;}
+    html[data-theme="dark"] .list.online .item{background:#0a0a0a; border-style:dashed}
+    .lists-wrap{display:grid; gap:6px}
+    .scroller{max-height:340px; overflow:auto; padding-right:2px}
+    .rowline{height:1px; background:linear-gradient(90deg,transparent, rgba(2,6,23,.15), transparent)}
+
+    .kpi{background:#ffffff; border:1px solid var(--border); border-radius:14px; padding:12px}
+    .kpi h3{margin:0 0 6px; font-size:18px}
+
+    .foot{color:var(--muted); font-size:12px}
+    /* --- Dark theme hard overrides to remove white cards/chips --- */
+  html[data-theme="dark"] .chip,
+  html[data-theme="dark"] .pill,
+  html[data-theme="dark"] .badge-mini{ background:#0a0a0a; color:#e5e7eb; border-color:rgba(255,255,255,.16) }
+  html[data-theme="dark"] .kpi,
+  html[data-theme="dark"] .item{ background:#0a0a0a; border-color:rgba(255,255,255,.16) }
+  html[data-theme="dark"] .imgwrap{ background:#0a0a0a; border-color:rgba(255,255,255,.16) }
+  html[data-theme="dark"] .rowline{ background:linear-gradient(90deg,transparent, rgba(255,255,255,.15), transparent) }
+</style>
+</head>
+<body>
+  <div class="app">
+    <h1>🎈 مدرّب الكلمات الانجليزية — للمبتدئين</h1>
+
+    <div class="topbar">
+      <span class="label">النمط:</span>
+      <select id="themeSelect" class="theme-select" title="اختر نمط العرض">
+        <option value="kids">أطفال مرح</option>
+        <option value="morning">صباحي مشرق</option>
+        <option value="day">نهاري</option>
+        <option value="dark">داكن حيوي</option>
+        <option value="ocean">أزرق محيطي</option>
+        <option value="sunset">غروب دافئ</option>
+        <option value="forest">غابة خضراء</option>
+      </select>
+      <div class="chips">
+        <span class="chip" id="chipTime">الوقت —:—:—</span>
+        <span class="chip" id="chipHijri">هجري —</span>
+        <span class="chip" id="chipGreg">ميلادي —</span>
+      </div>
+    </div>
+
+    <p class="foot" style="margin:0 0 12px">واجهة مبسطة للأطفال: أزرار كبيرة، ألوان سعيدة، نطق، صور تلقائية، واختبارات قصيرة. كل شيء محفوظ محليًا.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>🎴 بطاقة الكلمة</h2>
+        <div class="viewer">
+          <div class="media">
+            <div class="imgwrap">
+              <img id="img" alt="image" src="" />
+              <span class="badge" id="imgBadge">Wikipedia</span>
+            </div>
+            <div>
+              <div class="word" id="wWord">cat</div>
+              <div class="tr" id="wTrans">قطة</div>
+              <div class="tags" style="margin-top:4px">
+                <span class="tag" id="wTopic">الحيوانات</span>
+                <span class="tag" id="wLevel">سهل</span>
+              </div>
+              <div class="bigbar" style="margin-top:10px">
+                <button class="btn" id="speak">🔊 استمع</button>
+                <button class="btn ghost" id="prev">⬅️ السابق</button>
+                <button class="btn ghost" id="next">➡️ التالي</button>
+                <button class="btn ghost" id="shuffle">🔀 عشوائي</button>
+                <button class="btn ghost" id="lockImg">🔒 قفل الصورة</button>
+                <button class="btn ghost" id="changeImg">🖼️ بدّل الصورة</button>
+              </div>
+              <div class="bigbar" style="margin-top:8px">
+                <button class="pill" id="markKnown">✔️ أعرفها</button>
+                <button class="pill" id="markPractice">🟡 أحتاج تدريب</button>
+                <span class="pill" id="statKnown">معروفة: 0</span>
+                <span class="pill" id="statPractice">للتدريب: 0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <select id="filterTopic"></select>
+            <select id="filterLevel">
+              <option value="all">كل المستويات</option>
+              <option value="easy">سهل</option>
+              <option value="medium">متوسط</option>
+              <option value="hard">صعب</option>
+            </select>
+            <input id="customImage" placeholder="رابط صورة مخصّص (اختياري)" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🗂️ كلماتي & 🌐 استكشاف</h2>
+        <div class="viewer">
+          <div class="row">
+            <input id="newWord" placeholder="Word (EN)" />
+            <input id="newTrans" placeholder="الترجمة العربية" />
+            <select id="newTopic"></select>
+          </div>
+          <div class="row">
+            <select id="newLevel">
+              <option value="easy">سهل</option>
+              <option value="medium">متوسط</option>
+              <option value="hard">صعب</option>
+            </select>
+            <button class="btn" id="addWord">➕ إضافة</button>
+            <button class="btn ghost" id="exportBtn">⬇️ تصدير</button>
+            <input type="file" id="importFile" accept="application/json" />
+          </div>
+          <div class="row">
+            <input id="topicQuery" placeholder="موضوع (animals, food … أو بالعربية)" />
+            <select id="wantedLevel">
+              <option value="any">أي مستوى</option>
+              <option value="easy">سهل</option>
+              <option value="medium">متوسط</option>
+              <option value="hard">صعب</option>
+            </select>
+            <button class="btn" id="fetchOnline">🌐 جلب كلمات</button>
+          </div>
+          <div class="lists-wrap">
+            <div class="section">
+              <h3 class="sec">📚 قائمتي الحالية <small id="countLocal">0 عنصر</small></h3>
+              <div class="rowline"></div>
+              <div class="list scroller" id="list"></div>
+            </div>
+            <div class="section">
+              <h3 class="sec">🧩 كلمات مقترحة من الإنترنت <small id="countOnline">0 عنصر</small></h3>
+              <div class="rowline"></div>
+              <div class="list online scroller" id="onlineList"></div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:12px">🧠 اختبار سريع</h2>
+        <div class="row">
+          <select id="quizMode">
+            <option value="missing">الحرف الناقص</option>
+            <option value="meaning">المعنى (اختيار)</option>
+            <option value="pos">نوع الكلمة</option>
+          </select>
+          <select id="quizSource">
+            <option value="all">كل الكلمات</option>
+            <option value="topic">حسب التصنيف الحالي</option>
+            <option value="level">حسب المستوى الحالي</option>
+          </select>
+          <div style="display:flex; gap:8px">
+            <button class="btn" id="startQuiz">ابدأ</button>
+            <button class="btn ghost" id="nextQ" disabled>التالي</button>
+          </div>
+        </div>
+        <div id="quizArea" style="min-height:110px; margin-top:6px">
+          <div class="kpi"><h3>اختر نمط الاختبار ثم اضغط "ابدأ"</h3><div class="foot">يعتمد على الكلمات الموجودة بقائمتك.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot" style="margin-top:10px">الصور من Wikipedia/Wikimedia (تلقائيًا)، النطق عبر Web Speech API، الكلمات الإضافية تُفلتر قاموسيًا (Datamuse + تعريفات) وتُقسّم حسب التكرار إلى سهل/متوسط/صعب. التخزين محلي.</p>
+  </div>
+
+  <script defer>
+  (function(){
+    function ready(fn){ if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', fn); } else { fn(); } }
+    ready(function(){
+      // ====== Theme & Clock ======
+      const THEME_KEY='trainer:theme:v1';
+      const CLOCK_TZ='Asia/Riyadh';
+      const themeSelect=document.getElementById('themeSelect');
+      function setTheme(t){ document.documentElement.setAttribute('data-theme', t); try{ localStorage.setItem(THEME_KEY,t);}catch(e){} themeSelect.value=t; }
+      (function(){ const saved=localStorage.getItem(THEME_KEY)||'kids'; setTheme(saved); themeSelect.addEventListener('change',()=> setTheme(themeSelect.value)); })();
+
+      const elTime=document.getElementById('chipTime'); const elHijri=document.getElementById('chipHijri'); const elGreg=document.getElementById('chipGreg');
+      function updateClock(){
+        const now=new Date();
+        const timeStr=new Intl.DateTimeFormat('ar-SA',{hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true,timeZone:CLOCK_TZ}).format(now);
+        const gregStr=new Intl.DateTimeFormat('ar-SA',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:CLOCK_TZ}).format(now);
+        const hijriStr=new Intl.DateTimeFormat('ar-SA-u-ca-islamic',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:CLOCK_TZ}).format(now);
+        elTime.textContent='الوقت ' + timeStr; elGreg.textContent='ميلادي ' + gregStr; elHijri.textContent='هجري ' + hijriStr;
+      }
+      updateClock(); setInterval(updateClock, 1000);
+
+      // ====== Storage & Seed ======
+      const STORAGE_KEY='trainer:data:v2';
+      const PROG_KEY='trainer:progress:v1';
+      const IMG_CACHE='trainer:imgcache:v1';
+
+      const defaultTopics=['التحية','العائلة','الحيوانات','الطعام','الخضار والفاكهة','المدرسة','الألوان','الجسم','المواصلات','الطقس'];
+      const seedWords=[
+        {word:'cat', tr:'قطة', level:'easy', topic:'الحيوانات'},
+        {word:'dog', tr:'كلب', level:'easy', topic:'الحيوانات'},
+        {word:'apple', tr:'تفاحة', level:'easy', topic:'الخضار والفاكهة'},
+        {word:'orange (fruit)', tr:'برتقالة', level:'easy', topic:'الخضار والفاكهة'},
+        {word:'bus', tr:'حافلة', level:'easy', topic:'المواصلات'},
+        {word:'teacher', tr:'معلّم', level:'easy', topic:'المدرسة'},
+        {word:'elephant', tr:'فيل', level:'medium', topic:'الحيوانات'},
+        {word:'umbrella', tr:'مظلّة', level:'medium', topic:'الطقس'},
+        {word:'refrigerator', tr:'ثلاجة', level:'hard', topic:'المنزل'}
+      ];
+
+      function loadData(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||'null') || {topics:defaultTopics, words:seedWords}; }catch(e){ return {topics:defaultTopics, words:seedWords}; } }
+      function saveData(d){ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+      function loadProg(){ try{ return JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); }catch(e){ return {}; } }
+      function saveProg(p){ localStorage.setItem(PROG_KEY, JSON.stringify(p)); }
+      function loadImgCache(){ try{ return JSON.parse(localStorage.getItem(IMG_CACHE)||'{}'); }catch(e){ return {}; } }
+      function saveImgCache(c){ localStorage.setItem(IMG_CACHE, JSON.stringify(c)); }
+
+      let DB=loadData(); let PROG=loadProg(); let IMG=loadImgCache();
+
+      // ====== DOM refs ======
+      const elImg=document.getElementById('img'); const elBadge=document.getElementById('imgBadge');
+      const elWord=document.getElementById('wWord'); const elTrans=document.getElementById('wTrans'); const elTopic=document.getElementById('wTopic'); const elLevel=document.getElementById('wLevel');
+      const btnSpeak=document.getElementById('speak'); const btnPrev=document.getElementById('prev'); const btnNext=document.getElementById('next'); const btnShuffle=document.getElementById('shuffle');
+      const btnLock=document.getElementById('lockImg'); const btnChange=document.getElementById('changeImg'); const inputCustomImg=document.getElementById('customImage');
+      const btnKnown=document.getElementById('markKnown'); const btnPractice=document.getElementById('markPractice'); const statKnown=document.getElementById('statKnown'); const statPractice=document.getElementById('statPractice');
+      const filterTopic=document.getElementById('filterTopic'); const filterLevel=document.getElementById('filterLevel');
+      const list=document.getElementById('list');
+      const countLocal=document.getElementById('countLocal');
+      const countOnline=document.getElementById('countOnline');
+      const newWord=document.getElementById('newWord'); const newTrans=document.getElementById('newTrans'); const newTopic=document.getElementById('newTopic'); const newLevel=document.getElementById('newLevel');
+      const addWordBtn=document.getElementById('addWord');
+      const exportBtn=document.getElementById('exportBtn'); const importFile=document.getElementById('importFile');
+      const onlineList=document.getElementById('onlineList'); const topicQuery=document.getElementById('topicQuery'); const wantedLevel=document.getElementById('wantedLevel'); const fetchOnline=document.getElementById('fetchOnline');
+
+      // ====== Helpers ======
+      function levelAr(l){ return l==='easy'?'سهل': l==='medium'?'متوسط':'صعب'; }
+      function speak(text){ try{ const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.95; u.pitch=1.0; speechSynthesis.cancel(); speechSynthesis.speak(u); }catch(e){} }
+
+      const statusBar=(function(){
+        const p=document.createElement('div');
+        p.className='foot';
+        p.style.marginTop='6px';
+        p.id='statusBar';
+        p.textContent='';
+        document.querySelector('.app').appendChild(p);
+        return p;
+      })();
+      function setStatus(msg, ok=true){ if(!statusBar) return; statusBar.style.color = ok? 'var(--muted)' : 'var(--bad)'; statusBar.textContent = msg||''; }
+
+      function updateStats(){ const known=Object.values(PROG).filter(x=>x==='known').length; const practice=Object.values(PROG).filter(x=>x==='practice').length; statKnown.textContent='معروفة: ' + known; statPractice.textContent='للتدريب: ' + practice; }
+
+      async function wikiImageFor(term){
+        const key=term.toLowerCase(); if(IMG[key] && IMG[key].locked) return IMG[key].url; if(IMG[key] && IMG[key].url) return IMG[key].url;
+        try{ const q=encodeURIComponent(term.split('(fruit)').join('').trim()); const r=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + q); if(r.ok){ const j=await r.json(); const url=(j && j.thumbnail && j.thumbnail.source) || (j && j.originalimage && j.originalimage.source); if(url){ IMG[key]={url:url}; saveImgCache(IMG); return url; } } }catch(e){}
+        try{ const q=encodeURIComponent(term); const r=await fetch('https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=' + q + '&gsrlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=640&format=json&origin=*'); const j=await r.json(); const pages=j && j.query && j.query.pages ? j.query.pages : {}; const first=Object.keys(pages).length? pages[Object.keys(pages)[0]] : null; const url= first && first.imageinfo && first.imageinfo[0] && (first.imageinfo[0].thumburl || first.imageinfo[0].url); if(url){ IMG[key]={url:url}; saveImgCache(IMG); return url; } }catch(e){}
+        return '';
+      }
+      function lockCurrentImage(){ const w=DB.words[currentIndex]; if(!w) return; const key=w.word.toLowerCase(); if(!IMG[key]) IMG[key]={}; IMG[key].locked=true; saveImgCache(IMG); elBadge.textContent='Locked'; }
+      function setCustomImage(url){ const w=DB.words[currentIndex]; if(!w) return; const key=w.word.toLowerCase(); IMG[key]={url:url,locked:true}; saveImgCache(IMG); showImage(url,'Custom'); }
+      function showImage(url,source){ elImg.src=url||''; elBadge.textContent=source||'Wikipedia'; }
+
+      const MINI_DICT={ cat:'قطة', dog:'كلب', apple:'تفاحة', orange:'برتقالة', bus:'حافلة', teacher:'معلّم', elephant:'فيل', umbrella:'مظلّة', refrigerator:'ثلاجة' };
+      async function autoTranslate(en){
+        const key=en.toLowerCase().split('(fruit)').join('').trim(); if(MINI_DICT[key]) return MINI_DICT[key];
+        try{ const r=await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(en) + '&langpair=en|ar'); if(r.ok){ const j=await r.json(); const txt=j && j.responseData ? j.responseData.translatedText : ''; if(txt) return txt; } }catch(e){}
+        return '';
+      }
+
+      function refreshTopicSelects(){
+        const opts=['<option value="all">كل التصنيفات</option>'].concat(DB.topics.map(function(t){return '<option value="'+t+'">'+t+'</option>'; })).join('');
+        filterTopic.innerHTML=opts; newTopic.innerHTML=DB.topics.map(function(t){return '<option value="'+t+'">'+t+'</option>';}).join('');
+      }
+
+      let currentIndex=0;
+      function filteredWords(){ return DB.words.filter(function(w){ return (filterLevel.value==='all'||w.level===filterLevel.value) && (filterTopic.value==='all'||w.topic===filterTopic.value); }); }
+
+      async function showCurrent(forceImg){
+        const arr=filteredWords(); if(arr.length===0){ elWord.textContent='—'; elTrans.textContent='لا توجد كلمات'; elTopic.textContent='—'; elLevel.textContent='—'; showImage('', ''); return; }
+        const i=Math.max(0, Math.min(currentIndex, arr.length-1)); const item=arr[i];
+        elWord.textContent=item.word; elTrans.textContent=item.tr||'—'; elTopic.textContent=item.topic; elLevel.textContent=levelAr(item.level);
+        if(!item.tr){ item.tr = await autoTranslate(item.word) || '—'; saveData(DB); elTrans.textContent=item.tr; }
+        if(forceImg || !elImg.getAttribute('src')){ const custom=inputCustomImg.value.trim(); if(custom){ setCustomImage(custom); } else { const url=await wikiImageFor(item.word); showImage(url, (IMG[item.word.toLowerCase()] && IMG[item.word.toLowerCase()].locked)?'Locked':'Wikipedia'); } }
+        updateStats();
+      }
+
+      function gotoNext(){ const arr=filteredWords(); if(arr.length===0) return; currentIndex=(currentIndex+1)%arr.length; showCurrent(true); }
+      function gotoPrev(){ const arr=filteredWords(); if(arr.length===0) return; currentIndex=(currentIndex-1+arr.length)%arr.length; showCurrent(true); }
+      function shuffle(){ const arr=filteredWords(); if(arr.length===0) return; currentIndex=Math.floor(Math.random()*arr.length); showCurrent(true); }
+
+      function mark(status){ const word=elWord.textContent; if(!word||word==='—') return; PROG[word]=status; saveProg(PROG); updateStats(); }
+
+      function renderList(){
+        try{
+          list.innerHTML='';
+          DB.words.forEach(function(w,i){
+            const div=document.createElement('div'); div.className='item';
+            div.innerHTML='<div style="display:flex; justify-content:space-between; align-items:center; gap:8px">\
+              <div><span class="badge-mini">في قائمتي</span> <b style="direction:ltr">'+w.word+'</b> — <span style="color:var(--muted)">'+(w.tr||'—')+'</span><br/>\
+                <span class="tag">'+w.topic+'</span> <span class="tag">'+levelAr(w.level)+'</span>\
+              </div>\
+              <div style="display:flex; gap:6px">\
+                <button class="ghost" data-act="use">عرض</button>\
+                <button class="ghost" data-act="del">حذف</button>\
+              </div>\
+            </div>';
+            div.querySelector('[data-act="use"]').addEventListener('click',function(){ currentIndex=i; showCurrent(true); });
+            div.querySelector('[data-act="del"]').addEventListener('click',function(){ DB.words.splice(i,1); saveData(DB); renderList(); });
+            list.appendChild(div);
+          });
+          if(countLocal) countLocal.textContent=DB.words.length + ' عنصر';
+          setStatus('');
+        }catch(e){ setStatus('⚠️ مشكلة أثناء عرض قائمتك: '+ (e.message||e), false); }
+      }
+
+      function addWord(){
+        const w=newWord.value.trim(); if(!w) return; const t=newTrans.value.trim(); const tp=newTopic.value; const lv=newLevel.value;
+        const item={word:w, tr:t, topic:tp, level:lv}; DB.words.push(item); saveData(DB); renderList(); newWord.value=''; newTrans.value=''; currentIndex=DB.words.length-1; showCurrent(true);
+      }
+
+      function exportJSON(){ const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='trainer-data.json'; a.click(); URL.revokeObjectURL(url); }
+      function importJSON(file){ const fr=new FileReader(); fr.onload=function(){ try{ const data=JSON.parse(fr.result); if(data.topics&&data.words){ DB=data; saveData(DB); refreshTopicSelects(); renderList(); showCurrent(true);} }catch(e){ alert('ملف غير صالح'); } }; fr.readAsText(file); }
+
+      // ======== Online Fetch: dictionary filtering + levels by frequency ========
+      const AR_TOPIC_MAP={ 'حيوانات':'animals','الحيوانات':'animals','طعام':'food','الطعام':'food','خضار':'vegetables','الخضار':'vegetables','فاكهة':'fruit','الفاكهة':'fruit','سفر':'travel','السفر':'travel','مدرسة':'school','المدرسة':'school','طقس':'weather','الطقس':'weather','رياضة':'sports','الرياضة':'sports','ألوان':'colors','الألوان':'colors','مواصلات':'transport','المواصلات':'transport','تحية':'greetings','التحية':'greetings' };
+
+      const STOP_WORDS=new Set(['the','a','an','and','or','but','if','so','to','of','in','on','for','as','by','with','at','from','into','about','than','then','that','this','these','those','be','is','am','are','was','were','been','being','do','does','did','done','have','has','had','i','you','he','she','it','we','they']);
+
+      function looksDictionaryLike(w){
+        if(!/^[a-z][a-z\-]*$/i.test(w)) return false;
+        if(/[\-]{2,}/.test(w)) return false;
+        if(w.length<2 || w.length>14) return false;
+        if(!/[aeiouy]/i.test(w)) return false;
+        return true;
+      }
+
+      function inferLevelFromFreq(freq, word){
+        const len=word.replace(/[^a-z]/gi,'').length;
+        const f=freq||0;
+        if(f>=50) return 'easy';
+        if(f>=20) return len<=7 ? 'medium' : 'hard';
+        return len<=5 ? 'medium' : 'hard';
+      }
+
+      async function fetchFromDatamuse(topic){
+        const raw=topic.trim(); const t=AR_TOPIC_MAP[raw]||raw; const q=encodeURIComponent(t.toLowerCase());
+        let items=[];
+        try{
+          const r=await fetch('https://api.datamuse.com/words?topics=' + q + '&max=80&md=fpd');
+          if(r.ok){ items=await r.json(); }
+        }catch(e){}
+        if(!items || items.length<10){
+          try{
+            const r2=await fetch('https://api.datamuse.com/words?ml=' + q + '&max=80&md=fpd');
+            if(r2.ok){ const j2=await r2.json(); items=items.concat(j2); }
+          }catch(e){}
+        }
+        if(!items) return [];
+
+        const seen=new Set();
+        const cleaned=items.map(function(it){
+          const w=(it.word||'').toLowerCase().trim();
+          const tags=Array.isArray(it.tags)? it.tags : [];
+          const defok = Array.isArray(it.defs) && it.defs.length>0;
+          let pos='n';
+          for(let k=0;k<tags.length;k++){
+            const t=tags[k];
+            if(t==='n'||t==='v'||t==='adj'){ pos=t; break; }
+            if(/^p:/.test(t)){
+              const p=t.replace('p:',''); if(p==='n'||p==='v'||p==='adj'){ pos=p; break; }
+            }
+          }
+          let freqTag = tags.find(function(t){return /^f:/.test(t);});
+          const freq = freqTag ? parseFloat(freqTag.split(':')[1]) : 0;
+          return {word:w, tags, defok, pos, freq};
+        }).filter(function(it){
+          if(!looksDictionaryLike(it.word)) return false;
+          if(STOP_WORDS.has(it.word)) return false;
+          if(!(it.pos==='n' || it.pos==='v' || it.pos==='adj')) return false;
+          if(!it.defok) return false;
+          if(seen.has(it.word)) return false; seen.add(it.word); return true;
+        });
+
+        cleaned.forEach(function(it){ it.level=inferLevelFromFreq(it.freq, it.word); });
+        cleaned.sort(function(a,b){
+          const order={easy:0, medium:1, hard:2};
+          if(order[a.level]!==order[b.level]) return order[a.level]-order[b.level];
+          return (b.freq||0) - (a.freq||0);
+        });
+
+        return cleaned.map(function(it){ return {word:it.word, level:it.level, pos:it.pos, freq:it.freq}; });
+      }
+
+      function renderOnline(words){
+        try{
+          onlineList.innerHTML='';
+          let shown=0;
+          if(!words||words.length===0){ onlineList.innerHTML='<div class="item" style="text-align:center; color:var(--muted)">لا توجد نتائج. جرّب موضوعًا آخر.</div>'; if(countOnline) countOnline.textContent='0 عنصر'; return; }
+          const topic=topicQuery.value||'موضوع';
+          words.forEach(function(row){
+            const w=row.word; const lv=row.level;
+            if(wantedLevel.value!=='any' && lv!==wantedLevel.value) return;
+            shown++;
+            const div=document.createElement('div'); div.className='item';
+            div.innerHTML='<div style="display:flex; justify-content:space-between; align-items:center; gap:8px">\
+              <div><span class="badge-mini">مُرشَّح جديد</span> <b style="direction:ltr">'+w+'</b><br/><span class="tag">'+topic+'</span> <span class="tag">'+levelAr(lv)+'</span></div>\
+              <div style="display:flex; gap:6px">\
+                <button class="ghost" data-act="add">إضافة</button>\
+              </div>\
+            </div>';
+            const addBtn=div.querySelector('[data-act="add"]');
+            addBtn.addEventListener('click', async function(){
+              try{
+                const tr=await autoTranslate(w) || prompt('اكتب الترجمة العربية لكلمة: ' + w,'') || '';
+                if(!tr) { alert('تم التجاهل لعدم وجود ترجمة.'); return; }
+                DB.words.push({word:w, tr:tr, level:lv, topic:topic}); saveData(DB); renderList();
+                addBtn.textContent='أُضيفت'; addBtn.disabled=true; addBtn.style.opacity=.6;
+                setStatus('✅ أُضيفت "'+w+'" إلى قائمتك');
+              }catch(e){ setStatus('⚠️ تعذّرت إضافة الكلمة: '+(e.message||e), false); }
+            });
+            onlineList.appendChild(div);
+          });
+          if(shown===0){ onlineList.innerHTML='<div class="item" style="text-align:center; color:var(--muted)">لا توجد كلمات بالمستوى المختار.</div>'; }
+          if(countOnline) countOnline.textContent=shown + ' عنصر';
+        }catch(e){ setStatus('⚠️ مشكلة أثناء عرض المرشّحات: '+ (e.message||e), false); }
+      }
+
+      // ====== Button listeners ======
+      btnSpeak.addEventListener('click',function(){ speak(elWord.textContent); });
+      btnNext.addEventListener('click', gotoNext); btnPrev.addEventListener('click', gotoPrev); btnShuffle.addEventListener('click', shuffle);
+      btnLock.addEventListener('click', lockCurrentImage);
+      btnChange.addEventListener('click', async function(){ const custom=inputCustomImg.value.trim(); if(custom){ setCustomImage(custom); } else { const term=elWord.textContent; const url=await wikiImageFor(term); showImage(url,'Wikipedia'); } });
+      btnKnown.addEventListener('click', function(){ mark('known'); }); btnPractice.addEventListener('click', function(){ mark('practice'); });
+
+      filterTopic.addEventListener('change', function(){ currentIndex=0; showCurrent(true); });
+      filterLevel.addEventListener('change', function(){ currentIndex=0; showCurrent(true); });
+
+      addWordBtn.addEventListener('click', addWord);
+      exportBtn.addEventListener('click', exportJSON);
+      importFile.addEventListener('change', function(e){ if(e.target.files && e.target.files[0]) importJSON(e.target.files[0]); });
+
+      fetchOnline.addEventListener('click', async function(){
+        const topic=topicQuery.value.trim(); if(!topic){ alert('اكتب موضوعًا'); return; }
+        onlineList.innerHTML='<div class="item" style="text-align:center">⏳ جارِ الجلب…</div>';
+        if(countOnline) countOnline.textContent='…';
+        try{
+          const words=await fetchFromDatamuse(topic); renderOnline(words);
+        }catch(e){ setStatus('⚠️ فشل الجلب من الإنترنت: '+(e.message||e), false); onlineList.innerHTML='<div class="item" style="text-align:center; color:var(--bad)">تعذّر الجلب الآن.</div>'; if(countOnline) countOnline.textContent='0 عنصر'; }
+      });
+
+      function init(){
+        const opts=['<option value="all">كل التصنيفات</option>'].concat(DB.topics.map(function(t){return '<option value="'+t+'">'+t+'</option>'; })).join('');
+        filterTopic.innerHTML=opts; newTopic.innerHTML=DB.topics.map(function(t){return '<option value="'+t+'">'+t+'</option>';}).join('');
+        renderList(); showCurrent(true); updateStats();
+      }
+      init();
+
+      // ====== Central click delegation (backup) ======
+      document.addEventListener('click', async function(e){
+        const el = e.target instanceof HTMLElement ? e.target : null; if(!el) return; const id = el.id || '';
+        try {
+          if(id==='speak'){ e.preventDefault(); speak(elWord.textContent); }
+          else if(id==='next'){ e.preventDefault(); gotoNext(); }
+          else if(id==='prev'){ e.preventDefault(); gotoPrev(); }
+          else if(id==='shuffle'){ e.preventDefault(); shuffle(); }
+          else if(id==='lockImg'){ e.preventDefault(); lockCurrentImage(); }
+          else if(id==='changeImg'){ e.preventDefault(); const custom=inputCustomImg.value.trim(); if(custom){ setCustomImage(custom);} else { const term=elWord.textContent; const url=await wikiImageFor(term); showImage(url,'Wikipedia'); } }
+          else if(id==='markKnown'){ e.preventDefault(); mark('known'); }
+          else if(id==='markPractice'){ e.preventDefault(); mark('practice'); }
+          else if(id==='addWord'){ e.preventDefault(); addWord(); }
+          else if(id==='exportBtn'){ e.preventDefault(); exportJSON(); }
+          else if(id==='startQuiz'){ e.preventDefault(); document.getElementById('nextQ')?.click(); }
+        } catch(err){ try{ setStatus('⚠️ حدث خطأ أثناء تنفيذ الزر: '+(err.message||err), false); }catch(_){} }
+      });
+
+      // ====== Quiz ======
+      (function(){
+        const quizArea=document.getElementById('quizArea');
+        const quizMode=document.getElementById('quizMode');
+        const quizSource=document.getElementById('quizSource');
+        const btnStart=document.getElementById('startQuiz');
+        const btnNextQ=document.getElementById('nextQ');
+        let pool=[]; let score=0; let total=0; let locked=false;
+
+        function filterPool(){
+          let list=DB.words.slice();
+          if(quizSource.value==='topic'){ list=list.filter(function(w){ return filterTopic.value==='all' ? true : w.topic===filterTopic.value; }); }
+          if(quizSource.value==='level'){ list=list.filter(function(w){ return filterLevel.value==='all' ? true : w.level===filterLevel.value; }); }
+          return list;
+        }
+        function shuffleArr(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+        function status(){ return '<div class="foot">النتيجة: <b>' + score + '</b> من <b>' + total + '</b></div>'; }
+
+        function uiMissing(word){
+          const letters=word.split(''); let idx=Math.floor(Math.random()*letters.length); if(letters.length<=4) idx=Math.max(1, Math.min(letters.length-2, idx)); const correct=letters[idx].toLowerCase(); letters[idx]='_';
+          quizArea.innerHTML='<div class="kpi">\
+            <h3>أكمل الكلمة</h3>\
+            <div class="value" style="direction:ltr; font-family:monospace; font-size:24px">'+letters.join('')+'</div>\
+            <div class="detail">أدخل الحرف المفقود:</div>\
+            <div style="display:flex; gap:8px; align-items:center; margin-top:8px">\
+              <input id="ansMissing" type="text" style="flex:0 0 160px; padding:12px 14px; border-radius:14px; border:1px solid rgba(2,6,23,.12)" maxlength="1" placeholder="A" />\
+              <button class="btn" id="submitMissing">تحقق</button>\
+            </div>\
+            '+status()+'\
+          </div>';
+          const inp=document.getElementById('ansMissing'); const btn=document.getElementById('submitMissing'); inp.focus();
+          inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); btn.click(); }});
+          btn.onclick=function(){ if(locked) return; locked=true; const val=(inp.value||'').trim().toLowerCase(); const ok=val===correct; showResult(ok, 'الحرف الصحيح: <b>'+correct.toUpperCase()+'</b> — الكلمة: <b style="direction:ltr">'+word+'</b>'); };
+        }
+
+        function pick(n,arr,except){ const out=[]; for(let i=0;i<arr.length;i++){ if(arr[i].word!==except.word) out.push(arr[i]); } return shuffleArr(out).slice(0,n); }
+        function uiMeaning(item){
+          const others=pick(3, DB.words, item).filter(function(x){ return !!x.tr; });
+          const options=shuffleArr([item].concat(others));
+          quizArea.innerHTML='<div class="kpi">\
+            <h3>اختر الكلمة المطابقة للمعنى</h3>\
+            <div class="detail">المعنى: <b>'+(item.tr||'—')+'</b></div>\
+            <div id="opts" style="display:grid; gap:8px; margin-top:10px"></div>\
+            '+status()+'\
+          </div>';
+          const wrap=document.getElementById('opts');
+          options.forEach(function(opt){ const b=document.createElement('button'); b.className='btn ghost'; b.textContent=opt.word; b.style.justifyContent='center'; b.onclick=function(){ if(locked) return; locked=true; const ok=(opt.word===item.word); showResult(ok, 'الصحيحة: <b style="direction:ltr">'+item.word+'</b>'); }; wrap.appendChild(b); });
+        }
+
+        const POS_CACHE_KEY='trainer:poscache:v1';
+        function loadPOSCache(){ try{ return JSON.parse(localStorage.getItem(POS_CACHE_KEY)||'{}'); }catch(e){ return {}; } }
+        function savePOSCache(c){ try{ localStorage.setItem(POS_CACHE_KEY, JSON.stringify(c)); }catch(e){} }
+        async function fetchPOS(word){ const cache=loadPOSCache(); const key=word.toLowerCase(); if(cache[key]) return cache[key]; try{ const r=await fetch('https://api.datamuse.com/words?sp=' + encodeURIComponent(key) + '&md=p&max=1'); if(r.ok){ const j=await r.json(); let tag='n'; if(j[0] && j[0].tags){ for(let k=0;k<j[0].tags.length;k++){ const t=j[0].tags[k]; if(t==='n'||t==='v'||t==='adj'||t==='adv'){ tag=t; break; } } } cache[key]=tag; savePOSCache(cache); return tag; } }catch(e){} return 'n'; }
+        const POS_MAP={ n:'اسم', v:'فعل', adj:'صفة', adv:'حال' };
+        function uiPOS(item){
+          const opts=[["n","اسم"],["v","فعل"],["adj","صفة"],["adv","حال"]];
+          quizArea.innerHTML='<div class="kpi">\
+            <h3>حدّد نوع الكلمة</h3>\
+            <div class="value" style="direction:ltr; font-size:26px">'+item.word+'</div>\
+            <div id="posOpts" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:10px"></div>\
+            '+status()+'\
+          </div>';
+          const wrap=document.getElementById('posOpts');
+          opts.forEach(function(pair){ const code=pair[0]; const ar=pair[1]; const b=document.createElement('button'); b.className='btn ghost'; b.textContent=ar; b.onclick=async function(){ if(locked) return; locked=true; const p=await fetchPOS(item.word); const ok=(p===code); const arAns=POS_MAP[p]||'اسم'; showResult(ok, 'النوع الصحيح: <b>'+arAns+'</b>'); }; wrap.appendChild(b); });
+        }
+
+        function showResult(ok,msg){ if(ok) score++; total++; const box=document.createElement('div'); box.className='foot'; box.style.marginTop='10px'; box.style.color= ok? 'var(--ok)':'var(--bad)'; box.innerHTML=(ok? '✔️ صحيح':'❌ خطأ')+' — '+msg+' — <b>'+score+'</b>/<b>'+total+'</b>'; quizArea.appendChild(box); btnNextQ.disabled=false; }
+        function nextQuestion(){ locked=false; btnNextQ.disabled=true; pool = pool && pool.length? pool : shuffleArr(filterPool()); if(pool.length===0){ quizArea.innerHTML='<div class="kpi"><h3>لا توجد كلمات للاختبار</h3></div>'; return; } const current=pool.pop(); const mode=quizMode.value; if(mode==='missing') uiMissing(current.word); else if(mode==='meaning') uiMeaning(current); else uiPOS(current); }
+
+        btnStart.addEventListener('click',function(){ score=0; total=0; pool=[]; nextQuestion(); });
+        btnNextQ.addEventListener('click', nextQuestion);
+      })();
+
+      // ====== Minimal self-tests (console) ======
+      (function tests(){
+        try{
+          console.assert(looksDictionaryLike('apple')===true, 'apple should be dict-like');
+          console.assert(looksDictionaryLike('x')===false, 'too short should be false');
+          console.assert(inferLevelFromFreq(80,'apple')==='easy', 'high freq easy');
+          console.assert(['medium','hard'].includes(inferLevelFromFreq(10,'planet')), 'low freq not easy');
+          console.log('%cSelf-tests passed','color:green');
+        }catch(e){ console.warn('Self-tests error', e); }
+      })();
+
+    }); // ready
+  })();
+  </script>
+</body>
+</html>
