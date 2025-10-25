@@ -1,520 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>حاسبة المؤشرات الصحية — تفسير آلي + "اعرف أكثر" (v7)</title>
-  <style>
-    :root{--bg1:#e0f2fe;--bg2:#ede9fe;--panel:#fff;--border:rgba(2,6,23,.10);--text:#0f172a;--muted:#475569;--accent:#818cf8;--accent2:#38bdf8;--radius:18px;--shadow:0 8px 24px rgba(2,6,23,.10)}
-    body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);padding:16px 16px 96px;line-height:1.55}
-
-    /* بطاقات */
-    .kpi{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-bottom:10px;box-shadow:var(--shadow);transition:background .35s,color .35s,border-color .35s}
-    .kpi h3{margin:0 0 4px;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-    .value{font-size:19px;font-weight:800;margin-top:4px}
-    .detail{font-size:13px;color:var(--muted)}
-    .badge{display:inline-block;padding:2px 8px;border:1px solid var(--border);border-radius:999px;font-size:11px;color:var(--muted);margin-inline-start:6px}
-
-    /* اعرف أكثر */
-    .more-btn{background:transparent;border:none;cursor:pointer;font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;border-radius:8px;padding:2px 8px}
-    .more-btn:hover{background:rgba(2,6,23,.06)}
-    .chev{display:inline-block;transition:transform .2s ease}
-    .more{display:none;margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--muted)}
-    .kpi.open .chev{transform:rotate(90deg)}
-    .kpi.open .more{display:block}
-
-    /* شرائح الحالة */
-    .status{margin-top:6px}
-    .chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid var(--border)}
-    .ok{background:#ecfdf5;color:#065f46;border-color:#a7f3d0}
-    .warn{background:#fff7ed;color:#92400e;border-color:#fed7aa}
-    .bad{background:#fef2f2;color:#991b1b;border-color:#fecaca}
-    .info{background:#eff6ff;color:#1e40af;border-color:#bfdbfe}
-
-    /* تبويبات */
-    .tabs{display:flex;gap:8px;align-items:center;margin:12px 0}
-    .tab-btn{border:1px solid var(--border);background:transparent;padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:700;color:var(--text)}
-    .tab-btn.active{background:var(--panel);box-shadow:var(--shadow)}
-
-    /* شريط السمة */
-    .themebar{display:flex;gap:10px;align-items:center;margin:8px 0 12px}
-    .select-wrap{position:relative;display:inline-flex;align-items:center}
-    #themeSelect{appearance:none;-moz-appearance:none;-webkit-appearance:none;padding:8px 36px 8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--panel);color:var(--text);font-weight:700;box-shadow:0 6px 16px rgba(2,6,23,.06)}
-    .chevsel{position:absolute;right:10px;pointer-events:none;color:var(--muted);font-weight:900}
-
-    /* السمات كاملة */
-    html[data-theme="day"]{--bg1:#fff7ed;--bg2:#ffedd5;--panel:#ffffff;--border:rgba(2,6,23,.08);--text:#0f172a;--muted:#6b7280;--accent:#f59e0b;--accent2:#f97316}
-    html[data-theme="morning"]{--bg1:#e0f2fe;--bg2:#ede9fe;--panel:#ffffff;--border:rgba(2,6,23,.08);--text:#0f172a;--muted:#334155;--accent:#818cf8;--accent2:#38bdf8}
-    html[data-theme="dark"]{--bg1:#0b1220;--bg2:#111827;--panel:#0b1220;--border:rgba(255,255,255,.10);--text:#e2e8f0;--muted:#cbd5e1;--accent:#a78bfa;--accent2:#22d3ee}
-    html[data-theme="nature"]{--bg1:#ecfccb;--bg2:#d9f99d;--panel:#ffffff;--border:rgba(2,6,23,.08);--text:#052e16;--muted:#166534;--accent:#22c55e;--accent2:#4ade80}
-    html[data-theme="sunset"]{--bg1:#fce7f3;--bg2:#fde68a;--panel:#ffffff;--border:rgba(2,6,23,.08);--text:#3f1d2e;--muted:#7c2d12;--accent:#f472b6;--accent2:#fb923c}
-    html[data-theme="ice"]{--bg1:#e0f2fe;--bg2:#f0f9ff;--panel:#ffffff;--border:rgba(2,6,23,.08);--text:#0c4a6e;--muted:#0369a1;--accent:#38bdf8;--accent2:#7dd3fc}
-    html[data-theme="neon"]{--bg1:#080b12;--bg2:#0f172a;--panel:#0b1220;--border:rgba(255,255,255,.12);--text:#e5e7eb;--muted:#a5b4fc;--accent:#22d3ee;--accent2:#a78bfa}
-    html[data-theme="cosmic"]{--bg1:#1f1d2b;--bg2:#111827;--panel:#141624;--border:rgba(255,255,255,.10);--text:#e2e8f0;--muted:#c7d2fe;--accent:#8b5cf6;--accent2:#06b6d4}
-    html[data-theme="blossom"]{--bg1:#ffe4e6;--bg2:#ede9fe;--panel:#ffffff;--border:rgba(2,6,23,.08);--text:#4a044e;--muted:#7e22ce;--accent:#f9a8d4;--accent2:#c084fc}
-    html[data-theme="dark"] .detail.note{background:rgba(17,24,39,.6)}
-
-    /* بطاقة الإدخال */
-    #inputsCard{padding:10px 12px}
-    #inputsCard h3{font-size:14px}
-    #inputsCard .detail{font-size:12.5px}
-    #inputsCard .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-    #inputsCard label{font-size:12.5px;color:var(--muted);display:block}
-    #inputsCard label>span{display:block;margin-bottom:4px}
-    #inputsCard input,#inputsCard select{width:100%;height:36px;padding:6px 10px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:14px;box-sizing:border-box}
-    #inputsCard input::placeholder{color:#94a3b8}
-    #inputsCard .actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-    html[data-theme="dark"] #inputsCard input,html[data-theme="dark"] #inputsCard select{background:#0f172a;color:#e2e8f0;border-color:rgba(255,255,255,.16)}
-
-    /* التصوّر أسفل الصفحة */
-    .vizWrap{display:grid;grid-template-columns:1fr;gap:10px;margin:10px 0}
-    .viz,.viz3d{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:10px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-    .viz svg{width:100%;height:auto;max-height:340px}
-    .viz3d{display:none}
-    #body3d{width:100%;height:360px;display:block}
-    .toggle{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
-  </style>
-</head>
-<body>
-  <!-- اختيار النمط -->
-  <div class="themebar">
-    <span style="font-size:13px;color:var(--muted)">اختر السمة المناسبة لك:</span>
-    <div class="select-wrap">
-      <select id="themeSelect" aria-label="اختيار النمط">
-        <option value="dark">داكن حيوي</option>
-        <option value="morning">صباحي مشرق</option>
-              <option value="day">نهاري</option>
-        <option value="sunset">غروب</option>
-        <option value="nature">طبيعي (أخضر)</option>
-        <option value="ice">ثلجي</option>
-        <option value="neon">نيون داكن</option>
-        <option value="cosmic">فضائي</option>
-        <option value="blossom">زهري</option>
-      </select>
-      <span class="chevsel">▾</span>
-    </div>
-  </div>
-
-  <!-- إدخال البيانات -->
-  <div class="kpi" id="inputsCard">
-    <h3>📝 أدخل بياناتك الأساسية</h3>
-    <div class="detail" style="margin:6px 0 10px">العمر، الجنس، الطول، الوزن، محيط الخصر (وقيم اختيارية أخرى). النتائج لا تُغني عن الاستشارة الطبية.</div>
-    <div class="row">
-      <label><span>العمر (سنة)</span><input id="age" type="number" min="5" max="120" placeholder="مثال: 35"></label>
-      <label><span>الجنس</span><select id="sex"><option value="male">ذكر</option><option value="female">أنثى</option></select></label>
-      <label><span>الطول (سم)</span><input id="height" type="number" min="80" max="250" placeholder="مثال: 175"></label>
-      <label><span>الوزن (كجم)</span><input id="weight" type="number" min="20" max="400" placeholder="مثال: 80"></label>
-      <label><span>محيط الخصر (سم)</span><input id="waist" type="number" min="30" max="200" placeholder="مثال: 92"></label>
-      <label><span>النشاط (TDEE)</span><select id="activity"><option value="1.2">قليل الحركة</option><option value="1.375">نشاط خفيف (1–3/أسبوع)</option><option value="1.55">نشاط متوسط (3–5/أسبوع)</option><option value="1.725">عالٍ (6–7/أسبوع)</option><option value="1.9">عالٍ جدًا</option></select></label>
-      <label><span>محيط الورك (سم) — اختياري</span><input id="hip" type="number" min="40" max="220" placeholder="اختياري"></label>
-      <label><span>محيط الرقبة (سم) — اختياري</span><input id="neck" type="number" min="20" max="70" placeholder="اختياري"></label>
-      <label><span>ضغط انقباضي (أعلى) — اختياري</span><input id="sbp" type="number" min="70" max="240" placeholder="اختياري"></label>
-      <label><span>ضغط انبساطي (أدنى) — اختياري</span><input id="dbp" type="number" min="40" max="140" placeholder="اختياري"></label>
-    </div>
-    <div class="actions">
-      <button id="calc" class="tab-btn" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1220">احسب الآن</button>
-      <button id="reset" class="tab-btn">مسح المدخلات</button>
-    </div>
-  </div>
-
-  <!-- تبويبات النتائج -->
-  <div class="tabs">
-    <button class="tab-btn active" data-target="primarySection">المؤشرات الأساسية</button>
-    <button class="tab-btn" data-target="secondarySection">المؤشرات الثانوية</button>
-    <button class="tab-btn" data-target="vitalsSection">المؤشرات الحيوية</button>
-  </div>
-
-  <!-- الأساسية -->
-  <section id="primarySection">
-    <h2>🔍 المؤشرات الصحية الأساسية</h2>
-
-    <div class="kpi" data-metric="bmi">
-      <h3>مؤشر كتلة الجسم (BMI)
-        <button class="more-btn" data-id="bmi"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="bmiVal">—</div>
-      <div class="status"><span class="chip info" id="bmiChip">—</span></div>
-      <div class="more" data-id="bmi"><b>ما هو؟</b> الوزن (كجم) ÷ الطول² (م²). أداة عامة لتقدير السمنة.
-        <ul>
-          <li>18.5–24.9: طبيعي</li>
-          <li>25–29.9: زيادة وزن</li>
-          <li>≥30: سمنة (درجات)</li>
-        </ul>
-        <b>محدوديات:</b> لا يفرّق بين العضلات والدهون؛ راقب WHtR والخصر أيضًا.
-      </div>
-    </div>
-
-    <div class="kpi" data-metric="whtr">
-      <h3>نسبة الخصر للطول (WHtR)
-        <button class="more-btn" data-id="whtr"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="whtrVal">—</div>
-      <div class="status"><span class="chip info" id="whtrChip">—</span></div>
-      <div class="more" data-id="whtr">الخصر ÷ الطول (بالسم). حساسة لدهون البطن. غالبًا الأفضل < 0.50؛ ≥0.60 يرتبط بمخاطر أعلى.</div>
-    </div>
-
-    <div class="kpi" data-metric="waist">
-      <h3>محيط الخصر
-        <button class="more-btn" data-id="waist"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="waistVal">—</div>
-      <div class="status"><span class="chip info" id="waistChip">—</span></div>
-      <div class="more" data-id="waist">رجال: حدّي ≥94 سم (مرتفع ≥102) • نساء: حدّي ≥80 (مرتفع ≥88). القياس عند السرة بعد زفير طبيعي.</div>
-    </div>
-
-    <div class="kpi" data-metric="bp">
-      <h3>ضغط الدم
-        <button class="more-btn" data-id="bp"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="bpVal">—</div>
-      <div class="status"><span class="chip info" id="bpChip">—</span></div>
-      <div class="more" data-id="bp">طبيعي عادةً أقل من 120/80 مم زئبق. كرّر القياس في أوقات مختلفة وتجنّب المنبّهات قبل 30 دقيقة.</div>
-    </div>
-
-    <div class="kpi" data-metric="tdee">
-      <h3>السعرات اليومية (TDEE)
-        <button class="more-btn" data-id="tdee"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="tdeeVal">—</div>
-      <div class="status"><span class="chip info" id="tdeeChip">—</span></div>
-      <div class="more" data-id="tdee">مُشتق من Mifflin–St Jeor × معامل النشاط. للتنحيف: ناقص 10–20% من TDEE تدريجيًا.</div>
-    </div>
-
-    <div class="kpi" data-metric="protein">
-      <h3>احتياج البروتين اليومي
-        <button class="more-btn" data-id="protein"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="proteinVal">—</div>
-      <div class="status"><span class="chip info" id="proteinChip">—</span></div>
-      <div class="more" data-id="protein">نطاق عام 1.2–1.6غ/كجم (قد يصل 1.8غ لكبار السن، وحتى 2.2غ لبعض الأهداف الرياضية).</div>
-    </div>
-
-    <div class="kpi" data-metric="sugar">
-      <h3>السكر الحرّ المسموح
-        <button class="more-btn" data-id="sugar"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="sugarVal">—</div>
-      <div class="status"><span class="chip info" id="sugarChip">—</span></div>
-      <div class="more" data-id="sugar">المثالي ≤5% من السعرات، الحد الأعلى 10%. فضّل الفاكهة الكاملة على العصائر.</div>
-    </div>
-
-    <div class="kpi" data-metric="fiber">
-      <h3>الألياف اليومية
-        <button class="more-btn" data-id="fiber"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="fiberVal">—</div>
-      <div class="status"><span class="chip info" id="fiberChip">—</span></div>
-      <div class="more" data-id="fiber">≈ 14غ لكل 1000 سعرة. ارفعها تدريجيًا مع شرب الماء لتجنّب الانزعاج الهضمي.</div>
-    </div>
-
-    <div class="kpi" data-metric="activity">
-      <h3>مستوى النشاط البدني
-        <button class="more-btn" data-id="activity"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="activityVal">—</div>
-      <div class="status"><span class="chip info" id="activityChip">—</span></div>
-      <div class="more" data-id="activity">الهدف 150–300 دقيقة/أسبوع نشاط معتدل + تمارين مقاومة 2–3 أيام.</div>
-    </div>
-  </section>
-
-  <!-- الثانوية -->
-  <section id="secondarySection" style="display:none">
-    <h2>🧩 المؤشرات الثانوية (موسّعة)</h2>
-
-    <div class="kpi" data-metric="ffmi">
-      <h3>FFMI — مؤشر الكتلة الخالية من الدهون
-        <button class="more-btn" data-id="ffmi"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="ffmiVal">—</div>
-      <div class="status"><span class="chip info" id="ffmiChip">—</span></div>
-      <div class="more" data-id="ffmi">يقيس الكتلة العضلية نسبةً للطول. نموذجي: رجال 18–25، نساء 15–22. قيم أعلى خارج النطاق قد تعكس كتلة عضلية كبيرة أو تقديرًا غير دقيق للدهون.</div>
-    </div>
-
-    <div class="kpi" data-metric="absi">
-      <h3>ABSI — مؤشر شكل الجسم
-        <button class="more-btn" data-id="absi"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="absiVal">—</div>
-      <div class="status"><span class="chip info" id="absiChip">—</span></div>
-      <div class="more" data-id="absi">يستخدم الخصر والطول وBMI؛ قيمة أعلى قد تشير لمخاطر أعلى مستقلة عن BMI.
-      </div>
-    </div>
-
-    <div class="kpi" data-metric="whr">
-      <h3>WHR — نسبة الخصر إلى الورك
-        <button class="more-btn" data-id="whr"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="whrVal">—</div>
-      <div class="status"><span class="chip info" id="whrChip">—</span></div>
-      <div class="more" data-id="whr">رجال: ≤0.90 أفضل؛ نساء: ≤0.85. أعلى من ذلك قد يشير إلى تمركز دهون مركزي.</div>
-    </div>
-
-    <div class="kpi" data-metric="navy">
-      <h3>دهون الجسم (طريقة البحرية)
-        <button class="more-btn" data-id="navy"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="navyVal">—</div>
-      <div class="status"><span class="chip info" id="navyChip">—</span></div>
-      <div class="more" data-id="navy">تقدير تقريبي بالقياسات المحيطية؛ الرجال 10–20%، النساء 20–30% كنطاقات عامة للصحة.
-      </div>
-    </div>
-
-    <div class="kpi" data-metric="bmi_prime">
-      <h3>BMI Prime
-        <button class="more-btn" data-id="bmi_prime"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="bmiPrimeVal">—</div>
-      <div class="status"><span class="chip info" id="bmiPrimeChip">—</span></div>
-      <div class="more" data-id="bmi_prime">BMI ÷ 25. 0.80–1.00 أفضل؛ >1 يعني فوق الطبيعي.</div>
-    </div>
-
-    <div class="kpi" data-metric="pi">
-      <h3>PI — مؤشر بونديرال
-        <button class="more-btn" data-id="pi"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="piVal">—</div>
-      <div class="status"><span class="chip info" id="piChip">—</span></div>
-      <div class="more" data-id="pi">مكمّل لـ BMI ويأخذ طول القامة في الاعتبار بشكل أكبر.</div>
-    </div>
-
-    <div class="kpi" data-metric="hwrange">
-      <h3>نطاق وزن صحي لطولك
-        <button class="more-btn" data-id="hwrange"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="hwrangeVal">—</div>
-      <div class="status"><span class="chip info" id="hwrangeChip">—</span></div>
-      <div class="more" data-id="hwrange">نطاق استرشادي يساعد على تحديد هدف واقعي بدل رقم واحد ثابت.</div>
-    </div>
-
-    <div class="kpi" data-metric="bsa">
-      <h3>BSA — مساحة سطح الجسم
-        <button class="more-btn" data-id="bsa"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="bsaVal">—</div>
-      <div class="status"><span class="chip info" id="bsaChip">—</span></div>
-      <div class="more" data-id="bsa">مفيدة لبعض الجرعات وتقديرات سريرية. معادلة Mosteller.</div>
-    </div>
-
-    <div class="kpi" data-metric="waist_target">
-      <h3>خصر مستهدف من الطول
-        <button class="more-btn" data-id="waist_target"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="waistTargetVal">—</div>
-      <div class="status"><span class="chip info" id="waistTargetChip">—</span></div>
-      <div class="more" data-id="waist_target">0.42–0.50 × الطول غالبًا يرتبط بمؤشرات أيضية أفضل.
-      </div>
-    </div>
-  </section>
-
-  <!-- الحيوية -->
-  <section id="vitalsSection" style="display:none">
-    <h2>🩺 المؤشرات الحيوية والمتقدمة</h2>
-    <div class="detail note">بعض المؤشرات تحتاج <b>إدخالًا يدويًا</b> (ساعة/جهاز منزلي). إن لم تُدخل قيمة، ستظهر المعلومات كمرجع فقط.</div>
-
-    <div class="kpi" data-metric="rhr">
-      <h3>معدل نبض الراحة (RHR) <span class="badge">يدوي</span>
-        <button class="more-btn" data-id="rhr"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="rhrVal">— نبضة/دقيقة</div>
-      <div class="status"><span class="chip info" id="rhrChip">—</span></div>
-      <div class="detail"><label>أدخل القيمة: <input id="rhrInput" type="number" min="30" max="120" placeholder="مثال: 60" style="margin-inline-start:6px;padding:4px 8px;border-radius:8px;border:1px solid var(--border)"></label></div>
-      <div class="more" data-id="rhr">عام: 60–100؛ الرياضيون 40–60. ارفع اللياقة يقلّ RHR غالبًا.</div>
-    </div>
-
-    <div class="kpi" data-metric="spo2">
-      <h3>تشبع الأكسجين (SpO₂) <span class="badge">يدوي</span>
-        <button class="more-btn" data-id="spo2"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="spo2Val">— %</div>
-      <div class="status"><span class="chip info" id="spo2Chip">—</span></div>
-      <div class="detail"><label>أدخل القيمة: <input id="spo2Input" type="number" min="70" max="100" placeholder="مثال: 97" style="margin-inline-start:6px;padding:4px 8px;border-radius:8px;border:1px solid var(--border)"> %</label></div>
-      <div class="more" data-id="spo2">طبيعي 95–100% على مستوى سطح البحر. إن كان منخفضًا باستمرار، استشر الطبيب.</div>
-    </div>
-
-    <div class="kpi" data-metric="resp">
-      <h3>معدل التنفس <span class="badge">يدوي</span>
-        <button class="more-btn" data-id="resp"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="respVal">— نفس/دقيقة</div>
-      <div class="status"><span class="chip info" id="respChip">—</span></div>
-      <div class="detail"><label>أدخل القيمة: <input id="respInput" type="number" min="6" max="40" placeholder="مثال: 14" style="margin-inline-start:6px;padding:4px 8px;border-radius:8px;border:1px solid var(--border)"></label></div>
-      <div class="more" data-id="resp">بالغون في الراحة: 12–20/دقيقة. أقل بكثير أو أعلى باستمرار يستلزم استشارة.</div>
-    </div>
-
-    <div class="kpi" data-metric="temp">
-      <h3>درجة الحرارة <span class="badge">يدوي</span>
-        <button class="more-btn" data-id="temp"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="tempVal">— °C</div>
-      <div class="status"><span class="chip info" id="tempChip">—</span></div>
-      <div class="detail"><label>أدخل القيمة: <input id="tempInput" type="number" step="0.1" min="34" max="42" placeholder="مثال: 36.8" style="margin-inline-start:6px;padding:4px 8px;border-radius:8px;border:1px solid var(--border)"> °C</label></div>
-      <div class="more" data-id="temp">نطاق شائع: 36.1–37.2°C. الحُمّى عادة ≥38°C.</div>
-    </div>
-
-    <div class="kpi" data-metric="vo2">
-      <h3>VO₂max (تقديري) <span class="badge">تقديري</span>
-        <button class="more-btn" data-id="vo2"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="vo2Val">— مل/كجم/دقيقة</div>
-      <div class="status"><span class="chip info" id="vo2Chip">—</span></div>
-      <div class="more" data-id="vo2">يعكس اللياقة القلبية التنفسية. يمكن تقديره لاحقًا بصيغ مبسطة اعتمادًا على العمر/الجنس/النشاط.</div>
-    </div>
-
-    <div class="kpi" data-metric="sleep">
-      <h3>النوم (الساعات/الجودة) <span class="badge">يدوي</span>
-        <button class="more-btn" data-id="sleep"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="sleepVal">— ساعات</div>
-      <div class="status"><span class="chip info" id="sleepChip">—</span></div>
-      <div class="detail"><label>أدخل الساعات: <input id="sleepInput" type="number" step="0.1" min="0" max="16" placeholder="مثال: 7.5" style="margin-inline-start:6px;padding:4px 8px;border-radius:8px;border:1px solid var(--border)"></label></div>
-      <div class="more" data-id="sleep">التوصية العامة: 7–9 ساعات للبالغين. جودة النوم لا تقل أهمية عن الكمية.</div>
-    </div>
-
-    <div class="kpi" data-metric="hrv">
-      <h3>تقلب نبض القلب (HRV) <span class="badge">يدوي</span>
-        <button class="more-btn" data-id="hrv"><span class="chev">▶</span> اعرف أكثر</button>
-      </h3>
-      <div class="value" id="hrvVal">— ms</div>
-      <div class="status"><span class="chip info" id="hrvChip">—</span></div>
-      <div class="detail"><label>أدخل القيمة: <input id="hrvInput" type="number" min="5" max="200" placeholder="مثال: 55" style="margin-inline-start:6px;padding:4px 8px;border-radius:8px;border:1px solid var(--border)"> ms</label></div>
-      <div class="more" data-id="hrv">قيم أعلى غالبًا علامة تعافٍ أفضل؛ القيم منخفضة جدًا مع أعراض قد تستلزم فحصًا.</div>
-    </div>
-  </section>
-
-  <!-- التصوّر في الأسفل -->
-  <div class="kpi" id="vizCard">
-    <h3>🧍‍♂️ تصوّر الجسم — 2D / 3D</h3>
-    <div class="vizWrap">
-      <div class="viz"><svg id="bodyViz" viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="200" height="420" fill="none"/></svg></div>
-      <label class="toggle"><input type="checkbox" id="enable3d"> تفعيل نموذج ثلاثي الأبعاد (تجريبي)</label>
-      <div class="viz3d" id="viz3d"><canvas id="body3d" width="640" height="360"></canvas></div>
-    </div>
-    <div class="detail">يُحدّث التصوّر بعد الضغط على «احسب الآن». التلوين يلمّح لمخاطر تمركز الدهون حول الخصر.</div>
-  </div>
-
-  <script>
-    // ===== السمات =====
-    const THEME_KEY='health:theme:v1';
-    function setTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem(THEME_KEY,t);}catch(e){} const sel=document.getElementById('themeSelect'); if(sel&&sel.value!==t) sel.value=t;}
-    (function(){const saved=localStorage.getItem(THEME_KEY)||'morning'; setTheme(saved); const sel=document.getElementById('themeSelect'); if(sel){ sel.value=saved; sel.addEventListener('change',()=> setTheme(sel.value)); }})();
-
-    // ===== تبويبات =====
-    document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); const target=btn.getAttribute('data-target'); document.querySelectorAll('section').forEach(sec=> sec.style.display=(sec.id===target)?'block':'none'); window.scrollTo({top:0,behavior:'smooth'});});});
-
-    // ===== اعرف أكثر (Toggle) =====
-    document.body.addEventListener('click',e=>{const b=e.target.closest('.more-btn'); if(!b) return; e.preventDefault(); const host=b.closest('.kpi'); const sec=b.closest('section'); sec?.querySelectorAll('.kpi').forEach(k=>{if(k!==host) k.classList.remove('open');}); host.classList.toggle('open');});
-
-    // ===== أدوات مساعدة =====
-    const $=s=>document.querySelector(s);
-    const toM=cm=>Number(cm)/100; const toIn=cm=>Number(cm)/2.54;
-    const BMI=(kg,cm)=> kg/Math.pow(toM(cm),2);
-    const WHtR=(wc,cm)=> wc/cm;
-    const BMR=(kg,cm,a,s)=> s==='male'?(10*kg+6.25*cm-5*a+5):(10*kg+6.25*cm-5*a-161);
-    const TDEE=(bmr,act)=> bmr*act;
-    const LBM=(kg,cm,s)=> s==='male'?(0.407*kg+0.267*cm-19.2):(0.252*kg+0.473*cm-48.3);
-    const FFMI=(lbmKg,cm)=> lbmKg/Math.pow(toM(cm),2);
-    const ABSI=(wc,bmi,cm)=>{const w=wc/100,h=cm/100;return w/(Math.pow(bmi,2/3)*Math.pow(h,1/2));};
-    const WHR=(wc,hip)=> wc/hip;
-    const NavyBF=(s,wc,neck,hip,height)=>{const w=toIn(wc), n=toIn(neck), h=toIn(height), hp=hip?toIn(hip):0; const maleTerm=Math.max(0.1,w-n); const femaleTerm=Math.max(0.1,w+hp-n); if(s==='male') return 86.010*Math.log10(maleTerm)-70.041*Math.log10(h)+36.76; return 163.205*Math.log10(femaleTerm)-97.684*Math.log10(h)-78.387;};
-    const healthyWeightRange=cm=>{const m2=Math.pow(toM(cm),2);return{min:22*m2,max:25*m2}};
-    const BSA=(kg,cm)=> Math.sqrt((kg*cm)/3600);
-
-    // ===== إنشاء/إرجاع عنصر الشريحة لحالة مؤشر =====
-    function chip(id){const el=document.getElementById(id); return el;}
-    function setChip(id, cls, text){const c=chip(id); if(!c) return; c.classList.remove('ok','warn','bad','info'); c.classList.add(cls||'info'); c.textContent=text;}
-
-    // ===== تفاسير المؤشرات =====
-    function interpretBMI(b){ if(!Number.isFinite(b)) return ['info','—']; if(b<18.5) return ['warn','نحافة']; if(b<25) return ['ok','طبيعي']; if(b<30) return ['warn','زيادة وزن']; if(b<35) return ['bad','سمنة (1)']; if(b<40) return ['bad','سمنة (2)']; return ['bad','سمنة (3)']; }
-    function interpretWHtR(x){ if(!Number.isFinite(x)) return ['info','—']; if(x<0.45) return ['ok','ممتاز']; if(x<0.50) return ['ok','صحي']; if(x<0.55) return ['warn','حدّي']; if(x<0.60) return ['warn','مرتفع']; return ['bad','مرتفع جدًا']; }
-    function interpretWaist(sex,wc){ if(!Number.isFinite(wc)) return ['info','—']; if(sex==='male'){ if(wc>=102) return ['bad','مرتفع']; if(wc>=94) return ['warn','حدّي']; return ['ok','طبيعي']; } else { if(wc>=88) return ['bad','مرتفع']; if(wc>=80) return ['warn','حدّي']; return ['ok','طبيعي']; } }
-    function interpretBP(sys,dia){ if(!(Number.isFinite(sys)&&Number.isFinite(dia))) return ['info','—']; if(sys>=180||dia>=120) return ['bad','أزمة ارتفاع ضغط']; if(sys>=140||dia>=90) return ['bad','ارتفاع ضغط (درجة 2)']; if(sys>=130||dia>=80) return ['warn','ارتفاع ضغط (درجة 1)']; if(sys>=120&&dia<80) return ['warn','ضغط مرتفع (مسبق)']; return ['ok','طبيعي']; }
-    function interpretFFMI(sex,v){ if(!Number.isFinite(v)) return ['info','—']; const r= sex==='male'?[18,25]:[15,22]; if(v<r[0]) return ['warn','منخفض']; if(v>r[1]) return ['warn','عالٍ']; return ['ok','ضمن النطاق']; }
-    function interpretWHR(sex,v){ if(!Number.isFinite(v)) return ['info','—']; if(sex==='male'){ if(v<=0.90) return ['ok','جيّد']; if(v<=1.00) return ['warn','حدّي']; return ['bad','مرتفع']; } else { if(v<=0.85) return ['ok','جيّد']; if(v<=0.95) return ['warn','حدّي']; return ['bad','مرتفع']; } }
-    function interpretNavy(sex,v){ if(!Number.isFinite(v)) return ['info','—']; if(sex==='male'){ if(v<=20) return ['ok','جيّد']; if(v<=25) return ['warn','متوسط']; return ['bad','مرتفع']; } else { if(v<=30) return ['ok','جيّد']; if(v<=35) return ['warn','متوسط']; return ['bad','مرتفع']; } }
-    function interpretBMIPrime(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<0.8) return ['warn','أقل من الطبيعي']; if(v<=1.0) return ['ok','طبيعي']; if(v<=1.2) return ['warn','فوق الطبيعي']; return ['bad','مرتفع']; }
-    function interpretPI(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<11||v>14) return ['warn','خارج النطاق']; return ['ok','ضمن النطاق']; }
-    function interpretWaistTarget(wc,h){ if(!(Number.isFinite(wc)&&Number.isFinite(h))) return ['info','—']; const min=0.42*h, max=0.50*h; if(wc<min) return ['warn','أقل من الهدف']; if(wc<=max) return ['ok','ضمن الهدف']; if(wc<=max+5) return ['warn','قريب من الهدف']; return ['bad','أعلى من الهدف']; }
-    // حيوية
-    function interpretRHR(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<40) return ['warn','منخفض جدًا']; if(v<60) return ['ok','جيّد']; if(v<=100) return ['ok','طبيعي']; return ['warn','مرتفع']; }
-    function interpretSpO2(v){ if(!Number.isFinite(v)) return ['info','—']; if(v>=95) return ['ok','طبيعي']; if(v>=92) return ['warn','حدّي']; return ['bad','منخفض']; }
-    function interpretResp(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<10) return ['warn','منخفض']; if(v<=20) return ['ok','طبيعي']; return ['warn','مرتفع']; }
-    function interpretTemp(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<36.1) return ['warn','منخفض']; if(v<=37.2) return ['ok','طبيعي']; if(v<38) return ['warn','مرتفع بسيط']; return ['bad','حمّى']; }
-    function interpretSleep(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<6) return ['warn','قصير']; if(v<=9) return ['ok','ضمن التوصية']; return ['warn','طويل']; }
-    function interpretHRV(v){ if(!Number.isFinite(v)) return ['info','—']; if(v<20) return ['warn','منخفض']; if(v<50) return ['info','متوسط']; return ['ok','جيّد']; }
-
-    // ===== الحساب والعرض =====
-    function computeAndRender(){
-      const age=+$('#age').value; const sex=$('#sex').value||'male'; const h=+$('#height').value; const w=+$('#weight').value; const wc=+$('#waist').value; const hip=+$('#hip').value; const nk=+$('#neck').value; const SYS=+$('#sbp').value; const DIA=+$('#dbp').value; const act=+$('#activity').value||1.2;
-      if(!(Number.isFinite(age)&&Number.isFinite(h)&&Number.isFinite(w)&&Number.isFinite(wc))){ alert('من فضلك أكمل: العمر، الجنس، الطول، الوزن، محيط الخصر'); return; }
-      const bmi= BMI(w,h); const whtr= WHtR(wc,h); const bmr= BMR(w,h,age,sex); const tdee= TDEE(bmr,act); const lbm= LBM(w,h,sex); const ffmi= FFMI(lbm,h); const absi= ABSI(wc,bmi,h); const whr= Number.isFinite(hip)? WHR(wc,hip): NaN; const navy= (sex==='male'? (Number.isFinite(nk)&&wc>nk) : (Number.isFinite(nk)&&Number.isFinite(hip))) ? NavyBF(sex,wc,nk,hip,h): NaN; const bmiPrime=bmi/25; const pi= w/Math.pow(toM(h),3); const hwRange= healthyWeightRange(h); const bsa= BSA(w,h); const waistTargetMin=0.42*h, waistTargetMax=0.50*h;
-
-      // قيم رقمية
-      $('#bmiVal').textContent=bmi.toFixed(2);
-      $('#whtrVal').textContent=whtr.toFixed(2);
-      $('#waistVal').textContent=Math.round(wc)+' سم';
-      $('#bpVal').textContent= (Number.isFinite(SYS)&&Number.isFinite(DIA))? `${Math.round(SYS)} / ${Math.round(DIA)} mmHg`:'—';
-      $('#tdeeVal').textContent= `≈ ${Math.round(tdee)} سعرة/يوم`;
-      const protLo=Math.round((age>=65?1.2:1.2)*w), protHi=Math.round((age>=65?1.8:1.6)*w); $('#proteinVal').textContent=`${protLo}–${protHi} غ/يوم`;
-      const sugarMax=Math.round((0.10*tdee)/4), sugarIdeal=Math.round((0.05*tdee)/4); $('#sugarVal').textContent=`≤ ${sugarMax} غ/يوم (مثالي ≤ ${sugarIdeal})`;
-      $('#fiberVal').textContent=`${Math.round(14*(tdee/1000))} غ/يوم`;
-      $('#activityVal').textContent= act>=1.9?'عالٍ جدًا':act>=1.725?'عالٍ':act>=1.55?'متوسط':act>=1.375?'خفيف':'قليل/خامل';
-
-      // حالات (شرائح)
-      setChip('bmiChip', ...interpretBMI(bmi));
-      setChip('whtrChip', ...interpretWHtR(whtr));
-      setChip('waistChip', ...interpretWaist(sex,wc));
-      setChip('bpChip', ...interpretBP(SYS,DIA));
-      setChip('tdeeChip','info','استخدمه كمرجع للسعرات');
-      setChip('proteinChip','info','نطاق مقترح وفق الوزن');
-      setChip('sugarChip','info','يفضّل الاقتراب من 5%');
-      setChip('fiberChip','info','ارفعها تدريجيًا');
-      setChip('activityChip','info','إرشادي وفق معامل النشاط');
-
-      // ثانوية
-      $('#ffmiVal').textContent= Number.isFinite(ffmi)? ffmi.toFixed(2):'—'; setChip('ffmiChip', ...interpretFFMI(sex,ffmi));
-      $('#absiVal').textContent= absi.toFixed(4); setChip('absiChip','info','للمقارنة النسبية');
-      $('#whrVal').textContent= Number.isFinite(whr)? whr.toFixed(2):'—'; setChip('whrChip', ...interpretWHR(sex,whr));
-      $('#navyVal').textContent= Number.isFinite(navy)? navy.toFixed(1)+'%':'—'; setChip('navyChip', ...interpretNavy(sex,navy));
-      $('#bmiPrimeVal').textContent=bmiPrime.toFixed(2); setChip('bmiPrimeChip', ...interpretBMIPrime(bmiPrime));
-      $('#piVal').textContent=pi.toFixed(2)+' كجم/م³'; setChip('piChip', ...interpretPI(pi));
-      $('#hwrangeVal').textContent=`${hwRange.min.toFixed(1)}–${hwRange.max.toFixed(1)} كجم`; setChip('hwrangeChip','info','نطاق استرشادي');
-      $('#bsaVal').textContent=bsa.toFixed(2)+' م²'; setChip('bsaChip','info','للاستخدام السريري');
-      $('#waistTargetVal').textContent=`${Math.round(waistTargetMin)}–${Math.round(waistTargetMax)} سم`; setChip('waistTargetChip', ...interpretWaistTarget(wc,h));
-
-      // رسم
-      draw2D({sex,bmi,whtr,waist:wc}); if($('#enable3d')?.checked){ start3D(sex,bmi,whtr); }
-    }
-
-    document.getElementById('calc').addEventListener('click', computeAndRender);
-    document.getElementById('reset').addEventListener('click',()=>{['age','height','weight','waist','hip','neck','sbp','dbp'].forEach(id=>{const el=$('#'+id); if(el) el.value='';});
-      ['bmiVal','whtrVal','waistVal','bpVal','tdeeVal','proteinVal','sugarVal','fiberVal','activityVal','ffmiVal','absiVal','whrVal','navyVal','bmiPrimeVal','piVal','hwrangeVal','bsaVal','waistTargetVal'].forEach(id=>{const el=$('#'+id); if(el) el.textContent='—';});
-      ['bmiChip','whtrChip','waistChip','bpChip','tdeeChip','proteinChip','sugarChip','fiberChip','activityChip','ffmiChip','absiChip','whrChip','navyChip','bmiPrimeChip','piChip','hwrangeChip','bsaChip','waistTargetChip','rhrChip','spo2Chip','respChip','tempChip','vo2Chip','sleepChip','hrvChip'].forEach(id=> setChip(id,'info','—'));
-      draw2D(null); stop3D(); });
-
-    // ===== ربط الحيوية وتفسيرها مباشرة =====
-    function bindVital(id, interpret, suffix=''){
-      const input=$(`#${id}Input`), out=$(`#${id}Val`), chipId=`${id}Chip`;
-      if(!input||!out) return;
-      const upd=()=>{const v=Number(input.value); out.textContent= Number.isFinite(v)? `${v}${suffix?(' '+suffix):''}` : `—${suffix?(' '+suffix):''}`; const [c,t]=interpret(Number.isFinite(v)?v:NaN); setChip(chipId,c,t); };
-      input.addEventListener('input',upd); upd();
-    }
-    bindVital('rhr', interpretRHR,'نبضة/دقيقة');
-    bindVital('spo2', interpretSpO2,'%');
-    bindVital('resp', interpretResp,'نفس/دقيقة');
-    bindVital('temp', interpretTemp,'°C');
-    bindVital('sleep', interpretSleep,'ساعات');
-    bindVital('hrv', interpretHRV,'ms');
-
-    // ===== رسم 2D =====
-    function draw2D(state){const svg=document.getElementById('bodyViz'); if(!svg) return; if(!state){svg.innerHTML='<rect x="0" y="0" width="200" height="420" fill="none"/>'; return;} const {sex,bmi,whtr}=state; const base={shoulderW:120,chestW:110,waistW:70,hipW:105,torsoH:190,legH:170,headR:28}; const sexAdj=(sex==='male')?{shoulder:1.06,hip:0.95}:{shoulder:0.92,hip:1.06}; const bmiNorm=Math.max(16,Math.min(40,bmi)); const bmiScale=1+(bmiNorm-22)/40; const waistScale=Math.max(0.8,Math.min(1.6,whtr/0.5)); const shoulderW=base.shoulderW*sexAdj.shoulder*(0.9+(bmiScale-1)*0.5); const chestW=base.chestW*(0.9+(bmiScale-1)*0.6); const waistW=base.waistW*waistScale; const hipW=base.hipW*sexAdj.hip*(0.9+(bmiScale-1)*0.5); const riskColor=(whtr>=0.6)?'#dc2626':(whtr>=0.5?'#d97706':'#16a34a'); const cx=100; let y=10; svg.innerHTML=`<defs><linearGradient id="gradTorso" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#e2e8f0"/><stop offset="100%" stop-color="#cbd5e1"/></linearGradient><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#000" flood-opacity="0.08"/></filter></defs><circle cx="${cx}" cy="${y+base.headR}" r="${base.headR}" fill="#e2e8f0" stroke="#cbd5e1"/>`; y+=base.headR*2+6; svg.innerHTML+=`<path d="M ${cx-shoulderW/2} ${y} C ${cx-shoulderW/2} ${y-10}, ${cx+shoulderW/2} ${y-10}, ${cx+shoulderW/2} ${y} L ${cx+chestW/2} ${y+base.torsoH*0.35} C ${cx+chestW*0.2} ${y+base.torsoH*0.45}, ${cx-chestW*0.2} ${y+base.torsoH*0.45}, ${cx-chestW/2} ${y+base.torsoH*0.35} Z" fill="url(#gradTorso)" stroke="#cbd5e1" filter="url(#glow)"/>`; const wy=y+base.torsoH*0.35, wy2=wy+base.torsoH*0.25, hy=y+base.torsoH*0.65, hy2=hy+base.torsoH*0.22; svg.innerHTML+=`<path d="M ${cx-chestW/2} ${wy} C ${cx-waistW/2} ${wy2}, ${cx+waistW/2} ${wy2}, ${cx+chestW/2} ${wy} Z" fill="url(#gradTorso)" stroke="#cbd5e1"/><path d="M ${cx-waistW/2} ${hy} C ${cx-hipW/2} ${hy2}, ${cx+hipW/2} ${hy2}, ${cx+waistW/2} ${hy} Z" fill="url(#gradTorso)" stroke="#cbd5e1"/>`; const yLeg=10+base.headR*2+6+base.torsoH+10; svg.innerHTML+=`<path d="M ${cx-hipW*0.25} ${yLeg} L ${cx-hipW*0.15} ${yLeg+base.legH}" stroke="#cbd5e1" stroke-width="8"/><path d="M ${cx+hipW*0.25} ${yLeg} L ${cx+hipW*0.15} ${yLeg+base.legH}" stroke="#cbd5e1" stroke-width="8"/><ellipse cx="${cx}" cy="${10+base.headR*2+6+base.torsoH*0.55}" rx="${Math.max(waistW/2,20)}" ry="14" fill="none" stroke="${riskColor}" stroke-width="3" opacity="0.9"/>`; }
-
-    // ===== 3D (تجريبي) =====
-    const enable3d=document.getElementById('enable3d'); const canvas3d=document.getElementById('body3d'); const ctx3d=canvas3d?canvas3d.getContext('2d'):null; const viz3d=document.getElementById('viz3d'); let rafId=null,yaw=0,profile=null;
-    function makeProfile(sex,bmi,whtr){const pts=[]; const baseShoulder=(sex==='male'?0.58:0.50)*(1+(bmi-22)/60); const baseChest=(sex==='male'?0.55:0.52)*(1+(bmi-22)/50); const baseWaist=0.36*Math.max(0.8,Math.min(1.6,whtr/0.5)); const baseHip=(sex==='male'?0.50:0.58)*(1+(bmi-22)/60); for(let i=0;i<=40;i++){const t=i/40; const chestBlend=Math.max(0,1-Math.abs(t-0.2)/0.25); const waistBlend=Math.max(0,1-Math.abs(t-0.5)/0.18); const hipBlend=Math.max(0,1-Math.abs(t-0.8)/0.22); let r=0; r+=baseChest*chestBlend; r+=baseWaist*waistBlend; r+=baseHip*hipBlend; r=Math.max(r, baseShoulder*Math.max(0,1-Math.abs(t-0.05)/0.18)); pts.push({y:t,r}); } return pts; }
-    function start3D(sex,bmi,whtr){ if(!ctx3d) return; profile=makeProfile(sex,bmi,whtr); if(rafId) cancelAnimationFrame(rafId); yaw=0; viz3d.style.display='flex'; loop3D(); }
-    function stop3D(){ if(rafId) cancelAnimationFrame(rafId); rafId=null; if(viz3d) viz3d.style.display='none'; }
-    function loop3D(){ if(!ctx3d||!canvas3d) return; const W=canvas3d.width,H=canvas3d.height; ctx3d.clearRect(0,0,W,H); const cx=W/2, cy=H*0.48; const scale=Math.min(W,H)*0.42; yaw+=0.02; const light={x:Math.cos(yaw+1), y:-0.2, z:Math.sin(yaw+1)}; const slices=60; for(let i=0;i<profile.length-1;i++){const y1=cy+(profile[i].y-0.5)*scale*1.4; const y2=cy+(profile[i+1].y-0.5)*scale*1.4; for(let j=0;j<slices;j++){const a1=(j/slices)*Math.PI*2+yaw; const a2=((j+1)/slices)*Math.PI*2+yaw; const r1=profile[i].r*scale; const r2=profile[i+1].r*scale; const x11=cx+Math.cos(a1)*r1*0.7; const x12=cx+Math.cos(a2)*r1*0.7; const x21=cx+Math.cos(a1)*r2*0.7; const x22=cx+Math.cos(a2)*r2*0.7; const nx=(Math.cos(a1)+Math.cos(a2))/2; const nz=(Math.sin(a1)+Math.sin(a2))/2; const ny=(y2-y1)/scale; const ndotl=Math.max(0.05,(nx*light.x+ny*light.y+nz*light.z)); const shade=Math.floor(160+65*ndotl); ctx3d.fillStyle=`rgb(${shade}, ${shade+12}, ${shade+20})`; ctx3d.beginPath(); ctx3d.moveTo(x11,y1); ctx3d.lineTo(x12,y1); ctx3d.lineTo(x22,y2); ctx3d.lineTo(x21,y2); ctx3d.closePath(); ctx3d.fill(); }} const h=+$('#height').value||0, wc=+$('#waist').value||0; const whtr=(h&&wc)?(wc/h):0.5; const riskColor=(whtr>=0.6)?'#dc2626':(whtr>=0.5?'#d97706':'#16a34a'); ctx3d.strokeStyle=riskColor; ctx3d.lineWidth=3; const waistIdx=Math.floor(profile.length*0.5); const rr=profile[waistIdx].r*scale*0.7; ctx3d.beginPath(); ctx3d.ellipse(cx,cy,rr,rr*0.35,0,0,Math.PI*2); ctx3d.stroke(); rafId=requestAnimationFrame(loop3D); }
-    enable3d?.addEventListener('change',()=>{ if(enable3d.checked){ const s=$('#sex').value||'male', h=+$('#height').value||0, w=+$('#weight').value||0, wc=+$('#waist').value||0; const bmi=(h&&w)?BMI(w,h):22, whtr=(h&&wc)?WHtR(wc,h):0.5; start3D(s,bmi,whtr);} else { stop3D(); }});
-  </script>
-</body>
-</html>
