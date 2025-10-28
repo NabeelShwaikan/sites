@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بوابة القهوة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1 id="title">بوابة القهوة</h1>
+  <p class="lead">اختر قهوتك على مزاجك أو من خلال القائمة المخصصة أو دعنا نختر لك.</p>
+</header>
 
+<div class="wrap panel" id="app">
+  <div class="topbar">
+    <div class="group">
+      <div class="badge">النمط</div>
+      <div class="themes" id="themes">
+        <button class="tbtn" data-theme="light">فاتح</button>
+        <button class="tbtn" data-theme="dark">داكن</button>
+        <button class="tbtn" data-theme="cafe">مقهى</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="ready" id="tab-ready">القائمة الكاملة</div>
+    <div class="tab" data-tab="builder">اصنع مودك</div>
+  </div>
+
+  <!-- READY -->
+  <section id="ready" class="section active">
+    <div class="cta" style="border-bottom:1px solid var(--b)">
+      <div class="filters" id="readyCats"></div>
+      <div class="group">
+        <button class="ghost" id="expandAll">فتح الكل</button>
+        <button class="ghost" id="collapseAll">طيّ الكل</button>
+      </div>
+    </div>
+    <div id="readyWrap" style="padding:6px 12px 12px"></div>
+  </section>
+
+  <!-- BUILDER -->
+  <section id="builder" class="section">
+    <div class="cta">
+      <div class="filters">
+        <select id="prefTemp">
+          <option value="any">درجة الحرارة: الكل</option>
+          <option value="hot">ساخن</option>
+          <option value="iced">بارد</option>
+        </select>
+        <select id="prefMilk">
+          <option value="any">حليب: الكل</option>
+          <option value="with">بحليب</option>
+          <option value="without">بدون حليب</option>
+        </select>
+        <select id="prefSweet">
+          <option value="any">حلاوة: الكل</option>
+          <option value="none">بدون سكر</option>
+          <option value="light">خفيفة</option>
+          <option value="medium">متوسطة</option>
+        </select>
+        <select id="prefBean">
+          <option value="any">نوع البن: الكل</option>
+          <option value="arabica">أرابيكا</option>
+          <option value="robusta">روبوستا</option>
+          <option value="blend">خلطة</option>
+        </select>
+        <div class="filters" id="ingBox">
+          <span class="badge">المكوّنات التي ترغب بها</span>
+        </div>
+      </div>
+      <button id="makeBtn">اقترح لي</button>
+    </div>
+    <div class="grid" id="builderResult"></div>
+  </section>
+</div>
+
+<!-- ORDER PANEL -->
+<div class="wrap panel" id="orderPanel" style="margin-top:-20px">
+  <div class="topbar">
+    <div class="group"><strong>الطلب الحالي</strong><span class="badge" id="orderCount">0 عناصر</span></div>
+    <div class="group">
+      <button class="ghost" id="copyOrder">نسخ للبارستا</button>
+      <button class="ghost" id="clearOrder">تفريغ</button>
+    </div>
+  </div>
+  <div id="orderList" class="grid" style="padding:12px"></div>
+</div>
+
+<!-- MODAL: تفاصيل -->
+<div class="modal" id="modal">
+  <div class="dialog">
+    <header class="row">
+      <strong id="mTitle">التفاصيل</strong>
+      <span class="score" id="mCat"></span>
+      <button id="mClose">إغلاق</button>
+    </header>
+    <div class="content">
+      <div class="kv"><b>الوصف:</b><span id="mDesc"></span></div>
+      <div class="kv"><b>القوة:</b><span id="mStrength"></span></div>
+      <div class="kv"><b>الأساسيات:</b><span id="mReq"></span></div>
+      <div class="kv"><b>مسموح:</b><span id="mOpt"></span></div>
+      <div class="kv"><b>إضافات غير أصلية:</b><span id="mNon"></span></div>
+      <div class="kv"><b>نوع البن:</b><span id="mBean"></span></div>
+      <div class="kv"><b>الحرارة:</b><span id="mTemp"></span></div>
+      <div class="kv"><b>التقديم:</b><span id="mPresent"></span></div>
+      <div class="kv"><b>ملاحظات:</b><span id="mNotes"></span></div>
+      <div class="kv"><b>تخصيص الإضافات:</b>
+        <span>
+          <div id="mCustom" class="chips"></div>
+          <div class="muted">اختر إضافات مسموحة لهذا المشروب. العناصر غير الأصلية ستظهر بشكل منفصل.</div>
+          <div class="row" style="margin-top:8px">
+            <button id="mAddToOrder">أضف للطلب</button>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ترتيب التحميل مهم: قاعدة البيانات ثم التطبيق -->
+<script src="drinks.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
