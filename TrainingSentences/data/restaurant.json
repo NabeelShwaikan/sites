@@ -1,0 +1,1763 @@
+[
+  {
+    "id": "REST-0001",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the pepper, please?",
+    "ar": "هل يمكنني الحصول على الفلفل من فضلك؟",
+    "ar_pron": "كان ي هافي ثي بيببير, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "pepper"
+    ]
+  },
+  {
+    "id": "REST-0002",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Water, please.",
+    "ar": "ماء من فضلك.",
+    "ar_pron": "واتير, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0003",
+    "level": "A1",
+    "register": "neutral",
+    "en": "For here, please.",
+    "ar": "للأكل هنا، من فضلك.",
+    "ar_pron": "فور هيري, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0004",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I get ketchup?",
+    "ar": "هل يمكنني الحصول على الكاتشب؟",
+    "ar_pron": "كان ي جيت كيتتشوب?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0005",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the salt, please?",
+    "ar": "هل يمكنني الحصول على الملح من فضلك؟",
+    "ar_pron": "كان ي هافي ثي سالت, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "salt"
+    ]
+  },
+  {
+    "id": "REST-0006",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the table, please?",
+    "ar": "هل يمكنني الحصول على الطاولة من فضلك؟",
+    "ar_pron": "كان ي هافي ثي تابلي, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0007",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the butter, please?",
+    "ar": "هل يمكنني الحصول على الزبدة من فضلك؟",
+    "ar_pron": "كان ي هافي ثي بوتتير, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "butter"
+    ]
+  },
+  {
+    "id": "REST-0008",
+    "level": "A1",
+    "register": "neutral",
+    "en": "I’m ready to order.",
+    "ar": "أنا جاهز للطلب.",
+    "ar_pron": "ي’م ريادي تو وردير.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0009",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I see the menu, please?",
+    "ar": "هل يمكنني رؤية قائمة الطعام من فضلك؟",
+    "ar_pron": "كان ي سيي ثي مينو, بلياسي?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0010",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the menu, please?",
+    "ar": "هل يمكنني الحصول على القائمة من فضلك؟",
+    "ar_pron": "كان ي هافي ثي مينو, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "menu"
+    ]
+  },
+  {
+    "id": "REST-0011",
+    "level": "A1",
+    "register": "neutral",
+    "en": "No ice, please.",
+    "ar": "بدون ثلج من فضلك.",
+    "ar_pron": "نو يكي, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0012",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the bread, please?",
+    "ar": "هل يمكنني الحصول على الخبز من فضلك؟",
+    "ar_pron": "كان ي هافي ثي برياد, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "bread"
+    ]
+  },
+  {
+    "id": "REST-0013",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To go, please.",
+    "ar": "سفري من فضلك.",
+    "ar_pron": "تو جو, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0014",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the bill, please?",
+    "ar": "هل يمكنني الحصول على الفاتورة من فضلك؟",
+    "ar_pron": "كان ي هافي ثي بيلل, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "bill"
+    ]
+  },
+  {
+    "id": "REST-0015",
+    "level": "A1",
+    "register": "neutral",
+    "en": "I'd like this one.",
+    "ar": "أرغب في هذا الخيار.",
+    "ar_pron": "ي'د ليكي ثيس وني.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0016",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Do you have soup today?",
+    "ar": "هل لديكم شوربة اليوم؟",
+    "ar_pron": "دو يوو هافي سووب توداي?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0017",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the rice, please?",
+    "ar": "هل يمكنني الحصول على الأرز من فضلك؟",
+    "ar_pron": "كان ي هافي ثي ريكي, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "rice"
+    ]
+  },
+  {
+    "id": "REST-0018",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have some napkins?",
+    "ar": "هل يمكنني الحصول على بعض المناديل؟",
+    "ar_pron": "كان ي هافي سومي نابكينس?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0019",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Is this seat taken?",
+    "ar": "هل هذا المقعد محجوز؟",
+    "ar_pron": "يس ثيس سيات تاكين?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0020",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I get the bill?",
+    "ar": "هل يمكنني الحصول على الفاتورة؟",
+    "ar_pron": "كان ي جيت ثي بيلل?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0021",
+    "level": "A1",
+    "register": "neutral",
+    "en": "With ice, please.",
+    "ar": "مع ثلج من فضلك.",
+    "ar_pron": "ويث يكي, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0022",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I get a fork and spoon?",
+    "ar": "هل يمكنني الحصول على شوكة وملعقة؟",
+    "ar_pron": "كان ي جيت ا فورك اند سبوون?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0023",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the water, please?",
+    "ar": "هل يمكنني الحصول على الماء من فضلك؟",
+    "ar_pron": "كان ي هافي ثي واتير, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "water"
+    ]
+  },
+  {
+    "id": "REST-0024",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I order now?",
+    "ar": "هل يمكنني أن أطلب الآن؟",
+    "ar_pron": "كان ي وردير نوو?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0025",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have the tea, please?",
+    "ar": "هل يمكنني الحصول على الشاي من فضلك؟",
+    "ar_pron": "كان ي هافي ثي تيا, بلياسي?",
+    "tags": [
+      "basic",
+      "request",
+      "tea"
+    ]
+  },
+  {
+    "id": "REST-0026",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Excuse me.",
+    "ar": "عذرًا.",
+    "ar_pron": "يكسكوسي مي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0027",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Is it spicy?",
+    "ar": "هل هو حار؟",
+    "ar_pron": "يس يت سبيكي?",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0028",
+    "level": "A1",
+    "register": "neutral",
+    "en": "The same for me, please.",
+    "ar": "أريد نفس الشيء، من فضلك.",
+    "ar_pron": "تهي سامي فور مي, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0029",
+    "level": "A1",
+    "register": "neutral",
+    "en": "I'd like a table for two.",
+    "ar": "أرغب في طاولة لشخصين.",
+    "ar_pron": "ي'د ليكي ا تابلي فور توو.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0030",
+    "level": "A1",
+    "register": "neutral",
+    "en": "A glass of water, please.",
+    "ar": "كأس ماء من فضلك.",
+    "ar_pron": "ا جلاسس وف واتير, بلياسي.",
+    "tags": [
+      "basic",
+      "polite",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0031",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Do you have gluten-free options?",
+    "ar": "هل لديكم خيارات خالية من الغلوتين؟",
+    "ar_pron": "دو يوو هافي جلوتين-فريي وبتيونس?",
+    "tags": [
+      "gluten-free",
+      "diet"
+    ]
+  },
+  {
+    "id": "REST-0032",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a small latte, when you can?",
+    "ar": "هل يمكنني الحصول على حجم وسط من latte، إن أمكن؟",
+    "ar_pron": "كوولد ي هافي ا سمالل لاتتي, وهين يوو كان?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0033",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a large apple juice, when you can?",
+    "ar": "هل يمكنني الحصول على حجم صغير من apple juice، عندما تسمح؟",
+    "ar_pron": "كوولد ي هافي ا لارجي اببلي جويكي, وهين يوو كان?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0034",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a large iced tea, please?",
+    "ar": "هل يمكنني الحصول على حجم كبير من iced tea، إن أمكن؟",
+    "ar_pron": "كوولد ي هافي ا لارجي يكيد تيا, بلياسي?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0035",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a medium hot tea, if you don’t mind?",
+    "ar": "هل يمكنني الحصول على حجم صغير من hot tea، عندما تسمح؟",
+    "ar_pron": "كوولد ي هافي ا ميديوم هوت تيا, يف يوو دون’ت ميند?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0036",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could you recommend something popular here?",
+    "ar": "هل يمكنك اقتراح شيء مشهور هنا؟",
+    "ar_pron": "كوولد يوو ريكومميند سوميثينج بوبولار هيري?",
+    "tags": [
+      "recommend",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0037",
+    "level": "A2",
+    "register": "neutral",
+    "en": "May I see the dessert menu?",
+    "ar": "هل يمكنني رؤية قائمة الحلويات؟",
+    "ar_pron": "ماي ي سيي ثي ديسسيرت مينو?",
+    "tags": [
+      "dessert",
+      "menu"
+    ]
+  },
+  {
+    "id": "REST-0038",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a medium black coffee, if possible?",
+    "ar": "هل يمكنني الحصول على حجم وسط من black coffee، إن أمكن؟",
+    "ar_pron": "كوولد ي هافي ا ميديوم بلاكك كوففيي, يف بوسسيبلي?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0039",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a refill of water, please?",
+    "ar": "هل يمكن إعادة تعبئة الماء لو سمحت؟",
+    "ar_pron": "كوولد ي هافي ا ريفيلل وف واتير, بلياسي?",
+    "tags": [
+      "refill",
+      "water"
+    ]
+  },
+  {
+    "id": "REST-0040",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I add a side of grilled vegetables, please?",
+    "ar": "هل يمكنني إضافة طبق جانبي من grilled vegetables، من فضلك؟",
+    "ar_pron": "كوولد ي ادد ا سيدي وف جريلليد فيجيتابليس, بلياسي?",
+    "tags": [
+      "side",
+      "order",
+      "add"
+    ]
+  },
+  {
+    "id": "REST-0041",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a large orange juice, if possible?",
+    "ar": "هل يمكنني الحصول على حجم كبير من orange juice، عندما تسمح؟",
+    "ar_pron": "كوولد ي هافي ا لارجي ورانجي جويكي, يف بوسسيبلي?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0042",
+    "level": "A2",
+    "register": "street_light",
+    "en": "Can I get the same as theirs?",
+    "ar": "هل ممكن آخذ نفس طلبهم؟",
+    "ar_pron": "كان ي جيت ثي سامي اس ثييرس?",
+    "tags": [
+      "street",
+      "copy"
+    ]
+  },
+  {
+    "id": "REST-0043",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Do you have any daily specials?",
+    "ar": "هل لديكم أطباق خاصة اليوم؟",
+    "ar_pron": "دو يوو هافي اني دايلي سبيكيالس?",
+    "tags": [
+      "specials",
+      "question"
+    ]
+  },
+  {
+    "id": "REST-0044",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Can I have extra napkins, please?",
+    "ar": "هل يمكنني الحصول على مناديل إضافية؟",
+    "ar_pron": "كان ي هافي يكسترا نابكينس, بلياسي?",
+    "tags": [
+      "napkins",
+      "extra"
+    ]
+  },
+  {
+    "id": "REST-0045",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a medium cappuccino, when you can?",
+    "ar": "هل يمكنني الحصول على حجم كبير من cappuccino، عندما تسمح؟",
+    "ar_pron": "كوولد ي هافي ا ميديوم كاببوككينو, وهين يوو كان?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0046",
+    "level": "A2",
+    "register": "street_light",
+    "en": "All good, no worries.",
+    "ar": "كل شيء تمام، ولا يهمك.",
+    "ar_pron": "الل جوود, نو ووررييس.",
+    "tags": [
+      "street",
+      "casual"
+    ]
+  },
+  {
+    "id": "REST-0047",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I add a side of rice, please?",
+    "ar": "هل يمكنني إضافة طبق جانبي من rice، من فضلك؟",
+    "ar_pron": "كوولد ي ادد ا سيدي وف ريكي, بلياسي?",
+    "tags": [
+      "side",
+      "order",
+      "add"
+    ]
+  },
+  {
+    "id": "REST-0048",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I add a side of coleslaw, please?",
+    "ar": "هل يمكنني إضافة طبق جانبي من coleslaw، من فضلك؟",
+    "ar_pron": "كوولد ي ادد ا سيدي وف كوليسلاو, بلياسي?",
+    "tags": [
+      "side",
+      "order",
+      "add"
+    ]
+  },
+  {
+    "id": "REST-0049",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could you make it less spicy?",
+    "ar": "هل يمكنك جعله أقل حِرَاقة؟",
+    "ar_pron": "كوولد يوو ماكي يت ليسس سبيكي?",
+    "tags": [
+      "customize",
+      "spicy"
+    ]
+  },
+  {
+    "id": "REST-0050",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Can we split the bill?",
+    "ar": "هل يمكننا تقسيم الفاتورة؟",
+    "ar_pron": "كان وي سبليت ثي بيلل?",
+    "tags": [
+      "bill",
+      "split"
+    ]
+  },
+  {
+    "id": "REST-0051",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I add a side of salad, please?",
+    "ar": "هل يمكنني إضافة طبق جانبي من salad، من فضلك؟",
+    "ar_pron": "كوولد ي ادد ا سيدي وف سالاد, بلياسي?",
+    "tags": [
+      "side",
+      "order",
+      "add"
+    ]
+  },
+  {
+    "id": "REST-0052",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a medium mint lemonade, if possible?",
+    "ar": "هل يمكنني الحصول على حجم صغير من mint lemonade، من فضلك؟",
+    "ar_pron": "كوولد ي هافي ا ميديوم مينت ليمونادي, يف بوسسيبلي?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0053",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Is there a vegetarian option available?",
+    "ar": "هل يوجد خيار نباتي متاح؟",
+    "ar_pron": "يس ثيري ا فيجيتاريان وبتيون افايلابلي?",
+    "tags": [
+      "vegetarian",
+      "question"
+    ]
+  },
+  {
+    "id": "REST-0054",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I add a side of mashed potatoes, please?",
+    "ar": "هل يمكنني إضافة طبق جانبي من mashed potatoes، من فضلك؟",
+    "ar_pron": "كوولد ي ادد ا سيدي وف ماشيد بوتاتويس, بلياسي?",
+    "tags": [
+      "side",
+      "order",
+      "add"
+    ]
+  },
+  {
+    "id": "REST-0055",
+    "level": "A2",
+    "register": "street_light",
+    "en": "Can I get this to go?",
+    "ar": "ممكن هذا يكون سفري؟",
+    "ar_pron": "كان ي جيت ثيس تو جو?",
+    "tags": [
+      "street",
+      "to-go"
+    ]
+  },
+  {
+    "id": "REST-0056",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a medium sparkling water, if possible?",
+    "ar": "هل يمكنني الحصول على حجم صغير من sparkling water، عندما تسمح؟",
+    "ar_pron": "كوولد ي هافي ا ميديوم سباركلينج واتير, يف بوسسيبلي?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0057",
+    "level": "A2",
+    "register": "street_light",
+    "en": "We’re good, thanks.",
+    "ar": "نحن بخير، شكرًا.",
+    "ar_pron": "وي’ري جوود, ثانكس.",
+    "tags": [
+      "street",
+      "casual"
+    ]
+  },
+  {
+    "id": "REST-0058",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I have a medium espresso, if possible?",
+    "ar": "هل يمكنني الحصول على حجم كبير من espresso، من فضلك؟",
+    "ar_pron": "كوولد ي هافي ا ميديوم يسبريسسو, يف بوسسيبلي?",
+    "tags": [
+      "drink",
+      "order"
+    ]
+  },
+  {
+    "id": "REST-0059",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Can we move to a quieter table?",
+    "ar": "هل يمكننا الانتقال إلى طاولة أكثر هدوءًا؟",
+    "ar_pron": "كان وي موفي تو ا كوييتير تابلي?",
+    "tags": [
+      "seat",
+      "request"
+    ]
+  },
+  {
+    "id": "REST-0060",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Could I add a side of fries, please?",
+    "ar": "هل يمكنني إضافة طبق جانبي من fries، من فضلك؟",
+    "ar_pron": "كوولد ي ادد ا سيدي وف فرييس, بلياسي?",
+    "tags": [
+      "side",
+      "order",
+      "add"
+    ]
+  },
+  {
+    "id": "REST-0061",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I appreciate your service, but this is overcooked. Could you help me with a fix?",
+    "ar": "أقدّر خدمتكم، لكن هذا مطهو أكثر من اللازم. هل يمكنكم المساعدة في إصلاح ذلك؟",
+    "ar_pron": "ي اببريكياتي يوور سيرفيكي, بوت ثيس يس وفيركووكيد. كوولد يوو هيلب مي ويث ا فيكس?",
+    "tags": [
+      "feedback",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0062",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0063",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could we have more time before we order, please?",
+    "ar": "هل يمكننا الحصول على وقتًا إضافيًا قبل الطلب من فضلكم؟",
+    "ar_pron": "كوولد وي هافي موري تيمي بيفوري وي وردير, بلياسي?",
+    "tags": [
+      "request",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0064",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please check if this dish is gluten-free?",
+    "ar": "هل يمكنك التحقق إن كان هذا الطبق خالٍ من الغلوتين؟",
+    "ar_pron": "كوولد يوو بلياسي تشيكك يف ثيس ديش يس جلوتين-فريي?",
+    "tags": [
+      "allergy",
+      "check"
+    ]
+  },
+  {
+    "id": "REST-0065",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0066",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0067",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the beef steak, extra sauce, if possible.",
+    "ar": "أرغب في beef steak، صلصة إضافية، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي بييف ستياك, يكسترا ساوكي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0068",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could we have separate checks for our table, please?",
+    "ar": "هل يمكننا الحصول على فاتورة منفصلة لطاولتنا من فضلكم؟",
+    "ar_pron": "كوولد وي هافي سيباراتي تشيككس فور وور تابلي, بلياسي?",
+    "tags": [
+      "request",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0069",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the margherita pizza, medium-rare, if possible.",
+    "ar": "أرغب في margherita pizza، نضج خفيف، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي مارغيريتا بيززا, ميديوم-راري, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0070",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could we have extra plates for sharing, please?",
+    "ar": "هل يمكننا الحصول على أطباق إضافية للمشاركة من فضلكم؟",
+    "ar_pron": "كوولد وي هافي يكسترا بلاتيس فور شارينج, بلياسي?",
+    "tags": [
+      "request",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0071",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the vegetable pasta, no cheese, if possible.",
+    "ar": "أرغب في vegetable pasta، بدون جبن، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي فيجيتابلي باستا, نو تشييسي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0072",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0073",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the salmon, medium-rare, if possible.",
+    "ar": "أرغب في salmon، نضج خفيف، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي سالمون, ميديوم-راري, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0074",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the beef steak, medium, if possible.",
+    "ar": "أرغب في beef steak، نصف ناضجة، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي بييف ستياك, ميديوم, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0075",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0076",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please check if this dish contains eggs?",
+    "ar": "هل يمكنك التحقق إن كان هذا الطبق يحتوي على البيض؟",
+    "ar_pron": "كوولد يوو بلياسي تشيكك يف ثيس ديش كونتاينس يججس?",
+    "tags": [
+      "allergy",
+      "check"
+    ]
+  },
+  {
+    "id": "REST-0077",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the salmon, well-done, if possible.",
+    "ar": "أرغب في salmon، ناضجة تمامًا، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي سالمون, ويلل-دوني, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0078",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0079",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please check if this dish is halal?",
+    "ar": "هل يمكنك التحقق إن كان هذا الطبق حلال؟",
+    "ar_pron": "كوولد يوو بلياسي تشيكك يف ثيس ديش يس هالال?",
+    "tags": [
+      "allergy",
+      "check"
+    ]
+  },
+  {
+    "id": "REST-0080",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0081",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the margherita pizza, medium, if possible.",
+    "ar": "أرغب في margherita pizza، نصف ناضجة، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي مارغيريتا بيززا, ميديوم, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0082",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0083",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0084",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0085",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please check if this dish contains nuts?",
+    "ar": "هل يمكنك التحقق إن كان هذا الطبق يحتوي على مكسرات؟",
+    "ar_pron": "كوولد يوو بلياسي تشيكك يف ثيس ديش كونتاينس نوتس?",
+    "tags": [
+      "allergy",
+      "check"
+    ]
+  },
+  {
+    "id": "REST-0086",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could we have a box to take this home, please?",
+    "ar": "هل يمكننا الحصول على علبة لأخذ هذا إلى البيت من فضلكم؟",
+    "ar_pron": "كوولد وي هافي ا بوكس تو تاكي ثيس هومي, بلياسي?",
+    "tags": [
+      "request",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0087",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0088",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please check if this dish is vegan?",
+    "ar": "هل يمكنك التحقق إن كان هذا الطبق نباتي تمامًا؟",
+    "ar_pron": "كوولد يوو بلياسي تشيكك يف ثيس ديش يس فيجان?",
+    "tags": [
+      "allergy",
+      "check"
+    ]
+  },
+  {
+    "id": "REST-0089",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I appreciate your service, but this doesn't match the description. Could you help me with a fix?",
+    "ar": "أقدّر خدمتكم، لكن هذا لا يطابق الوصف. هل يمكنكم المساعدة في إصلاح ذلك؟",
+    "ar_pron": "ي اببريكياتي يوور سيرفيكي, بوت ثيس دويسن'ت ماتتش ثي ديسكريبتيون. كوولد يوو هيلب مي ويث ا فيكس?",
+    "tags": [
+      "feedback",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0090",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0091",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0092",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0093",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0094",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0095",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0096",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the grilled chicken, well-done, if possible.",
+    "ar": "أرغب في grilled chicken، ناضجة تمامًا، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي جريلليد تشيككين, ويلل-دوني, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0097",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0098",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I appreciate your service, but this is a bit cold. Could you help me with a fix?",
+    "ar": "أقدّر خدمتكم، لكن هذا بارد قليلًا. هل يمكنكم المساعدة في إصلاح ذلك؟",
+    "ar_pron": "ي اببريكياتي يوور سيرفيكي, بوت ثيس يس ا بيت كولد. كوولد يوو هيلب مي ويث ا فيكس?",
+    "tags": [
+      "feedback",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0099",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the vegetable pasta, well-done, if possible.",
+    "ar": "أرغب في vegetable pasta، ناضجة تمامًا، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي فيجيتابلي باستا, ويلل-دوني, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0100",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the margherita pizza, extra sauce, if possible.",
+    "ar": "أرغب في margherita pizza، صلصة إضافية، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي مارغيريتا بيززا, يكسترا ساوكي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0101",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0102",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0103",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the salmon, no cheese, if possible.",
+    "ar": "أرغب في salmon، بدون جبن، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي سالمون, نو تشييسي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0104",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the grilled chicken, extra sauce, if possible.",
+    "ar": "أرغب في grilled chicken، صلصة إضافية، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي جريلليد تشيككين, يكسترا ساوكي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0105",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I appreciate your service, but this is slightly undercooked. Could you help me with a fix?",
+    "ar": "أقدّر خدمتكم، لكن هذا غير ناضج قليلًا. هل يمكنكم المساعدة في إصلاح ذلك؟",
+    "ar_pron": "ي اببريكياتي يوور سيرفيكي, بوت ثيس يس سليغتلي ونديركووكيد. كوولد يوو هيلب مي ويث ا فيكس?",
+    "tags": [
+      "feedback",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0106",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could we have a recommendation for something light, please?",
+    "ar": "هل يمكننا الحصول على ترشيحًا لشيء خفيف من فضلكم؟",
+    "ar_pron": "كوولد وي هافي ا ريكوممينداتيون فور سوميثينج ليغت, بلياسي?",
+    "tags": [
+      "request",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0107",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I appreciate your service, but this is a bit too salty. Could you help me with a fix?",
+    "ar": "أقدّر خدمتكم، لكن هذا مالح قليلًا. هل يمكنكم المساعدة في إصلاح ذلك؟",
+    "ar_pron": "ي اببريكياتي يوور سيرفيكي, بوت ثيس يس ا بيت توو سالتي. كوولد يوو هيلب مي ويث ا فيكس?",
+    "tags": [
+      "feedback",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0108",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the chicken biryani, medium, if possible.",
+    "ar": "أرغب في chicken biryani، نصف ناضجة، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي تشيككين بيرياني, ميديوم, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0109",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0110",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0111",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the grilled chicken, medium-rare, if possible.",
+    "ar": "أرغب في grilled chicken، نضج خفيف، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي جريلليد تشيككين, ميديوم-راري, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0112",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0113",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the vegetable pasta, extra sauce, if possible.",
+    "ar": "أرغب في vegetable pasta، صلصة إضافية، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي فيجيتابلي باستا, يكسترا ساوكي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0114",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0115",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the beef steak, no onions, if possible.",
+    "ar": "أرغب في beef steak، بدون بصل، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي بييف ستياك, نو ونيونس, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0116",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0117",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please check if this dish contains dairy?",
+    "ar": "هل يمكنك التحقق إن كان هذا الطبق يحتوي على مشتقات الألبان؟",
+    "ar_pron": "كوولد يوو بلياسي تشيكك يف ثيس ديش كونتاينس دايري?",
+    "tags": [
+      "allergy",
+      "check"
+    ]
+  },
+  {
+    "id": "REST-0118",
+    "level": "B1",
+    "register": "formal",
+    "en": "Could you please bring some tap water for the table?",
+    "ar": "هل يمكنك إحضار ماء من الصنبور للطاولة؟",
+    "ar_pron": "كوولد يوو بلياسي برينج سومي تاب واتير فور ثي تابلي?",
+    "tags": [
+      "water",
+      "table"
+    ]
+  },
+  {
+    "id": "REST-0119",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the chicken biryani, medium-rare, if possible.",
+    "ar": "أرغب في chicken biryani، نضج خفيف، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي تشيككين بيرياني, ميديوم-راري, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0120",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like the chicken biryani, no cheese, if possible.",
+    "ar": "أرغب في chicken biryani، بدون جبن، إن أمكن.",
+    "ar_pron": "ي'د ليكي ثي تشيككين بيرياني, نو تشييسي, يف بوسسيبلي.",
+    "tags": [
+      "customize",
+      "main"
+    ]
+  },
+  {
+    "id": "REST-0121",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Could you adjust the seasoning a little?",
+    "ar": "هل يمكن تعديل التتبيلة قليلًا؟",
+    "ar_pron": "كوولد يوو ادجوست ثي سياسونينج ا ليتتلي?",
+    "tags": [
+      "customize"
+    ]
+  },
+  {
+    "id": "REST-0122",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Could you bring separate plates so we can share?",
+    "ar": "هل يمكنك إحضار أطباق منفصلة لكي نشارك؟",
+    "ar_pron": "كوولد يوو برينج سيباراتي بلاتيس سو وي كان شاري?",
+    "tags": [
+      "plates",
+      "sharing"
+    ]
+  },
+  {
+    "id": "REST-0123",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Would you mind checking with the kitchen about the wait time?",
+    "ar": "هل تمانع التحقق من المطبخ عن وقت الانتظار؟",
+    "ar_pron": "ووولد يوو ميند تشيككينج ويث ثي كيتتشين ابووت ثي وايت تيمي?",
+    "tags": [
+      "timing"
+    ]
+  },
+  {
+    "id": "REST-0124",
+    "level": "B2",
+    "register": "neutral",
+    "en": "If you have a window seat, we’d love to move there.",
+    "ar": "إن كانت هناك طاولة بجانب النافذة، سنحب الانتقال إليها.",
+    "ar_pron": "يف يوو هافي ا ويندوو سيات, وي’د لوفي تو موفي ثيري.",
+    "tags": [
+      "seat"
+    ]
+  },
+  {
+    "id": "REST-0125",
+    "level": "B2",
+    "register": "neutral",
+    "en": "If the soup of the day is available, we’d like two bowls to share.",
+    "ar": "إن كان حساء اليوم متاحًا، نود وعاءين للمشاركة.",
+    "ar_pron": "يف ثي سووب وف ثي داي يس افايلابلي, وي’د ليكي توو بوولس تو شاري.",
+    "tags": [
+      "conditional",
+      "soup"
+    ]
+  },
+  {
+    "id": "REST-0126",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Would it be possible to prepare one portion without garlic due to an allergy?",
+    "ar": "هل يمكن تحضير وجبة دون ثوم بسبب حساسية؟",
+    "ar_pron": "ووولد يت بي بوسسيبلي تو بريباري وني بورتيون ويثووت جارليك دوي تو ان الليرجي?",
+    "tags": [
+      "allergy",
+      "customize"
+    ]
+  },
+  {
+    "id": "REST-0127",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Before we finish, could you recommend a light dessert like cheesecake?",
+    "ar": "قبل أن ننتهي، هل يمكنك اقتراح حلوى خفيفة مثل cheesecake?",
+    "ar_pron": "بيفوري وي فينيش, كوولد يوو ريكومميند ا ليغت ديسسيرت ليكي تشييسيكاكي?",
+    "tags": [
+      "dessert",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0128",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Before we finish, could you recommend a light dessert like brownie?",
+    "ar": "قبل أن ننتهي، هل يمكنك اقتراح حلوى خفيفة مثل brownie?",
+    "ar_pron": "بيفوري وي فينيش, كوولد يوو ريكومميند ا ليغت ديسسيرت ليكي بروونيي?",
+    "tags": [
+      "dessert",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0129",
+    "level": "B2",
+    "register": "formal",
+    "en": "I really appreciate your help; would it be possible to switch to a quieter table near the corner?",
+    "ar": "أقدّر مساعدتكم حقًا؛ هل من الممكن الانتقال إلى طاولة أكثر هدوءًا قرب الزاوية؟",
+    "ar_pron": "ي رياللي اببريكياتي يوور هيلب; ووولد يت بي بوسسيبلي تو سويتتش تو ا كوييتير تابلي نيار ثي كورنير?",
+    "tags": [
+      "relocation",
+      "polite"
+    ]
+  },
+  {
+    "id": "REST-0130",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Before we finish, could you recommend a light dessert like tiramisu?",
+    "ar": "قبل أن ننتهي، هل يمكنك اقتراح حلوى خفيفة مثل tiramisu?",
+    "ar_pron": "بيفوري وي فينيش, كوولد يوو ريكومميند ا ليغت ديسسيرت ليكي تيراميسو?",
+    "tags": [
+      "dessert",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0131",
+    "level": "B2",
+    "register": "street_light",
+    "en": "We’re kind of in a hurry; is there a faster option?",
+    "ar": "إحنا مستعجلين شوي؛ في خيار أسرع؟",
+    "ar_pron": "وي’ري كيند وف ين ا هورري; يس ثيري ا فاستير وبتيون?",
+    "tags": [
+      "street",
+      "timing"
+    ]
+  },
+  {
+    "id": "REST-0132",
+    "level": "B2",
+    "register": "neutral",
+    "en": "We’re comparing the two specials; which would you recommend for something lighter?",
+    "ar": "نحن نقارن بين طبقي اليوم؛ أيهما تنصح لشيء أخف؟",
+    "ar_pron": "وي’ري كومبارينج ثي توو سبيكيالس; وهيتش ووولد يوو ريكومميند فور سوميثينج ليغتير?",
+    "tags": [
+      "compare",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0133",
+    "level": "B2",
+    "register": "street_light",
+    "en": "Could you pack this to go, please?",
+    "ar": "ممكن تغليف هذا سفري، لو تكرمت؟",
+    "ar_pron": "كوولد يوو باكك ثيس تو جو, بلياسي?",
+    "tags": [
+      "to-go",
+      "pack"
+    ]
+  },
+  {
+    "id": "REST-0134",
+    "level": "B2",
+    "register": "formal",
+    "en": "Could you advise on the best way to store the leftovers for later?",
+    "ar": "هل يمكنكم إرشادنا إلى أفضل طريقة لحفظ البقايا لاحقًا؟",
+    "ar_pron": "كوولد يوو ادفيسي ون ثي بيست واي تو ستوري ثي ليفتوفيرس فور لاتير?",
+    "tags": [
+      "leftovers",
+      "advice"
+    ]
+  },
+  {
+    "id": "REST-0135",
+    "level": "B2",
+    "register": "formal",
+    "en": "If it's not too much trouble, could we have the dressing on the side for both salads?",
+    "ar": "إن لم يكن فيه إزعاج، هل يمكن أن تكون الصلصة على الجانب لكلا السلطتين؟",
+    "ar_pron": "يف يت'س نوت توو موتش ترووبلي, كوولد وي هافي ثي دريسسينج ون ثي سيدي فور بوث سالادس?",
+    "tags": [
+      "customize",
+      "dressing"
+    ]
+  },
+  {
+    "id": "REST-0136",
+    "level": "B2",
+    "register": "street_light",
+    "en": "Can we grab the check when you have a minute?",
+    "ar": "ممكن الحساب لما تتفرغ؟",
+    "ar_pron": "كان وي جراب ثي تشيكك وهين يوو هافي ا مينوتي?",
+    "tags": [
+      "street",
+      "bill"
+    ]
+  },
+  {
+    "id": "REST-0137",
+    "level": "B2",
+    "register": "street_light",
+    "en": "That looks great—could I get the same?",
+    "ar": "هذا يبدو رائعًا—ممكن آخذ نفس الطلب؟",
+    "ar_pron": "تهات لووكس جريات—كوولد ي جيت ثي سامي?",
+    "tags": [
+      "street",
+      "copy"
+    ]
+  },
+  {
+    "id": "REST-0138",
+    "level": "B2",
+    "register": "neutral",
+    "en": "If possible, please serve the appetizers first and the mains after fifteen minutes.",
+    "ar": "إن أمكن، قدموا المقبلات أولًا ثم الأطباق الرئيسية بعد خمس عشرة دقيقة.",
+    "ar_pron": "يف بوسسيبلي, بلياسي سيرفي ثي اببيتيزيرس فيرست اند ثي ماينس افتير فيفتيين مينوتيس.",
+    "tags": [
+      "timing",
+      "sequence"
+    ]
+  },
+  {
+    "id": "REST-0139",
+    "level": "B2",
+    "register": "formal",
+    "en": "Would it be alright to split the bill evenly among us?",
+    "ar": "هل لا بأس بتقسيم الفاتورة بالتساوي بيننا؟",
+    "ar_pron": "ووولد يت بي الريغت تو سبليت ثي بيلل يفينلي امونج وس?",
+    "tags": [
+      "bill",
+      "split"
+    ]
+  },
+  {
+    "id": "REST-0140",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Before we finish, could you recommend a light dessert like ice cream?",
+    "ar": "قبل أن ننتهي، هل يمكنك اقتراح حلوى خفيفة مثل ice cream?",
+    "ar_pron": "بيفوري وي فينيش, كوولد يوو ريكومميند ا ليغت ديسسيرت ليكي يكي كريام?",
+    "tags": [
+      "dessert",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0141",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Before we finish, could you recommend a light dessert like fruit salad?",
+    "ar": "قبل أن ننتهي، هل يمكنك اقتراح حلوى خفيفة مثل fruit salad?",
+    "ar_pron": "بيفوري وي فينيش, كوولد يوو ريكومميند ا ليغت ديسسيرت ليكي فرويت سالاد?",
+    "tags": [
+      "dessert",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0142",
+    "level": "B2",
+    "register": "formal",
+    "en": "We enjoyed the meal; however, the waiting time was longer than expected.",
+    "ar": "استمتعنا بالطعام؛ ومع ذلك، كان وقت الانتظار أطول من المتوقع.",
+    "ar_pron": "وي ينجوييد ثي ميال; هوويفير, ثي وايتينج تيمي واس لونجير ثان يكسبيكتيد.",
+    "tags": [
+      "feedback",
+      "timing"
+    ]
+  },
+  {
+    "id": "REST-0143",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Before we finish, could you recommend a light dessert like kunafa?",
+    "ar": "قبل أن ننتهي، هل يمكنك اقتراح حلوى خفيفة مثل kunafa?",
+    "ar_pron": "بيفوري وي فينيش, كوولد يوو ريكومميند ا ليغت ديسسيرت ليكي كونافا?",
+    "tags": [
+      "dessert",
+      "recommend"
+    ]
+  },
+  {
+    "id": "REST-0144",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Could you please clarify the difference between the house sauce and the spicy sauce?",
+    "ar": "هل يمكنك توضيح الفرق بين صلصة المطعم والصلصة الحارة؟",
+    "ar_pron": "كوولد يوو بلياسي كلاريفي ثي ديففيرينكي بيتويين ثي هووسي ساوكي اند ثي سبيكي ساوكي?",
+    "tags": [
+      "clarify",
+      "sauce"
+    ]
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "key": "restaurant",
+    "title": "المطعم — Restaurant",
+    "count": 144,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "registers": [
+      "neutral",
+      "formal",
+      "street_light"
+    ],
+    "status": "ready",
+    "href": "sentences.html?topic=restaurant",
+    "from_db": true
+  },
+  {
+    "key": "professional_emails",
+    "title": "الإيميلات الاحترافية — Professional Emails",
+    "count": 180,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "registers": [
+      "neutral",
+      "formal",
+      "street_light"
+    ],
+    "status": "ready",
+    "href": "sentences.html?topic=professional_emails",
+    "from_db": true
+  },
+  {
+    "key": "coffee_shop",
+    "title": "المقهى — Coffee Shop",
+    "count": 200,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "registers": [
+      "neutral",
+      "formal",
+      "street_light"
+    ],
+    "status": "ready",
+    "href": "sentences.html?topic=coffee_shop",
+    "from_db": true
+  },
+  {
+    "key": "supermarket",
+    "title": "السوبرماركت — Supermarket",
+    "count": 200,
+    "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "registers": [
+      "neutral",
+      "formal",
+      "street_light"
+    ],
+    "status": "ready",
+    "href": "sentences.html?topic=supermarket",
+    "from_db": true
+  }
+]
