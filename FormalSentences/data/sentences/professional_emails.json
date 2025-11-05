@@ -1,0 +1,2205 @@
+[
+  {
+    "id": "professional_email-A1-formal-001",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Ahmed, I hope you are well.",
+    "ar": "مرحبًا Ahmed، آمل أن تكون بخير.",
+    "ar_pron": "هيللو اهميد، ي هوب ياو ار ويلل.",
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-002",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Sara, I hope you are well.",
+    "ar": "مرحبًا Sara، آمل أن تكون بخير.",
+    "ar_pron": "هيللو سارا، ي هوب ياو ار ويلل.",
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-003",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Omar, I hope you are well.",
+    "ar": "مرحبًا Omar، آمل أن تكون بخير.",
+    "ar_pron": "هيللو ومار، ي هوب ياو ار ويلل.",
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-004",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Mona, I hope you are well.",
+    "ar": "مرحبًا Mona، آمل أن تكون بخير.",
+    "ar_pron": "هيللو مونا، ي هوب ياو ار ويلل.",
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-005",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Khalid, I hope you are well.",
+    "ar": "مرحبًا Khalid، آمل أن تكون بخير.",
+    "ar_pron": "هيللو كهاليد، ي هوب ياو ار ويلل.",
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-006",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Lina, I hope you are well.",
+    "ar": "مرحبًا Lina، آمل أن تكون بخير.",
+    "ar_pron": "هيللو لينا، ي هوب ياو ار ويلل.",
+    "tags": [
+      "greeting"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-007",
+    "level": "A2",
+    "register": "formal",
+    "en": "I'm writing about: Meeting confirmation.",
+    "ar": "أكتب بخصوص: تأكيد اجتماع.",
+    "ar_pron": "ي'م وريتينج اباوت: ميتينج كونفيرماشن.",
+    "tags": [
+      "subject"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-008",
+    "level": "A2",
+    "register": "formal",
+    "en": "I'm writing about: Request for information.",
+    "ar": "أكتب بخصوص: طلب معلومات.",
+    "ar_pron": "ي'م وريتينج اباوت: ريكويست فور ينفورماشن.",
+    "tags": [
+      "subject"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-009",
+    "level": "A2",
+    "register": "formal",
+    "en": "I'm writing about: Follow-up on our call.",
+    "ar": "أكتب بخصوص: متابعة لاتصالنا.",
+    "ar_pron": "ي'م وريتينج اباوت: فوللاو-وب ون اور كالل.",
+    "tags": [
+      "subject"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-010",
+    "level": "A2",
+    "register": "formal",
+    "en": "I'm writing about: Invoice inquiry.",
+    "ar": "أكتب بخصوص: استفسار عن فاتورة.",
+    "ar_pron": "ي'م وريتينج اباوت: ينفويك ينكويري.",
+    "tags": [
+      "subject"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-011",
+    "level": "A2",
+    "register": "formal",
+    "en": "I'm writing about: Project timeline update.",
+    "ar": "أكتب بخصوص: تحديث جدول المشروع.",
+    "ar_pron": "ي'م وريتينج اباوت: بروجيكت تيميلين وبدات.",
+    "tags": [
+      "subject"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-012",
+    "level": "A2",
+    "register": "formal",
+    "en": "Could you confirm your availability on Thursday at 10 AM?",
+    "ar": "هل يمكنك تأكيد توافرك يوم الخميس الساعة العاشرة صباحًا؟",
+    "ar_pron": "كاولد ياو كونفيرم ياور افايلابيليتي ون ثورسداي ات 10 ام؟",
+    "tags": [
+      "scheduling"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-013",
+    "level": "A2",
+    "register": "formal",
+    "en": "Could you confirm your availability on Monday afternoon?",
+    "ar": "هل يمكنك تأكيد توافرك يوم الإثنين بعد الظهر؟",
+    "ar_pron": "كاولد ياو كونفيرم ياور افايلابيليتي ون مونداي افتيرنون؟",
+    "tags": [
+      "scheduling"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-014",
+    "level": "A2",
+    "register": "formal",
+    "en": "Could you confirm your availability on tomorrow morning?",
+    "ar": "هل يمكنك تأكيد توافرك يوم صباح الغد؟",
+    "ar_pron": "كاولد ياو كونفيرم ياور افايلابيليتي ون تومورراو مورنينج؟",
+    "tags": [
+      "scheduling"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-015",
+    "level": "B1",
+    "register": "formal",
+    "en": "Please find the attached report for your review.",
+    "ar": "أرفقت التقرير للاطلاع.",
+    "ar_pron": "بليس فيند ث اتتاتشيد ريبورت فور ياور ريفييو.",
+    "tags": [
+      "follow_up"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-016",
+    "level": "B1",
+    "register": "formal",
+    "en": "Thank you for the swift response and helpful notes.",
+    "ar": "شكرًا على سرعة الرد والملاحظات المفيدة.",
+    "ar_pron": "ثانك ياو فور ث سويفت ريسبونس اند هيلبفول نوتيس.",
+    "tags": [
+      "follow_up"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-017",
+    "level": "B1",
+    "register": "formal",
+    "en": "I would appreciate an update on the project status.",
+    "ar": "أقدّر تزويدي بتحديث حول حالة المشروع.",
+    "ar_pron": "ي واولد اببريكيات ان وبدات ون ث بروجيكت ستاتوس.",
+    "tags": [
+      "follow_up"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-018",
+    "level": "B2",
+    "register": "formal",
+    "en": "Could you clarify the acceptance criteria for the deliverables?",
+    "ar": "هل يمكن توضيح معايير القبول للمخرجات؟",
+    "ar_pron": "كاولد ياو كلاريفي ث اككيبتانك كريتيريا فور ث ديليفيرابليس؟",
+    "tags": [
+      "risk",
+      "policy"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-019",
+    "level": "B2",
+    "register": "formal",
+    "en": "Kindly advise on the data retention policy applicable to this case.",
+    "ar": "يرجى الإفادة بسياسة احتفاظ البيانات المطبقة على هذه الحالة.",
+    "ar_pron": "كيندلي ادفيس ون ث داتا ريتينشن بوليكي اببليكابل تو ثيس كاس.",
+    "tags": [
+      "risk",
+      "policy"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-020",
+    "level": "B2",
+    "register": "formal",
+    "en": "Please let me know if you foresee any risks that might affect the timeline.",
+    "ar": "أخبرني إن كنت تتوقع أي مخاطر قد تؤثر على الجدول الزمني.",
+    "ar_pron": "بليس ليت م كناو يف ياو فوريسي اني ريسكس ثات مايت اففيكت ث تيميلين.",
+    "tags": [
+      "risk",
+      "policy"
+    ]
+  },
+  {
+    "id": "professional_email-A2-street_light-021",
+    "level": "A2",
+    "register": "street_light",
+    "en": "Loop me in on the thread, please.",
+    "ar": "ضمّني في الرسائل من فضلك.",
+    "ar_pron": "لوب م ين ون ث ذريد، بليس.",
+    "tags": [
+      "brief"
+    ]
+  },
+  {
+    "id": "professional_email-B1-street_light-022",
+    "level": "B1",
+    "register": "street_light",
+    "en": "Quick heads-up: the file is updated.",
+    "ar": "تنبيه سريع: تم تحديث الملف.",
+    "ar_pron": "كويك هيدس-وب: ث فيل يس وبداتيد.",
+    "tags": [
+      "brief"
+    ]
+  },
+  {
+    "id": "professional_email-B1-street_light-023",
+    "level": "B1",
+    "register": "street_light",
+    "en": "Mind sending me the link?",
+    "ar": "ترسل لي الرابط؟",
+    "ar_pron": "ميند سيندينج م ث لينك؟",
+    "tags": [
+      "brief"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-024",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Mona, Could you please approve the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-025",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Mona, Could you please approve the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس اببروف ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-026",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Omar, Could you please update the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو ومار، كاولد ياو بليس وبدات ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-027",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please update the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس وبدات ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-028",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Omar, Could you please share the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس شار ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-029",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please share the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-030",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Ms. Khalid, Could you please share the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. كهاليد، كاولد ياو بليس شار ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-031",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Ahmed, Could you please review the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. اهميد، كاولد ياو بليس ريفييو ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-032",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Ms. Sara, Could you please sign the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. سارا، كاولد ياو بليس سيجن ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-033",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Lina, Could you please sign the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو لينا، كاولد ياو بليس سيجن ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-034",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Ms. Omar, Could you please align the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس اليجن ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-035",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please escalate the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-036",
+    "level": "B1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please update the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-037",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Mr. Lina, Could you please escalate the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس يسكالات ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-038",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please review the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-039",
+    "level": "A1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-040",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Ms. Lina, Could you please review the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-041",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please review the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس ريفييو ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-042",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please approve the budget by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس اببروف ث بودجيت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-043",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Lina, Could you please review the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو لينا، كاولد ياو بليس ريفييو ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-044",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please share the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-045",
+    "level": "B1",
+    "register": "formal",
+    "en": "Hello Mona, Could you please share the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس شار ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-046",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hello Lina, Could you please escalate the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو لينا، كاولد ياو بليس يسكالات ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-047",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please align the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-048",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please review the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-049",
+    "level": "B2",
+    "register": "formal",
+    "en": "Hello Mona, Could you please approve the access request by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-050",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please update the budget by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث بودجيت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-051",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Ms. Mona, Could you please schedule the proposal by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. مونا، كاولد ياو بليس ستشيدول ث بروبوسال بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-052",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Ahmed, Could you please sign the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو اهميد، كاولد ياو بليس سيجن ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-053",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please schedule the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس ستشيدول ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-054",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please approve the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس اببروف ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-055",
+    "level": "B1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please approve the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-056",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please approve the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-057",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the proposal by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث بروبوسال بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-058",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Mr. Khalid, Could you please align the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس اليجن ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-059",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Ms. Ahmed, Could you please review the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. اهميد، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-060",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Lina, Could you please sign the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس سيجن ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-061",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Sara, Could you please share the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. سارا، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-062",
+    "level": "B1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please approve the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-063",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please escalate the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-064",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Hello Mona, Could you please escalate the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس يسكالات ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-065",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Ms. Sara, Could you please align the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. سارا، كاولد ياو بليس اليجن ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-066",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Omar, Could you please share the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس شار ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-067",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please update the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس وبدات ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-068",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Mona, Could you please escalate the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس يسكالات ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-069",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Mr. Mona, Could you please update the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس وبدات ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-070",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please align the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-071",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please share the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-072",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please review the access request by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث اككيسس ريكويست بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-073",
+    "level": "A2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please update the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-074",
+    "level": "A1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please schedule the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ستشيدول ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-075",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Omar, Could you please escalate the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس يسكالات ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-076",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please share the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس شار ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-077",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Mr. Mona, Could you please schedule the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس ستشيدول ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-078",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Ms. Khalid, Could you please sign the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. كهاليد، كاولد ياو بليس سيجن ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-079",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Ms. Sara, Could you please align the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. سارا، كاولد ياو بليس اليجن ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-080",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please approve the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس اببروف ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-081",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please review the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-082",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please align the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-083",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Hello Sara, Could you please share the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو سارا، كاولد ياو بليس شار ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-084",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please update the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-085",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Mr. Omar, Could you please schedule the timeline by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس ستشيدول ث تيميلين بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-086",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Mona, Could you please approve the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. مونا، كاولد ياو بليس اببروف ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-087",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the budget by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث بودجيت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-088",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Omar, Could you please review the budget by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو ومار، كاولد ياو بليس ريفييو ث بودجيت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-089",
+    "level": "B1",
+    "register": "formal",
+    "en": "Hello Mona, Could you please share the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-090",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please sign the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس سيجن ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-091",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please approve the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-092",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Ahmed, Could you please sign the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. اهميد، كاولد ياو بليس سيجن ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-093",
+    "level": "B1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please review the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-094",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Mona, Could you please share the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. مونا، كاولد ياو بليس شار ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-095",
+    "level": "A2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please share the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-096",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Omar, Could you please schedule the proposal by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس ستشيدول ث بروبوسال بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-097",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Hello Omar, Could you please approve the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو ومار، كاولد ياو بليس اببروف ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-098",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Ms. Mona, Could you please schedule the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. مونا، كاولد ياو بليس ستشيدول ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-099",
+    "level": "B2",
+    "register": "formal",
+    "en": "Hello Ahmed, Could you please approve the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو اهميد، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-100",
+    "level": "A1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please schedule the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ستشيدول ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-101",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please sign the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس سيجن ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-102",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Hello Sara, Could you please escalate the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو سارا، كاولد ياو بليس يسكالات ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-103",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please sign the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس سيجن ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-104",
+    "level": "A2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-105",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Sara, Could you please update the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو سارا، كاولد ياو بليس وبدات ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-106",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Mr. Lina, Could you please update the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس وبدات ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-107",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Lina, Could you please share the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس شار ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-108",
+    "level": "B1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please align the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-109",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-110",
+    "level": "A1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please align the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-111",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Hello Ahmed, Could you please align the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو اهميد، كاولد ياو بليس اليجن ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-112",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please escalate the timeline by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث تيميلين بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-113",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please update the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس وبدات ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-114",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Mona, Could you please sign the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس سيجن ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-115",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please share the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-116",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Ms. Mona, Could you please review the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. مونا، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-117",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please align the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس اليجن ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-118",
+    "level": "A1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the timeline by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث تيميلين بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-119",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please align the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس اليجن ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-120",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Mr. Ahmed, Could you please approve the budget by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. اهميد، كاولد ياو بليس اببروف ث بودجيت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-121",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Mr. Sara, Could you please approve the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. سارا، كاولد ياو بليس اببروف ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-122",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Ms. Ahmed, Could you please sign the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. اهميد، كاولد ياو بليس سيجن ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-123",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Khalid, Could you please schedule the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس ستشيدول ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-124",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Hello Lina, Could you please share the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو لينا، كاولد ياو بليس شار ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-125",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please sign the budget by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس سيجن ث بودجيت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-126",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Hello Khalid, Could you please schedule the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو كهاليد، كاولد ياو بليس ستشيدول ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-127",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Mona, Could you please align the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس اليجن ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-128",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hello Mona, Could you please align the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس اليجن ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-129",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please review the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-130",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please sign the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس سيجن ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-131",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please escalate the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس يسكالات ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-132",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Ms. Mona, Could you please approve the access request by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. مونا، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-133",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Mr. Ahmed, Could you please update the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. اهميد، كاولد ياو بليس وبدات ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-134",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Sara, Could you please share the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. سارا، كاولد ياو بليس شار ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-135",
+    "level": "B1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please align the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-136",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Mr. Mona, Could you please share the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-137",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please share the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-138",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Lina, Could you please sign the timeline by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس سيجن ث تيميلين بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-139",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Sara, Could you please escalate the timeline by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. سارا، كاولد ياو بليس يسكالات ث تيميلين بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-140",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Mona, Could you please review the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-141",
+    "level": "B1",
+    "register": "formal",
+    "en": "Hello Lina, Could you please align the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو لينا، كاولد ياو بليس اليجن ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-142",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Lina, Could you please update the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس وبدات ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-143",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please schedule the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس ستشيدول ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-144",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please sign the timeline by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس سيجن ث تيميلين بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-145",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Mona, Could you please review the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس ريفييو ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-146",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Sara, Could you please update the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. سارا، كاولد ياو بليس وبدات ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-147",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Ms. Sara, Could you please schedule the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. سارا، كاولد ياو بليس ستشيدول ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-148",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please update the timeline by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث تيميلين بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-149",
+    "level": "A2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please share the timeline by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-150",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please escalate the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-151",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Ahmed, Could you please align the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو اهميد، كاولد ياو بليس اليجن ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-152",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Lina, Could you please update the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس وبدات ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-153",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Ms. Lina, Could you please review the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس ريفييو ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-154",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Ms. Khalid, Could you please align the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. كهاليد، كاولد ياو بليس اليجن ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-155",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please sign the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس سيجن ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-156",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please schedule the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس ستشيدول ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-157",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please approve the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-158",
+    "level": "B2",
+    "register": "formal",
+    "en": "Hello Sara, Could you please sign the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو سارا، كاولد ياو بليس سيجن ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-159",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Ahmed, Could you please update the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. اهميد، كاولد ياو بليس وبدات ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-160",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Mona, Could you please align the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس اليجن ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-161",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Mr. Lina, Could you please schedule the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس ستشيدول ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-162",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Hello Omar, Could you please share the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو ومار، كاولد ياو بليس شار ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-163",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Khalid, Could you please escalate the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس يسكالات ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-164",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Ms. Khalid, Could you please approve the access request by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. كهاليد، كاولد ياو بليس اببروف ث اككيسس ريكويست بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-165",
+    "level": "A2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please update the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-166",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Ms. Khalid, Could you please schedule the contract by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. كهاليد، كاولد ياو بليس ستشيدول ث كونتراكت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-167",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please escalate the KPI report by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس يسكالات ث كبي ريبورت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-168",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please approve the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-169",
+    "level": "B1",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please share the budget by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس شار ث بودجيت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-170",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please share the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس شار ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-171",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please share the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس شار ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-172",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Ms. Sara, Could you please approve the contract by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. سارا، كاولد ياو بليس اببروف ث كونتراكت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-173",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Khalid, Could you please sign the KPI report by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس سيجن ث كبي ريبورت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-174",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Mr. Mona, Could you please schedule the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس ستشيدول ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-175",
+    "level": "A1",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please escalate the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-176",
+    "level": "A2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please align the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اليجن ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-177",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Mr. Mona, Could you please update the proposal by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. مونا، كاولد ياو بليس وبدات ث بروبوسال بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-178",
+    "level": "A2",
+    "register": "formal",
+    "en": "Hello Omar, Could you please escalate the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو ومار، كاولد ياو بليس يسكالات ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-179",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hello Mona, Could you please escalate the budget by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو مونا، كاولد ياو بليس يسكالات ث بودجيت بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-180",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please update the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس وبدات ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-181",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Mr. Lina, Could you please schedule the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس ستشيدول ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-182",
+    "level": "A1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please update the KPI report by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث كبي ريبورت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-183",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please approve the timeline by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث تيميلين بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-184",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Ms. Omar, Could you please align the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس اليجن ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-185",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please update the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-formal-186",
+    "level": "B1",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please escalate the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس يسكالات ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-187",
+    "level": "A2",
+    "register": "formal",
+    "en": "Dear Mr. Sara, Could you please approve the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. سارا، كاولد ياو بليس اببروف ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-188",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please approve the contract by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس اببروف ث كونتراكت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-189",
+    "level": "B2",
+    "register": "neutral",
+    "en": "To whom it may concern, Could you please review the KPI report by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث كبي ريبورت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-190",
+    "level": "B2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please review the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس ريفييو ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-191",
+    "level": "A1",
+    "register": "formal",
+    "en": "Dear Ms. Omar, Could you please update the contract by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. ومار، كاولد ياو بليس وبدات ث كونتراكت بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-192",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Ahmed, Could you please review the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. اهميد، كاولد ياو بليس ريفييو ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-193",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Omar, Could you please review the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس ريفييو ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-formal-194",
+    "level": "A2",
+    "register": "formal",
+    "en": "To whom it may concern, Could you please update the proposal by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "تو ووم يت ماي كونكيرن، كاولد ياو بليس وبدات ث بروبوسال بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-neutral-195",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Dear Ms. Lina, Could you please update the access request by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. لينا، كاولد ياو بليس وبدات ث اككيسس ريكويست بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A1-formal-196",
+    "level": "A1",
+    "register": "formal",
+    "en": "Hello Ahmed, Could you please escalate the proposal by tomorrow? Thank you,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "هيللو اهميد، كاولد ياو بليس يسكالات ث بروبوسال بي تومورراو؟ ثانك ياو،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-A2-neutral-197",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Dear Mr. Khalid, Could you please update the budget by tomorrow? Kind regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. كهاليد، كاولد ياو بليس وبدات ث بودجيت بي تومورراو؟ كيند ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B1-neutral-198",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Dear Ms. Ahmed, Could you please approve the proposal by tomorrow? Sincerely,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مس. اهميد، كاولد ياو بليس اببروف ث بروبوسال بي تومورراو؟ سينكيريلي،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-neutral-199",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Dear Mr. Lina, Could you please sign the budget by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. لينا، كاولد ياو بليس سيجن ث بودجيت بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  },
+  {
+    "id": "professional_email-B2-formal-200",
+    "level": "B2",
+    "register": "formal",
+    "en": "Dear Mr. Omar, Could you please schedule the access request by tomorrow? Best regards,",
+    "ar": "يرجى تنفيذ المطلوب في الرسالة أعلاه.",
+    "ar_pron": "دير مر. ومار، كاولد ياو بليس ستشيدول ث اككيسس ريكويست بي تومورراو؟ بيست ريجاردس،",
+    "tags": [
+      "request"
+    ]
+  }
+]
