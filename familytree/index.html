@@ -1,122 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="light">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>شجرة العائلة — نسخة مبسطة</title>
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="top">
-    <div class="brand">شجرة العائلة — بسيطة</div>
-    <div class="toolbar">
-      <button class="btn" id="btnTheme" title="الوضع">🌙/☀️</button>
-      <button class="tab active" data-page="tree">الشجرة</button>
-      <button class="tab" data-page="data">البيانات</button>
-      <button class="tab" data-page="settings">الإعدادات</button>
-    </div>
-  </header>
-
-  <main>
-    <!-- صفحة الشجرة -->
-    <section id="page-tree" class="panel">
-      <div class="tools">
-        <input id="q" placeholder="بحث بالاسم">
-        <button class="btn" id="btnReset">إظهار الجميع</button>
-        <button class="btn primary" id="btnAdd">+ إضافة فرد</button>
-        <button class="btn" id="btnPrint">طباعة</button>
-
-        <span class="grow"></span>
-
-        <!-- أدوات التكبير/التصغير/الملاءمة -->
-        <div class="zoombar">
-          <button class="btn" id="btnZoomOut" title="تصغير (−)">−</button>
-          <button class="btn" id="btnZoomIn" title="تكبير (+)">+</button>
-          <button class="btn" id="btnFit" title="ملاءمة للشاشة">⤢</button>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="canvas">
-          <svg id="svg" width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="640" width="1200" height="40" class="ground"/>
-            <g id="vp">
-              <g id="branches"></g>
-              <g id="nodes"></g>
-            </g>
-          </svg>
-        </div>
-        <aside class="side">
-          <h3>تفاصيل الشخص</h3>
-          <div id="name" class="big">—</div>
-          <div id="lineage" class="muted">سلسلة النسب ستظهر هنا…</div>
-          <div class="chips">
-            <span class="chip" id="dob">الميلاد: —</span>
-            <span class="chip" id="age">العمر: —</span>
-            <span class="chip" id="pid">المعرف: —</span>
-          </div>
-          <div class="row">
-            <button class="btn" id="btnEdit" disabled>تعديل</button>
-            <button class="btn danger" id="btnDelete" disabled>حذف</button>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- صفحة البيانات -->
-    <section id="page-data" class="panel" hidden>
-      <div class="tools">
-        <input id="qTable" placeholder="بحث في الجدول">
-        <button class="btn" id="btnAdd2">+ إضافة فرد</button>
-        <span class="grow"></span>
-        <span id="countBadge" class="chip">0 فرد</span>
-      </div>
-      <div class="pad">
-        <div class="tableWrap">
-          <table id="tbl">
-            <thead>
-              <tr><th>المعرف</th><th>الاسم</th><th>الأب</th><th>الميلاد</th><th>العمر</th><th>إجراءات</th></tr>
-            </thead>
-            <tbody id="tbody"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- صفحة الإعدادات -->
-    <section id="page-settings" class="panel" hidden>
-      <div class="settings">
-        <div class="row">
-          <label>نسخ احتياطي</label>
-          <div class="btns">
-            <button class="btn" id="btnExport">تصدير JSON</button>
-            <input type="file" id="fileImport" accept="application/json">
-            <button class="btn" id="btnImport">استيراد</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- حوار إضافة/تعديل -->
-  <dialog id="dlgPerson">
-    <form method="dialog" class="dlg" id="personForm">
-      <header>إضافة/تعديل فرد</header>
-      <div class="body">
-        <label>الاسم<input id="f_name" class="input" required placeholder="مثال: محمد"></label>
-        <label>المعرف<input id="f_id" class="input" placeholder="اتركه فارغًا للتوليد"></label>
-        <label>تاريخ الميلاد<input id="f_dob" type="date" class="input"></label>
-        <label>الأب<select id="f_father" class="select"><option value="">— بدون أب (جذر) —</option></select></label>
-        <div class="error" id="err_name"></div>
-      </div>
-      <footer>
-        <button class="btn" id="btnCancel" type="button">إلغاء</button>
-        <button class="btn primary" id="f_save" value="default">حفظ</button>
-      </footer>
-    </form>
-  </dialog>
-
-  <script src="app.js"></script>
-</body>
-</html>
