@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مدرّب الجمل الإنجليزية — الفهرس</title>
+
+  <!-- خطوط: Cairo (AR) + Inter (EN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+/*  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+*/
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // تهيئة المظهر (يحفظ الاختيار)
+    (function initTheme(){
+      const saved = localStorage.getItem('theme');
+      document.documentElement.classList.add(saved === 'light' ? 'theme-light' : 'theme-dark');
+    })();
+  </script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">A</div>
+      <div>
+        <h1>مدرّب الجمل الإنجليزية</h1>
+        <p class="muted">قاعدة بيانات موحّدة — موضوعات تُضاف تدريجيًا</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="themeToggle" class="toggle-btn" title="تبديل الوضع (نهاري/ليلي)">🌓 مظهر</button>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num" id="stat-topics">—</span>
+          <span class="stat-label">موضوعات جاهزة</span>
+        </div>
+        <div class="divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="stat-sentences">—</span>
+          <span class="stat-label">جمل متاحة الآن</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <div class="search-box">
+      <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <input id="search" type="search" placeholder="ابحث عن موضوع (مثلاً: مطعم، إيميلات، مقهى)…" />
+    </div>
+
+    <div class="filters">
+      <div class="chip-group" id="levelGroup" role="group" aria-label="تصفية بالمستوى">
+        <button class="chip" data-level="">الكل</button>
+        <button class="chip" data-level="A1">A1</button>
+        <button class="chip" data-level="A2">A2</button>
+        <button class="chip" data-level="B1">B1</button>
+        <button class="chip" data-level="B2">B2</button>
+      </div>
+
+      <div class="chip-group" id="registerGroup" role="group" aria-label="الأسلوب">
+        <button class="chip" data-register="">الجميع</button>
+        <button class="chip" data-register="formal">رسمي</button>
+        <button class="chip" data-register="street_light">Street Light</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="grid" id="cardsRoot"></main>
+
+  <footer class="app-footer">
+    <div>© 2025 — المنهج التدريجي للجمل الإنجليزية.</div>
+    <div class="footer-links">
+      <a href="#" aria-disabled="true">الخصوصية</a>
+      <span class="dot">•</span>
+      <a href="#" aria-disabled="true">الشروط</a>
+    </div>
+  </footer>
+
+  <script>
+    // زر تبديل الوضع
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('themeToggle');
+      btn?.addEventListener('click', () => {
+        const html = document.documentElement;
+        const isLight = html.classList.toggle('theme-light');
+        html.classList.toggle('theme-dark', !isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
