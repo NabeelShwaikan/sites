@@ -1,111 +1,283 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>لعبة الرياضيات</title>
+  <title>بوابة مسار</title>
+  <meta name="description" content="فهرس نظيف وهادئ بدون شريط البحث." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f7f7fb;
+      --panel:#ffffff;
+      --ink:#0f172a;
+      --muted:#5b6270;
+      --border: rgba(15,23,42,.10);
+      --brand:#2563eb;
+      --brand-2:#10b981;
+      --chip:#eef2ff;
+      --radius: 16px;
+      --shadow: 0 12px 30px rgba(2,6,23,.08);
+    }
+    [data-theme="dark"]{
+      --bg: #0b1120;
+      --panel:#0f172a;
+      --ink:#e5e7eb;
+      --muted:#aab3c5;
+      --border: rgba(148,163,184,.22);
+      --brand:#60a5fa;
+      --brand-2:#34d399;
+      --chip:#0b1020;
+      --shadow: 0 14px 34px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: var(--bg);
+      color:var(--ink); font:16px/1.65 "Cairo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Kufi Arabic", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap{max-width:1024px; margin-inline:auto; padding:28px;}
+
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow); display:grid; place-items:center}
+    .logo svg{width:22px; height:22px; fill:#fff}
+    h1{margin:0; font-size:clamp(20px, 3.5vw, 28px)}
+    .subtitle{color:var(--muted); font-size:14px; margin-top:2px}
+
+    .btn{border:1px solid var(--border); background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; padding:9px 12px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow); transition:transform .12s ease, box-shadow .12s ease, filter .12s ease}
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.02)}
+    .btn:active{transform:translateY(0); filter:brightness(.98)}
+    .btn:focus-visible{outline:2px solid rgba(96,165,250,.55); outline-offset:2px}
+    .btn.icon{width:44px; height:44px; display:grid; place-items:center; padding:0; border-radius:12px}
+
+    /* SVG أيقونة الشمس/القمر */
+    .icon-svg{width:22px; height:22px; display:block}
+    .icon-svg .sun{opacity:1; transition:opacity .22s ease}
+    .icon-svg .moon{opacity:0; transition:opacity .22s ease}
+    .icon-svg.dark .sun{opacity:0}
+    .icon-svg.dark .moon{opacity:1}
+    @keyframes twirl{from{transform:rotate(0deg)} to{transform:rotate(180deg)}}
+    .btn.icon.twirl{animation: twirl .45s ease}
+
+    .panel{background: var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    section{margin-top:18px}
+    section h2{margin:0 0 8px; font-size:16px}
+    .grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:14px; padding:14px}
+    .card{
+      position:relative; overflow:hidden; background: var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px; display:flex; gap:12px; align-items:flex-start; transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color: rgba(37,99,235,.35)}
+    .ic{min-width:38px; height:38px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; transition: transform .18s ease} 
+    .card:hover .ic, .card:focus-within .ic{ transform: rotate(10deg) } 
+    @media (prefers-reduced-motion: reduce){ .ic{transition:none} }
+    .ic svg{width:18px; height:18px; fill:#fff}
+    .card a{color:inherit; text-decoration:none}
+    .card h3{margin:0 0 6px; font-size:16px}
+    .muted{color:var(--muted)}
+
+    footer{margin-top:24px; text-align:center; color:var(--muted); font-size:13px}
+      .topbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px}
+    .pill{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); font-size:13px; color:var(--ink)}
+    .pill::before{content:""; width:6px; height:6px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2))}
+
+      /* انتقال ناعم بين السمات (ثالثًا-2) */
+    html[data-theme], body{transition: background-color .4s ease, color .4s ease}
+    .panel, .card, .pill, .btn, .logo{transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease}
+
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="topbar">
+    <!-- شريط علوي: الوقت واليوم والتاريخ الهجري/الميلادي -->
+    <div class="topbar" role="status" aria-live="polite">
+      <span class="pill" id="timeNow" title="الوقت (الرياض)">--:--</span>
+      <span class="pill" id="dayName" title="اليوم">—</span>
+      <span class="pill" id="hijriDate" title="التاريخ الهجري">—</span>
+      <span class="pill" id="gregDate" title="التاريخ الميلادي">—</span>
+    </div>
+    <header>
       <div class="brand">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
-        <h1>لعبة الرياضيات<br>د. سليمان نبيل الشويكان</h1>
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 5h8v6H3V5Zm10 0h8v6h-8V5ZM3 13h8v6H3v-6Zm10 0h8v6h-8v-6Z"/></svg>
+        </div>
+        <div>
+          <h1>بوابة مسار</h1>
+          <div class="subtitle">اختَر بسرعة… وابدأ</div>
+        </div>
       </div>
-      <div class="stats">
-        <div class="pill">المرحلة: <span id="level">1</span></div>
-        <div class="pill">النقاط: <span id="score">0</span></div>
-        <div class="pill">محاولات: <span id="tries">0</span></div>
-        <div class="pill">سلسلة صحيحة: <span id="streak">0</span></div>
-        <div class="pill">أفضل سلسلة: <span id="best">0</span></div>
-      </div>
-    </div>
+      <button class="btn icon" id="themeBtn" aria-label="تبديل السمة" title="تبديل السمة"></button>
+    </header>
 
-    <div class="stage">
-      <div class="row msg hint" id="message">اختر الإجابة الصحيحة لمساعدة أصدقائنا! 🌟</div>
+    <section class="panel">
+      <h2 style="padding:12px 14px">📚 الصفحات المتاحة</h2>
+      <div class="grid" id="grid"></div>
+    </section>
 
-      <div class="characters" id="chars"></div>
-      <div class="options" id="options"></div>
-
-      <div class="bar">
-        <div class="chip" onclick="newRound()">🔄 جولة جديدة</div>
-        <div class="chip" onclick="toggleVoice()">🔈 صوت التشجيع</div>
-        <div class="chip" onclick="easyMode = !easyMode; this.textContent = easyMode ? '🟢 وضع سهل' : '🟣 وضع عادي'">🟣 وضع عادي</div>
-        <div class="chip" onclick="document.body.classList.toggle('no-face'); this.textContent=document.body.classList.contains('no-face')?'👀 إظهار الوجوه':'👀 إخفاء الوجوه'">👀 إخفاء الوجوه</div>
-        <div class="chip" onclick="toggleBoost(this)">✨ طور خرافي</div>
-      </div>
-
-      <!-- طبقة الكونفيتي -->
-      <div class="confetti" id="confettiLayer"></div>
-      <div id="speechBubble"></div>
-    </div>
-
-    <!-- أداة المضاعفات العشرية -->
-    <div class="tool" id="decimalsTool">
-      <h3>المضاعفات العشرية (×10 / ×100 / ×1000)</h3>
-      <div class="row">
-        <input id="decIn" type="text" placeholder="اكتب عددًا — مثال: 12.5" />
-        <button class="btn-sm" onclick="decApply(10)">×10</button>
-        <button class="btn-sm" onclick="decApply(100)">×100</button>
-        <button class="btn-sm" onclick="decApply(1000)">×1000</button>
-      </div>
-      <div class="row" style="margin-top:10px">
-        <div class="mini">النتيجة:</div>
-        <div class="out" id="decOut">—</div>
-      </div>
-    </div>
-
-    <!-- مهارات إضافية للطلاب من ٩ إلى ١٢ -->
-    <div class="tool" id="skillsTool">
-      <h3>مهارات إضافية (9-12)</h3>
-      <div class="row">
-        <button class="btn-sm" onclick="showSkillPanel('mul'); generateTablePractice();">🧠 تدريب جدول الضرب</button>
-        <button class="btn-sm" onclick="showSkillPanel('place'); generatePlaceValue();">🏛 قيمة المنازل</button>
-        <button class="btn-sm" onclick="showSkillPanel('cmp'); generateComparison();">⚖ مقارنة الأعداد</button>
-        <button class="btn-sm" onclick="showSkillPanel('calc');">🧮 خلّيني أحسِب</button>
-      </div>
-      <div class="row" style="margin-top:10px">
-        <div class="mini">السؤال:</div>
-        <div class="out" id="skillQ" style="display:none">—</div>
-      </div>
-      <!-- خيارات متعددة للسؤال إن وُجدت -->
-      <div class="row" id="skillChoices" style="display:none;gap:10px;flex-wrap:wrap"></div>
-      <div class="row" id="skillAnswerRow" style="display:none;margin-top:6px">
-        <div class="mini">الإجابة:</div>
-        <input id="skillA" type="text" style="direction:ltr"/>
-        <button class="btn-sm" onclick="checkSkill()">✅ تحقق</button>
-      </div>
-      <!-- بانِل الحاسبة ضمن أدوات المهارات -->
-      <div class="row" id="calcPanel" style="display:none; gap:10px; flex-wrap:wrap">
-        <input id="calcA" type="text" placeholder="العدد الأول" style="direction:ltr"/>
-        <select id="calcOp">
-          <option value="+">+</option>
-          <option value="-">−</option>
-          <option value="×">×</option>
-          <option value="÷">÷</option>
-        </select>
-        <input id="calcB" type="text" placeholder="العدد الثاني" style="direction:ltr"/>
-        <button class="btn-sm" onclick="calcCompute()">احسب</button>
-        <div class="out" id="calcOut">—</div>
-      </div>
-      <div class="row" style="margin-top:6px">
-        <div class="out" id="skillR" style="display:none">—</div>
-      </div>
-    </div>
-
-    <div class="footer"></div>
+    <footer>© <span id="y"></span></footer>
   </div>
 
-  <script src="utils.js"></script>
-  <script src="audio.js"></script>
-  <script src="effects.js"></script>
-  <script src="tools.js"></script>
-  <script src="skills.js"></script>
-  <script src="game.js"></script>
-  <script src="tests.js"></script>
+  <script>
+    // ——— البيانات ———
+    const PAGES = [
+      { title: "متابعة قراءة القرآن الكريم", href: "Tilawah.html", desc: "تابع تقدّمك اليومي 📖", emoji: "📖" },
+      { title: "قياس المؤشرات الصحية", href: "vitals.html", desc: "مؤشراتك الحيوية باختصار", emoji: "🩺" },
+      { title: "تعلّم الإنجليزية للمبتدئين", href: "LearnEnglish.html", desc: "تعلّم ممتع وسريع ✨", emoji: "📘" },
+      { title: "بوابة القهوة", href: "cafe/index.html", desc: "تجارب عشوائية خفيفة", emoji: "🍀" },
+      { title: "تصويت", href: "Poll.html", desc: "صوّت وشارك الرأي", emoji: "🗳️" },
+      { title: "عجلة الحظ", href: "luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🍀" },
+
+    ];
+
+    // ——— عناصر DOM ———
+    const grid = document.getElementById('grid');
+    const y = document.getElementById('y');
+    const themeBtn = document.getElementById('themeBtn');
+
+    // ——— SVG مولّد ———
+    function themeSVG(mode){
+      const isDark = mode === 'dark';
+      return `
+        <svg class="icon-svg ${isDark ? 'dark' : ''}" viewBox="0 0 24 24" aria-hidden="true">
+          <!-- Sun -->
+          <g class="sun">
+            <circle cx="12" cy="12" r="4" fill="#fff"/>
+            <g stroke="#fff" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
+              <line x1="4.2" y1="4.2" x2="6.6" y2="6.6"/>
+              <line x1="17.4" y1="17.4" x2="19.8" y2="19.8"/>
+              <line x1="4.2" y1="19.8" x2="6.6" y2="17.4"/>
+              <line x1="17.4" y1="6.6" x2="19.8" y2="4.2"/>
+            </g>
+          </g>
+          <!-- Moon -->
+          <g class="moon">
+            <path d="M16.5 12.5a6.5 6.5 0 1 1-5-11 7 7 0 0 0 5 11z" fill="#fff"/>
+          </g>
+        </svg>`;
+    }
+
+    // ——— أيقونة السمة ———
+    function setThemeIconFromAttr(){
+      const mode = document.documentElement.getAttribute('data-theme') || 'light';
+      themeBtn.dataset.icon = mode === 'dark' ? 'moon' : 'sun';
+      themeBtn.innerHTML = themeSVG(mode);
+    }
+
+    // ——— رسم البطاقات ———
+    function render(){
+      const icon = `<div class='ic'><svg viewBox='0 0 24 24'><path d='M3 5h8v6H3V5Zm10 0h8v6h-8V5ZM3 13h8v6H3v-6Zm10 0h8v6h-8v-6Z'/></svg></div>`;
+      grid.innerHTML = PAGES.map(p => `
+        <article class='card'>
+          ${icon}
+          <div>
+            <a href='${p.href}'><h3>${p.emoji || ''} ${p.title}</h3></a>
+            ${p.desc ? `<div class='muted'>${p.desc}</div>` : ''}
+          </div>
+        </article>`).join('');
+    }
+
+    // ——— تبديل السمة ———
+    function toggleTheme(){
+      const mode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      // حركة خفيفة
+      themeBtn.classList.add('twirl');
+      setTimeout(()=> themeBtn.classList.remove('twirl'), 460);
+      setThemeIconFromAttr();
+    }
+
+    // ——— التاريخ/الوقت (الرياض) ———
+    const TZ = 'Asia/Riyadh';
+    function formatTime(d){
+      return new Intl.DateTimeFormat('ar-SA', { hour: '2-digit', minute:'2-digit', hour12:false, timeZone: TZ }).format(d);
+    }
+    function dayName(d){
+      return new Intl.DateTimeFormat('ar-SA', { weekday:'long', timeZone: TZ }).format(d);
+    }
+    function hijri(d){
+      return new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric', timeZone: TZ }).format(d);
+    }
+    function greg(d){
+      return new Intl.DateTimeFormat('ar-SA-u-ca-gregory', { day:'numeric', month:'long', year:'numeric', timeZone: TZ }).format(d);
+    }
+    function updateClock(){
+      const now = new Date();
+      document.getElementById('timeNow').textContent = formatTime(now);
+      document.getElementById('dayName').textContent = dayName(now);
+      document.getElementById('hijriDate').textContent = hijri(now);
+      document.getElementById('gregDate').textContent = greg(now);
+    }
+    function scheduleMinuteTick(){
+      const now = new Date();
+      const ms = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
+      setTimeout(()=>{ updateClock(); setInterval(updateClock, 60*1000); }, Math.max(0, ms));
+    }
+
+    // ——— بدء التشغيل ———
+    (function init(){
+      // سنة الفوتر
+      y.textContent = new Date().getFullYear();
+      // استعادة السمة المحفوظة
+      const saved = localStorage.getItem('theme');
+      if(saved) document.documentElement.setAttribute('data-theme', saved);
+      // بناء الشبكة
+      render();
+      // أيقونة الزر حسب السمة الحالية (SVG)
+      setThemeIconFromAttr();
+      // مستمع النقر
+      themeBtn.addEventListener('click', toggleTheme);
+      // تحديث الوقت الآن ثم جدولة التحديث كل دقيقة
+      updateClock();
+      scheduleMinuteTick();
+      // —— اختبارات بسيطة (test cases) ——
+      runTests();
+    })();
+
+    // ——— اختبارات (Console) لضمان السلامة ———
+    function runTests(){
+      try{
+        // 1) يتوافق عدد البطاقات مع PAGES
+        const cards = document.querySelectorAll('.card');
+        console.assert(cards.length === PAGES.length, `Expected ${PAGES.length} cards, got ${cards.length}`);
+
+        // 2) تبديل السمة يُحدّث localStorage و الأيقونة (عبر data-icon)
+        const beforeMode = document.documentElement.getAttribute('data-theme') || 'light';
+        const beforeIcon = themeBtn.dataset.icon;
+        toggleTheme();
+        const afterMode = document.documentElement.getAttribute('data-theme');
+        const stored = localStorage.getItem('theme');
+        console.assert(afterMode === stored, 'Theme in DOM should match localStorage');
+        console.assert(themeBtn.dataset.icon !== beforeIcon, 'SVG icon state should change after toggle');
+        // ارجاع الحالة الأصلية
+        toggleTheme();
+
+        // 3) الروابط غير فارغة
+        const links = Array.from(document.querySelectorAll('.card a'));
+        console.assert(links.every(a => a.getAttribute('href')), 'Every card must contain a link with href');
+
+        // 4) عناصر الوقت والتواريخ غير فارغة
+        const t1 = document.getElementById('timeNow').textContent.trim();
+        const d1 = document.getElementById('dayName').textContent.trim();
+        const h1 = document.getElementById('hijriDate').textContent.trim();
+        const g1 = document.getElementById('gregDate').textContent.trim();
+        console.assert(t1 && d1 && h1 && g1, 'Topbar date/time pills should be populated');
+
+        console.log('%cAll tests passed', 'color: #16a34a');
+      }catch(err){
+        console.error('Tests failed:', err);
+      }
+    }
+  </script>
 </body>
 </html>
