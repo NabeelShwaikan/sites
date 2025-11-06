@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>صفحة القرعة بالأسماء</title>
+
+  <!-- Cairo font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f172a;          /* slate-900 */
+      --panel:#111827;       /* gray-900 */
+      --muted:#94a3b8;       /* slate-400 */
+      --text:#e5e7eb;        /* gray-200 */
+      --accent:#22d3ee;      /* cyan-400 */
+      --accent-2:#a78bfa;    /* violet-400 */
+      --danger:#ef4444;      /* red-500 */
+      --success:#22c55e;     /* green-500 */
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+
+    /* كان height:100% + تمركز عمودي؛ تم استبداله لضمان عدم قصّ الرأس في الجوال */
+    html, body { min-height:100dvh; min-height:100svh; }
+
+    *{ box-sizing:border-box; font-family:inherit; -webkit-tap-highlight-color:transparent; }
+
+    body{
+      margin:0;
+      background:linear-gradient(180deg, #0b1220, #0f172a 30%, #0b1220);
+      color:var(--text);
+      font-family:"Cairo","Noto Kufi Arabic",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      /* بدل التمركز العمودي: حشوات تسمح بالتمرير */
+      padding-inline: clamp(16px, 4vw, 24px);
+      padding-top: calc(16px + env(safe-area-inset-top));
+      padding-bottom: calc(16px + env(safe-area-inset-bottom));
+      overflow-y:auto;
+    }
+
+    .app{ width:min(1100px, 100%); margin-inline:auto; }
+
+    .grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; }
+    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background:rgba(17,24,39,.7);
+      border:1px solid rgba(148,163,184,.15);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+      padding:18px;
+    }
+
+    h1{ margin:0 0 10px; font-size:clamp(20px, 2.8vw, 28px); font-weight:800; }
+    p.subtitle{ margin:0 0 12px; color:var(--muted); font-size:14px }
+
+    textarea{
+      width:100%; min-height:220px; resize:vertical; border-radius:14px; outline:none;
+      padding:14px; border:1px solid rgba(148,163,184,.25); background:#0b1220; color:var(--text);
+      box-shadow: inset 0 0 0 9999px rgba(255,255,255,.02);
+    }
+    @media (max-width:480px){ textarea{ min-height:160px; } }
+
+    .row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .row + .row{ margin-top:10px; }
+
+    .btn{
+      cursor:pointer; border:none; border-radius:999px; padding:10px 16px; font-weight:800;
+      background:#1f2937; color:#e5e7eb; transition:.2s transform, .2s opacity, .2s background;
+      display:inline-flex; align-items:center; gap:8px; box-shadow:0 6px 16px rgba(0,0,0,.25);
+    }
+    .btn:hover{ transform:translateY(-1px); }
+    .btn:disabled{ opacity:.5; cursor:not-allowed; }
+    .primary{ background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0b1220; }
+    .danger{ background:var(--danger); color:#fff; }
+    .success{ background:var(--success); color:#0b1220; }
+    .ghost{ background:transparent; border:1px solid rgba(148,163,184,.2); }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; max-height:130px; overflow:auto; margin-top:10px; }
+    .chip{
+      background:#0b1220; border:1px solid rgba(148,163,184,.25); color:var(--text);
+      border-radius:999px; padding:6px 12px; display:inline-flex; gap:8px; align-items:center;
+    }
+    .chip .x{ cursor:pointer; opacity:.8; font-weight:800; }
+
+    .result-card{ display:flex; flex-direction:column; gap:14px; align-items:stretch; justify-content:center; }
+    .display{
+      position:relative; background:#0b1220; border:1px solid rgba(148,163,184,.25);
+      border-radius:var(--radius); padding:26px; min-height:130px;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+    }
+    .name{ font-size: clamp(26px, 4.2vw, 44px); font-weight:900; letter-spacing:.3px; }
+    .hint{ color:var(--muted); font-size:13px; }
+
+    .toolbar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+    .left, .right { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    label.switch{ display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--muted); }
+    input[type="checkbox"]{ width:18px; height:18px; }
+
+    .section-title{ font-weight:800; margin-top:8px; margin-bottom:6px; font-size:14px; color:var(--muted); }
+
+    .winners{ display:flex; flex-direction:column; gap:8px; max-height:190px; overflow:auto; }
+    .winner{
+      background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.35); color:#d1fae5;
+      border-radius:12px; padding:10px 12px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+
+    .count{ color:var(--muted); font-size:13px; }
+    .badge{ background:rgba(34,211,238,.15); color:#67e8f9; padding:2px 10px; border-radius:999px; font-size:12px; }
+
+    .footnote{ color:var(--muted); font-size:12px; text-align:center; margin-top:8px; }
+
+    /* Confetti */
+    canvas#confetti { position: fixed; inset:0; pointer-events:none; z-index:0; }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div class="app">
+    <h1>🎉 صفحة القرعة بالأسماء</h1>
+    <p class="subtitle">اكتب الأسماء (كل اسم في سطر) ثم اضغط «بدء» و«توقف» لاختيار الفائز. يتم حفظ البيانات تلقائيًا في هذا المتصفح.</p>
+
+    <div class="grid">
+      <!-- الإدخال والإدارة -->
+      <div class="card">
+        <div class="toolbar">
+          <div class="left">
+            <span class="count">عدد الأسماء: <span id="nameCount">0</span></span>
+            <span class="badge" id="statusBadge">جاهز</span>
+          </div>
+          <div class="right">
+            <button class="btn ghost" id="btnShuffle" title="خلط الأسماء">🔀 خلط</button>
+            <button class="btn" id="btnSave">💾 حفظ الأسماء</button>
+            <button class="btn danger" id="btnClear">🗑️ مسح الكل</button>
+          </div>
+        </div>
+
+        <textarea id="namesInput" placeholder="مثال:\nأحمد\nسارة\nمحمد\nنجلاء\n...\n"></textarea>
+
+        <div class="section-title">الأسماء المحفوظة</div>
+        <div class="chips" id="chips"></div>
+
+        <div class="row">
+          <label class="switch"><input type="checkbox" id="excludeWinner"/> استبعاد الفائز من السحوبات القادمة</label>
+          <label class="switch"><input type="checkbox" id="avoidDuplicates" checked/> إزالة التكرارات تلقائيًا عند الحفظ</label>
+        </div>
+      </div>
+
+      <!-- شاشة القرعة والنتائج -->
+      <div class="card result-card">
+        <div class="display">
+          <div>
+            <div class="name" id="displayName">—</div>
+            <div class="hint">اضغط «بدء»، ثم «توقف» لتثبيت الاسم</div>
+          </div>
+        </div>
+
+        <div class="row" style="justify-content:center; gap:12px;">
+          <button class="btn primary" id="btnStart">▶️ بدء</button>
+          <button class="btn danger" id="btnStop" disabled>⏹️ توقف</button>
+          <button class="btn ghost" id="btnReset">↺ إعادة الضبط</button>
+        </div>
+
+        <div class="section-title">الفائزون</div>
+        <div class="winners" id="winners"></div>
+        <div class="row">
+          <button class="btn" id="btnExportWinners">📄 نسخ قائمة الفائزين</button>
+          <button class="btn ghost" id="btnClearWinners">مسح الفائزين</button>
+        </div>
+        <div class="footnote">اختصار لوحة المفاتيح: مفتاح <b>المسافة</b> = بدء/توقف • <b>R</b> = إعادة الضبط</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // —— بيانات محلية —— 
+    const LS_KEYS = {
+      names: "raffle:names",
+      winners: "raffle:winners",
+      exclude: "raffle:excludeWinner",
+      dedup: "raffle:avoidDuplicates"
+    };
+
+    const $ = sel => document.querySelector(sel);
+
+    const namesInput = $("#namesInput");
+    const chips = $("#chips");
+    const nameCount = $("#nameCount");
+    const statusBadge = $("#statusBadge");
+    const displayName = $("#displayName");
+    const winnersEl = $("#winners");
+    const excludeWinner = $("#excludeWinner");
+    const avoidDuplicates = $("#avoidDuplicates");
+
+    const btnSave = $("#btnSave");
+    const btnClear = $("#btnClear");
+    const btnShuffle = $("#btnShuffle");
+    const btnStart = $("#btnStart");
+    const btnStop = $("#btnStop");
+    const btnReset = $("#btnReset");
+    const btnExportWinners = $("#btnExportWinners");
+    const btnClearWinners = $("#btnClearWinners");
+
+    let names = [];
+    let winners = [];
+    let rollingTimer = null;
+    let lastShownIndex = -1;
+
+    // —— أدوات —— 
+    const cleanNames = (arr) => arr.map(s => (s||"").trim()).filter(Boolean);
+    const dedup = (arr) => Array.from(new Set(arr));
+
+    const saveAll = () => {
+      localStorage.setItem(LS_KEYS.names, JSON.stringify(names));
+      localStorage.setItem(LS_KEYS.winners, JSON.stringify(winners));
+      localStorage.setItem(LS_KEYS.exclude, JSON.stringify(!!excludeWinner.checked));
+      localStorage.setItem(LS_KEYS.dedup, JSON.stringify(!!avoidDuplicates.checked));
+    };
+
+    const loadAll = () => {
+      try{
+        names = JSON.parse(localStorage.getItem(LS_KEYS.names) || "[]");
+        winners = JSON.parse(localStorage.getItem(LS_KEYS.winners) || "[]");
+        excludeWinner.checked = JSON.parse(localStorage.getItem(LS_KEYS.exclude) || "false");
+        avoidDuplicates.checked = JSON.parse(localStorage.getItem(LS_KEYS.dedup) || "true");
+      }catch(e){ names = []; winners=[]; }
+      render();
+    };
+
+    const render = () => {
+      namesInput.value = names.join("\n");
+      // chips
+      chips.innerHTML = "";
+      names.forEach((n, i) => {
+        const c = document.createElement("span");
+        c.className = "chip";
+        c.innerHTML = `<span>${escapeHtml(n)}</span> <span class="x" title="حذف" data-i="${i}">×</span>`;
+        chips.appendChild(c);
+      });
+      nameCount.textContent = names.length;
+      // winners
+      winnersEl.innerHTML = "";
+      winners.forEach((w, idx) => {
+        const li = document.createElement("div");
+        li.className = "winner";
+        li.innerHTML = `<div>🥳 <b>${escapeHtml(w.name)}</b> <span class="badge">#${idx+1}</span></div>
+                        <div style="font-size:12px; color:#a7f3d0">${new Date(w.time).toLocaleString()}</div>`;
+        winnersEl.appendChild(li);
+      });
+      saveAll();
+    };
+
+    function escapeHtml(str){
+      return str.replace(/[&<>"']/g, (m)=>({"&":"&amp;","<":"&lt;","?": "&quest;",
+              ">":"&gt;","\"":"&quot;","'":"&#39;"}[m] || m));
+    }
+
+    function setStatus(text, kind="ready"){
+      statusBadge.textContent = text;
+      if(kind==="ok"){ statusBadge.style.background = "rgba(34,197,94,.15)"; statusBadge.style.color = "#86efac"; }
+      else if(kind==="warn"){ statusBadge.style.background = "rgba(234,179,8,.15)"; statusBadge.style.color = "#fde68a"; }
+      else if(kind==="err"){ statusBadge.style.background = "rgba(239,68,68,.15)"; statusBadge.style.color = "#fecaca"; }
+      else { statusBadge.style.background = "rgba(34,211,238,.15)"; statusBadge.style.color = "#67e8f9"; }
+    }
+
+    // —— أحداث —— 
+    btnSave.addEventListener("click", () => {
+      let list = cleanNames(namesInput.value.split(/\n+/));
+      if(avoidDuplicates.checked) list = dedup(list);
+      names = list;
+      setStatus("تم الحفظ", "ok");
+      render();
+    });
+
+    btnClear.addEventListener("click", () => {
+      if(confirm("مسح جميع الأسماء؟")){
+        names = []; render(); setStatus("تم المسح", "warn");
+      }
+    });
+
+    chips.addEventListener("click", (e)=>{
+      const x = e.target.closest('.x');
+      if(!x) return;
+      const i = +x.dataset.i;
+      names.splice(i,1);
+      render();
+    });
+
+    btnShuffle.addEventListener("click", () => {
+      for(let i=names.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [names[i], names[j]] = [names[j], names[i]];
+      }
+      render(); setStatus("تم الخلط", "ok");
+    });
+
+    function startRolling(){
+      if(names.length === 0){ setStatus("لا توجد أسماء", "err"); return; }
+      if(rollingTimer) return;
+      btnStart.disabled = true; btnStop.disabled = false;
+      setStatus("جاري السحب ...");
+      rollingTimer = setInterval(()=>{
+        let idx;
+        do{ idx = Math.floor(Math.random()*names.length); } while(names.length>1 && idx===lastShownIndex);
+        lastShownIndex = idx;
+        displayName.textContent = names[idx];
+      }, 75);
+    }
+
+    function stopRolling(){
+      if(!rollingTimer) return;
+      clearInterval(rollingTimer); rollingTimer = null;
+      btnStart.disabled = false; btnStop.disabled = true;
+      const selected = displayName.textContent || (names[0]||"—");
+      setStatus("تم الاختيار", "ok");
+      celebrate();
+      winners.unshift({ name: selected, time: Date.now() });
+      if(excludeWinner.checked){
+        const i = names.findIndex(n => n === selected);
+        if(i>-1){ names.splice(i,1); }
+      }
+      render();
+    }
+
+    function reset(){
+      if(rollingTimer){ clearInterval(rollingTimer); rollingTimer=null; }
+      displayName.textContent = "—";
+      btnStart.disabled = false; btnStop.disabled = true;
+      setStatus("جاهز");
+    }
+
+    btnStart.addEventListener("click", startRolling);
+    btnStop.addEventListener("click", stopRolling);
+    btnReset.addEventListener("click", reset);
+
+    btnExportWinners.addEventListener("click", () => {
+      const txt = winners.map((w, i)=> `${i+1}. ${w.name} (${new Date(w.time).toLocaleString()})`).join("\n");
+      if(!txt){ alert("لا توجد نتائج بعد"); return; }
+      navigator.clipboard.writeText(txt).then(()=> setStatus("تم النسخ", "ok"));
+    });
+
+    btnClearWinners.addEventListener("click", () => {
+      if(confirm("مسح قائمة الفائزين؟")){
+        winners = []; render(); setStatus("تم المسح", "warn");
+      }
+    });
+
+    // مفاتيح سريعة
+    document.addEventListener("keydown", (e)=>{
+      if(e.code === "Space"){ e.preventDefault(); if(rollingTimer) stopRolling(); else startRolling(); }
+      if((e.key||"").toLowerCase() === 'r'){ reset(); }
+    });
+
+    excludeWinner.addEventListener('change', saveAll);
+    avoidDuplicates.addEventListener('change', saveAll);
+
+    // —— مؤثر الاحتفال —— 
+    const confettiCanvas = document.getElementById('confetti');
+    const ctx = confettiCanvas.getContext('2d');
+    function resizeCanvas(){
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    let confettiPieces = [];
+    function celebrate(){
+      confettiPieces = Array.from({length: 120}, () => ({
+        x: Math.random()*confettiCanvas.width,
+        y: -10 - Math.random()*50,
+        r: 4 + Math.random()*6,
+        vy: 2 + Math.random()*3,
+        vx: (Math.random()-.5)*2,
+        a: Math.random()*Math.PI*2
+      }));
+      let t = 0, maxT = 120;
+      (function loop(){
+        ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+        confettiPieces.forEach(p=>{
+          p.x += p.vx; p.y += p.vy; p.a += 0.1;
+          ctx.save();
+          ctx.translate(p.x, p.y); ctx.rotate(p.a);
+          ctx.fillStyle = `hsl(${(p.y/4)%360}, 90%, 60%)`;
+          ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r);
+          ctx.restore();
+        });
+        t++;
+        if(t<maxT) requestAnimationFrame(loop); else ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+      })();
+    }
+
+    // تحميل أولي
+    loadAll();
+  </script>
+</body>
+</html>
