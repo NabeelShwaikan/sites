@@ -1,0 +1,241 @@
+:root{
+  /* ألوان النهار */
+  --bg:#f1f5f9;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e5e7eb;
+  --focus:#22d3ee33;
+
+  /* لوحات مميّزة */
+  --panelTop:#ffffff;          /* الشريط العلوي */
+  --panelSide:#ffffff;         /* اللوحة الجانبية */
+  --panelCanvas:#f8fafc;       /* خلفية لوحة الشجرة */
+  --panel:#ffffff;             /* افتراضي */
+
+  /* تمييز إضافي للنهار */
+  --panelTopBorder:#dbe3ea;
+  --panelSideBorder:#dbe3ea;
+  --panelCanvasBorder:#dbe3ea;
+
+  --panelTopShadow:0 6px 20px rgba(2,6,23,.06);
+  --panelSideShadow:0 8px 26px rgba(2,6,23,.08);
+  --panelCanvasShadow:0 10px 28px rgba(2,6,23,.07);
+
+  --accent:#0ea5e9;
+  --accent-2:#0369a1;
+
+  --ground:#e2e8f0;
+  --namebg:#065f46;
+  --namefg:#ffffff;
+}
+
+/* الوضع الليلي */
+[data-theme="dark"]{
+  --bg:#0b1220;
+  --text:#e5e7eb;
+  --muted:#cbd5e1;
+  --border:#334155;
+  --focus:#38bdf833;
+
+  --panelTop:#0f172a;
+  --panelSide:#0f172a;
+  /* ✅ أجعل مساحة الشجرة أفتح مع الحفاظ على الطابع الليلي */
+  --panelCanvas:#111827;          /* كان #0f172a */
+  --panel:#0f172a;
+
+  --panelTopBorder:#334155;
+  --panelSideBorder:#334155;
+  --panelCanvasBorder:#3b4255;    /* حد أوضح لمنطقة الشجرة */
+
+  --panelTopShadow:0 6px 20px rgba(0,0,0,.35);
+  --panelSideShadow:0 8px 26px rgba(0,0,0,.45);
+  --panelCanvasShadow:0 10px 28px rgba(0,0,0,.38);
+
+  --accent:#38bdf8;
+  --accent-2:#0891b2;
+
+  /* أرضية الـSVG أدكن قليلاً لإحساس عمق */
+  --ground:#0d1322;               /* كان #111827 */
+  --namebg:#065f46;
+  --namefg:#ffffff;
+}
+
+/* أساسيات */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Almarai",system-ui,Segoe UI,Roboto,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6;
+}
+button, input, select, textarea, dialog, .dlg{
+  font-family:"Almarai",system-ui,Segoe UI,Roboto,sans-serif;
+}
+
+/* الشريط العلوي – مميّز */
+.top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 12px;
+  background:var(--panelTop);
+  border-bottom:1px solid var(--panelTopBorder);
+  box-shadow:var(--panelTopShadow);
+}
+.brand{font-weight:800}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+
+/* أزرار وتبويبات */
+.btn{
+  padding:10px 12px;border:1px solid var(--border);
+  background:var(--panel);color:var(--text);
+  border-radius:12px;cursor:pointer;transition:.15s
+}
+.btn:hover{filter:brightness(1.03)}
+.btn:active{transform:translateY(.5px)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn.primary{background:var(--accent);border-color:var(--accent-2);color:#001018}
+[data-theme="dark"] .btn{background:#0f172a;border-color:#334155}
+[data-theme="dark"] .btn.primary{color:#0b1220}
+
+.tab{
+  padding:10px 12px;border:1px solid var(--border);
+  background:var(--panel);color:var(--text);
+  border-radius:12px;cursor:pointer
+}
+.tab.active{
+  border-color:var(--accent);
+  outline:2px solid var(--focus);
+  box-shadow:0 0 0 3px rgba(34,211,238,.15);
+}
+[data-theme="dark"] .tab{background:#0f172a;border-color:#334155}
+
+/* ألواح عامة */
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin:12px;
+}
+
+/* أدوات أعلى الشجرة */
+.tools{
+  display:flex;gap:8px;align-items:center;
+  padding:10px;
+  border:1px solid var(--panelTopBorder);
+  background:var(--panelTop);
+  border-radius:14px;
+  box-shadow:var(--panelTopShadow);
+  position:relative;z-index:2;margin:12px;
+}
+.zoombar{display:flex;gap:6px}
+.grow{flex:1}
+
+/* شبكة التخطيط */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:12px;
+}
+@media (max-width:1100px){.grid{grid-template-columns:1fr}}
+
+/* منطقة الشجرة – مميّزة بخلفية وشبكة خفيفة */
+.canvas{
+  position:relative;overflow:auto;padding:8px;z-index:0;
+  background:var(--panelCanvas);
+  border:1px solid var(--panelCanvasBorder);
+  box-shadow:var(--panelCanvasShadow);
+  border-radius:14px;
+}
+
+/* خلفية شبكية في النهار */
+[data-theme="light"] .canvas{
+  background-image:
+    linear-gradient(to bottom, rgba(2,6,23,0.04), rgba(2,6,23,0.04)),
+    repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(2,6,23,0.04) 24px, rgba(2,6,23,0.04) 25px),
+    repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(2,6,23,0.04) 24px, rgba(2,6,23,0.04) 25px);
+  background-blend-mode:multiply;
+}
+
+/* خلفية شبكية أخف في الليل (أفتح من اللوحات الأخرى) */
+[data-theme="dark"] .canvas{
+  background-image:
+    linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
+    repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(255,255,255,0.03) 24px, rgba(255,255,255,0.03) 25px),
+    repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(255,255,255,0.03) 24px, rgba(255,255,255,0.03) 25px);
+  background-blend-mode: screen;
+}
+
+/* اللوحة الجانبية – مميّزة */
+.side{
+  padding:12px;
+  background:var(--panelSide);
+  border:1px solid var(--panelSideBorder);
+  box-shadow:var(--panelSideShadow);
+  border-radius:14px;
+}
+
+/* نصوص ومكوّنات */
+.big{font-weight:800;font-size:18px}
+.muted{color:var(--muted)}
+.chips{margin-top:8px}
+.chip{
+  display:inline-block;background:#f8fafc;border:1px solid var(--border);
+  border-radius:999px;padding:6px 10px;margin-inline-end:6px;
+  font-size:13px;color:var(--muted)
+}
+[data-theme="dark"] .chip{background:#0b1220;border-color:#334155;color:#cbd5e1}
+
+/* SVG */
+svg{user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.ground{fill:var(--ground)}
+#branches{pointer-events:none}
+
+/* عقد الأسماء (بيضاوية خضراء مع نص أبيض ثقيل) */
+.nameBadge{cursor:pointer}
+.nameBadge text{
+  fill:var(--namefg);font-weight:800;font-size:13px;
+  dominant-baseline:middle;text-anchor:middle
+}
+.nameBadge rect{
+  fill:var(--namebg);stroke:rgba(255,255,255,.12);stroke-width:1
+}
+
+/* إدخالات */
+.input,.select{
+  padding:10px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--text)
+}
+.input:focus,.select:focus{outline:2px solid var(--focus)}
+.error{color:#dc2626;font-size:12px;display:none}
+
+/* حوار */
+dialog{border:none;border-radius:14px;padding:0;max-width:560px;width:92%}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dlg{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:14px}
+.dlg header{padding:12px 14px;border-bottom:1px solid var(--border);font-weight:800}
+.dlg .body{padding:12px 14px;display:grid;gap:8px}
+.dlg footer{display:flex;gap:8px;justify-content:flex-end;padding:12px 14px;border-top:1px solid var(--border)}
+
+/* جدول */
+.tableWrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th,td{border-bottom:1px solid var(--border);padding:8px;text-align:start}
+
+/* Toast */
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  background:#111827;color:#fff;padding:10px 14px;border-radius:12px;
+  font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:9999
+}
+.toast.show{opacity:1}
+[data-theme="dark"] .toast{background:#0b1220;color:#e5e7eb}
+
+/* تلميح الفراغ */
+.emptyHint{position:absolute;inset:0;display:none;place-items:center;pointer-events:none}
+.emptyHint>div{background:var(--panel);color:var(--muted);border:1px solid var(--border);border-radius:14px;padding:14px 16px;text-align:center}
+
+/* طباعة أساسية */
+@page{size:A4 landscape;margin:10mm}
+@media print{
+  .top,.tools,#page-data,#page-settings{display:none!important}
+  .panel{border:none;box-shadow:none}
+}

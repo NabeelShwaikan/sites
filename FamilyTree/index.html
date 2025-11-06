@@ -1,1 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>شجرة العائلة</title>
 
+  <!-- خط الصفحة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <header class="top">
+    <div class="brand">🌳 شجرة العائلة</div>
+    <div class="toolbar">
+      <button id="btnTheme" class="btn">الوضع الليلي/النهاري</button>
+      <button data-page="tree" class="tab active">الشجرة</button>
+      <button data-page="data" class="tab">البيانات (جدول)</button>
+    </div>
+  </header>
+
+  <!-- أدوات أعلى الشجرة -->
+  <section class="panel tools">
+    <div class="zoombar">
+      <button id="btnZoomIn"  class="btn">+</button>
+      <button id="btnZoomOut" class="btn">−</button>
+      <button id="btnFit"     class="btn">ملء الشاشة</button>
+    </div>
+
+    <div class="grow"></div>
+
+    <input id="q" class="input" type="text" placeholder="بحث بالاسم..." />
+    <button id="btnReset" class="btn">إعادة الضبط</button>
+
+    <div class="chips">
+      <span class="chip">نسخة مستقرة</span>
+      <span class="chip">تكبير/تصغير + سحب</span>
+      <span class="chip">حفظ محلي</span>
+    </div>
+  </section>
+
+  <!-- المحتوى -->
+  <main class="grid">
+    <!-- صفحة الشجرة -->
+    <section id="page-tree">
+      <div class="panel canvas">
+        <!-- تلميح عند عدم وجود بيانات (ينشأ عبر JS) -->
+
+        <!-- لوحة الرسم -->
+        <svg id="svg" width="1200" height="700" viewBox="0 0 1200 700" aria-label="شجرة العائلة">
+          <rect class="ground" x="0" y="660" width="1200" height="40" rx="0"></rect>
+          <g id="vp" transform="translate(0,0) scale(1)">
+            <g id="branches"></g>
+            <g id="nodes"></g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- اللوحة الجانبية -->
+    <aside class="panel side">
+      <div class="big" id="name">—</div>
+      <div class="muted" id="lineage">سلسلة النسب: —</div>
+      <div class="muted" id="dob">الميلاد: —</div>
+      <div class="muted" id="age">العمر: —</div>
+      <div class="muted" id="pid">المعرف: —</div>
+
+      <hr />
+      <div class="muted" id="status">الحالة: —</div>
+      <div class="muted" id="job">العمل: —</div>
+      <div class="muted" id="phone">الجوال: —</div>
+      <div class="muted" id="descCount">عدد الذرية: —</div>
+
+      <div class="chips" style="margin-top:10px">
+        <button id="btnAdd" class="btn primary">+ إضافة فرد</button>
+        <button id="btnEdit" class="btn" disabled>تعديل</button>
+        <button id="btnDelete" class="btn" disabled>حذف</button>
+      </div>
+
+      <!-- ✅ زر تحليل القرابة -->
+      <hr />
+      <div class="chips">
+        <button id="btnRel" class="btn">تحليل القرابة</button>
+      </div>
+
+      <!-- أزرار النسخ الاحتياطي/الطباعة -->
+      <hr />
+      <div class="chips">
+        <button id="btnExport" class="btn">تصدير JSON</button>
+        <input id="fileImport" type="file" accept="application/json" />
+        <button id="btnImport" class="btn">استيراد</button>
+        <button id="btnPrint" class="btn">طباعة</button>
+      </div>
+    </aside>
+
+    <!-- صفحة الجدول -->
+    <section id="page-data" hidden class="panel side" style="grid-column:1 / -1">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <input id="qTable" class="input" type="text" placeholder="بحث في الجدول..." />
+        <span id="countBadge" class="chip">0 فرد</span>
+        <div class="grow"></div>
+        <button id="btnAdd2" class="btn primary">+ إضافة فرد</button>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المعرف</th>
+              <th>الاسم</th>
+              <th>الأب</th>
+              <th>الميلاد</th>
+              <th>العمر</th>
+              <th>الحالة</th>
+              <th>الذرية</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="page-settings" hidden></section>
+  </main>
+
+  <!-- نافذة إضافة/تعديل -->
+  <dialog id="dlgPerson">
+    <form class="dlg" method="dialog">
+      <header>بيانات الشخص</header>
+      <div class="body">
+        <label>الاسم</label>
+        <input id="f_name" class="input" type="text" placeholder="فلان بن فلان" />
+        <div id="err_name" class="error">الاسم مطلوب</div>
+
+        <label>المعرّف (اختياري — يترك فارغًا للتوليد)</label>
+        <input id="f_id" class="input" type="text" placeholder="مثال: p12" />
+
+        <label>تاريخ الميلاد</label>
+        <input id="f_dob" class="input" type="date" />
+
+        <label>الأب</label>
+        <select id="f_father" class="select"></select>
+
+        <!-- الحقول الجديدة -->
+        <label>العمل</label>
+        <input id="f_job" class="input" type="text" placeholder="مثال: معلم / مهندس / رجل أعمال" />
+
+        <label>رقم الجوال</label>
+        <input id="f_phone" class="input" type="tel" inputmode="tel" placeholder="05XXXXXXXX" />
+
+        <label style="display:flex; gap:8px; align-items:center; margin-top:6px;">
+          <input id="f_alive" type="checkbox" checked />
+          <span>حيّ يُرزق</span>
+        </label>
+      </div>
+      <footer>
+        <button id="btnCancel" class="btn" type="reset">إلغاء</button>
+        <button id="f_save" class="btn primary">حفظ</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- ✅ نافذة تحليل القرابة (تتضمن قائمتين relA, relB) -->
+  <dialog id="dlgRel">
+    <form class="dlg" method="dialog">
+      <header>تحليل القرابة بين شخصين</header>
+      <div class="body">
+        <label>الشخص الأول</label>
+        <select id="relA" class="select"></select>
+
+        <label>الشخص الثاني</label>
+        <select id="relB" class="select"></select>
+
+        <div id="relOut" class="muted" style="margin-top:8px;white-space:pre-line">—</div>
+      </div>
+      <footer>
+        <button id="btnRelPick"   class="btn">التقاط من الشجرة</button>
+        <button id="btnRelCancel" class="btn" type="reset">إغلاق</button>
+        <button id="btnRelCalc"   class="btn primary">تحليل</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
