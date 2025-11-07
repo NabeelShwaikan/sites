@@ -1,0 +1,2393 @@
+[
+  {
+    "id": "coffee_shop-A1-neutral-001",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small espresso, please?",
+    "ar": "هل يمكنني الحصول على إسبريسو صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل يسبريسسو، بليس؟",
+    "tags": [
+      "ordering",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-002",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium espresso, please?",
+    "ar": "هل يمكنني الحصول على إسبريسو متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم يسبريسسو، بليس؟",
+    "tags": [
+      "ordering",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-003",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small americano, please?",
+    "ar": "هل يمكنني الحصول على أمريكانو صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل اميريكانو، بليس؟",
+    "tags": [
+      "ordering",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-004",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium americano, please?",
+    "ar": "هل يمكنني الحصول على أمريكانو متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم اميريكانو، بليس؟",
+    "tags": [
+      "ordering",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-005",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small latte, please?",
+    "ar": "هل يمكنني الحصول على لاتيه صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل لاتت، بليس؟",
+    "tags": [
+      "ordering",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-006",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium latte, please?",
+    "ar": "هل يمكنني الحصول على لاتيه متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم لاتت، بليس؟",
+    "tags": [
+      "ordering",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-007",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small cappuccino, please?",
+    "ar": "هل يمكنني الحصول على كابتشينو صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل كاببوككينو، بليس؟",
+    "tags": [
+      "ordering",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-008",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium cappuccino, please?",
+    "ar": "هل يمكنني الحصول على كابتشينو متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم كاببوككينو، بليس؟",
+    "tags": [
+      "ordering",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-009",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small flat white, please?",
+    "ar": "هل يمكنني الحصول على فلات وايت صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل فلات ويت، بليس؟",
+    "tags": [
+      "ordering",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-010",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium flat white, please?",
+    "ar": "هل يمكنني الحصول على فلات وايت متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم فلات ويت، بليس؟",
+    "tags": [
+      "ordering",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-011",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small mocha, please?",
+    "ar": "هل يمكنني الحصول على موكا صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل موتشا، بليس؟",
+    "tags": [
+      "ordering",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-012",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium mocha, please?",
+    "ar": "هل يمكنني الحصول على موكا متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم موتشا، بليس؟",
+    "tags": [
+      "ordering",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-013",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small filter coffee, please?",
+    "ar": "هل يمكنني الحصول على قهوة فلتر صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل فيلتير كوففي، بليس؟",
+    "tags": [
+      "ordering",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-014",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium filter coffee, please?",
+    "ar": "هل يمكنني الحصول على قهوة فلتر متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم فيلتير كوففي، بليس؟",
+    "tags": [
+      "ordering",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-015",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small iced latte, please?",
+    "ar": "هل يمكنني الحصول على لاتيه بارد صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل يكيد لاتت، بليس؟",
+    "tags": [
+      "ordering",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-016",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium iced latte, please?",
+    "ar": "هل يمكنني الحصول على لاتيه بارد متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم يكيد لاتت، بليس؟",
+    "tags": [
+      "ordering",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-017",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small cold brew, please?",
+    "ar": "هل يمكنني الحصول على كولد برو صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل كولد بريو، بليس؟",
+    "tags": [
+      "ordering",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-018",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium cold brew, please?",
+    "ar": "هل يمكنني الحصول على كولد برو متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم كولد بريو، بليس؟",
+    "tags": [
+      "ordering",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-019",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a small tea, please?",
+    "ar": "هل يمكنني الحصول على شاي صغير، من فضلك؟",
+    "ar_pron": "كان ي هاف ا سمالل تي، بليس؟",
+    "tags": [
+      "ordering",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-020",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Can I have a medium tea, please?",
+    "ar": "هل يمكنني الحصول على شاي متوسط، من فضلك؟",
+    "ar_pron": "كان ي هاف ا ميديوم تي، بليس؟",
+    "tags": [
+      "ordering",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-021",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a espresso with whole milk, please.",
+    "ar": "أرغب بـإسبريسو مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا يسبريسسو ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-022",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a espresso with oat milk, please.",
+    "ar": "أرغب بـإسبريسو مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا يسبريسسو ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-023",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a espresso with almond milk, please.",
+    "ar": "أرغب بـإسبريسو مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا يسبريسسو ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-024",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a americano with whole milk, please.",
+    "ar": "أرغب بـأمريكانو مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا اميريكانو ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-025",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a americano with oat milk, please.",
+    "ar": "أرغب بـأمريكانو مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا اميريكانو ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-026",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a americano with almond milk, please.",
+    "ar": "أرغب بـأمريكانو مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا اميريكانو ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-027",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a latte with whole milk, please.",
+    "ar": "أرغب بـلاتيه مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا لاتت ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-028",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a latte with oat milk, please.",
+    "ar": "أرغب بـلاتيه مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا لاتت ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-029",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a latte with almond milk, please.",
+    "ar": "أرغب بـلاتيه مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا لاتت ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-030",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a cappuccino with whole milk, please.",
+    "ar": "أرغب بـكابتشينو مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا كاببوككينو ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-031",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a cappuccino with oat milk, please.",
+    "ar": "أرغب بـكابتشينو مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا كاببوككينو ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-032",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a cappuccino with almond milk, please.",
+    "ar": "أرغب بـكابتشينو مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا كاببوككينو ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-033",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a flat white with whole milk, please.",
+    "ar": "أرغب بـفلات وايت مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا فلات ويت ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-034",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a flat white with oat milk, please.",
+    "ar": "أرغب بـفلات وايت مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا فلات ويت ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-035",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a flat white with almond milk, please.",
+    "ar": "أرغب بـفلات وايت مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا فلات ويت ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-036",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a mocha with whole milk, please.",
+    "ar": "أرغب بـموكا مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا موتشا ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-037",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a mocha with oat milk, please.",
+    "ar": "أرغب بـموكا مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا موتشا ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-038",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a mocha with almond milk, please.",
+    "ar": "أرغب بـموكا مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا موتشا ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-039",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a filter coffee with whole milk, please.",
+    "ar": "أرغب بـقهوة فلتر مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا فيلتير كوففي ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-040",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a filter coffee with oat milk, please.",
+    "ar": "أرغب بـقهوة فلتر مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا فيلتير كوففي ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-041",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a filter coffee with almond milk, please.",
+    "ar": "أرغب بـقهوة فلتر مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا فيلتير كوففي ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-042",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a iced latte with whole milk, please.",
+    "ar": "أرغب بـلاتيه بارد مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا يكيد لاتت ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-043",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a iced latte with oat milk, please.",
+    "ar": "أرغب بـلاتيه بارد مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا يكيد لاتت ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-044",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a iced latte with almond milk, please.",
+    "ar": "أرغب بـلاتيه بارد مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا يكيد لاتت ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-045",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a cold brew with whole milk, please.",
+    "ar": "أرغب بـكولد برو مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا كولد بريو ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-046",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a cold brew with oat milk, please.",
+    "ar": "أرغب بـكولد برو مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا كولد بريو ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-047",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a cold brew with almond milk, please.",
+    "ar": "أرغب بـكولد برو مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا كولد بريو ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-048",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a tea with whole milk, please.",
+    "ar": "أرغب بـشاي مع حليب كامل، لو سمحت.",
+    "ar_pron": "ي'د ليك ا تي ويذ وول ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-049",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a tea with oat milk, please.",
+    "ar": "أرغب بـشاي مع حليب الشوفان، لو سمحت.",
+    "ar_pron": "ي'د ليك ا تي ويذ اوت ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-050",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I'd like a tea with almond milk, please.",
+    "ar": "أرغب بـشاي مع حليب اللوز، لو سمحت.",
+    "ar_pron": "ي'د ليك ا تي ويذ الموند ميلك، بليس.",
+    "tags": [
+      "milk_option",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-051",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot espresso with no sugar, please.",
+    "ar": "إسبريسو ساخن مع بدون سكر، لو سمحت.",
+    "ar_pron": "هوت يسبريسسو ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-052",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot espresso with less sugar, please.",
+    "ar": "إسبريسو ساخن مع سكر قليل، لو سمحت.",
+    "ar_pron": "هوت يسبريسسو ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-053",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot espresso with normal sugar, please.",
+    "ar": "إسبريسو ساخن مع سكر عادي، لو سمحت.",
+    "ar_pron": "هوت يسبريسسو ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-054",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced espresso with no sugar, please.",
+    "ar": "إسبريسو مثلج مع بدون سكر، لو سمحت.",
+    "ar_pron": "يكيد يسبريسسو ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-055",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced espresso with less sugar, please.",
+    "ar": "إسبريسو مثلج مع سكر قليل، لو سمحت.",
+    "ar_pron": "يكيد يسبريسسو ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-056",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced espresso with normal sugar, please.",
+    "ar": "إسبريسو مثلج مع سكر عادي، لو سمحت.",
+    "ar_pron": "يكيد يسبريسسو ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-057",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot americano with no sugar, please.",
+    "ar": "أمريكانو ساخن مع بدون سكر، لو سمحت.",
+    "ar_pron": "هوت اميريكانو ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-058",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot americano with less sugar, please.",
+    "ar": "أمريكانو ساخن مع سكر قليل، لو سمحت.",
+    "ar_pron": "هوت اميريكانو ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-059",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot americano with normal sugar, please.",
+    "ar": "أمريكانو ساخن مع سكر عادي، لو سمحت.",
+    "ar_pron": "هوت اميريكانو ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-060",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced americano with no sugar, please.",
+    "ar": "أمريكانو مثلج مع بدون سكر، لو سمحت.",
+    "ar_pron": "يكيد اميريكانو ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-061",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced americano with less sugar, please.",
+    "ar": "أمريكانو مثلج مع سكر قليل، لو سمحت.",
+    "ar_pron": "يكيد اميريكانو ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-062",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced americano with normal sugar, please.",
+    "ar": "أمريكانو مثلج مع سكر عادي، لو سمحت.",
+    "ar_pron": "يكيد اميريكانو ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-063",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot latte with no sugar, please.",
+    "ar": "لاتيه ساخن مع بدون سكر، لو سمحت.",
+    "ar_pron": "هوت لاتت ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-064",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot latte with less sugar, please.",
+    "ar": "لاتيه ساخن مع سكر قليل، لو سمحت.",
+    "ar_pron": "هوت لاتت ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-065",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot latte with normal sugar, please.",
+    "ar": "لاتيه ساخن مع سكر عادي، لو سمحت.",
+    "ar_pron": "هوت لاتت ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-066",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced latte with no sugar, please.",
+    "ar": "لاتيه مثلج مع بدون سكر، لو سمحت.",
+    "ar_pron": "يكيد لاتت ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-067",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced latte with less sugar, please.",
+    "ar": "لاتيه مثلج مع سكر قليل، لو سمحت.",
+    "ar_pron": "يكيد لاتت ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-068",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced latte with normal sugar, please.",
+    "ar": "لاتيه مثلج مع سكر عادي، لو سمحت.",
+    "ar_pron": "يكيد لاتت ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-069",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot cappuccino with no sugar, please.",
+    "ar": "كابتشينو ساخن مع بدون سكر، لو سمحت.",
+    "ar_pron": "هوت كاببوككينو ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-070",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot cappuccino with less sugar, please.",
+    "ar": "كابتشينو ساخن مع سكر قليل، لو سمحت.",
+    "ar_pron": "هوت كاببوككينو ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-071",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot cappuccino with normal sugar, please.",
+    "ar": "كابتشينو ساخن مع سكر عادي، لو سمحت.",
+    "ar_pron": "هوت كاببوككينو ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-072",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced cappuccino with no sugar, please.",
+    "ar": "كابتشينو مثلج مع بدون سكر، لو سمحت.",
+    "ar_pron": "يكيد كاببوككينو ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-073",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced cappuccino with less sugar, please.",
+    "ar": "كابتشينو مثلج مع سكر قليل، لو سمحت.",
+    "ar_pron": "يكيد كاببوككينو ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-074",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced cappuccino with normal sugar, please.",
+    "ar": "كابتشينو مثلج مع سكر عادي، لو سمحت.",
+    "ar_pron": "يكيد كاببوككينو ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-075",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot flat white with no sugar, please.",
+    "ar": "فلات وايت ساخن مع بدون سكر، لو سمحت.",
+    "ar_pron": "هوت فلات ويت ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-076",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot flat white with less sugar, please.",
+    "ar": "فلات وايت ساخن مع سكر قليل، لو سمحت.",
+    "ar_pron": "هوت فلات ويت ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-077",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot flat white with normal sugar, please.",
+    "ar": "فلات وايت ساخن مع سكر عادي، لو سمحت.",
+    "ar_pron": "هوت فلات ويت ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-078",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced flat white with no sugar, please.",
+    "ar": "فلات وايت مثلج مع بدون سكر، لو سمحت.",
+    "ar_pron": "يكيد فلات ويت ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-079",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced flat white with less sugar, please.",
+    "ar": "فلات وايت مثلج مع سكر قليل، لو سمحت.",
+    "ar_pron": "يكيد فلات ويت ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-080",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced flat white with normal sugar, please.",
+    "ar": "فلات وايت مثلج مع سكر عادي، لو سمحت.",
+    "ar_pron": "يكيد فلات ويت ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-081",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot mocha with no sugar, please.",
+    "ar": "موكا ساخن مع بدون سكر، لو سمحت.",
+    "ar_pron": "هوت موتشا ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-082",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot mocha with less sugar, please.",
+    "ar": "موكا ساخن مع سكر قليل، لو سمحت.",
+    "ar_pron": "هوت موتشا ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-083",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Hot mocha with normal sugar, please.",
+    "ar": "موكا ساخن مع سكر عادي، لو سمحت.",
+    "ar_pron": "هوت موتشا ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-084",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced mocha with no sugar, please.",
+    "ar": "موكا مثلج مع بدون سكر، لو سمحت.",
+    "ar_pron": "يكيد موتشا ويذ نو سوجار، بليس.",
+    "tags": [
+      "customize",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-085",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced mocha with less sugar, please.",
+    "ar": "موكا مثلج مع سكر قليل، لو سمحت.",
+    "ar_pron": "يكيد موتشا ويذ ليسس سوجار، بليس.",
+    "tags": [
+      "customize",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-086",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Iced mocha with normal sugar, please.",
+    "ar": "موكا مثلج مع سكر عادي، لو سمحت.",
+    "ar_pron": "يكيد موتشا ويذ نورمال سوجار، بليس.",
+    "tags": [
+      "customize",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-087",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my espresso?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى إسبريسو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي يسبريسسو؟",
+    "tags": [
+      "extras",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-088",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my espresso?",
+    "ar": "هل يمكنك إضافة فانيلا إلى إسبريسو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي يسبريسسو؟",
+    "tags": [
+      "extras",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-089",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my espresso?",
+    "ar": "هل يمكنك إضافة كراميل إلى إسبريسو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي يسبريسسو؟",
+    "tags": [
+      "extras",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-090",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my espresso?",
+    "ar": "هل يمكنك إضافة بندق إلى إسبريسو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي يسبريسسو؟",
+    "tags": [
+      "extras",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-091",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my americano?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى أمريكانو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي اميريكانو؟",
+    "tags": [
+      "extras",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-092",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my americano?",
+    "ar": "هل يمكنك إضافة فانيلا إلى أمريكانو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي اميريكانو؟",
+    "tags": [
+      "extras",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-093",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my americano?",
+    "ar": "هل يمكنك إضافة كراميل إلى أمريكانو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي اميريكانو؟",
+    "tags": [
+      "extras",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-094",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my americano?",
+    "ar": "هل يمكنك إضافة بندق إلى أمريكانو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي اميريكانو؟",
+    "tags": [
+      "extras",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-095",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my latte?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى لاتيه الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي لاتت؟",
+    "tags": [
+      "extras",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-096",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my latte?",
+    "ar": "هل يمكنك إضافة فانيلا إلى لاتيه الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي لاتت؟",
+    "tags": [
+      "extras",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-097",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my latte?",
+    "ar": "هل يمكنك إضافة كراميل إلى لاتيه الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي لاتت؟",
+    "tags": [
+      "extras",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-098",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my latte?",
+    "ar": "هل يمكنك إضافة بندق إلى لاتيه الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي لاتت؟",
+    "tags": [
+      "extras",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-099",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my cappuccino?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى كابتشينو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي كاببوككينو؟",
+    "tags": [
+      "extras",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-100",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my cappuccino?",
+    "ar": "هل يمكنك إضافة فانيلا إلى كابتشينو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي كاببوككينو؟",
+    "tags": [
+      "extras",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-101",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my cappuccino?",
+    "ar": "هل يمكنك إضافة كراميل إلى كابتشينو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي كاببوككينو؟",
+    "tags": [
+      "extras",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-102",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my cappuccino?",
+    "ar": "هل يمكنك إضافة بندق إلى كابتشينو الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي كاببوككينو؟",
+    "tags": [
+      "extras",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-103",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my flat white?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى فلات وايت الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي فلات ويت؟",
+    "tags": [
+      "extras",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-104",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my flat white?",
+    "ar": "هل يمكنك إضافة فانيلا إلى فلات وايت الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي فلات ويت؟",
+    "tags": [
+      "extras",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-105",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my flat white?",
+    "ar": "هل يمكنك إضافة كراميل إلى فلات وايت الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي فلات ويت؟",
+    "tags": [
+      "extras",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-106",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my flat white?",
+    "ar": "هل يمكنك إضافة بندق إلى فلات وايت الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي فلات ويت؟",
+    "tags": [
+      "extras",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-107",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my mocha?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى موكا الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي موتشا؟",
+    "tags": [
+      "extras",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-108",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my mocha?",
+    "ar": "هل يمكنك إضافة فانيلا إلى موكا الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي موتشا؟",
+    "tags": [
+      "extras",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-109",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my mocha?",
+    "ar": "هل يمكنك إضافة كراميل إلى موكا الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي موتشا؟",
+    "tags": [
+      "extras",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-110",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my mocha?",
+    "ar": "هل يمكنك إضافة بندق إلى موكا الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي موتشا؟",
+    "tags": [
+      "extras",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-111",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my filter coffee?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى قهوة فلتر الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي فيلتير كوففي؟",
+    "tags": [
+      "extras",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-112",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my filter coffee?",
+    "ar": "هل يمكنك إضافة فانيلا إلى قهوة فلتر الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي فيلتير كوففي؟",
+    "tags": [
+      "extras",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-113",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my filter coffee?",
+    "ar": "هل يمكنك إضافة كراميل إلى قهوة فلتر الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي فيلتير كوففي؟",
+    "tags": [
+      "extras",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-114",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my filter coffee?",
+    "ar": "هل يمكنك إضافة بندق إلى قهوة فلتر الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي فيلتير كوففي؟",
+    "tags": [
+      "extras",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-115",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add an extra shot to my iced latte?",
+    "ar": "هل يمكنك إضافة شوت إضافي إلى لاتيه بارد الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد ان يكسترا شوت تو مي يكيد لاتت؟",
+    "tags": [
+      "extras",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-116",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add vanilla syrup to my iced latte?",
+    "ar": "هل يمكنك إضافة فانيلا إلى لاتيه بارد الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد فانيللا سيروب تو مي يكيد لاتت؟",
+    "tags": [
+      "extras",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-117",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add caramel syrup to my iced latte?",
+    "ar": "هل يمكنك إضافة كراميل إلى لاتيه بارد الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد كاراميل سيروب تو مي يكيد لاتت؟",
+    "tags": [
+      "extras",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-118",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you add hazelnut syrup to my iced latte?",
+    "ar": "هل يمكنك إضافة بندق إلى لاتيه بارد الخاص بي؟",
+    "ar_pron": "كاولد ياو ادد هازيلنوت سيروب تو مي يكيد لاتت؟",
+    "tags": [
+      "extras",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-119",
+    "level": "B1",
+    "register": "neutral",
+    "en": "This is a bit too sweet for me. Could you remake it with less sugar?",
+    "ar": "هذا المشروب حلو أكثر من اللازم بالنسبة لي. هل يمكن إعادة تحضيره مع سكر أقل؟",
+    "ar_pron": "ثيس يس ا بيت تو سويت فور م. كاولد ياو ريماك يت ويذ ليسس سوجار؟",
+    "tags": [
+      "issue"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-120",
+    "level": "B1",
+    "register": "neutral",
+    "en": "My coffee is lukewarm. Could you please heat it up?",
+    "ar": "قهوّتي فاترة. هل يمكن تسخينها من فضلك؟",
+    "ar_pron": "مي كوففي يس لوكيوارم. كاولد ياو بليس هيت يت وب؟",
+    "tags": [
+      "issue"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-121",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Sorry, I ordered almond milk, not whole milk.",
+    "ar": "عذرًا، طلبت حليب اللوز وليس الحليب الكامل.",
+    "ar_pron": "سورري، ي ورديريد الموند ميلك، نوت وول ميلك.",
+    "tags": [
+      "issue"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-formal-122",
+    "level": "B2",
+    "register": "formal",
+    "en": "Could you recommend a single-origin coffee with a chocolatey profile?",
+    "ar": "هل يمكنك ترشيح قهوة ذات منشأ واحد بطابع شوكولاتي؟",
+    "ar_pron": "كاولد ياو ريكومميند ا سينجل-وريجين كوففي ويذ ا تشوكولاتيي بروفيل؟",
+    "tags": [
+      "recommendation"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-formal-123",
+    "level": "B2",
+    "register": "formal",
+    "en": "Is the cold brew steeped for 18 or 24 hours?",
+    "ar": "هل يتم نقع الكولد برو لمدة 18 أم 24 ساعة؟",
+    "ar_pron": "يس ث كولد بريو ستيبيد فور 18 ور 24 هاورس؟",
+    "tags": [
+      "recommendation"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-formal-124",
+    "level": "B2",
+    "register": "formal",
+    "en": "I'm avoiding dairy today. Which plant-based milk froths best here?",
+    "ar": "أتجنب الألبان اليوم. أي حليب نباتي يعطي رغوة أفضل لديكم؟",
+    "ar_pron": "ي'م افويدينج دايري توداي. ويتش بلانت-باسيد ميلك فروذس بيست هير؟",
+    "tags": [
+      "recommendation"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-125",
+    "level": "B1",
+    "register": "street_light",
+    "en": "Make it extra strong, please.",
+    "ar": "خلّيه قوي زيادة لو سمحت.",
+    "ar_pron": "ماك يت يكسترا سترونج، بليس.",
+    "tags": [
+      "street"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-126",
+    "level": "B1",
+    "register": "street_light",
+    "en": "Go easy on the ice.",
+    "ar": "خفّف الثلج.",
+    "ar_pron": "جو يسي ون ث يك.",
+    "tags": [
+      "street"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-127",
+    "level": "B1",
+    "register": "street_light",
+    "en": "Can you split the bill?",
+    "ar": "تقدر تقسم الفاتورة؟",
+    "ar_pron": "كان ياو سبليت ث بيلل؟",
+    "tags": [
+      "street"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-128",
+    "level": "A1",
+    "register": "formal",
+    "en": "A large tea with vanilla syrup, to go, please.",
+    "ar": "شاي كبير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا لارج تي ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-129",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A small espresso with hazelnut syrup, to go, please.",
+    "ar": "إسبريسو صغير مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا سمالل يسبريسسو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-130",
+    "level": "B1",
+    "register": "street_light",
+    "en": "A medium americano with vanilla syrup, to go, please.",
+    "ar": "أمريكانو متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم اميريكانو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-131",
+    "level": "B1",
+    "register": "street_light",
+    "en": "A large espresso with caramel syrup, to go, please.",
+    "ar": "إسبريسو كبير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا لارج يسبريسسو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-132",
+    "level": "B1",
+    "register": "street_light",
+    "en": "A small filter coffee with hazelnut syrup, to go, please.",
+    "ar": "قهوة فلتر صغير مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا سمالل فيلتير كوففي ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-formal-133",
+    "level": "B2",
+    "register": "formal",
+    "en": "A small flat white with vanilla syrup, to go, please.",
+    "ar": "فلات وايت صغير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا سمالل فلات ويت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-formal-134",
+    "level": "A2",
+    "register": "formal",
+    "en": "A small americano with caramel syrup, to go, please.",
+    "ar": "أمريكانو صغير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-135",
+    "level": "A1",
+    "register": "formal",
+    "en": "A small americano with an extra shot, to go, please.",
+    "ar": "أمريكانو صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-136",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A small americano with caramel syrup, to go, please.",
+    "ar": "أمريكانو صغير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-neutral-137",
+    "level": "A1",
+    "register": "neutral",
+    "en": "A large filter coffee with caramel syrup, to go, please.",
+    "ar": "قهوة فلتر كبير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا لارج فيلتير كوففي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-138",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A small iced latte with an extra shot, to go, please.",
+    "ar": "لاتيه بارد صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل يكيد لاتت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-139",
+    "level": "A1",
+    "register": "formal",
+    "en": "A small mocha with an extra shot, to go, please.",
+    "ar": "موكا صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل موتشا ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-140",
+    "level": "A1",
+    "register": "formal",
+    "en": "A medium latte with an extra shot, to go, please.",
+    "ar": "لاتيه متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم لاتت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-141",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A medium espresso with vanilla syrup, to go, please.",
+    "ar": "إسبريسو متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يسبريسسو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-142",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A medium iced latte with vanilla syrup, to go, please.",
+    "ar": "لاتيه بارد متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يكيد لاتت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-143",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A medium tea with hazelnut syrup, to go, please.",
+    "ar": "شاي متوسط مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم تي ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-144",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A medium latte with hazelnut syrup, to go, please.",
+    "ar": "لاتيه متوسط مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم لاتت ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-145",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A small americano with an extra shot, to go, please.",
+    "ar": "أمريكانو صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-formal-146",
+    "level": "A2",
+    "register": "formal",
+    "en": "A medium iced latte with caramel syrup, to go, please.",
+    "ar": "لاتيه بارد متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يكيد لاتت ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-street_light-147",
+    "level": "B1",
+    "register": "street_light",
+    "en": "A medium americano with caramel syrup, to go, please.",
+    "ar": "أمريكانو متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم اميريكانو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-formal-148",
+    "level": "B1",
+    "register": "formal",
+    "en": "A large flat white with vanilla syrup, to go, please.",
+    "ar": "فلات وايت كبير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا لارج فلات ويت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-149",
+    "level": "A2",
+    "register": "neutral",
+    "en": "A large cappuccino with an extra shot, to go, please.",
+    "ar": "كابتشينو كبير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا لارج كاببوككينو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-street_light-150",
+    "level": "A1",
+    "register": "street_light",
+    "en": "A large filter coffee with caramel syrup, to go, please.",
+    "ar": "قهوة فلتر كبير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا لارج فيلتير كوففي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-formal-151",
+    "level": "B2",
+    "register": "formal",
+    "en": "A medium mocha with an extra shot, to go, please.",
+    "ar": "موكا متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم موتشا ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-152",
+    "level": "A1",
+    "register": "formal",
+    "en": "A small americano with an extra shot, to go, please.",
+    "ar": "أمريكانو صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-153",
+    "level": "A1",
+    "register": "formal",
+    "en": "A small americano with vanilla syrup, to go, please.",
+    "ar": "أمريكانو صغير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-154",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A large americano with hazelnut syrup, to go, please.",
+    "ar": "أمريكانو كبير مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا لارج اميريكانو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-155",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A small tea with caramel syrup, to go, please.",
+    "ar": "شاي صغير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا سمالل تي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-156",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A medium filter coffee with caramel syrup, to go, please.",
+    "ar": "قهوة فلتر متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فيلتير كوففي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-157",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A medium americano with caramel syrup, to go, please.",
+    "ar": "أمريكانو متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم اميريكانو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-158",
+    "level": "A1",
+    "register": "formal",
+    "en": "A large iced latte with an extra shot, to go, please.",
+    "ar": "لاتيه بارد كبير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا لارج يكيد لاتت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-159",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A medium latte with an extra shot, to go, please.",
+    "ar": "لاتيه متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم لاتت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-160",
+    "level": "A1",
+    "register": "formal",
+    "en": "A medium flat white with caramel syrup, to go, please.",
+    "ar": "فلات وايت متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فلات ويت ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-161",
+    "level": "A2",
+    "register": "neutral",
+    "en": "A large tea with an extra shot, to go, please.",
+    "ar": "شاي كبير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا لارج تي ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-162",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A small flat white with vanilla syrup, to go, please.",
+    "ar": "فلات وايت صغير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا سمالل فلات ويت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-163",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A medium iced latte with vanilla syrup, to go, please.",
+    "ar": "لاتيه بارد متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يكيد لاتت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-formal-164",
+    "level": "A2",
+    "register": "formal",
+    "en": "A medium latte with vanilla syrup, to go, please.",
+    "ar": "لاتيه متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم لاتت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-formal-165",
+    "level": "B1",
+    "register": "formal",
+    "en": "A medium filter coffee with caramel syrup, to go, please.",
+    "ar": "قهوة فلتر متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فيلتير كوففي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-166",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A small espresso with an extra shot, to go, please.",
+    "ar": "إسبريسو صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل يسبريسسو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-167",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A small americano with an extra shot, to go, please.",
+    "ar": "أمريكانو صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-formal-168",
+    "level": "B1",
+    "register": "formal",
+    "en": "A small flat white with an extra shot, to go, please.",
+    "ar": "فلات وايت صغير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا سمالل فلات ويت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-169",
+    "level": "A2",
+    "register": "neutral",
+    "en": "A medium flat white with hazelnut syrup, to go, please.",
+    "ar": "فلات وايت متوسط مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فلات ويت ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-formal-170",
+    "level": "A2",
+    "register": "formal",
+    "en": "A large espresso with vanilla syrup, to go, please.",
+    "ar": "إسبريسو كبير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا لارج يسبريسسو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-171",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A large flat white with vanilla syrup, to go, please.",
+    "ar": "فلات وايت كبير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا لارج فلات ويت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-172",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A small filter coffee with vanilla syrup, to go, please.",
+    "ar": "قهوة فلتر صغير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا سمالل فيلتير كوففي ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-173",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A large cappuccino with vanilla syrup, to go, please.",
+    "ar": "كابتشينو كبير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا لارج كاببوككينو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-formal-174",
+    "level": "B1",
+    "register": "formal",
+    "en": "A medium iced latte with an extra shot, to go, please.",
+    "ar": "لاتيه بارد متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يكيد لاتت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-175",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A small americano with hazelnut syrup, to go, please.",
+    "ar": "أمريكانو صغير مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا سمالل اميريكانو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-street_light-176",
+    "level": "A1",
+    "register": "street_light",
+    "en": "A medium iced latte with vanilla syrup, to go, please.",
+    "ar": "لاتيه بارد متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يكيد لاتت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-177",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A medium filter coffee with an extra shot, to go, please.",
+    "ar": "قهوة فلتر متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فيلتير كوففي ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-178",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A small espresso with vanilla syrup, to go, please.",
+    "ar": "إسبريسو صغير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا سمالل يسبريسسو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-179",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A large cappuccino with caramel syrup, to go, please.",
+    "ar": "كابتشينو كبير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا لارج كاببوككينو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-180",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A medium tea with an extra shot, to go, please.",
+    "ar": "شاي متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم تي ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-formal-181",
+    "level": "A2",
+    "register": "formal",
+    "en": "A large espresso with hazelnut syrup, to go, please.",
+    "ar": "إسبريسو كبير مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا لارج يسبريسسو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-182",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A large tea with caramel syrup, to go, please.",
+    "ar": "شاي كبير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا لارج تي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-183",
+    "level": "A1",
+    "register": "formal",
+    "en": "A large latte with an extra shot, to go, please.",
+    "ar": "لاتيه كبير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا لارج لاتت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-184",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A large espresso with an extra shot, to go, please.",
+    "ar": "إسبريسو كبير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا لارج يسبريسسو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-street_light-185",
+    "level": "A1",
+    "register": "street_light",
+    "en": "A medium americano with vanilla syrup, to go, please.",
+    "ar": "أمريكانو متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم اميريكانو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-186",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A large americano with an extra shot, to go, please.",
+    "ar": "أمريكانو كبير مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا لارج اميريكانو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-street_light-187",
+    "level": "A1",
+    "register": "street_light",
+    "en": "A small cold brew with hazelnut syrup, to go, please.",
+    "ar": "كولد برو صغير مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا سمالل كولد بريو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-formal-188",
+    "level": "B1",
+    "register": "formal",
+    "en": "A medium cold brew with hazelnut syrup, to go, please.",
+    "ar": "كولد برو متوسط مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم كولد بريو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-189",
+    "level": "A1",
+    "register": "formal",
+    "en": "A medium espresso with an extra shot, to go, please.",
+    "ar": "إسبريسو متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يسبريسسو ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "espresso"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-formal-190",
+    "level": "B1",
+    "register": "formal",
+    "en": "A large mocha with vanilla syrup, to go, please.",
+    "ar": "موكا كبير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا لارج موتشا ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-191",
+    "level": "A2",
+    "register": "neutral",
+    "en": "A medium mocha with hazelnut syrup, to go, please.",
+    "ar": "موكا متوسط مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم موتشا ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-street_light-192",
+    "level": "A1",
+    "register": "street_light",
+    "en": "A medium iced latte with caramel syrup, to go, please.",
+    "ar": "لاتيه بارد متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم يكيد لاتت ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-193",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A medium filter coffee with caramel syrup, to go, please.",
+    "ar": "قهوة فلتر متوسط مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فيلتير كوففي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "filter coffee"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-street_light-194",
+    "level": "B2",
+    "register": "street_light",
+    "en": "A medium cappuccino with hazelnut syrup, to go, please.",
+    "ar": "كابتشينو متوسط مع بندق، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم كاببوككينو ويذ هازيلنوت سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cappuccino"
+    ]
+  },
+  {
+    "id": "coffee_shop-B1-neutral-195",
+    "level": "B1",
+    "register": "neutral",
+    "en": "A large americano with caramel syrup, to go, please.",
+    "ar": "أمريكانو كبير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا لارج اميريكانو ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "americano"
+    ]
+  },
+  {
+    "id": "coffee_shop-A1-formal-196",
+    "level": "A1",
+    "register": "formal",
+    "en": "A small mocha with caramel syrup, to go, please.",
+    "ar": "موكا صغير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا سمالل موتشا ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "mocha"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-formal-197",
+    "level": "A2",
+    "register": "formal",
+    "en": "A medium cold brew with vanilla syrup, to go, please.",
+    "ar": "كولد برو متوسط مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم كولد بريو ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "cold brew"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-street_light-198",
+    "level": "A2",
+    "register": "street_light",
+    "en": "A small tea with caramel syrup, to go, please.",
+    "ar": "شاي صغير مع كراميل، سفري لو سمحت.",
+    "ar_pron": "ا سمالل تي ويذ كاراميل سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "tea"
+    ]
+  },
+  {
+    "id": "coffee_shop-B2-neutral-199",
+    "level": "B2",
+    "register": "neutral",
+    "en": "A small iced latte with vanilla syrup, to go, please.",
+    "ar": "لاتيه بارد صغير مع فانيلا، سفري لو سمحت.",
+    "ar_pron": "ا سمالل يكيد لاتت ويذ فانيللا سيروب، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "iced latte"
+    ]
+  },
+  {
+    "id": "coffee_shop-A2-neutral-200",
+    "level": "A2",
+    "register": "neutral",
+    "en": "A medium flat white with an extra shot, to go, please.",
+    "ar": "فلات وايت متوسط مع شوت إضافي، سفري لو سمحت.",
+    "ar_pron": "ا ميديوم فلات ويت ويذ ان يكسترا شوت، تو جو، بليس.",
+    "tags": [
+      "combo",
+      "flat white"
+    ]
+  }
+]

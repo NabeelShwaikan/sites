@@ -1,0 +1,2524 @@
+[
+  {
+    "id": "supermarket-A1-neutral-001",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the bread?",
+    "ar": "أين يوجد خبز؟",
+    "ar_pron": "وير يس ث بريد؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-002",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the eggs?",
+    "ar": "أين يوجد بيض؟",
+    "ar_pron": "وير يس ث يججس؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-003",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the milk?",
+    "ar": "أين يوجد حليب؟",
+    "ar_pron": "وير يس ث ميلك؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-004",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the olive oil?",
+    "ar": "أين يوجد زيت زيتون؟",
+    "ar_pron": "وير يس ث وليف ويل؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-005",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the rice?",
+    "ar": "أين يوجد أرز؟",
+    "ar_pron": "وير يس ث ريك؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-006",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the tomatoes?",
+    "ar": "أين يوجد طماطم؟",
+    "ar_pron": "وير يس ث توماتويس؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-007",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the cucumbers?",
+    "ar": "أين يوجد خيار؟",
+    "ar_pron": "وير يس ث كوكومبيرس؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-008",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the chicken breast?",
+    "ar": "أين يوجد صدر دجاج؟",
+    "ar_pron": "وير يس ث تشيكين بريست؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-009",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the beef mince?",
+    "ar": "أين يوجد لحم مفروم؟",
+    "ar_pron": "وير يس ث بيف مينك؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-010",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Where is the bottled water?",
+    "ar": "أين يوجد مياه معبأة؟",
+    "ar_pron": "وير يس ث بوتتليد واتير؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-011",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the bread?",
+    "ar": "كم سعر خبز؟",
+    "ar_pron": "هاو موتش يس ث بريد؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-012",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the eggs?",
+    "ar": "كم سعر بيض؟",
+    "ar_pron": "هاو موتش يس ث يججس؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-013",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the milk?",
+    "ar": "كم سعر حليب؟",
+    "ar_pron": "هاو موتش يس ث ميلك؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-014",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the olive oil?",
+    "ar": "كم سعر زيت زيتون؟",
+    "ar_pron": "هاو موتش يس ث وليف ويل؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-015",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the rice?",
+    "ar": "كم سعر أرز؟",
+    "ar_pron": "هاو موتش يس ث ريك؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-016",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the tomatoes?",
+    "ar": "كم سعر طماطم؟",
+    "ar_pron": "هاو موتش يس ث توماتويس؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-017",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the cucumbers?",
+    "ar": "كم سعر خيار؟",
+    "ar_pron": "هاو موتش يس ث كوكومبيرس؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-018",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the chicken breast?",
+    "ar": "كم سعر صدر دجاج؟",
+    "ar_pron": "هاو موتش يس ث تشيكين بريست؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-019",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the beef mince?",
+    "ar": "كم سعر لحم مفروم؟",
+    "ar_pron": "هاو موتش يس ث بيف مينك؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-020",
+    "level": "A1",
+    "register": "neutral",
+    "en": "How much is the bottled water?",
+    "ar": "كم سعر مياه معبأة؟",
+    "ar_pron": "هاو موتش يس ث بوتتليد واتير؟",
+    "tags": [
+      "locate",
+      "price"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-021",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of bread, please.",
+    "ar": "أحتاج كيلو من خبز، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف بريد، بليس.",
+    "tags": [
+      "quantity",
+      "bread"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-022",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of eggs, please.",
+    "ar": "أحتاج كيلو من بيض، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف يججس، بليس.",
+    "tags": [
+      "quantity",
+      "eggs"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-023",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of milk, please.",
+    "ar": "أحتاج كيلو من حليب، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف ميلك، بليس.",
+    "tags": [
+      "quantity",
+      "milk"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-024",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of olive oil, please.",
+    "ar": "أحتاج كيلو من زيت زيتون، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف وليف ويل، بليس.",
+    "tags": [
+      "quantity",
+      "olive oil"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-025",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of rice, please.",
+    "ar": "أحتاج كيلو من أرز، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف ريك، بليس.",
+    "tags": [
+      "quantity",
+      "rice"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-026",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of tomatoes, please.",
+    "ar": "أحتاج كيلو من طماطم، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف توماتويس، بليس.",
+    "tags": [
+      "quantity",
+      "tomatoes"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-027",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of cucumbers, please.",
+    "ar": "أحتاج كيلو من خيار، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف كوكومبيرس، بليس.",
+    "tags": [
+      "quantity",
+      "cucumbers"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-028",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of chicken breast, please.",
+    "ar": "أحتاج كيلو من صدر دجاج، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف تشيكين بريست، بليس.",
+    "tags": [
+      "quantity",
+      "chicken breast"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-029",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of beef mince, please.",
+    "ar": "أحتاج كيلو من لحم مفروم، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف بيف مينك، بليس.",
+    "tags": [
+      "quantity",
+      "beef mince"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-030",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a kilo of bottled water, please.",
+    "ar": "أحتاج كيلو من مياه معبأة، لو سمحت.",
+    "ar_pron": "ي نيد ا كيلو وف بوتتليد واتير، بليس.",
+    "tags": [
+      "quantity",
+      "bottled water"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-031",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of bread, please.",
+    "ar": "أحتاج نصف كيلو من خبز، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف بريد، بليس.",
+    "tags": [
+      "quantity",
+      "bread"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-032",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of eggs, please.",
+    "ar": "أحتاج نصف كيلو من بيض، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف يججس، بليس.",
+    "tags": [
+      "quantity",
+      "eggs"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-033",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of milk, please.",
+    "ar": "أحتاج نصف كيلو من حليب، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف ميلك، بليس.",
+    "tags": [
+      "quantity",
+      "milk"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-034",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of olive oil, please.",
+    "ar": "أحتاج نصف كيلو من زيت زيتون، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف وليف ويل، بليس.",
+    "tags": [
+      "quantity",
+      "olive oil"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-035",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of rice, please.",
+    "ar": "أحتاج نصف كيلو من أرز، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف ريك، بليس.",
+    "tags": [
+      "quantity",
+      "rice"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-036",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of tomatoes, please.",
+    "ar": "أحتاج نصف كيلو من طماطم، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف توماتويس، بليس.",
+    "tags": [
+      "quantity",
+      "tomatoes"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-037",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of cucumbers, please.",
+    "ar": "أحتاج نصف كيلو من خيار، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف كوكومبيرس، بليس.",
+    "tags": [
+      "quantity",
+      "cucumbers"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-038",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of chicken breast, please.",
+    "ar": "أحتاج نصف كيلو من صدر دجاج، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف تشيكين بريست، بليس.",
+    "tags": [
+      "quantity",
+      "chicken breast"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-039",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of beef mince, please.",
+    "ar": "أحتاج نصف كيلو من لحم مفروم، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف بيف مينك، بليس.",
+    "tags": [
+      "quantity",
+      "beef mince"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-040",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need half a kilo of bottled water, please.",
+    "ar": "أحتاج نصف كيلو من مياه معبأة، لو سمحت.",
+    "ar_pron": "ي نيد هالف ا كيلو وف بوتتليد واتير، بليس.",
+    "tags": [
+      "quantity",
+      "bottled water"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-041",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen bread, please.",
+    "ar": "أحتاج دزينة خبز، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين بريد، بليس.",
+    "tags": [
+      "quantity",
+      "bread"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-042",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen eggs, please.",
+    "ar": "أحتاج دزينة بيض، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين يججس، بليس.",
+    "tags": [
+      "quantity",
+      "eggs"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-043",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen milk, please.",
+    "ar": "أحتاج دزينة حليب، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين ميلك، بليس.",
+    "tags": [
+      "quantity",
+      "milk"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-044",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen olive oil, please.",
+    "ar": "أحتاج دزينة زيت زيتون، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين وليف ويل، بليس.",
+    "tags": [
+      "quantity",
+      "olive oil"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-045",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen rice, please.",
+    "ar": "أحتاج دزينة أرز، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين ريك، بليس.",
+    "tags": [
+      "quantity",
+      "rice"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-046",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen tomatoes, please.",
+    "ar": "أحتاج دزينة طماطم، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين توماتويس، بليس.",
+    "tags": [
+      "quantity",
+      "tomatoes"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-047",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen cucumbers, please.",
+    "ar": "أحتاج دزينة خيار، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين كوكومبيرس، بليس.",
+    "tags": [
+      "quantity",
+      "cucumbers"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-048",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen chicken breast, please.",
+    "ar": "أحتاج دزينة صدر دجاج، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين تشيكين بريست، بليس.",
+    "tags": [
+      "quantity",
+      "chicken breast"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-049",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen beef mince, please.",
+    "ar": "أحتاج دزينة لحم مفروم، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين بيف مينك، بليس.",
+    "tags": [
+      "quantity",
+      "beef mince"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-050",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need a dozen bottled water, please.",
+    "ar": "أحتاج دزينة مياه معبأة، لو سمحت.",
+    "ar_pron": "ي نيد ا دوزين بوتتليد واتير، بليس.",
+    "tags": [
+      "quantity",
+      "bottled water"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-051",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of bread, please.",
+    "ar": "أحتاج عبوتين من خبز، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف بريد، بليس.",
+    "tags": [
+      "quantity",
+      "bread"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-052",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of eggs, please.",
+    "ar": "أحتاج عبوتين من بيض، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف يججس، بليس.",
+    "tags": [
+      "quantity",
+      "eggs"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-053",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of milk, please.",
+    "ar": "أحتاج عبوتين من حليب، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف ميلك، بليس.",
+    "tags": [
+      "quantity",
+      "milk"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-054",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of olive oil, please.",
+    "ar": "أحتاج عبوتين من زيت زيتون، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف وليف ويل، بليس.",
+    "tags": [
+      "quantity",
+      "olive oil"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-055",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of rice, please.",
+    "ar": "أحتاج عبوتين من أرز، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف ريك، بليس.",
+    "tags": [
+      "quantity",
+      "rice"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-056",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of tomatoes, please.",
+    "ar": "أحتاج عبوتين من طماطم، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف توماتويس، بليس.",
+    "tags": [
+      "quantity",
+      "tomatoes"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-057",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of cucumbers, please.",
+    "ar": "أحتاج عبوتين من خيار، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف كوكومبيرس، بليس.",
+    "tags": [
+      "quantity",
+      "cucumbers"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-058",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of chicken breast, please.",
+    "ar": "أحتاج عبوتين من صدر دجاج، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف تشيكين بريست، بليس.",
+    "tags": [
+      "quantity",
+      "chicken breast"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-059",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of beef mince, please.",
+    "ar": "أحتاج عبوتين من لحم مفروم، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف بيف مينك، بليس.",
+    "tags": [
+      "quantity",
+      "beef mince"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-060",
+    "level": "A2",
+    "register": "neutral",
+    "en": "I need two packs of bottled water, please.",
+    "ar": "أحتاج عبوتين من مياه معبأة، لو سمحت.",
+    "ar_pron": "ي نيد توو باكس وف بوتتليد واتير، بليس.",
+    "tags": [
+      "quantity",
+      "bottled water"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-061",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Do you have any discounts on rice this week?",
+    "ar": "هل لديكم خصومات على الأرز هذا الأسبوع؟",
+    "ar_pron": "دو ياو هاف اني ديسكاونتس ون ريك ثيس ويك؟",
+    "tags": [
+      "service"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-062",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Could you check the expiry date on this milk carton?",
+    "ar": "هل يمكنك التحقق من تاريخ انتهاء هذه عبوة الحليب؟",
+    "ar_pron": "كاولد ياو تشيك ث يكسبيري دات ون ثيس ميلك كارتون؟",
+    "tags": [
+      "service"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-063",
+    "level": "B1",
+    "register": "neutral",
+    "en": "I'd like to return this item; the seal was broken.",
+    "ar": "أرغب في إرجاع هذا المنتج؛ الختم كان مكسوراً.",
+    "ar_pron": "ي'د ليك تو ريتورن ثيس يتيم; ث سيل واس بروكين.",
+    "tags": [
+      "service"
+    ]
+  },
+  {
+    "id": "supermarket-B2-formal-064",
+    "level": "B2",
+    "register": "formal",
+    "en": "Could you call the manager? I was charged twice for the same item.",
+    "ar": "هل يمكنك استدعاء المدير؟ تم تحميلي ثمن نفس المنتج مرتين.",
+    "ar_pron": "كاولد ياو كالل ث ماناجير؟ ي واس تشارجيد تويك فور ث سام يتيم.",
+    "tags": [
+      "policy"
+    ]
+  },
+  {
+    "id": "supermarket-B2-formal-065",
+    "level": "B2",
+    "register": "formal",
+    "en": "Is there a loyalty program? I'd like to know the terms and privacy policy.",
+    "ar": "هل لديكم برنامج ولاء؟ أود معرفة الشروط وسياسة الخصوصية.",
+    "ar_pron": "يس ثير ا لويالتي بروجرام؟ ي'د ليك تو كناو ث تيرمس اند بريفاكي بوليكي.",
+    "tags": [
+      "policy"
+    ]
+  },
+  {
+    "id": "supermarket-B2-formal-066",
+    "level": "B2",
+    "register": "formal",
+    "en": "Do you stock any gluten-free bakery items?",
+    "ar": "هل تتوفر لديكم مخبوزات خالية من الغلوتين؟",
+    "ar_pron": "دو ياو ستوك اني جلوتين-فري باكيري يتيمس؟",
+    "tags": [
+      "policy"
+    ]
+  },
+  {
+    "id": "supermarket-B1-street_light-067",
+    "level": "B1",
+    "register": "street_light",
+    "en": "Can you throw in a bag, please?",
+    "ar": "اعطنا كيس لو سمحت.",
+    "ar_pron": "كان ياو ذراو ين ا باج، بليس؟",
+    "tags": [
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A2-street_light-068",
+    "level": "A2",
+    "register": "street_light",
+    "en": "Is there a quicker line?",
+    "ar": "في طابور أسرع؟",
+    "ar_pron": "يس ثير ا كويكير لين؟",
+    "tags": [
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A2-street_light-069",
+    "level": "A2",
+    "register": "street_light",
+    "en": "Scan it again; the price on the shelf was lower.",
+    "ar": "مررها مرة ثانية؛ السعر على الرف كان أقل.",
+    "ar_pron": "سكان يت اجاين; ث بريك ون ث شيلف واس لاوير.",
+    "tags": [
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-070",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-071",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-072",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-073",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-074",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-075",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-076",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-077",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-078",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-079",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-080",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-081",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-082",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-083",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-084",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-085",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-086",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-087",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-088",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-089",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-090",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-091",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-092",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-093",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-094",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-095",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-096",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-097",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-098",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-099",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-100",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-101",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-102",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-103",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-104",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-105",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-106",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-107",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-108",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-109",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-110",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-111",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-112",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-113",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-114",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-115",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-116",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-117",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-118",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-119",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-120",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-121",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-122",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-123",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-124",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-125",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-126",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-127",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-128",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-129",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-130",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-131",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-132",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-133",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-134",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-135",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-136",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-137",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-138",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-139",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-140",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-141",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-142",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-143",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-144",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-145",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-146",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-147",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-148",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-149",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-150",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-151",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-152",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-153",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-154",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-155",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-156",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-157",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-158",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-159",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-160",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-161",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-162",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-163",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-164",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-165",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-166",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-167",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-168",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-169",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-170",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-171",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-172",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is beef mince in?",
+    "ar": "في أي ممر يوجد لحم مفروم؟",
+    "ar_pron": "ويتش ايسل يس بيف مينك ين؟",
+    "tags": [
+      "aisle",
+      "beef mince",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-173",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-174",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-175",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-176",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-177",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "bakery"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-178",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-179",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is chicken breast in?",
+    "ar": "في أي ممر يوجد صدر دجاج؟",
+    "ar_pron": "ويتش ايسل يس تشيكين بريست ين؟",
+    "tags": [
+      "aisle",
+      "chicken breast",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-180",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-181",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-182",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "checkout"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-183",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-184",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is olive oil in?",
+    "ar": "في أي ممر يوجد زيت زيتون؟",
+    "ar_pron": "ويتش ايسل يس وليف ويل ين؟",
+    "tags": [
+      "aisle",
+      "olive oil",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-185",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-186",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "dairy"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-187",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "frozen"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-188",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-189",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is cucumbers in?",
+    "ar": "في أي ممر يوجد خيار؟",
+    "ar_pron": "ويتش ايسل يس كوكومبيرس ين؟",
+    "tags": [
+      "aisle",
+      "cucumbers",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-190",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-191",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-192",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-193",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is tomatoes in?",
+    "ar": "في أي ممر يوجد طماطم؟",
+    "ar_pron": "ويتش ايسل يس توماتويس ين؟",
+    "tags": [
+      "aisle",
+      "tomatoes",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-194",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is milk in?",
+    "ar": "في أي ممر يوجد حليب؟",
+    "ar_pron": "ويتش ايسل يس ميلك ين؟",
+    "tags": [
+      "aisle",
+      "milk",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-195",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B1-neutral-196",
+    "level": "B1",
+    "register": "neutral",
+    "en": "Which aisle is bread in?",
+    "ar": "في أي ممر يوجد خبز؟",
+    "ar_pron": "ويتش ايسل يس بريد ين؟",
+    "tags": [
+      "aisle",
+      "bread",
+      "meat"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-197",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is rice in?",
+    "ar": "في أي ممر يوجد أرز؟",
+    "ar_pron": "ويتش ايسل يس ريك ين؟",
+    "tags": [
+      "aisle",
+      "rice",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A1-neutral-198",
+    "level": "A1",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "household"
+    ]
+  },
+  {
+    "id": "supermarket-A2-neutral-199",
+    "level": "A2",
+    "register": "neutral",
+    "en": "Which aisle is bottled water in?",
+    "ar": "في أي ممر يوجد مياه معبأة؟",
+    "ar_pron": "ويتش ايسل يس بوتتليد واتير ين؟",
+    "tags": [
+      "aisle",
+      "bottled water",
+      "produce"
+    ]
+  },
+  {
+    "id": "supermarket-B2-neutral-200",
+    "level": "B2",
+    "register": "neutral",
+    "en": "Which aisle is eggs in?",
+    "ar": "في أي ممر يوجد بيض؟",
+    "ar_pron": "ويتش ايسل يس يججس ين؟",
+    "tags": [
+      "aisle",
+      "eggs",
+      "household"
+    ]
+  }
+]
