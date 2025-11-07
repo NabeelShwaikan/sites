@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>📊 مهارة جمع البيانات وتنظيمها</title>
+
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style_data_skill.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>📊 مهارة جمع البيانات وتنظيمها</h1>
+      </div>
+      <div class="actions">
+        <a href="..\index.html" class="btn back">🔙 الرجوع للصفحة الرئيسية</a>
+        <select id="themeSelect" class="btn">
+          <option value="fruits">🍎 فواكه</option>
+          <option value="animals">🐶 حيوانات</option>
+          <option value="transport">🚗 نقل</option>
+          <option value="sports">⚽ رياضات</option>
+          <option value="weather">☀️ طقس</option>
+          <option value="school">✏️ مدرسة</option>
+          <option value="shapes">🔷 أشكال</option>
+          <option value="food">🍔 أطعمة</option>
+          <option value="daily">🕒 يوميات</option>
+          <option value="mix">🔀 عشوائي</option>
+        </select>
+        <button id="newRound" class="btn">🔄 جولة جديدة</button>
+        <button id="countNow" class="btn acc">🧮 عدّ العناصر</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="row">
+        <div class="hint">عدّ كم مرّة يظهر كل عنصر، ثم اضغط <b>عدّ العناصر</b> لعرض الجدول والمخطط.</div>
+      </div>
+
+      <div id="tiles" class="characters"></div>
+
+      <div id="results" class="results hidden">
+        <h3>النتيجة</h3>
+        <div class="grid">
+          <div>
+            <h4>جدول التكرارات</h4>
+            <table id="freqTable" class="table"></table>
+          </div>
+          <div>
+            <h4>مخطط الأعمدة</h4>
+            <div id="chart" class="chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="pill">تلميح: يمكنك تغيير نوع البيانات من القائمة بالأعلى 👆</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="audio_data_skill.js"></script>
+  <script src="effects_data_skill.js"></script>
+  <script src="game_data_skill.js"></script>
+</body>
+</html>
