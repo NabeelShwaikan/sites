@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الأنماط والجبر — لعبة الرياضيات</title>
+
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style_patterns_algebra.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+        <h1>الأنماط والجبر</h1>
+      </div>
+      <div class="actions">
+        <button class="btn back" type="button" onclick="window.location.href='../index.html'">🔙 الرجوع للصفحة الرئيسية</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="mode-switch">
+        <button id="btnPattern" class="btn-sm on">🔢 اكتشف النمط</button>
+        <button id="btnAlgebra" class="btn-sm">🧮 قيمة المجهول</button>
+        <button id="btnNew" class="btn-sm acc">🔄 سؤال جديد</button>
+        <button id="btnVoice" class="btn-sm" onclick="toggleVoice()">🔈 صوت: يعمل</button>
+      </div>
+
+      <div class="row msg hint" id="message">اختر الإجابة الصحيحة يا بطل! 🌟</div>
+
+      <!-- منطقة السؤال -->
+      <div id="questionArea" class="question"></div>
+
+      <!-- خيارات الإجابة -->
+      <div id="options" class="options"></div>
+
+      <!-- النتيجة -->
+      <div class="row result">
+        <div class="pill">محاولات: <span id="tries">0</span></div>
+        <div class="pill">سلسلة صحيحة: <span id="streak">0</span></div>
+        <div class="pill">أفضل سلسلة: <span id="best">0</span></div>
+      </div>
+
+      <!-- طبقة المؤثرات -->
+      <div id="confettiLayer" class="confetti"></div>
+      <div id="speechBubble"></div>
+    </div>
+  </div>
+
+  <script src="audio_patterns_algebra.js"></script>
+  <script src="effects_patterns_algebra.js"></script>
+  <script src="game_patterns_algebra.js"></script>
+</body>
+</html>
