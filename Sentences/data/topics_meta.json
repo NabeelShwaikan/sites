@@ -1,0 +1,47 @@
+[
+  {
+    "key": "coffee_shop",
+    "title": "في المطعم — At Restaurant",
+    "file": "coffee_shop.json",
+    "status": "ready",
+    "levels": ["A1", "A2", "B1", "B2"],
+    "registers": ["neutral", "formal", "street_light"],
+    "count": 200
+  },
+  {
+    "key": "supermarket",
+    "title": "في السوبرماركت — Supermarket",
+    "file": "supermarket.json",
+    "status": "ready",
+    "levels": ["A1", "A2", "B1", "B2"],
+    "registers": ["neutral", "formal", "street_light"],
+    "count": 200
+  },
+  {
+    "key": "professional_email",
+    "title": "إيميلات مهنية — Professional Emails",
+    "file": "professional_email.json",
+    "status": "ready",
+    "levels": ["A1", "A2", "B1", "B2"],
+    "registers": ["neutral", "formal", "street_light"],
+    "count": 200
+  },
+  {
+    "key": "hotel",
+    "title": "في الفندق — Hotel",
+    "file": "hotel.json",
+    "status": "ready",
+    "levels": ["A1", "A2", "B1", "B2"],
+    "registers": ["neutral", "formal", "street_light"],
+    "count": 200
+  },
+  {
+    "key": "airport_travel",
+    "title": "المطار والسفر — Airport Travel",
+    "file": "airport_travel.json",
+    "status": "ready",
+    "levels": ["A1", "A2", "B1", "B2"],
+    "registers": ["neutral", "formal", "street_light"],
+    "count": 200
+  }
+]
