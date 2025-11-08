@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مهارة القياس — لعبة الرياضيات</title>
+
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#020617;
+      --panel:#020617;
+      --b:#1f2937;
+      --fg:#e5e7eb;
+      --muted:#a3b2c7;
+      --acc:#22d3ee;
+      --acc2:#0891b2;
+      --good:#22c55e;
+      --bad:#ef4444;
+      --shadow:0 16px 40px rgba(2,6,23,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% -10%,rgba(56,189,248,.16),transparent),
+        radial-gradient(900px 600px at 90% 110%,rgba(34,197,94,.16),transparent),
+        var(--bg);
+      color:var(--fg);
+      font-family:"Cairo",system-ui,Segoe UI,Arial;
+    }
+
+    .wrap{max-width:1100px;margin:24px auto;padding:16px}
+    .topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand h1{margin:0;font-weight:900;font-size:22px}
+    .actions{display:flex;gap:8px;align-items:center}
+
+    .btn,.btn-sm,.back{
+      border:1px solid var(--b);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      color:var(--fg); padding:10px 14px; border-radius:14px; font-weight:800; cursor:pointer;
+      text-decoration:none; display:inline-block;
+    }
+    .btn-sm{padding:8px 12px;border-radius:12px;font-size:13px}
+    .btn:hover,.btn-sm:hover{filter:brightness(1.08)}
+    .btn.acc{border-color:#22c55e; box-shadow:0 0 12px rgba(34,197,94,.35)}
+    .back{border-color:#f59e0b; box-shadow:0 0 12px rgba(245,158,11,.3)}
+
+    .stage{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+      border:1px solid var(--b); border-radius:20px; box-shadow:var(--shadow);
+      padding:18px; min-height:560px; display:grid; grid-template-rows:auto auto auto 1fr; gap:14px; overflow:hidden
+    }
+
+    .mode-main{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .mode-main .on{outline:2px solid var(--acc);}
+    .row{display:flex;align-items:center;gap:10px}
+    .msg{justify-content:center;text-align:center}
+    .msg.hint{color:var(--muted);font-weight:700}
+    .msg.ok{color:var(--good);font-weight:900}
+    .msg.bad{color:var(--bad);font-weight:900}
+
+    .pill{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid var(--b);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px
+    }
+    .result{justify-content:center;gap:8px;flex-wrap:wrap}
+
+    .question{
+      display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;
+      min-height:240px; text-align:center; font-weight:900;
+    }
+
+    .scene{
+      background:radial-gradient(circle at 10% 0%,rgba(59,130,246,.20),transparent),
+                 radial-gradient(circle at 80% 120%,rgba(16,185,129,.25),transparent),
+                 rgba(15,23,42,.9);
+      border-radius:20px;
+      padding:16px;
+      border:1px solid rgba(148,163,184,.3);
+      min-width:260px;
+      min-height:180px;
+      position:relative;
+      overflow:hidden;
+    }
+    .scene-title{
+      position:absolute;
+      top:10px;
+      right:14px;
+      font-size:14px;
+      color:#e5e7eb;
+      opacity:.9;
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+
+    .scene-illustration{
+      width:100%;
+      height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .ruler{
+      width:200px;
+      height:20px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#f97316,#facc15);
+      position:relative;
+      box-shadow:0 10px 25px rgba(0,0,0,.35);
+    }
+    .ruler::before{
+      content:'';
+      position:absolute;
+      inset:5px;
+      border-radius:999px;
+      border-top:2px solid rgba(0,0,0,.5);
+      border-bottom:2px solid rgba(0,0,0,.5);
+      opacity:.65;
+    }
+
+    .cup{
+      width:70px;
+      height:90px;
+      border-radius:0 0 18px 18px;
+      border:2px solid rgba(148,163,184,.85);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,.5);
+    }
+    .cup::after{
+      content:'';
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:55%;
+      background:linear-gradient(180deg,#22c55e,#15803d);
+    }
+
+    .box-weight{
+      width:80px;
+      height:60px;
+      border-radius:14px;
+      background:linear-gradient(180deg,#4b5563,#020617);
+      border:2px solid rgba(148,163,184,.9);
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;
+      font-weight:800;
+      color:#f9fafb;
+      box-shadow:0 12px 30px rgba(0,0,0,.6);
+    }
+
+    .rect-shape{
+      border-radius:10px;
+      border:3px dashed rgba(148,163,184,.9);
+      background:rgba(15,23,42,.7);
+      position:relative;
+      box-shadow:0 10px 24px rgba(0,0,0,.4);
+    }
+    .rect-label{
+      position:absolute;
+      font-size:13px;
+      color:#e5e7eb;
+      padding:2px 6px;
+      border-radius:999px;
+      background:rgba(15,23,42,.75);
+      border:1px solid rgba(148,163,184,.6);
+    }
+    .rect-label.bottom{
+      left:50%; transform:translateX(-50%);
+      bottom:-22px;
+    }
+    .rect-label.right{
+      right:-26px; top:50%; transform:translateY(-50%);
+      writing-mode:vertical-rl;
+    }
+
+    .options{
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:center; align-items:center;
+    }
+    .opt{
+      border:none; background:none; padding:0; cursor:pointer;
+    }
+    .opt .box{
+      min-width:130px; height:86px; border-radius:18px; border:1px solid var(--b);
+      background:linear-gradient(180deg,#1d4ed8,#1e2937);
+      color:#fff; font-weight:900; font-size:22px;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 12px 34px rgba(0,0,0,.28);
+      transition: transform .12s ease;
+      padding:6px;
+      text-align:center;
+    }
+    .opt:hover .box{ transform: translateY(-2px) }
+    .opt.c2 .box{background:linear-gradient(180deg,#16a34a,#1e2937)}
+    .opt.c3 .box{background:linear-gradient(180deg,#f59e0b,#1e2937)}
+    .opt.c4 .box{background:linear-gradient(180deg,#9333ea,#1e2937)}
+    .opt.c5 .box{background:linear-gradient(180deg,#06b6d4,#1e2937)}
+
+    .badge{font-size:14px;color:var(--muted);font-weight:700}
+
+    #confettiLayer{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:10}
+
+    @keyframes pop {
+      0%{ transform: scale(.6); opacity:.0 }
+      100%{ transform: scale(1); opacity:1 }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+        <h1>مهارة القياس (الطول · الكتلة · السعة · المحيط · المساحة)</h1>
+      </div>
+      <div class="actions">
+        <button class="btn back" type="button" onclick="window.location.href='./index.html'">🔙 الرجوع للصفحة الرئيسية</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="mode-main">
+        <button id="tabUnits"   class="btn-sm on">📏 اختيار الوحدة المناسبة</button>
+        <button id="tabConvert" class="btn-sm">🔁 التحويل بين الوحدات</button>
+        <button id="tabArea"    class="btn-sm">🟦 المحيط والمساحة</button>
+        <button id="btnNew"     class="btn-sm acc">🔄 سؤال جديد</button>
+        <button id="btnDiff"    class="btn-sm">🎚 مستوى الصعوبة: سهل</button>
+        <button id="btnVoice"   class="btn-sm" onclick="toggleVoice()">🔈 صوت: يعمل</button>
+      </div>
+
+      <div class="row msg hint" id="message">اختر نوع النشاط ثم أجب عن سؤال القياس يا بطل! 🌟</div>
+
+      <!-- السؤال -->
+      <div id="questionArea" class="question"></div>
+
+      <!-- الخيارات -->
+      <div id="options" class="options"></div>
+
+      <!-- النتيجة -->
+      <div class="row result">
+        <div class="pill">السؤال رقم: <span id="qCount">0</span></div>
+        <div class="pill">محاولات: <span id="tries">0</span></div>
+        <div class="pill">سلسلة صحيحة: <span id="streak">0</span></div>
+        <div class="pill">أفضل سلسلة: <span id="best">0</span></div>
+      </div>
+
+      <div id="confettiLayer"></div>
+    </div>
+  </div>
+
+  <script>
+    /************ حالة عامة ************/
+    let mode = 'units'; // units | convert | area
+    let voiceOn = true;
+    let currentAnswer = null;
+    let tries = 0, streak = 0, best = 0;
+    let difficulty = 1; // 1 سهل - 2 متوسط - 3 متقدم
+    let qCount = 0;
+
+    const msgEl   = document.getElementById('message');
+    const qArea   = document.getElementById('questionArea');
+    const optsEl  = document.getElementById('options');
+    const btnNew  = document.getElementById('btnNew');
+    const btnVoice= document.getElementById('btnVoice');
+    const btnDiff = document.getElementById('btnDiff');
+    const triesEl = document.getElementById('tries');
+    const streakEl= document.getElementById('streak');
+    const bestEl  = document.getElementById('best');
+    const qCountEl= document.getElementById('qCount');
+
+    const tabUnits   = document.getElementById('tabUnits');
+    const tabConvert = document.getElementById('tabConvert');
+    const tabArea    = document.getElementById('tabArea');
+
+    /************ أدوات عامة ************/
+    function randInt(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+    function pick(arr){ return arr[Math.floor(Math.random()*(arr.length))]; }
+    function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+    function colorClass(i){ return ['c1','c2','c3','c4','c5'][i%5]; }
+
+    function updateDifficultyLabel(){
+      const text = difficulty===1 ? 'سهل' : difficulty===2 ? 'متوسط' : 'متقدم';
+      btnDiff.textContent = '🎚 مستوى الصعوبة: ' + text;
+    }
+
+    function cycleDifficulty(){
+      difficulty = difficulty===1 ? 2 : difficulty===2 ? 3 : 1;
+      streak = 0;
+      streakEl.textContent = '0';
+      updateDifficultyLabel();
+      newQuestion();
+    }
+    btnDiff.onclick = cycleDifficulty;
+
+    /************ صوت عربي بدون قراءة الإيموجي ************/
+    let __arVoice = null;
+    function __pickArabicVoice(){
+      const voices = window.speechSynthesis?.getVoices?.() || [];
+      return voices.find(v => v.lang?.toLowerCase().startsWith('ar'))
+          || voices.find(v => /ar|sa|eg|ma|ae|jo|tn/i.test(v.lang||'')) || null;
+    }
+    function __stripEmojiAndSymbols(s){
+      let t = String(s);
+      t = t.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+      t = t.replace(/[\u200D\uFE0F]/g, '');
+      t = t.replace(/[^ \u0600-\u06FF0-9\.\!\?،؟\-]/g, '');
+      t = t.replace(/^[^\u0600-\u06FF0-9]+/, '');
+      t = t.replace(/\s{2,}/g, ' ').trim();
+      return t;
+    }
+    function __voiceTune(u, tone){
+      if(tone === 'ok'){ u.rate = 1.05; u.pitch = 1.05; u.volume = 1.0; }
+      else if(tone === 'bad'){ u.rate = 0.95; u.pitch = 0.9; u.volume = 0.95; }
+    }
+    function speak(msg, tone){
+      try{
+        if(!voiceOn || !window.speechSynthesis) return;
+        const t = __stripEmojiAndSymbols(msg);
+        if(!t) return;
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = 'ar';
+        if(!__arVoice){
+          __arVoice = __pickArabicVoice();
+          if(!__arVoice){
+            window.speechSynthesis.onvoiceschanged = () => { __arVoice = __pickArabicVoice(); };
+          }
+        }
+        if(__arVoice) u.voice = __arVoice;
+        __voiceTune(u, tone);
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      }catch(e){}
+    }
+    function toggleVoice(){
+      voiceOn = !voiceOn;
+      btnVoice.textContent = voiceOn ? '🔈 صوت: يعمل' : '🔇 صوت: متوقف';
+    }
+
+    function playSuccess(){ try{ new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_84e61fce5c.mp3").play(); }catch(e){} }
+    function playClickBad(){ try{ const a=new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_1b7a1c4f8a.mp3"); a.volume=.8; a.play(); }catch(e){} }
+
+    function confettiOnce(){
+      const layer = document.getElementById('confettiLayer');
+      for(let i=0;i<18;i++){
+        const c = document.createElement('i');
+        c.style.position='fixed';
+        c.style.left = Math.random()*100 + '%';
+        c.style.top  = '-20px';
+        c.style.width='8px'; c.style.height='14px';
+        c.style.background='hsl(' + (Math.random()*360) + ',90%,60%)';
+        c.style.borderRadius='2px';
+        c.style.transform='rotate(' + (Math.random()*180) + 'deg)';
+        c.style.opacity='0.9';
+        c.style.transition='transform 2s linear, top 2s linear, opacity 2.1s ease-out';
+        layer.appendChild(c);
+        const endTop = 100 + Math.random()*20;
+        requestAnimationFrame(()=>{
+          c.style.top = endTop+'vh';
+          c.style.transform = 'rotate(' + (360+Math.random()*180) + 'deg)';
+          c.style.opacity='0.1';
+        });
+        setTimeout(()=>c.remove(), 2300+Math.random()*400);
+      }
+    }
+
+    /************ 1) اختيار الوحدة المناسبة ************/
+    const UNIT_SCENARIOS = [
+      // سهل (1) – أشياء قريبة من الطفل
+      {
+        id:'pencil',
+        title:'طول قلم رصاص',
+        sceneType:'ruler-short',
+        question:'ما الوحدة الأنسب لقياس طول قلم رصاص؟',
+        correct:'سم',
+        options:['سم','م','كم','ملم'],
+        level:1
+      },
+      {
+        id:'notebook',
+        title:'عرض دفتر',
+        sceneType:'ruler-short',
+        question:'ما الوحدة الأنسب لقياس عرض دفتر؟',
+        correct:'سم',
+        options:['سم','م','كم','ملم'],
+        level:1
+      },
+      {
+        id:'height',
+        title:'طول طالب',
+        sceneType:'ruler-human',
+        question:'ما الوحدة الأنسب لقياس طول طالب؟',
+        correct:'م',
+        options:['سم','م','كم','ملم'],
+        level:1
+      },
+      {
+        id:'class-door',
+        title:'ارتفاع باب الصف',
+        sceneType:'ruler-human',
+        question:'ما الوحدة الأنسب لقياس ارتفاع باب الصف؟',
+        correct:'م',
+        options:['م','سم','كم','ملم'],
+        level:1
+      },
+      {
+        id:'sugar',
+        title:'كتلة كيس سكر صغير',
+        sceneType:'box-small',
+        question:'ما الوحدة الأنسب لقياس كتلة كيس سكر صغير؟',
+        correct:'جم',
+        options:['جم','كجم','مل','سم'],
+        level:1
+      },
+      {
+        id:'apple',
+        title:'كتلة تفاحة',
+        sceneType:'box-small',
+        question:'ما الوحدة الأنسب لقياس كتلة تفاحة؟',
+        correct:'جم',
+        options:['جم','كجم','سم','مل'],
+        level:1
+      },
+      {
+        id:'water',
+        title:'سعة كوب ماء',
+        sceneType:'cup',
+        question:'ما الوحدة الأنسب لقياس كمية الماء في كوب؟',
+        correct:'مل',
+        options:['مل','ل','سم³','كجم'],
+        level:1
+      },
+      {
+        id:'medicine',
+        title:'ملعقة دواء سائل',
+        sceneType:'cup',
+        question:'ما الوحدة الأنسب لقياس كمية دواء في ملعقة؟',
+        correct:'مل',
+        options:['مل','ل','جم','كجم'],
+        level:1
+      },
+
+      // متوسط (2) – أشياء أكبر
+      {
+        id:'road',
+        title:'طول طريق بين مدينتين',
+        sceneType:'ruler-long',
+        question:'ما الوحدة الأنسب لقياس طول طريق بين مدينتين؟',
+        correct:'كم',
+        options:['كم','م','سم','ملم'],
+        level:2
+      },
+      {
+        id:'playground',
+        title:'طول ملعب كرة قدم',
+        sceneType:'ruler-long',
+        question:'ما الوحدة الأنسب لقياس طول ملعب كرة قدم؟',
+        correct:'م',
+        options:['م','كم','سم','ملم'],
+        level:2
+      },
+      {
+        id:'tank',
+        title:'سعة خزان ماء',
+        sceneType:'tank',
+        question:'ما الوحدة الأنسب لقياس سعة خزان ماء كبير؟',
+        correct:'ل',
+        options:['ل','مل','م³','سم³'],
+        level:2
+      },
+      {
+        id:'pool',
+        title:'سعة مسبح صغير',
+        sceneType:'tank',
+        question:'ما الوحدة الأنسب لقياس سعة مسبح صغير؟',
+        correct:'م³',
+        options:['م³','ل','مل','سم³'],
+        level:2
+      },
+      {
+        id:'watermelon',
+        title:'كتلة بطيخة',
+        sceneType:'box',
+        question:'ما الوحدة الأنسب لقياس كتلة بطيخة؟',
+        correct:'كجم',
+        options:['كجم','جم','مل','سم'],
+        level:2
+      },
+      {
+        id:'rice-bag',
+        title:'كتلة كيس أرز كبير',
+        sceneType:'box',
+        question:'ما الوحدة الأنسب لقياس كتلة كيس أرز كبير؟',
+        correct:'كجم',
+        options:['كجم','جم','مل','سم'],
+        level:2
+      },
+
+      // متقدم (3) – الزمن ومواقف مركّبة
+      {
+        id:'time',
+        title:'مدة حصة دراسية',
+        sceneType:'clock',
+        question:'ما الوحدة الأنسب لقياس مدة حصة دراسية؟',
+        correct:'دقيقة',
+        options:['ثانية','دقيقة','ساعة','يوم'],
+        level:3
+      },
+      {
+        id:'trip-time',
+        title:'مدة رحلة سفر بالطائرة',
+        sceneType:'clock',
+        question:'ما الوحدة الأنسب لقياس مدة رحلة سفر بالطائرة؟',
+        correct:'ساعة',
+        options:['ثانية','دقيقة','ساعة','يوم'],
+        level:3
+      },
+      {
+        id:'tv-time',
+        title:'مدة مشاهدة برنامج تلفزيوني',
+        sceneType:'clock',
+        question:'ما الوحدة الأنسب لقياس مدة برنامج تلفزيوني؟',
+        correct:'دقيقة',
+        options:['ثانية','دقيقة','ساعة','يوم'],
+        level:3
+      }
+    ];
+
+    function sceneIllustrationHTML(type){
+      if(type==='cup'){
+        return '<div class="scene-illustration"><div class="cup"></div></div>';
+      }
+      if(type==='box' || type==='box-small'){
+        return (
+          '<div class="scene-illustration">' +
+            '<div class="box-weight">' + (type==='box' ? 'kg' : 'g') + '</div>' +
+          '</div>'
+        );
+      }
+      if(type==='ruler-long'){
+        return '<div class="scene-illustration"><div class="ruler" style="width:220px;"></div></div>';
+      }
+      if(type==='ruler-short'){
+        return '<div class="scene-illustration"><div class="ruler" style="width:140px;"></div></div>';
+      }
+      if(type==='ruler-human'){
+        return '' +
+        '<div class="scene-illustration" style="gap:18px;">' +
+          '<div style="width:40px;height:110px;border-radius:18px;background:linear-gradient(180deg,#4b5563,#020617);position:relative;box-shadow:0 10px 24px rgba(0,0,0,.5);">' +
+            '<div style="width:30px;height:30px;border-radius:999px;background:#eab308;position:absolute;top:-20px;left:50%;transform:translateX(-50%);"></div>' +
+          '</div>' +
+          '<div class="ruler" style="width:120px;"></div>' +
+        '</div>';
+      }
+      if(type==='tank'){
+        return '' +
+        '<div class="scene-illustration">' +
+          '<div style="width:150px;height:90px;border-radius:20px 20px 10px 10px;border:2px solid rgba(148,163,184,.9);position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.6);">' +
+            '<div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(180deg,#0ea5e9,#0369a1);"></div>' +
+          '</div>' +
+        '</div>';
+      }
+      if(type==='clock'){
+        return '' +
+        '<div class="scene-illustration">' +
+          '<div style="width:90px;height:90px;border-radius:999px;border:3px solid rgba(148,163,184,.9);position:relative;background:#020617;box-shadow:0 10px 28px rgba(0,0,0,.6);">' +
+            '<div style="position:absolute;left:50%;top:50%;width:6px;height:32px;background:#e5e7eb;transform-origin:50% 90%;transform:translate(-50%,-90%) rotate(10deg);border-radius:999px;"></div>' +
+            '<div style="position:absolute;left:50%;top:50%;width:6px;height:22px;background:#22c55e;transform-origin:50% 90%;transform:translate(-50%,-90%) rotate(-40deg);border-radius:999px;"></div>' +
+            '<div style="position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:999px;background:#f97316;transform:translate(-50%,-50%);"></div>' +
+          '</div>' +
+        '</div>';
+      }
+      return '<div class="scene-illustration"><div class="ruler"></div></div>';
+    }
+
+    function renderUnitsQuestion(){
+      const eligible = UNIT_SCENARIOS.filter(s => s.level === difficulty);
+      const pool = eligible.length ? eligible : UNIT_SCENARIOS;
+      const sc = pick(pool);
+      currentAnswer = sc.correct;
+
+      qArea.innerHTML =
+        '<div class="scene">' +
+          '<div class="scene-title">' +
+            '<span>🧭 ' + sc.title + '</span>' +
+          '</div>' +
+          sceneIllustrationHTML(sc.sceneType) +
+          '<div class="badge" style="margin-top:6px">' + sc.question + '</div>' +
+        '</div>';
+
+      const opts = shuffle(sc.options.slice());
+      optsEl.innerHTML = '';
+      opts.forEach((txt,i)=>{
+        const btn = document.createElement('button');
+        btn.className = 'opt ' + colorClass(i);
+        btn.innerHTML = '<div class="box">' + txt + '</div>';
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent='اختر وحدة القياس الأنسب لهذا الموقف.';
+    }
+
+    /************ 2) التحويل بين الوحدات ************/
+    function renderConvertQuestion(){
+      const typesEasy   = ['m_cm','kg_g','L_mL'];
+      const typesMedium = ['m_cm','cm_m','kg_g','g_kg','L_mL','mL_L','km_m'];
+      const typesHard   = ['m_cm','cm_m','kg_g','g_kg','L_mL','mL_L','km_m','m_km'];
+
+      let types;
+      if(difficulty===1) types = typesEasy;
+      else if(difficulty===2) types = typesMedium;
+      else types = typesHard;
+
+      const t = pick(types);
+
+      let questionText = '';
+      let correctValue = '';
+      let baseNum = 0;
+
+      if(t==='m_cm'){
+        baseNum = difficulty===1 ? randInt(1,9) : difficulty===2 ? randInt(2,15) : randInt(5,30);
+        correctValue = String(baseNum*100);
+        questionText = 'حوّل ' + baseNum + ' م إلى سنتيمتر:';
+      }else if(t==='cm_m'){
+        baseNum = difficulty===1 ? randInt(1,9) : difficulty===2 ? randInt(10,20) : randInt(15,40);
+        const cm = baseNum*100;
+        correctValue = String(baseNum);
+        questionText = 'حوّل ' + cm + ' سم إلى متر:';
+      }else if(t==='km_m'){
+        baseNum = difficulty===1 ? randInt(1,5) : difficulty===2 ? randInt(2,15) : randInt(5,25);
+        correctValue = String(baseNum*1000);
+        questionText = 'حوّل ' + baseNum + ' كم إلى متر:';
+      }else if(t==='m_km'){
+        baseNum = difficulty===1 ? randInt(1,5) : difficulty===2 ? randInt(6,15) : randInt(10,30);
+        const m = baseNum*1000;
+        correctValue = String(baseNum);
+        questionText = 'حوّل ' + m + ' م إلى كيلومتر:';
+      }else if(t==='L_mL'){
+        baseNum = difficulty===1 ? randInt(1,9) : difficulty===2 ? randInt(2,15) : randInt(5,25);
+        correctValue = String(baseNum*1000);
+        questionText = 'حوّل ' + baseNum + ' ل إلى ملليلتر:';
+      }else if(t==='mL_L'){
+        baseNum = difficulty===1 ? randInt(1,9) : difficulty===2 ? randInt(10,20) : randInt(15,40);
+        const mL = baseNum*1000;
+        correctValue = String(baseNum);
+        questionText = 'حوّل ' + mL + ' مل إلى لتر:';
+      }else if(t==='kg_g'){
+        baseNum = difficulty===1 ? randInt(1,9) : difficulty===2 ? randInt(2,15) : randInt(5,30);
+        correctValue = String(baseNum*1000);
+        questionText = 'حوّل ' + baseNum + ' كجم إلى جرام:';
+      }else if(t==='g_kg'){
+        baseNum = difficulty===1 ? randInt(1,9) : difficulty===2 ? randInt(10,25) : randInt(20,40);
+        const g = baseNum*1000;
+        correctValue = String(baseNum);
+        questionText = 'حوّل ' + g + ' جم إلى كيلوجرام:';
+      }
+
+      currentAnswer = correctValue;
+
+      qArea.innerHTML =
+        '<div class="scene">' +
+          '<div class="scene-title">' +
+            '<span>🔁 التحويل بين الوحدات</span>' +
+          '</div>' +
+          '<div class="scene-illustration">' +
+            '<div class="ruler" style="width:180px;"></div>' +
+            '<div class="cup"></div>' +
+          '</div>' +
+          '<div class="badge" style="margin-top:6px">' + questionText + '</div>' +
+        '</div>';
+
+      const opts = new Set([correctValue]);
+      const base = Number(correctValue);
+      while(opts.size<4){
+        let factor = difficulty===1 ? 0.1 : difficulty===2 ? 0.15 : 0.2;
+        let delta = Math.max(1, Math.round(base * factor));
+        let cand = base + pick([-3,-2,-1,1,2,3])*delta;
+        if(cand<=0) cand = Math.abs(cand)+1;
+        opts.add(String(cand));
+      }
+
+      optsEl.innerHTML='';
+      shuffle(Array.from(opts)).forEach((txt,i)=>{
+        const btn = document.createElement('button');
+        btn.className='opt ' + colorClass(i);
+        btn.innerHTML = '<div class="box">' + txt + '</div>';
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent='اختر القيمة الصحيحة بعد التحويل.';
+    }
+
+    /************ 3) المحيط والمساحة ************/
+    const PERIMETER_CONTEXTS = [
+      'محيط حديقة مستطيلة في المنزل.',
+      'محيط ساحة مدرسة.',
+      'محيط ملعب صغير.',
+      'محيط غرفة في البيت.'
+    ];
+    const AREA_CONTEXTS = [
+      'مساحة غرفة الصف.',
+      'مساحة حديقة مستطيلة.',
+      'مساحة لوحة إعلانات.',
+      'مساحة أرض مستطيلة.'
+    ];
+
+    function rectangleShapeHTML(widthUnits, heightUnits){
+      const maxW = 220, maxH = 130;
+      const ratio = Math.max(widthUnits, heightUnits);
+      const w = (widthUnits/ratio)*maxW;
+      const h = (heightUnits/ratio)*maxH;
+
+      return (
+        '<div class="scene-illustration">' +
+          '<div class="rect-shape" style="width:'+w+'px;height:'+h+'px;">' +
+            '<div class="rect-label bottom">'+widthUnits+' سم</div>' +
+            '<div class="rect-label right">'+heightUnits+' سم</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+
+    function renderAreaQuestion(){
+      const isPerimeter = Math.random()<0.5;
+
+      let width, height;
+      if(difficulty===1){
+        width = randInt(2,10);
+        height = Math.random()<0.5 ? width : randInt(2,10);
+      }else if(difficulty===2){
+        width = randInt(4,15);
+        height = Math.random()<0.5 ? width : randInt(4,15);
+      }else{
+        width = randInt(6,25);
+        height = Math.random()<0.5 ? width : randInt(6,25);
+      }
+
+      let correctValue;
+      let titleText;
+      let questionText;
+
+      if(isPerimeter){
+        correctValue = 2*(width+height);
+        titleText = 'محيط المستطيل/المربع';
+        questionText = pick(PERIMETER_CONTEXTS) + ' احسب محيط الشكل بوحدة السنتيمتر.';
+      }else{
+        correctValue = width*height;
+        titleText = 'مساحة المستطيل/المربع';
+        questionText = pick(AREA_CONTEXTS) + ' احسب مساحة الشكل بوحدة سم².';
+      }
+
+      currentAnswer = String(correctValue);
+
+      qArea.innerHTML =
+        '<div class="scene">' +
+          '<div class="scene-title">' +
+            '<span>🟦 ' + titleText + '</span>' +
+          '</div>' +
+          rectangleShapeHTML(width,height) +
+          '<div class="badge" style="margin-top:6px">' + questionText + '</div>' +
+        '</div>';
+
+      const opts = new Set([String(correctValue)]);
+      while(opts.size<4){
+        let deltaBase = difficulty===1 ? 4 : difficulty===2 ? 6 : 8;
+        let cand = correctValue + pick([-3,-2,-1,1,2,3]) * deltaBase;
+        if(cand<=0) cand = Math.abs(cand)+2;
+        opts.add(String(cand));
+      }
+
+      optsEl.innerHTML='';
+      shuffle(Array.from(opts)).forEach((txt,i)=>{
+        const btn = document.createElement('button');
+        btn.className='opt ' + colorClass(i);
+        btn.innerHTML = '<div class="box">' + txt + '</div>';
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent = isPerimeter
+        ? 'اختر القيمة الصحيحة لمحيط الشكل.'
+        : 'اختر القيمة الصحيحة لمساحة الشكل.';
+    }
+
+    /************ اختيار السؤال حسب النمط ************/
+    function render(){
+      if(mode==='units'){
+        renderUnitsQuestion();
+      }else if(mode==='convert'){
+        renderConvertQuestion();
+      }else{
+        renderAreaQuestion();
+      }
+    }
+
+    function newQuestion(){
+      qCount++;
+      qCountEl.textContent = String(qCount);
+      render();
+    }
+    btnNew.onclick = newQuestion;
+
+    // تبديل التبويبات
+    tabUnits.onclick = ()=>{
+      mode='units';
+      tabUnits.classList.add('on');
+      tabConvert.classList.remove('on');
+      tabArea.classList.remove('on');
+      newQuestion();
+    };
+    tabConvert.onclick = ()=>{
+      mode='convert';
+      tabConvert.classList.add('on');
+      tabUnits.classList.remove('on');
+      tabArea.classList.remove('on');
+      newQuestion();
+    };
+    tabArea.onclick = ()=>{
+      mode='area';
+      tabArea.classList.add('on');
+      tabUnits.classList.remove('on');
+      tabConvert.classList.remove('on');
+      newQuestion();
+    };
+
+    /************ التعامل مع اختيار الطالب ************/
+    function onPick(value, btn){
+      tries++; triesEl.textContent = String(tries);
+      if(value===currentAnswer){
+        streak++; if(streak>best){best=streak; bestEl.textContent=String(best);}
+        streakEl.textContent = String(streak);
+
+        msgEl.className='row msg ok';
+        let text;
+        if(mode==='units'){
+          text = 'ممتاز! اخترت وحدة قياس مناسبة.';
+        }else if(mode==='convert'){
+          text = 'رائع! حولت الوحدات بشكل صحيح.';
+        }else{
+          text = 'أحسنت! حسبت المحيط أو المساحة بدقة.';
+        }
+        msgEl.textContent = text;
+        speak(text,'ok');
+        playSuccess();
+        confettiOnce();
+
+        setTimeout(newQuestion, 900);
+      }else{
+        streak=0; streakEl.textContent='0';
+
+        msgEl.className='row msg bad';
+        const text = 'خطأ بسيط، جرّب مرة أخرى.';
+        msgEl.textContent = text;
+        speak(text,'bad');
+        playClickBad();
+        const box = btn.querySelector('.box');
+        if(box){
+          box.style.transform='scale(0.95)';
+          setTimeout(()=>{ box.style.transform=''; },160);
+        }
+      }
+    }
+
+    // تشغيل أول سؤال
+    updateDifficultyLabel();
+    newQuestion();
+  </script>
+</body>
+</html>
