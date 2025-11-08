@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تدريب الضرب العمودي — لعبة الرياضيات</title>
+
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#020617;
+      --panel:#020617;
+      --b:#1f2937;
+      --fg:#e5e7eb;
+      --muted:#a3b2c7;
+      --acc:#22d3ee;
+      --good:#22c55e;
+      --bad:#ef4444;
+      --shadow:0 16px 40px rgba(2,6,23,.4);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% -10%,rgba(56,189,248,.16),transparent),
+        radial-gradient(900px 600px at 90% 110%,rgba(34,197,94,.16),transparent),
+        var(--bg);
+      color:var(--fg);
+      font-family:"Cairo",system-ui,Segoe UI,Arial;
+    }
+
+    .wrap{max-width:1100px;margin:24px auto;padding:16px}
+    .topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand h1{margin:0;font-weight:900;font-size:22px}
+    .actions{display:flex;gap:8px;align-items:center}
+
+    .btn,.btn-sm,.back{
+      border:1px solid var(--b);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      color:var(--fg); padding:10px 14px; border-radius:14px; font-weight:800; cursor:pointer;
+      text-decoration:none; display:inline-block;
+    }
+    .btn-sm{padding:8px 12px;border-radius:12px;font-size:13px}
+    .btn:hover,.btn-sm:hover{filter:brightness(1.08)}
+    .btn.acc{border-color:#22c55e; box-shadow:0 0 12px rgba(34,197,94,.35)}
+    .back{border-color:#f59e0b; box-shadow:0 0 12px rgba(245,158,11,.3)}
+
+    .stage{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+      border:1px solid var(--b); border-radius:20px; box-shadow:var(--shadow);
+      padding:18px; min-height:520px; display:grid; grid-template-rows:auto auto 1fr auto; gap:14px; overflow:hidden
+    }
+
+    .row{display:flex;align-items:center;gap:10px}
+    .msg{justify-content:center;text-align:center}
+    .msg.hint{color:var(--muted);font-weight:700}
+    .msg.ok{color:var(--good);font-weight:900}
+    .msg.bad{color:var(--bad);font-weight:900}
+
+    .chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .pill{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid var(--b);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+    }
+    .result-row{justify-content:center;gap:8px;flex-wrap:wrap}
+
+    .algo-wrapper{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:260px;
+    }
+
+    .algo-card{
+      border-radius:20px;
+      border:1px solid rgba(148,163,184,.4);
+      padding:16px 20px;
+      background:radial-gradient(circle at 0 0,rgba(56,189,248,.12),transparent),
+                 radial-gradient(circle at 100% 100%,rgba(34,197,94,.12),transparent),
+                 rgba(15,23,42,.98);
+      box-shadow:0 18px 45px rgba(0,0,0,.5);
+      min-width:320px;
+      max-width:480px;
+      direction:ltr; /* الأعمدة من اليسار لليمين (الآحاد في أقصى اليمين بصريًا) */
+    }
+
+    .algo-title{
+      font-size:16px;
+      font-weight:800;
+      margin-bottom:6px;
+      display:flex;
+      justify-content:space-between;
+      color:var(--muted);
+    }
+
+    .algo-numbers{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      align-items:flex-end;
+    }
+
+    .col-row{
+      display:flex;
+      gap:6px;
+      justify-content:flex-end;
+    }
+
+    .cell{
+      width:46px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .cell input{
+      width:100%;
+      padding:4px 4px;
+      border-radius:10px;
+      border:1px solid #0f172a;
+      background:#020617;
+      color:var(--fg);
+      text-align:center;
+      font-family:"Cairo",system-ui;
+      font-size:16px;
+    }
+
+    .carry-label{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:2px;
+      text-align:left;
+    }
+
+    .digit-main{
+      font-size:24px;
+      font-weight:900;
+      min-height:32px;
+    }
+
+    /* صف العدد الثاني + علامة الضرب */
+    .multi-row{
+      position:relative;
+      margin-top:4px;
+    }
+    .op-sign{
+      position:absolute;
+      right:-22px; /* مزاحة قليلاً لليمين */
+      top:50%;
+      transform:translateY(-50%);
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .line{
+      border-bottom:2px solid rgba(148,163,184,.7);
+      margin:4px 0 6px;
+    }
+
+    .cell input.correct{
+      border-color:var(--good);
+      box-shadow:0 0 0 1px rgba(34,197,94,.4);
+    }
+    .cell input.wrong{
+      border-color:var(--bad);
+      box-shadow:0 0 0 1px rgba(239,68,68,.35);
+      background:rgba(127,29,29,.4);
+    }
+
+    .hint-small{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+      text-align:right;
+      direction:rtl;
+    }
+
+    /* صف + وخط في نفس عمود × */
+    .sum-row{
+      position:relative;
+      margin:4px 0;
+    }
+    .sum-row .line{
+      margin:0;
+    }
+    .plus-sign{
+      position:absolute;
+      right:-22px; /* نفس إزاحة × تقريبًا */
+      top:50%;
+      transform:translateY(-50%);
+      font-size:20px;
+      font-weight:900;
+    }
+
+    #confettiLayer{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:10}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/>
+          <path d="M8 12h8M12 8v8" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h1>تدريب الضرب العمودي (خطوة بخطوة)</h1>
+      </div>
+      <div class="actions">
+        <button class="btn back" type="button" onclick="window.location.href='./index.html'">🔙 الرجوع للصفحة الرئيسية</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <!-- شريط الخيارات -->
+      <div class="chips">
+        <span class="pill">اختر نمط المسألة:</span>
+        <button id="pat11" class="btn-sm"  type="button">١ × ١</button>
+        <button id="pat21" class="btn-sm acc" type="button">٢ × ١</button>
+        <button id="pat31" class="btn-sm"  type="button">٣ × ١</button>
+        <button id="pat22" class="btn-sm"  type="button">٢ × ٢</button>
+        <button id="pat32" class="btn-sm"  type="button">٣ × ٢</button>
+        <button id="pat33" class="btn-sm"  type="button">٣ × ٣</button>
+        <button id="btnNew" class="btn-sm" type="button">🔄 مسألة جديدة</button>
+        <button id="btnCheck" class="btn-sm" type="button">✅ تحقق من الحل</button>
+      </div>
+
+      <!-- رسالة -->
+      <div id="message" class="row msg hint">
+        ابدأ من خانة الآحاد، واكتب النواتج الجزئية ثم اجمعها في الصف الأخير يا بطل 🌟
+      </div>
+
+      <!-- منطقة الخوارزمية -->
+      <div class="algo-wrapper">
+        <div class="algo-card">
+          <div class="algo-title">
+            <span>الضرب العمودي</span>
+            <span id="infoTag"></span>
+          </div>
+          <div class="carry-label">يمكنك كتابة حمل الجمع فوق الخانات (اختياري — لن يتم تصحيحه)</div>
+
+          <div class="algo-numbers">
+            <!-- صف الحمل فوق الناتج النهائي -->
+            <div id="rowCarry" class="col-row"></div>
+
+            <!-- الصف الأعلى: العدد الأول -->
+            <div id="rowTop" class="col-row"></div>
+
+            <!-- الصف الثاني: العدد الثاني (أرقامه متباعدة) + علامة × مزاحة لليمين -->
+            <div class="multi-row">
+              <div id="rowBottom" class="col-row"></div>
+              <span id="multSign" class="op-sign">×</span>
+            </div>
+
+            <div class="line"></div>
+
+            <!-- صفوف النواتج الجزئية -->
+            <div id="rowP0" class="col-row"></div>
+            <div id="rowP1" class="col-row"></div>
+            <div id="rowP2" class="col-row"></div>
+
+            <!-- صف + وخط (يُخفى في ١×١ و٢×١ و٣×١) -->
+            <div id="sumRow" class="sum-row">
+              <div class="line"></div>
+              <span class="plus-sign">+</span>
+            </div>
+
+            <!-- صف الناتج النهائي (يُخفى في ١×١ و٢×١ و٣×١) -->
+            <div id="rowResult" class="col-row"></div>
+          </div>
+
+          <div class="hint-small">
+            ✏️ في الأنماط ٢×٢ و٣×٢ و٣×٣ يكون عندك صفّان أو ثلاثة من النواتج الجزئية، ثم تجمعها في الصف الأخير. في ١×١ و٢×١ و٣×١ يكفي كتابة الناتج في الصف الجزئي فقط.
+          </div>
+        </div>
+      </div>
+
+      <!-- النتائج -->
+      <div class="row result-row">
+        <div class="pill">عدد المسائل: <span id="qCount">0</span></div>
+        <div class="pill">محاولات: <span id="tries">0</span></div>
+        <div class="pill">سلسلة صحيحة: <span id="streak">0</span></div>
+        <div class="pill">أفضل سلسلة: <span id="best">0</span></div>
+      </div>
+
+      <div id="confettiLayer"></div>
+    </div>
+  </div>
+
+  <script>
+    // نمط المسألة: "11","21","31","22","32","33"
+    let pattern = "21";
+
+    let multiplicand = 0;
+    let multiplier   = 0;
+    let digitsA = [];       // أرقام العدد الأول (يسار -> يمين)
+    let digitsB = [];       // أرقام العدد الثاني (يسار -> يمين)
+
+    let totalDigits = 0;    // عدد الخانات المعروضة للجميع
+    let partialRows = [];   // صفوف النواتج الجزئية [rowIndex][col]
+    let resultDigits = [];  // أرقام الناتج النهائي (يسار -> يمين)
+    let carriesTop   = [];  // نحسبه داخليًا فقط
+
+    let qCount = 0, tries = 0, streak = 0, best = 0;
+
+    const msgEl       = document.getElementById('message');
+    const rowCarry    = document.getElementById('rowCarry');
+    const rowTop      = document.getElementById('rowTop');
+    const rowBottom   = document.getElementById('rowBottom');
+    const rowP0       = document.getElementById('rowP0');
+    const rowP1       = document.getElementById('rowP1');
+    const rowP2       = document.getElementById('rowP2');
+    const rowRes      = document.getElementById('rowResult');
+    const sumRow      = document.getElementById('sumRow');
+    const infoTag     = document.getElementById('infoTag');
+
+    const qCountEl    = document.getElementById('qCount');
+    const triesEl     = document.getElementById('tries');
+    const streakEl    = document.getElementById('streak');
+    const bestEl      = document.getElementById('best');
+
+    const pat11Btn = document.getElementById('pat11');
+    const pat21Btn = document.getElementById('pat21');
+    const pat31Btn = document.getElementById('pat31');
+    const pat22Btn = document.getElementById('pat22');
+    const pat32Btn = document.getElementById('pat32');
+    const pat33Btn = document.getElementById('pat33');
+
+    const btnNew   = document.getElementById('btnNew');
+    const btnCheck = document.getElementById('btnCheck');
+
+    function randInt(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+
+    function playSuccess(){
+      try{
+        const a = new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_84e61fce5c.mp3");
+        a.play();
+      }catch(e){}
+    }
+    function playError(){
+      try{
+        const a = new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_1b7a1c4f8a.mp3");
+        a.volume = 0.8;
+        a.play();
+      }catch(e){}
+    }
+
+    function confettiOnce(){
+      const layer = document.getElementById('confettiLayer');
+      for(let i=0;i<20;i++){
+        const c = document.createElement('i');
+        c.style.position='fixed';
+        c.style.left = Math.random()*100 + '%';
+        c.style.top  = '-20px';
+        c.style.width='8px'; c.style.height='14px';
+        c.style.background=`hsl(${Math.random()*360},90%,60%)`;
+        c.style.borderRadius='2px';
+        c.style.transform=`rotate(${Math.random()*180}deg)`;
+        c.style.opacity='0.9';
+        c.style.transition='transform 2s linear, top 2s linear, opacity 2.1s ease-out';
+        layer.appendChild(c);
+        const endTop = 100 + Math.random()*20;
+        requestAnimationFrame(()=>{
+          c.style.top = endTop+'vh';
+          c.style.transform = `rotate(${360+Math.random()*180}deg)`;
+          c.style.opacity='0.1';
+        });
+        setTimeout(()=>c.remove(), 2300+Math.random()*400);
+      }
+    }
+
+    function setPattern(p){
+      pattern = p;
+      [pat11Btn,pat21Btn,pat31Btn,pat22Btn,pat32Btn,pat33Btn].forEach(btn=>btn.classList.remove('acc'));
+      if(p==="11") pat11Btn.classList.add('acc');
+      else if(p==="21") pat21Btn.classList.add('acc');
+      else if(p==="31") pat31Btn.classList.add('acc');
+      else if(p==="22") pat22Btn.classList.add('acc');
+      else if(p==="32") pat32Btn.classList.add('acc');
+      else if(p==="33") pat33Btn.classList.add('acc');
+      generateExercise();
+    }
+
+    function digitsOf(value, len){
+      const s = String(value);
+      const padded = s.padStart(len, '0');
+      return padded.split('').map(d=>parseInt(d,10));
+    }
+
+    function generateExercise(){
+      let minA,maxA,minB,maxB;
+
+      // حدود الأعداد حسب النمط (٣×٢ بدل ٢×٣)
+      switch(pattern){
+        case "11": // 1×1
+          minA=2;   maxA=9;
+          minB=2;   maxB=9;
+          break;
+        case "21": // 2×1
+          minA=12;  maxA=99;
+          minB=2;   maxB=9;
+          break;
+        case "31": // 3×1
+          minA=100; maxA=999;
+          minB=2;   maxB=9;
+          break;
+        case "22": // 2×2
+          minA=12;  maxA=99;
+          minB=12;  maxB=99;
+          break;
+        case "32": // 3×2
+          minA=100; maxA=999;
+          minB=12;  maxB=99;
+          break;
+        case "33": // 3×3
+          minA=100; maxA=999;
+          minB=100; maxB=999;
+          break;
+        default:
+          minA=12;  maxA=99;
+          minB=2;   maxB=9;
+      }
+
+      multiplicand = randInt(minA,maxA);
+      multiplier   = randInt(minB,maxB);
+
+      digitsA = String(multiplicand).split('');
+      digitsB = String(multiplier).split('');
+
+      const lenA = digitsA.length;
+      const lenB = digitsB.length;
+
+      // عدد الخانات الكلّي
+      totalDigits = lenA + lenB;
+
+      const finalVal = multiplicand * multiplier;
+      resultDigits = digitsOf(finalVal, totalDigits);
+
+      // الصفوف الجزئية
+      partialRows = [];
+      for(let r=0;r<lenB;r++){
+        const digitFromRight = parseInt(digitsB[lenB-1-r],10);
+        const partVal = multiplicand * digitFromRight * Math.pow(10,r);
+        partialRows[r] = digitsOf(partVal, totalDigits);
+      }
+
+      // نحسب الحمل داخليًا فقط (لو حبيت تستخدمه لاحقًا)
+      carriesTop = new Array(totalDigits).fill(0);
+      let carryIn = 0;
+      for(let i=totalDigits-1;i>=0;i--){
+        let sum = carryIn;
+        for(let r=0;r<partialRows.length;r++){
+          sum += partialRows[r][i];
+        }
+        const carryOut = Math.floor(sum/10);
+        if(i>0){
+          carriesTop[i-1] = carryOut;
+        }
+        carryIn = carryOut;
+      }
+
+      renderExercise();
+    }
+
+    function renderExercise(){
+      rowCarry.innerHTML  = '';
+      rowTop.innerHTML    = '';
+      rowBottom.innerHTML = '';
+      rowP0.innerHTML     = '';
+      rowP1.innerHTML     = '';
+      rowP2.innerHTML     = '';
+      rowRes.innerHTML    = '';
+
+      const lenA = digitsA.length;
+      const lenB = digitsB.length;
+
+      const padLeftA = totalDigits - lenA;
+      const padLeftB = totalDigits - lenB;
+
+      // صف الحمل (اختياري، لا يُصحَّح)
+      for(let i=0;i<totalDigits;i++){
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        const inp = document.createElement('input');
+        inp.type = 'text';
+        inp.maxLength = 2;
+        inp.className = 'carry-input';
+        inp.dataset.index = i.toString();
+        cell.appendChild(inp);
+        rowCarry.appendChild(cell);
+      }
+
+      // الصف العلوي: العدد الأول
+      for(let i=0;i<totalDigits;i++){
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        if(i < padLeftA){
+          rowTop.appendChild(cell);
+        }else{
+          const dIndex = i - padLeftA;
+          const span = document.createElement('div');
+          span.className = 'digit-main';
+          span.textContent = digitsA[dIndex];
+          cell.appendChild(span);
+          rowTop.appendChild(cell);
+        }
+      }
+
+      // الصف الثاني: العدد الثاني (متباعد)
+      for(let i=0;i<totalDigits;i++){
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        if(i < padLeftB){
+          rowBottom.appendChild(cell);
+        }else{
+          const dIndex = i - padLeftB;
+          const span = document.createElement('div');
+          span.className = 'digit-main';
+          span.textContent = digitsB[dIndex];
+          cell.appendChild(span);
+          rowBottom.appendChild(cell);
+        }
+      }
+
+      // صفوف النواتج الجزئية
+      const rowsContainers = [rowP0,rowP1,rowP2];
+      for(let r=0;r<rowsContainers.length;r++){
+        const rowDiv = rowsContainers[r];
+        rowDiv.innerHTML = '';
+        if(r >= partialRows.length){
+          rowDiv.style.display = 'none';
+          continue;
+        }
+        rowDiv.style.display = 'flex';
+        for(let i=0;i<totalDigits;i++){
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          const inp = document.createElement('input');
+          inp.type = 'text';
+          inp.maxLength = 2;
+          inp.className = 'par-input';
+          inp.dataset.row = r.toString();
+          inp.dataset.index = i.toString();
+          cell.appendChild(inp);
+          rowDiv.appendChild(cell);
+        }
+      }
+
+      // إذا كان المضروب به من رقم واحد (١×١ أو ٢×١ أو ٣×١):
+      // => لا حاجة لناتج نهائي جديد ولا علامة الجمع
+      if(lenB === 1){
+        sumRow.style.display = 'none';
+        rowRes.style.display = 'none';
+      }else{
+        sumRow.style.display = 'block';
+        rowRes.style.display = 'flex';
+
+        // صف الناتج النهائي
+        for(let i=0;i<totalDigits;i++){
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          const inp = document.createElement('input');
+          inp.type = 'text';
+          inp.maxLength = 2;
+          inp.className = 'res-input';
+          inp.dataset.index = i.toString();
+          cell.appendChild(inp);
+          rowRes.appendChild(cell);
+        }
+      }
+
+      // وصف النمط
+      const descMap = {
+        "11":"عدد من رقم واحد × رقم واحد",
+        "21":"عدد من رقمين × رقم واحد",
+        "31":"عدد من ٣ أرقام × رقم واحد",
+        "22":"عدد من رقمين × عدد من رقمين",
+        "32":"عدد من ٣ أرقام × عدد من رقمين",
+        "33":"عدد من ٣ أرقام × عدد من ٣ أرقام"
+      };
+      infoTag.textContent = descMap[pattern] || '';
+
+      msgEl.className = 'row msg hint';
+      msgEl.textContent = 'املأ النواتج الجزئية في الصفوف، وإذا كان المضروب به أكثر من رقم فاجمعها في الصف الأخير.';
+
+      qCount++;
+      qCountEl.textContent = qCount.toString();
+    }
+
+    function checkExercise(){
+      const parInputs   = Array.from(document.querySelectorAll('.par-input'));
+      const resInputs   = Array.from(document.querySelectorAll('.res-input'));
+
+      [...parInputs, ...resInputs].forEach(inp=>{
+        inp.classList.remove('correct','wrong');
+      });
+
+      let allCorrect = true;
+      const lenB = digitsB.length;
+
+      // التحقق من النواتج الجزئية
+      for(const inp of parInputs){
+        const r = parseInt(inp.dataset.row, 10);
+        const i = parseInt(inp.dataset.index, 10);
+        const expected = partialRows[r][i];
+        const raw = (inp.value || '').trim();
+        if(raw === '' && expected === 0){
+          continue;
+        }
+        const val = parseInt(raw,10);
+        if(isNaN(val) || val !== expected){
+          allCorrect = false;
+          inp.classList.add('wrong');
+        }else{
+          inp.classList.add('correct');
+        }
+      }
+
+      // التحقق من الناتج النهائي فقط إذا lenB>1 (فيه جمع)
+      if(lenB > 1){
+        for(const inp of resInputs){
+          const i = parseInt(inp.dataset.index,10);
+          const expected = resultDigits[i];
+          const raw = (inp.value || '').trim();
+          if(raw === '' && expected === 0 && i === 0){
+            continue;
+          }
+          const val = parseInt(raw,10);
+          if(isNaN(val) || val !== expected){
+            allCorrect = false;
+            inp.classList.add('wrong');
+          }else{
+            inp.classList.add('correct');
+          }
+        }
+      }
+
+      tries++;
+      triesEl.textContent = tries.toString();
+
+      if(allCorrect){
+        streak++;
+        if(streak>best){ best=streak; bestEl.textContent = best.toString(); }
+        streakEl.textContent = streak.toString();
+        msgEl.className = 'row msg ok';
+        msgEl.textContent = lenB === 1
+          ? 'ممتاز! كتبت ناتج الضرب الصحيح 👏'
+          : 'كفو عليك! أتقنت النواتج الجزئية والجمع النهائي 👏';
+        playSuccess();
+        confettiOnce();
+      }else{
+        streak = 0;
+        streakEl.textContent = '0';
+        msgEl.className = 'row msg bad';
+        msgEl.textContent = 'راجع النواتج الجزئية أو الناتج النهائي، وحاول مرة ثانية يا بطل 😊';
+        playError();
+      }
+    }
+
+    // ربط الأزرار
+    pat11Btn.onclick = ()=>setPattern("11");
+    pat21Btn.onclick = ()=>setPattern("21");
+    pat31Btn.onclick = ()=>setPattern("31");
+    pat22Btn.onclick = ()=>setPattern("22");
+    pat32Btn.onclick = ()=>setPattern("32");
+    pat33Btn.onclick = ()=>setPattern("33");
+
+    btnNew.onclick   = ()=>generateExercise();
+    btnCheck.onclick = ()=>checkExercise();
+
+    // أول تشغيل
+    generateExercise();
+  </script>
+</body>
+</html>
