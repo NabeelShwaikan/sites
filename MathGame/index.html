@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لعبة الرياضيات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+        <h1>لعبة الرياضيات<br>د. سليمان نبيل الشويكان</h1>
+      </div>
+      <div class="stats">
+        <div class="pill">المرحلة: <span id="level">1</span></div>
+        <div class="pill">النقاط: <span id="score">0</span></div>
+        <div class="pill">محاولات: <span id="tries">0</span></div>
+        <div class="pill">سلسلة صحيحة: <span id="streak">0</span></div>
+        <div class="pill">أفضل سلسلة: <span id="best">0</span></div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="row msg hint" id="message">اختر الإجابة الصحيحة لمساعدة أصدقائنا! 🌟</div>
+
+      <div class="characters" id="chars"></div>
+      <div class="options" id="options"></div>
+
+      <div class="bar">
+        <div class="chip" onclick="newRound()">🔄 جولة جديدة</div>
+        <div class="chip" onclick="toggleVoice()">🔈 صوت التشجيع</div>
+        <div class="chip" onclick="easyMode = !easyMode; this.textContent = easyMode ? '🟢 وضع سهل' : '🟣 وضع عادي'">🟣 وضع عادي</div>
+        <div class="chip" onclick="document.body.classList.toggle('no-face'); this.textContent=document.body.classList.contains('no-face')?'👀 إظهار الوجوه':'👀 إخفاء الوجوه'">👀 إخفاء الوجوه</div>
+        <div class="chip" onclick="toggleBoost(this)">✨ طور خرافي</div>
+      </div>
+
+      <!-- طبقة الكونفيتي -->
+      <div class="confetti" id="confettiLayer"></div>
+      <div id="speechBubble"></div>
+    </div>
+
+    <!-- أداة المضاعفات العشرية -->
+    <div class="tool" id="decimalsTool">
+      <h3>المضاعفات العشرية (×10 / ×100 / ×1000)</h3>
+      <div class="row">
+        <input id="decIn" type="text" placeholder="اكتب عددًا — مثال: 12.5" />
+        <button class="btn-sm" onclick="decApply(10)">×10</button>
+        <button class="btn-sm" onclick="decApply(100)">×100</button>
+        <button class="btn-sm" onclick="decApply(1000)">×1000</button>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <div class="mini">النتيجة:</div>
+        <div class="out" id="decOut">—</div>
+      </div>
+    </div>
+
+    <!-- مهارات إضافية للطلاب من ٩ إلى ١٢ -->
+    <div class="tool" id="skillsTool">
+      <h3>مهارات إضافية (9-12)</h3>
+      <div class="row">
+
+
+<button class="btn-sm" onclick="showSkillPanel('mul'); generateTablePractice();">✖️ تدريب جدول الضرب</button>
+<button class="btn-sm" onclick="showSkillPanel('place'); generatePlaceValue();">🧱 قيمة المنازل</button>
+<button class="btn-sm" onclick="showSkillPanel('cmp'); generateComparison();">⚖ مقارنة الأعداد</button>
+<button class="btn-sm" type="button" onclick="location.href='column_mul.html'">🧮 تدريب الضرب العمودي</button>
+<button class="btn-sm" type="button" onclick="location.href='probability.html'">🎲 الاحتمالات</button>
+<button class="btn-sm" type="button" onclick="location.href='data_analysis/data_skill.html'">📊 جمع البيانات</button>
+<button class="btn-sm" type="button" onclick="location.href='pattern_algebra/patterns_algebra.html'">🧩 الأنماط والجبر</button>
+<button class="btn-sm" type="button" onclick="location.href='fractions.html'">🍕 الكسور الاعتيادية والعشرية</button>
+<button class="btn-sm" type="button" onclick="location.href='measurement.html'">📏 القياس</button>
+
+      </div>
+      <div class="row" style="margin-top:10px">
+        <div class="mini">السؤال:</div>
+        <div class="out" id="skillQ" style="display:none">—</div>
+      </div>
+      <!-- خيارات متعددة للسؤال إن وُجدت -->
+      <div class="row" id="skillChoices" style="display:none;gap:10px;flex-wrap:wrap"></div>
+      <div class="row" id="skillAnswerRow" style="display:none;margin-top:6px">
+        <div class="mini">الإجابة:</div>
+        <input id="skillA" type="text" style="direction:ltr"/>
+        <button class="btn-sm" onclick="checkSkill()">✅ تحقق</button>
+      </div>
+      <!-- بانِل الحاسبة ضمن أدوات المهارات -->
+      <div class="row" id="calcPanel" style="display:none; gap:10px; flex-wrap:wrap">
+        <input id="calcA" type="text" placeholder="العدد الأول" style="direction:ltr"/>
+        <select id="calcOp">
+          <option value="+">+</option>
+          <option value="-">−</option>
+          <option value="×">×</option>
+          <option value="÷">÷</option>
+        </select>
+        <input id="calcB" type="text" placeholder="العدد الثاني" style="direction:ltr"/>
+        <button class="btn-sm" onclick="calcCompute()">احسب</button>
+        <div class="out" id="calcOut">—</div>
+      </div>
+      <div class="row" style="margin-top:6px">
+        <div class="out" id="skillR" style="display:none">—</div>
+      </div>
+    </div>
+
+    <div class="footer"></div>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="audio.js"></script>
+  <script src="effects.js"></script>
+  <script src="tools.js"></script>
+  <script src="skills.js"></script>
+  <script src="game.js"></script>
+  <script src="tests.js"></script>
+</body>
+</html>

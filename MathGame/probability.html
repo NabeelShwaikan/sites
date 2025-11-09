@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تمارين الاحتمالات</title>
+
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#020617;
+      --panel:#020617;
+      --b:#1f2937;
+      --fg:#e5e7eb;
+      --muted:#a3b2c7;
+      --acc:#22d3ee;
+      --acc2:#6366f1;
+      --good:#22c55e;
+      --bad:#ef4444;
+      --shadow:0 16px 40px rgba(2,6,23,.4);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 15% -10%,rgba(56,189,248,.16),transparent),
+        radial-gradient(900px 600px at 90% 110%,rgba(129,140,248,.16),transparent),
+        var(--bg);
+      color:var(--fg);
+      font-family:"Cairo",system-ui,Segoe UI,Arial;
+    }
+
+    .wrap{max-width:1100px;margin:24px auto;padding:16px}
+    .topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand h1{margin:0;font-weight:900;font-size:22px}
+    .actions{display:flex;gap:8px;align-items:center}
+
+    .btn,.btn-sm,.back{
+      border:1px solid var(--b);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      color:var(--fg); padding:10px 14px; border-radius:14px; font-weight:800; cursor:pointer;
+      text-decoration:none; display:inline-block;
+    }
+    .btn-sm{padding:8px 12px;border-radius:12px;font-size:13px}
+    .btn:hover,.btn-sm:hover{filter:brightness(1.08)}
+    .btn.acc{border-color:var(--acc2); box-shadow:0 0 12px rgba(129,140,248,.35)}
+    .back{border-color:#f59e0b; box-shadow:0 0 12px rgba(245,158,11,.3)}
+
+    .stage{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));
+      border:1px solid var(--b); border-radius:20px; box-shadow:var(--shadow);
+      padding:18px; min-height:560px; display:grid; grid-template-rows:auto auto 1fr auto; gap:14px; overflow:hidden
+    }
+
+    .row{display:flex;align-items:center;gap:10px}
+    .msg{justify-content:center;text-align:center}
+    .msg.hint{color:var(--muted);font-weight:700}
+    .msg.ok{color:var(--good);font-weight:900}
+    .msg.bad{color:var(--bad);font-weight:900}
+
+    .mode-main{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .mode-main .on{outline:2px solid var(--acc);}
+
+    .pill{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid var(--b);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+    }
+    .result-row{justify-content:center;gap:8px;flex-wrap:wrap}
+
+    .question{
+      display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;
+      min-height:240px; text-align:center; font-weight:900; padding:10px;
+    }
+
+    .scenario-box{
+      max-width:650px;
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.5);
+      padding:14px 16px;
+      background:radial-gradient(circle at 0 0,rgba(56,189,248,.12),transparent),
+                 radial-gradient(circle at 100% 100%,rgba(52,211,153,.12),transparent),
+                 rgba(15,23,42,.96);
+      box-shadow:0 16px 40px rgba(15,23,42,.8);
+      font-size:16px;
+      line-height:1.7;
+    }
+    .scenario-title{
+      font-size:15px;
+      font-weight:800;
+      color:var(--muted);
+      margin-bottom:4px;
+      text-align:right;
+    }
+    .scenario-body{
+      font-size:17px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:3px 9px;
+      border-radius:999px;
+      font-size:12px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.5);
+      color:var(--muted);
+    }
+
+    .options{
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:center; align-items:center;
+    }
+    .opt{
+      border:none; background:none; padding:0; cursor:pointer;
+    }
+    .opt .box{
+      min-width:140px; height:78px; border-radius:18px; border:1px solid var(--b);
+      background:linear-gradient(180deg,#1d4ed8,#020617);
+      color:#fff; font-weight:900; font-size:20px;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 12px 34px rgba(0,0,0,.28);
+      transition: transform .12s ease;
+    }
+    .opt:hover .box{ transform: translateY(-2px) }
+    .opt.c2 .box{background:linear-gradient(180deg,#16a34a,#020617)}
+    .opt.c3 .box{background:linear-gradient(180deg,#f59e0b,#020617)}
+    .opt.c4 .box{background:linear-gradient(180deg,#9333ea,#020617)}
+    .opt.c5 .box{background:linear-gradient(180deg,#06b6d4,#020617)}
+
+    .box.small-text{font-size:18px;padding:0 8px;text-align:center;line-height:1.5}
+
+    #confettiLayer{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:10}
+
+    @keyframes pop {
+      0%{ transform: scale(.6); opacity:.0 }
+      100%{ transform: scale(1); opacity:1 }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/>
+          <path d="M8 12h8M12 8v8" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h1>تمارين الاحتمالات</h1>
+      </div>
+      <div class="actions">
+        <button class="btn back" type="button" onclick="window.location.href='./index.html'">
+          🔙 الرجوع للصفحة الرئيسية
+        </button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <!-- تبويبات -->
+      <div>
+        <div class="mode-main">
+          <button id="modeCert" class="btn-sm on">✅ مؤكد / مستحيل / ممكن</button>
+          <button id="modeOut"  class="btn-sm">🎲 عدّ النواتج</button>
+          <button id="modeMore" class="btn-sm">⚖ أيهما أكثر احتمالًا؟</button>
+          <button id="modeFrac" class="btn-sm">📊 الاحتمال ككسر</button>
+          <button id="btnNew"   class="btn-sm acc">🔄 سؤال جديد</button>
+          <button id="btnVoice" class="btn-sm" onclick="toggleVoice()">🔈 صوت: يعمل</button>
+        </div>
+      </div>
+
+      <!-- رسالة -->
+      <div id="message" class="row msg hint">
+        اختر نوع السؤال، ثم جاوب واكتشف أيّ الأحداث أكثر احتمالًا يا بطل 🎲
+      </div>
+
+      <!-- السؤال -->
+      <div id="questionArea" class="question"></div>
+
+      <!-- الخيارات -->
+      <div id="options" class="options"></div>
+
+      <!-- نتائج -->
+      <div class="row result-row">
+        <div class="pill">محاولات: <span id="tries">0</span></div>
+        <div class="pill">سلسلة صحيحة: <span id="streak">0</span></div>
+        <div class="pill">أفضل سلسلة: <span id="best">0</span></div>
+      </div>
+
+      <div id="confettiLayer"></div>
+    </div>
+  </div>
+
+  <script>
+    /************ حالة عامة ************/
+    let mode = 'certainty'; // certainty | outcomes | morelikely | fraction
+    let currentAnswer = null;
+    let tries = 0, streak = 0, best = 0;
+
+    const msgEl   = document.getElementById('message');
+    const qArea   = document.getElementById('questionArea');
+    const optsEl  = document.getElementById('options');
+
+    const triesEl  = document.getElementById('tries');
+    const streakEl = document.getElementById('streak');
+    const bestEl   = document.getElementById('best');
+
+    const btnNew   = document.getElementById('btnNew');
+    const btnVoice = document.getElementById('btnVoice');
+    const modeCert = document.getElementById('modeCert');
+    const modeOut  = document.getElementById('modeOut');
+    const modeMore = document.getElementById('modeMore');
+    const modeFrac = document.getElementById('modeFrac');
+
+    function randInt(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+    function pick(arr){ return arr[Math.floor(Math.random()*(arr.length))+0]; }
+    function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+    function colorClass(i){ return ['c1','c2','c3','c4','c5'][i%5]; }
+
+    /************ صوت (بدون قراءة الإيموجي) ************/
+    let voiceOn = true;
+    let __arVoice = null;
+    function __pickArabicVoice(){
+      const voices = window.speechSynthesis?.getVoices?.() || [];
+      return voices.find(v => v.lang?.toLowerCase().startsWith('ar'))
+          || voices.find(v => /ar|sa|eg|ma|ae|jo|tn/i.test(v.lang||'')) || null;
+    }
+    function __stripEmojiAndSymbols(s){
+      let t = String(s);
+      t = t.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+      t = t.replace(/[\u200D\uFE0F]/g, '');
+      t = t.replace(/[^ \u0600-\u06FF0-9\.\!\?،؟\-]/g, '');
+      t = t.replace(/^[^\u0600-\u06FF0-9]+/, '');
+      t = t.replace(/\s{2,}/g, ' ').trim();
+      return t;
+    }
+    function __voiceTune(u, tone){
+      if(tone === 'ok'){ u.rate = 1.05; u.pitch = 1.05; u.volume = 1.0; }
+      else if(tone === 'bad'){ u.rate = 0.95; u.pitch = 0.9; u.volume = 0.95; }
+    }
+    function speak(msg, tone){
+      try{
+        if(!voiceOn || !window.speechSynthesis) return;
+        const t = __stripEmojiAndSymbols(msg);
+        if(!t) return;
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = 'ar';
+        if(!__arVoice){
+          __arVoice = __pickArabicVoice();
+          if(!__arVoice){
+            window.speechSynthesis.onvoiceschanged = () => { __arVoice = __pickArabicVoice(); };
+          }
+        }
+        if(__arVoice) u.voice = __arVoice;
+        __voiceTune(u, tone);
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      }catch(e){}
+    }
+    function toggleVoice(){
+      voiceOn = !voiceOn;
+      btnVoice.textContent = voiceOn ? '🔈 صوت: يعمل' : '🔇 صوت: متوقف';
+    }
+
+    function playSuccess(){ try{ new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_84e61fce5c.mp3").play(); }catch(e){} }
+    function playError(){ try{ const a=new Audio("https://cdn.pixabay.com/audio/2022/03/15/audio_1b7a1c4f8a.mp3"); a.volume=.8; a.play(); }catch(e){} }
+
+    function confettiOnce(){
+      const layer = document.getElementById('confettiLayer');
+      for(let i=0;i<18;i++){
+        const c = document.createElement('i');
+        c.style.position='fixed';
+        c.style.left = Math.random()*100 + '%';
+        c.style.top  = '-20px';
+        c.style.width='8px'; c.style.height='14px';
+        c.style.background=`hsl(${Math.random()*360},90%,60%)`;
+        c.style.borderRadius='2px';
+        c.style.transform=`rotate(${Math.random()*180}deg)`;
+        c.style.opacity='0.9';
+        c.style.transition='transform 2s linear, top 2s linear, opacity 2.1s ease-out';
+        layer.appendChild(c);
+        const endTop = 100 + Math.random()*20;
+        requestAnimationFrame(()=>{
+          c.style.top = endTop+'vh';
+          c.style.transform = `rotate(${360+Math.random()*180}deg)`;
+          c.style.opacity='0.1';
+        });
+        setTimeout(()=>c.remove(), 2300+Math.random()*400);
+      }
+    }
+
+    /************ توليد أسئلة عشوائية مع تنويع في الصيغة ************/
+
+    // 1) مؤكد / مستحيل / ممكن
+    function makeCertaintyQuestion(){
+      const kind = pick(['bag','die','coin','week']);
+
+      if(kind === 'bag'){
+        let red = randInt(0,5);
+        let blue = randInt(0,5);
+        if(red === 0 && blue === 0){
+          red = 1;
+        }
+        const colorAsk = pick(['حمراء','زرقاء']);
+        const countAsk = colorAsk === 'حمراء' ? red : blue;
+        const countOther = colorAsk === 'حمراء' ? blue : red;
+
+        let answer;
+        if(countAsk === 0){
+          answer = 'مستحيل';
+        }else if(countOther === 0){
+          answer = 'مؤكد';
+        }else{
+          answer = 'ممكن';
+        }
+
+        const text = `في كيس كرات، يوجد ${red} كرات حمراء و${blue} كرات زرقاء. نريد سحب كرة ${colorAsk}. هل هذا الحدث مؤكد أم مستحيل أم ممكن الحدوث؟`;
+
+        return {
+          title:'تجربة: سحب كرة من كيس',
+          text,
+          answer,
+          options:['مؤكد','مستحيل','ممكن']
+        };
+      }
+
+      if(kind === 'die'){
+        const faces = 6;
+        const sub = pick(['greater','inrange','even','odd']);
+        let text, answer;
+
+        if(sub === 'greater'){
+          text = `لدينا مكعب أعداد من ١ إلى ${faces}. نرمي المكعب مرة واحدة. هل من الممكن أن يظهر عدد أكبر من ${faces}؟`;
+          answer = 'مستحيل';
+        }else if(sub === 'inrange'){
+          text = `لدينا مكعب أعداد من ١ إلى ${faces}. نرمي المكعب مرة واحدة. هل من المؤكد أن يكون العدد الظاهر من ١ إلى ${faces}؟`;
+          answer = 'مؤكد';
+        }else if(sub === 'even'){
+          text = `لدينا مكعب أعداد من ١ إلى ${faces}. نرمي المكعب مرة واحدة. هل من الممكن أن يظهر عدد زوجي؟`;
+          answer = 'ممكن';
+        }else{
+          text = `لدينا مكعب أعداد من ١ إلى ${faces}. نرمي المكعب مرة واحدة. هل من الممكن أن يظهر عدد فردي؟`;
+          answer = 'ممكن';
+        }
+
+        return {
+          title:'تجربة: رمي مكعب أعداد',
+          text,
+          answer,
+          options:['مؤكد','مستحيل','ممكن']
+        };
+      }
+
+      if(kind === 'coin'){
+        const sub = pick(['image','twoTimes','edge']);
+        let text, answer;
+
+        if(sub === 'image'){
+          text = 'نرمي قطعة نقد عليها صورة وكتابة. هل من الممكن أن تظهر الصورة عند الرمي؟';
+          answer = 'ممكن';
+        }else if(sub === 'twoTimes'){
+          text = 'نرمي قطعة نقد مرة واحدة. هل من المؤكد أن تظهر الصورة مرتين؟';
+          answer = 'مستحيل';
+        }else{
+          text = 'نرمي قطعة نقد. هل من الممكن أن تستقر القطعة واقفة على الحافة (غير صورة ولا كتابة)؟';
+          answer = 'مستحيل';
+        }
+
+        return {
+          title:'تجربة: رمي قطعة نقد',
+          text,
+          answer,
+          options:['مؤكد','مستحيل','ممكن']
+        };
+      }
+
+      // week
+      const sub = pick(['week-sure','week-weekend']);
+      let text, answer;
+      if(sub === 'week-sure'){
+        text = 'اختارت ندى يومًا عشوائيًا من أيام الأسبوع السبعة. هل من المؤكد أن يكون اليوم المختار أحد أيام الأسبوع؟';
+        answer = 'مؤكد';
+      }else{
+        text = 'اختارت ندى يومًا عشوائيًا من أيام الأسبوع السبعة. هل من الممكن أن يكون اليوم المختار يوم الجمعة؟';
+        answer = 'ممكن';
+      }
+
+      return {
+        title:'تجربة: اختيار يوم من الأسبوع',
+        text,
+        answer,
+        options:['مؤكد','مستحيل','ممكن']
+      };
+    }
+
+    /************ 2) عدّ النواتج الممكنة — 10 صيغ متنوعة ************/
+    function makeOutcomesQuestion(){
+      const scenario = randInt(1,10);
+
+      // 1) مكعب أعداد واحد
+      if(scenario === 1){
+        const faces = randInt(4,10);
+        return {
+          title:'تجربة: رمي مكعب أعداد واحد',
+          text:`لدينا مكعب أعداد مكتوب عليه الأعداد من ١ إلى ${faces}. نرمي المكعب مرة واحدة. ما عدد النواتج الممكنة؟`,
+          answer:String(faces),
+          choices: makeChoicesAround(faces,4)
+        };
+      }
+
+      // 2) دوّارة ألوان
+      if(scenario === 2){
+        const sections = randInt(3,8);
+        return {
+          title:'تجربة: دوّارة ألوان',
+          text:`لدينا دوّارة مقسّمة إلى ${sections} أقسام بألوان مختلفة. عند دورانها مرة واحدة، على كم احتمال مختلف يمكن أن يقع السهم؟`,
+          answer:String(sections),
+          choices: makeChoicesAround(sections,4)
+        };
+      }
+
+      // 3) اختيار حرف من كلمة
+      if(scenario === 3){
+        const words = ['رياضيات','مدرسة','طالب','معلّم','مساء','نجاح','صداقة'];
+        const w = pick(words);
+        const n = w.length;
+        return {
+          title:'تجربة: اختيار حرف من كلمة',
+          text:`اختارت المعلمة حرفًا عشوائيًا من الكلمة (${w}). ما عدد النواتج الممكنة لهذه التجربة؟`,
+          answer:String(n),
+          choices: makeChoicesAround(n,4)
+        };
+      }
+
+      // 4) اختيار يوم من الأسبوع
+      if(scenario === 4){
+        // دايمًا 7 لكن الطالب يتدرّب على الفكرة
+        const correct = 7;
+        return {
+          title:'تجربة: اختيار يوم من الأسبوع',
+          text:'اختار سامر يومًا عشوائيًا من أيام الأسبوع. ما عدد النواتج الممكنة لاختياره؟',
+          answer:String(correct),
+          choices: makeChoicesAround(correct,4)
+        };
+      }
+
+      // 5) اختيار رقم من 0 إلى 9
+      if(scenario === 5){
+        const correct = 10;
+        return {
+          title:'تجربة: اختيار رقم',
+          text:'في كيس بطاقات مرقّمة من ٠ إلى ٩. سُحبت بطاقة واحدة عشوائيًا. ما عدد النواتج الممكنة؟',
+          answer:String(correct),
+          choices: makeChoicesAround(correct,4)
+        };
+      }
+
+      // 6) اختيار طالب من فصل
+      if(scenario === 6){
+        const students = randInt(15,35);
+        return {
+          title:'تجربة: اختيار طالب من الفصل',
+          text:`في فصل دراسي يوجد ${students} طالبًا. اختارت المعلمة طالبًا واحدًا عشوائيًا للإجابة. ما عدد النواتج الممكنة؟`,
+          answer:String(students),
+          choices: makeChoicesAround(students,4)
+        };
+      }
+
+      // 7) سحب بطاقة من مجموعة بطاقات مرقّمة
+      if(scenario === 7){
+        const maxNum = randInt(5,12);
+        return {
+          title:'تجربة: سحب بطاقة مرقّمة',
+          text:`لدينا بطاقات مرقّمة من ١ إلى ${maxNum} موضوعة على الطاولة، تم سحب بطاقة واحدة. ما عدد النواتج الممكنة؟`,
+          answer:String(maxNum),
+          choices: makeChoicesAround(maxNum,4)
+        };
+      }
+
+      // 8) رمي قطعتين نقديتين (صورة/كتابة)
+      if(scenario === 8){
+        const correct = 4; // (صورة,صورة) (صورة,كتابة) (كتابة,صورة) (كتابة,كتابة)
+        return {
+          title:'تجربة: رمي قطعتين نقديتين',
+          text:'تم رمي قطعتين نقديتين في نفس الوقت. كل قطعة لها صورة أو كتابة. ما عدد النواتج الممكنة لظهور الصورتين/الكتابتين؟',
+          answer:String(correct),
+          choices: makeChoicesAround(correct,4)
+        };
+      }
+
+      // 9) رمي مكعبين وجمع الناتج
+      if(scenario === 9){
+        // عدد النواتج الممكنة لمجموع مكعبين من 1 إلى 6 = 11 (من 2 إلى 12)
+        const correct = 11;
+        return {
+          title:'تجربة: رمي مكعبين ثم جمع العددين',
+          text:'تم رمي مكعبي أعداد (١ إلى ٦) ثم جمع العددين الظاهرين. ما عدد القيم المختلفة الممكنة لمجموع العددين؟',
+          answer:String(correct),
+          choices: makeChoicesAround(correct,4)
+        };
+      }
+
+      // 10) اختيار لون من كرات متعددة
+      const colorsCount = randInt(3,6);
+      return {
+        title:'تجربة: اختيار لون من كرات',
+        text:`في صندوق توجد كرات بـ ${colorsCount} ألوان مختلفة. سُحبت كرة واحدة عشوائيًا. ما عدد النواتج الممكنة من ناحية اللون؟`,
+        answer:String(colorsCount),
+        choices: makeChoicesAround(colorsCount,4)
+      };
+    }
+
+    function makeChoicesAround(correct, count){
+      const set = new Set([correct]);
+      while(set.size < count){
+        let delta = pick([-3,-2,-1,1,2,3]);
+        let cand = correct + delta;
+        if(cand < 1) cand = 1;
+        set.add(cand);
+      }
+      return shuffle([...set]);
+    }
+
+    /************ 3) أيهما أكثر احتمالًا؟ ************/
+    function makeMoreLikelyQuestion(){
+      const type = pick(['bag','spinner']);
+
+      if(type === 'bag'){
+        let red = randInt(1,6);
+        let blue = randInt(1,6);
+        const equalChance = Math.random() < 0.35;
+        if(equalChance){
+          const v = randInt(1,6);
+          red = v;
+          blue = v;
+        }else{
+          while(red === blue){
+            red = randInt(1,6);
+            blue = randInt(1,6);
+          }
+        }
+
+        let answer;
+        if(red > blue) answer = 'حمراء';
+        else if(blue > red) answer = 'زرقاء';
+        else answer = 'متساويان';
+
+        const text = `في كيس كرات، يوجد ${red} كرات حمراء و${blue} كرات زرقاء. عند سحب كرة واحدة عشوائيًا، أيّهما أكثر احتمالًا: سحب كرة حمراء أم زرقاء، أم أنهما متساويان؟`;
+
+        return {
+          title:'مقارنة احتمال سحب كرة من كيس',
+          text,
+          answer,
+          options:['حمراء','زرقاء','متساويان']
+        };
+      }
+
+      // spinner
+      let blue = randInt(1,5);
+      let yellow = randInt(1,5);
+      const equalChance2 = Math.random() < 0.3;
+      if(equalChance2){
+        const v = randInt(1,5);
+        blue = v;
+        yellow = v;
+      }else{
+        while(blue === yellow){
+          blue = randInt(1,5);
+          yellow = randInt(1,5);
+        }
+      }
+
+      let answer2;
+      if(blue > yellow) answer2 = 'أزرق';
+      else if(yellow > blue) answer2 = 'أصفر';
+      else answer2 = 'متساويان';
+
+      const text2 = `لدينا دوّارة مقسّمة إلى أجزاء: ${blue} جزء باللون الأزرق و${yellow} جزء باللون الأصفر. عند دوران الدوّارة مرة واحدة، أيّ لون أكثر احتمالًا أن يقع عليه السهم، أم أن الاحتمال متساوٍ؟`;
+
+      return {
+        title:'مقارنة احتمال دوّارة الألوان',
+        text:text2,
+        answer:answer2,
+        options:['أزرق','أصفر','متساويان']
+      };
+    }
+
+    /************ 4) الاحتمال ككسر ************/
+    function makeFractionProbQuestion(){
+      const context = pick(['balls','pens','cards']);
+      const total = randInt(3,10);
+      const target = randInt(1,total-1);
+      const other = total - target;
+
+      let thingTarget, thingOther, title;
+      if(context === 'balls'){
+        title = 'كيس كرات ملوّنة';
+        thingTarget = 'حمراء';
+        thingOther  = 'زرقاء';
+      }else if(context === 'pens'){
+        title = 'علبة أقلام';
+        thingTarget = 'حمراء';
+        thingOther  = 'زرقاء';
+      }else{
+        title = 'بطاقات ملوّنة';
+        thingTarget = 'حمراء';
+        thingOther  = 'خضراء';
+      }
+
+      const answer = `${target}/${total}`;
+      const text = `لدينا ${title}: يوجد ${target} ${context === 'cards' ? 'بطاقات' : 'قطع'} ${thingTarget} و${other} ${thingOther}. ما احتمال اختيار ${context === 'pens' ? 'قلم' : 'واحدة'} ${thingTarget} عشوائيًا؟ عبّر عن الاحتمال على صورة كسر.`;
+
+      const choices = makeFractionChoices(target,total,4);
+
+      return {
+        title:'الاحتمال على صورة كسر',
+        text,
+        answer,
+        choices
+      };
+    }
+
+    function makeFractionChoices(num,den,count){
+      const set = new Set([`${num}/${den}`]);
+      while(set.size < count){
+        let n = num + pick([-2,-1,1,2]);
+        let d = den + pick([-2,-1,1,2]);
+        if(n < 1) n = 1;
+        if(d <= 1) d = 2;
+        if(n > d) [n,d] = [d,n];
+        set.add(`${n}/${d}`);
+      }
+      return shuffle([...set]);
+    }
+
+    /************ رسم السؤال حسب النمط ************/
+
+    function renderCertainty(){
+      const sc = makeCertaintyQuestion();
+      currentAnswer = sc.answer;
+
+      qArea.innerHTML = `
+        <div class="scenario-box">
+          <div class="scenario-title">${sc.title}</div>
+          <div class="scenario-body">${sc.text}</div>
+        </div>
+        <div class="tag">هل الحدث مؤكد أم مستحيل أم ممكن الحدوث؟</div>
+      `;
+
+      optsEl.innerHTML = '';
+      const arr = shuffle([...sc.options]);
+      arr.forEach((txt,i)=>{
+        const btn = document.createElement('button');
+        btn.className = `opt ${colorClass(i)}`;
+        btn.innerHTML = `<div class="box small-text">${txt}</div>`;
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent='اقرأ الموقف جيدًا ثم حدّد هل الحدث مؤكد أو مستحيل أو ممكن. 🤔';
+    }
+
+    function renderOutcomes(){
+      const sc = makeOutcomesQuestion();
+      currentAnswer = sc.answer;
+
+      qArea.innerHTML = `
+        <div class="scenario-box">
+          <div class="scenario-title">${sc.title}</div>
+          <div class="scenario-body">${sc.text}</div>
+        </div>
+        <div class="tag">تذكّر: النواتج الممكنة = جميع ما يمكن أن يحدث في التجربة.</div>
+      `;
+
+      optsEl.innerHTML = '';
+      const arr = shuffle([...sc.choices]);
+      arr.forEach((num,i)=>{
+        const txt = String(num);
+        const btn = document.createElement('button');
+        btn.className = `opt ${colorClass(i)}`;
+        btn.innerHTML = `<div class="box">${txt}</div>`;
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent='عدّ جميع النواتج الممكنة للتجربة، ثم اختر العدد الصحيح.';
+    }
+
+    function renderMoreLikely(){
+      const sc = makeMoreLikelyQuestion();
+      currentAnswer = sc.answer;
+
+      qArea.innerHTML = `
+        <div class="scenario-box">
+          <div class="scenario-title">${sc.title}</div>
+          <div class="scenario-body">${sc.text}</div>
+        </div>
+        <div class="tag">قارن بين عدد النواتج لكل حدث لتعرف أيّهما أكثر احتمالًا.</div>
+      `;
+
+      optsEl.innerHTML = '';
+      const arr = shuffle([...sc.options]);
+      arr.forEach((txt,i)=>{
+        const btn = document.createElement('button');
+        btn.className = `opt ${colorClass(i)}`;
+        btn.innerHTML = `<div class="box small-text">${txt}</div>`;
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent='انظر إلى الأعداد، ثم اختر الحدث الأكثر احتمالًا أو المتساوي.';
+    }
+
+    function renderFractionProb(){
+      const sc = makeFractionProbQuestion();
+      currentAnswer = sc.answer;
+
+      qArea.innerHTML = `
+        <div class="scenario-box">
+          <div class="scenario-title">${sc.title}</div>
+          <div class="scenario-body">${sc.text}</div>
+        </div>
+        <div class="tag">الاحتمال = عدد النواتج المطلوبة / عدد النواتج الكلي.</div>
+      `;
+
+      optsEl.innerHTML = '';
+      const arr = shuffle([...sc.choices]);
+      arr.forEach((txt,i)=>{
+        const btn = document.createElement('button');
+        btn.className = `opt ${colorClass(i)}`;
+        btn.innerHTML = `<div class="box">${txt}</div>`;
+        btn.onclick = ()=>onPick(txt,btn);
+        optsEl.appendChild(btn);
+      });
+
+      msgEl.className='row msg hint';
+      msgEl.textContent='حوّل الموقف إلى كسر: (عدد النواتج المطلوبة) / (كل النواتج).';
+    }
+
+    function render(){
+      if(mode==='certainty') renderCertainty();
+      else if(mode==='outcomes') renderOutcomes();
+      else if(mode==='morelikely') renderMoreLikely();
+      else renderFractionProb();
+    }
+
+    function newQuestion(){
+      render();
+    }
+    btnNew.onclick = newQuestion;
+
+    /************ التعامل مع اختيار الطالب ************/
+    function onPick(value, btn){
+      tries++; triesEl.textContent = tries.toString();
+
+      if(String(value)===String(currentAnswer)){
+        streak++; if(streak>best){best=streak; bestEl.textContent=best.toString();}
+        streakEl.textContent = streak.toString();
+
+        msgEl.className='row msg ok';
+        let text;
+        if(mode==='certainty') text = 'ممتاز! فرّقت بين المؤكد والمستحيل والممكن 👏';
+        else if(mode==='outcomes') text = 'رائع! عدّيت النواتج الممكنة بشكل صحيح 🎲';
+        else if(mode==='morelikely') text = 'أحسنت! عرفت الحدث الأكثر احتمالًا ⚖️';
+        else text = 'شاطر! كتبت الاحتمال على صورة كسر صحيح 📊';
+
+        msgEl.textContent = text;
+        speak(text,'ok');
+        playSuccess();
+        confettiOnce();
+
+        const box = btn.querySelector('.box');
+        box.style.transform='scale(1.05)';
+        setTimeout(()=>{
+          box.style.transform='';
+          newQuestion();
+        },700);
+      }else{
+        streak=0; streakEl.textContent='0';
+        msgEl.className='row msg bad';
+        const text = 'قريبة جدًا! فكّر في الموقف مرة أخرى ثم جرّب من جديد 😊';
+        msgEl.textContent = text;
+        speak(text,'bad');
+        playError();
+
+        const box = btn.querySelector('.box');
+        box.style.transform='scale(0.94)';
+        setTimeout(()=>{ box.style.transform=''; },160);
+      }
+    }
+
+    /************ تبديل الأنماط ************/
+    function setMode(newMode){
+      mode = newMode;
+      [modeCert,modeOut,modeMore,modeFrac].forEach(b=>b.classList.remove('on'));
+      if(mode==='certainty') modeCert.classList.add('on');
+      else if(mode==='outcomes') modeOut.classList.add('on');
+      else if(mode==='morelikely') modeMore.classList.add('on');
+      else modeFrac.classList.add('on');
+
+      if(mode==='certainty'){
+        msgEl.textContent = 'حدّد هل الحدث مؤكد أو مستحيل أو ممكن الحدوث.';
+      }else if(mode==='outcomes'){
+        msgEl.textContent = 'عدّ جميع النواتج الممكنة للتجربة ثم اختر العدد الصحيح.';
+      }else if(mode==='morelikely'){
+        msgEl.textContent = 'قارن بين الأحداث لتعرف أيّها أكثر احتمالًا.';
+      }else{
+        msgEl.textContent = 'حوّل الموقف إلى كسر: عدد النواتج المطلوبة على عدد النواتج الكلية.';
+      }
+      msgEl.className='row msg hint';
+      newQuestion();
+    }
+
+    modeCert.onclick = ()=>setMode('certainty');
+    modeOut.onclick  = ()=>setMode('outcomes');
+    modeMore.onclick = ()=>setMode('morelikely');
+    modeFrac.onclick = ()=>setMode('fraction');
+
+    // أول تشغيل
+    newQuestion();
+  </script>
+</body>
+</html>
