@@ -1,142 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>لعبة الحروف — أسماء، حيوان، نبات…</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <div class="top-bar">
-      <div>
-        <button id="themeToggle" class="secondary" type="button">🌙 وضع ليلي</button>
-      </div>
-      <div>
-        <button id="newMatchBtn" class="secondary" type="button">🔄 ابدأ مباراة جديدة</button>
-      </div>
-    </div>
-
-    <h1>لعبة الحروف الجماعية</h1>
-    <div class="muted">
-      أدخل كود الغرفة نفسه لكل اللاعبين، ثم اضغط “ابدأ جولة جديدة”.<br>
-      تبدأ الجولة فعليًا عند بداية أقرب دقيقة جديدة ⏱️
-    </div>
-
-    <!-- إعدادات اللعبة -->
-    <div class="card">
-      <div class="row" style="margin-bottom: 8px;">
-        <div>
-          <label for="roomCode">كود الغرفة (يتفق عليه اللاعبون)</label>
-          <input id="roomCode" type="text" placeholder="مثال: CLASSA2025" />
-        </div>
-        <div id="roundDurationWrapper">
-          <label for="roundDuration">مدة الجولة (ثوانٍ)</label>
-          <select id="roundDuration">
-            <option value="30">30 ثانية (سريع)</option>
-            <option value="60" selected>60 ثانية (افتراضي)</option>
-            <option value="90">90 ثانية (مريح)</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="center">
-          <button id="startRoundBtn" class="primary" type="button">🚀 ابدأ جولة جديدة</button>
-        </div>
-        <div class="center">
-          <button id="endGameBtn" class="danger" type="button">⛔ إنهاء اللعبة</button>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 8px;">
-        <div class="center small">
-          <span class="badge">رقم الجولة الحالي: <span id="currentRound">0</span></span>
-        </div>
-        <div class="center small">
-          <span class="badge">حروف مُستخدمة: <span id="usedLettersCount">0</span> / 28</span>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 6px;">
-        <div class="center small">
-          <span id="syncInfo" class="pill">في انتظار بدء مباراة…</span>
-        </div>
-        <div class="center small">
-          الوقت الآن في جهازك: <span id="nowTime">--:--:--</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- عرض الحرف والجولة -->
-    <div class="card">
-      <div class="center small" style="margin-bottom: 4px;">
-        بداية الجولة القادمة عند: <span id="scheduledStart">—</span><br>
-        العد التنازلي لبداية الجولة:
-      </div>
-      <div class="center">
-        <span id="preCountdown" class="timer-big timer-green">—</span>
-      </div>
-      <div class="flip-letters" id="flipLetters"> </div>
-
-      <div class="big-letter" id="currentLetter">—</div>
-      <div class="center small" style="margin-top: 4px;">
-        الوقت المتبقي للجولة:
-      </div>
-      <div class="center">
-        <span id="roundCountdown" class="timer-big timer-green">—</span>
-      </div>
-    </div>
-
-    <!-- الحقول والدرجات للجولة الحالية -->
-    <div class="card">
-      <div class="row" style="margin-bottom: 6px;">
-        <div class="box">
-          <span>مجموع هذه الجولة: </span>
-          <strong><span id="roundTotal">0</span> نقطة</strong>
-        </div>
-        <div class="box">
-          <span>المجموع الكلي حتى الآن: </span>
-          <strong><span id="globalTotal">0</span> نقطة</strong>
-        </div>
-      </div>
-
-      <div class="grid-2" id="fieldsContainer">
-        <!-- سيتم إنشاء الحقول ديناميكيًا -->
-      </div>
-
-      <div class="totals-row">
-        <div class="small">
-          <button id="saveRoundBtn" class="secondary" disabled type="button">💾 تسجيل هذه الجولة</button>
-          <span style="margin-right:6px;font-size:0.8rem;color:var(--muted);">
-            بعد انتهاء الوقت، اختر الدرجات (0 / 5 / 10) ثم سجّل الجولة.
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- سجل الجولات -->
-    <div class="card">
-      <div class="row" style="margin-bottom: 4px;">
-        <div><strong>سجل الجولات</strong></div>
-        <div class="small" style="text-align:left;">
-          يمكن إنهاء اللعبة في أي وقت حتى لو لم تُستخدم جميع الأحرف.
-        </div>
-      </div>
-      <div style="max-height: 230px; overflow-y: auto;">
-        <table>
-          <thead>
-            <tr>
-              <th># الجولة</th>
-              <th>الحرف</th>
-              <th>مجموع الجولة</th>
-            </tr>
-          </thead>
-          <tbody id="roundsTableBody">
-            <!-- الصفوف تُضاف هنا -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
