@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لعبة الحروف — V7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="day">
+  <!-- طبقة وميض كاملة الشاشة -->
+  <div id="flashOverlay" class="flash-overlay"></div>
 
+  <div class="page">
+    <header class="top-bar">
+      <div class="title-block">
+        <h1>🎯 لعبة الحروف</h1>
+        <p class="subtitle">نسخة V7 — تزامن + نطق الحرف + عدالة في الدرجات</p>
+      </div>
+      <div class="top-info">
+        <div>الوقت الآن: <span id="nowTime">--:--:--</span></div>
+        <button id="themeToggle" class="ghost-btn">⚡ الثيم: <span id="themeLabel">نهاري</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>إعداد المباراة</h2>
+        <div class="grid-3">
+          <div class="field-group">
+            <label for="roomCode">كود الغرفة (يتفق عليه الجميع):</label>
+            <input id="roomCode" type="text" placeholder="مثال: A1 أو FAMILY2025" />
+            <small>اكتب نفس الكود عند جميع اللاعبين ليظهر لهم نفس الحرف في كل جولة.</small>
+          </div>
+
+          <div class="field-group" id="roundDurationWrapper">
+            <label for="roundDuration">مدة الجولة:</label>
+            <select id="roundDuration">
+              <option value="30">30 ثانية (سريع)</option>
+              <option value="60" selected>60 ثانية (افتراضي)</option>
+              <option value="90">90 ثانية (مريح)</option>
+              <option value="120">120 ثانية (مطوّلة)</option>
+            </select>
+            <small>بعد أول جولة يتم قفل مدة الجولة لبقية المباراة.</small>
+          </div>
+
+          <div class="field-group stats-group">
+            <div>رقم الجولة الحالية: <span id="currentRound">0</span></div>
+            <div>عدد الأحرف المستخدمة: <span id="usedLettersCount">0</span> / 28</div>
+            <div>المجموع الكلي: <span id="globalTotal">0</span> نقطة</div>
+          </div>
+        </div>
+
+        <div class="actions-row">
+          <button id="startRoundBtn" class="primary-btn">🚀 ابدأ جولة جديدة</button>
+          <button id="endGameBtn" class="outline-btn">⏹ إنهاء اللعبة</button>
+          <button id="newMatchBtn" class="danger-btn">🔄 ابدأ مباراة جديدة</button>
+        </div>
+
+        <p class="hint">
+          آلية التزامن: اضغط "ابدأ جولة جديدة"، سيتم ضبط بداية الجولة عند أول دقيقة قادمة (مثل 18:55:00) عند جميع اللاعبين.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>حالة الجولة الحالية</h2>
+        <div class="round-status">
+          <div class="round-box">
+            <div class="label">الحرف الحالي (اضغط لإعادة النطق)</div>
+            <div class="letter-display">
+              <span id="currentLetter" class="big-letter">—</span>
+              <span id="flipLetters" class="flip-letters"></span>
+            </div>
+          </div>
+          <div class="round-box">
+            <div class="label">العد التنازلي لبداية الجولة</div>
+            <div class="timer big" id="preCountdown">—</div>
+            <div class="small">بداية الجولة المجدولة عند: <span id="scheduledStart">—</span></div>
+          </div>
+          <div class="round-box">
+            <div class="label">الوقت المتبقي للجولة</div>
+            <div class="timer big" id="roundCountdown">—</div>
+          </div>
+        </div>
+        <p id="syncInfo" class="sync-info">جاهز… اضغط "ابدأ جولة جديدة" للتحضير للجولة الأولى.</p>
+      </section>
+
+      <section class="panel">
+        <h2>كلمات الجولة</h2>
+        <p class="hint">أثناء الجولة تظهر حقول الكلمات فقط. بعد انتهاء الوقت تختفي الكلمات وتظهر حقول الدرجات (0 / 5 / 10) للتصحيح.</p>
+        <div id="fieldsContainer" class="fields-grid"></div>
+
+        <div class="round-summary">
+          <div>مجموع هذه الجولة: <span id="roundTotal">0</span> نقطة</div>
+          <button id="saveRoundBtn" class="primary-btn" disabled>💾 تسجيل نتيجة الجولة</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>سجل الجولات</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th># الجولة</th>
+                <th>الحرف</th>
+                <th>مجموع الجولة</th>
+              </tr>
+            </thead>
+            <tbody id="roundsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
