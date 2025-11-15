@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الأربعون النووية بشرح الشيخ بن عثيمين رحمه الله</title>
 
+  <!-- خط عربي -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="dark">
+  <div class="app">
+    <!-- الشريط العلوي -->
+    <header class="topbar">
+      <div class="topbar-main">
+        <div class="logo-dot"></div>
+        <div class="title-block">
+          <h1 id="appTitle">الأربعون النووية مع شرحها</h1>
+          <p class="subtitle">
+"<b>هذه الأربعون ينبغي لطالب العلم أن يحفظها، لأنها منتخبة من أحاديث عديدة. وفي أبواب متفرقة، بخلاف غيرها من المؤلفات فلو نظرنا إلى عمدة الأحكام لوجدناها منتخبة؛ لكنها في باب واحد وهو باب الفقه، أما الأربعون النووية فهي في أبواب متفرقة متنوعة. ونحن نستعين بالله تعالى في التعليق عليها. والله الموفّق".   الشيخ بن عثيمين رحمه الله</b>.        </div>
+      </div>
+      <div class="topbar-actions">
+        <button id="themeToggle" class="btn ghost" type="button">☾ / ☀</button>
+        <button id="exportNotesBtn" class="btn secondary" type="button">📤 تصدير التعليقات</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- القائمة الجانبية -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title-row">
+            <span class="sidebar-title">أحاديث الأربعين النووية</span>
+            <span id="progressBadge" class="badge">0 / 0 حديث عليه تعليقات</span>
+          </div>
+          <input id="searchInput" type="search" placeholder="ابحث عن حديث أو كلمة من الشرح..." />
+        </div>
+        <nav id="hadithList" class="hadith-list"></nav>
+      </aside>
+
+      <!-- المحتوى الرئيسي -->
+      <main class="content">
+        <section class="content-inner">
+
+          <!-- لوحتان جنب بعض -->
+          <div class="panels">
+            <!-- لوحة الحديث كاملة (رقم + عنوان + متن + شرح) -->
+            <article class="panel">
+              <!-- رقم الحديث + العنوان داخل نفس الكرت -->
+              <div class="hadith-header-inline">
+                <h2 id="hadithLabel" class="hadith-main-title">اختر حديثًا من القائمة أو من الأزرار</h2>
+<br>
+                <div class="pill" id="positionPill">لم يتم اختيار حديث بعد</div>
+              </div><br>
+              <h3 class="panel-title">متن الحديث</h3>
+              <div id="hadithText" class="panel-body hadith-text">
+                اختر رقم حديث من قائمة الأحاديث أو من الأزرار في لوحة الملاحظات على اليمين لعرض المتن والشرح.
+              </div>
+
+              <hr class="divider" />
+
+              <h3 class="panel-title">شرح الحديث</h3>
+              <div id="explanationText" class="panel-body explanation-text"></div>
+            </article>
+
+            <!-- لوحة الملاحظات + الأزرار الدائرية -->
+            <article class="panel notes-panel">
+
+              <!-- الأزرار الدائرية داخل نفس البانل -->
+              <div id="numbersBar" class="numbers-bar numbers-bar-notes"></div>
+
+              <!-- أزرار السابق / التالي -->
+              <div class="nav-buttons-notes">
+                <button id="prevBtn" class="btn secondary" type="button">السابق</button>
+                <button id="nextBtn" class="btn primary" type="button">التالي</button>
+              </div>
+            <br>  <h3 class="panel-title">تعليقاتي على هذا الحديث</h3>
+
+              <div class="panel-body">
+                <textarea id="noteInput" placeholder="اكتب هنا فوائدك، تأملاتك، أو أسئلتك حول هذا الحديث..."></textarea>
+                <div class="notes-actions">
+                  <button id="saveNoteBtn" class="btn primary" type="button">💾 حفظ الملاحظة</button>
+                  <span id="noteStatus" class="note-status">لم يتم الحفظ بعد.</span>
+                </div>
+                <p class="notes-hint">
+                  ✅ تعليقاتك تُحفظ داخل هذا المتصفح فقط (localStorage)، ويمكنك تصديرها كملف نصي من الزر في الأعلى.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- تحميل البيانات ثم السكربت -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

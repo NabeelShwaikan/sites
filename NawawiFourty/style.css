@@ -1,0 +1,496 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #020617;
+  --bg-alt: #020617;
+  --surface: #020617;
+  --surface-alt: #020617;
+  --border: #1f2937;
+  --accent: #22d3ee;
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  --accent-strong: #06b6d4;
+  --heading: #fbbf24;   /* لون عناوين المربعات */
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --note-bg: #020617;
+}
+
+body[data-theme="light"] {
+  --bg: #f3f4f6;
+  --bg-alt: #e5e7eb;
+  --surface: #ffffff;
+  --surface-alt: #f9fafb;
+  --border: #e5e7eb;
+  --accent: #0ea5e9;
+  --accent-soft: rgba(14, 165, 233, 0.12);
+  --accent-strong: #0369a1;
+  --heading: #b45309;   /* لون العناوين في الوضع الفاتح */
+  --text: #0f172a;
+  --muted: #6b7280;
+  --note-bg: #ffffff;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top right, #172554 0, var(--bg) 42%);
+  color: var(--text);
+}
+
+/* التطبيق */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* الشريط العلوي */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.9rem 1.4rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+body[data-theme="light"] .topbar {
+  background: linear-gradient(135deg, #ffffff, #e5e7eb);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  border-bottom-color: rgba(148, 163, 184, 0.6);
+}
+
+.topbar-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #f97316, #ea580c);
+  box-shadow: 0 0 0 6px rgba(248, 250, 252, 0.03), 0 0 20px rgba(249, 115, 22, 0.7);
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.25rem + 0.3vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* الأزرار */
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.16s ease-out;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #0b1120;
+}
+
+.btn.secondary {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--accent);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+body[data-theme="light"] .btn.secondary {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+/* التخطيط العام */
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 1.4rem 1.4rem;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+  background: var(--surface);
+  border-radius: 1.35rem;
+  border: 1px solid var(--border);
+  padding: 0.85rem 0.9rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sidebar-title {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.badge {
+  font-size: 0.7rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: var(--accent);
+}
+
+#searchInput {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+body[data-theme="light"] #searchInput {
+  background: #ffffff;
+}
+
+#searchInput::placeholder {
+  color: var(--muted);
+}
+
+.hadith-list {
+  margin: 0.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 220px);
+}
+
+.hadith-item {
+  border-radius: 0.9rem;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid transparent;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  transition: all 0.15s ease-out;
+}
+
+body[data-theme="light"] .hadith-item {
+  background: #ffffff;
+  color: var(--muted);
+}
+
+.hadith-item:hover {
+  border-color: rgba(56, 189, 248, 0.8);
+  color: var(--text);
+}
+
+.hadith-item.active {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.hadith-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hadith-index {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.96);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  border: 1px solid rgba(148, 163, 184, 0.85);
+  color: var(--muted);
+}
+
+body[data-theme="light"] .hadith-index {
+  background: #f3f4f6;
+}
+
+/* المحتوى */
+.content {
+  padding-inline-start: 0.2rem;
+  display: flex;
+}
+
+.content-inner {
+  width: 100%;
+  background: var(--surface);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1.1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* عنوان الحديث داخل الكرت */
+.hadith-header-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.hadith-main-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  font-size: 0.72rem;
+  color: var(--accent);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+body[data-theme="light"] .pill {
+  background: #ffffff;
+}
+
+/* أزرار الأرقام (الآن داخل بانل الملاحظات) */
+.numbers-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.numbers-bar-notes {
+  margin-bottom: 0.4rem;
+}
+
+.number-btn {
+  min-width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--muted);
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body[data-theme="light"] .number-btn {
+  background: #ffffff;
+}
+
+.number-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #0b1120;
+  border-color: transparent;
+}
+
+/* أزرار السابق/التالي في بانل الملاحظات */
+.nav-buttons-notes {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+/* اللوحات: حديث أعرض + ملاحظات أضيق */
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0.7rem;
+  margin-top: 0;
+}
+
+.panel {
+  background: var(--surface-alt);
+  border-radius: 1.1rem;
+  border: 1px solid var(--border);
+  padding: 0.7rem 0.85rem 0.85rem;
+  position: relative;
+}
+
+/* بانل الملاحظات: تدرّج يختلف نهار/ليل */
+.notes-panel {
+  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.7) 0, var(--surface-alt) 55%);
+}
+
+body[data-theme="light"] .notes-panel {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25) 0, var(--surface-alt) 55%);
+}
+
+/* عناوين المربعات (متن / شرح / ملاحظتي) */
+.panel-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--heading);
+  font-weight: 800;
+  border-right: 4px solid var(--heading);
+  padding-right: 0.35rem;
+}
+
+/* محتوى اللوحات */
+.panel-body {
+  max-height: calc(100vh - 260px);
+  overflow-y: auto;
+  padding-inline-end: 0.4rem;
+}
+
+.hadith-text,
+.explanation-text {
+  font-size: 0.96rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+
+.hadith-narrator {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hadith-matn {
+  color: var(--text);
+  font-weight: 400000;
+}
+
+.hadith-text {
+  font-weight: 700;
+}
+
+.explanation-text {
+  font-size: 0.9rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+  margin: 0.6rem 0 0.5rem;
+}
+
+/* لوحة الملاحظات */
+#noteInput {
+  width: 100%;
+  min-height: 180px;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  padding: 0.6rem 0.7rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  resize: vertical;
+  background: var(--note-bg);
+  color: var(--text);
+}
+
+#noteInput::placeholder {
+  color: var(--muted);
+}
+
+.notes-actions {
+  margin-top: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.note-status {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.notes-hint {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* استجابة بسيطة */
+@media (max-width: 880px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    order: 2;
+    max-height: 260px;
+  }
+  .content {
+    padding-inline-start: 0;
+  }
+  .panels {
+    grid-template-columns: 1fr;
+  }
+  .panel-body {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
