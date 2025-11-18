@@ -63,7 +63,7 @@ function initModelPage() {
     <h3>كيف تفضّل معالجة النتائج؟</h3>
     <label>
       <input type="radio" name="analysis-mode" value="auto" checked>
-      تحليل ذكي تلقائي (يعتمد على الأوزان ويولّد توصية مبدئية)
+      تحليل ذكي تلقائي (يعتمد على الأوزان ويولّد توصية مبدئية + عرض بصري)
     </label><br>
     <label>
       <input type="radio" name="analysis-mode" value="manual">
@@ -103,11 +103,13 @@ function initModelPage() {
     </div>
   `;
 
-  // ربط حدث استيراد ملف JSON
   const fileInput = document.getElementById('json-file-input');
   if (fileInput) {
     fileInput.addEventListener('change', handleJSONFileImport);
   }
+
+  // إنشاء المودال (النافذة المنبثقة) للتحليل الذكي إذا لم يكن موجوداً
+  ensureAnalysisModal();
 }
 
 function convertBulkToItems(sectionKey) {
@@ -175,15 +177,18 @@ function runAnalysis() {
 
   if (posWeight === 0 && negWeight === 0) {
     resultBox.innerText = "لم يتم إدخال أي نقاط بعد.";
+    // في هذه الحالة لا حاجة لفتح مودال
     return;
   }
 
+  // وضع التحليل اليدوي: يبقى كما هو (لا مودال)
   if (mode === "manual") {
     summary += "تم تلخيص الأوزان. اكتب تحليلك واستنتاجك في الحقل المخصص.\n";
     resultBox.innerText = summary;
     return;
   }
 
+  // تحليل ذكي (مع توصية)
   let msg = "";
   const diff = posWeight - negWeight;
 
@@ -213,7 +218,11 @@ function runAnalysis() {
     }
   }
 
-  resultBox.innerText = summary + msg;
+  const fullText = summary + msg;
+  resultBox.innerText = fullText;
+
+  // فتح المودال مع رسم دائري
+  openAnalysisModal(summary, msg, posWeight, negWeight);
 }
 
 // تنفيذ إجراء الحفظ/الاستيراد/التصدير من القائمة المنسدلة
@@ -256,23 +265,19 @@ function handleJSONFileImport(event) {
     try {
       const data = JSON.parse(e.target.result);
 
-      // التحقق من أن الملف يخص هذا النموذج أو على الأقل نفس النوع
       if (data.modelId && data.modelId !== model.id) {
         alert("ملف JSON يخص نموذجًا مختلفًا عن النموذج الحالي.");
         event.target.value = "";
         return;
       }
 
-      // عنوان المشكلة
       const titleEl = document.getElementById('problem-title');
       if (titleEl && typeof data.problemTitle === "string") {
         titleEl.value = data.problemTitle;
       }
 
-      // النقاط والأوزان
       sectionsItems = data.sectionsItems || {};
 
-      // التأكد من وجود مصفوفة لكل قسم وتعريضها على الشاشة
       model.sections.forEach(sec => {
         if (!sectionsItems[sec.key]) sectionsItems[sec.key] = [];
         renderSectionItems(sec.key);
@@ -283,12 +288,97 @@ function handleJSONFileImport(event) {
       console.error(err);
       alert("تعذر قراءة ملف JSON. تأكد أن الملف صادر من نفس الأداة.");
     } finally {
-      // إعادة تعيين اختيار الملف
       event.target.value = "";
     }
   };
 
   reader.readAsText(file, "utf-8");
+}
+
+/* ========= المودال (النافذة المنبثقة) + الرسم الدائري ========= */
+
+function ensureAnalysisModal() {
+  if (document.getElementById('analysis-modal')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'analysis-modal';
+  modal.className = 'analysis-modal-backdrop';
+  modal.innerHTML = `
+    <div class="analysis-modal-dialog">
+      <div class="analysis-modal-header">
+        <h3>ملخص التحليل الذكي</h3>
+        <button type="button" class="close-btn" onclick="closeAnalysisModal()">✕</button>
+      </div>
+      <div class="analysis-modal-body">
+        <div class="analysis-modal-text">
+          <pre id="modal-summary"></pre>
+          <p id="modal-message" class="modal-message"></p>
+        </div>
+        <div class="analysis-modal-chart">
+          <div id="analysis-pie" class="analysis-pie"></div>
+          <div class="chart-legend">
+            <span><span class="legend-color legend-positive"></span> الجوانب الداعمة / الإيجابية</span>
+            <span><span class="legend-color legend-negative"></span> الجوانب المعطِّلة / السلبية</span>
+          </div>
+          <div class="chart-values">
+            <span id="chart-pos"></span>
+            <span id="chart-neg"></span>
+          </div>
+        </div>
+      </div>
+      <div class="analysis-modal-footer">
+        <button type="button" onclick="closeAnalysisModal()">إغلاق</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.id === 'analysis-modal') {
+      closeAnalysisModal();
+    }
+  });
+}
+
+function openAnalysisModal(summaryText, msg, posWeight, negWeight) {
+  const modal = document.getElementById('analysis-modal');
+  if (!modal) return;
+
+  const total = posWeight + negWeight;
+  let posPercent = 0;
+  let negPercent = 0;
+
+  if (total > 0) {
+    posPercent = Math.round((posWeight / total) * 100);
+    negPercent = 100 - posPercent;
+  }
+
+  const summaryEl = document.getElementById('modal-summary');
+  const msgEl = document.getElementById('modal-message');
+  const pieEl = document.getElementById('analysis-pie');
+  const posLabel = document.getElementById('chart-pos');
+  const negLabel = document.getElementById('chart-neg');
+
+  if (summaryEl) summaryEl.textContent = summaryText.trim();
+  if (msgEl) msgEl.textContent = msg;
+  if (posLabel) posLabel.textContent = `الإيجابي: ${posWeight} (${posPercent}٪)`;
+  if (negLabel) negLabel.textContent = `السلبي: ${negWeight} (${negPercent}٪)`;
+
+if (pieEl) {
+  pieEl.style.background = total > 0
+    ? `conic-gradient(#0ea5e9 0 ${posPercent}%, #ef4444 ${posPercent}% 100%)`
+    : `radial-gradient(circle, rgba(148,163,184,0.5), transparent 60%)`;
+
+  }
+
+  modal.classList.add('show');
+}
+
+function closeAnalysisModal() {
+  const modal = document.getElementById('analysis-modal');
+  if (modal) {
+    modal.classList.remove('show');
+  }
 }
 
 // تعريض الدوال للاستخدام من الـ HTML
@@ -298,5 +388,6 @@ window.removeItem = removeItem;
 window.runAnalysis = runAnalysis;
 window.runIOAction = runIOAction;
 window.handleJSONFileImport = handleJSONFileImport;
+window.closeAnalysisModal = closeAnalysisModal;
 
 document.addEventListener('DOMContentLoaded', initModelPage);
