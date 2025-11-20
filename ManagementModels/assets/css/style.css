@@ -1,1 +1,814 @@
+/* ========== الخط العام ========== */
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;600;700&display=swap');
 
+/* ========== متغيرات الثيم ========== */
+:root {
+  /* ثيم نهاري (بيج + بني + برتقالي) */
+  --bg: #f5eee6;          /* خلفية عامة */
+  --fg: #231815;          /* نص أساسي (بني غامق) */
+  --muted: #7a6a5f;       /* نص ثانوي */
+  --card: #fffaf3;        /* خلفية الكروت / البانلات */
+  --b: #e2d4c4;           /* حدود ناعمة */
+  --acc: #f97316;         /* لون رئيسي (برتقالي) */
+  --acc2: #c2410c;        /* برتقالي أغمق */
+  --chip: #f8efe4;        /* شريحة / خلفيات ثانوية */
+  --radius: 18px;         /* نصف قطر عام */
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08); /* ظل ناعم */
+}
+
+/* ثيم ليلي (أزرق كحلي + أسود + أزرق فاتح) */
+[data-theme="dark"] {
+  --bg: #020617;          /* كحلي داكن جداً */
+  --fg: #e5e7eb;          /* نص فاتح */
+  --muted: #9ca3af;       /* نص ثانوي */
+  --card: #020617;        /* خلفية الكروت داكنة */
+  --b: #1f2937;           /* حدود داكنة */
+  --acc: #38bdf8;         /* أزرق سماوي للأزرار */
+  --acc2: #0ea5e9;        /* أزرق أعمق */
+  --chip: #0b1220;        /* شرائح/خلفيات ثانوية */
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+/* ========== أساس الصفحة ========== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, rgba(248, 244, 237, 0.9), var(--bg));
+  color: var(--fg);
+  direction: rtl;
+  text-align: right;
+  min-height: 100vh;
+  font-family: 'Almarai', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* في الوضع الليلي نخلي الخلفية داكنة أكثر */
+body[data-theme="dark"] {
+  background: radial-gradient(circle at top, #020617, #020617);
+}
+
+/* توحيد الخط على كل العناصر التفاعلية */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ========== غلاف الصفحة ========== */
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* ========== الهيدر / العنوان ========== */
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.9rem;
+  letter-spacing: 0.02em;
+}
+
+.page-header .lead {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* ========== زر تبديل الثيم ========== */
+
+.theme-toggle {
+  position: fixed;
+  inset-inline-end: 16px;
+  inset-block-start: 16px;
+  z-index: 50;
+  border-radius: 999px;
+  border: 1px solid var(--b);
+  background: var(--card);
+  color: var(--fg);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  font-size: 0.85rem;
+}
+
+.theme-toggle span:first-child {
+  font-size: 1.1rem;
+}
+
+.theme-toggle:hover {
+  border-color: var(--acc);
+}
+
+/* ========== شريط الفلاتر (القوائم المنسدلة + البحث) ========== */
+
+.filters-bar {
+  background: var(--card);
+  border: 1px solid var(--b);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+  margin: 20px 0;
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.filter-group label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.filter-group.filter-search {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* عناصر الإدخال في شريط الفلاتر — شكل موحّد للنهار والليل */
+.filters-bar select,
+.filters-bar input[type="search"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 999px;
+  border: 1px solid var(--b);
+  background: var(--card);
+  color: var(--fg);
+  padding-block: 8px;
+  padding-inline-start: 12px;
+  padding-inline-end: 34px;  /* مساحة للسهم */
+  font-size: 0.9rem;
+  line-height: 1.4;
+  min-height: 38px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* سهم القائمة — نفس الشكل في الثيمين، يعتمد على var(--muted) */
+.filters-bar select {
+  background-image:
+    linear-gradient(45deg, var(--muted) 50%, transparent 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+}
+
+/* فوكس */
+.filters-bar select:focus,
+.filters-bar input[type="search"]:focus {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 1px var(--acc);
+  background: var(--card);
+}
+
+/* تخصيص بسيط للنهاري — فقط ألوان أوضح */
+body:not([data-theme="dark"]) .filters-bar select,
+body:not([data-theme="dark"]) .filters-bar input[type="search"] {
+  background: #fffdf8;
+  border-color: #d6c0a6;
+  color: #231815;
+  font-size: 0.95rem;
+}
+
+/* تخصيص بسيط لليلي — نفس الشكل بالضبط، ألوان داكنة */
+body[data-theme="dark"] .filters-bar {
+  background: #020617;
+  border-color: #1f2937;
+}
+
+body[data-theme="dark"] .filters-bar select,
+body[data-theme="dark"] .filters-bar input[type="search"] {
+  background: #020617;
+  border-color: #1f2937;
+  color: var(--fg);
+}
+
+/* placeholder للبحث */
+.filters-bar input[type="search"]::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* للجوال */
+@media (max-width: 640px) {
+  .filters-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-group {
+    width: 100%;
+  }
+}
+
+/* ========== شبكة النماذج في الإندكس ========== */
+
+.models-section {
+  margin-top: 10px;
+}
+
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* بطاقة النموذج — شكل تنفيذي موحّد */
+.model-card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--b);
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  transition: transform .16s ease-out, box-shadow .16s ease-out, border-color .16s;
+}
+
+/* شريط جانبي ملون بسيط */
+.model-card::before {
+  content: "";
+  position: absolute;
+  inset-block: 12px;
+  inset-inline-start: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, var(--acc), var(--acc2));
+  opacity: 0.9;
+}
+
+/* hover */
+.model-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  border-color: var(--acc);
+}
+
+/* في الوضع الليلي نخليها داكنة واضحة فوق الخلفية */
+body[data-theme="dark"] .model-card {
+  background: #020617;
+  border-color: #1f2937;
+}
+
+/* رأس البطاقة */
+.model-card-header h3 {
+  margin: 0 0 2px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+
+.model-card-header .model-en {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* تخصيص بسيط للنهاري */
+body:not([data-theme="dark"]) .model-card-header .model-en {
+  color: #6c5a4a;
+}
+
+/* تعريف النموذج داخل البطاقة */
+.model-desc {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;       /* أربع أسطر للتعريف */
+  -webkit-box-orient: vertical;
+}
+
+/* في النهاري نخلي التعريف أغمق قليلاً */
+body:not([data-theme="dark"]) .model-desc {
+  color: #5b4b3f;
+}
+
+/* إلغاء الفلاتر داخل البطاقات (التصنيفات والفئات) */
+.model-tags,
+.model-audiences {
+  display: none;
+}
+
+/* تذييل البطاقة */
+.model-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.primary-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 14px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  background: linear-gradient(to left, var(--acc), var(--acc2));
+  color: #fff7ed;
+}
+
+.primary-btn:hover {
+  filter: brightness(1.06);
+}
+
+.empty-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* للجوال: نخلي الشبكة عمود واحد */
+@media (max-width: 640px) {
+  .models-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== صفحات النماذج الداخلية ========== */
+
+.model-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 16px 40px;
+}
+
+/* رابط الرجوع */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.86rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.back-link:hover {
+  color: var(--acc);
+}
+
+/* معلومات النموذج */
+#model-info {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--b);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+#model-info h1 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+}
+
+#model-info .sub-en {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+#model-info p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+/* عنوان المشكلة */
+.problem-title-block {
+  margin-bottom: 14px;
+}
+
+.problem-title-block label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.problem-title-block input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--b);
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  background: var(--card);
+  color: var(--fg);
+  outline: none;
+}
+
+.problem-title-block input:focus {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 1px var(--acc);
+}
+
+/* بلوكات الأقسام */
+.section-block {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--b);
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.section-block h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* شارات إيجابي / سلبي */
+.badge-positive,
+.badge-negative {
+  font-size: 0.76rem;
+  border-radius: 999px;
+  padding: 2px 8px;
+  border: 1px solid transparent;
+}
+
+.badge-positive {
+  background: rgba(22, 163, 74, 0.08);
+  border-color: rgba(22, 163, 74, 0.28);
+  color: #166534;
+}
+
+.badge-negative {
+  background: rgba(220, 38, 38, 0.06);
+  border-color: rgba(220, 38, 38, 0.25);
+  color: #b91c1c;
+}
+
+/* حقل الإدخال الجماعي */
+.bulk-input {
+  width: 100%;
+  min-height: 70px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--b);
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--fg);
+  outline: none;
+}
+
+.bulk-input:focus {
+  border-color: var(--acc);
+}
+
+/* عناصر القسم (النقاط) */
+.section-items {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.section-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 6px 8px;
+  background: var(--chip);
+  font-size: 0.86rem;
+}
+
+.section-item .text {
+  flex: 1;
+}
+
+.section-item select {
+  border-radius: 999px;
+  border: 1px solid var(--b);
+  background: var(--card);
+  color: var(--fg);
+  padding: 4px 6px;
+  font-size: 0.78rem;
+}
+
+.section-item button {
+  border-radius: 999px;
+  border: none;
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+  padding: 4px 8px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* أزرار عامة في النموذج */
+.section-block button[type="button"],
+.actions-bar button[type="button"] {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  background: linear-gradient(to left, var(--acc), var(--acc2));
+  color: #fff7ed;
+  margin-top: 4px;
+}
+
+.section-block button[type="button"]:hover,
+.actions-bar button[type="button"]:hover {
+  filter: brightness(1.06);
+}
+
+/* منطقة التحليل */
+#analysis-area {
+  margin-top: 14px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--b);
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  font-size: 0.9rem;
+}
+
+#analysis-area h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+#analysis-area label {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+#manual-box textarea {
+  width: 100%;
+  min-height: 90px;
+  border-radius: 10px;
+  border: 1px solid var(--b);
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.analysis-summary {
+  margin-top: 8px;
+  white-space: pre-wrap;
+  font-size: 0.88rem;
+}
+
+/* شريط الأزرار (تحليل + حفظ/تصدير) */
+.actions-bar {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.actions-bar select {
+  border-radius: 999px;
+  border: 1px solid var(--b);
+  background: var(--card);
+  color: var(--fg);
+  padding: 6px 10px;
+  font-size: 0.84rem;
+}
+
+@media (max-width: 640px) {
+  .model-page {
+    padding-top: 70px;
+  }
+  .actions-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ========== نافذة التحليل الذكي (Modal) + الرسم الدائري ========== */
+
+.analysis-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.analysis-modal-backdrop.show {
+  display: flex;
+}
+
+.analysis-modal-dialog {
+  background: var(--card);
+  color: var(--fg);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.5);
+  max-width: 720px;
+  width: 100%;
+  padding: 18px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--b);
+}
+
+.analysis-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.analysis-modal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.analysis-modal-header .close-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* لون زر الإغلاق في الثيم النهاري (برتقالي) */
+body:not([data-theme="dark"]) .analysis-modal-header .close-btn {
+  color: #f97316;
+}
+
+body:not([data-theme="dark"]) .analysis-modal-header .close-btn:hover {
+  color: #c2410c;
+}
+
+.analysis-modal-header .close-btn:hover {
+  color: var(--fg);
+}
+
+.analysis-modal-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: 16px;
+}
+
+.analysis-modal-text pre {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  background: var(--chip);
+  border-radius: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  direction: rtl;
+}
+
+[data-theme="dark"] .analysis-modal-text pre {
+  background: #020617;
+}
+
+.modal-message {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.analysis-modal-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.analysis-pie {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+  position: relative;
+}
+
+.analysis-pie::after {
+  content: "";
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: var(--card);
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 0.8rem;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+.legend-positive {
+  background: var(--acc);
+}
+
+.legend-negative {
+  background: #ef4444;
+}
+
+.chart-values {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.analysis-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.analysis-modal-footer button {
+  border-radius: 999px;
+  padding: 6px 14px;
+  border: 1px solid var(--b);
+  background: var(--chip);
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+[data-theme="dark"] .analysis-modal-footer button {
+  background: #020617;
+}
+
+/* استجابة للجوال للمودال */
+@media (max-width: 640px) {
+  .analysis-modal-dialog {
+    max-width: 100%;
+  }
+  .analysis-modal-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
