@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دورة OODA</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-model-id="ooda">
+
+<button class="theme-toggle" onclick="toggleTheme()"><span>🌓</span></button>
+
+<main class="model-page">
+  <a href="../index.html" class="back-link">← الرجوع إلى قائمة النماذج</a>
+
+  <section id="model-info" class="model-info"></section>
+  <section id="input-area" class="model-input"></section>
+  <section id="analysis-area" class="model-analysis"></section>
+  <section id="actions" class="model-actions"></section>
+</main>
+
+<script src="../assets/js/models-config.js"></script>
+<script src="../assets/js/page-model.js"></script>
+<script src="../assets/js/storage.js"></script>
+<script src="../assets/js/export.js"></script>
+
+<script>
+  function applySavedTheme() {
+    const saved = localStorage.getItem('decision-theme') || 'light';
+    document.body.dataset.theme = saved === 'dark' ? 'dark' : '';
+  }
+
+  function toggleTheme() {
+    const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.body.dataset.theme = next === 'dark' ? 'dark' : '';
+    localStorage.setItem('decision-theme', next);
+  }
+
+  applySavedTheme();
+</script>
+
+</body>
+</html>
