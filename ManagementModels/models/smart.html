@@ -16,12 +16,22 @@
 <main class="model-page">
   <a href="../index.html" class="back-link">← الرجوع إلى قائمة النماذج</a>
 
+  <!-- يتم تعبئة هذه الأقسام ديناميكياً من models-config.js عبر page-model.js -->
+
+  <!-- معلومات النموذج (الوصف، لمن يناسب، متى يُستخدم...) -->
   <section id="model-info" class="model-info"></section>
+
+  <!-- منطقة إدخال البيانات (الـ 9 حقول لعنصر SMART) -->
   <section id="input-area" class="model-input"></section>
+
+  <!-- التحليل (تحليل ذكي + مساحة تحليلك الشخصي) -->
   <section id="analysis-area" class="model-analysis"></section>
+
+  <!-- الأزرار (حفظ، استيراد، تصدير، تحليل ذكي...) -->
   <section id="actions" class="model-actions"></section>
 </main>
 
+<!-- سكربتات البوابة المشتركة -->
 <script src="../assets/js/models-config.js"></script>
 <script src="../assets/js/page-model.js"></script>
 <script src="../assets/js/storage.js"></script>
@@ -29,23 +39,15 @@
 
 <!-- سكربت الثيم -->
 <script>
-  function applySavedTheme(){
+  function applySavedTheme() {
     const saved = localStorage.getItem('decision-theme') || 'light';
-    if(saved === 'dark'){
-      document.body.dataset.theme = 'dark';
-    }else{
-      document.body.dataset.theme = '';
-    }
+    document.body.dataset.theme = (saved === 'dark') ? 'dark' : '';
   }
 
-  function toggleTheme(){
+  function toggleTheme() {
     const isDark = document.body.dataset.theme === 'dark';
     const next = isDark ? 'light' : 'dark';
-    if(next === 'dark'){
-      document.body.dataset.theme = 'dark';
-    }else{
-      document.body.dataset.theme = '';
-    }
+    document.body.dataset.theme = (next === 'dark') ? 'dark' : '';
     localStorage.setItem('decision-theme', next);
   }
 
