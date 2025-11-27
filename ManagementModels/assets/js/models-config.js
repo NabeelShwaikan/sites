@@ -255,34 +255,77 @@ const MODELS = [
       }
     ]
   },
-  {
-    id: "smart",
-    file: "smart.html",
-    enabled: true,
-    short: "SMART",
-    name_ar: "أهداف SMART",
-    name_en: "SMART Goals",
-    desc: "تفصيل الأهداف لتكون محددة، قابلة للقياس، قابلة للتحقيق، واقعية، ومحددة بزمن.",
-    serves: "الطلاب، الموظفون، القياديون، وروّاد الأعمال.",
-    when: "عند تحويل فكرة عامة إلى هدف واضح يمكن تتبّعه وقياسه.",
-    decisionLogic: "كلما زادت قوة عناصر SMART وقلّت العوائق، أصبح الهدف أكثر قابلية للتطبيق.",
-    categories: ["strategy", "personal", "projects"],
-    audiences: ["individuals", "students", "execs", "entrepreneurs"],
-    sections: [
-      {
-        key: "smart_factors",
-        label: "عناصر SMART (S-M-A-R-T)",
-        positive: true,
-        placeholder: "اكتب نقاط توضح: التحديد، القياس، القابلية للتحقيق، الواقعية، الإطار الزمني..."
-      },
-      {
-        key: "obstacles",
-        label: "عوائق أو شروط نجاح الهدف",
-        positive: false,
-        placeholder: "اكتب العوائق أو المتطلبات الحرجة لتحقيق الهدف..."
-      }
-    ]
-  },
+{
+  id: "smart",
+  file: "smart.html",
+  enabled: true,
+  short: "SMART",
+  name_ar: "أهداف SMART",
+  name_en: "SMART Goals",
+  desc: "مساعدة المستخدم على صياغة هدف واحد واضح ومحدد وقابل للقياس وقابل للتحقيق ومرتبط بالأولويات ومحدد بزمن، مع خطوات عملية للتنفيذ.",
+  serves: "الطلاب، الموظفون، القياديون، روّاد الأعمال، وكل من يريد ضبط أهدافه الشخصية أو المهنية.",
+  when: "عند تحويل فكرة عامة (مثل: تحسين الصحة، تطوير المشروع، رفع المبيعات) إلى هدف واضح يمكن متابعته وتنفيذه.",
+  decisionLogic: "كلما كانت عناصر SMART قوية (تحديد واضح، قياس واضح، واقعية، صلة، وإطار زمني محدد) مع عوائق معروفة وخطوات عملية، كانت فرصة تحقيق الهدف أعلى.",
+  categories: ["strategy", "personal", "projects"],
+  audiences: ["individuals", "students", "execs", "entrepreneurs", "managers"],
+  sections: [
+    {
+      key: "goal_title",
+      label: "عنوان الهدف الرئيسي",
+      positive: true,
+      placeholder: "اكتب هدفًا واحدًا وواضحًا (مثال: رفع مبيعات المتجر الإلكتروني بنسبة ٢٠٪ خلال سنة)..."
+    },
+    {
+      key: "goal_why",
+      label: "لماذا هذا الهدف مهم؟",
+      positive: true,
+      placeholder: "ما الأسباب التي تدفعك لتحقيق هذا الهدف؟ ماذا سيضيف لك أو لفريقك أو لمؤسستك؟"
+    },
+    {
+      key: "specific",
+      label: "S — محدد (Specific)",
+      positive: true,
+      placeholder: "عرّف الهدف بدقة: ماذا ستفعل؟ لمن؟ في أي مجال/منتج/فريق؟ وما الحدود التي لن تتعداها؟"
+    },
+    {
+      key: "measurable",
+      label: "M — قابل للقياس (Measurable)",
+      positive: true,
+      placeholder: "ما المؤشرات الرقمية أو الواضحة لقياس التقدم؟ (نسب، أعداد، مواعيد تسليم، درجات... إلخ)"
+    },
+    {
+      key: "achievable",
+      label: "A — قابل للتحقيق (Achievable)",
+      positive: true,
+      placeholder: "ما الموارد المتاحة (وقت، ميزانية، أشخاص، أدوات) التي تجعل الهدف ممكنًا؟ وما الذي قد تحتاج إضافته؟"
+    },
+    {
+      key: "relevant",
+      label: "R — ذو صلة (Relevant)",
+      positive: true,
+      placeholder: "كيف يرتبط الهدف برؤيتك الشخصية أو خطة القسم/المؤسسة؟ ولماذا هو أهم من أهداف أخرى الآن؟"
+    },
+    {
+      key: "time_bound",
+      label: "T — محدد بزمن (Time-bound)",
+      positive: true,
+      placeholder: "ما الموعد النهائي للهدف؟ وهل هناك مراحل/محطات زمنية رئيسية (شهريًا، ربع سنويًا...)؟"
+    },
+    {
+      key: "obstacles",
+      label: "العوائق والمخاطر المحتملة",
+      positive: false,
+      placeholder: "ما أهم العوائق التي قد تمنعك من تحقيق الهدف؟ (الوقت، الدعم الإداري، التمويل، الانضباط الشخصي...)"
+    },
+    {
+      key: "next_actions",
+      label: "أقرب 3–5 خطوات عملية",
+      positive: true,
+      placeholder: "اكتب أقرب خطوات ستقوم بها في الأيام/الأسابيع القادمة لبدء تنفيذ الهدف (كل خطوة في سطر مستقل)..."
+    }
+  ]
+},
+
   {
     id: "risk_matrix",
     file: "risk_matrix.html",
