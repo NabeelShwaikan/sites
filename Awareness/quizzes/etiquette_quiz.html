@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اختبار الذوق العام</title>
+  <link rel="stylesheet" href="../css/quiz.css" />
+</head>
+<body data-theme="light">
+  <div class="quiz-shell">
+    <header class="quiz-header">
+      <div class="quiz-header-main">
+        <h1>اختبار الذوق العام</h1>
+        <p>
+هذا الاختبار يساعدك على تأمل أسلوبك في التعامل مع الناس والأماكن العامة:
+الهدوء، احترام الدور، المحافظة على النظافة، التعامل مع العاملين، واحترام خصوصية الآخرين.
+        </p>
+        <div class="progress-bar-shell">
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">لم يبدأ الاختبار بعد</div>
+        </div>
+      </div>
+
+      <div class="quiz-header-actions">
+        <a href="../index.html" class="back-link">⬅️ العودة للبوابة</a>
+        <button id="themeToggle" class="theme-toggle" type="button">
+          🌙 التبديل إلى الوضع الليلي
+        </button>
+      </div>
+    </header>
+
+    <main id="quizMain">
+      <!-- المحرك سيحقن الأسئلة والنتائج هنا -->
+    </main>
+
+    <footer class="quiz-footer">
+      <span>الفئة العمرية المستهدفة: 8 – 65 سنة</span>
+      <span>الاختبار للتوعية وتحسين السلوك اليومي، وليس لإدانة أو تصنيف الناس.</span>
+    </footer>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/quiz_etiquette_data.js"></script>
+  <script src="../js/quiz_engine.js"></script>
+</body>
+</html>

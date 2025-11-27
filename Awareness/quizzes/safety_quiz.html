@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اختبار السلامة العامة</title>
+  <link rel="stylesheet" href="../css/quiz.css" />
+</head>
+<body data-theme="light">
+  <div class="quiz-shell">
+    <header class="quiz-header">
+      <div class="quiz-header-main">
+        <h1>اختبار السلامة العامة</h1>
+        <p>
+هذا الاختبار يساعدك على قياس وعيك بالسلامة في البيت والشارع والمواقف اليومية:
+التعامل مع الكهرباء، المطبخ، الحوادث البسيطة، والطرق الصحيحة لتقليل المخاطر قدر الإمكان.
+        </p>
+        <div class="progress-bar-shell">
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">لم يبدأ الاختبار بعد</div>
+        </div>
+      </div>
+
+      <div class="quiz-header-actions">
+        <a href="../index.html" class="back-link">⬅️ العودة للبوابة</a>
+        <button id="themeToggle" class="theme-toggle" type="button">
+          🌙 التبديل إلى الوضع الليلي
+        </button>
+      </div>
+    </header>
+
+    <main id="quizMain">
+      <!-- المحرك سيحقن الأسئلة والنتائج هنا -->
+    </main>
+
+    <footer class="quiz-footer">
+      <span>الفئة العمرية المستهدفة: 8 – 65 سنة</span>
+      <span>الاختبار للتوعية العامة، ولا يغني عن التعليم المتخصص أو طلب المساعدة الطبية الطارئة.</span>
+    </footer>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/quiz_safety_data.js"></script>
+  <script src="../js/quiz_engine.js"></script>
+</body>
+</html>

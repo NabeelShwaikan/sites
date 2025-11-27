@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اختبار الوعي السياحي</title>
+
+  <!-- خط المراعي الموحد -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- نفس ملف الستايل المستخدم في بقية الكويزات -->
+  <link rel="stylesheet" href="../css/quiz.css" />
+</head>
+<body data-theme="light">
+  <div class="quiz-shell">
+    <header class="quiz-header">
+      <div class="quiz-header-main">
+        <h1>اختبار الوعي السياحي</h1>
+        <p>
+          اختبار مبسّط لقياس وعيك أثناء السفر: التخطيط للرحلة، الأمن الشخصي،
+          احترام ثقافة البلد، التعامل المالي، واختيار المواصلات والأنشطة اليومية.
+        </p>
+        <div class="progress-bar-shell">
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">
+            لم يبدأ الاختبار بعد
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-header-actions">
+        <a href="../index.html" class="back-link">⬅️ العودة للبوابة</a>
+        <button id="themeToggle" class="theme-toggle" type="button">
+          🌙 التبديل إلى الوضع الليلي
+        </button>
+      </div>
+    </header>
+
+    <!-- المحرك سيحقن المحتوى هنا (الأسئلة / النتائج) -->
+    <main id="quizMain"></main>
+
+    <footer class="quiz-footer">
+      <span>الفئة العمرية المستهدفة: ٨ – ٦٥ سنة</span>
+      <span>هذا الاختبار يركز على سلوكك السياحي وقراراتك أثناء السفر، وليس على عدد البلدان التي زرتها.</span>
+    </footer>
+  </div>
+
+  <!-- نفس ترتيب السكربتات كما في الوعي التقني -->
+  <script src="../js/theme.js"></script>
+  <script src="../js/quiz_tourism_data.js"></script>
+  <script src="../js/quiz_engine.js"></script>
+</body>
+</html>
