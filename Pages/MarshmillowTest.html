@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>اختبارات ضبط النفس والوظائف التنفيذية (نسخة تجريبية)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- خط عربي بسيط -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --fg: #e5e7eb;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --danger: #f97373;
+      --success: #4ade80;
+      --warning: #facc15;
+      --radius: 16px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: "Almarai", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      color: var(--fg);
+    }
+    .app-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      padding: 16px 20px 12px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.9);
+      margin-bottom: 16px;
+    }
+    header h1 {
+      margin: 0 0 4px;
+      font-size: 1.4rem;
+      letter-spacing: 0.03em;
+    }
+    header p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 0.78rem;
+    }
+    .pill {
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    /* تبويب الاختبارات */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .tab-btn {
+      flex: 1 1 150px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      padding: 8px 10px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+    }
+    .tab-btn span.emoji {
+      font-size: 1.1rem;
+    }
+    .tab-btn.active {
+      background: var(--accent-soft);
+      color: var(--fg);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
+    }
+    .tab-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .panel {
+      display: none;
+      padding: 14px 14px 16px;
+      border-radius: var(--radius);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.96));
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
+      margin-bottom: 18px;
+    }
+    .panel.active {
+      display: block;
+    }
+    .panel h2 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+    .panel p.lead {
+      margin: 0 0 10px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 16px;
+      font-size: 0.86rem;
+      cursor: pointer;
+      background: var(--accent);
+      color: #0f172a;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 4px 2px;
+      box-shadow: 0 10px 26px rgba(56, 189, 248, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(56, 189, 248, 0.5);
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: default;
+      box-shadow: none;
+    }
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .test-area {
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+    }
+    .stimulus-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid rgba(148, 163, 184, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .result-box {
+      margin-top: 8px;
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .result-box strong {
+      color: var(--fg);
+    }
+
+    .stroop-word {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+    th, td {
+      border: 1px solid rgba(30, 41, 59, 0.9);
+      padding: 6px;
+      text-align: center;
+    }
+    th {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    td {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .digit-display {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+    .countdown {
+      font-size: 1.1rem;
+      color: var(--warning);
+    }
+    .status-ok {
+      color: var(--success);
+    }
+    .status-bad {
+      color: var(--danger);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 12px 12px 10px;
+      }
+      .panel {
+        padding: 10px 10px 12px;
+      }
+      .tab-btn {
+        font-size: 0.78rem;
+        padding: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <header>
+    <h1>اختبارات تنفيذية مستوحاة من اختبار المارشميلو</h1>
+    <p>هذه صفحة تجريبية لاختبار بعض الوظائف التنفيذية: ضبط الاندفاع، الانتباه، تأجيل المكافأة، والتثبيط المعرفي. يفضّل تشغيل اختبار واحد في كل مرة.</p>
+    <div class="pill-row">
+      <div class="pill">⏱️ كل اختبار يستغرق أقل من ٢–٣ دقائق</div>
+      <div class="pill">🧠 النتائج تقريبية للتدريب الذاتي وليست تشخيصًا طبيًا</div>
+    </div>
+  </header>
+
+  <!-- أزرار التبويب -->
+  <div class="tabs">
+    <button class="tab-btn active" data-target="go-nogo">
+      <span class="emoji">🟢</span><span>Go / No-Go</span>
+    </button>
+    <button class="tab-btn" data-target="stroop">
+      <span class="emoji">🎨</span><span>Stroop</span>
+    </button>
+    <button class="tab-btn" data-target="stopsignal">
+      <span class="emoji">🛑</span><span>Stop-Signal</span>
+    </button>
+    <button class="tab-btn" data-target="delaydiscount">
+      <span class="emoji">⏳</span><span>تأجيل المكافأة</span>
+    </button>
+    <button class="tab-btn" data-target="visualdelay">
+      <span class="emoji">👀</span><span>تجربة الانتظار</span>
+    </button>
+    <button class="tab-btn" data-target="sustained">
+      <span class="emoji">🎯</span><span>انتباه مستمر</span>
+    </button>
+  </div>
+
+  <!-- لوحة Go/No-Go -->
+  <section id="go-nogo" class="panel active">
+    <h2>اختبار Go / No-Go</h2>
+    <p class="lead">يقيس قدرتك على الضغط فقط عند ظهور إشارة "انطلق" (GO)، والامتناع عند ظهور إشارة "توقّف" (NO-GO). هذا يقيس التثبيط الحركي وضبط الاندفاع.</p>
+    <div class="badge">🔁 عدد المحاولات: ٢٠ تقريبًا</div>
+    <p class="hint">التعليمات: عندما ترى الدائرة <strong>الخضراء</strong> انقر داخل المربع. عندما ترى الدائرة <strong>الحمراء</strong> لا تنقر.</p>
+
+    <button class="btn" id="goNogoStart">▶️ بدء الاختبار</button>
+    <button class="btn btn-secondary" id="goNogoReset">إعادة التهيئة</button>
+
+    <div class="test-area" id="goNogoArea">
+      <div>اضغط "بدء الاختبار" لتظهر لك سلسلة من الدوائر.</div>
+    </div>
+    <div class="result-box" id="goNogoResult" style="display:none;"></div>
+  </section>
+
+  <!-- لوحة Stroop -->
+  <section id="stroop" class="panel">
+    <h2>اختبار ستروب (Stroop)</h2>
+    <p class="lead">يقيس قدرتك على تجاهل المعنى التلقائي للكلمة والتركيز فقط على لون الكلمة. هذا اختبار كلاسيكي للوظائف التنفيذية (التثبيط المعرفي).</p>
+    <div class="badge">🎨 مهمتك: اختر <strong>لون الحبر</strong> وليس معنى الكلمة.</div>
+    <p class="hint">مثال: إذا كانت الكلمة "أصفر" مكتوبة باللون الأزرق، فالجواب الصحيح هو "أزرق".</p>
+
+    <button class="btn" id="stroopStart">▶️ بدء سلسلة قصيرة</button>
+    <button class="btn btn-secondary" id="stroopReset">إعادة التهيئة</button>
+
+    <div class="test-area" id="stroopArea">
+      <div>اضغط "بدء سلسلة قصيرة" لعرض الكلمات.</div>
+    </div>
+    <div class="row" style="margin-top:6px;">
+      <button class="btn btn-secondary" data-stroop-color="red" style="border-color:#f87171;">أحمر</button>
+      <button class="btn btn-secondary" data-stroop-color="green" style="border-color:#4ade80;">أخضر</button>
+      <button class="btn btn-secondary" data-stroop-color="blue" style="border-color:#60a5fa;">أزرق</button>
+      <button class="btn btn-secondary" data-stroop-color="gold" style="border-color:#facc15;">أصفر</button>
+    </div>
+    <div class="result-box" id="stroopResult" style="display:none;"></div>
+  </section>
+
+  <!-- لوحة Stop-Signal -->
+  <section id="stopsignal" class="panel">
+    <h2>اختبار إشارة التوقّف (Stop-Signal)</h2>
+    <p class="lead">في هذا الاختبار يجب عليك الاستجابة لاتجاه السهم، ولكن إذا ظهرت إشارة التوقّف الحمراء فجأة يجب أن تتوقف ولا تضغط. هذا يقيس سرعة التثبيط بعد بدء الفعل.</p>
+    <div class="badge">⏱️ يفضّل تشغيله وأنت هادئ، ٢٠ محاولة تقريبًا.</div>
+    <p class="hint">التعليمات: انقر "يسار" إذا كان السهم ←، و"يمين" إذا كان السهم →، <strong>فقط إذا لم تظهر إشارة التوقّف 🛑</strong>.</p>
+
+    <button class="btn" id="stopStart">▶️ بدء الاختبار</button>
+    <button class="btn btn-secondary" id="stopReset">إعادة التهيئة</button>
+
+    <div class="test-area" id="stopArea">
+      <div>بعد الضغط على "بدء"، سيظهر سهم، وأحيانًا إشارة توقّف.</div>
+    </div>
+    <div class="row" style="margin-top:6px;">
+      <button class="btn btn-secondary" id="stopLeft">يسار ←</button>
+      <button class="btn btn-secondary" id="stopRight">يمين →</button>
+    </div>
+    <div class="result-box" id="stopResult" style="display:none;"></div>
+  </section>
+
+  <!-- لوحة Delay Discounting -->
+  <section id="delaydiscount" class="panel">
+    <h2>اختبار تفضيل المكافأة الآن مقابل لاحقًا</h2>
+    <p class="lead">هذا الاختبار البسيط يقيس اتجاهك العام: هل تميل للمكافآت الصغيرة الفورية أم الكبيرة المؤجّلة؟</p>
+    <div class="badge">💰 الاختبار نظري للتدريب الذهني فقط.</div>
+
+    <p class="hint">اختر ما تفضله في كل سطر:</p>
+    <form id="delayForm">
+      <table>
+        <thead>
+          <tr>
+            <th>الخيار</th>
+            <th>الآن</th>
+            <th>لاحقًا</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>١</td>
+            <td><label><input type="radio" name="q1" value="now"> ٢٠ ريال الآن</label></td>
+            <td><label><input type="radio" name="q1" value="later"> ٥٠ ريال بعد أسبوع</label></td>
+          </tr>
+          <tr>
+            <td>٢</td>
+            <td><label><input type="radio" name="q2" value="now"> ٥٠ ريال الآن</label></td>
+            <td><label><input type="radio" name="q2" value="later"> ١٢٠ ريال بعد شهر</label></td>
+          </tr>
+          <tr>
+            <td>٣</td>
+            <td><label><input type="radio" name="q3" value="now"> ساعة ترفيه الآن</label></td>
+            <td><label><input type="radio" name="q3" value="later"> يوم كامل إجازة بعد أسبوعين</label></td>
+          </tr>
+          <tr>
+            <td>٤</td>
+            <td><label><input type="radio" name="q4" value="now"> وجبة سريعة الآن</label></td>
+            <td><label><input type="radio" name="q4" value="later"> عشاء فاخر بعد ثلاثة أيام</label></td>
+          </tr>
+          <tr>
+            <td>٥</td>
+            <td><label><input type="radio" name="q5" value="now"> شراء شيء بسيط اليوم</label></td>
+            <td><label><input type="radio" name="q5" value="later"> ادخار للمستقبل بعد شهر</label></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn" id="delayCalc">📊 تحليل النتيجة</button>
+      <button type="reset" class="btn btn-secondary">مسح الاختيارات</button>
+    </form>
+    <div class="result-box" id="delayResult" style="display:none;"></div>
+  </section>
+
+  <!-- لوحة Visual Delay -->
+  <section id="visualdelay" class="panel">
+    <h2>تجربة الانتظار (محاكاة بسيطة)</h2>
+    <p class="lead">هذه ليست تجربة مخبرية حقيقية، بل تمرين ذهني عملي: هل تقبل مكافأة بسيطة الآن أم مكافأة أكبر بعد ثوانٍ قليلة؟</p>
+    <div class="badge">⏳ الهدف: الإحساس النفسي بفكرة تأجيل الإشباع.</div>
+    <p class="hint">اختر أحد الخيارين لتشعر بالفرق داخليًا، ثم لاحظ شعورك أثناء الانتظار.</p>
+
+    <div class="test-area" id="visualArea">
+      <p><strong>التجربة:</strong></p>
+      <p>🎁 يمكنك الحصول على "معلومة بسيطة" الآن، أو "معلومة أعمق + تمرين إضافي" بعد ١٠ ثوانٍ.</p>
+      <div>
+        <button class="btn btn-secondary" id="visualNow">أريد المكافأة الآن (صغيرة)</button>
+        <button class="btn" id="visualWait">أنتظر ١٠ ثوانٍ لمكافأة أكبر</button>
+      </div>
+      <div id="visualStatus" style="margin-top:8px; font-size:0.9rem;"></div>
+    </div>
+  </section>
+
+  <!-- لوحة Sustained Attention -->
+  <section id="sustained" class="panel">
+    <h2>اختبار الانتباه المستمر</h2>
+    <p class="lead">سيتم عرض أرقام عشوائية سريعة. مهمتك أن تنقر الزر فقط عندما ترى الرقم "٠". هذا يقيس القدرة على الحفاظ على الانتباه والتعرف على نمط محدد.</p>
+    <div class="badge">🎯 عدد المحاولات: حوالي ٣٠ رقم.</div>
+    <p class="hint">التعليمات: عندما ترى "٠" انقر زر "رأيت صفر الآن". حاول ألا تضغط في غير وقته.</p>
+
+    <button class="btn" id="sustainedStart">▶️ بدء الاختبار</button>
+    <button class="btn btn-secondary" id="sustainedReset">إعادة التهيئة</button>
+
+    <div class="test-area" id="sustainedArea">
+      <div>عند بدء الاختبار، ستظهر أرقام وسط الشاشة.</div>
+    </div>
+    <div style="margin-top:6px;">
+      <button class="btn btn-secondary" id="sustainedHitBtn">رأيت صفر الآن</button>
+    </div>
+    <div class="result-box" id="sustainedResult" style="display:none;"></div>
+  </section>
+
+</div>
+
+<script>
+  // تبويب اللوحات
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+      tabButtons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+
+  /* =============== 1) Go / No-Go =============== */
+  const goNogoArea = document.getElementById('goNogoArea');
+  const goNogoResult = document.getElementById('goNogoResult');
+  const goNogoStartBtn = document.getElementById('goNogoStart');
+  const goNogoResetBtn = document.getElementById('goNogoReset');
+
+  let goNogoRunning = false;
+  let goNogoTrials = 20;
+  let goNogoCurrent = 0;
+  let goNogoData = [];
+  let goNogoTrialActive = false;
+  let goNogoTrialType = null;
+  let goNogoClicked = false;
+
+  function renderGoNogoStimulus(type) {
+    goNogoArea.innerHTML = '';
+    const circle = document.createElement('div');
+    circle.className = 'stimulus-circle';
+    circle.textContent = type === 'go' ? 'GO' : 'NO';
+    circle.style.background = type === 'go' ? 'rgba(34,197,94,0.18)' : 'rgba(248,113,113,0.18)';
+    circle.style.borderColor = type === 'go' ? '#4ade80' : '#f87171';
+    circle.style.color = type === 'go' ? '#bbf7d0' : '#fecaca';
+    const helper = document.createElement('div');
+    helper.style.fontSize = '0.78rem';
+    helper.style.color = 'var(--muted)';
+    helper.textContent = type === 'go' ? 'انقر داخل المربع الآن' : 'لا تنقر الآن';
+    goNogoArea.appendChild(circle);
+    goNogoArea.appendChild(helper);
+  }
+
+  goNogoArea.addEventListener('click', () => {
+    if (!goNogoRunning || !goNogoTrialActive) return;
+    goNogoClicked = true;
+  });
+
+  function runGoNogoTrial() {
+    if (!goNogoRunning || goNogoCurrent >= goNogoTrials) {
+      goNogoRunning = false;
+      goNogoStartBtn.disabled = false;
+      showGoNogoResult();
+      return;
+    }
+    goNogoTrialActive = true;
+    goNogoClicked = false;
+    // 70% GO, 30% NO-GO
+    goNogoTrialType = Math.random() < 0.7 ? 'go' : 'nogo';
+    renderGoNogoStimulus(goNogoTrialType);
+
+    const thisIndex = goNogoCurrent;
+    setTimeout(() => {
+      // نهاية المحاولة
+      goNogoTrialActive = false;
+      let outcome;
+      if (goNogoTrialType === 'go') {
+        outcome = goNogoClicked ? 'correct_go' : 'omission';
+      } else {
+        outcome = goNogoClicked ? 'commission' : 'correct_nogo';
+      }
+      goNogoData.push({ trial: thisIndex + 1, type: goNogoTrialType, clicked: goNogoClicked, outcome });
+      goNogoCurrent++;
+      goNogoArea.innerHTML = '<div style="font-size:0.8rem; color:var(--muted);">...</div>';
+      setTimeout(runGoNogoTrial, 400);
+    }, 900);
+  }
+
+  function showGoNogoResult() {
+    let correctGo = 0, correctNo = 0, omissions = 0, commissions = 0;
+    goNogoData.forEach(t => {
+      if (t.outcome === 'correct_go') correctGo++;
+      if (t.outcome === 'correct_nogo') correctNo++;
+      if (t.outcome === 'omission') omissions++;
+      if (t.outcome === 'commission') commissions++;
+    });
+    const total = goNogoData.length || 1;
+    const accuracy = Math.round(((correctGo + correctNo) / total) * 100);
+    let interpretation = '';
+    if (accuracy >= 80 && commissions <= omissions) {
+      interpretation = 'يشير الأداء إلى قدرة جيدة على ضبط الاندفاع في هذا السياق البسيط.';
+    } else if (commissions > omissions) {
+      interpretation = 'توجد نزعة للضغط في لحظات يجب فيها التوقف (اندفاع أعلى)، يمكن تحسينها بالتدريب.';
+    } else {
+      interpretation = 'يمكن أن يفيدك تحسين التركيز والاستمرارية، وليس فقط ضبط الاندفاع.';
+    }
+    goNogoResult.style.display = 'block';
+    goNogoResult.innerHTML = `
+      <div><strong>النتيجة التقريبية:</strong></div>
+      <div>الدقّة العامة: <strong>${accuracy}%</strong></div>
+      <div>استجابات صحيحة لـ GO: ${correctGo}</div>
+      <div>توقّف صحيح في NO-GO: ${correctNo}</div>
+      <div>أخطاء عدم استجابة (تجاهل GO): <span class="status-bad">${omissions}</span></div>
+      <div>أخطاء اندفاعية (ضغط في NO-GO): <span class="status-bad">${commissions}</span></div>
+      <div style="margin-top:6px;">🧠 <em>${interpretation}</em></div>
+    `;
+    goNogoArea.innerHTML = '<div>يمكنك إعادة الاختبار إذا رغبت.</div>';
+  }
+
+  goNogoStartBtn.addEventListener('click', () => {
+    goNogoRunning = true;
+    goNogoCurrent = 0;
+    goNogoData = [];
+    goNogoResult.style.display = 'none';
+    goNogoStartBtn.disabled = true;
+    runGoNogoTrial();
+  });
+
+  goNogoResetBtn.addEventListener('click', () => {
+    goNogoRunning = false;
+    goNogoCurrent = 0;
+    goNogoData = [];
+    goNogoTrialActive = false;
+    goNogoClicked = false;
+    goNogoStartBtn.disabled = false;
+    goNogoArea.innerHTML = '<div>اضغط "بدء الاختبار" لتظهر لك سلسلة من الدوائر.</div>';
+    goNogoResult.style.display = 'none';
+  });
+
+  /* =============== 2) Stroop =============== */
+  const stroopArea = document.getElementById('stroopArea');
+  const stroopResult = document.getElementById('stroopResult');
+  const stroopStartBtn = document.getElementById('stroopStart');
+  const stroopResetBtn = document.getElementById('stroopReset');
+  const stroopButtons = document.querySelectorAll('[data-stroop-color]');
+
+  const stroopWords = [
+    { text: 'أحمر', colorKey: 'red' },
+    { text: 'أخضر', colorKey: 'green' },
+    { text: 'أزرق', colorKey: 'blue' },
+    { text: 'أصفر', colorKey: 'gold' }
+  ];
+  const stroopColorMap = {
+    red: '#f97373',
+    green: '#4ade80',
+    blue: '#60a5fa',
+    gold: '#facc15'
+  };
+
+  let stroopRunning = false;
+  let stroopTrials = 12;
+  let stroopCurrent = 0;
+  let stroopData = [];
+  let stroopCurrentColorKey = null;
+
+  function nextStroopTrial() {
+    if (!stroopRunning || stroopCurrent >= stroopTrials) {
+      stroopRunning = false;
+      stroopStartBtn.disabled = false;
+      renderStroopResult();
+      return;
+    }
+    stroopArea.innerHTML = '';
+    const wordObj = stroopWords[Math.floor(Math.random() * stroopWords.length)];
+    const isCongruent = Math.random() < 0.5;
+    let colorKey;
+    if (isCongruent) {
+      colorKey = wordObj.colorKey;
+    } else {
+      const other = stroopWords.filter(w => w.colorKey !== wordObj.colorKey);
+      colorKey = other[Math.floor(Math.random() * other.length)].colorKey;
+    }
+    stroopCurrentColorKey = colorKey;
+    const span = document.createElement('div');
+    span.className = 'stroop-word';
+    span.textContent = wordObj.text;
+    span.style.color = stroopColorMap[colorKey];
+    stroopArea.appendChild(span);
+    const helper = document.createElement('div');
+    helper.style.fontSize = '0.78rem';
+    helper.style.color = 'var(--muted)';
+    helper.textContent = 'اختر لون الحبر من الأزرار بالأسفل.';
+    stroopArea.appendChild(helper);
+  }
+
+  function renderStroopResult() {
+    const total = stroopData.length || 1;
+    const correct = stroopData.filter(t => t.correct).length;
+    const accuracy = Math.round((correct / total) * 100);
+    let interpretation = '';
+    if (accuracy >= 80) {
+      interpretation = 'يشير الأداء إلى قدرة جيدة على تجاهل المعنى التلقائي والتركيز على لون الحبر (تثبيط معرفي جيد).';
+    } else {
+      interpretation = 'يمكن أن يفيدك مزيد من التدريب على التركيز في عنصر واحد وتجاهل العناصر المتعارضة.';
+    }
+    stroopResult.style.display = 'block';
+    stroopResult.innerHTML = `
+      <div><strong>النتيجة التقريبية:</strong></div>
+      <div>الدقّة: <strong>${accuracy}%</strong> (صحيح: ${correct} / ${total})</div>
+      <div style="margin-top:6px;">🧠 <em>${interpretation}</em></div>
+    `;
+    stroopArea.innerHTML = '<div>انتهت السلسلة. يمكنك إعادة البدء إذا رغبت.</div>';
+  }
+
+  stroopStartBtn.addEventListener('click', () => {
+    stroopRunning = true;
+    stroopCurrent = 0;
+    stroopData = [];
+    stroopResult.style.display = 'none';
+    stroopStartBtn.disabled = true;
+    nextStroopTrial();
+  });
+
+  stroopResetBtn.addEventListener('click', () => {
+    stroopRunning = false;
+    stroopCurrent = 0;
+    stroopData = [];
+    stroopCurrentColorKey = null;
+    stroopStartBtn.disabled = false;
+    stroopArea.innerHTML = '<div>اضغط "بدء سلسلة قصيرة" لعرض الكلمات.</div>';
+    stroopResult.style.display = 'none';
+  });
+
+  stroopButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!stroopRunning || stroopCurrentColorKey === null) return;
+      const chosen = btn.getAttribute('data-stroop-color');
+      const correct = chosen === stroopCurrentColorKey;
+      stroopData.push({ trial: stroopCurrent + 1, chosen, correct, trueColor: stroopCurrentColorKey });
+      stroopCurrent++;
+      stroopCurrentColorKey = null;
+      setTimeout(nextStroopTrial, 150);
+    });
+  });
+
+  /* =============== 3) Stop-Signal =============== */
+  const stopArea = document.getElementById('stopArea');
+  const stopResult = document.getElementById('stopResult');
+  const stopStartBtn = document.getElementById('stopStart');
+  const stopResetBtn = document.getElementById('stopReset');
+  const stopLeftBtn = document.getElementById('stopLeft');
+  const stopRightBtn = document.getElementById('stopRight');
+
+  let stopRunning = false;
+  let stopTrials = 20;
+  let stopCurrent = 0;
+  let stopData = [];
+  let stopCurrentDir = null;  // 'left' or 'right'
+  let stopHasSignal = false;
+  let stopAnswered = false;
+
+  function renderStopStimulus(dir, hasSignal) {
+    stopArea.innerHTML = '';
+    const arrow = document.createElement('div');
+    arrow.style.fontSize = '2rem';
+    arrow.style.fontWeight = '700';
+    arrow.textContent = dir === 'left' ? '←' : '→';
+    const box = document.createElement('div');
+    box.style.display = 'flex';
+    box.style.flexDirection = 'column';
+    box.style.alignItems = 'center';
+    box.style.gap = '4px';
+    box.appendChild(arrow);
+    const helper = document.createElement('div');
+    helper.style.fontSize = '0.8rem';
+    helper.style.color = 'var(--muted)';
+    helper.textContent = hasSignal ? 'ظهرت إشارة توقّف: لا تضغط أي زر.' : 'اختر الزر المناسب لاتجاه السهم.';
+    box.appendChild(helper);
+
+    stopArea.appendChild(box);
+
+    if (hasSignal) {
+      const stopSign = document.createElement('div');
+      stopSign.textContent = '🛑';
+      stopSign.style.marginTop = '6px';
+      stopArea.appendChild(stopSign);
+    }
+  }
+
+  function runStopTrial() {
+    if (!stopRunning || stopCurrent >= stopTrials) {
+      stopRunning = false;
+      stopStartBtn.disabled = false;
+      renderStopResult();
+      return;
+    }
+    stopAnswered = false;
+    stopCurrentDir = Math.random() < 0.5 ? 'left' : 'right';
+    stopHasSignal = Math.random() < 0.3; // 30% trials with stop signal
+    // أولًا عرض السهم بدون الإشارة
+    stopArea.innerHTML = '<div>...</div>';
+    setTimeout(() => {
+      renderStopStimulus(stopCurrentDir, false);
+      if (stopHasSignal) {
+        setTimeout(() => {
+          // تعديل اللوحة لتضمين إشارة التوقف
+          renderStopStimulus(stopCurrentDir, true);
+        }, 300);
+      }
+      // النهاية بعد 1100ms
+      setTimeout(() => {
+        if (!stopRunning) return;
+        let outcome;
+        if (!stopHasSignal && !stopAnswered) {
+          outcome = 'omission'; // لم يضغط في الوقت الصحيح
+        } else if (!stopHasSignal && stopAnswered) {
+          outcome = 'correct_go';
+        } else if (stopHasSignal && stopAnswered) {
+          outcome = 'failed_stop';
+        } else if (stopHasSignal && !stopAnswered) {
+          outcome = 'correct_stop';
+        }
+        stopData.push({
+          trial: stopCurrent + 1,
+          dir: stopCurrentDir,
+          hasSignal: stopHasSignal,
+          answered: stopAnswered,
+          outcome
+        });
+        stopCurrent++;
+        stopArea.innerHTML = '<div style="font-size:0.8rem; color:var(--muted);">...</div>';
+        setTimeout(runStopTrial, 400);
+      }, 1100);
+    }, 200);
+  }
+
+  function renderStopResult() {
+    const total = stopData.length || 1;
+    let correctGo = 0, correctStop = 0, omissions = 0, failedStops = 0;
+    stopData.forEach(t => {
+      if (t.outcome === 'correct_go') correctGo++;
+      if (t.outcome === 'correct_stop') correctStop++;
+      if (t.outcome === 'omission') omissions++;
+      if (t.outcome === 'failed_stop') failedStops++;
+    });
+    const accuracy = Math.round(((correctGo + correctStop) / total) * 100);
+    let interpretation = '';
+    if (accuracy >= 80 && failedStops <= omissions) {
+      interpretation = 'يشير الأداء إلى قدرة جيدة على إيقاف الاستجابة بعد بدء الحركة عندما تظهر إشارة التوقّف.';
+    } else if (failedStops > omissions) {
+      interpretation = 'توجد بعض الصعوبة في إيقاف الفعل بعد بدء الاستجابة، وهو ما يدل على حاجة لتدريب أكبر على التثبيط السريع.';
+    } else {
+      interpretation = 'الأخطاء موزعة بين تأخر الاستجابة والتثبيط، يمكن أن يفيد تدريب شامل على التركيز وضبط الاندفاع.';
+    }
+    stopResult.style.display = 'block';
+    stopResult.innerHTML = `
+      <div><strong>النتيجة التقريبية:</strong></div>
+      <div>الدقّة العامة: <strong>${accuracy}%</strong></div>
+      <div>استجابات صحيحة بدون إشارة توقّف: ${correctGo}</div>
+      <div>توقّف ناجح عند الإشارة: ${correctStop}</div>
+      <div>أخطاء تفويت الاستجابة: <span class="status-bad">${omissions}</span></div>
+      <div>أخطاء الاستمرار رغم إشارة التوقّف: <span class="status-bad">${failedStops}</span></div>
+      <div style="margin-top:6px;">🧠 <em>${interpretation}</em></div>
+    `;
+    stopArea.innerHTML = '<div>انتهى الاختبار. يمكنك إعادة تشغيله لاحقًا.</div>';
+  }
+
+  stopStartBtn.addEventListener('click', () => {
+    stopRunning = true;
+    stopCurrent = 0;
+    stopData = [];
+    stopStartBtn.disabled = true;
+    stopResult.style.display = 'none';
+    runStopTrial();
+  });
+
+  stopResetBtn.addEventListener('click', () => {
+    stopRunning = false;
+    stopCurrent = 0;
+    stopData = [];
+    stopStartBtn.disabled = false;
+    stopArea.innerHTML = '<div>بعد الضغط على "بدء"، سيظهر سهم، وأحيانًا إشارة توقّف.</div>';
+    stopResult.style.display = 'none';
+  });
+
+  function handleStopResponse(direction) {
+    if (!stopRunning) return;
+    if (stopAnswered) return; // لا نسمح بأكثر من إجابة
+    stopAnswered = true;
+    // we don't check correctness of direction في هذه النسخة؛ التركيز على التثبيط
+  }
+
+  stopLeftBtn.addEventListener('click', () => handleStopResponse('left'));
+  stopRightBtn.addEventListener('click', () => handleStopResponse('right'));
+
+  /* =============== 4) Delay Discounting =============== */
+  const delayForm = document.getElementById('delayForm');
+  const delayResult = document.getElementById('delayResult');
+  const delayCalcBtn = document.getElementById('delayCalc');
+
+  delayCalcBtn.addEventListener('click', () => {
+    const qs = ['q1','q2','q3','q4','q5'];
+    let nowCount = 0, laterCount = 0, unanswered = 0;
+    qs.forEach(name => {
+      const checked = delayForm.querySelector(`input[name="${name}"]:checked`);
+      if (!checked) {
+        unanswered++;
+        return;
+      }
+      if (checked.value === 'now') nowCount++;
+      else laterCount++;
+    });
+
+    let styleText = '';
+    if (laterCount >= 4) {
+      styleText = 'تفضيلك يميل بشكل واضح إلى المكافآت المؤجلة الأكبر، مما يعكس قدرة جيدة على التفكير طويل المدى وتأجيل الإشباع.';
+    } else if (nowCount >= 4) {
+      styleText = 'تميل أكثر إلى المكافآت الفورية، وهو نمط شائع يمكن موازنته بالتدريب على تصور المستقبل ووضع أهداف بعيدة.';
+    } else {
+      styleText = 'تفضيلك متوازن بين الآن واللاحق، ويمكن دفعه أكثر نحو الأهداف طويلة المدى عبر تدريب بسيط على التخطيط.';
+    }
+
+    delayResult.style.display = 'block';
+    delayResult.innerHTML = `
+      <div><strong>ملخص اختيارك:</strong></div>
+      <div>اختيار المكافأة الآن: ${nowCount} من ٥</div>
+      <div>اختيار المكافأة لاحقًا: ${laterCount} من ٥</div>
+      ${unanswered ? `<div>أسئلة غير مجابة: ${unanswered}</div>` : ''}
+      <div style="margin-top:6px;">🧠 <em>${styleText}</em></div>
+      <div style="margin-top:4px; font-size:0.76rem;">(هذه النتيجة للتأمل الذاتي فقط، وليست حكمًا قاطعًا.)</div>
+    `;
+  });
+
+  /* =============== 5) Visual Delay =============== */
+  const visualNowBtn = document.getElementById('visualNow');
+  const visualWaitBtn = document.getElementById('visualWait');
+  const visualStatus = document.getElementById('visualStatus');
+  let visualTimer = null;
+  let visualWaiting = false;
+  let visualRemaining = 0;
+
+  visualNowBtn.addEventListener('click', () => {
+    clearInterval(visualTimer);
+    visualWaiting = false;
+    visualRemaining = 0;
+    visualStatus.innerHTML = `
+      <div>📘 معلومة سريعة: معظم الناس يفضّلون المكافأة الصغيرة الآن، حتى لو كانت المكافأة المؤجلة أكبر بكثير.</div>
+      <div style="margin-top:4px; font-size:0.8rem;">فكّر: ماذا يعني هذا بالنسبة لطريقة اتخاذك للقرارات؟</div>
+    `;
+  });
+
+  visualWaitBtn.addEventListener('click', () => {
+    if (visualWaiting) return;
+    visualWaiting = true;
+    visualRemaining = 10;
+    visualStatus.innerHTML = `<div class="countdown">جاري الانتظار: ${visualRemaining} ثانية...</div>`;
+    visualTimer = setInterval(() => {
+      visualRemaining--;
+      if (visualRemaining > 0) {
+        visualStatus.innerHTML = `<div class="countdown">جاري الانتظار: ${visualRemaining} ثانية...</div>`;
+      } else {
+        clearInterval(visualTimer);
+        visualWaiting = false;
+        visualStatus.innerHTML = `
+          <div class="status-ok">🎁 شكراً على الانتظار!</div>
+          <div style="margin-top:4px;">
+            📗 <strong>معلومة أعمق:</strong> الأبحاث تشير إلى أن القدرة على الانتظار مرتبطة بنتائج أفضل في الصحة، المال، والدراسة.<br/>
+            📝 <em>تمرين:</em> اختر سلوكًا واحدًا في حياتك يمكن أن تطبّق فيه مبدأ "أنتظر للمكافأة الأكبر" اليوم.
+          </div>
+        `;
+      }
+    }, 1000);
+  });
+
+  /* =============== 6) Sustained Attention =============== */
+  const sustainedArea = document.getElementById('sustainedArea');
+  const sustainedResult = document.getElementById('sustainedResult');
+  const sustainedStartBtn = document.getElementById('sustainedStart');
+  const sustainedResetBtn = document.getElementById('sustainedReset');
+  const sustainedHitBtn = document.getElementById('sustainedHitBtn');
+
+  let sustainedRunning = false;
+  let sustainedTrials = 30;
+  let sustainedCurrent = 0;
+  let sustainedCurrentDigit = null;
+  let sustainedHits = 0;
+  let sustainedMisses = 0;
+  let sustainedFalseAlarms = 0;
+  let sustainedTimer = null;
+  let sustainedCanHit = false;
+
+  function renderSustainedDigit(d) {
+    sustainedArea.innerHTML = '';
+    const digit = document.createElement('div');
+    digit.className = 'digit-display';
+    digit.textContent = d;
+    sustainedArea.appendChild(digit);
+  }
+
+  function nextSustainedTrial() {
+    if (!sustainedRunning || sustainedCurrent >= sustainedTrials) {
+      sustainedRunning = false;
+      clearInterval(sustainedTimer);
+      sustainedStartBtn.disabled = false;
+      renderSustainedResult();
+      return;
+    }
+    // اختيار رقم بين 0 - 9 مع احتمال لظهور 0
+    sustainedCurrentDigit = Math.random() < 0.2 ? 0 : Math.floor(Math.random() * 9) + 1;
+    sustainedCanHit = true;
+    renderSustainedDigit(sustainedCurrentDigit);
+    sustainedCurrent++;
+  }
+
+  function renderSustainedResult() {
+    const totalTargets = sustainedTrials * 0.2; // تقريبية
+    let interpretation = '';
+    if (sustainedHits >= totalTargets * 0.7 && sustainedFalseAlarms <= sustainedHits) {
+      interpretation = 'يشير الأداء إلى قدرة جيدة على الحفاظ على الانتباه واكتشاف الإشارة المطلوبة دون اندفاع زائد.';
+    } else if (sustainedFalseAlarms > sustainedHits) {
+      interpretation = 'توجد نزعة للضغط في غير وقت الهدف (اندفاع أعلى)، ويمكن تحسينها بمزيد من التركيز والتمهل قبل الضغط.';
+    } else {
+      interpretation = 'النتيجة متوسطة، ويمكن تحسين الانتباه المستمر عبر تدريبات قصيرة متكررة.';
+    }
+    sustainedResult.style.display = 'block';
+    sustainedResult.innerHTML = `
+      <div><strong>النتيجة التقريبية:</strong></div>
+      <div>عدد مرات الضغط عند ظهور 0 (إصابات صحيحة): ${sustainedHits}</div>
+      <div>عدد الأصفار التي لم يتم الضغط عندها (أخطاء تفويت): <span class="status-bad">${sustainedMisses}</span></div>
+      <div>عدد مرات الضغط عندما لم يكن الرقم 0 (إنذارات كاذبة): <span class="status-bad">${sustainedFalseAlarms}</span></div>
+      <div style="margin-top:6px;">🧠 <em>${interpretation}</em></div>
+    `;
+    sustainedArea.innerHTML = '<div>انتهى الاختبار. يمكنك إعادة تشغيله لاحقًا.</div>';
+  }
+
+  sustainedStartBtn.addEventListener('click', () => {
+    sustainedRunning = true;
+    sustainedCurrent = 0;
+    sustainedHits = 0;
+    sustainedMisses = 0;
+    sustainedFalseAlarms = 0;
+    sustainedResult.style.display = 'none';
+    sustainedStartBtn.disabled = true;
+    nextSustainedTrial();
+    clearInterval(sustainedTimer);
+    sustainedTimer = setInterval(() => {
+      // إذا انتهت المحاولات سيتم الإيقاف داخل nextSustainedTrial
+      if (!sustainedRunning) {
+        clearInterval(sustainedTimer);
+        return;
+      }
+      // إذا كان الرقم السابق 0 ولم يضغط المستخدم
+      if (sustainedCurrentDigit === 0 && sustainedCanHit) {
+        sustainedMisses++;
+      }
+      nextSustainedTrial();
+    }, 800);
+  });
+
+  sustainedResetBtn.addEventListener('click', () => {
+    sustainedRunning = false;
+    clearInterval(sustainedTimer);
+    sustainedCurrent = 0;
+    sustainedHits = 0;
+    sustainedMisses = 0;
+    sustainedFalseAlarms = 0;
+    sustainedCurrentDigit = null;
+    sustainedStartBtn.disabled = false;
+    sustainedArea.innerHTML = '<div>عند بدء الاختبار، ستظهر أرقام وسط الشاشة.</div>';
+    sustainedResult.style.display = 'none';
+  });
+
+  sustainedHitBtn.addEventListener('click', () => {
+    if (!sustainedRunning) return;
+    if (!sustainedCanHit) return;
+    if (sustainedCurrentDigit === 0) {
+      sustainedHits++;
+    } else {
+      sustainedFalseAlarms++;
+    }
+    sustainedCanHit = false;
+  });
+</script>
+</body>
+</html>
