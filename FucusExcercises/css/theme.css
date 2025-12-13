@@ -271,3 +271,51 @@ body[data-theme="dark"] {
   -webkit-text-fill-color: unset;
 }
 
+/* =========================================
+   Light theme: خلف البطاقات يجب أن يكون فاتح دائمًا
+   (خاصة على الجوال)
+   ========================================= */
+
+body[data-theme="light"],
+body[data-theme="light"] html,
+body[data-theme="light"] .app-shell {
+  background: var(--bg-body) !important;
+  background-image: none !important;
+}
+
+/* الحاويات الشائعة خلف البطاقات (عدّل/أضف أسماء حسب مشروعك) */
+body[data-theme="light"] main,
+body[data-theme="light"] .app-main,
+body[data-theme="light"] .layout,
+body[data-theme="light"] .layout-grid,
+body[data-theme="light"] .content,
+body[data-theme="light"] .content-grid,
+body[data-theme="light"] .page,
+body[data-theme="light"] .app {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* لو فيه طبقة داكنة (Overlay) معمولة بـ ::before / ::after */
+body[data-theme="light"] .app-shell::before,
+body[data-theme="light"] .app-shell::after,
+body[data-theme="light"] main::before,
+body[data-theme="light"] main::after,
+body[data-theme="light"] .layout::before,
+body[data-theme="light"] .layout::after,
+body[data-theme="light"] .content::before,
+body[data-theme="light"] .content::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* على الجوال: خفف الظلال التي قد تبدو “بقع داكنة” خلف البطاقات */
+@media (max-width: 720px) {
+  body[data-theme="light"] .exercise-list-panel,
+  body[data-theme="light"] .exercise-meta-card,
+  body[data-theme="light"] .exercise-stage-card {
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10) !important;
+  }
+}
+
+
