@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>منصة تمارين التركيز والانتباه</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+</head>
+<body data-theme="dark">
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-block">
+        <h1>منصة تمارين التركيز والانتباه</h1>
+        <p>صفحة أساسية موحدة لكل التمارين، مع ثيمين (ليلي/نهاري) ومنطقة عرض واحدة تستقبل أي تمرين سكربت لاحقًا.</p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="تبديل الثيم">☀️</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="shell-grid">
+        <!-- قائمة التمارين (هيكل عام فقط) -->
+        <aside class="exercise-list-panel">
+          <div class="panel-header">
+            <h2>التدريبات</h2>
+            <p class="panel-sub">كل تمرين سيستخدم نفس هذا القالب: اسم، تعريف، فائدة، ومدة.</p>
+          </div>
+          <div id="exerciseList" class="exercise-list">
+            <!-- يتم حقن عناصر القائمة من السكربت -->
+          </div>
+        </aside>
+
+        <!-- لوحة تفاصيل التمرين ومنطقة العرض -->
+        <section class="exercise-main-panel">
+          <div class="exercise-meta-card">
+            <div class="meta-header">
+              <div>
+                <h2 id="exerciseTitle">اختر تمرينًا لعرضه</h2>
+                <p id="exerciseTagline" class="meta-tagline">
+                  بعد بناء التمارين، سيظهر هنا وصف مختصر يوضح طبيعة التمرين بلغة بسيطة.
+                </p>
+              </div>
+              <div class="meta-chip" id="exerciseCategoryChip">تصنيف التمرين</div>
+            </div>
+
+            <div class="meta-body">
+              <div class="meta-block">
+                <h3>تعريف التمرين</h3>
+                <p id="exerciseDefinition">
+                  هذه منطقة تعريف عامة. لكل تمرين لاحقًا نص تعريفي قصير يوضح ما يراه أو يفعله المتدرّب أثناء الجلسة.
+                </p>
+              </div>
+
+              <div class="meta-block">
+                <h3>الفائدة الإدراكية</h3>
+                <p id="exerciseBenefit">
+                  هنا يتم توضيح الفائدة بشكل موجز (مثلاً: تعزيز الانتباه البصري، تقوية الذاكرة اللحظية، زيادة القدرة على ملاحظة التفاصيل الدقيقة...).
+                </p>
+              </div>
+
+              <div class="meta-block meta-inline">
+                <div>
+                  <h3>مدة الجلسة المقترحة</h3>
+                  <p id="exerciseDurationNote" class="meta-note">
+                    لاحقًا يمكن تحديد مدد مختلفة لكل تمرين (٢–٣–٥ دقائق مثلًا)، مع إمكانية اختيار المدة قبل البدء.
+                  </p>
+                </div>
+                <div class="duration-chips" id="durationChips">
+                  <!-- أزرار مدة تجريبية فقط، بدون منطق وقت حقيقي الآن -->
+                  <button class="chip-btn" data-min="2">٢ دقائق</button>
+                  <button class="chip-btn" data-min="3">٣ دقائق</button>
+                  <button class="chip-btn" data-min="5">٥ دقائق</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- منطقة العرض الموحدة لجميع التمارين -->
+          <div class="exercise-stage-card">
+            <div class="stage-header">
+              <span class="stage-label">منطقة عرض التمرين</span>
+              <span id="stageHint" class="stage-hint">أي سكربت تمرين لاحقًا سيحقن محتواه هنا فقط.</span>
+            </div>
+            <div id="exerciseStage" class="stage-container">
+              <div class="stage-placeholder">
+                <p class="placeholder-title">لا يوجد تمرين نشط حاليًا</p>
+                <p class="placeholder-text">
+                  بعد بناء ملفات السكربت لكل تمرين، سيتم استدعاء نفس هذه المنطقة
+                  <span class="placeholder-highlight">exerciseStage</span>
+                  لعرض محتوى الجلسة (أشكال، حركة، شبكة، إلخ) دون تغيير في هيكل الصفحة.
+                </p>
+              </div>
+            </div>
+
+            <div class="stage-footer">
+              <button id="btnStartExercise" class="primary-btn" disabled>بدء التمرين</button>
+              <button id="btnStopExercise" class="ghost-btn" disabled>إيقاف</button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/theme.js"></script>
+<script src="js/modules/visualTracking.js"></script>
+<script src="js/modules/workingMemory.js"></script>
+<script src="js/modules/memoryGrid.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
