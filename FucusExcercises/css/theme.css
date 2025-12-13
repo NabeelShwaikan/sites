@@ -1,0 +1,186 @@
+/* الثيم النهاري */
+body[data-theme="light"] {
+  --bg-body: #e5f0ff;
+  --bg-elevated: #f9fafb;
+  --bg-panel: #ffffff;
+  --fg-main: #020617;
+  --fg-muted: #6b7280;
+  --fg-subtle: #9ca3af;
+  --border-subtle: #d1d5db;
+  --accent: #0ea5e9;
+  --accent-soft: rgba(14, 165, 233, 0.08);
+  --accent-strong: #0369a1;
+}
+
+/* الثيم الليلي */
+body[data-theme="dark"] {
+  --bg-body: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), #020617 60%);
+  --bg-elevated: rgba(15, 23, 42, 0.98);
+  --bg-panel: rgba(15, 23, 42, 0.96);
+  --fg-main: #e5e7eb;
+  --fg-muted: #9ca3af;
+  --fg-subtle: #6b7280;
+  --border-subtle: #1f2937;
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.1);
+  --accent-strong: #0ea5e9;
+}
+
+body {
+  background: var(--bg-body);
+  color: var(--fg-main);
+}
+
+.app-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.7rem 1.25rem 2.2rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.brand-block h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.brand-block p {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon-btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(15, 23, 42, 0.4);
+  color: var(--fg-main);
+  padding: 0.45rem 0.8rem;
+  font-size: 1.1rem;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+body[data-theme="light"] .icon-btn {
+  background: #ffffff;
+}
+
+.icon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
+}
+
+/* أزرار عامة */
+.primary-btn,
+.ghost-btn,
+.chip-btn {
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  transition: background var(--transition-fast),
+              color var(--transition-fast),
+              transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              opacity 0.15s ease-out;
+}
+
+.primary-btn {
+  background: radial-gradient(circle at top left, var(--accent-soft), var(--accent-strong));
+  color: #f9fafb;
+  box-shadow: 0 16px 42px rgba(8, 47, 73, 0.9);
+}
+
+.primary-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 55px rgba(8, 47, 73, 1);
+}
+
+.primary-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ghost-btn {
+  background: transparent;
+  color: var(--fg-main);
+  border: 1px solid var(--border-subtle);
+}
+
+.ghost-btn:hover:not(:disabled) {
+  background: rgba(15, 23, 42, 0.35);
+  color: #e5e7eb;
+}
+
+.ghost-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.chip-btn {
+  background: rgba(15, 23, 42, 0.4);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  font-size: 0.8rem;
+  padding-inline: 0.9rem;
+}
+
+body[data-theme="light"] .chip-btn {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.chip-btn.active {
+  background: var(--accent);
+  color: #f9fafb;
+  box-shadow: 0 12px 28px rgba(8, 47, 73, 0.9);
+}
+
+/* بطاقات عامة */
+.exercise-list-panel,
+.exercise-meta-card,
+.exercise-stage-card {
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* ===== تعديل منطقة العرض في الوضع الفاتح فقط ===== */
+
+body[data-theme="light"] #exerciseStage {
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0.9),
+    rgba(240, 244, 255, 0.96)
+  );
+  border: 1px solid rgba(180, 200, 235, 0.9);
+  box-shadow: 0 20px 55px rgba(191, 219, 254, 0.7);
+}
+
+/* تحسين ألوان النص داخل الـ placeholder في الوضع الفاتح */
+body[data-theme="light"] #exerciseStage .stage-placeholder .placeholder-title {
+  color: #1f2933; /* غامق وواضح */
+}
+
+body[data-theme="light"] #exerciseStage .stage-placeholder .placeholder-text {
+  color: #4b5563; /* رمادي مريح */
+}
+
+body[data-theme="light"] #exerciseStage .stage-placeholder .placeholder-highlight {
+  background: rgba(239, 246, 255, 0.9);
+  border-color: rgba(180, 200, 235, 0.9);
+  color: #0f172a;
+}
