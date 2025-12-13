@@ -14,7 +14,8 @@ body[data-theme="light"] {
 
 /* الثيم الليلي */
 body[data-theme="dark"] {
-  --bg-body: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), #020617 60%);
+  /* CHANGED: تقليل التوهج العلوي لتفادي الإحساس بالبياض/الفلاش */
+  --bg-body: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), #020617 62%);
   --bg-elevated: rgba(15, 23, 42, 0.98);
   --bg-panel: rgba(15, 23, 42, 0.96);
   --fg-main: #e5e7eb;
@@ -24,6 +25,12 @@ body[data-theme="dark"] {
   --accent: #38bdf8;
   --accent-soft: rgba(56, 189, 248, 0.1);
   --accent-strong: #0ea5e9;
+}
+
+/* NEW: مهم جداً لمنع ظهور أي بياض من خلف الصفحة (خصوصاً أعلى الصفحة/overscroll) */
+html {
+  background: var(--bg-body);
+  color: var(--fg-main);
 }
 
 body {
@@ -157,6 +164,16 @@ body[data-theme="light"] .chip-btn {
   box-shadow: var(--shadow-soft);
 }
 
+/* NEW: زيادة ارتفاع "منطقة العرض" فقط بدون تغيير بقية الصفحة */
+#exerciseStage {
+  min-height: 420px;
+}
+
+@media (max-width: 768px) {
+  #exerciseStage {
+    min-height: 520px;
+  }
+}
 
 /* ===== تعديل منطقة العرض في الوضع الفاتح فقط ===== */
 
@@ -184,3 +201,73 @@ body[data-theme="light"] #exerciseStage .stage-placeholder .placeholder-highligh
   border-color: rgba(180, 200, 235, 0.9);
   color: #0f172a;
 }
+
+/* ====== No White Anywhere (Hard Override) ====== */
+
+/* 1) امنع أي خلفية بيضاء من html/body + عالج overscroll */
+html, body {
+  background: var(--bg-body) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* مهم للجوال/سفاري: لون منطقة الـ overscroll */
+html {
+  background-color: #020617 !important; /* كـ fallback إذا كان --bg-body gradient */
+}
+
+/* 2) أي شيء ممكن يكون فوق ويطلع أبيض */
+.app-shell,
+.app-header,
+header,
+main,
+footer {
+  background: transparent !important;
+}
+
+/* 3) لو عندك panels/cards تأكد أنها تستخدم متغيراتك وليس أبيض ثابت */
+.exercise-list-panel,
+.exercise-meta-card,
+.exercise-stage-card,
+#exerciseStage {
+  background: var(--bg-panel) !important;
+}
+
+/* 4) لو في أي pseudo عنصر (سبب شائع للبياض) */
+*::before,
+*::after {
+  background-color: transparent;
+}
+
+/* 5) (اختياري) لو لاحظت “وميض أبيض” عند التنقل/التحميل */
+body {
+  background-color: #020617 !important;
+}
+
+/* ====== Light Symbols in Dark Theme ====== */
+body[data-theme="dark"] {
+  --icon-color: #e5e7eb;     /* فاتح مريح */
+  --symbol-color: #f1f5f9;   /* أوضح للتمارين */
+}
+
+body[data-theme="dark"] .chip-btn,
+body[data-theme="dark"] .icon-btn,
+body[data-theme="dark"] button {
+  color: var(--icon-color);
+}
+
+body[data-theme="dark"] .exercise-stage-card *,
+body[data-theme="dark"] #exerciseStage *,
+body[data-theme="dark"] .memory-grid-card {
+  color: var(--symbol-color);
+}
+
+body[data-theme="dark"] svg {
+  fill: var(--icon-color);
+  stroke: var(--icon-color);
+}
+
+body[data-theme="dark"] {
+  -webkit-text-fill-color: unset;
+}
+
