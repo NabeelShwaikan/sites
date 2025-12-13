@@ -191,14 +191,14 @@ body[data-theme="light"] .meta-chip {
 .stage-container {
   margin-top: 0.1rem;
   border-radius: 1.25rem;
-  height: 360px;
-  min-height: 280px;
+  height: auto;
+  min-height: auto;
   padding: 1.1rem;
   background: radial-gradient(circle at top, rgba(30, 64, 175, 0.6), rgba(15, 23, 42, 0.98));
   border: 1px solid rgba(30, 64, 175, 0.8);
   box-shadow: 0 32px 90px rgba(15, 23, 42, 0.95);
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .stage-placeholder {
