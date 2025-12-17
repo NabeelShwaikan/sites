@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>وعي الذكاء الاصطناعي</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/quiz.css" />
+</head>
+
+<body data-theme="light">
+  <div class="quiz-shell">
+    <header class="quiz-header">
+      <div class="quiz-header-main">
+        <h1>وعي الذكاء الاصطناعي</h1>
+        <p>
+          اختبار لقياس مستوى وعيك بالذكاء الاصطناعي في الاستخدام اليومي
+          والعمل والتعليم، وفهم حدوده ودور القرار البشري.
+        </p>
+
+        <div class="progress-bar-shell">
+          <div class="progress-track">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">
+            لم يبدأ الاختبار بعد
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-header-actions">
+        <a href="../index.html" class="back-link">⬅️ العودة للبوابة</a>
+        <button id="themeToggle" class="theme-toggle" type="button">
+          🌙
+        </button>
+      </div>
+    </header>
+
+    <main id="quizMain"></main>
+
+    <footer class="quiz-footer">
+      <span>الفئة العمرية المستهدفة: ٨ – ٦٥ سنة</span>
+      <span>الاختبار يقيس الوعي والفهم وليس المهارة التقنية.</span>
+    </footer>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/quiz_ai_awareness_data.js"></script>
+  <script src="../js/quiz_engine.js"></script>
+</body>
+</html>
