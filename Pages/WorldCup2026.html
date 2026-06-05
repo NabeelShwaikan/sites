@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوابة كأس العالم 2026</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Tahoma,Arial;background:linear-gradient(180deg,#07111f,#0b2942 45%,#07111f);color:#fff;line-height:1.65}
+.hero{position:relative;overflow:hidden;text-align:center;padding:34px 14px 22px;background:radial-gradient(circle at 20% 10%,rgba(245,197,66,.28),transparent 28%),radial-gradient(circle at 80% 10%,rgba(37,99,235,.35),transparent 30%),linear-gradient(135deg,#07111f,#0b2942)}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 1px,transparent 1px 18px)}.hero>*{position:relative;z-index:1}
+.avatar{width:92px;height:92px;margin:auto;border-radius:50%;display:grid;place-items:center;font-size:44px;background:linear-gradient(135deg,#f5c542,#fff2a6);color:#07111f;box-shadow:0 18px 44px rgba(0,0,0,.35),0 0 0 8px rgba(255,255,255,.08)}
+h1{margin:14px 0 8px;font-size:clamp(28px,6vw,50px)}.hero p{margin:0 auto;max-width:880px;color:#d8e6f5}
+.badges,.players{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}.badges span,.player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.19);border-radius:999px;padding:7px 12px;font-weight:900;color:#fff;font-size:13px}
+.players{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;max-width:960px;margin:22px auto 0;padding-bottom:8px;scrollbar-width:none}.players::-webkit-scrollbar{display:none}.player{flex:0 0 auto;border-radius:18px;min-width:132px}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(7,17,31,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.14);padding:8px 10px}
+.topin{max-width:1160px;margin:auto;display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none}.topin::-webkit-scrollbar{display:none}
+.mini{white-space:nowrap;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 10px;font-weight:900;font-size:13px}
+.tabs{position:sticky;top:47px;z-index:45;background:rgba(7,17,31,.94);backdrop-filter:blur(12px);display:flex;gap:6px;overflow-x:auto;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.1);color:#fff;font-weight:900;cursor:pointer}.tab.active{background:#f5c542;color:#07111f}
+.controls{max-width:1160px;margin:12px auto 0;padding:0 12px}.panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:12px}.ctrlgrid{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:800px){.ctrlgrid{grid-template-columns:1fr 1fr auto auto auto}}select,button,input{font:inherit}select,.topbtn{border:0;border-radius:12px;padding:10px 12px}.topbtn{font-weight:900;cursor:pointer}.gold{background:#f5c542;color:#07111f}.soft{background:#eaf1ff;color:#174ea6}
+main{max-width:1160px;margin:auto;padding:16px 12px 54px}.section{display:none}.section.active{display:block}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}@media(min-width:850px){.stats{grid-template-columns:repeat(6,1fr)}}.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;text-align:center;padding:10px}.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:#c8d8e8}
+.note{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:14px;margin-bottom:14px;color:#e7f0fa}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:850px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:#fff;color:#101827;border-radius:20px;padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.22);border:2px solid transparent}.card.fav{border-color:#f5c542}.card.mine{box-shadow:0 0 0 2px #16a085 inset,0 12px 30px rgba(0,0,0,.22)}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.pill{border-radius:999px;padding:4px 10px;font-size:12px;font-weight:900;background:#eef4fb;color:#38566f}.live{background:#fff1d6;color:#925d00}.fin{background:#e9fbf6;color:#08765f}
+h3{margin:8px 0 4px;font-size:20px}.meta{color:#667085;font-size:13px;margin-bottom:8px}.count{font-weight:900;color:#0f3554;margin:8px 0}
+.box{background:#f8fafc;border:1px solid #e6eef7;border-radius:16px;padding:10px;margin:8px 0}.boxt{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px;font-weight:900;color:#344256}
+.score{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}.score input{width:58px;border:1px solid #d7e2ef;border-radius:11px;padding:7px;text-align:center;font-weight:900}
+.small{border:0;border-radius:10px;background:#101827;color:#fff;padding:7px 10px;font-weight:900;cursor:pointer}.small:disabled{opacity:.45;cursor:not-allowed}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}@media(min-width:520px){.actions{grid-template-columns:repeat(4,1fr)}}.btn{border:0;border-radius:12px;padding:9px 8px;font-weight:900;cursor:pointer;text-align:center;text-decoration:none;font-size:13px}.cal{background:#16a085;color:#fff}.chan{background:#eaf1ff;color:#174ea6}.favb{background:#fff4ca;color:#735500}.mineb{background:#e9fbf6;color:#08765f}
+.eval{margin-top:8px;font-weight:900}.exact{color:#07805f}.winner{color:#b77900}.wrong{color:#b91c1c}.infoGrid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:800px){.infoGrid{grid-template-columns:repeat(3,1fr)}}.info{background:#fff;color:#101827;border-radius:20px;padding:16px;box-shadow:0 12px 30px rgba(0,0,0,.22)}.info h3{margin-top:0}
+.modalbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:80;align-items:center;justify-content:center;padding:18px}.modal{background:#fff;color:#101827;border-radius:22px;padding:16px;width:min(760px,100%);max-height:88vh;overflow:auto}.modalhead{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #e5edf5;padding-bottom:10px;margin-bottom:10px}.close{border:0;background:#f1f5f9;border-radius:10px;width:38px;height:38px;font-size:22px;cursor:pointer}
+.chgrid{display:grid;grid-template-columns:1fr;gap:10px}@media(min-width:650px){.chgrid{grid-template-columns:1fr 1fr}}.ch{background:#f8fafc;border:1px solid #e5edf6;border-radius:16px;padding:10px}.ch h4{margin:0 0 6px;color:#0f3554}.ch ul{margin:0;padding:0 20px 0 0;font-weight:700;color:#344256}
+.toTop{position:fixed;left:16px;bottom:18px;z-index:55;border:0;border-radius:999px;background:#f5c542;color:#07111f;font-weight:900;padding:10px 13px;box-shadow:0 10px 25px rgba(0,0,0,.28);cursor:pointer;display:none}.toTop.show{display:block}footer{text-align:center;color:#b9cbdd;padding:0 15px 28px;font-size:13px}
+@media(max-width:520px){.avatar{width:78px;height:78px;font-size:36px}.hero{padding-top:24px}.tabs{top:42px}.mini{font-size:12px;padding:6px 9px}}
+
+.themeBtn{border:0;border-radius:12px;padding:8px 12px;font-weight:900;cursor:pointer;background:#f5c542;color:#07111f}
+body.light-mode{background:linear-gradient(180deg,#eef4fb,#dbeafe 45%,#eef4fb);color:#111827}
+body.light-mode .hero{background:radial-gradient(circle at 20% 10%,rgba(245,197,66,.35),transparent 28%),radial-gradient(circle at 80% 10%,rgba(59,130,246,.25),transparent 30%),linear-gradient(135deg,#dbeafe,#eef4fb)}
+body.light-mode .topbar,body.light-mode .tabs{background:rgba(255,255,255,.95)}
+body.light-mode .tab{color:#111827}
+body.light-mode .panel,body.light-mode .note{background:rgba(255,255,255,.85);color:#111827}
+
+
+/* ===== تحسين البطاقات للوضع الليلي والنهاري ===== */
+/* الوضع الليلي الحقيقي */
+.card,
+.info,
+.modal{
+  background:#111827;
+  color:#f8fafc;
+}
+
+.meta{
+  color:#cbd5e1;
+}
+
+.box,
+.ch{
+  background:#1e293b;
+  border-color:#334155;
+}
+
+.boxt{
+  color:#e2e8f0;
+}
+
+.score input{
+  background:#0f172a;
+  color:#ffffff;
+  border-color:#334155;
+}
+
+.small{
+  background:#334155;
+  color:#ffffff;
+}
+
+.ch h4{
+  color:#f5c542;
+}
+
+.ch ul{
+  color:#e2e8f0;
+}
+
+.card .count{
+  color:#dbeafe;
+}
+
+/* إعادة الوضع النهاري للبطاقات والحقول */
+body.light-mode .card,
+body.light-mode .info,
+body.light-mode .modal{
+  background:#ffffff;
+  color:#111827;
+}
+
+body.light-mode .box,
+body.light-mode .ch{
+  background:#f8fafc;
+  border-color:#e5e7eb;
+}
+
+body.light-mode .score input{
+  background:#ffffff;
+  color:#111827;
+  border-color:#d1d5db;
+}
+
+body.light-mode .meta{
+  color:#667085;
+}
+
+body.light-mode .boxt{
+  color:#344256;
+}
+
+body.light-mode .ch h4{
+  color:#0f3554;
+}
+
+body.light-mode .ch ul{
+  color:#344256;
+}
+
+body.light-mode .card .count{
+  color:#0f3554;
+}
+
+
+/* ===== تبسيط الهيدر وتنسيق أزرار التحكم مع الثيم ===== */
+.players{display:none!important}
+
+select,
+.topbtn,
+.themeBtn{
+  background:#111827;
+  color:#f8fafc;
+  border:1px solid #334155;
+}
+
+.topbtn.soft,
+.topbtn.gold{
+  background:#1e293b;
+  color:#f8fafc;
+  border:1px solid #334155;
+}
+
+.themeBtn{
+  background:#f5c542;
+  color:#07111f;
+  border:0;
+}
+
+.panel{
+  background:rgba(15,23,42,.78);
+  border-color:#334155;
+}
+
+select option{
+  background:#111827;
+  color:#f8fafc;
+}
+
+body.light-mode select,
+body.light-mode .topbtn,
+body.light-mode .themeBtn{
+  background:#ffffff;
+  color:#111827;
+  border:1px solid #d1d5db;
+}
+
+body.light-mode .topbtn.soft{
+  background:#eaf1ff;
+  color:#174ea6;
+  border-color:#c7d2fe;
+}
+
+body.light-mode .topbtn.gold,
+body.light-mode .themeBtn{
+  background:#f5c542;
+  color:#07111f;
+  border:0;
+}
+
+body.light-mode .panel{
+  background:rgba(255,255,255,.85);
+  border-color:#dbeafe;
+}
+
+body.light-mode select option{
+  background:#ffffff;
+  color:#111827;
+}
+
+
+.koEditGrid{display:grid;grid-template-columns:1fr;gap:10px}
+.koEditGrid label{font-weight:900;color:inherit}
+.koEditGrid select,.koEditGrid input{
+  width:100%;
+  border-radius:12px;
+  padding:10px 12px;
+  border:1px solid #334155;
+  background:#0f172a;
+  color:#f8fafc;
+}
+body.light-mode .koEditGrid select,
+body.light-mode .koEditGrid input{
+  background:#ffffff;
+  color:#111827;
+  border-color:#d1d5db;
+}
+
+
+/* ===== جلب النتائج من سيرفر خاص ===== */
+.serverSyncBox{
+  max-width:1160px;
+  margin:10px auto 0;
+  padding:0 12px;
+}
+.serverSyncInner{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+  background:rgba(15,23,42,.78);
+  border:1px solid #334155;
+  border-radius:18px;
+  padding:12px;
+}
+@media(min-width:800px){
+  .serverSyncInner{grid-template-columns:1fr auto auto}
+}
+.serverSyncInner input{
+  width:100%;
+  border-radius:12px;
+  padding:10px 12px;
+  border:1px solid #334155;
+  background:#0f172a;
+  color:#f8fafc;
+}
+.syncStatus{
+  color:#cbd5e1;
+  font-size:13px;
+  align-self:center;
+}
+body.light-mode .serverSyncInner{
+  background:rgba(255,255,255,.85);
+  border-color:#dbeafe;
+}
+body.light-mode .serverSyncInner input{
+  background:#ffffff;
+  color:#111827;
+  border-color:#d1d5db;
+}
+body.light-mode .syncStatus{color:#475467}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="avatar">🏆</div><h1>بوابة كأس العالم 2026</h1><p> مباريات، توقعات، نتائج، إحصائيات، قنوات، وإضافة إلى Google Calendar.</p><div class="badges"><span>⚽ جدول</span><span>🎯 توقعات</span><span>📊 إحصائيات</span><span>📺 قنوات</span></div></header>
+<section class="topbar"><div class="topin"><button id="themeToggle" class="themeBtn">🌙 الوضع الليلي</button><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span></div></section>
+<nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('channels',this)">القنوات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button></nav>
+<section class="controls"><div class="panel"><div class="ctrlgrid"><select id="team"></select><select id="view"><option value="all">كل المباريات</option><option value="mine">مبارياتي</option><option value="fav">المفضلة ⭐</option><option value="pred">توقعاتي</option><option value="upcoming">القادمة</option><option value="finished">المنتهية</option></select><button class="topbtn gold" onclick="exportData()">تصدير</button><button class="topbtn soft" onclick="document.getElementById('imp').click()">استيراد</button><button class="topbtn soft" onclick="showReport()">تقرير</button><button class="topbtn soft" onclick="clearAllPredictions()">🗑 مسح التوقعات</button><input type="file" id="imp" accept="application/json" hidden onchange="importData(event)"></div></div></section>
+
+<section class="serverSyncBox">
+  <div class="serverSyncInner">
+    <input id="resultsEndpoint" type="url" placeholder="رابط سيرفر النتائج JSON — اختياري">
+    <button class="topbtn soft" onclick="saveEndpoint()">حفظ الرابط</button>
+    <button class="topbtn gold" onclick="fetchResultsFromServer()">🔄 جلب النتائج</button>
+    <div id="syncStatus" class="syncStatus">الإدخال اليدوي متاح دائمًا، والجلب من السيرفر اختياري.</div>
+  </div>
+</section>
+
+<main>
+<section id="sec-home" class="section active"><div class="stats"><div class="stat"><b id="pts">0</b><span>النقاط</span></div><div class="stat"><b id="acc">0%</b><span>نسبة النجاح</span></div><div class="stat"><b id="ex">0</b><span>مطابقة</span></div><div class="stat"><b id="win">0</b><span>فائز صحيح</span></div><div class="stat"><b id="fin">0</b><span>نتائج مدخلة</span></div><div class="stat"><b id="pred">0</b><span>توقعات</span></div></div><section class="note"><b>ملخص اليوم</b><div id="today">لا توجد مباريات اليوم حسب تاريخ جهازك.</div></section><div class="infoGrid"><div class="info"><h3>🎯 التوقعات</h3><p>احفظ توقعك قبل بداية المباراة، وسيتم قفله تلقائيًا عند البداية.</p></div><div class="info"><h3>📊 النقاط</h3><p>٣ نقاط للنتيجة المطابقة، ونقطة واحدة للفائز الصحيح.</p></div><div class="info"><h3>📤 النسخ الاحتياطي</h3><p>استخدم التصدير لحفظ توقعاتك خارج المتصفح.</p></div></div></section>
+<section id="sec-matches" class="section"><div id="list-matches" class="grid"></div></section>
+<section id="sec-predictions" class="section"><div class="note">المباريات التي حفظت لها توقعات.</div><div id="list-predictions" class="grid"></div></section>
+<section id="sec-results" class="section"><div class="note">المباريات المنتهية أو التي أدخلت لها نتيجة.</div><div id="list-results" class="grid"></div></section>
+<section id="sec-stats" class="section"><div class="infoGrid"><div class="info"><h3>🏆 النقاط</h3><p id="statsPts">0</p></div><div class="info"><h3>🎯 الدقة</h3><p id="statsAcc">0%</p></div><div class="info"><h3>✅ المطابقة</h3><p id="statsEx">0</p></div></div><div class="info" style="margin-top:12px"><h3>تقرير</h3><p>اضغط زر تقرير في لوحة التحكم لعرض أداء التوقعات حسب المنتخب.</p></div></section>
+<section id="sec-channels" class="section"><div class="note">القنوات هنا ناقلون عامون حسب المنطقة. رقم القناة المحدد لكل مباراة يحتاج تحديثًا لاحقًا عند اعتماده.</div><div class="infoGrid"><div class="info"><h3>الشرق الأوسط</h3><p>beIN SPORTS<br>TOD<br>beIN CONNECT</p></div><div class="info"><h3>أمريكا</h3><p>FOX<br>FS1<br>Telemundo<br>Peacock</p></div><div class="info"><h3>أخرى</h3><p>BBC / ITV / S4C<br>TSN / CTV / RDS<br>SBS</p></div></div></section>
+
+<section id="sec-knockout" class="section">
+<div class="note"><b>🏆 الأدوار النهائية</b><br>تمت إضافة مواعيد الأدوار النهائية بتوقيت مكة، ويمكنك إدخال أسماء المنتخبات يدويًا أثناء البطولة.</div>
+<div class="infoGrid">
+<div class="info"><h3>دور الـ32</h3><p>مباريات 73 - 88</p></div>
+<div class="info"><h3>دور الـ16</h3><p>مباريات 89 - 96</p></div>
+<div class="info"><h3>ربع النهائي</h3><p>مباريات 97 - 100</p></div>
+<div class="info"><h3>نصف النهائي</h3><p>مباراتان 101 - 102</p></div>
+<div class="info"><h3>المركز الثالث</h3><p>مباراة 103</p></div>
+<div class="info"><h3>النهائي</h3><p>مباراة 104</p></div>
+</div>
+<div id="knockoutCards" class="grid"></div>
+</section>
+
+</main>
+<div class="modalbg" id="modal" onclick="if(event.target.id==='modal')closeModal()"><div class="modal"><div class="modalhead"><div><h3 id="mt">القنوات الناقلة</h3><p class="meta" id="ms"></p></div><button class="close" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div>
+<button class="toTop" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆ أعلى</button><footer>جميع الحقوق محفوظة لـ نبيل الشويكان 2026</footer>
+<script>
+const M = [{"id": "m001", "title": "المكسيك × جنوب أفريقيا", "home": "المكسيك", "away": "جنوب أفريقيا", "start": "2026-06-11T22:00:00", "end": "2026-06-12T00:00:00", "date": "2026-06-11", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%85%D9%83%D8%B3%D9%8A%D9%83%20%C3%97%20%D8%AC%D9%86%D9%88%D8%A8%20%D8%A3%D9%81%D8%B1%D9%8A%D9%82%D9%8A%D8%A7&dates=20260611T220000/20260612T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m002", "title": "كوريا الجنوبية × التشيك", "home": "كوريا الجنوبية", "away": "التشيك", "start": "2026-06-12T05:00:00", "end": "2026-06-12T07:00:00", "date": "2026-06-12", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%88%D8%B1%D9%8A%D8%A7%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9%20%C3%97%20%D8%A7%D9%84%D8%AA%D8%B4%D9%8A%D9%83&dates=20260612T050000/20260612T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m003", "title": "كندا × البوسنة والهرسك", "home": "كندا", "away": "البوسنة والهرسك", "start": "2026-06-12T22:00:00", "end": "2026-06-13T00:00:00", "date": "2026-06-12", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%86%D8%AF%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%A8%D9%88%D8%B3%D9%86%D8%A9%20%D9%88%D8%A7%D9%84%D9%87%D8%B1%D8%B3%D9%83&dates=20260612T220000/20260613T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m004", "title": "أمريكا × باراغواي", "home": "أمريكا", "away": "باراغواي", "start": "2026-06-13T04:00:00", "end": "2026-06-13T06:00:00", "date": "2026-06-13", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7%20%C3%97%20%D8%A8%D8%A7%D8%B1%D8%A7%D8%BA%D9%88%D8%A7%D9%8A&dates=20260613T040000/20260613T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m005", "title": "قطر × سويسرا", "home": "قطر", "away": "سويسرا", "start": "2026-06-13T22:00:00", "end": "2026-06-14T00:00:00", "date": "2026-06-13", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%82%D8%B7%D8%B1%20%C3%97%20%D8%B3%D9%88%D9%8A%D8%B3%D8%B1%D8%A7&dates=20260613T220000/20260614T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m006", "title": "البرازيل × المغرب", "home": "البرازيل", "away": "المغرب", "start": "2026-06-14T01:00:00", "end": "2026-06-14T03:00:00", "date": "2026-06-14", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D8%B2%D9%8A%D9%84%20%C3%97%20%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8&dates=20260614T010000/20260614T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m007", "title": "هايتي × اسكتلندا", "home": "هايتي", "away": "اسكتلندا", "start": "2026-06-14T04:00:00", "end": "2026-06-14T06:00:00", "date": "2026-06-14", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%87%D8%A7%D9%8A%D8%AA%D9%8A%20%C3%97%20%D8%A7%D8%B3%D9%83%D8%AA%D9%84%D9%86%D8%AF%D8%A7&dates=20260614T040000/20260614T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m008", "title": "أستراليا × تركيا", "home": "أستراليا", "away": "تركيا", "start": "2026-06-14T07:00:00", "end": "2026-06-14T09:00:00", "date": "2026-06-14", "time": "07:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A3%D8%B3%D8%AA%D8%B1%D8%A7%D9%84%D9%8A%D8%A7%20%C3%97%20%D8%AA%D8%B1%D9%83%D9%8A%D8%A7&dates=20260614T070000/20260614T090000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m009", "title": "ألمانيا × كوراساو", "home": "ألمانيا", "away": "كوراساو", "start": "2026-06-14T20:00:00", "end": "2026-06-14T22:00:00", "date": "2026-06-14", "time": "20:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A7%20%C3%97%20%D9%83%D9%88%D8%B1%D8%A7%D8%B3%D8%A7%D9%88&dates=20260614T200000/20260614T220000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m010", "title": "اليابان × هولندا", "home": "اليابان", "away": "هولندا", "start": "2026-06-14T23:00:00", "end": "2026-06-15T01:00:00", "date": "2026-06-14", "time": "23:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86%20%C3%97%20%D9%87%D9%88%D9%84%D9%86%D8%AF%D8%A7&dates=20260614T230000/20260615T010000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m011", "title": "الإكوادور × ساحل العاج", "home": "الإكوادور", "away": "ساحل العاج", "start": "2026-06-15T02:00:00", "end": "2026-06-15T04:00:00", "date": "2026-06-15", "time": "02:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A5%D9%83%D9%88%D8%A7%D8%AF%D9%88%D8%B1%20%C3%97%20%D8%B3%D8%A7%D8%AD%D9%84%20%D8%A7%D9%84%D8%B9%D8%A7%D8%AC&dates=20260615T020000/20260615T040000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m012", "title": "تونس × السويد", "home": "تونس", "away": "السويد", "start": "2026-06-15T05:00:00", "end": "2026-06-15T07:00:00", "date": "2026-06-15", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%AA%D9%88%D9%86%D8%B3%20%C3%97%20%D8%A7%D9%84%D8%B3%D9%88%D9%8A%D8%AF&dates=20260615T050000/20260615T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m013", "title": "إسبانيا × الرأس الأخضر", "home": "إسبانيا", "away": "الرأس الأخضر", "start": "2026-06-15T19:00:00", "end": "2026-06-15T21:00:00", "date": "2026-06-15", "time": "19:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%A3%D8%AE%D8%B6%D8%B1&dates=20260615T190000/20260615T210000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m014", "title": "مصر × بلجيكا", "home": "مصر", "away": "بلجيكا", "start": "2026-06-15T22:00:00", "end": "2026-06-16T00:00:00", "date": "2026-06-15", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%85%D8%B5%D8%B1%20%C3%97%20%D8%A8%D9%84%D8%AC%D9%8A%D9%83%D8%A7&dates=20260615T220000/20260616T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m015", "title": "السعودية × أوروغواي", "home": "السعودية", "away": "أوروغواي", "start": "2026-06-16T01:00:00", "end": "2026-06-16T03:00:00", "date": "2026-06-16", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9%20%C3%97%20%D8%A3%D9%88%D8%B1%D9%88%D8%BA%D9%88%D8%A7%D9%8A&dates=20260616T010000/20260616T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m016", "title": "إيران × نيوزيلندا", "home": "إيران", "away": "نيوزيلندا", "start": "2026-06-16T04:00:00", "end": "2026-06-16T06:00:00", "date": "2026-06-16", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D9%8A%D8%B1%D8%A7%D9%86%20%C3%97%20%D9%86%D9%8A%D9%88%D8%B2%D9%8A%D9%84%D9%86%D8%AF%D8%A7&dates=20260616T040000/20260616T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m017", "title": "فرنسا × السنغال", "home": "فرنسا", "away": "السنغال", "start": "2026-06-16T22:00:00", "end": "2026-06-17T00:00:00", "date": "2026-06-16", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%81%D8%B1%D9%86%D8%B3%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%B3%D9%86%D8%BA%D8%A7%D9%84&dates=20260616T220000/20260617T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m018", "title": "العراق × النرويج", "home": "العراق", "away": "النرويج", "start": "2026-06-17T01:00:00", "end": "2026-06-17T03:00:00", "date": "2026-06-17", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%20%C3%97%20%D8%A7%D9%84%D9%86%D8%B1%D9%88%D9%8A%D8%AC&dates=20260617T010000/20260617T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m019", "title": "الأرجنتين × الجزائر", "home": "الأرجنتين", "away": "الجزائر", "start": "2026-06-17T04:00:00", "end": "2026-06-17T06:00:00", "date": "2026-06-17", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A3%D8%B1%D8%AC%D9%86%D8%AA%D9%8A%D9%86%20%C3%97%20%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1&dates=20260617T040000/20260617T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m020", "title": "الأردن × النمسا", "home": "الأردن", "away": "النمسا", "start": "2026-06-17T07:00:00", "end": "2026-06-17T09:00:00", "date": "2026-06-17", "time": "07:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86%20%C3%97%20%D8%A7%D9%84%D9%86%D9%85%D8%B3%D8%A7&dates=20260617T070000/20260617T090000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m021", "title": "البرتغال × الكونغو الديمقراطية", "home": "البرتغال", "away": "الكونغو الديمقراطية", "start": "2026-06-17T20:00:00", "end": "2026-06-17T22:00:00", "date": "2026-06-17", "time": "20:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A8%D8%B1%D8%AA%D8%BA%D8%A7%D9%84%20%C3%97%20%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D9%88%20%D8%A7%D9%84%D8%AF%D9%8A%D9%85%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A9&dates=20260617T200000/20260617T220000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m022", "title": "إنجلترا × كرواتيا", "home": "إنجلترا", "away": "كرواتيا", "start": "2026-06-17T23:00:00", "end": "2026-06-18T01:00:00", "date": "2026-06-17", "time": "23:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D9%86%D8%AC%D9%84%D8%AA%D8%B1%D8%A7%20%C3%97%20%D9%83%D8%B1%D9%88%D8%A7%D8%AA%D9%8A%D8%A7&dates=20260617T230000/20260618T010000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m023", "title": "غانا × بنما", "home": "غانا", "away": "بنما", "start": "2026-06-18T02:00:00", "end": "2026-06-18T04:00:00", "date": "2026-06-18", "time": "02:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%BA%D8%A7%D9%86%D8%A7%20%C3%97%20%D8%A8%D9%86%D9%85%D8%A7&dates=20260618T020000/20260618T040000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m024", "title": "كولومبيا × أوزبكستان", "home": "كولومبيا", "away": "أوزبكستان", "start": "2026-06-18T05:00:00", "end": "2026-06-18T07:00:00", "date": "2026-06-18", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%88%D9%84%D9%88%D9%85%D8%A8%D9%8A%D8%A7%20%C3%97%20%D8%A3%D9%88%D8%B2%D8%A8%D9%83%D8%B3%D8%AA%D8%A7%D9%86&dates=20260618T050000/20260618T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m025", "title": "التشيك × جنوب أفريقيا", "home": "التشيك", "away": "جنوب أفريقيا", "start": "2026-06-18T19:00:00", "end": "2026-06-18T21:00:00", "date": "2026-06-18", "time": "19:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%AA%D8%B4%D9%8A%D9%83%20%C3%97%20%D8%AC%D9%86%D9%88%D8%A8%20%D8%A3%D9%81%D8%B1%D9%8A%D9%82%D9%8A%D8%A7&dates=20260618T190000/20260618T210000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m026", "title": "سويسرا × البوسنة والهرسك", "home": "سويسرا", "away": "البوسنة والهرسك", "start": "2026-06-18T22:00:00", "end": "2026-06-19T00:00:00", "date": "2026-06-18", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%B3%D9%88%D9%8A%D8%B3%D8%B1%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%A8%D9%88%D8%B3%D9%86%D8%A9%20%D9%88%D8%A7%D9%84%D9%87%D8%B1%D8%B3%D9%83&dates=20260618T220000/20260619T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m027", "title": "كندا × قطر", "home": "كندا", "away": "قطر", "start": "2026-06-19T01:00:00", "end": "2026-06-19T03:00:00", "date": "2026-06-19", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%86%D8%AF%D8%A7%20%C3%97%20%D9%82%D8%B7%D8%B1&dates=20260619T010000/20260619T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m028", "title": "كوريا الجنوبية × المكسيك", "home": "كوريا الجنوبية", "away": "المكسيك", "start": "2026-06-19T04:00:00", "end": "2026-06-19T06:00:00", "date": "2026-06-19", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%88%D8%B1%D9%8A%D8%A7%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9%20%C3%97%20%D8%A7%D9%84%D9%85%D9%83%D8%B3%D9%8A%D9%83&dates=20260619T040000/20260619T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m029", "title": "أمريكا × أستراليا", "home": "أمريكا", "away": "أستراليا", "start": "2026-06-19T22:00:00", "end": "2026-06-20T00:00:00", "date": "2026-06-19", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7%20%C3%97%20%D8%A3%D8%B3%D8%AA%D8%B1%D8%A7%D9%84%D9%8A%D8%A7&dates=20260619T220000/20260620T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m030", "title": "اسكتلندا × المغرب", "home": "اسكتلندا", "away": "المغرب", "start": "2026-06-20T01:00:00", "end": "2026-06-20T03:00:00", "date": "2026-06-20", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D8%B3%D9%83%D8%AA%D9%84%D9%86%D8%AF%D8%A7%20%C3%97%20%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8&dates=20260620T010000/20260620T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m031", "title": "البرازيل × هايتي", "home": "البرازيل", "away": "هايتي", "start": "2026-06-20T03:30:00", "end": "2026-06-20T05:30:00", "date": "2026-06-20", "time": "03:30", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D8%B2%D9%8A%D9%84%20%C3%97%20%D9%87%D8%A7%D9%8A%D8%AA%D9%8A&dates=20260620T033000/20260620T053000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m032", "title": "تركيا × باراغواي", "home": "تركيا", "away": "باراغواي", "start": "2026-06-20T06:00:00", "end": "2026-06-20T08:00:00", "date": "2026-06-20", "time": "06:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%AA%D8%B1%D9%83%D9%8A%D8%A7%20%C3%97%20%D8%A8%D8%A7%D8%B1%D8%A7%D8%BA%D9%88%D8%A7%D9%8A&dates=20260620T060000/20260620T080000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m033", "title": "هولندا × السويد", "home": "هولندا", "away": "السويد", "start": "2026-06-20T20:00:00", "end": "2026-06-20T22:00:00", "date": "2026-06-20", "time": "20:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%87%D9%88%D9%84%D9%86%D8%AF%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%B3%D9%88%D9%8A%D8%AF&dates=20260620T200000/20260620T220000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m034", "title": "ألمانيا × ساحل العاج", "home": "ألمانيا", "away": "ساحل العاج", "start": "2026-06-20T23:00:00", "end": "2026-06-21T01:00:00", "date": "2026-06-20", "time": "23:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A7%20%C3%97%20%D8%B3%D8%A7%D8%AD%D9%84%20%D8%A7%D9%84%D8%B9%D8%A7%D8%AC&dates=20260620T230000/20260621T010000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m035", "title": "كوراساو × الإكوادور", "home": "كوراساو", "away": "الإكوادور", "start": "2026-06-21T03:00:00", "end": "2026-06-21T05:00:00", "date": "2026-06-21", "time": "03:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%88%D8%B1%D8%A7%D8%B3%D8%A7%D9%88%20%C3%97%20%D8%A7%D9%84%D8%A5%D9%83%D9%88%D8%A7%D8%AF%D9%88%D8%B1&dates=20260621T030000/20260621T050000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m036", "title": "اليابان × تونس", "home": "اليابان", "away": "تونس", "start": "2026-06-21T07:00:00", "end": "2026-06-21T09:00:00", "date": "2026-06-21", "time": "07:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86%20%C3%97%20%D8%AA%D9%88%D9%86%D8%B3&dates=20260621T070000/20260621T090000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m037", "title": "إسبانيا × السعودية", "home": "إسبانيا", "away": "السعودية", "start": "2026-06-21T19:00:00", "end": "2026-06-21T21:00:00", "date": "2026-06-21", "time": "19:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9&dates=20260621T190000/20260621T210000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m038", "title": "بلجيكا × إيران", "home": "بلجيكا", "away": "إيران", "start": "2026-06-21T22:00:00", "end": "2026-06-22T00:00:00", "date": "2026-06-21", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A8%D9%84%D8%AC%D9%8A%D9%83%D8%A7%20%C3%97%20%D8%A5%D9%8A%D8%B1%D8%A7%D9%86&dates=20260621T220000/20260622T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m039", "title": "الرأس الأخضر × أوروغواي", "home": "الرأس الأخضر", "away": "أوروغواي", "start": "2026-06-22T01:00:00", "end": "2026-06-22T03:00:00", "date": "2026-06-22", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%A3%D8%AE%D8%B6%D8%B1%20%C3%97%20%D8%A3%D9%88%D8%B1%D9%88%D8%BA%D9%88%D8%A7%D9%8A&dates=20260622T010000/20260622T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m040", "title": "مصر × نيوزيلندا", "home": "مصر", "away": "نيوزيلندا", "start": "2026-06-22T04:00:00", "end": "2026-06-22T06:00:00", "date": "2026-06-22", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%85%D8%B5%D8%B1%20%C3%97%20%D9%86%D9%8A%D9%88%D8%B2%D9%8A%D9%84%D9%86%D8%AF%D8%A7&dates=20260622T040000/20260622T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m041", "title": "الأرجنتين × النمسا", "home": "الأرجنتين", "away": "النمسا", "start": "2026-06-22T20:00:00", "end": "2026-06-22T22:00:00", "date": "2026-06-22", "time": "20:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A3%D8%B1%D8%AC%D9%86%D8%AA%D9%8A%D9%86%20%C3%97%20%D8%A7%D9%84%D9%86%D9%85%D8%B3%D8%A7&dates=20260622T200000/20260622T220000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m042", "title": "فرنسا × العراق", "home": "فرنسا", "away": "العراق", "start": "2026-06-23T00:00:00", "end": "2026-06-23T02:00:00", "date": "2026-06-23", "time": "00:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%81%D8%B1%D9%86%D8%B3%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82&dates=20260623T000000/20260623T020000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m043", "title": "السنغال × النرويج", "home": "السنغال", "away": "النرويج", "start": "2026-06-23T03:00:00", "end": "2026-06-23T05:00:00", "date": "2026-06-23", "time": "03:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%B3%D9%86%D8%BA%D8%A7%D9%84%20%C3%97%20%D8%A7%D9%84%D9%86%D8%B1%D9%88%D9%8A%D8%AC&dates=20260623T030000/20260623T050000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m044", "title": "الجزائر × الأردن", "home": "الجزائر", "away": "الأردن", "start": "2026-06-23T06:00:00", "end": "2026-06-23T08:00:00", "date": "2026-06-23", "time": "06:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1%20%C3%97%20%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86&dates=20260623T060000/20260623T080000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m045", "title": "البرتغال × أوزبكستان", "home": "البرتغال", "away": "أوزبكستان", "start": "2026-06-23T20:00:00", "end": "2026-06-23T22:00:00", "date": "2026-06-23", "time": "20:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A8%D8%B1%D8%AA%D8%BA%D8%A7%D9%84%20%C3%97%20%D8%A3%D9%88%D8%B2%D8%A8%D9%83%D8%B3%D8%AA%D8%A7%D9%86&dates=20260623T200000/20260623T220000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m046", "title": "إنجلترا × غانا", "home": "إنجلترا", "away": "غانا", "start": "2026-06-23T23:00:00", "end": "2026-06-24T01:00:00", "date": "2026-06-23", "time": "23:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D9%86%D8%AC%D9%84%D8%AA%D8%B1%D8%A7%20%C3%97%20%D8%BA%D8%A7%D9%86%D8%A7&dates=20260623T230000/20260624T010000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m047", "title": "كرواتيا × بنما", "home": "كرواتيا", "away": "بنما", "start": "2026-06-24T02:00:00", "end": "2026-06-24T04:00:00", "date": "2026-06-24", "time": "02:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D8%B1%D9%88%D8%A7%D8%AA%D9%8A%D8%A7%20%C3%97%20%D8%A8%D9%86%D9%85%D8%A7&dates=20260624T020000/20260624T040000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m048", "title": "الكونغو الديمقراطية × كولومبيا", "home": "الكونغو الديمقراطية", "away": "كولومبيا", "start": "2026-06-24T05:00:00", "end": "2026-06-24T07:00:00", "date": "2026-06-24", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D9%88%20%D8%A7%D9%84%D8%AF%D9%8A%D9%85%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A9%20%C3%97%20%D9%83%D9%88%D9%84%D9%88%D9%85%D8%A8%D9%8A%D8%A7&dates=20260624T050000/20260624T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m049", "title": "كندا × سويسرا", "home": "كندا", "away": "سويسرا", "start": "2026-06-24T22:00:00", "end": "2026-06-25T00:00:00", "date": "2026-06-24", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%86%D8%AF%D8%A7%20%C3%97%20%D8%B3%D9%88%D9%8A%D8%B3%D8%B1%D8%A7&dates=20260624T220000/20260625T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m050", "title": "قطر × البوسنة والهرسك", "home": "قطر", "away": "البوسنة والهرسك", "start": "2026-06-24T22:00:00", "end": "2026-06-25T00:00:00", "date": "2026-06-24", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%82%D8%B7%D8%B1%20%C3%97%20%D8%A7%D9%84%D8%A8%D9%88%D8%B3%D9%86%D8%A9%20%D9%88%D8%A7%D9%84%D9%87%D8%B1%D8%B3%D9%83&dates=20260624T220000/20260625T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m051", "title": "المغرب × هايتي", "home": "المغرب", "away": "هايتي", "start": "2026-06-25T01:00:00", "end": "2026-06-25T03:00:00", "date": "2026-06-25", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%20%C3%97%20%D9%87%D8%A7%D9%8A%D8%AA%D9%8A&dates=20260625T010000/20260625T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m052", "title": "اسكتلندا × البرازيل", "home": "اسكتلندا", "away": "البرازيل", "start": "2026-06-25T01:00:00", "end": "2026-06-25T03:00:00", "date": "2026-06-25", "time": "01:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D8%B3%D9%83%D8%AA%D9%84%D9%86%D8%AF%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D8%B2%D9%8A%D9%84&dates=20260625T010000/20260625T030000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m053", "title": "كوريا الجنوبية × جنوب أفريقيا", "home": "كوريا الجنوبية", "away": "جنوب أفريقيا", "start": "2026-06-25T04:00:00", "end": "2026-06-25T06:00:00", "date": "2026-06-25", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%88%D8%B1%D9%8A%D8%A7%20%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9%20%C3%97%20%D8%AC%D9%86%D9%88%D8%A8%20%D8%A3%D9%81%D8%B1%D9%8A%D9%82%D9%8A%D8%A7&dates=20260625T040000/20260625T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m054", "title": "المكسيك × التشيك", "home": "المكسيك", "away": "التشيك", "start": "2026-06-25T04:00:00", "end": "2026-06-25T06:00:00", "date": "2026-06-25", "time": "04:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%85%D9%83%D8%B3%D9%8A%D9%83%20%C3%97%20%D8%A7%D9%84%D8%AA%D8%B4%D9%8A%D9%83&dates=20260625T040000/20260625T060000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m055", "title": "كوراساو × ألمانيا", "home": "كوراساو", "away": "ألمانيا", "start": "2026-06-25T23:00:00", "end": "2026-06-26T01:00:00", "date": "2026-06-25", "time": "23:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%83%D9%88%D8%B1%D8%A7%D8%B3%D8%A7%D9%88%20%C3%97%20%D8%A3%D9%84%D9%85%D8%A7%D9%86%D9%8A%D8%A7&dates=20260625T230000/20260626T010000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m056", "title": "الإكوادور × ساحل العاج", "home": "الإكوادور", "away": "ساحل العاج", "start": "2026-06-25T23:00:00", "end": "2026-06-26T01:00:00", "date": "2026-06-25", "time": "23:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A5%D9%83%D9%88%D8%A7%D8%AF%D9%88%D8%B1%20%C3%97%20%D8%B3%D8%A7%D8%AD%D9%84%20%D8%A7%D9%84%D8%B9%D8%A7%D8%AC&dates=20260625T230000/20260626T010000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m057", "title": "تونس × هولندا", "home": "تونس", "away": "هولندا", "start": "2026-06-26T02:00:00", "end": "2026-06-26T04:00:00", "date": "2026-06-26", "time": "02:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%AA%D9%88%D9%86%D8%B3%20%C3%97%20%D9%87%D9%88%D9%84%D9%86%D8%AF%D8%A7&dates=20260626T020000/20260626T040000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m058", "title": "اليابان × السويد", "home": "اليابان", "away": "السويد", "start": "2026-06-26T02:00:00", "end": "2026-06-26T04:00:00", "date": "2026-06-26", "time": "02:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%8A%D8%A7%D8%A8%D8%A7%D9%86%20%C3%97%20%D8%A7%D9%84%D8%B3%D9%88%D9%8A%D8%AF&dates=20260626T020000/20260626T040000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m059", "title": "تركيا × أمريكا", "home": "تركيا", "away": "أمريكا", "start": "2026-06-26T05:00:00", "end": "2026-06-26T07:00:00", "date": "2026-06-26", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%AA%D8%B1%D9%83%D9%8A%D8%A7%20%C3%97%20%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7&dates=20260626T050000/20260626T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m060", "title": "أستراليا × باراغواي", "home": "أستراليا", "away": "باراغواي", "start": "2026-06-26T05:00:00", "end": "2026-06-26T07:00:00", "date": "2026-06-26", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A3%D8%B3%D8%AA%D8%B1%D8%A7%D9%84%D9%8A%D8%A7%20%C3%97%20%D8%A8%D8%A7%D8%B1%D8%A7%D8%BA%D9%88%D8%A7%D9%8A&dates=20260626T050000/20260626T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m061", "title": "النرويج × فرنسا", "home": "النرويج", "away": "فرنسا", "start": "2026-06-26T22:00:00", "end": "2026-06-27T00:00:00", "date": "2026-06-26", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%86%D8%B1%D9%88%D9%8A%D8%AC%20%C3%97%20%D9%81%D8%B1%D9%86%D8%B3%D8%A7&dates=20260626T220000/20260627T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m062", "title": "السنغال × العراق", "home": "السنغال", "away": "العراق", "start": "2026-06-26T22:00:00", "end": "2026-06-27T00:00:00", "date": "2026-06-26", "time": "22:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%B3%D9%86%D8%BA%D8%A7%D9%84%20%C3%97%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82&dates=20260626T220000/20260627T000000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m063", "title": "السعودية × الرأس الأخضر", "home": "السعودية", "away": "الرأس الأخضر", "start": "2026-06-27T03:00:00", "end": "2026-06-27T05:00:00", "date": "2026-06-27", "time": "03:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9%20%C3%97%20%D8%A7%D9%84%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%A3%D8%AE%D8%B6%D8%B1&dates=20260627T030000/20260627T050000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m064", "title": "إسبانيا × أوروغواي", "home": "إسبانيا", "away": "أوروغواي", "start": "2026-06-27T03:00:00", "end": "2026-06-27T05:00:00", "date": "2026-06-27", "time": "03:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D8%B3%D8%A8%D8%A7%D9%86%D9%8A%D8%A7%20%C3%97%20%D8%A3%D9%88%D8%B1%D9%88%D8%BA%D9%88%D8%A7%D9%8A&dates=20260627T030000/20260627T050000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m065", "title": "إيران × مصر", "home": "إيران", "away": "مصر", "start": "2026-06-27T06:00:00", "end": "2026-06-27T08:00:00", "date": "2026-06-27", "time": "06:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D9%8A%D8%B1%D8%A7%D9%86%20%C3%97%20%D9%85%D8%B5%D8%B1&dates=20260627T060000/20260627T080000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m066", "title": "نيوزيلندا × بلجيكا", "home": "نيوزيلندا", "away": "بلجيكا", "start": "2026-06-27T06:00:00", "end": "2026-06-27T08:00:00", "date": "2026-06-27", "time": "06:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D9%86%D9%8A%D9%88%D8%B2%D9%8A%D9%84%D9%86%D8%AF%D8%A7%20%C3%97%20%D8%A8%D9%84%D8%AC%D9%8A%D9%83%D8%A7&dates=20260627T060000/20260627T080000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m067", "title": "إنجلترا × بنما", "home": "إنجلترا", "away": "بنما", "start": "2026-06-28T00:00:00", "end": "2026-06-28T02:00:00", "date": "2026-06-28", "time": "00:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A5%D9%86%D8%AC%D9%84%D8%AA%D8%B1%D8%A7%20%C3%97%20%D8%A8%D9%86%D9%85%D8%A7&dates=20260628T000000/20260628T020000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m068", "title": "غانا × كرواتيا", "home": "غانا", "away": "كرواتيا", "start": "2026-06-28T00:00:00", "end": "2026-06-28T02:00:00", "date": "2026-06-28", "time": "00:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%BA%D8%A7%D9%86%D8%A7%20%C3%97%20%D9%83%D8%B1%D9%88%D8%A7%D8%AA%D9%8A%D8%A7&dates=20260628T000000/20260628T020000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m069", "title": "البرتغال × كولومبيا", "home": "البرتغال", "away": "كولومبيا", "start": "2026-06-28T02:30:00", "end": "2026-06-28T04:30:00", "date": "2026-06-28", "time": "02:30", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A8%D8%B1%D8%AA%D8%BA%D8%A7%D9%84%20%C3%97%20%D9%83%D9%88%D9%84%D9%88%D9%85%D8%A8%D9%8A%D8%A7&dates=20260628T023000/20260628T043000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m070", "title": "الكونغو الديمقراطية × أوزبكستان", "home": "الكونغو الديمقراطية", "away": "أوزبكستان", "start": "2026-06-28T02:30:00", "end": "2026-06-28T04:30:00", "date": "2026-06-28", "time": "02:30", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%83%D9%88%D9%86%D8%BA%D9%88%20%D8%A7%D9%84%D8%AF%D9%8A%D9%85%D9%82%D8%B1%D8%A7%D8%B7%D9%8A%D8%A9%20%C3%97%20%D8%A3%D9%88%D8%B2%D8%A8%D9%83%D8%B3%D8%AA%D8%A7%D9%86&dates=20260628T023000/20260628T043000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m071", "title": "النمسا × الجزائر", "home": "النمسا", "away": "الجزائر", "start": "2026-06-28T05:00:00", "end": "2026-06-28T07:00:00", "date": "2026-06-28", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D9%86%D9%85%D8%B3%D8%A7%20%C3%97%20%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1&dates=20260628T050000/20260628T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}, {"id": "m072", "title": "الأرجنتين × الأردن", "home": "الأرجنتين", "away": "الأردن", "start": "2026-06-28T05:00:00", "end": "2026-06-28T07:00:00", "date": "2026-06-28", "time": "05:00", "location": "توقيت مكة المكرمة", "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%202026%3A%20%D8%A7%D9%84%D8%A3%D8%B1%D8%AC%D9%86%D8%AA%D9%8A%D9%86%20%C3%97%20%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86&dates=20260628T050000/20260628T070000&ctz=Asia%2FRiyadh&details=%D8%AA%D9%85%D8%AA%20%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA%20%D9%83%D8%A3%D8%B3%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A&location=%D8%AA%D9%88%D9%82%D9%8A%D8%AA%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9"}];
+const TEAMS = ["أستراليا", "ألمانيا", "أمريكا", "أوروغواي", "أوزبكستان", "إسبانيا", "إنجلترا", "إيران", "اسكتلندا", "الأرجنتين", "الأردن", "الإكوادور", "البرازيل", "البرتغال", "البوسنة والهرسك", "التشيك", "الجزائر", "الرأس الأخضر", "السعودية", "السنغال", "السويد", "العراق", "الكونغو الديمقراطية", "المغرب", "المكسيك", "النرويج", "النمسا", "اليابان", "باراغواي", "بلجيكا", "بنما", "تركيا", "تونس", "جنوب أفريقيا", "ساحل العاج", "سويسرا", "غانا", "فرنسا", "قطر", "كرواتيا", "كندا", "كوراساو", "كوريا الجنوبية", "كولومبيا", "مصر", "نيوزيلندا", "هايتي", "هولندا"];
+const K='wc2026_clean_portal_v1';let S=JSON.parse(localStorage.getItem(K)||'{"p":{},"r":{},"f":[],"m":[]}');
+function save(){localStorage.setItem(K,JSON.stringify(S));stats();}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+function st(x){let n=new Date(),a=new Date(x.start),b=new Date(x.end);return n<a?'upcoming':(n<=b?'live':'finished')}
+function locked(x){return st(x)!=='upcoming'}function hasPred(id){let p=S.p[id];return p&&Number.isFinite(p.h)&&Number.isFinite(p.a)}function hasRes(id){let r=S.r[id];return r&&Number.isFinite(r.h)&&Number.isFinite(r.a)}
+function ev(id){let p=S.p[id],r=S.r[id];if(!p||!r)return null;if(p.h===r.h&&p.a===r.a)return {t:'exact',n:3,l:'🟢 نتيجة مطابقة'};if(Math.sign(p.h-p.a)===Math.sign(r.h-r.a))return {t:'winner',n:1,l:'🟡 الفائز صحيح'};return {t:'wrong',n:0,l:'🔴 توقع خاطئ'}}
+function cd(x){let n=new Date(),a=new Date(x.start),b=new Date(x.end);if(n<a){let d=a-n,dd=Math.floor(d/864e5);d%=864e5;let h=Math.floor(d/36e5);d%=36e5;let mm=Math.floor(d/6e4);return `⏳ متبقي: ${dd} يوم، ${h} ساعة، ${mm} دقيقة`;} if(n<=b)return'🔴 المباراة جارية — التوقعات مغلقة';return'✅ انتهت المباراة — أدخل النتيجة الرسمية';}
+function statusPill(x){let s=st(x); if(s==='upcoming')return'<span class="pill">قادمة</span>'; if(s==='live')return'<span class="pill live">جارية</span>'; return'<span class="pill fin">منتهية</span>';}
+function filtered(base){let team=document.getElementById('team').value, view=base||document.getElementById('view').value;return M.filter(x=>{let ok=!team||x.home===team||x.away===team;if(!ok)return false;if(view==='mine')return S.m.includes(x.id);if(view==='fav')return S.f.includes(x.id);if(view==='pred')return hasPred(x.id);if(view==='upcoming')return st(x)==='upcoming';if(view==='finished')return st(x)==='finished'||hasRes(x.id);return true;})}
+function card(x,i){let p=S.p[x.id]||{},r=S.r[x.id]||{},e=ev(x.id),lo=locked(x),mine=S.m.includes(x.id),fav=S.f.includes(x.id);return `<article class="card ${mine?'mine':''} ${fav?'fav':''}"><div class="row"><span class="pill">#${i+1}</span>${statusPill(x)}</div><h3>${esc(x.home)} × ${esc(x.away)}</h3><p class="meta">📅 ${x.date} — 🕒 ${x.time} بتوقيت مكة</p><div class="count">${cd(x)}</div><div class="box"><div class="boxt"><span>توقعك</span><button class="small" onclick="savePred('${x.id}')" ${lo?'disabled':''}>حفظ</button></div><div class="score"><span>${esc(x.home)}</span><input id="ph-${x.id}" type="number" min="0" value="${p.h??''}" ${lo?'disabled':''}><span>-</span><input id="pa-${x.id}" type="number" min="0" value="${p.a??''}" ${lo?'disabled':''}><span>${esc(x.away)}</span></div>${lo?'<div class="eval wrong">🔒 أُغلقت التوقعات</div>':''}</div><div class="box"><div class="boxt"><span>النتيجة الرسمية</span><button class="small" onclick="saveRes('${x.id}')">حفظ</button></div><div class="score"><span>${esc(x.home)}</span><input id="rh-${x.id}" type="number" min="0" value="${r.h??''}"><span>-</span><input id="ra-${x.id}" type="number" min="0" value="${r.a??''}"><span>${esc(x.away)}</span></div>${e?`<div class="eval ${e.t}">${e.l} — ${e.n} نقطة</div>`:''}</div><div class="actions"><a class="btn cal" href="${x.gcal}" target="_blank" onclick="markMine('${x.id}')">التقويم</a><button class="btn chan" onclick="channels('${x.id}')">القنوات</button><button class="btn favb" onclick="tog('${x.id}','f')">${fav?'إزالة ⭐':'مفضلة ⭐'}</button><button class="btn mineb" onclick="tog('${x.id}','m')">${mine?'إزالة':'مبارياتي'}</button><button class="btn favb" onclick="deletePrediction('${x.id}')">🗑 حذف التوقع</button><button class="btn mineb" onclick="deleteResult('${x.id}')">🗑 حذف النتيجة</button></div></article>`}
+function renderList(el,view){let a=filtered(view);document.getElementById(el).innerHTML=a.map(card).join('')||'<div class="note">لا توجد مباريات هنا.</div>';}
+function render(){renderList('list-matches',document.getElementById('view').value);renderList('list-predictions','pred');renderList('list-results','finished');today();stats();}
+function savePred(id){let x=M.find(y=>y.id===id);if(locked(x))return alert('تم إغلاق التوقعات لهذه المباراة');let h=parseInt(document.getElementById('ph-'+id).value),a=parseInt(document.getElementById('pa-'+id).value);if(!Number.isFinite(h)||!Number.isFinite(a)||h<0||a<0)return alert('أدخل نتيجة صحيحة');S.p[id]={h,a};save();render();}
+function saveRes(id){let h=parseInt(document.getElementById('rh-'+id).value),a=parseInt(document.getElementById('ra-'+id).value);if(!Number.isFinite(h)||!Number.isFinite(a)||h<0||a<0)return alert('أدخل نتيجة صحيحة');S.r[id]={h,a};save();render();}
+function tog(id,k){S[k]=S[k].includes(id)?S[k].filter(x=>x!==id):[...S[k],id];save();render();}function markMine(id){if(!S.m.includes(id)){S.m.push(id);save();}}
+function stats(){let pts=0,ex=0,win=0,fin=0,pred=0,correct=0;M.forEach(x=>{if(hasPred(x.id))pred++;if(hasRes(x.id))fin++;let e=ev(x.id);if(e){pts+=e.n;if(e.t==='exact'){ex++;correct++;}else if(e.t==='winner'){win++;correct++;}}});let acc=fin?((correct/fin)*100).toFixed(1)+'%':'0%';[['pts',pts],['acc',acc],['ex',ex],['win',win],['fin',fin],['pred',pred],['miniPts',pts],['miniAcc',acc],['miniEx',ex],['miniMine',S.m.length],['statsPts',pts+' نقطة'],['statsAcc',acc],['statsEx',ex+' نتيجة مطابقة']].forEach(([id,v])=>{let el=document.getElementById(id);if(el)el.textContent=v;})}
+function today(){let d=new Date().toISOString().slice(0,10),a=M.filter(x=>x.date===d),el=document.getElementById('today');el.innerHTML=a.length?a.map(x=>`⚽ ${esc(x.home)} × ${esc(x.away)} — 🕒 ${x.time}`).join('<br>'):'لا توجد مباريات اليوم حسب تاريخ جهازك.'}
+function setTab(t,b){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('sec-'+t).classList.add('active');document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();}
+function channels(id){let x=M.find(y=>y.id===id);document.getElementById('mt').textContent='📺 القنوات الناقلة';document.getElementById('ms').textContent=`${x.home} × ${x.away} — ${x.date}، ${x.time}`;document.getElementById('modalBody').innerHTML=`<div class="chgrid"><div class="ch"><h4>الشرق الأوسط</h4><ul><li>beIN SPORTS</li><li>TOD</li><li>beIN CONNECT</li></ul></div><div class="ch"><h4>أمريكا</h4><ul><li>FOX</li><li>FS1</li><li>Telemundo</li><li>Peacock</li></ul></div><div class="ch"><h4>بريطانيا/كندا/أستراليا</h4><ul><li>BBC / ITV / S4C</li><li>TSN / CTV / RDS</li><li>SBS</li></ul></div><div class="ch"><h4>تنبيه</h4><ul><li>رقم القناة المحدد يحتاج تحديثًا لاحقًا.</li></ul></div></div>`;document.getElementById('modal').style.display='flex';}
+function closeModal(){document.getElementById('modal').style.display='none';}
+function showReport(){let by={};M.forEach(x=>{let e=ev(x.id);if(!e)return;[x.home,x.away].forEach(t=>{by[t]=by[t]||{p:0,c:0,pts:0};by[t].p++;by[t].pts+=e.n;if(e.t!=='wrong')by[t].c++;})});let rows=Object.entries(by).map(([t,v])=>`${t}: ${(v.c/v.p*100).toFixed(1)}% — ${v.pts} نقطة من ${v.p} مباراة`).sort().join('<br>')||'لا توجد بيانات كافية بعد.';document.getElementById('mt').textContent='تقرير توقعاتك';document.getElementById('ms').textContent='حسب النتائج المدخلة';document.getElementById('modalBody').innerHTML='<div class="ch">'+rows+'</div>';document.getElementById('modal').style.display='flex';}
+function exportData(){let blob=new Blob([JSON.stringify({state:S,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='wc2026-predictions.json';a.click();URL.revokeObjectURL(a.href);}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);S=d.state||d;save();render();alert('تم الاستيراد')}catch{alert('تعذر الاستيراد')}};r.readAsText(f);}
+
+function deletePrediction(id){
+ if(!confirm('حذف التوقع؟')) return;
+ delete S.p[id];
+ save();
+ render();
+}
+function deleteResult(id){
+ if(!confirm('حذف النتيجة؟')) return;
+ delete S.r[id];
+ save();
+ render();
+}
+function clearAllPredictions(){
+ if(!confirm('سيتم حذف جميع التوقعات، هل أنت متأكد؟')) return;
+ S.p={};
+ save();
+ render();
+}
+
+function init(){document.getElementById('team').innerHTML='<option value="">كل المنتخبات</option>'+TEAMS.map(t=>`<option>${esc(t)}</option>`).join('');document.getElementById('team').onchange=render;document.getElementById('view').onchange=render;render();setInterval(render,60000);}
+window.addEventListener('scroll',()=>document.getElementById('toTop').classList.toggle('show',scrollY>400));
+
+const KO=[
+  ['دور الـ32',73,88],['دور الـ16',89,96],
+  ['ربع النهائي',97,100],['نصف النهائي',101,102],
+  ['المركز الثالث',103,103],['النهائي',104,104]
+];
+const KOD={"73": {"stage": "دور الـ32", "date": "2026-06-28", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "74": {"stage": "دور الـ32", "date": "2026-06-29", "time": "23:30", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "75": {"stage": "دور الـ32", "date": "2026-06-30", "time": "04:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "76": {"stage": "دور الـ32", "date": "2026-06-29", "time": "20:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "77": {"stage": "دور الـ32", "date": "2026-07-01", "time": "00:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "78": {"stage": "دور الـ32", "date": "2026-06-30", "time": "20:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "79": {"stage": "دور الـ32", "date": "2026-07-01", "time": "04:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "80": {"stage": "دور الـ32", "date": "2026-07-01", "time": "19:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "81": {"stage": "دور الـ32", "date": "2026-07-02", "time": "03:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "82": {"stage": "دور الـ32", "date": "2026-07-01", "time": "23:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "83": {"stage": "دور الـ32", "date": "2026-07-03", "time": "02:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "84": {"stage": "دور الـ32", "date": "2026-07-02", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "85": {"stage": "دور الـ32", "date": "2026-07-03", "time": "06:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "86": {"stage": "دور الـ32", "date": "2026-07-04", "time": "01:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "87": {"stage": "دور الـ32", "date": "2026-07-04", "time": "04:30", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "88": {"stage": "دور الـ32", "date": "2026-07-03", "time": "21:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "89": {"stage": "دور الـ16", "date": "2026-07-05", "time": "00:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "90": {"stage": "دور الـ16", "date": "2026-07-04", "time": "20:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "91": {"stage": "دور الـ16", "date": "2026-07-05", "time": "23:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "92": {"stage": "دور الـ16", "date": "2026-07-06", "time": "03:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "93": {"stage": "دور الـ16", "date": "2026-07-06", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "94": {"stage": "دور الـ16", "date": "2026-07-07", "time": "03:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "95": {"stage": "دور الـ16", "date": "2026-07-07", "time": "19:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "96": {"stage": "دور الـ16", "date": "2026-07-07", "time": "23:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "97": {"stage": "ربع النهائي", "date": "2026-07-09", "time": "23:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "98": {"stage": "ربع النهائي", "date": "2026-07-10", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "99": {"stage": "ربع النهائي", "date": "2026-07-12", "time": "00:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "100": {"stage": "ربع النهائي", "date": "2026-07-12", "time": "04:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "101": {"stage": "نصف النهائي", "date": "2026-07-14", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "102": {"stage": "نصف النهائي", "date": "2026-07-15", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "103": {"stage": "المركز الثالث", "date": "2026-07-19", "time": "00:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}, "104": {"stage": "النهائي", "date": "2026-07-19", "time": "22:00", "t1": "⚪ لم يحدد بعد", "t2": "⚪ لم يحدد بعد"}};
+
+function koKey(id){return 'ko_'+id;}
+function koPredKey(id){return 'ko_pred_'+id;}
+function koResKey(id){return 'ko_res_'+id;}
+
+function getKO(id){
+  const base=KOD[String(id)]||{"t1":"⚪ لم يحدد بعد","t2":"⚪ لم يحدد بعد","date":"","time":"","stage":""};
+  const saved=JSON.parse(localStorage.getItem(koKey(id))||'{}');
+  return {...base,...saved,date:saved.date||base.date,time:saved.time||base.time};
+}
+function setKO(id,data){
+  localStorage.setItem(koKey(id),JSON.stringify(data));
+}
+function getKOPred(id){
+  return JSON.parse(localStorage.getItem(koPredKey(id))||'{}');
+}
+function getKORes(id){
+  return JSON.parse(localStorage.getItem(koResKey(id))||'{}');
+}
+function koStart(d){
+  if(!d.date || !d.time) return null;
+  return new Date(d.date+'T'+d.time+':00');
+}
+function koLocked(d){
+  const s=koStart(d);
+  if(!s) return false;
+  return new Date()>=s;
+}
+function koCalendarLink(id,d){
+  if(!d.date || !d.time) return '#';
+  const start=d.date.replaceAll('-','')+'T'+d.time.replace(':','')+'00';
+  const endDate=new Date(d.date+'T'+d.time+':00');
+  endDate.setHours(endDate.getHours()+2);
+  const pad=n=>String(n).padStart(2,'0');
+  const end=`${endDate.getFullYear()}${pad(endDate.getMonth()+1)}${pad(endDate.getDate())}T${pad(endDate.getHours())}${pad(endDate.getMinutes())}00`;
+  const title=encodeURIComponent(`كأس العالم 2026: ${d.t1} × ${d.t2}`);
+  const details=encodeURIComponent('مباراة من الأدوار النهائية - تمت إضافتها من بوابة كأس العالم الشخصية');
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&ctz=Asia%2FRiyadh&details=${details}&location=${encodeURIComponent('توقيت مكة المكرمة')}`;
+}
+function koEval(id){
+  const p=getKOPred(id), r=getKORes(id);
+  if(!Number.isFinite(p.h)||!Number.isFinite(p.a)||!Number.isFinite(r.h)||!Number.isFinite(r.a)) return null;
+  if(p.h===r.h && p.a===r.a) return {t:'exact',n:3,l:'🟢 نتيجة مطابقة'};
+  if(Math.sign(p.h-p.a)===Math.sign(r.h-r.a)) return {t:'winner',n:1,l:'🟡 الفائز صحيح'};
+  return {t:'wrong',n:0,l:'🔴 توقع خاطئ'};
+}
+function renderKnockout(){
+  const box=document.getElementById('knockoutCards');
+  if(!box) return;
+  let h='';
+  KO.forEach(([stage,a,b])=>{
+    for(let i=a;i<=b;i++){
+      const d=getKO(i);
+      const p=getKOPred(i);
+      const r=getKORes(i);
+      const locked=koLocked(d);
+      const e=koEval(i);
+      h+=`<article class="card">
+        <div class="row">
+          <span class="pill">${stage}</span>
+          <span class="pill">مباراة ${i}</span>
+        </div>
+        <h3>${d.t1} × ${d.t2}</h3>
+        <p class="meta">📅 ${d.date || 'لم يحدد التاريخ'} — 🕒 ${d.time || 'لم يحدد الوقت'} بتوقيت مكة</p>
+        <div class="count">${locked?'🔒 بدأت/انتهت المباراة — التوقعات مغلقة':'⏳ التوقع متاح حتى وقت بداية المباراة'}</div>
+
+        <div class="box">
+          <div class="boxt">
+            <span>توقعك</span>
+            <button class="small" onclick="saveKOPred(${i})" ${locked?'disabled':''}>حفظ</button>
+          </div>
+          <div class="score">
+            <span>${d.t1}</span>
+            <input id="koph-${i}" type="number" min="0" value="${p.h??''}" ${locked?'disabled':''}>
+            <span>-</span>
+            <input id="kopa-${i}" type="number" min="0" value="${p.a??''}" ${locked?'disabled':''}>
+            <span>${d.t2}</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="boxt">
+            <span>النتيجة الرسمية</span>
+            <button class="small" onclick="saveKORes(${i})">حفظ</button>
+          </div>
+          <div class="score">
+            <span>${d.t1}</span>
+            <input id="korh-${i}" type="number" min="0" value="${r.h??''}">
+            <span>-</span>
+            <input id="kora-${i}" type="number" min="0" value="${r.a??''}">
+            <span>${d.t2}</span>
+          </div>
+          ${e?`<div class="eval ${e.t}">${e.l} — ${e.n} نقطة</div>`:''}
+        </div>
+
+        <div class="actions">
+          <button class="btn mineb" onclick="editKO(${i})">✏️ تعديل</button>
+          <a class="btn cal" href="${koCalendarLink(i,d)}" target="_blank" ${(!d.date||!d.time)?'onclick="alert(\'أدخل التاريخ والوقت أولاً\');return false;"':''}>التقويم</a>
+          <button class="btn favb" onclick="deleteKOPred(${i})">🗑 حذف التوقع</button>
+          <button class="btn mineb" onclick="deleteKORes(${i})">🗑 حذف النتيجة</button>
+        </div>
+      </article>`;
+    }
+  });
+  box.innerHTML=h;
+}
+
+function koTeamOptions(selected){
+  const list=['⚪ لم يحدد بعد',...TEAMS];
+  return list.map(t=>`<option value="${esc(t)}" ${t===selected?'selected':''}>${esc(t)}</option>`).join('');
+}
+function editKO(id){
+  const d=getKO(id);
+  document.getElementById('mt').textContent='✏️ تعديل مباراة الأدوار النهائية';
+  document.getElementById('ms').textContent=`مباراة ${id} — اختر المنتخبين من القائمة لمنع الأخطاء الإملائية`;
+  document.getElementById('modalBody').innerHTML=`
+    <div class="koEditGrid">
+      <label>المنتخب الأول</label>
+      <select id="koEditT1">${koTeamOptions(d.t1)}</select>
+
+      <label>المنتخب الثاني</label>
+      <select id="koEditT2">${koTeamOptions(d.t2)}</select>
+
+      <label>التاريخ</label>
+      <input id="koEditDate" type="date" value="${d.date||''}">
+
+      <label>الوقت بتوقيت مكة</label>
+      <input id="koEditTime" type="time" value="${d.time||''}">
+
+      <button class="topbtn gold" onclick="saveKOEdit(${id})">حفظ التعديل</button>
+    </div>
+  `;
+  document.getElementById('modal').style.display='flex';
+}
+function saveKOEdit(id){
+  const old=getKO(id);
+  const t1=document.getElementById('koEditT1').value || '⚪ لم يحدد بعد';
+  const t2=document.getElementById('koEditT2').value || '⚪ لم يحدد بعد';
+  const date=document.getElementById('koEditDate').value || old.date || '';
+  const time=document.getElementById('koEditTime').value || old.time || '';
+  setKO(id,{t1,t2,date,time});
+  closeModal();
+  renderKnockout();
+}
+
+function saveKOPred(id){
+  const d=getKO(id);
+  if(koLocked(d)) return alert('تم إغلاق التوقعات لهذه المباراة');
+  const h=parseInt(document.getElementById('koph-'+id).value);
+  const a=parseInt(document.getElementById('kopa-'+id).value);
+  if(!Number.isFinite(h)||!Number.isFinite(a)||h<0||a<0) return alert('أدخل نتيجة صحيحة');
+  localStorage.setItem(koPredKey(id),JSON.stringify({h,a}));
+  renderKnockout();
+}
+function saveKORes(id){
+  const h=parseInt(document.getElementById('korh-'+id).value);
+  const a=parseInt(document.getElementById('kora-'+id).value);
+  if(!Number.isFinite(h)||!Number.isFinite(a)||h<0||a<0) return alert('أدخل نتيجة صحيحة');
+  localStorage.setItem(koResKey(id),JSON.stringify({h,a}));
+  renderKnockout();
+}
+function deleteKOPred(id){
+  if(!confirm('حذف توقع هذه المباراة؟')) return;
+  localStorage.removeItem(koPredKey(id));
+  renderKnockout();
+}
+function deleteKORes(id){
+  if(!confirm('حذف نتيجة هذه المباراة؟')) return;
+  localStorage.removeItem(koResKey(id));
+  renderKnockout();
+}
+
+
+init();renderKnockout();
+
+
+/* ===== جلب النتائج من سيرفر خاص اختياري =====
+الصيغ المدعومة:
+1) { "results":[ {"id":"m001","home":2,"away":1}, {"id":"73","home":1,"away":0,"knockout":true} ] }
+2) { "m001":{"home":2,"away":1}, "ko_73":{"home":1,"away":0} }
+*/
+function saveEndpoint(){
+  const el=document.getElementById('resultsEndpoint');
+  if(!el) return;
+  localStorage.setItem('wc2026_results_endpoint',el.value.trim());
+  const st=document.getElementById('syncStatus');
+  if(st) st.textContent='تم حفظ رابط السيرفر.';
+}
+function loadEndpoint(){
+  const el=document.getElementById('resultsEndpoint');
+  if(!el) return;
+  el.value=localStorage.getItem('wc2026_results_endpoint')||'';
+}
+function normalizeScoreItem(item){
+  if(!item) return null;
+  const h = Number.isFinite(item.home) ? item.home : item.h;
+  const a = Number.isFinite(item.away) ? item.away : item.a;
+  if(!Number.isFinite(h) || !Number.isFinite(a)) return null;
+  return {h,a};
+}
+function applyOneServerResult(id,item){
+  const score=normalizeScoreItem(item);
+  if(!score || !id) return false;
+
+  const rawId=String(id);
+  const isKnockout = item.knockout===true || rawId.startsWith('ko_') || (/^\d+$/.test(rawId) && Number(rawId)>=73);
+
+  if(isKnockout){
+    const koId=rawId.replace('ko_','');
+    localStorage.setItem('ko_res_'+koId,JSON.stringify(score));
+  }else{
+    S.r[rawId]=score;
+  }
+  return true;
+}
+function applyServerResults(data){
+  let count=0;
+
+  if(Array.isArray(data.results)){
+    data.results.forEach(item=>{
+      if(applyOneServerResult(item.id,item)) count++;
+    });
+  }else if(Array.isArray(data)){
+    data.forEach(item=>{
+      if(applyOneServerResult(item.id,item)) count++;
+    });
+  }else if(data && typeof data==='object'){
+    Object.entries(data).forEach(([id,item])=>{
+      if(id==='results') return;
+      if(applyOneServerResult(id,item)) count++;
+    });
+  }
+
+  save();
+  render();
+  if(typeof renderKnockout==='function') renderKnockout();
+  return count;
+}
+async function fetchResultsFromServer(){
+  const endpoint=(document.getElementById('resultsEndpoint')?.value||localStorage.getItem('wc2026_results_endpoint')||'').trim();
+  const st=document.getElementById('syncStatus');
+
+  if(!endpoint){
+    if(st) st.textContent='أدخل رابط السيرفر أولًا.';
+    return;
+  }
+
+  try{
+    if(st) st.textContent='جاري جلب النتائج...';
+    const res=await fetch(endpoint,{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    const count=applyServerResults(data);
+    if(st) st.textContent=`تم جلب ${count} نتيجة وتحديث الصفحة.`;
+  }catch(err){
+    console.error(err);
+    if(st) st.textContent='تعذر جلب النتائج. تأكد من الرابط وصيغة JSON وسياسة CORS.';
+  }
+}
+loadEndpoint();
+
+const themeToggle=document.getElementById('themeToggle');
+const savedTheme=localStorage.getItem('theme');
+if(savedTheme==='light'){
+ document.body.classList.add('light-mode');
+ themeToggle.innerHTML='☀️ الوضع النهاري';
+}
+themeToggle.onclick=()=>{
+ document.body.classList.toggle('light-mode');
+ const isLight=document.body.classList.contains('light-mode');
+ localStorage.setItem('theme',isLight?'light':'dark');
+ themeToggle.innerHTML=isLight?'☀️ الوضع النهاري':'🌙 الوضع الليلي';
+};
+
+</script></body></html>
