@@ -257,13 +257,325 @@ body.light-mode .serverSyncInner input{
 }
 body.light-mode .syncStatus{color:#475467}
 
+
+/* ===== المباراة القادمة: تمييز وانتقال سريع ===== */
+.card.nextMatch{
+  border-color:#f5c542!important;
+  box-shadow:0 0 0 3px rgba(245,197,66,.38),0 16px 36px rgba(0,0,0,.30)!important;
+}
+.nextBadge{
+  display:inline-block;
+  margin-inline-start:6px;
+  background:#f5c542;
+  color:#07111f;
+  border-radius:999px;
+  padding:3px 8px;
+  font-size:11px;
+  font-weight:900;
+}
+.nextHomeCard{
+  background:#111827;
+  color:#f8fafc;
+  border:2px solid #f5c542;
+  border-radius:20px;
+  padding:16px;
+  margin:0 0 14px;
+  box-shadow:0 14px 34px rgba(0,0,0,.24);
+}
+.nextHomeCard h3{margin:0 0 8px}
+.nextHomeCard p{margin:6px 0;color:#dbeafe}
+.nextHomeCard .nextGo{
+  display:inline-block;
+  margin-top:10px;
+  border:0;
+  border-radius:12px;
+  padding:9px 13px;
+  font-weight:900;
+  cursor:pointer;
+  background:#f5c542;
+  color:#07111f;
+}
+.nextMini{
+  max-width:260px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+body.light-mode .nextHomeCard{
+  background:#ffffff;
+  color:#111827;
+  border-color:#f5c542;
+}
+body.light-mode .nextHomeCard p{color:#475467}
+
+
+/* ===== إصلاح شريط المباراة القادمة على الجوال ===== */
+.topin{
+  flex-wrap:wrap;
+  overflow-x:visible;
+}
+
+.topin .themeBtn{
+  flex:0 0 auto;
+}
+
+.topin .mini{
+  flex:0 0 auto;
+}
+
+.topin .nextMini{
+  flex:1 1 100%;
+  max-width:none;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  line-height:1.5;
+}
+
+@media(max-width:560px){
+  .topbar{
+    position:sticky;
+    top:0;
+  }
+
+  .topin{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:7px;
+    align-items:center;
+  }
+
+  .topin .themeBtn{
+    grid-column:1 / 2;
+    grid-row:1;
+    width:max-content;
+    white-space:nowrap;
+  }
+
+  .topin .mini{
+    min-width:0;
+    text-align:center;
+    padding:6px 8px;
+    font-size:12px;
+  }
+
+  .topin .mini:nth-of-type(1){
+    grid-column:2 / 3;
+    grid-row:1;
+  }
+
+  .topin .mini:nth-of-type(2),
+  .topin .mini:nth-of-type(3),
+  .topin .mini:nth-of-type(4){
+    grid-column:auto;
+  }
+
+  .topin .nextMini{
+    grid-column:1 / -1;
+    width:100%;
+    text-align:center;
+    font-size:12px;
+    padding:7px 10px;
+    white-space:normal;
+  }
+
+  .tabs{
+    top:auto;
+  }
+}
+
+
+/* ===== نقل زر الثيم إلى الهيدر ===== */
+.heroTheme{
+  position:absolute;
+  top:14px;
+  inset-inline-end:14px;
+  z-index:5;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  padding:0;
+  font-size:22px;
+  line-height:1;
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
+  cursor:pointer;
+  background:#f5c542;
+  color:#07111f;
+  border:none;
+}
+
+.topin{
+  justify-content:center;
+}
+
+/* الشريط العلوي أصبح للمعلومات فقط */
+@media(max-width:560px){
+  .topin{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    align-items:center;
+  }
+
+  .topin .mini{
+    min-width:0;
+    text-align:center;
+    padding:6px 8px;
+    font-size:12px;
+  }
+
+  .topin .nextMini{
+    grid-column:1 / -1;
+    width:100%;
+    text-align:center;
+    font-size:12px;
+    padding:7px 10px;
+    white-space:normal;
+  }
+
+  .heroTheme{
+    top:10px;
+    inset-inline-end:10px;
+    width:38px;
+    height:38px;
+    font-size:18px;
+  }
+}
+
+
+/* ===== ثيم بسيط داخل عنوان الهيدر ===== */
+.heroTitle{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.heroTheme,
+.heroThemeInline{
+  position:static!important;
+  inset:auto!important;
+  width:auto!important;
+  height:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  border-radius:0!important;
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  padding:0 4px!important;
+  margin:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:inherit!important;
+  font-size:.72em!important;
+  line-height:1!important;
+  cursor:pointer;
+  vertical-align:middle;
+  transform:none!important;
+}
+
+.heroThemeInline:hover{
+  opacity:.82;
+}
+
+body.light-mode .heroThemeInline{
+  color:#111827!important;
+}
+
+@media(max-width:560px){
+  .heroTitle{
+    gap:6px;
+    line-height:1.25;
+  }
+  .heroThemeInline{
+    font-size:.68em!important;
+    padding:0 3px!important;
+  }
+}
+
+
+/* ===== محاذاة مركزية موحدة للصفحة ===== */
+:root{
+  --page-max:1280px;
+  --page-pad:16px;
+}
+
+.hero > *{
+  max-width:var(--page-max);
+  margin-inline:auto;
+}
+
+.topin,
+.controls,
+.serverSyncBox,
+main{
+  max-width:var(--page-max)!important;
+  margin-inline:auto!important;
+}
+
+.controls,
+.serverSyncBox,
+main{
+  padding-inline:var(--page-pad)!important;
+}
+
+.tabs{
+  justify-content:center;
+}
+
+@media(max-width:720px){
+  :root{
+    --page-pad:12px;
+  }
+
+  .tabs{
+    justify-content:flex-start;
+  }
+}
+
+@media(min-width:1400px){
+  .grid{
+    gap:14px;
+  }
+}
+
+
+/* ===== تقليل الضجيج البصري لأزرار التحكم ===== */
+.actionMenu,.globalMenu{position:relative}
+.menuToggle{
+  border:0;border-radius:12px;padding:9px 12px;font-weight:900;cursor:pointer;
+  background:#f5c542;color:#07111f;width:100%;
+}
+.cardMenuPanel,.globalMenuPanel{
+  display:none;position:absolute;inset-inline-end:0;top:calc(100% + 6px);
+  min-width:200px;background:#0f172a;border:1px solid #334155;border-radius:14px;
+  padding:8px;z-index:80;box-shadow:0 16px 34px rgba(0,0,0,.32);
+}
+.cardMenuPanel.show,.globalMenuPanel.show{display:grid;gap:6px}
+.cardMenuPanel .btn,.globalMenuPanel .topbtn{
+  width:100%;display:block;text-align:center;border-radius:10px;padding:8px 10px;font-size:13px;
+}
+.quickActions{
+  display:grid;grid-template-columns:1fr auto;gap:7px;margin-top:9px;align-items:stretch;
+}
+.quickActions .cal{display:grid;place-items:center}
+.ctrlgrid.compactControls{grid-template-columns:1fr}
+@media(min-width:800px){.ctrlgrid.compactControls{grid-template-columns:1fr 1fr auto auto}}
+body.light-mode .cardMenuPanel,body.light-mode .globalMenuPanel{
+  background:#fff;border-color:#d1d5db;box-shadow:0 16px 34px rgba(15,23,42,.18);
+}
+
 </style>
 </head>
 <body>
-<header class="hero"><div class="avatar">🏆</div><h1>بوابة كأس العالم 2026</h1><p> مباريات، توقعات، نتائج، إحصائيات، قنوات، وإضافة إلى Google Calendar.</p><div class="badges"><span>⚽ جدول</span><span>🎯 توقعات</span><span>📊 إحصائيات</span><span>📺 قنوات</span></div></header>
-<section class="topbar"><div class="topin"><button id="themeToggle" class="themeBtn">🌙 الوضع الليلي</button><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span></div></section>
+<header class="hero"><div class="avatar">🏆</div><h1 class="heroTitle">بوابة كأس العالم 2026 <button id="themeToggle" class="themeBtn heroThemeInline" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button></h1><p> مباريات، توقعات، نتائج، إحصائيات، قنوات، وإضافة إلى Google Calendar.</p><div class="badges"><span>⚽ جدول</span><span>🎯 توقعات</span><span>📊 إحصائيات</span><span>📺 قنوات</span></div></header>
+<section class="topbar"><div class="topin"><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span><span class="mini nextMini">⏳ القادمة: <b id="miniNext">غير محددة</b></span></div></section>
 <nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('channels',this)">القنوات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button></nav>
-<section class="controls"><div class="panel"><div class="ctrlgrid"><select id="team"></select><select id="view"><option value="all">كل المباريات</option><option value="mine">مبارياتي</option><option value="fav">المفضلة ⭐</option><option value="pred">توقعاتي</option><option value="upcoming">القادمة</option><option value="finished">المنتهية</option></select><button class="topbtn gold" onclick="exportData()">تصدير</button><button class="topbtn soft" onclick="document.getElementById('imp').click()">استيراد</button><button class="topbtn soft" onclick="showReport()">تقرير</button><button class="topbtn soft" onclick="clearAllPredictions()">🗑 مسح التوقعات</button><input type="file" id="imp" accept="application/json" hidden onchange="importData(event)"></div></div></section>
+<section class="controls"><div class="panel"><div class="ctrlgrid compactControls"><select id="team"></select><select id="view"><option value="all">كل المباريات</option><option value="mine">مبارياتي</option><option value="fav">المفضلة ⭐</option><option value="pred">توقعاتي</option><option value="upcoming">القادمة</option><option value="finished">المنتهية</option></select><button class="topbtn gold" onclick="goToNextMatch()">🎯 المباراة القادمة</button><div class="globalMenu"><button class="topbtn soft" onclick="toggleGlobalMenu(event)">⚙️ إدارة</button><div id="globalMenuPanel" class="globalMenuPanel"><button class="topbtn gold" onclick="exportData();closeMenus()">تصدير</button><button class="topbtn soft" onclick="document.getElementById('imp').click();closeMenus()">استيراد</button><button class="topbtn soft" onclick="showReport();closeMenus()">تقرير</button><button class="topbtn soft" onclick="clearAllPredictions();closeMenus()">🗑 مسح التوقعات</button></div></div><input type="file" id="imp" accept="application/json" hidden onchange="importData(event)"></div></div></section>
 
 <section class="serverSyncBox">
   <div class="serverSyncInner">
@@ -275,7 +587,7 @@ body.light-mode .syncStatus{color:#475467}
 </section>
 
 <main>
-<section id="sec-home" class="section active"><div class="stats"><div class="stat"><b id="pts">0</b><span>النقاط</span></div><div class="stat"><b id="acc">0%</b><span>نسبة النجاح</span></div><div class="stat"><b id="ex">0</b><span>مطابقة</span></div><div class="stat"><b id="win">0</b><span>فائز صحيح</span></div><div class="stat"><b id="fin">0</b><span>نتائج مدخلة</span></div><div class="stat"><b id="pred">0</b><span>توقعات</span></div></div><section class="note"><b>ملخص اليوم</b><div id="today">لا توجد مباريات اليوم حسب تاريخ جهازك.</div></section><div class="infoGrid"><div class="info"><h3>🎯 التوقعات</h3><p>احفظ توقعك قبل بداية المباراة، وسيتم قفله تلقائيًا عند البداية.</p></div><div class="info"><h3>📊 النقاط</h3><p>٣ نقاط للنتيجة المطابقة، ونقطة واحدة للفائز الصحيح.</p></div><div class="info"><h3>📤 النسخ الاحتياطي</h3><p>استخدم التصدير لحفظ توقعاتك خارج المتصفح.</p></div></div></section>
+<section id="sec-home" class="section active"><div class="stats"><div class="stat"><b id="pts">0</b><span>النقاط</span></div><div class="stat"><b id="acc">0%</b><span>نسبة النجاح</span></div><div class="stat"><b id="ex">0</b><span>مطابقة</span></div><div class="stat"><b id="win">0</b><span>فائز صحيح</span></div><div class="stat"><b id="fin">0</b><span>نتائج مدخلة</span></div><div class="stat"><b id="pred">0</b><span>توقعات</span></div></div><div id="nextHome" class="nextHomeCard"></div><section class="note"><b>ملخص اليوم</b><div id="today">لا توجد مباريات اليوم حسب تاريخ جهازك.</div></section><div class="infoGrid"><div class="info"><h3>🎯 التوقعات</h3><p>احفظ توقعك قبل بداية المباراة، وسيتم قفله تلقائيًا عند البداية.</p></div><div class="info"><h3>📊 النقاط</h3><p>٣ نقاط للنتيجة المطابقة، ونقطة واحدة للفائز الصحيح.</p></div><div class="info"><h3>📤 النسخ الاحتياطي</h3><p>استخدم التصدير لحفظ توقعاتك خارج المتصفح.</p></div></div></section>
 <section id="sec-matches" class="section"><div id="list-matches" class="grid"></div></section>
 <section id="sec-predictions" class="section"><div class="note">المباريات التي حفظت لها توقعات.</div><div id="list-predictions" class="grid"></div></section>
 <section id="sec-results" class="section"><div class="note">المباريات المنتهية أو التي أدخلت لها نتيجة.</div><div id="list-results" class="grid"></div></section>
@@ -310,15 +622,92 @@ function ev(id){let p=S.p[id],r=S.r[id];if(!p||!r)return null;if(p.h===r.h&&p.a=
 function cd(x){let n=new Date(),a=new Date(x.start),b=new Date(x.end);if(n<a){let d=a-n,dd=Math.floor(d/864e5);d%=864e5;let h=Math.floor(d/36e5);d%=36e5;let mm=Math.floor(d/6e4);return `⏳ متبقي: ${dd} يوم، ${h} ساعة، ${mm} دقيقة`;} if(n<=b)return'🔴 المباراة جارية — التوقعات مغلقة';return'✅ انتهت المباراة — أدخل النتيجة الرسمية';}
 function statusPill(x){let s=st(x); if(s==='upcoming')return'<span class="pill">قادمة</span>'; if(s==='live')return'<span class="pill live">جارية</span>'; return'<span class="pill fin">منتهية</span>';}
 function filtered(base){let team=document.getElementById('team').value, view=base||document.getElementById('view').value;return M.filter(x=>{let ok=!team||x.home===team||x.away===team;if(!ok)return false;if(view==='mine')return S.m.includes(x.id);if(view==='fav')return S.f.includes(x.id);if(view==='pred')return hasPred(x.id);if(view==='upcoming')return st(x)==='upcoming';if(view==='finished')return st(x)==='finished'||hasRes(x.id);return true;})}
-function card(x,i){let p=S.p[x.id]||{},r=S.r[x.id]||{},e=ev(x.id),lo=locked(x),mine=S.m.includes(x.id),fav=S.f.includes(x.id);return `<article class="card ${mine?'mine':''} ${fav?'fav':''}"><div class="row"><span class="pill">#${i+1}</span>${statusPill(x)}</div><h3>${esc(x.home)} × ${esc(x.away)}</h3><p class="meta">📅 ${x.date} — 🕒 ${x.time} بتوقيت مكة</p><div class="count">${cd(x)}</div><div class="box"><div class="boxt"><span>توقعك</span><button class="small" onclick="savePred('${x.id}')" ${lo?'disabled':''}>حفظ</button></div><div class="score"><span>${esc(x.home)}</span><input id="ph-${x.id}" type="number" min="0" value="${p.h??''}" ${lo?'disabled':''}><span>-</span><input id="pa-${x.id}" type="number" min="0" value="${p.a??''}" ${lo?'disabled':''}><span>${esc(x.away)}</span></div>${lo?'<div class="eval wrong">🔒 أُغلقت التوقعات</div>':''}</div><div class="box"><div class="boxt"><span>النتيجة الرسمية</span><button class="small" onclick="saveRes('${x.id}')">حفظ</button></div><div class="score"><span>${esc(x.home)}</span><input id="rh-${x.id}" type="number" min="0" value="${r.h??''}"><span>-</span><input id="ra-${x.id}" type="number" min="0" value="${r.a??''}"><span>${esc(x.away)}</span></div>${e?`<div class="eval ${e.t}">${e.l} — ${e.n} نقطة</div>`:''}</div><div class="actions"><a class="btn cal" href="${x.gcal}" target="_blank" onclick="markMine('${x.id}')">التقويم</a><button class="btn chan" onclick="channels('${x.id}')">القنوات</button><button class="btn favb" onclick="tog('${x.id}','f')">${fav?'إزالة ⭐':'مفضلة ⭐'}</button><button class="btn mineb" onclick="tog('${x.id}','m')">${mine?'إزالة':'مبارياتي'}</button><button class="btn favb" onclick="deletePrediction('${x.id}')">🗑 حذف التوقع</button><button class="btn mineb" onclick="deleteResult('${x.id}')">🗑 حذف النتيجة</button></div></article>`}
+function card(x,i){let p=S.p[x.id]||{},r=S.r[x.id]||{},e=ev(x.id),lo=locked(x),mine=S.m.includes(x.id),fav=S.f.includes(x.id),isNext=(x.id===window.nextMatchId);return `<article id="match-${x.id}" class="card ${mine?'mine':''} ${fav?'fav':''} ${isNext?'nextMatch':''}"><div class="row"><span class="pill">#${i+1}</span>${statusPill(x)}${isNext?'<span class="nextBadge">⏳ المباراة القادمة</span>':''}</div><h3>${esc(x.home)} × ${esc(x.away)}</h3><p class="meta">📅 ${x.date} — 🕒 ${x.time} بتوقيت مكة</p><div class="count">${cd(x)}</div><div class="box"><div class="boxt"><span>توقعك</span><button class="small" onclick="savePred('${x.id}')" ${lo?'disabled':''}>حفظ</button></div><div class="score"><span>${esc(x.home)}</span><input id="ph-${x.id}" type="number" min="0" value="${p.h??''}" ${lo?'disabled':''}><span>-</span><input id="pa-${x.id}" type="number" min="0" value="${p.a??''}" ${lo?'disabled':''}><span>${esc(x.away)}</span></div>${lo?'<div class="eval wrong">🔒 أُغلقت التوقعات</div>':''}</div><div class="box"><div class="boxt"><span>النتيجة الرسمية</span><button class="small" onclick="saveRes('${x.id}')">حفظ</button></div><div class="score"><span>${esc(x.home)}</span><input id="rh-${x.id}" type="number" min="0" value="${r.h??''}"><span>-</span><input id="ra-${x.id}" type="number" min="0" value="${r.a??''}"><span>${esc(x.away)}</span></div>${e?`<div class="eval ${e.t}">${e.l} — ${e.n} نقطة</div>`:''}</div><div class="quickActions"><a class="btn cal" href="${x.gcal}" target="_blank" onclick="markMine('${x.id}')">📅 التقويم</a><div class="actionMenu"><button class="menuToggle" onclick="toggleCardMenu(event,'${x.id}')">⋯ المزيد</button><div id="menu-${x.id}" class="cardMenuPanel"><button class="btn chan" onclick="channels('${x.id}');closeMenus()">📺 القنوات</button><button class="btn favb" onclick="tog('${x.id}','f');closeMenus()">${fav?'إزالة ⭐':'مفضلة ⭐'}</button><button class="btn mineb" onclick="tog('${x.id}','m');closeMenus()">${mine?'إزالة':'مبارياتي'}</button><button class="btn favb" onclick="deletePrediction('${x.id}');closeMenus()">🗑 حذف التوقع</button><button class="btn mineb" onclick="deleteResult('${x.id}');closeMenus()">🗑 حذف النتيجة</button></div></div></div></article>`}
+
+
+function closeMenus(){
+  document.querySelectorAll('.cardMenuPanel.show,.globalMenuPanel.show').forEach(m=>m.classList.remove('show'));
+}
+function toggleCardMenu(ev,id){
+  ev.stopPropagation();
+  const menu=document.getElementById('menu-'+id);
+  if(!menu) return;
+  const isOpen=menu.classList.contains('show');
+  closeMenus();
+  if(!isOpen) menu.classList.add('show');
+}
+function toggleGlobalMenu(ev){
+  ev.stopPropagation();
+  const menu=document.getElementById('globalMenuPanel');
+  if(!menu) return;
+  const isOpen=menu.classList.contains('show');
+  closeMenus();
+  if(!isOpen) menu.classList.add('show');
+}
+document.addEventListener('click',closeMenus);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenus();});
+
+function getNextMatch(){
+  const now=new Date();
+  return M.filter(x=>new Date(x.start)>now)
+          .sort((a,b)=>new Date(a.start)-new Date(b.start))[0] || null;
+}
+function updateNextMatchUI(){
+  const next=getNextMatch();
+  window.nextMatchId=next?next.id:null;
+
+  const mini=document.getElementById('miniNext');
+  if(mini){
+    mini.textContent=next ? `${next.home} × ${next.away} — ${next.date} ${next.time}` : 'لا توجد مباريات قادمة';
+  }
+
+  const home=document.getElementById('nextHome');
+  if(home){
+    if(next){
+      home.innerHTML=`
+        <h3>⏳ المباراة القادمة</h3>
+        <p><b>${esc(next.home)} × ${esc(next.away)}</b></p>
+        <p>📅 ${next.date} — 🕒 ${next.time} بتوقيت مكة</p>
+        <button class="nextGo" onclick="goToNextMatch()">اذهب للمباراة</button>
+      `;
+    }else{
+      home.innerHTML=`
+        <h3>⏳ المباراة القادمة</h3>
+        <p>لا توجد مباريات قادمة في الجدول.</p>
+      `;
+    }
+  }
+}
+function scrollToNextMatch(){
+  const next=getNextMatch();
+  if(!next) return;
+  window.nextMatchId=next.id;
+  renderList('list-matches',document.getElementById('view').value);
+  const el=document.getElementById('match-'+next.id);
+  if(el){
+    setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'center'}),120);
+  }
+}
+function goToNextMatch(){
+  const btn=[...document.querySelectorAll('.tab')].find(b=>b.getAttribute('onclick')?.includes("'matches'"));
+  if(btn){
+    setTab('matches',btn);
+  }else{
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById('sec-matches').classList.add('active');
+    render();
+    scrollToNextMatch();
+  }
+}
+
 function renderList(el,view){let a=filtered(view);document.getElementById(el).innerHTML=a.map(card).join('')||'<div class="note">لا توجد مباريات هنا.</div>';}
-function render(){renderList('list-matches',document.getElementById('view').value);renderList('list-predictions','pred');renderList('list-results','finished');today();stats();}
+function render(){updateNextMatchUI();renderList('list-matches',document.getElementById('view').value);renderList('list-predictions','pred');renderList('list-results','finished');today();stats();}
 function savePred(id){let x=M.find(y=>y.id===id);if(locked(x))return alert('تم إغلاق التوقعات لهذه المباراة');let h=parseInt(document.getElementById('ph-'+id).value),a=parseInt(document.getElementById('pa-'+id).value);if(!Number.isFinite(h)||!Number.isFinite(a)||h<0||a<0)return alert('أدخل نتيجة صحيحة');S.p[id]={h,a};save();render();}
 function saveRes(id){let h=parseInt(document.getElementById('rh-'+id).value),a=parseInt(document.getElementById('ra-'+id).value);if(!Number.isFinite(h)||!Number.isFinite(a)||h<0||a<0)return alert('أدخل نتيجة صحيحة');S.r[id]={h,a};save();render();}
 function tog(id,k){S[k]=S[k].includes(id)?S[k].filter(x=>x!==id):[...S[k],id];save();render();}function markMine(id){if(!S.m.includes(id)){S.m.push(id);save();}}
 function stats(){let pts=0,ex=0,win=0,fin=0,pred=0,correct=0;M.forEach(x=>{if(hasPred(x.id))pred++;if(hasRes(x.id))fin++;let e=ev(x.id);if(e){pts+=e.n;if(e.t==='exact'){ex++;correct++;}else if(e.t==='winner'){win++;correct++;}}});let acc=fin?((correct/fin)*100).toFixed(1)+'%':'0%';[['pts',pts],['acc',acc],['ex',ex],['win',win],['fin',fin],['pred',pred],['miniPts',pts],['miniAcc',acc],['miniEx',ex],['miniMine',S.m.length],['statsPts',pts+' نقطة'],['statsAcc',acc],['statsEx',ex+' نتيجة مطابقة']].forEach(([id,v])=>{let el=document.getElementById(id);if(el)el.textContent=v;})}
 function today(){let d=new Date().toISOString().slice(0,10),a=M.filter(x=>x.date===d),el=document.getElementById('today');el.innerHTML=a.length?a.map(x=>`⚽ ${esc(x.home)} × ${esc(x.away)} — 🕒 ${x.time}`).join('<br>'):'لا توجد مباريات اليوم حسب تاريخ جهازك.'}
-function setTab(t,b){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('sec-'+t).classList.add('active');document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();}
+function setTab(t,b){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('sec-'+t).classList.add('active');document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();if(t==='matches')scrollToNextMatch();}
 function channels(id){let x=M.find(y=>y.id===id);document.getElementById('mt').textContent='📺 القنوات الناقلة';document.getElementById('ms').textContent=`${x.home} × ${x.away} — ${x.date}، ${x.time}`;document.getElementById('modalBody').innerHTML=`<div class="chgrid"><div class="ch"><h4>الشرق الأوسط</h4><ul><li>beIN SPORTS</li><li>TOD</li><li>beIN CONNECT</li></ul></div><div class="ch"><h4>أمريكا</h4><ul><li>FOX</li><li>FS1</li><li>Telemundo</li><li>Peacock</li></ul></div><div class="ch"><h4>بريطانيا/كندا/أستراليا</h4><ul><li>BBC / ITV / S4C</li><li>TSN / CTV / RDS</li><li>SBS</li></ul></div><div class="ch"><h4>تنبيه</h4><ul><li>رقم القناة المحدد يحتاج تحديثًا لاحقًا.</li></ul></div></div>`;document.getElementById('modal').style.display='flex';}
 function closeModal(){document.getElementById('modal').style.display='none';}
 function showReport(){let by={};M.forEach(x=>{let e=ev(x.id);if(!e)return;[x.home,x.away].forEach(t=>{by[t]=by[t]||{p:0,c:0,pts:0};by[t].p++;by[t].pts+=e.n;if(e.t!=='wrong')by[t].c++;})});let rows=Object.entries(by).map(([t,v])=>`${t}: ${(v.c/v.p*100).toFixed(1)}% — ${v.pts} نقطة من ${v.p} مباراة`).sort().join('<br>')||'لا توجد بيانات كافية بعد.';document.getElementById('mt').textContent='تقرير توقعاتك';document.getElementById('ms').textContent='حسب النتائج المدخلة';document.getElementById('modalBody').innerHTML='<div class="ch">'+rows+'</div>';document.getElementById('modal').style.display='flex';}
@@ -344,7 +733,7 @@ function clearAllPredictions(){
  render();
 }
 
-function init(){document.getElementById('team').innerHTML='<option value="">كل المنتخبات</option>'+TEAMS.map(t=>`<option>${esc(t)}</option>`).join('');document.getElementById('team').onchange=render;document.getElementById('view').onchange=render;render();setInterval(render,60000);}
+function init(){document.getElementById('team').innerHTML='<option value="">كل المنتخبات</option>'+TEAMS.map(t=>`<option>${esc(t)}</option>`).join('');document.getElementById('team').onchange=render;document.getElementById('view').onchange=()=>{render();const v=document.getElementById('view').value;if(v==='all'||v==='upcoming')scrollToNextMatch();};render();setInterval(render,60000);}
 window.addEventListener('scroll',()=>document.getElementById('toTop').classList.toggle('show',scrollY>400));
 
 const KO=[
@@ -448,11 +837,16 @@ function renderKnockout(){
           ${e?`<div class="eval ${e.t}">${e.l} — ${e.n} نقطة</div>`:''}
         </div>
 
-        <div class="actions">
-          <button class="btn mineb" onclick="editKO(${i})">✏️ تعديل</button>
-          <a class="btn cal" href="${koCalendarLink(i,d)}" target="_blank" ${(!d.date||!d.time)?'onclick="alert(\'أدخل التاريخ والوقت أولاً\');return false;"':''}>التقويم</a>
-          <button class="btn favb" onclick="deleteKOPred(${i})">🗑 حذف التوقع</button>
-          <button class="btn mineb" onclick="deleteKORes(${i})">🗑 حذف النتيجة</button>
+        <div class="quickActions">
+          <a class="btn cal" href="${koCalendarLink(i,d)}" target="_blank" ${(!d.date||!d.time)?'onclick="alert(\'أدخل التاريخ والوقت أولاً\');return false;"':''}>📅 التقويم</a>
+          <div class="actionMenu">
+            <button class="menuToggle" onclick="toggleCardMenu(event,'ko-${i}')">⋯ المزيد</button>
+            <div id="menu-ko-${i}" class="cardMenuPanel">
+              <button class="btn mineb" onclick="editKO(${i});closeMenus()">✏️ تعديل</button>
+              <button class="btn favb" onclick="deleteKOPred(${i});closeMenus()">🗑 حذف التوقع</button>
+              <button class="btn mineb" onclick="deleteKORes(${i});closeMenus()">🗑 حذف النتيجة</button>
+            </div>
+          </div>
         </div>
       </article>`;
     }
@@ -526,7 +920,7 @@ function deleteKORes(id){
 }
 
 
-init();renderKnockout();
+init();renderKnockout();normalizeThemeButton();
 
 
 /* ===== جلب النتائج من سيرفر خاص اختياري =====
@@ -614,17 +1008,28 @@ async function fetchResultsFromServer(){
 }
 loadEndpoint();
 
+
+function normalizeThemeButton(){
+  const t=document.getElementById('themeToggle');
+  if(!t) return;
+  t.removeAttribute('style');
+  t.classList.add('heroThemeInline');
+  t.innerHTML=document.body.classList.contains('light-mode')?'☀️':'🌙';
+}
+
 const themeToggle=document.getElementById('themeToggle');
 const savedTheme=localStorage.getItem('theme');
 if(savedTheme==='light'){
  document.body.classList.add('light-mode');
- themeToggle.innerHTML='☀️ الوضع النهاري';
+ themeToggle.innerHTML='☀️';
 }
 themeToggle.onclick=()=>{
  document.body.classList.toggle('light-mode');
  const isLight=document.body.classList.contains('light-mode');
  localStorage.setItem('theme',isLight?'light':'dark');
- themeToggle.innerHTML=isLight?'☀️ الوضع النهاري':'🌙 الوضع الليلي';
+ themeToggle.innerHTML=isLight?'☀️':'🌙';
 };
 
+
+normalizeThemeButton();
 </script></body></html>
