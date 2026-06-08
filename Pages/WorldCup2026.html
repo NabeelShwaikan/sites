@@ -601,11 +601,35 @@ body.light-mode .cardMenuPanel,body.light-mode .globalMenuPanel{
   }
 }
 
+
+/* ===== زر نطق المباراة القادمة ===== */
+.speakNextBtn{
+  border:0;
+  background:rgba(245,197,66,.18);
+  color:#f5c542;
+  border:1px solid rgba(245,197,66,.45);
+  border-radius:999px;
+  padding:3px 8px;
+  margin-inline-start:8px;
+  font-size:12px;
+  cursor:pointer;
+  font-weight:900;
+  vertical-align:middle;
+}
+.speakNextBtn:hover{
+  background:rgba(245,197,66,.32);
+}
+body.light-mode .speakNextBtn{
+  background:#fff7d6;
+  color:#735500;
+  border-color:#f5c542;
+}
+
 </style>
 </head>
 <body>
 <header class="hero"><div class="avatar">🏆</div><h1 class="heroTitle">بوابة كأس العالم 2026 <button id="themeToggle" class="themeBtn heroThemeInline" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button></h1><p> مباريات، توقعات، نتائج، إحصائيات، قنوات، وإضافة إلى Google Calendar.</p><div class="badges"><span>⚽ جدول</span><span>🎯 توقعات</span><span>📊 إحصائيات</span><span>📺 قنوات</span></div></header>
-<section class="topbar"><div class="topin"><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span><span class="mini nextMini">⏳ القادمة: <b id="miniNext">غير محددة</b></span></div></section>
+<section class="topbar"><div class="topin"><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span><span class="mini nextMini">⏳ القادمة: <b id="miniNext">غير محددة</b><button class="speakNextBtn" onclick="speakNextMatch(event)" title="نطق المباراة القادمة" aria-label="نطق المباراة القادمة">🔊</button></span></div></section>
 <nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('channels',this)">القنوات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button></nav>
 <section class="controls"><div class="panel"><div class="ctrlgrid compactControls"><select id="team"></select><select id="view"><option value="all">كل المباريات</option><option value="mine">مبارياتي</option><option value="fav">المفضلة ⭐</option><option value="pred">توقعاتي</option><option value="upcoming">القادمة</option><option value="finished">المنتهية</option></select><button class="topbtn gold" onclick="goToNextMatch()">🎯 المباراة القادمة</button><div class="globalMenu"><button class="topbtn soft" onclick="toggleGlobalMenu(event)">⚙️ إدارة</button><div id="globalMenuPanel" class="globalMenuPanel"><button class="topbtn gold" onclick="exportData();closeMenus()">تصدير</button><button class="topbtn soft" onclick="document.getElementById('imp').click();closeMenus()">استيراد</button><button class="topbtn soft" onclick="showReport();closeMenus()">تقرير</button><button class="topbtn soft" onclick="clearAllPredictions();closeMenus()">🗑 مسح التوقعات</button></div></div><input type="file" id="imp" accept="application/json" hidden onchange="importData(event)"></div></div></section>
 
@@ -678,6 +702,68 @@ function toggleGlobalMenu(ev){
 }
 document.addEventListener('click',closeMenus);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenus();});
+
+
+
+function playMatchIntro(){
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if(!AudioContextClass) return;
+
+  const ctx = new AudioContextClass();
+  const notes = [784, 1047]; // G5 ثم C6: نغمة قصيرة تشبه تنبيه ملعب
+
+  notes.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "triangle";
+    osc.frequency.value = freq;
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    const start = ctx.currentTime + (i * 0.14);
+
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.linearRampToValueAtTime(0.08, start + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.16);
+
+    osc.start(start);
+    osc.stop(start + 0.16);
+  });
+}
+
+function speakNextMatch(ev){
+  if(ev) ev.stopPropagation();
+  if(!('speechSynthesis' in window)){
+    alert('النطق الصوتي غير مدعوم في هذا المتصفح.');
+    return;
+  }
+
+  const next = typeof getNextMatch === 'function' ? getNextMatch() : null;
+  if(!next){
+    alert('لا توجد مباراة قادمة في الجدول.');
+    return;
+  }
+
+  const phrase = `المباراة القادمة بين ${next.home} و ${next.away}، بتاريخ ${next.date}، الساعة ${next.time} بتوقيت مكة.`;
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(phrase);
+  utterance.lang = 'ar-SA';
+  utterance.rate = 0.92;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  const voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+  const arVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
+  if(arVoice) utterance.voice = arVoice;
+
+  playMatchIntro();
+  setTimeout(() => {
+    window.speechSynthesis.speak(utterance);
+  }, 400);
+}
 
 function getNextMatch(){
   const now=new Date();
