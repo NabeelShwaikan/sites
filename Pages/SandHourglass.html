@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>ساعة رملية احترافية</title>
+<style>
+:root{
+  --text:#f8ead0;
+  --muted:rgba(248,234,208,.62);
+  --panel:rgba(20,15,10,.84);
+  --gold:#d4a24d;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Tahoma,Arial,sans-serif;
+  color:var(--text);
+  overflow:hidden;
+}
+body.bg-dark{
+  background:
+    radial-gradient(circle at 50% 12%,rgba(223,174,82,.18),transparent 34%),
+    radial-gradient(circle at 50% 78%,rgba(130,80,20,.18),transparent 36%),
+    linear-gradient(150deg,#24170d,#0d0905 55%,#050403);
+}
+body.bg-library{
+  background:
+    radial-gradient(circle at 20% 24%,rgba(255,197,95,.16),transparent 22%),
+    linear-gradient(90deg,rgba(75,38,13,.55) 0 8%,transparent 8% 13%,rgba(90,48,18,.45) 13% 21%,transparent 21% 29%,rgba(64,32,14,.5) 29% 36%,transparent 36%),
+    linear-gradient(150deg,#1d1209,#090604);
+}
+body.bg-cafe{
+  background:
+    radial-gradient(circle at 75% 30%,rgba(255,178,80,.22),transparent 17%),
+    radial-gradient(circle at 20% 70%,rgba(180,80,40,.18),transparent 28%),
+    linear-gradient(150deg,#27150d,#080504);
+}
+body.bg-fire{
+  background:
+    radial-gradient(circle at 50% 82%,rgba(255,112,33,.34),transparent 22%),
+    radial-gradient(circle at 50% 92%,rgba(255,194,90,.18),transparent 30%),
+    linear-gradient(150deg,#1b0b06,#050302);
+}
+body.bg-night{
+  background:
+    radial-gradient(circle at 72% 16%,rgba(255,255,220,.18),transparent 5%),
+    radial-gradient(circle at 50% 100%,rgba(70,80,140,.15),transparent 40%),
+    linear-gradient(160deg,#0d1630,#03050d);
+}
+body.bg-none{background:#080604}
+.app{
+  width:min(490px,96vw);
+  height:min(840px,100vh);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.title{
+  position:absolute;top:18px;right:0;left:0;text-align:center;
+  font-size:19px;font-weight:700;opacity:.92;pointer-events:none;transition:.35s;
+}
+.stage{width:100%;display:flex;justify-content:center;align-items:center;margin-top:22px}
+canvas{
+  width:min(382px,92vw);height:auto;max-height:70vh;
+  filter:drop-shadow(0 26px 28px rgba(0,0,0,.58));
+  transition:filter .35s, transform .9s ease-in-out;
+  cursor:pointer;
+}
+.timer{
+  margin-top:-12px;font-size:42px;font-weight:800;font-variant-numeric:tabular-nums;
+  text-shadow:0 4px 18px rgba(0,0,0,.42);transition:.35s;
+}
+.status{min-height:28px;margin-top:5px;color:#f1c86f;font-size:15px;transition:.35s}
+.gear{
+  position:fixed;
+  top:calc(16px + env(safe-area-inset-top));
+  left:calc(16px + env(safe-area-inset-left));
+  z-index:40;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(241,200,111,.32);
+  background:rgba(20,15,10,.54);
+  color:var(--text);
+  font-size:22px;
+  cursor:pointer;
+  backdrop-filter:blur(14px);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .18s ease, opacity .25s ease, background .2s ease;
+}
+.controls{
+  position:fixed;
+  top:calc(70px + env(safe-area-inset-top));
+  left:calc(16px + env(safe-area-inset-left));
+  width:min(340px,calc(100vw - 32px));
+  max-height:calc(100vh - 95px - env(safe-area-inset-top));
+  overflow:auto;z-index:30;padding:15px;border-radius:22px;background:var(--panel);
+  border:1px solid rgba(241,200,111,.22);box-shadow:0 22px 55px rgba(0,0,0,.42);
+  backdrop-filter:blur(18px);transform:translateY(-8px) scale(.96);opacity:0;pointer-events:none;transition:.18s ease;
+}
+.controls.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+.group{border-top:1px solid rgba(241,200,111,.13);padding-top:10px;margin-top:10px}
+.group:first-child{border-top:0;margin-top:0;padding-top:0}
+.groupTitle{font-size:14px;font-weight:800;color:#f3c76d;margin:2px 0 8px}
+label{display:block;margin:8px 0 6px;color:var(--muted);font-size:12px}
+.timeInputs{display:grid;grid-template-columns:1fr auto 1fr auto;gap:8px;align-items:center}
+input,select,button{font-family:inherit;border:none;border-radius:13px}
+input,select{
+  min-width:0;padding:10px;background:rgba(255,255,255,.08);color:var(--text);
+  outline:1px solid rgba(241,200,111,.16);
+}
+select option{color:#111}
+.rangeRow{display:grid;grid-template-columns:1fr 48px;gap:10px;align-items:center}
+input[type="range"]{padding:0;accent-color:#d4a24d}
+.checks{display:grid;gap:7px}
+.checks label{
+  display:flex;align-items:center;gap:8px;margin:0;padding:7px;border-radius:12px;
+  background:rgba(255,255,255,.045);color:var(--text);font-size:12px
+}
+.checks input{width:17px;height:17px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.actions button{
+  padding:11px;cursor:pointer;color:#1c1308;background:linear-gradient(180deg,#f1c86f,#a97525);font-weight:800;
+}
+.actions .secondary{color:var(--text);background:rgba(255,255,255,.075);outline:1px solid rgba(241,200,111,.18)}
+.hint{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.7}
+.hiddenTitle .title{opacity:0}
+.hiddenTimer .timer{opacity:0}
+.decor .title,.decor .timer,.decor .status{opacity:0}
+.decor .gear{opacity:.18}
+.decor .gear:hover{opacity:1;background:rgba(255,255,255,.09);transform:scale(1.05)}
+.gear:active{transform:scale(.94)}
+.gear.openGear{transform:rotate(45deg);background:rgba(255,255,255,.1)}
+.pulse{animation:pulse 1.1s ease-in-out 5}
+@keyframes pulse{
+  50%{filter:drop-shadow(0 0 36px rgba(241,200,111,.88)) drop-shadow(0 26px 28px rgba(0,0,0,.58))}
+}
+.flip{animation:flip .95s ease-in-out}
+@keyframes flip{0%{transform:rotate(0)}45%{transform:rotate(180deg) scale(.94)}70%{transform:rotate(180deg) scale(.97)}100%{transform:rotate(0)}}
+.floatDust{
+  position:absolute;inset:0;pointer-events:none;opacity:.45;display:none;
+  background-image:
+    radial-gradient(circle,rgba(255,215,130,.45) 0 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(255,255,255,.18) 0 1px,transparent 1.5px);
+  background-size:90px 90px,130px 130px;
+  animation:dust 18s linear infinite;
+}
+.dustOn .floatDust{display:block}
+@keyframes dust{to{background-position:90px -160px, -130px -220px}}
+@media (max-height:720px){.title{display:none}.timer{font-size:34px;margin-top:-22px}}
+</style>
+</head>
+<body class="bg-dark">
+<div class="app" id="app">
+  <div class="floatDust"></div>
+  <div class="title">⏳ ساعة رملية</div>
+  <button class="gear" id="gear" title="الإعدادات">⚙️</button>
+
+  <section class="controls" id="controls">
+    <div class="group">
+      <div class="groupTitle">⏱️ الوقت والتشغيل</div>
+      <label>اختر الوقت</label>
+      <div class="timeInputs">
+        <input id="mins" type="number" min="0" max="999" value="5" inputmode="numeric"><span>د</span>
+        <input id="secs" type="number" min="0" max="59" value="0" inputmode="numeric"><span>ث</span>
+      </div>
+      <div class="actions">
+        <button id="btnStart">تشغيل</button>
+        <button class="secondary" id="btnPause">إيقاف</button>
+        <button class="secondary" id="btnReset">إعادة ضبط</button>
+        <button class="secondary" id="btnFlip">اقلبها</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="groupTitle">🎨 المظهر</div>
+      <label>خامة الإطار</label>
+      <select id="theme">
+        <option value="gold">ذهبي كلاسيكي</option>
+        <option value="darkwood">خشب داكن</option>
+        <option value="mahogany">ماهوجني</option>
+        <option value="copper">نحاس معتق</option>
+      </select>
+      <label>الخلفية</label>
+      <select id="bg">
+        <option value="dark">داكنة كلاسيكية</option>
+        <option value="library">مكتبة هادئة</option>
+        <option value="cafe">مقهى ليلي</option>
+        <option value="fire">مدفأة</option>
+        <option value="night">سماء ليلية</option>
+        <option value="none">بدون خلفية</option>
+      </select>
+      <div class="checks"><label><input id="dust" type="checkbox"> غبار ذهبي خفيف في الخلفية</label></div>
+    </div>
+
+    <div class="group">
+      <div class="groupTitle">🔔 الصوت</div>
+      <label>صوت النهاية</label>
+      <select id="sound">
+        <option value="glass">جرس زجاجي</option>
+        <option value="wind">جرس رياح خفيف</option>
+        <option value="soft">نغمة هادئة</option>
+        <option value="none">بدون صوت</option>
+      </select>
+      <label>مستوى صوت النهاية</label>
+      <div class="rangeRow"><input id="volume" type="range" min="0" max="100" value="45"><span id="volText">45%</span></div>
+      <div class="checks" style="margin-top:8px">
+        <label><input id="sandSound" type="checkbox"> صوت خشخشة الرمل أثناء التشغيل</label>
+      </div>
+      <label>مستوى صوت الرمل</label>
+      <div class="rangeRow"><input id="sandVolume" type="range" min="0" max="100" value="12"><span id="sandVolText">12%</span></div>
+    </div>
+
+    <div class="group">
+      <div class="groupTitle">🖥️ العرض</div>
+      <div class="checks">
+        <label><input id="hideTimeRun" type="checkbox"> إخفاء الوقت أثناء التشغيل</label>
+        <label><input id="hideTitle" type="checkbox"> إخفاء العنوان</label>
+        <label><input id="decorMode" type="checkbox"> وضع الديكور</label>
+      </div>
+      <div class="actions"><button class="secondary" id="btnFull" style="grid-column:1/3">ملء الشاشة</button></div>
+    </div>
+
+    <div class="group">
+      <div class="groupTitle">⚙️ سلوك الساعة</div>
+      <div class="checks">
+        <label><input id="singleLast" type="checkbox" checked> إظهار آخر حبات الرمل بشكل منفرد</label>
+        <label><input id="goldGlow" type="checkbox" checked> وميض ذهبي عند النهاية</label>
+        <label><input id="autoFlip" type="checkbox"> قلب الساعة تلقائيًا عند الانتهاء</label>
+        <label><input id="repeatTimer" type="checkbox"> تكرار العداد بعد الانتهاء</label>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="groupTitle">💾 الحفظ</div>
+      <div class="checks"><label><input id="saveSettings" type="checkbox" checked> حفظ الإعدادات تلقائيًا في المتصفح</label></div>
+      <div class="hint">ملاحظة: اضغط على الساعة نفسها للتشغيل/الإيقاف السريع.</div>
+    </div>
+  </section>
+
+  <div class="stage"><canvas id="canvas" width="760" height="980"></canvas></div>
+  <div class="timer" id="timer">05:00</div>
+  <div class="status" id="status">اضغط تشغيل لبدء تساقط الرمل</div>
+</div>
+
+<script>
+const canvas=document.getElementById('canvas'), ctx=canvas.getContext('2d');
+const app=document.getElementById('app'), controls=document.getElementById('controls'), gear=document.getElementById('gear');
+const timerEl=document.getElementById('timer'), statusEl=document.getElementById('status');
+const els={
+  mins:document.getElementById('mins'), secs:document.getElementById('secs'), theme:document.getElementById('theme'),
+  bg:document.getElementById('bg'), dust:document.getElementById('dust'), sound:document.getElementById('sound'),
+  volume:document.getElementById('volume'), hideTimeRun:document.getElementById('hideTimeRun'), hideTitle:document.getElementById('hideTitle'),
+  decorMode:document.getElementById('decorMode'), sandSound:document.getElementById('sandSound'), sandVolume:document.getElementById('sandVolume'), singleLast:document.getElementById('singleLast'), goldGlow:document.getElementById('goldGlow'),
+  autoFlip:document.getElementById('autoFlip'), repeatTimer:document.getElementById('repeatTimer'), saveSettings:document.getElementById('saveSettings')
+};
+const volText=document.getElementById('volText');
+const sandVolText=document.getElementById('sandVolText');
+
+let total=300, remain=300, running=false, finished=false;
+let last=performance.now(), t=0, particles=[], sparkle=[];
+let sandAC=null, sandNoise=null, sandGain=null, sandFilter=null;
+const neckX=380, neckY=492;
+
+const themes={
+  gold:['#5f3912','#ffd77d','#8c5b1c','#f1c86f'],
+  darkwood:['#2b1609','#8a4c20','#4b260e','#c8873d'],
+  mahogany:['#3b0f09','#a64225','#5b1b11','#e69a50'],
+  copper:['#4b2a17','#c9793c','#7a3e20','#f0a35a']
+};
+let frameColors=themes.gold;
+
+gear.onclick=()=>{
+  controls.classList.toggle('open');
+  gear.classList.toggle('openGear', controls.classList.contains('open'));
+};
+canvas.onclick=()=>{
+  if(controls.classList.contains('open')) return;
+  running ? pauseTimer() : startTimer();
+};
+
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function easeOut(x){return 1-Math.pow(1-x,2.3);}
+function easeIn(x){return Math.pow(x,1.9);}
+
+function readDuration(){
+  let m=parseInt(els.mins.value||0,10), s=parseInt(els.secs.value||0,10);
+  s=clamp(s,0,59); els.secs.value=s;
+  let v=m*60+s;
+  if(v<=0){v=60; els.mins.value=1; els.secs.value=0;}
+  return v;
+}
+function updateTimer(){
+  let r=Math.max(0,Math.ceil(remain)), m=Math.floor(r/60),s=r%60;
+  timerEl.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function applyUI(){
+  frameColors=themes[els.theme.value]||themes.gold;
+  document.body.className='bg-'+els.bg.value;
+  app.classList.toggle('dustOn',els.dust.checked);
+  app.classList.toggle('hiddenTitle',els.hideTitle.checked);
+  app.classList.toggle('hiddenTimer', false);
+  app.classList.toggle('decor',els.decorMode.checked);
+  volText.textContent=els.volume.value+'%';
+  sandVolText.textContent=els.sandVolume.value+'%';
+  updateSandSoundVolume();
+  saveSettings();
+}
+function setDuration(){
+  stopSandSound();
+  total=readDuration(); remain=total; running=false; finished=false; particles=[]; sparkle=[];
+  statusEl.textContent='اضغط تشغيل لبدء تساقط الرمل';
+  canvas.classList.remove('pulse'); updateTimer(); applyUI();
+}
+function startTimer(){
+  if(finished) setDuration();
+  running=true; finished=false;
+  controls.classList.remove('open');
+  statusEl.textContent='الرمل يتساقط الآن';
+  // دفعة أولية حتى يظهر الرمل فوراً ولا يبدو ثابتاً
+  for(let i=0;i<34;i++) addOneParticle(18 + Math.random()*70);
+  applyUI();
+  ensureSandSound();
+}
+function pauseTimer(){running=false; statusEl.textContent='متوقف مؤقتًا'; applyUI(); stopSandSound();}
+function resetTimer(){stopSandSound(); setDuration();}
+function flipTimer(startAfter=false){
+  const shouldStart = !!startAfter;
+  running=false;
+  finished=false;
+  particles=[];
+  sparkle=[];
+  stopSandSound();
+
+  canvas.classList.remove('flip');
+  void canvas.offsetWidth;
+  canvas.classList.add('flip');
+
+  remain=total;
+  updateTimer();
+  statusEl.textContent = shouldStart ? 'تم قلب الساعة…' : 'تم قلب الساعة';
+  applyUI();
+
+  window.clearTimeout(window.__flipStartTimer);
+  window.__flipStartTimer=setTimeout(()=>{
+    canvas.classList.remove('flip');
+    if(shouldStart) startTimer();
+    else {
+      statusEl.textContent='اضغط تشغيل لبدء تساقط الرمل';
+      applyUI();
+    }
+  },980);
+}
+
+document.getElementById('btnStart').onclick=startTimer;
+document.getElementById('btnPause').onclick=pauseTimer;
+document.getElementById('btnReset').onclick=resetTimer;
+document.getElementById('btnFlip').onclick=()=>flipTimer(false);
+document.getElementById('btnFull').onclick=()=>document.documentElement.requestFullscreen?.();
+document.addEventListener('pointerdown',(e)=>{
+  if(!controls.classList.contains('open')) return;
+  if(controls.contains(e.target) || gear.contains(e.target)) return;
+  controls.classList.remove('open');
+  gear.classList.remove('openGear');
+});
+
+function saveSettings(){
+  if(!els.saveSettings.checked)return;
+  const data={};
+  for(const [k,e] of Object.entries(els)){data[k]=e.type==='checkbox'?e.checked:e.value}
+  localStorage.setItem('hourglassSettingsV4',JSON.stringify(data));
+}
+function loadSettings(){
+  try{
+    const data=JSON.parse(localStorage.getItem('hourglassSettingsV4')||'{}');
+    for(const [k,v] of Object.entries(data)){
+      if(els[k]){ if(els[k].type==='checkbox') els[k].checked=!!v; else els[k].value=v; }
+    }
+  }catch(e){}
+}
+for(const e of Object.values(els)){
+  e.addEventListener('input',()=>{ if(e===els.mins||e===els.secs){ total=readDuration(); if(!running && !finished){remain=total; updateTimer();} } applyUI(); });
+  e.addEventListener('change',()=>{ if(e===els.mins||e===els.secs){ total=readDuration(); if(!running && !finished){remain=total; updateTimer();} } applyUI(); });
+}
+els.sandSound.addEventListener('change',()=>{ if(els.sandSound.checked) ensureSandSound(); else stopSandSound(); });
+els.sandVolume.addEventListener('input',updateSandSoundVolume);
+
+
+function makeNoiseBuffer(ac){
+  const bufferSize = ac.sampleRate * 2;
+  const buffer = ac.createBuffer(1, bufferSize, ac.sampleRate);
+  const data = buffer.getChannelData(0);
+  for(let i=0;i<bufferSize;i++){
+    data[i] = (Math.random()*2-1) * (Math.random()>.82 ? 1 : .28);
+  }
+  return buffer;
+}
+function ensureSandSound(){
+  if(!els.sandSound.checked || !running) return;
+  if(sandAC) return;
+  const AC=window.AudioContext||window.webkitAudioContext;
+  sandAC=new AC();
+  sandNoise=sandAC.createBufferSource();
+  sandNoise.buffer=makeNoiseBuffer(sandAC);
+  sandNoise.loop=true;
+  sandFilter=sandAC.createBiquadFilter();
+  sandFilter.type='bandpass';
+  sandFilter.frequency.value=1900;
+  sandFilter.Q.value=0.8;
+  sandGain=sandAC.createGain();
+  sandGain.gain.value=0.0001;
+  sandNoise.connect(sandFilter);
+  sandFilter.connect(sandGain);
+  sandGain.connect(sandAC.destination);
+  sandNoise.start();
+  updateSandSoundVolume();
+}
+function updateSandSoundVolume(){
+  if(!sandGain) return;
+  const v=(parseInt(els.sandVolume?.value||0,10)/100) * 0.045;
+  const target=(running && els.sandSound.checked) ? v : 0.0001;
+  sandGain.gain.setTargetAtTime(target, sandAC.currentTime, .08);
+}
+function stopSandSound(){
+  if(!sandAC) return;
+  try{
+    sandGain.gain.setTargetAtTime(0.0001, sandAC.currentTime, .05);
+    setTimeout(()=>{
+      try{sandNoise.stop()}catch(e){}
+      try{sandAC.close()}catch(e){}
+      sandAC=null; sandNoise=null; sandGain=null; sandFilter=null;
+    },180);
+  }catch(e){
+    sandAC=null; sandNoise=null; sandGain=null; sandFilter=null;
+  }
+}
+
+function playSound(){
+  if(els.sound.value==='none')return;
+  const AC=window.AudioContext||window.webkitAudioContext, ac=new AC(), now=ac.currentTime;
+  const vol=(parseInt(els.volume.value,10)||0)/100;
+  let freqs=[880,1175,1568], dur=1.05;
+  if(els.sound.value==='wind'){freqs=[659,880,1175,1397];dur=1.6}
+  if(els.sound.value==='soft'){freqs=[523,659,784];dur=1.25}
+  freqs.forEach((f,i)=>{
+    const o=ac.createOscillator(), g=ac.createGain();
+    o.type=els.sound.value==='wind'?'triangle':'sine'; o.frequency.value=f;
+    g.gain.setValueAtTime(0.0001,now+i*.06);
+    g.gain.exponentialRampToValueAtTime((0.08*vol)/(i+1),now+i*.06+.03);
+    g.gain.exponentialRampToValueAtTime(0.0001,now+i*.06+dur);
+    o.connect(g); g.connect(ac.destination);
+    o.start(now+i*.06); o.stop(now+i*.06+dur+.12);
+  });
+}
+function finishTimer(){
+  remain=0; running=false; finished=true; updateTimer(); applyUI(); stopSandSound();
+  setTimeout(()=>{
+    statusEl.textContent='✅ انتهى الوقت';
+    playSound();
+    if(els.goldGlow.checked) canvas.classList.add('pulse');
+    if(els.repeatTimer.checked){
+      setTimeout(()=>flipTimer(true),1200);
+    }else if(els.autoFlip.checked){
+      setTimeout(()=>flipTimer(false),1200);
+    }
+  },520);
+}
+
+function topGlass(){ctx.beginPath();ctx.moveTo(245,135);ctx.bezierCurveTo(265,270,335,405,380,478);ctx.bezierCurveTo(425,405,495,270,515,135);ctx.closePath();}
+function bottomGlass(){ctx.beginPath();ctx.moveTo(380,505);ctx.bezierCurveTo(335,578,265,715,245,850);ctx.lineTo(515,850);ctx.bezierCurveTo(495,715,425,578,380,505);ctx.closePath();}
+function sandChamberClip(){
+  ctx.beginPath();
+  ctx.moveTo(372,474);
+  ctx.bezierCurveTo(374,486,376,497,380,505);
+  ctx.bezierCurveTo(335,578,265,715,245,850);
+  ctx.lineTo(515,850);
+  ctx.bezierCurveTo(495,715,425,578,380,505);
+  ctx.bezierCurveTo(384,497,386,486,388,474);
+  ctx.closePath();
+}
+
+function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+function drawFrame(){
+  ctx.clearRect(0,0,760,980);
+  let glow=ctx.createRadialGradient(380,485,30,380,485,430);
+  glow.addColorStop(0,'rgba(240,200,111,.09)');glow.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=glow;ctx.fillRect(0,0,760,980);
+
+  const cap=ctx.createLinearGradient(170,0,590,0);
+  cap.addColorStop(0,frameColors[0]);cap.addColorStop(.22,frameColors[2]);cap.addColorStop(.52,frameColors[1]);cap.addColorStop(.84,frameColors[2]);cap.addColorStop(1,frameColors[0]);
+  ctx.fillStyle=cap;roundRect(170,82,420,48,24);ctx.fill();roundRect(170,868,420,48,24);ctx.fill();
+
+  ctx.lineCap='round';ctx.lineWidth=24;ctx.strokeStyle=frameColors[2];
+  ctx.beginPath();ctx.moveTo(220,110);ctx.lineTo(220,890);ctx.moveTo(540,110);ctx.lineTo(540,890);ctx.stroke();
+  ctx.lineWidth=8;ctx.strokeStyle='rgba(255,220,130,.55)';
+  ctx.beginPath();ctx.moveTo(211,130);ctx.lineTo(211,850);ctx.moveTo(531,130);ctx.lineTo(531,850);ctx.stroke();
+
+  ctx.fillStyle='rgba(175,220,255,.105)';ctx.strokeStyle='rgba(225,250,255,.56)';ctx.lineWidth=3.2;
+  topGlass();ctx.fill();ctx.stroke();bottomGlass();ctx.fill();ctx.stroke();
+
+  ctx.strokeStyle='rgba(255,255,255,.18)';ctx.lineWidth=7;
+  ctx.beginPath();ctx.moveTo(310,160);ctx.bezierCurveTo(325,285,360,390,371,460);ctx.moveTo(310,820);ctx.bezierCurveTo(326,700,360,590,371,520);ctx.stroke();
+}
+function drawTopSand(progress){
+  const p=clamp(progress,0,1), baseY=160+p*285, available=neckY-baseY;if(available<=6)return;
+  ctx.save();topGlass();ctx.clip();
+  const grad=ctx.createLinearGradient(0,baseY,0,neckY);grad.addColorStop(0,'#f4cd74');grad.addColorStop(.48,'#d7a84c');grad.addColorStop(1,'#a86f20');ctx.fillStyle=grad;
+  const surfaceY=baseY+Math.sin(t*.9)*1.2;
+  ctx.beginPath();ctx.moveTo(232,surfaceY);
+  for(let x=232;x<=528;x+=10){ctx.lineTo(x,surfaceY+Math.sin(x*.045+t*1.2)*3+Math.sin(x*.017-t*.7)*2)}
+  const funnelDepth=22+p*86, funnelWidth=40+p*34;
+  ctx.lineTo(533,neckY-18);
+  ctx.bezierCurveTo(455,neckY-26,420,neckY-40,neckX+funnelWidth*.35,neckY-funnelDepth*.45);
+  ctx.bezierCurveTo(397,neckY-funnelDepth,390,neckY-funnelDepth,neckX+9,neckY-18);
+  ctx.lineTo(neckX+5,neckY-4);ctx.lineTo(neckX-5,neckY-4);ctx.lineTo(neckX-9,neckY-18);
+  ctx.bezierCurveTo(370,neckY-funnelDepth,363,neckY-funnelDepth,neckX-funnelWidth*.35,neckY-funnelDepth*.45);
+  ctx.bezierCurveTo(340,neckY-40,305,neckY-26,227,neckY-18);ctx.closePath();ctx.fill();
+  ctx.globalAlpha=.25;ctx.fillStyle='#8e5b1b';ctx.beginPath();ctx.ellipse(neckX,neckY-28-p*45,30+p*18,8+p*6,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+  ctx.restore();
+}
+function drawBottomSand(progress){
+  const p=clamp(progress,0,1);if(p<=.002)return;ctx.save();bottomGlass();ctx.clip();
+  const moundH=clamp(18+p*255,10,275), moundW=clamp(55+p*210,40,270), baseY=848, peakY=baseY-moundH;
+  const left=neckX-moundW/2,right=neckX+moundW/2;
+  const grad=ctx.createLinearGradient(0,peakY,0,baseY);grad.addColorStop(0,'#f3ce76');grad.addColorStop(.55,'#d7a84c');grad.addColorStop(1,'#9d641c');ctx.fillStyle=grad;
+  ctx.beginPath();ctx.moveTo(left,baseY);
+  for(let i=0;i<=24;i++){let k=i/24,x=left+(neckX-left)*k,y=baseY-(baseY-peakY)*easeOut(k)+Math.sin(k*17+t*1.3)*3*(1-k);ctx.lineTo(x,y)}
+  for(let i=0;i<=24;i++){let k=i/24,x=neckX+(right-neckX)*k,y=peakY+(baseY-peakY)*easeIn(k)+Math.sin(k*19-t)*3*(1-k);ctx.lineTo(x,y)}
+  ctx.lineTo(right,baseY);ctx.closePath();ctx.fill();
+  if(p>.45){ctx.globalAlpha=clamp((p-.45)/.55,0,1)*.9;ctx.fillStyle='#b97925';ctx.beginPath();ctx.ellipse(neckX,842,moundW*.62,19,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1}
+  ctx.restore();
+}
+function addOneParticle(offset=0){
+  particles.push({
+    x:neckX+(Math.random()-.5)*6,
+    y:neckY-15+offset,
+    vx:(Math.random()-.5)*.10,
+    vy:2.4+Math.random()*3.0,
+    r:.8+Math.random()*1.8,
+    a:.68+Math.random()*.32
+  });
+}
+function addParticles(dt, progress){
+  if(!running||progress>=1)return;
+  let endFactor=progress>.94?Math.max(.12,1-(progress-.94)/.06):1;
+  let intermittent=(els.singleLast.checked&&progress>.94)?(Math.sin(t*13)>0.15?1:0):1;
+  let count=Math.floor((20*dt*60)*endFactor*intermittent);
+  count=clamp(count,progress>.985?1:3,20);
+  if(els.singleLast.checked&&progress>.995)count=Math.random()<.22?1:0;
+  for(let i=0;i<count;i++) addOneParticle(0);
+}
+function updateParticles(dt,progress){
+  const moundH=clamp(18+progress*255,10,275),moundW=clamp(55+progress*210,40,270),baseY=848,peakY=baseY-moundH;
+  for(const g of particles){
+    g.x+=g.vx*dt*60;g.y+=g.vy*dt*60;g.vy+=.08*dt*60;
+    let dx=Math.abs(g.x-neckX),sideY=peakY+(baseY-peakY)*Math.pow(dx/(moundW/2),.92);
+    if(g.y>=sideY&&dx<moundW/2){g.y=sideY;g.vy*=.12;g.vx+=Math.sign(g.x-neckX||1)*.20;g.a-=.025}
+    if(g.y>852)g.a-=.06;
+  }
+  particles=particles.filter(g=>g.a>0&&g.y<856&&g.x>248&&g.x<512);
+}
+function drawParticles(){
+  ctx.save();
+  sandChamberClip();
+  ctx.clip();
+  ctx.fillStyle='#f1c86f';
+  for(const g of particles){
+    ctx.globalAlpha=g.a;
+    ctx.beginPath();ctx.arc(g.x,g.y,g.r,0,Math.PI*2);ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  ctx.restore();
+}
+function drawStream(progress){
+  if(!running||progress>=.998)return;
+  if(els.singleLast.checked&&progress>.94&&Math.sin(t*13)<.15)return;
+  const opacity=progress>.94?Math.max(.1,1-(progress-.94)/.06):1;
+  ctx.save();
+  sandChamberClip();
+  ctx.clip();
+  ctx.strokeStyle=`rgba(241,200,111,${.86*opacity})`;ctx.lineWidth=2.4;
+  ctx.beginPath();ctx.moveTo(neckX,neckY-10);ctx.quadraticCurveTo(neckX+Math.sin(t*8)*1.4,neckY+44,neckX,neckY+108);ctx.stroke();
+  ctx.restore();
+}
+function drawGlassFront(){
+  ctx.strokeStyle='rgba(255,255,255,.13)';ctx.lineWidth=3;
+  ctx.save();topGlass();ctx.clip();ctx.beginPath();ctx.moveTo(285,170);ctx.bezierCurveTo(292,272,333,380,365,468);ctx.stroke();ctx.restore();
+  ctx.save();bottomGlass();ctx.clip();ctx.beginPath();ctx.moveTo(285,820);ctx.bezierCurveTo(292,715,333,596,365,518);ctx.stroke();ctx.restore();
+}
+function drawSparkles(){
+  for(const s of sparkle){ctx.globalAlpha=s.a;ctx.fillStyle='#f9dd98';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1}
+}
+function updateSparkles(dt){for(const s of sparkle){s.y+=s.vy*dt*60;s.a-=.018*dt*60}sparkle=sparkle.filter(s=>s.a>0)}
+
+function animate(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;t+=dt;
+  if(running&&remain>0){
+    remain-=dt;
+    if(remain<=0){
+      remain=0;
+      for(let i=0;i<9;i++)sparkle.push({x:neckX+(Math.random()-.5)*8,y:neckY+20+Math.random()*24,vy:1+Math.random()*2,r:1+Math.random()*1.5,a:.9});
+      finishTimer();
+    }
+  }
+  const progress=1-clamp(remain/total,0,1);
+  if(running)addParticles(dt,progress);
+  updateParticles(dt,progress);updateSparkles(dt);updateTimer();
+  drawFrame();drawTopSand(progress);drawBottomSand(progress);drawStream(progress);drawParticles();drawSparkles();drawGlassFront();
+  requestAnimationFrame(animate);
+}
+
+loadSettings();
+setDuration();
+applyUI();
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
