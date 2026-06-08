@@ -109,7 +109,7 @@
         </div>
         <div>
           <h1>بوابة مسار</h1>
-          <div class="subtitle">اختَر بسرعة… وابدأ</div>
+          <div class="subtitle">اختر مسارك… وابدأ</div>
         </div>
       </div>
       <button class="btn icon" id="themeBtn" aria-label="تبديل السمة" title="تبديل السمة"></button>
@@ -126,22 +126,35 @@
   <script>
     // ——— البيانات ———
     const PAGES = [
+      // 📖 الدينية
       { title: "متابعة قراءة القرآن الكريم", href: "Pages/Tilawah.html", desc: "تابع تقدّمك اليومي 📖", emoji: "📖" },
-      { title: "الأربعون النووية", href: "NawawiFourty/index.html", desc: "الأربعون النووية بشرح الشيخ بن عثيمين رحمه الله📖", emoji: "📖" },
-      { title: "قياس المؤشرات الصحية", href: "Pages/vitals.html", desc: "مؤشراتك الحيوية باختصار", emoji: "🩺" },
-      { title: "أدوات التحليل الإداري", href: "ManagementModels/index.html", desc: "أدوات تحليل احترافية تساعدك على اتخاذ قرارات أفضل", emoji: "🧭" },
-      { title: "اختبارات الوعي المعرفي", href: "Awareness/index.html", desc: "اختبارات مبسطة لرفع وعيك", emoji: "🧠" },
-          { title: "تمارين التركيز والانتباه", href: "FucusExcercises/index.html", desc: "جلسات بصرية هادئة لإعادة ضبط الانتباه", emoji: "🎯" },
-      { title: "شجرة العائلة", href: "FamilyTree/index.html", desc: "ابني شجرة لعائلتك بخطوات بسيطة", emoji: "🍀" },
-      { title: "بوابة القهوة", href: "cafe/index.html", desc: "لمحبي القهوة", emoji: "🍀" },
-      { title: "تمارين رياضيات باللعب", href: "MathGame/index.html", desc: "عزز مهارة طفلك في الرياضيات", emoji: "🍀" },
-      { title: "تعلّم الإنجليزية للمبتدئين", href: "Pages/LearnEnglish.html", desc: "تعلّم الكلمات الانجليزية ✨", emoji: "📘" },
-      { title: "جمل انجليزية مهمة", href: "Sentences/index.html", desc: "جمل انجليزية مهمة ومفيدة للمبتدئين", emoji: "🍀" },
-      { title: "لعبة الحروف", href: "LettersGame/index.html", desc: " انسان, حيوان, نبات, .......", emoji: "🎯" },
-      { title: "تصويت", href: "Pages/Poll.html", desc: "صوّت وشارك الرأي", emoji: "🗳️" },
-      { title: "عجلة الحظ", href: "Pages/luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🍀" },
-      { title: "مباريات كأس العالم 2026", href: "Pages/WorldCup2026.html", desc: "بوابة كأس العالم 2026", emoji: "🏆" },
+      { title: "الأربعون النووية", href: "NawawiFourty/index.html", desc: "الأربعون النووية بشرح الشيخ ابن عثيمين رحمه الله 📖", emoji: "📚" },
 
+      // 🧠 الثقافية والمعرفية
+      { title: "اختبارات الوعي المعرفي", href: "Awareness/index.html", desc: "اختبارات مبسطة لرفع وعيك", emoji: "🧠" },
+      { title: "أدوات التحليل الإداري", href: "ManagementModels/index.html", desc: "أدوات تحليل احترافية تساعدك على اتخاذ قرارات أفضل", emoji: "🧭" },
+      { title: "تمارين التركيز والانتباه", href: "FucusExcercises/index.html", desc: "جلسات بصرية هادئة لإعادة ضبط الانتباه", emoji: "🎯" },
+      { title: "الساعة الرملية", href: "Pages/SandHourglass.html", desc: "مؤقت تفاعلي بساعة رملية واقعية", emoji: "⏳" },
+
+      // 🎓 التعليمية
+      { title: "تعلّم الإنجليزية للمبتدئين", href: "Pages/LearnEnglish.html", desc: "تعلّم الكلمات الإنجليزية ✨", emoji: "📘" },
+      { title: "جمل إنجليزية مهمة", href: "Sentences/index.html", desc: "جمل إنجليزية مهمة ومفيدة للمبتدئين", emoji: "📝" },
+      { title: "تمارين رياضيات باللعب", href: "MathGame/index.html", desc: "عزز مهارة طفلك في الرياضيات", emoji: "➗" },
+
+      // ☕ أسلوب الحياة
+      { title: "بوابة القهوة", href: "cafe/index.html", desc: "لمحبي القهوة", emoji: "☕" },
+      { title: "قياس المؤشرات الصحية", href: "Pages/vitals.html", desc: "مؤشراتك الحيوية باختصار", emoji: "🩺" },
+
+      // 👨‍👩‍👧‍👦 العائلة والمجتمع
+      { title: "شجرة العائلة", href: "FamilyTree/index.html", desc: "ابني شجرة لعائلتك بخطوات بسيطة", emoji: "🌳" },
+      { title: "تصويت", href: "Pages/Poll.html", desc: "صوّت وشارك الرأي", emoji: "🗳️" },
+
+      // 🎮 الترفيه والألعاب
+      { title: "لعبة الحروف", href: "LettersGame/index.html", desc: "إنسان، حيوان، نبات ...", emoji: "🎲" },
+      { title: "عجلة الحظ", href: "Pages/luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🎡" },
+
+      // ⚽ المناسبات والأحداث
+      { title: "مباريات كأس العالم 2026", href: "Pages/WorldCup2026.html", desc: "بوابة كأس العالم 2026", emoji: "🏆" },
     ];
 
     // ——— عناصر DOM ———
