@@ -630,7 +630,7 @@ body.light-mode .speakNextBtn{
 <body>
 <header class="hero"><div class="avatar">🏆</div><h1 class="heroTitle">بوابة كأس العالم 2026 <button id="themeToggle" class="themeBtn heroThemeInline" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button></h1><p> مباريات، توقعات، نتائج، إحصائيات، قنوات، وإضافة إلى Google Calendar.</p><div class="badges"><span>⚽ جدول</span><span>🎯 توقعات</span><span>📊 إحصائيات</span><span>📺 قنوات</span></div></header>
 <section class="topbar"><div class="topin"><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span><span class="mini nextMini">⏳ القادمة: <b id="miniNext">غير محددة</b><button class="speakNextBtn" onclick="speakNextMatch(event)" title="نطق المباراة القادمة" aria-label="نطق المباراة القادمة">🔊</button></span></div></section>
-<nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('channels',this)">القنوات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button></nav>
+<nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('groups',this)">👥 المجموعات</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('channels',this)">القنوات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button></nav>
 <section class="controls"><div class="panel"><div class="ctrlgrid compactControls"><select id="team"></select><select id="view"><option value="all">كل المباريات</option><option value="mine">مبارياتي</option><option value="fav">المفضلة ⭐</option><option value="pred">توقعاتي</option><option value="upcoming">القادمة</option><option value="finished">المنتهية</option></select><button class="topbtn gold" onclick="goToNextMatch()">🎯 المباراة القادمة</button><div class="globalMenu"><button class="topbtn soft" onclick="toggleGlobalMenu(event)">⚙️ إدارة</button><div id="globalMenuPanel" class="globalMenuPanel"><button class="topbtn gold" onclick="exportData();closeMenus()">تصدير</button><button class="topbtn soft" onclick="document.getElementById('imp').click();closeMenus()">استيراد</button><button class="topbtn soft" onclick="showReport();closeMenus()">تقرير</button><button class="topbtn soft" onclick="clearAllPredictions();closeMenus()">🗑 مسح التوقعات</button></div></div><input type="file" id="imp" accept="application/json" hidden onchange="importData(event)"></div></div></section>
 
 <section class="serverSyncBox">
@@ -661,6 +661,26 @@ body.light-mode .speakNextBtn{
 <div class="info"><h3>النهائي</h3><p>مباراة 104</p></div>
 </div>
 <div id="knockoutCards" class="grid"></div>
+</section>
+
+
+<section id="sec-groups" class="section">
+<div class="note"><b>👥 المجموعات</b><br>اضغط على أي مجموعة لعرض منتخباتها.</div>
+
+<div class="infoGrid" id="groupsGrid">
+<div class="info" onclick="toggleGroup('A')" style="cursor:pointer"><h3>المجموعة A</h3><p id="gA" style="display:none">🇲🇽 المكسيك<br>🇿🇦 جنوب أفريقيا<br>🇰🇷 كوريا الجنوبية<br>🇨🇿 التشيك</p></div>
+<div class="info" onclick="toggleGroup('B')" style="cursor:pointer"><h3>المجموعة B</h3><p id="gB" style="display:none">🇨🇦 كندا<br>🇧🇦 البوسنة والهرسك<br>🇶🇦 قطر<br>🇨🇭 سويسرا</p></div>
+<div class="info" onclick="toggleGroup('C')" style="cursor:pointer"><h3>المجموعة C</h3><p id="gC" style="display:none">🇧🇷 البرازيل<br>🇲🇦 المغرب<br>🇭🇹 هايتي<br>🏴 اسكتلندا</p></div>
+<div class="info" onclick="toggleGroup('D')" style="cursor:pointer"><h3>المجموعة D</h3><p id="gD" style="display:none">🇺🇸 أمريكا<br>🇵🇾 باراغواي<br>🇦🇺 أستراليا<br>🇹🇷 تركيا</p></div>
+<div class="info" onclick="toggleGroup('E')" style="cursor:pointer"><h3>المجموعة E</h3><p id="gE" style="display:none">🇩🇪 ألمانيا<br>🇨🇼 كوراساو<br>🇨🇮 ساحل العاج<br>🇪🇨 الإكوادور</p></div>
+<div class="info" onclick="toggleGroup('F')" style="cursor:pointer"><h3>المجموعة F</h3><p id="gF" style="display:none">🇳🇱 هولندا<br>🇯🇵 اليابان<br>🇸🇪 السويد<br>🇹🇳 تونس</p></div>
+<div class="info" onclick="toggleGroup('G')" style="cursor:pointer"><h3>المجموعة G</h3><p id="gG" style="display:none">🇧🇪 بلجيكا<br>🇪🇬 مصر<br>🇮🇷 إيران<br>🇳🇿 نيوزيلندا</p></div>
+<div class="info" onclick="toggleGroup('H')" style="cursor:pointer"><h3>المجموعة H</h3><p id="gH" style="display:none">🇪🇸 إسبانيا<br>🇨🇻 الرأس الأخضر<br>🇸🇦 السعودية<br>🇺🇾 أوروغواي</p></div>
+<div class="info" onclick="toggleGroup('I')" style="cursor:pointer"><h3>المجموعة I</h3><p id="gI" style="display:none">🇫🇷 فرنسا<br>🇸🇳 السنغال<br>🇮🇶 العراق<br>🇳🇴 النرويج</p></div>
+<div class="info" onclick="toggleGroup('J')" style="cursor:pointer"><h3>المجموعة J</h3><p id="gJ" style="display:none">🇦🇷 الأرجنتين<br>🇩🇿 الجزائر<br>🇦🇹 النمسا<br>🇯🇴 الأردن</p></div>
+<div class="info" onclick="toggleGroup('K')" style="cursor:pointer"><h3>المجموعة K</h3><p id="gK" style="display:none">🇵🇹 البرتغال<br>🇨🇩 الكونغو الديمقراطية<br>🇺🇿 أوزبكستان<br>🇨🇴 كولومبيا</p></div>
+<div class="info" onclick="toggleGroup('L')" style="cursor:pointer"><h3>المجموعة L</h3><p id="gL" style="display:none">🏴 إنجلترا<br>🇭🇷 كرواتيا<br>🇬🇭 غانا<br>🇵🇦 بنما</p></div>
+</div>
 </section>
 
 </main>
@@ -1150,4 +1170,11 @@ themeToggle.onclick=()=>{
 
 
 normalizeThemeButton();
+
+function toggleGroup(id){
+ const el=document.getElementById('g'+id);
+ if(!el) return;
+ el.style.display = el.style.display==='none' ? 'block' : 'none';
+}
+
 </script></body></html>
