@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>نظرة اليوم | لوحة يومية شخصية</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --text:#182033; --muted:#667085; --line:#e6e9f0;
+      --primary:#2563eb; --primary2:#0ea5e9; --soft:#eef6ff; --shadow:0 14px 35px rgba(15,23,42,.08);
+      --ok:#16a34a; --warn:#d97706; --danger:#dc2626; --radius:22px;
+    }
+    [data-theme="dark"]{
+      --bg:#0b1020; --card:#121a2d; --text:#edf2ff; --muted:#a9b4c7; --line:#22304a;
+      --primary:#60a5fa; --primary2:#22d3ee; --soft:#13243d; --shadow:0 18px 40px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(37,99,235,.14), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(14,165,233,.10), transparent 30%), var(--bg);
+      color:var(--text); min-height:100vh; line-height:1.65;
+    }
+    .app{width:min(980px,100%); margin:auto; padding:18px 14px 80px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px}
+    .brand h1{font-size:1.55rem; margin:0; letter-spacing:-.5px}.brand p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+    .icon-btn{border:1px solid var(--line); background:var(--card); color:var(--text); width:44px; height:44px; border-radius:15px; box-shadow:var(--shadow); cursor:pointer; font-size:1.1rem}
+    .hero{background:linear-gradient(135deg, var(--card), var(--soft)); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:28px; padding:18px; overflow:hidden; position:relative}
+    .hero:after{content:""; position:absolute; inset:auto -40px -70px auto; width:170px; height:170px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary2)); opacity:.15}
+    .greeting{font-size:1.05rem; color:var(--muted); margin:0}.headline{font-size:1.9rem; margin:4px 0 12px; line-height:1.25; letter-spacing:-.7px}
+    .moods{display:flex; gap:8px; overflow:auto; padding-bottom:4px}.mood{white-space:nowrap; border:1px solid var(--line); background:var(--card); color:var(--text); padding:9px 13px; border-radius:999px; cursor:pointer; font-weight:700}
+    .mood.active{background:linear-gradient(135deg,var(--primary),var(--primary2)); color:white; border-color:transparent}
+    .actions{display:grid; grid-template-columns:1fr auto; gap:10px; margin-top:14px}.main-btn{border:0; border-radius:18px; padding:14px 16px; color:white; background:linear-gradient(135deg,var(--primary),var(--primary2)); font-weight:900; font-size:1rem; cursor:pointer; box-shadow:0 14px 25px rgba(37,99,235,.24)}
+    .ghost-btn{border:1px solid var(--line); border-radius:18px; padding:12px 14px; background:var(--card); color:var(--text); cursor:pointer; font-weight:800}
+    .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:20px 2px 10px}.section-title h2{font-size:1.08rem; margin:0}.section-title span{color:var(--muted); font-size:.85rem}
+    .brief{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)}
+    .brief ul{margin:0; padding:0 20px 0 0}.brief li{margin:4px 0;color:var(--muted)}
+    .grid{display:grid; grid-template-columns:1fr; gap:12px}.card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:15px; box-shadow:var(--shadow); min-height:132px; transition:.2s transform}.card:hover{transform:translateY(-2px)}
+    .card-head{display:flex; justify-content:space-between; align-items:center; gap:10px}.card-title{display:flex; align-items:center; gap:8px; font-weight:900}.badge{font-size:.76rem; color:var(--muted); background:var(--soft); border:1px solid var(--line); padding:3px 8px; border-radius:999px}.big{font-size:2rem; font-weight:950; margin:10px 0 2px}.muted{color:var(--muted); font-size:.92rem}.link{display:inline-block; margin-top:10px; color:var(--primary); font-weight:900; text-decoration:none}
+    .loading{position:relative; overflow:hidden}.loading .skeleton{height:14px; border-radius:999px; background:linear-gradient(90deg,var(--line),var(--soft),var(--line)); background-size:200% 100%; animation:shimmer 1s infinite; margin:12px 0}.loading .skeleton.short{width:45%}.loading .skeleton.long{width:84%}@keyframes shimmer{to{background-position:-200% 0}}
+    .drawer{position:fixed; inset:0; background:rgba(2,6,23,.45); display:none; align-items:flex-end; z-index:10}.drawer.open{display:flex}.panel{width:100%; max-height:86vh; overflow:auto; background:var(--card); color:var(--text); border-radius:26px 26px 0 0; padding:18px; border:1px solid var(--line)}
+    .panel h2{margin:0 0 12px}.setting{display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--line)}
+    .switch{width:50px;height:28px;border-radius:999px;background:var(--line);position:relative;cursor:pointer}.switch:after{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:white;top:3px;right:3px;transition:.2s}.switch.on{background:var(--primary)}.switch.on:after{right:25px}
+    .footer{margin-top:24px;text-align:center;color:var(--muted);font-size:.82rem}
+    @media (min-width:720px){.app{padding:28px 22px 90px}.headline{font-size:2.4rem}.grid{grid-template-columns:repeat(2,1fr)}.card.wide{grid-column:span 2}.panel{max-width:520px;margin:auto;border-radius:26px}.drawer{align-items:center}.actions{max-width:520px}.hero{padding:24px}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><h1>نظرة اليوم</h1><p id="todayLine">لوحتك اليومية المختصرة</p></div>
+      <div><button class="icon-btn" id="themeBtn" title="الوضع الليلي/النهاري">🌙</button><button class="icon-btn" id="settingsBtn" title="الإعدادات">⚙️</button></div>
+    </header>
+
+    <section class="hero">
+      <p class="greeting" id="greeting">صباح الخير</p>
+      <h2 class="headline" id="moodHeadline">كيف تريد يومك؟</h2>
+      <div class="moods" id="moods"></div>
+      <div class="actions"><button class="main-btn" id="refreshBtn">🌍 عرض ملخص اليوم</button><button class="ghost-btn" id="randomBtn">🎲 مزاج تلقائي</button></div>
+    </section>
+
+    <div class="section-title"><h2>✨ ما الجديد اليوم؟</h2><span id="lastUpdate">لم يتم التحديث بعد</span></div>
+    <section class="brief" id="brief"><ul><li>اختر مزاج اليوم ثم اضغط عرض ملخص اليوم.</li><li>يمكنك تفعيل أو إخفاء البطاقات من الإعدادات.</li></ul></section>
+
+    <div class="section-title"><h2>البطاقات</h2><span>كل بطاقة مستقلة</span></div>
+    <section class="grid" id="cards"></section>
+    <p class="footer">نسخة بروتوتايب محلية — جاهزة لاحقًا لربط APIs حقيقية.</p>
+  </main>
+
+  <div class="drawer" id="drawer"><div class="panel"><h2>⚙️ الإعدادات</h2><p class="muted">اختر البطاقات التي تريد ظهورها. تحفظ الإعدادات تلقائيًا في المتصفح.</p><div id="settingsList"></div><button class="main-btn" style="width:100%;margin-top:14px" id="closeSettings">حفظ وإغلاق</button></div></div>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const STORAGE_KEY = 'nazrat_alyawm_v1';
+    const moods = [
+      {id:'work', label:'💼 عملي', title:'يوم إنتاجية وتركيز'},
+      {id:'tech', label:'🤖 تقني', title:'يوم متابعة التقنية والذكاء الاصطناعي'},
+      {id:'calm', label:'☕ هادئ', title:'يوم خفيف بلا ازدحام'},
+      {id:'culture', label:'📚 ثقافي', title:'يوم معرفة وقراءة'},
+      {id:'deen', label:'🕌 ديني', title:'يوم ورد وتأمل'},
+      {id:'travel', label:'🌍 سفر', title:'يوم استكشاف وخروج'}
+    ];
+    const defaultSettings = { theme:'auto', mood:'work', cards:{weather:true, food:true, article:true, events:true, coffee:true, fact:true, surprise:true, task:true} };
+    let state = load();
+    function load(){ try { return {...defaultSettings, ...(JSON.parse(localStorage.getItem(STORAGE_KEY))||{})}; } catch { return defaultSettings; } }
+    function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    function timePart(){ const h = new Date().getHours(); if(h<12) return 'صباح الخير'; if(h<17) return 'مساء الإنتاج'; return 'مساء الخير'; }
+    function mealName(){ const h = new Date().getHours(); if(h<11) return 'إفطار'; if(h<17) return 'غداء'; return 'عشاء'; }
+    function fmtDate(){ return new Intl.DateTimeFormat('ar-SA',{weekday:'long', day:'numeric', month:'long', year:'numeric'}).format(new Date()); }
+    function applyTheme(){ const dark = state.theme === 'dark' || (state.theme==='auto' && matchMedia('(prefers-color-scheme: dark)').matches); document.documentElement.dataset.theme = dark ? 'dark':'light'; $('#themeBtn').textContent = dark ? '☀️':'🌙'; }
+    function renderMoods(){ $('#moods').innerHTML = moods.map(m=>`<button class="mood ${state.mood===m.id?'active':''}" data-mood="${m.id}">${m.label}</button>`).join(''); document.querySelectorAll('.mood').forEach(b=>b.onclick=()=>{state.mood=b.dataset.mood; save(); render();}); }
+    const cardLabels = {weather:'الطقس',food:'الطعام',article:'مقال اليوم',events:'المناسبات',coffee:'القهوة',fact:'معلومة اليوم',surprise:'المفاجأة',task:'مهمة اليوم'};
+    function renderSettings(){ $('#settingsList').innerHTML = Object.keys(cardLabels).map(id=>`<div class="setting"><span>${cardLabels[id]}</span><span class="switch ${state.cards[id]?'on':''}" data-card="${id}"></span></div>`).join('') + `<div class="setting"><span>الوضع الليلي</span><span class="switch ${document.documentElement.dataset.theme==='dark'?'on':''}" id="themeSwitch"></span></div>`; document.querySelectorAll('[data-card]').forEach(sw=>sw.onclick=()=>{state.cards[sw.dataset.card]=!state.cards[sw.dataset.card]; save(); renderSettings(); renderCards(false);}); $('#themeSwitch').onclick=()=>{state.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'; save(); applyTheme(); renderSettings();}; }
+    function loadingCards(){ return Object.keys(cardLabels).filter(id=>state.cards[id]).map(id=>`<article class="card loading"><div class="card-head"><div class="card-title">${cardLabels[id]}</div><span class="badge">جاري التحديث</span></div><div class="skeleton long"></div><div class="skeleton"></div><div class="skeleton short"></div></article>`).join(''); }
+    function getData(){
+      const mood = moods.find(m=>m.id===state.mood);
+      const meal = mealName();
+      const moodData = {
+        work:['ركز على مهمة واحدة أولًا','راجع موعدك القادم','اختر خبرًا اقتصاديًا واحدًا فقط'],
+        tech:['خبر ذكاء اصطناعي مهم','أداة تقنية تستحق التجربة','مصطلح تقني مختصر'],
+        calm:['قهوة هادئة ومعلومة خفيفة','لا تكثر الأخبار اليوم','مشي قصير يكفي'],
+        culture:['مقال معرفي واحد','اقتباس قصير','كتاب أو فكرة للقراءة'],
+        deen:['ورد اليوم أولًا','تأمل قصير','عداد رمضان والحج'],
+        travel:['مكان قريب للاستكشاف','طقس مناسب للخروج','فكرة رحلة قصيرة']
+      }[state.mood];
+      return {
+        brief:[`اليوم يبدو: ${mood.title}`, ...moodData],
+        weather:{temp:'34°', city:'المدينة المنورة', desc:'مشمس — مناسب للخروج القصير صباحًا'},
+        food:{meal, place: meal==='إفطار'?'مقهى قريب أو إفطار خفيف': meal==='غداء'?'مطعم رز أو مشويات قريب':'عشاء خفيف أو مقهى هادئ', note:'لاحقًا يمكن ربطها بخرائط Google أو فتح بحث مباشر.'},
+        article:{title: state.mood==='tech'?'تطورات الذكاء الاصطناعي اليوم':state.mood==='work'?'مؤشر اقتصادي مختصر':'مقال خفيف حسب مزاجك', desc:'ملخص من سطرين فقط حتى لا تتحول الصفحة إلى موقع أخبار.', tag:'قراءة 3 دقائق'},
+        events:{items:['رمضان: عداد قابل للتخصيص','الحج: عداد قابل للتخصيص','كأس العالم: أضفه من الإعدادات']},
+        coffee:{name: state.mood==='calm'?'V60 إثيوبية هادئة':'قهوة اليوم', desc:'جرّب وصفة متوسطة: 15غ قهوة / 250مل ماء / استخلاص 2:30–3:00'},
+        fact:{text:'المعلومة اليومية يجب أن تكون قصيرة جدًا: فكرة واحدة فقط، لا فقرة طويلة.'},
+        surprise:{text:['موقع مفيد اليوم: NotebookLM','فكرة اليوم: اكتب سؤالًا أفضل بدل البحث الطويل','اقتراح: جرّب قراءة مقال واحد فقط'][Math.floor(Math.random()*3)]},
+        task:{text:'اكتب أهم مهمة واحدة لليوم، وليس قائمة طويلة.', action:'تعديلها لاحقًا وحفظها محليًا'}
+      };
+    }
+    const renderers = {
+      weather:d=>`<article class="card"><div class="card-head"><div class="card-title">☀️ الطقس</div><span class="badge">تجريبي</span></div><div class="big">${d.weather.temp}</div><div class="muted">${d.weather.city} — ${d.weather.desc}</div></article>`,
+      food:d=>`<article class="card"><div class="card-head"><div class="card-title">🍽️ ${d.food.meal} اليوم</div><span class="badge">حسب الوقت</span></div><h3>${d.food.place}</h3><div class="muted">${d.food.note}</div></article>`,
+      article:d=>`<article class="card wide"><div class="card-head"><div class="card-title">📰 مقال اليوم</div><span class="badge">${d.article.tag}</span></div><h3>${d.article.title}</h3><div class="muted">${d.article.desc}</div><a class="link" href="#" onclick="return false">اقرأ لاحقًا ←</a></article>`,
+      events:d=>`<article class="card"><div class="card-head"><div class="card-title">📅 المناسبات</div><span class="badge">عدادات</span></div><ul class="muted">${d.events.items.map(x=>`<li>${x}</li>`).join('')}</ul></article>`,
+      coffee:d=>`<article class="card"><div class="card-head"><div class="card-title">☕ القهوة</div><span class="badge">اقتراح</span></div><h3>${d.coffee.name}</h3><div class="muted">${d.coffee.desc}</div></article>`,
+      fact:d=>`<article class="card"><div class="card-head"><div class="card-title">💡 معلومة اليوم</div><span class="badge">خفيفة</span></div><p>${d.fact.text}</p></article>`,
+      surprise:d=>`<article class="card"><div class="card-head"><div class="card-title">🎁 المفاجأة</div><span class="badge">تتغير</span></div><p>${d.surprise.text}</p></article>`,
+      task:d=>`<article class="card"><div class="card-head"><div class="card-title">✅ مهمة اليوم</div><span class="badge">شخصية</span></div><p>${d.task.text}</p><div class="muted">${d.task.action}</div></article>`
+    };
+    function renderBrief(data){ $('#brief').innerHTML = `<ul>${data.brief.map(x=>`<li>${x}</li>`).join('')}</ul>`; }
+    function renderCards(withData=true){ if(!withData){ $('#cards').innerHTML = Object.keys(cardLabels).filter(id=>state.cards[id]).map(id=>`<article class="card"><div class="card-title">${cardLabels[id]}</div><p class="muted">اضغط عرض ملخص اليوم لتحديث هذه البطاقة.</p></article>`).join(''); return; } const data=getData(); $('#cards').innerHTML = Object.keys(renderers).filter(id=>state.cards[id]).map(id=>renderers[id](data)).join(''); renderBrief(data); $('#lastUpdate').textContent = 'آخر تحديث: ' + new Intl.DateTimeFormat('ar-SA',{hour:'2-digit',minute:'2-digit'}).format(new Date()); }
+    function render(){ applyTheme(); $('#todayLine').textContent = fmtDate(); $('#greeting').textContent = timePart(); $('#moodHeadline').textContent = (moods.find(m=>m.id===state.mood)||moods[0]).title; renderMoods(); renderSettings(); renderCards(false); }
+    $('#refreshBtn').onclick = () => { $('#cards').innerHTML = loadingCards(); $('#brief').innerHTML = '<div class="loading"><div class="skeleton long"></div><div class="skeleton"></div></div>'; setTimeout(()=>renderCards(true), 650); };
+    $('#randomBtn').onclick = () => { state.mood = moods[Math.floor(Math.random()*moods.length)].id; save(); render(); $('#refreshBtn').click(); };
+    $('#settingsBtn').onclick = () => $('#drawer').classList.add('open'); $('#closeSettings').onclick = () => $('#drawer').classList.remove('open'); $('#drawer').onclick = e => { if(e.target.id==='drawer') $('#drawer').classList.remove('open'); };
+    $('#themeBtn').onclick=()=>{state.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'; save(); render();};
+    render();
+  </script>
+</body>
+</html>
