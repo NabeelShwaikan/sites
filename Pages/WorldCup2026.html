@@ -625,12 +625,233 @@ body.light-mode .speakNextBtn{
   border-color:#f5c542;
 }
 
+
+/* ===== تبويب القنوات الناقلة الرسمي ===== */
+.broadcastHero{
+  background:
+    radial-gradient(circle at 15% 20%, rgba(245,197,66,.20), transparent 28%),
+    linear-gradient(135deg, rgba(15,23,42,.96), rgba(11,41,66,.92));
+  border:1px solid rgba(245,197,66,.28);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 16px 34px rgba(0,0,0,.22);
+}
+
+.broadcastHero h2{
+  margin:0 0 8px;
+  font-size:clamp(22px,4vw,34px);
+}
+
+.broadcastHero p{
+  margin:0;
+  color:#dbeafe;
+}
+
+body.light-mode .broadcastHero{
+  background:linear-gradient(135deg,#ffffff,#fff7d6);
+  color:#111827;
+  border-color:#f5c542;
+}
+
+body.light-mode .broadcastHero p{
+  color:#475467;
+}
+
+.broadcastTools{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin:12px 0 14px;
+}
+
+@media(min-width:760px){
+  .broadcastTools{
+    grid-template-columns:1fr 220px auto;
+  }
+}
+
+.broadcastTools input,
+.broadcastTools select{
+  width:100%;
+  border-radius:14px;
+  padding:11px 12px;
+  border:1px solid #334155;
+  background:#0f172a;
+  color:#f8fafc;
+  font-weight:800;
+}
+
+.broadcastTools button{
+  border:0;
+  border-radius:14px;
+  padding:11px 14px;
+  background:#f5c542;
+  color:#07111f;
+  font-weight:1000;
+  cursor:pointer;
+}
+
+body.light-mode .broadcastTools input,
+body.light-mode .broadcastTools select{
+  background:#ffffff;
+  color:#111827;
+  border-color:#d1d5db;
+}
+
+.broadcastStats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:14px;
+}
+
+@media(min-width:760px){
+  .broadcastStats{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+.broadcastStat{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  padding:12px;
+  text-align:center;
+}
+
+.broadcastStat b{
+  display:block;
+  font-size:24px;
+  color:#f5c542;
+}
+
+.broadcastStat span{
+  font-size:12px;
+  color:#cbd5e1;
+}
+
+body.light-mode .broadcastStat{
+  background:#ffffff;
+  border-color:#e5e7eb;
+}
+
+body.light-mode .broadcastStat span{
+  color:#475467;
+}
+
+.broadcastGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+@media(min-width:800px){
+  .broadcastGrid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+.broadcastCard{
+  background:#111827;
+  color:#f8fafc;
+  border:1px solid #334155;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
+}
+
+.broadcastHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:13px 14px;
+  cursor:pointer;
+  background:linear-gradient(90deg,rgba(245,197,66,.14),transparent);
+}
+
+.broadcastHead h3{
+  margin:0;
+  font-size:18px;
+  color:#f5c542;
+}
+
+.broadcastCount{
+  background:rgba(245,197,66,.16);
+  border:1px solid rgba(245,197,66,.35);
+  color:#fff2a6;
+  border-radius:999px;
+  padding:3px 9px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.broadcastBody{
+  display:none;
+  padding:0 14px 14px;
+}
+
+.broadcastCard.open .broadcastBody{
+  display:block;
+}
+
+.channelChips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:8px;
+}
+
+.channelChip{
+  background:#1e293b;
+  border:1px solid #334155;
+  color:#f8fafc;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.broadcastSource{
+  font-size:12px;
+  color:#cbd5e1;
+  margin-top:12px;
+}
+
+body.light-mode .broadcastCard{
+  background:#ffffff;
+  color:#111827;
+  border-color:#e5e7eb;
+}
+
+body.light-mode .broadcastHead{
+  background:linear-gradient(90deg,#fff7d6,#ffffff);
+}
+
+body.light-mode .broadcastCount{
+  color:#735500;
+  background:#fff7d6;
+  border-color:#f5c542;
+}
+
+body.light-mode .channelChip{
+  background:#f8fafc;
+  color:#111827;
+  border-color:#e5e7eb;
+}
+
+body.light-mode .broadcastSource{
+  color:#667085;
+}
+
 </style>
 </head>
 <body>
 <header class="hero"><div class="avatar">🏆</div><h1 class="heroTitle">بوابة كأس العالم 2026 <button id="themeToggle" class="themeBtn heroThemeInline" title="تبديل الوضع" aria-label="تبديل الوضع">🌙</button></h1><p> مباريات، توقعات، نتائج، إحصائيات، قنوات، وإضافة إلى Google Calendar.</p><div class="badges"><span>⚽ جدول</span><span>🎯 توقعات</span><span>📊 إحصائيات</span><span>📺 قنوات</span></div></header>
 <section class="topbar"><div class="topin"><span class="mini">🏆 <b id="miniPts">0</b> نقطة</span><span class="mini">🎯 <b id="miniAcc">0%</b></span><span class="mini">✅ <b id="miniEx">0</b> مطابقة</span><span class="mini">⭐ <b id="miniMine">0</b> مبارياتي</span><span class="mini nextMini">⏳ القادمة: <b id="miniNext">غير محددة</b><button class="speakNextBtn" onclick="speakNextMatch(event)" title="نطق المباراة القادمة" aria-label="نطق المباراة القادمة">🔊</button></span></div></section>
-<nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('groups',this)">👥 المجموعات</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('channels',this)">القنوات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button></nav>
+<nav class="tabs"><button class="tab active" onclick="setTab('home',this)">الرئيسية</button><button class="tab" onclick="setTab('groups',this)">👥 المجموعات</button><button class="tab" onclick="setTab('matches',this)">المباريات</button><button class="tab" onclick="setTab('knockout',this)">🏆 الأدوار النهائية</button><button class="tab" onclick="setTab('predictions',this)">التوقعات</button><button class="tab" onclick="setTab('results',this)">النتائج</button><button class="tab" onclick="setTab('stats',this)">الإحصائيات</button><button class="tab" onclick="setTab('broadcasts',this)">📡 القنوات الناقلة</button></nav>
 <section class="controls"><div class="panel"><div class="ctrlgrid compactControls"><select id="team"></select><select id="view"><option value="all">كل المباريات</option><option value="mine">مبارياتي</option><option value="fav">المفضلة ⭐</option><option value="pred">توقعاتي</option><option value="upcoming">القادمة</option><option value="finished">المنتهية</option></select><button class="topbtn gold" onclick="goToNextMatch()">🎯 المباراة القادمة</button><div class="globalMenu"><button class="topbtn soft" onclick="toggleGlobalMenu(event)">⚙️ إدارة</button><div id="globalMenuPanel" class="globalMenuPanel"><button class="topbtn gold" onclick="exportData();closeMenus()">تصدير</button><button class="topbtn soft" onclick="document.getElementById('imp').click();closeMenus()">استيراد</button><button class="topbtn soft" onclick="showReport();closeMenus()">تقرير</button><button class="topbtn soft" onclick="clearAllPredictions();closeMenus()">🗑 مسح التوقعات</button></div></div><input type="file" id="imp" accept="application/json" hidden onchange="importData(event)"></div></div></section>
 
 <section class="serverSyncBox">
@@ -681,6 +902,42 @@ body.light-mode .speakNextBtn{
 <div class="info" onclick="toggleGroup('K')" style="cursor:pointer"><h3>المجموعة K</h3><p id="gK" style="display:none">🇵🇹 البرتغال<br>🇨🇩 الكونغو الديمقراطية<br>🇺🇿 أوزبكستان<br>🇨🇴 كولومبيا</p></div>
 <div class="info" onclick="toggleGroup('L')" style="cursor:pointer"><h3>المجموعة L</h3><p id="gL" style="display:none">🏴 إنجلترا<br>🇭🇷 كرواتيا<br>🇬🇭 غانا<br>🇵🇦 بنما</p></div>
 </div>
+</section>
+
+
+<section id="sec-broadcasts" class="section">
+  <div class="broadcastHero">
+    <h2>📡 القنوات الناقلة</h2>
+    <p>دليل منظم للقنوات الناقلة حسب الدولة/المنطقة. القائمة مبنية على بيانات مستخرجة من Live Soccer TV لمباراة الافتتاح كنموذج قابل للتوسيع.</p>
+  </div>
+
+  <div class="broadcastStats">
+    <div class="broadcastStat"><b id="broadcastCountryCount">0</b><span>دولة/منطقة</span></div>
+    <div class="broadcastStat"><b id="broadcastChannelCount">0</b><span>قناة/منصة</span></div>
+    <div class="broadcastStat"><b id="broadcastShownCount">0</b><span>نتائج ظاهرة</span></div>
+    <div class="broadcastStat"><b>Live</b><span>مصدر البيانات</span></div>
+  </div>
+
+  <div class="broadcastTools">
+    <input id="broadcastSearch" type="search" placeholder="ابحث باسم الدولة أو القناة: السعودية، beIN، FOX..." oninput="renderBroadcasts()">
+    <select id="broadcastQuick" onchange="setBroadcastQuick(this.value)">
+      <option value="">اختيار سريع</option>
+      <option value="السعودية">السعودية</option>
+      <option value="قطر">قطر</option>
+      <option value="مصر">مصر</option>
+      <option value="الولايات المتحدة">الولايات المتحدة</option>
+      <option value="المملكة المتحدة">المملكة المتحدة</option>
+      <option value="كندا">كندا</option>
+      <option value="أستراليا">أستراليا</option>
+      <option value="فرنسا">فرنسا</option>
+      <option value="ألمانيا">ألمانيا</option>
+      <option value="إسبانيا">إسبانيا</option>
+    </select>
+    <button onclick="clearBroadcastSearch()">عرض الكل</button>
+  </div>
+
+  <div id="broadcastGrid" class="broadcastGrid"></div>
+  <div class="broadcastSource">المصدر: Live Soccer TV — يمكن تحديث هذه القائمة لاحقًا من ملف JSON مستقل عند توفر روابط بقية المباريات.</div>
 </section>
 
 </main>
@@ -1176,5 +1433,79 @@ function toggleGroup(id){
  if(!el) return;
  el.style.display = el.style.display==='none' ? 'block' : 'none';
 }
+
+
+/* ===== بيانات وتفاعل تبويب القنوات الناقلة ===== */
+const BROADCAST_DATA = {"match": {"home": "Mexico", "away": "South Africa", "date": "2026-06-11", "time_source_page": "15:00", "competition": "FIFA World Cup 2026"}, "countries": {"Afghanistan": ["ATN"], "Albania": ["TV Klan", "SuperSport 2 Digitalb", "Klani IM"], "Algeria": ["ENTV", "beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "Al Aoula Algeria"], "American Samoa": ["FBC Sports"], "Andorra": ["DAZN Spain", "DAZN Mundial", "TVE La 1", "M6", "beIN Sports 1", "M6+", "ZAP", "La 2 Cat"], "Angola": ["SuperSport MaXimo 1", "ZAP", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "ZSPORT 1"], "Anguilla": ["Bluu", "Rush Sports"], "Antigua and Barbuda": ["Bluu", "Rush Sports"], "Argentina": ["Telefe Argentina", "Flow Sports", "DIRECTV Sports Argentina", "DGO", "Disney+ Premium Argentina", "mitelefe", "Paramount+"], "Armenia": ["Fast Sports", "FAST TV"], "Aruba": ["NPO 1", "DIRECTV Sports Caribbean", "Bluu", "NPO Start", "Rush Sports", "Telearuba"], "Australia": ["SBS", "SBS On Demand"], "Austria": ["ORF eins", "SRF zwei", "TRT Spor", "ORF ON"], "Azerbaijan": ["Ictimai TV", "TV NET"], "Bahamas": ["DIRECTV Sports Caribbean", "Bluu", "Rush Sports"], "Bahrain": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Bangladesh": ["Bangladesh TV", "T Sports", "Toffee Live", "Bioscope+", "Somoy TV"], "Barbados": ["DIRECTV Sports Caribbean", "Bluu", "Rush Sports"], "Belarus": ["Sport TV Belarus"], "Belgium": ["La Une", "VRT 1", "Proximus Pickx", "RTBF Auvio Direct", "Sporza", "VRT MAX"], "Belize": ["Nexgen"], "Benin": ["SuperSport MaXimo 1", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "Benin TV", "New World Sport App"], "Bermuda": ["Bluu", "Rush Sports"], "Bolivia": ["Red Uno", "Unitel", "Tigo Sports Bolivia", "Entel TV"], "Bonaire": ["NPO 1", "NPO Start"], "Bosnia and Herzegovina": ["HRT 2", "BHT 1", "Arena Sport 1", "Moja TV", "Arena Cloud"], "Botswana": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Brazil": ["SporTV", "Globo", "Globoplay", "SBT", "Zapping", "N Sports", "Claro TV+", "Sky+", "CazéTV", "Vivo Play"], "British Virgin Islands": ["Bluu", "Rush Sports"], "Brunei Darussalam": ["RTB Aneka"], "Bulgaria": ["BNT 1", "BNT 3", "BNT 5", "bnt.bg", "BNT News App"], "Burkina Faso": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Burundi": ["SuperSport MaXimo 1", "Startimes World Football", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Sporty TV", "New World Sport3", "RTNB TV", "New World Sport App", "Sporty TV App"], "Cambodia": ["Hang Meas HDTV"], "Cameroon": ["SuperSport MaXimo 1", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App", "Canal2"], "Canada": ["TSN+", "TSN1", "TSN3", "TSN4", "CTV", "RDS App", "CTV App", "Crave"], "Cape Verde Islands": ["SuperSport MaXimo 1", "ZAP", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Cayman Islands": ["Bluu", "Rush Sports"], "Central African Republic": ["SuperSport MaXimo 1", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Chad": ["SuperSport MaXimo 1", "beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Chile": ["Chilevision", "DIRECTV Sports Chile", "DGO", "Disney+ Premium Chile", "Paramount+"], "China": ["CCTV-5 Sports", "CCTV Sports VIP", "Migu", "Xiaohongshu"], "Chinese Taipei": ["eltaott.tv", "ELTA Sports 1", "TTV"], "Colombia": ["Caracol TV", "RCN Television", "DIRECTV Sports Colombia", "DGO", "Deportes RCN En Vivo", "Caracol Play", "Disney+ Premium Sur", "ditu", "Radio Nacional de Colombia", "Paramount+"], "Comoros": ["SuperSport MaXimo 1", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Congo DR": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "RTNC", "Sporty TV", "New World Sport3", "New World Sport App", "Sporty TV App"], "Costa Rica": ["Teletica Canal 7", "Teletica En Vivo", "TDMAX", "ViX", "FOX", "FOX+"], "Croatia": ["HRT 2", "MAXtv To Go", "HRTi"], "Curaçao": ["NPO 1", "DIRECTV Sports Caribbean", "NPO Start", "Nos Pais Television"], "Cyprus": ["Sigma TV"], "Czech Republic": ["ČT Sport", "Nova Action", "OnePlay"], "Côte d'Ivoire": ["SuperSport MaXimo 1", "RTI", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "NCI", "New World Sport App"], "Denmark": ["TV2 Denmark", "TV2 Play Denmark"], "Djibouti": ["SuperSport MaXimo 1", "beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Dominica": ["Bluu", "Rush Sports"], "Dominican Republic": ["ViX", "Pio Deportes"], "Ecuador": ["DIRECTV Sports Ecuador", "DGO", "Teleamazonas", "Disney+ Premium Sur", "Paramount+"], "Egypt": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "El Salvador": ["Canal 4 El Salvador", "TCS GO", "Tigo Sports El Salvador", "ViX", "FOX El Salvador"], "Equatorial Guinea": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Eritrea": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Estonia": ["ETV 1", "ETV+", "Go3 Extra Sports Estonia", "Jupiter"], "Ethiopia": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Hagerie TV"], "Faroe Islands": ["TV2 Denmark", "TV2 Play Denmark"], "Fiji": ["FBC Sports"], "Finland": ["MTV3", "MTV Urheilu 1", "MTV Katsomo"], "France": ["M6", "beIN Sports 1", "M6+", "beIN SPORTS CONNECT", "Molotov", "Free", "6play", "myCANAL"], "Gabon": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Gambia": ["SuperSport MaXimo 1", "GRTS Gambia", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Georgia": ["Rustavi 2", "Setanta Sports Georgia"], "Germany": ["ZDF", "ORF eins", "SRF zwei", "MagentaTV"], "Ghana": ["TV3 Ghana", "SuperSport MaXimo 1", "GTV Sports+", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "Joy Prime", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Sporty TV", "Onua TV", "Sporty TV App", "Channel One TV"], "Great Britain": ["ITV 1 UK", "ITVX", "STV Scotland", "STV Player", "BBC Radio 5 Live"], "Greece": ["ERT 1", "ERT 2", "ERT FLIX"], "Greenland": ["TV2 Denmark"], "Grenada": ["Bluu", "Rush Sports"], "Guatemala": ["TeleOnce Guatemala", "Chapin TV", "Tigo Sports Guatemala", "ViX", "FOX Guatemala"], "Guinea": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "RTG", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Sporty TV", "New World Sport3", "New World Sport App", "Sporty TV App"], "Guinea-Bissau": ["SuperSport MaXimo 1", "ZAP", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Guyana": ["DIRECTV Sports Caribbean", "ENet TV"], "Honduras": ["Canal 5 Televicentro Honduras", "DTVC+", "Tigo Sports Honduras", "ViX", "FOX Honduras"], "Hong Kong": ["ViuTV", "616 Now Sports 4K", "618 Now Sports"], "Hungary": ["M4 Sports"], "Iceland": ["RUV 2"], "India": ["DD Sports", "ZEE5", "Unite8 Sports 1", "Unite8 Sports 1 HD"], "Indonesia": ["TVRI", "MAXstream TV", "Vidio", "TVRI Sport", "MyTelkomsel", "Fola Play"], "International": ["YouTube", "Sport 24"], "Iran": ["Shabake 3", "beIN SPORTS CONNECT"], "Iraq": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Ireland Republic": ["ITV 1 UK", "RTE 2", "ITVX", "STV Scotland", "RTE Player", "BBC Radio 5 Live"], "Israel": ["Sport 1", "KAN 11"], "Italy": ["DAZN Italia", "RAI 1", "RaiPlay"], "Jamaica": ["Bluu", "Television Jamaica", "Rush Sports", "1spotmedia"], "Japan": ["DAZN Japan", "NHK G TV", "NHK BS Premium 4K"], "Jordan": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Kazakhstan": ["Kazakhstan TV", "Qazsport"], "Kenya": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Azam Sports 2 HD", "Sporty TV", "Azam Sports 4 HD", "GOtv", "Sporty TV App", "KBC Channel 1"], "Korea Republic": ["KBS2 Korea", "JTBC", "Naver"], "Kosovo": ["Arena 1 Premium", "TV Vala Kosovo Telecom"], "Kuwait": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Latvia": ["TV6 Latvia", "Go3 Extra Sports Latvia"], "Lebanon": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Lesotho": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Liberia": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Libya": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Liechtenstein": ["Blue Sport"], "Lithuania": ["Go3 Extra Sports Lithuania", "TV3 Lithuania"], "Macau": ["TDM Desporto", "ViuTV"], "Macedonia": ["Arena 1 Premium", "Arena Cloud"], "Madagascar": ["SuperSport MaXimo 1", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App", "TV Malagasy"], "Malawi": ["SuperSport MaXimo 1", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Azam Sports 2 HD", "Azam Sports 4 HD"], "Malaysia": ["RTM klik", "Unifi TV", "Sukan+", "TV Okey", "MyGOV App"], "Maldives": ["ICE Xtra", "Medianet"], "Mali": ["SuperSport MaXimo 1", "ORTM Mali", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Mauritania": ["SuperSport MaXimo 1", "beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Mauritius": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App", "MBC 11"], "Mayotte": ["SuperSport MaXimo 1", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Mexico": ["Canal 5 Televisa", "TUDN", "Azteca 7", "TUDN En Vivo", "Las Estrellas", "Nu9ve", "Azteca Deportes En Vivo", "ViX Mexico"], "Moldova": ["We Sport Moldova"], "Monaco": ["M6", "beIN Sports 1"], "Mongolia": ["NTV", "MNB Sports", "EduTV"], "Montenegro": ["HRT 2", "TVCG 1", "Arena 1 Premium", "Arena Cloud"], "Montserrat": ["Bluu", "Rush Sports"], "Morocco": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Mozambique": ["TVM", "SuperSport MaXimo 1", "Startimes World Football", "ZAP", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Sporty TV", "TV Miramar", "Sporty TV App"], "Myanmar": ["TV360 by Mytel"], "Namibia": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Nepal": ["Himalaya TV", "DGO", "Himalaya Sports TV"], "Netherlands": ["NPO 1", "VRT 1", "Ziggo Go", "Ziggo Sport", "NPO Start", "Canal+ Netherlands"], "New Zealand": ["TVNZ 1", "TVNZ+"], "Nicaragua": ["Canal 10 Nicaragua", "ViX", "Tigo Sports Nicaragua", "FOX Nicaragua"], "Niger": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Nigeria": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "SuperSport Football Plus Nigeria", "DStv Now", "SuperSport Laliga Nigeria", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "NTA Sports 24", "Sporty TV", "Sporty TV App"], "Norway": ["TV 2 Direkte", "TV 2 Play"], "Oman": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Pakistan": ["PTV Sports", "tapmad"], "Palestine": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Panama": ["RPC", "TVN Panama", "TVMax", "Medcom GO", "Tigo Sports Panama", "ViX", "FOX Panama"], "Paraguay": ["GEN", "Trece"], "Peru": ["DIRECTV Sports Peru", "DGO", "América Televisión", "América TVGO", "Disney+ Premium Chile", "Paramount+", "TV 360"], "Philippines": ["Cignal Play", "TapGO TV", "Pilipinas Live", "Aleph Arena", "World Cup TV"], "Poland": ["TVP Sport", "TVP1", "sport.tvp.pl", "Canal+", "TVP Sport App"], "Portugal": ["Sport TV1", "TVI", "Sport TV Multiscreen", "Sport TV5", "TVI Player", "LiveMode"], "Puerto Rico": ["Telemundo", "NAICOM"], "Qatar": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Reunion": ["SuperSport MaXimo 1", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Romania": ["Antena 1", "Antena Play"], "Russia": ["Match Premier", "Sportbox.ru", "Match TV", "Match! Football 1", "matchtv.ru"], "Rwanda": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Azam Sports 2 HD", "Sporty TV", "New World Sport3", "New World Sport App", "Azam Sports 4 HD", "Sporty TV App"], "Saint Helena": ["SuperSport MaXimo 1", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Saint Kitts and Nevis": ["Bluu", "Rush Sports"], "Saint Lucia": ["Bluu"], "Saint Martin": ["NPO 1", "NPO Start"], "Samoa": ["FBC Sports"], "San Marino": ["DAZN Italia", "RAI 1", "RaiPlay"], "Saudi Arabia": ["beIN SPORTS CONNECT"], "Senegal": ["RTS 1", "SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Serbia": ["HRT 2", "RTS 1", "Arena 1 Premium", "Arena Cloud"], "Seychelles": ["SuperSport MaXimo 1", "Bluu", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App", "Rush Sports", "SBC+", "SBC 3"], "Sierra Leone": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Sporty TV", "Sporty TV App"], "Singapore": ["Singtel TV GO", "meWATCH", "Singtel FIFA World Cup 141", "Channel 5", "Singtel CAST"], "Slovakia": ["JOJ Sport", "TV JOJ", "JOJ play"], "Slovenia": ["HRT 2", "TV Slovenija 2", "Arena Sport 1 Slovenia"], "Somalia": ["SuperSport MaXimo 1", "beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "South Africa": ["SuperSport MaXimo 1", "SABC 1", "SABC 3", "Startimes World Football", "StarTimes App", "SuperSport PSL", "DStv App", "Supersport Grandstand", "SABC Plus", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Sporty TV", "Sporty TV App", "SA FM"], "South Sudan": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "DStv Now"], "Spain": ["DAZN Spain", "DAZN Mundial", "TVE La 1", "RTVE Play", "Movistar+", "fuboTV España", "La 2 Cat"], "Sri Lanka": ["PEOTV", "Dialog TV"], "St. Vincent / Grenadines": ["Bluu"], "Sudan": ["SuperSport MaXimo 1", "beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Suriname": ["STVS", "DIRECTV Sports Caribbean", "Bluu", "SCCN", "Rush Sports"], "Swaziland": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Sweden": ["TV4 Sweden", "TV4 Play"], "Switzerland": ["RAI 1", "M6", "ORF eins", "RSI La 2", "SRF zwei", "TRT Spor", "RTS 2", "RTS Sport", "Blue Sport", "SRF Play", "Sunrise TV"], "Syria": ["beIN SPORTS CONNECT", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "São Tomé and Príncipe": ["SuperSport MaXimo 1", "ZAP", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga"], "Tanzania": ["SuperSport MaXimo 1", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Azam Sports 2 HD", "Sporty TV", "Azam Sports 4 HD", "Sporty TV App"], "Togo": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "New World Sport3", "New World Sport App"], "Tonga": ["FBC Sports"], "Trinidad and Tobago": ["DIRECTV Sports Caribbean", "Bluu", "Rush Sports"], "Tunisia": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Turkey": ["TRT 1", "TRT Spor", "Digiturk Play", "tabii"], "Turkmenistan": ["Turkmenistan Sport"], "Turks and Caicos Islands": ["Bluu", "Rush Sports"], "Uganda": ["SuperSport MaXimo 1", "UBC TV", "Startimes World Football", "StarTimes App", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Azam Sports 2 HD", "Sporty TV", "Azam Sports 4 HD", "Sporty TV App"], "Ukraine": ["Megogo", "MEGOGO Football 1"], "United Arab Emirates": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Uruguay": ["DIRECTV Sports Uruguay", "DGO", "Disney+ Premium Argentina", "Canal 5 Uruguay", "Paramount+"], "USA": ["FOX Network", "fuboTV", "Telemundo", "Telemundo Deportes En Vivo", "Tubi", "FOX One", "SiriusXM FC", "Futbol de Primera Radio"], "Uzbekistan": ["Zoʻr TV", "Salom TV"], "Vanuatu": ["FBC Sports", "VBTC"], "Venezuela": ["DIRECTV Sports Venezuela", "DGO", "Televen", "Disney+ Premium Sur", "inter"], "Vietnam": ["VTV 3", "VTV6", "VTV Go", "VTV9", "VTV10", "TV 360"], "Yemen": ["beIN SPORTS CONNECT", "beIN Sports MAX 1 Arabia", "beIN Sports MAX 2 Arabia", "beIN Sports MAX 6 Arabia", "beIN Sports MAX 5 Arabia"], "Zambia": ["SuperSport MaXimo 1", "ZNBC TV1 Zambia", "StarTimes App", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "Azam Sports 2 HD", "Azam Sports 4 HD"], "Zimbabwe": ["SuperSport MaXimo 1", "DStv Now", "SuperSport Football Plus ROA", "SuperSport Laliga ROA", "SuperSport GOtv Football", "SuperSport GOtv LaLiga", "ZBC TV", "Azam Sports 2 HD", "Azam Sports 4 HD"]}};
+
+function getBroadcastCountries(){
+  return BROADCAST_DATA && BROADCAST_DATA.countries ? BROADCAST_DATA.countries : {};
+}
+
+function initBroadcasts(){
+  const countries = getBroadcastCountries();
+  const countryNames = Object.keys(countries);
+  const channelSet = new Set();
+  countryNames.forEach(country => (countries[country] || []).forEach(ch => channelSet.add(ch)));
+  const cc = document.getElementById('broadcastCountryCount');
+  const ch = document.getElementById('broadcastChannelCount');
+  if(cc) cc.textContent = countryNames.length;
+  if(ch) ch.textContent = channelSet.size;
+  renderBroadcasts();
+}
+
+function renderBroadcasts(){
+  const countries = getBroadcastCountries();
+  const q = (document.getElementById('broadcastSearch')?.value || '').trim().toLowerCase();
+  const grid = document.getElementById('broadcastGrid');
+  if(!grid) return;
+
+  let rows = Object.entries(countries).filter(([country, channels]) => {
+    const text = (country + ' ' + (channels || []).join(' ')).toLowerCase();
+    return !q || text.includes(q);
+  });
+
+  rows.sort((a,b) => a[0].localeCompare(b[0], 'ar'));
+
+  const shown = document.getElementById('broadcastShownCount');
+  if(shown) shown.textContent = rows.length;
+
+  grid.innerHTML = rows.map(([country, channels], idx) => `
+    <article class="broadcastCard ${idx < 2 ? 'open' : ''}">
+      <div class="broadcastHead" onclick="toggleBroadcastCard(this)">
+        <h3>${esc(country)}</h3>
+        <span class="broadcastCount">${(channels || []).length} قناة</span>
+      </div>
+      <div class="broadcastBody">
+        <div class="channelChips">
+          ${(channels || []).map(ch => `<span class="channelChip">${esc(ch)}</span>`).join('')}
+        </div>
+      </div>
+    </article>
+  `).join('') || '<div class="note">لا توجد نتائج مطابقة للبحث.</div>';
+}
+
+function toggleBroadcastCard(head){
+  const card = head.closest('.broadcastCard');
+  if(card) card.classList.toggle('open');
+}
+
+function setBroadcastQuick(value){
+  const input = document.getElementById('broadcastSearch');
+  if(input){
+    input.value = value || '';
+    renderBroadcasts();
+  }
+}
+
+function clearBroadcastSearch(){
+  const input = document.getElementById('broadcastSearch');
+  const quick = document.getElementById('broadcastQuick');
+  if(input) input.value = '';
+  if(quick) quick.value = '';
+  renderBroadcasts();
+}
+
+document.addEventListener('DOMContentLoaded', initBroadcasts);
 
 </script></body></html>
