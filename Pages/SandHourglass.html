@@ -137,7 +137,7 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
 .hint{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.7}
 .hiddenTitle .title{opacity:0}
 .hiddenTimer .timer{opacity:0}
-.decor .title,.decor .timer,.decor .status{opacity:0}
+.decor .title,.decor .status{opacity:0}
 .decor .gear{opacity:.18}
 .decor .gear:hover{opacity:1;background:rgba(255,255,255,.09);transform:scale(1.05)}
 .gear:active{transform:scale(.94)}
@@ -185,6 +185,16 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
 
     <div class="group">
       <div class="groupTitle">🎨 المظهر</div>
+      <label>المادة داخل الساعة</label>
+      <select id="material">
+        <option value="sand">⏳ رمل</option>
+        <option value="water">💧 ماء</option>
+      </select>
+      <label>شكل الساعة</label>
+      <select id="shape">
+        <option value="classic">كلاسيكية</option>
+        <option value="wide">عريضة - زجاج أوسع ولمعان جانبي</option>
+      </select>
       <label>خامة الإطار</label>
       <select id="theme">
         <option value="gold">ذهبي كلاسيكي</option>
@@ -216,9 +226,9 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
       <label>مستوى صوت النهاية</label>
       <div class="rangeRow"><input id="volume" type="range" min="0" max="100" value="45"><span id="volText">45%</span></div>
       <div class="checks" style="margin-top:8px">
-        <label><input id="sandSound" type="checkbox"> صوت خشخشة الرمل أثناء التشغيل</label>
+        <label><input id="sandSound" type="checkbox"> صوت المادة أثناء التشغيل</label>
       </div>
-      <label>مستوى صوت الرمل</label>
+      <label>مستوى صوت المادة</label>
       <div class="rangeRow"><input id="sandVolume" type="range" min="0" max="100" value="12"><span id="sandVolText">12%</span></div>
     </div>
 
@@ -252,6 +262,7 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
   <div class="stage"><canvas id="canvas" width="760" height="980"></canvas></div>
   <div class="timer" id="timer">05:00</div>
   <div class="status" id="status">اضغط تشغيل لبدء تساقط الرمل</div>
+  <div class="status" style="font-size:11px;opacity:.55">نسخة: إصلاح الوقت واللمعان v2</div>
 </div>
 
 <script>
@@ -259,7 +270,7 @@ const canvas=document.getElementById('canvas'), ctx=canvas.getContext('2d');
 const app=document.getElementById('app'), controls=document.getElementById('controls'), gear=document.getElementById('gear');
 const timerEl=document.getElementById('timer'), statusEl=document.getElementById('status');
 const els={
-  mins:document.getElementById('mins'), secs:document.getElementById('secs'), theme:document.getElementById('theme'),
+  mins:document.getElementById('mins'), secs:document.getElementById('secs'), material:document.getElementById('material'), shape:document.getElementById('shape'), theme:document.getElementById('theme'),
   bg:document.getElementById('bg'), dust:document.getElementById('dust'), sound:document.getElementById('sound'),
   volume:document.getElementById('volume'), hideTimeRun:document.getElementById('hideTimeRun'), hideTitle:document.getElementById('hideTitle'),
   decorMode:document.getElementById('decorMode'), sandSound:document.getElementById('sandSound'), sandVolume:document.getElementById('sandVolume'), singleLast:document.getElementById('singleLast'), goldGlow:document.getElementById('goldGlow'),
@@ -269,9 +280,30 @@ const volText=document.getElementById('volText');
 const sandVolText=document.getElementById('sandVolText');
 
 let total=300, remain=300, running=false, finished=false;
-let last=performance.now(), t=0, particles=[], sparkle=[];
+let last=performance.now(), t=0, particles=[], sparkle=[], bubbles=[];
 let sandAC=null, sandNoise=null, sandGain=null, sandFilter=null;
 const neckX=380, neckY=492;
+
+function G(){
+  const wide = els.shape && els.shape.value === 'wide';
+  return {
+    wide,
+    topLeft: wide ? 205 : 245,
+    topRight: wide ? 555 : 515,
+    bottomLeft: wide ? 205 : 245,
+    bottomRight: wide ? 555 : 515,
+    capX: wide ? 130 : 170,
+    capW: wide ? 500 : 420,
+    leftPost: wide ? 175 : 220,
+    rightPost: wide ? 585 : 540,
+    shineL: wide ? 270 : 310,
+    shineR: wide ? 350 : 371,
+    sandLeft: wide ? 195 : 232,
+    sandRight: wide ? 565 : 528,
+    bottomFillLeft: wide ? 205 : 240,
+    bottomFillRight: wide ? 555 : 520
+  };
+}
 
 const themes={
   gold:['#5f3912','#ffd77d','#8c5b1c','#f1c86f'],
@@ -308,10 +340,23 @@ function updateTimer(){
 function applyUI(){
   frameColors=themes[els.theme.value]||themes.gold;
   document.body.className='bg-'+els.bg.value;
-  app.classList.toggle('dustOn',els.dust.checked);
-  app.classList.toggle('hiddenTitle',els.hideTitle.checked);
-  app.classList.toggle('hiddenTimer', false);
-  app.classList.toggle('decor',els.decorMode.checked);
+  document.querySelector('.title').textContent = els.material.value==='water' ? '💧 ساعة مائية' : '⏳ ساعة رملية';
+
+  app.classList.toggle('dustOn', els.dust.checked);
+  app.classList.toggle('hiddenTitle', els.hideTitle.checked);
+
+  // المنطق الصحيح:
+  // عند تفعيل الخيار + الساعة تعمل => إخفاء الوقت
+  // في كل الحالات الأخرى => إظهار الوقت
+  if(running && els.hideTimeRun.checked){
+    app.classList.add('hiddenTimer');
+  }else{
+    app.classList.remove('hiddenTimer');
+  }
+
+  // وضع الديكور يخفي العنوان والحالة فقط ولا يغيّر منطق الوقت
+  app.classList.toggle('decor', els.decorMode.checked);
+
   volText.textContent=els.volume.value+'%';
   sandVolText.textContent=els.sandVolume.value+'%';
   updateSandSoundVolume();
@@ -319,17 +364,17 @@ function applyUI(){
 }
 function setDuration(){
   stopSandSound();
-  total=readDuration(); remain=total; running=false; finished=false; particles=[]; sparkle=[];
-  statusEl.textContent='اضغط تشغيل لبدء تساقط الرمل';
+  total=readDuration(); remain=total; running=false; finished=false; particles=[]; sparkle=[]; bubbles=[];
+  statusEl.textContent=els.material.value==='water' ? 'اضغط تشغيل لبدء تدفق الماء' : 'اضغط تشغيل لبدء تساقط الرمل';
   canvas.classList.remove('pulse'); updateTimer(); applyUI();
 }
 function startTimer(){
   if(finished) setDuration();
   running=true; finished=false;
   controls.classList.remove('open');
-  statusEl.textContent='الرمل يتساقط الآن';
+  statusEl.textContent=els.material.value==='water' ? 'الماء يتدفق الآن' : 'الرمل يتساقط الآن';
   // دفعة أولية حتى يظهر الرمل فوراً ولا يبدو ثابتاً
-  for(let i=0;i<34;i++) addOneParticle(18 + Math.random()*70);
+  for(let i=0;i<(els.material.value==='water'?22:34);i++) addOneParticle(18 + Math.random()*70);
   applyUI();
   ensureSandSound();
 }
@@ -341,6 +386,7 @@ function flipTimer(startAfter=false){
   finished=false;
   particles=[];
   sparkle=[];
+  bubbles=[];
   stopSandSound();
 
   canvas.classList.remove('flip');
@@ -357,7 +403,7 @@ function flipTimer(startAfter=false){
     canvas.classList.remove('flip');
     if(shouldStart) startTimer();
     else {
-      statusEl.textContent='اضغط تشغيل لبدء تساقط الرمل';
+      statusEl.textContent=els.material.value==='water' ? 'اضغط تشغيل لبدء تدفق الماء' : 'اضغط تشغيل لبدء تساقط الرمل';
       applyUI();
     }
   },980);
@@ -395,14 +441,23 @@ for(const e of Object.values(els)){
 }
 els.sandSound.addEventListener('change',()=>{ if(els.sandSound.checked) ensureSandSound(); else stopSandSound(); });
 els.sandVolume.addEventListener('input',updateSandSoundVolume);
+els.material.addEventListener('change',()=>{ stopSandSound(); particles=[]; bubbles=[]; if(running) ensureSandSound(); applyUI(); });
+els.shape.addEventListener('change',()=>{ particles=[]; bubbles=[]; applyUI(); });
 
 
 function makeNoiseBuffer(ac){
   const bufferSize = ac.sampleRate * 2;
   const buffer = ac.createBuffer(1, bufferSize, ac.sampleRate);
   const data = buffer.getChannelData(0);
+  const isWater = els.material.value === 'water';
   for(let i=0;i<bufferSize;i++){
-    data[i] = (Math.random()*2-1) * (Math.random()>.82 ? 1 : .28);
+    if(isWater){
+      // خرير ماء خفيف: ضجيج ناعم منخفض التردد
+      data[i] = (Math.random()*2-1) * (0.15 + 0.15*Math.sin(i/43));
+    }else{
+      // خشخشة رمل: حبيبات قصيرة متقطعة
+      data[i] = (Math.random()*2-1) * (Math.random()>.82 ? 1 : .28);
+    }
   }
   return buffer;
 }
@@ -416,8 +471,8 @@ function ensureSandSound(){
   sandNoise.loop=true;
   sandFilter=sandAC.createBiquadFilter();
   sandFilter.type='bandpass';
-  sandFilter.frequency.value=1900;
-  sandFilter.Q.value=0.8;
+  sandFilter.frequency.value=els.material.value==='water' ? 680 : 1900;
+  sandFilter.Q.value=els.material.value==='water' ? 0.5 : 0.8;
   sandGain=sandAC.createGain();
   sandGain.gain.value=0.0001;
   sandNoise.connect(sandFilter);
@@ -428,7 +483,7 @@ function ensureSandSound(){
 }
 function updateSandSoundVolume(){
   if(!sandGain) return;
-  const v=(parseInt(els.sandVolume?.value||0,10)/100) * 0.045;
+  const v=(parseInt(els.sandVolume?.value||0,10)/100) * (els.material.value==='water' ? 0.030 : 0.045);
   const target=(running && els.sandSound.checked) ? v : 0.0001;
   sandGain.gain.setTargetAtTime(target, sandAC.currentTime, .08);
 }
@@ -477,15 +532,50 @@ function finishTimer(){
   },520);
 }
 
-function topGlass(){ctx.beginPath();ctx.moveTo(245,135);ctx.bezierCurveTo(265,270,335,405,380,478);ctx.bezierCurveTo(425,405,495,270,515,135);ctx.closePath();}
-function bottomGlass(){ctx.beginPath();ctx.moveTo(380,505);ctx.bezierCurveTo(335,578,265,715,245,850);ctx.lineTo(515,850);ctx.bezierCurveTo(495,715,425,578,380,505);ctx.closePath();}
+function topGlass(){
+  const g=G();
+  ctx.beginPath();
+  if(g.wide){
+    ctx.moveTo(g.topLeft,135);
+    ctx.bezierCurveTo(235,260,326,390,380,478);
+    ctx.bezierCurveTo(434,390,525,260,g.topRight,135);
+  }else{
+    ctx.moveTo(245,135);
+    ctx.bezierCurveTo(265,270,335,405,380,478);
+    ctx.bezierCurveTo(425,405,495,270,515,135);
+  }
+  ctx.closePath();
+}
+function bottomGlass(){
+  const g=G();
+  ctx.beginPath();
+  if(g.wide){
+    ctx.moveTo(380,505);
+    ctx.bezierCurveTo(326,594,235,720,g.bottomLeft,850);
+    ctx.lineTo(g.bottomRight,850);
+    ctx.bezierCurveTo(525,720,434,594,380,505);
+  }else{
+    ctx.moveTo(380,505);
+    ctx.bezierCurveTo(335,578,265,715,245,850);
+    ctx.lineTo(515,850);
+    ctx.bezierCurveTo(495,715,425,578,380,505);
+  }
+  ctx.closePath();
+}
 function sandChamberClip(){
+  const g=G();
   ctx.beginPath();
   ctx.moveTo(372,474);
   ctx.bezierCurveTo(374,486,376,497,380,505);
-  ctx.bezierCurveTo(335,578,265,715,245,850);
-  ctx.lineTo(515,850);
-  ctx.bezierCurveTo(495,715,425,578,380,505);
+  if(g.wide){
+    ctx.bezierCurveTo(326,594,235,720,g.bottomLeft,850);
+    ctx.lineTo(g.bottomRight,850);
+    ctx.bezierCurveTo(525,720,434,594,380,505);
+  }else{
+    ctx.bezierCurveTo(335,578,265,715,245,850);
+    ctx.lineTo(515,850);
+    ctx.bezierCurveTo(495,715,425,578,380,505);
+  }
   ctx.bezierCurveTo(384,497,386,486,388,474);
   ctx.closePath();
 }
@@ -494,45 +584,245 @@ function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,
 
 function drawFrame(){
   ctx.clearRect(0,0,760,980);
+  const gg=G();
+
   let glow=ctx.createRadialGradient(380,485,30,380,485,430);
-  glow.addColorStop(0,'rgba(240,200,111,.09)');glow.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.fillStyle=glow;ctx.fillRect(0,0,760,980);
+  glow.addColorStop(0,'rgba(240,200,111,.09)');
+  glow.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=glow;
+  ctx.fillRect(0,0,760,980);
 
-  const cap=ctx.createLinearGradient(170,0,590,0);
-  cap.addColorStop(0,frameColors[0]);cap.addColorStop(.22,frameColors[2]);cap.addColorStop(.52,frameColors[1]);cap.addColorStop(.84,frameColors[2]);cap.addColorStop(1,frameColors[0]);
-  ctx.fillStyle=cap;roundRect(170,82,420,48,24);ctx.fill();roundRect(170,868,420,48,24);ctx.fill();
+  const cap=ctx.createLinearGradient(gg.capX,0,gg.capX+gg.capW,0);
+  cap.addColorStop(0,frameColors[0]);
+  cap.addColorStop(.22,frameColors[2]);
+  cap.addColorStop(.52,frameColors[1]);
+  cap.addColorStop(.84,frameColors[2]);
+  cap.addColorStop(1,frameColors[0]);
 
-  ctx.lineCap='round';ctx.lineWidth=24;ctx.strokeStyle=frameColors[2];
-  ctx.beginPath();ctx.moveTo(220,110);ctx.lineTo(220,890);ctx.moveTo(540,110);ctx.lineTo(540,890);ctx.stroke();
-  ctx.lineWidth=8;ctx.strokeStyle='rgba(255,220,130,.55)';
-  ctx.beginPath();ctx.moveTo(211,130);ctx.lineTo(211,850);ctx.moveTo(531,130);ctx.lineTo(531,850);ctx.stroke();
+  ctx.fillStyle=cap;
+  roundRect(gg.capX,82,gg.capW,48,24);ctx.fill();
+  roundRect(gg.capX,868,gg.capW,48,24);ctx.fill();
 
-  ctx.fillStyle='rgba(175,220,255,.105)';ctx.strokeStyle='rgba(225,250,255,.56)';ctx.lineWidth=3.2;
-  topGlass();ctx.fill();ctx.stroke();bottomGlass();ctx.fill();ctx.stroke();
+  ctx.lineCap='round';
+  ctx.lineWidth=24;
+  ctx.strokeStyle=frameColors[2];
+  ctx.beginPath();
+  ctx.moveTo(gg.leftPost,110);ctx.lineTo(gg.leftPost,890);
+  ctx.moveTo(gg.rightPost,110);ctx.lineTo(gg.rightPost,890);
+  ctx.stroke();
 
-  ctx.strokeStyle='rgba(255,255,255,.18)';ctx.lineWidth=7;
-  ctx.beginPath();ctx.moveTo(310,160);ctx.bezierCurveTo(325,285,360,390,371,460);ctx.moveTo(310,820);ctx.bezierCurveTo(326,700,360,590,371,520);ctx.stroke();
+  ctx.lineWidth=8;
+  ctx.strokeStyle='rgba(255,220,130,.55)';
+  ctx.beginPath();
+  ctx.moveTo(gg.leftPost-9,130);ctx.lineTo(gg.leftPost-9,850);
+  ctx.moveTo(gg.rightPost-9,130);ctx.lineTo(gg.rightPost-9,850);
+  ctx.stroke();
+
+  ctx.fillStyle='rgba(175,220,255,.105)';
+  ctx.strokeStyle='rgba(225,250,255,.56)';
+  ctx.lineWidth=3.2;
+  topGlass();ctx.fill();ctx.stroke();
+  bottomGlass();ctx.fill();ctx.stroke();
+
+  // لمعان الزجاج الداخلي
+  ctx.strokeStyle='rgba(255,255,255,.20)';
+  ctx.lineWidth=7;
+  ctx.beginPath();
+  ctx.moveTo(gg.shineL,160);
+  ctx.bezierCurveTo(gg.shineL+15,285,360,390,gg.shineR,460);
+  ctx.moveTo(gg.shineL,820);
+  ctx.bezierCurveTo(gg.shineL+16,700,360,590,gg.shineR,520);
+  ctx.stroke();
+
+  // لمعان إضافي واضح في الوضع العريض
+  if(gg.wide){
+    ctx.globalAlpha=.70;
+    ctx.strokeStyle='rgba(255,255,255,.16)';
+    ctx.lineWidth=5;
+    ctx.beginPath();
+    ctx.moveTo(495,160);
+    ctx.bezierCurveTo(475,285,425,390,394,462);
+    ctx.moveTo(495,820);
+    ctx.bezierCurveTo(475,700,425,590,394,518);
+    ctx.stroke();
+
+    ctx.globalAlpha=.50;
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(235,165);
+    ctx.bezierCurveTo(252,280,318,390,366,462);
+    ctx.moveTo(235,815);
+    ctx.bezierCurveTo(252,700,318,590,366,518);
+    ctx.stroke();
+    ctx.globalAlpha=1;
+  }
 }
+
+function drawTopWater(progress){
+  const p=clamp(progress,0,1), baseY=160+p*285, available=neckY-baseY;
+  if(available<=6)return;
+
+  ctx.save();
+  topGlass();
+  ctx.clip();
+
+  const surfaceY=baseY + Math.sin(t*1.7)*2.2;
+  const grad=ctx.createLinearGradient(0,surfaceY,0,neckY);
+  grad.addColorStop(0,'rgba(150,220,255,.78)');
+  grad.addColorStop(.55,'rgba(60,165,230,.62)');
+  grad.addColorStop(1,'rgba(18,90,165,.50)');
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+  const gg=G();
+  ctx.moveTo(gg.sandLeft,surfaceY);
+  for(let x=gg.sandLeft;x<=gg.sandRight;x+=8){
+    ctx.lineTo(x, surfaceY + Math.sin(x*.055+t*2.25)*4 + Math.sin(x*.018-t*1.15)*2);
+  }
+  ctx.lineTo(gg.sandRight+5,neckY-18);
+  ctx.bezierCurveTo(455,neckY-24,420,neckY-38,neckX+38,neckY-42);
+  ctx.bezierCurveTo(398,neckY-54,390,neckY-38,neckX+7,neckY-15);
+  ctx.lineTo(neckX+4,neckY-4);
+  ctx.lineTo(neckX-4,neckY-4);
+  ctx.lineTo(neckX-7,neckY-15);
+  ctx.bezierCurveTo(370,neckY-38,362,neckY-54,neckX-38,neckY-42);
+  ctx.bezierCurveTo(340,neckY-38,305,neckY-24,gg.sandLeft-5,neckY-18);
+  ctx.closePath();
+  ctx.fill();
+
+  // لمعان السطح
+  ctx.globalAlpha=.28;
+  ctx.strokeStyle='rgba(235,252,255,.9)';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  for(let x=gg.sandLeft+16;x<=gg.sandRight-18;x+=10){
+    const y=surfaceY + Math.sin(x*.055+t*2.25)*4 - 5;
+    if(x===248) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+
+  // فقاعات علوية
+  ctx.globalAlpha=.34;
+  ctx.strokeStyle='rgba(235,252,255,.72)';
+  for(let i=0;i<10;i++){
+    const bx=260 + ((i*41 + t*18) % 240);
+    const by=surfaceY + 28 + ((i*57 + t*13) % Math.max(30, available-38));
+    ctx.beginPath();
+    ctx.arc(bx,by,2+(i%3),0,Math.PI*2);
+    ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+  ctx.restore();
+}
+
+function drawBottomWater(progress){
+  const p=clamp(progress,0,1);
+  if(p<=.002)return;
+
+  ctx.save();
+  bottomGlass();
+  ctx.clip();
+
+  const baseY=850;
+  const levelY=baseY - p*315;
+  const grad=ctx.createLinearGradient(0,levelY,0,baseY);
+  grad.addColorStop(0,'rgba(165,225,255,.72)');
+  grad.addColorStop(.55,'rgba(55,155,220,.58)');
+  grad.addColorStop(1,'rgba(12,78,150,.55)');
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+  const gg=G();
+  ctx.moveTo(gg.bottomFillLeft,levelY);
+  for(let x=gg.bottomFillLeft;x<=gg.bottomFillRight;x+=8){
+    ctx.lineTo(x, levelY + Math.sin(x*.05+t*2.6)*4 + Math.sin(x*.013-t)*2);
+  }
+  ctx.lineTo(gg.bottomFillRight+10,865);
+  ctx.lineTo(gg.bottomFillLeft-10,865);
+  ctx.closePath();
+  ctx.fill();
+
+  // موجة لامعة
+  ctx.globalAlpha=.26;
+  ctx.strokeStyle='rgba(235,252,255,.82)';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  for(let x=gg.bottomFillLeft+15;x<=gg.bottomFillRight-15;x+=9){
+    const y=levelY + Math.sin(x*.05+t*2.6)*4 - 6;
+    if(x===255) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+
+  // فقاعات الماء السفلي
+  ctx.strokeStyle='rgba(235,252,255,.75)';
+  for(const b of bubbles){
+    ctx.globalAlpha=b.a;
+    ctx.beginPath();
+    ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+    ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+  ctx.restore();
+}
+
+function addWaterDrops(dt, progress){
+  if(!running || progress>=1)return;
+
+  const count=clamp(Math.floor(10*dt*60),1,10);
+  for(let i=0;i<count;i++){
+    particles.push({
+      x:neckX+(Math.random()-.5)*4,
+      y:neckY-8+Math.random()*8,
+      vx:(Math.random()-.5)*.08,
+      vy:3.0+Math.random()*2.1,
+      r:1.1+Math.random()*2.0,
+      a:.55+Math.random()*.35
+    });
+  }
+
+  if(Math.random()<.20){
+    bubbles.push({
+      x:neckX+(Math.random()-.5)*92,
+      y:820-Math.random()*90,
+      vy:.35+Math.random()*.55,
+      r:2+Math.random()*4,
+      a:.50+Math.random()*.35
+    });
+  }
+}
+
+function updateBubbles(dt, progress){
+  const levelY=850-clamp(progress,0,1)*315;
+  for(const b of bubbles){
+    b.y-=b.vy*dt*60;
+    b.x+=Math.sin(t*2+b.y*.03)*.25;
+    b.a-=.004*dt*60;
+  }
+  bubbles=bubbles.filter(b=>b.a>0 && b.y>levelY+8 && b.y<850);
+}
+
 function drawTopSand(progress){
   const p=clamp(progress,0,1), baseY=160+p*285, available=neckY-baseY;if(available<=6)return;
   ctx.save();topGlass();ctx.clip();
   const grad=ctx.createLinearGradient(0,baseY,0,neckY);grad.addColorStop(0,'#f4cd74');grad.addColorStop(.48,'#d7a84c');grad.addColorStop(1,'#a86f20');ctx.fillStyle=grad;
   const surfaceY=baseY+Math.sin(t*.9)*1.2;
-  ctx.beginPath();ctx.moveTo(232,surfaceY);
-  for(let x=232;x<=528;x+=10){ctx.lineTo(x,surfaceY+Math.sin(x*.045+t*1.2)*3+Math.sin(x*.017-t*.7)*2)}
+  const gg=G();
+  ctx.beginPath();ctx.moveTo(gg.sandLeft,surfaceY);
+  for(let x=gg.sandLeft;x<=gg.sandRight;x+=10){ctx.lineTo(x,surfaceY+Math.sin(x*.045+t*1.2)*3+Math.sin(x*.017-t*.7)*2)}
   const funnelDepth=22+p*86, funnelWidth=40+p*34;
-  ctx.lineTo(533,neckY-18);
+  ctx.lineTo(gg.sandRight+5,neckY-18);
   ctx.bezierCurveTo(455,neckY-26,420,neckY-40,neckX+funnelWidth*.35,neckY-funnelDepth*.45);
   ctx.bezierCurveTo(397,neckY-funnelDepth,390,neckY-funnelDepth,neckX+9,neckY-18);
   ctx.lineTo(neckX+5,neckY-4);ctx.lineTo(neckX-5,neckY-4);ctx.lineTo(neckX-9,neckY-18);
   ctx.bezierCurveTo(370,neckY-funnelDepth,363,neckY-funnelDepth,neckX-funnelWidth*.35,neckY-funnelDepth*.45);
-  ctx.bezierCurveTo(340,neckY-40,305,neckY-26,227,neckY-18);ctx.closePath();ctx.fill();
+  ctx.bezierCurveTo(340,neckY-40,305,neckY-26,gg.sandLeft-5,neckY-18);ctx.closePath();ctx.fill();
   ctx.globalAlpha=.25;ctx.fillStyle='#8e5b1b';ctx.beginPath();ctx.ellipse(neckX,neckY-28-p*45,30+p*18,8+p*6,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
   ctx.restore();
 }
 function drawBottomSand(progress){
   const p=clamp(progress,0,1);if(p<=.002)return;ctx.save();bottomGlass();ctx.clip();
-  const moundH=clamp(18+p*255,10,275), moundW=clamp(55+p*210,40,270), baseY=848, peakY=baseY-moundH;
+  const gg=G();
+  const moundH=clamp(18+p*255,10,275), moundW=clamp(55+p*(gg.wide?285:210),40,gg.wide?350:270), baseY=848, peakY=baseY-moundH;
   const left=neckX-moundW/2,right=neckX+moundW/2;
   const grad=ctx.createLinearGradient(0,peakY,0,baseY);grad.addColorStop(0,'#f3ce76');grad.addColorStop(.55,'#d7a84c');grad.addColorStop(1,'#9d641c');ctx.fillStyle=grad;
   ctx.beginPath();ctx.moveTo(left,baseY);
@@ -553,6 +843,7 @@ function addOneParticle(offset=0){
   });
 }
 function addParticles(dt, progress){
+  if(els.material.value==='water') return addWaterDrops(dt, progress);
   if(!running||progress>=1)return;
   let endFactor=progress>.94?Math.max(.12,1-(progress-.94)/.06):1;
   let intermittent=(els.singleLast.checked&&progress>.94)?(Math.sin(t*13)>0.15?1:0):1;
@@ -562,7 +853,20 @@ function addParticles(dt, progress){
   for(let i=0;i<count;i++) addOneParticle(0);
 }
 function updateParticles(dt,progress){
-  const moundH=clamp(18+progress*255,10,275),moundW=clamp(55+progress*210,40,270),baseY=848,peakY=baseY-moundH;
+  if(els.material.value==='water'){
+    const levelY=850-clamp(progress,0,1)*315;
+    for(const g of particles){
+      g.x+=g.vx*dt*60;
+      g.y+=g.vy*dt*60;
+      g.vy+=.035*dt*60;
+      if(g.y>=levelY){ g.a-=.08; }
+    }
+    particles=particles.filter(g=>g.a>0&&g.y<856&&g.x>270&&g.x<490);
+    updateBubbles(dt,progress);
+    return;
+  }
+  const gg=G();
+  const moundH=clamp(18+progress*255,10,275),moundW=clamp(55+progress*(gg.wide?285:210),40,gg.wide?350:270),baseY=848,peakY=baseY-moundH;
   for(const g of particles){
     g.x+=g.vx*dt*60;g.y+=g.vy*dt*60;g.vy+=.08*dt*60;
     let dx=Math.abs(g.x-neckX),sideY=peakY+(baseY-peakY)*Math.pow(dx/(moundW/2),.92);
@@ -575,7 +879,7 @@ function drawParticles(){
   ctx.save();
   sandChamberClip();
   ctx.clip();
-  ctx.fillStyle='#f1c86f';
+  ctx.fillStyle=els.material.value==='water' ? 'rgba(160,225,255,.78)' : '#f1c86f';
   for(const g of particles){
     ctx.globalAlpha=g.a;
     ctx.beginPath();ctx.arc(g.x,g.y,g.r,0,Math.PI*2);ctx.fill();
@@ -590,14 +894,55 @@ function drawStream(progress){
   ctx.save();
   sandChamberClip();
   ctx.clip();
-  ctx.strokeStyle=`rgba(241,200,111,${.86*opacity})`;ctx.lineWidth=2.4;
+  ctx.strokeStyle=els.material.value==='water' ? `rgba(145,220,255,${.82*opacity})` : `rgba(241,200,111,${.86*opacity})`;ctx.lineWidth=els.material.value==='water' ? 3.2 : 2.4;
   ctx.beginPath();ctx.moveTo(neckX,neckY-10);ctx.quadraticCurveTo(neckX+Math.sin(t*8)*1.4,neckY+44,neckX,neckY+108);ctx.stroke();
   ctx.restore();
 }
 function drawGlassFront(){
-  ctx.strokeStyle='rgba(255,255,255,.13)';ctx.lineWidth=3;
-  ctx.save();topGlass();ctx.clip();ctx.beginPath();ctx.moveTo(285,170);ctx.bezierCurveTo(292,272,333,380,365,468);ctx.stroke();ctx.restore();
-  ctx.save();bottomGlass();ctx.clip();ctx.beginPath();ctx.moveTo(285,820);ctx.bezierCurveTo(292,715,333,596,365,518);ctx.stroke();ctx.restore();
+  const gg=G();
+  ctx.strokeStyle='rgba(255,255,255,.14)';
+  ctx.lineWidth=3;
+
+  const lx = gg.wide ? 248 : 285;
+  const rx = gg.wide ? 505 : 465;
+
+  ctx.save();
+  topGlass();
+  ctx.clip();
+  ctx.beginPath();
+  ctx.moveTo(lx,170);
+  ctx.bezierCurveTo(lx+18,272,330,382,365,468);
+  ctx.stroke();
+
+  if(gg.wide){
+    ctx.globalAlpha=.58;
+    ctx.lineWidth=2.4;
+    ctx.beginPath();
+    ctx.moveTo(rx,170);
+    ctx.bezierCurveTo(rx-18,285,435,385,395,468);
+    ctx.stroke();
+    ctx.globalAlpha=1;
+  }
+  ctx.restore();
+
+  ctx.save();
+  bottomGlass();
+  ctx.clip();
+  ctx.beginPath();
+  ctx.moveTo(lx,820);
+  ctx.bezierCurveTo(lx+18,715,330,594,365,518);
+  ctx.stroke();
+
+  if(gg.wide){
+    ctx.globalAlpha=.58;
+    ctx.lineWidth=2.4;
+    ctx.beginPath();
+    ctx.moveTo(rx,820);
+    ctx.bezierCurveTo(rx-18,705,435,595,395,518);
+    ctx.stroke();
+    ctx.globalAlpha=1;
+  }
+  ctx.restore();
 }
 function drawSparkles(){
   for(const s of sparkle){ctx.globalAlpha=s.a;ctx.fillStyle='#f9dd98';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1}
@@ -617,7 +962,7 @@ function animate(now){
   const progress=1-clamp(remain/total,0,1);
   if(running)addParticles(dt,progress);
   updateParticles(dt,progress);updateSparkles(dt);updateTimer();
-  drawFrame();drawTopSand(progress);drawBottomSand(progress);drawStream(progress);drawParticles();drawSparkles();drawGlassFront();
+  drawFrame();if(els.material.value==='water'){drawTopWater(progress);drawBottomWater(progress);}else{drawTopSand(progress);drawBottomSand(progress);}drawStream(progress);drawParticles();drawSparkles();drawGlassFront();
   requestAnimationFrame(animate);
 }
 
