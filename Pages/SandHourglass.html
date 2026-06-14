@@ -20,8 +20,10 @@ body{
   justify-content:center;
   font-family:Tahoma,Arial,sans-serif;
   color:var(--text);
-  overflow:hidden;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
+
 body.bg-dark{
   background:
     radial-gradient(circle at 50% 12%,rgba(223,174,82,.18),transparent 34%),
@@ -55,7 +57,8 @@ body.bg-night{
 body.bg-none{background:#080604}
 .app{
   width:min(490px,96vw);
-  height:min(840px,100vh);
+  min-height:min(840px,100vh);
+  height:auto;
   position:relative;
   display:flex;
   flex-direction:column;
@@ -159,6 +162,72 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
 .dustOn .floatDust{display:block}
 @keyframes dust{to{background-position:90px -160px, -130px -220px}}
 @media (max-height:720px){.title{display:none}.timer{font-size:34px;margin-top:-22px}}
+
+/* === Multi Timer Mode === */
+.multiPanel{display:none;width:min(920px,96vw);margin-top:18px;position:relative;z-index:3}.multiMode .stage,.multiMode>.timer,.multiMode>#status{display:none}.multiMode .multiPanel{display:block}.multiToolbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 12px}.multiToolbar button,.miniControls button{font-family:inherit;border:none;border-radius:12px;padding:9px 11px;cursor:pointer;color:#1c1308;background:linear-gradient(180deg,#f1c86f,#a97525);font-weight:800}.multiToolbar .secondary,.miniControls .secondary{color:var(--text);background:rgba(255,255,255,.075);outline:1px solid rgba(241,200,111,.18)}.multiGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.miniTimer{position:relative;padding:10px 10px 12px;border-radius:20px;background:rgba(20,15,10,.52);border:1px solid rgba(241,200,111,.18);box-shadow:0 14px 34px rgba(0,0,0,.25);backdrop-filter:blur(12px);text-align:center}.miniTimer canvas{width:100%;max-width:190px;height:auto;max-height:190px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.42))}.miniTimerName{width:100%;text-align:center;margin:0 auto 6px;padding:8px 10px;font-weight:800;font-size:13px}.miniTimeInputs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}.miniTimeInputs input{text-align:center;padding:8px}.miniClock{font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:-6px;text-shadow:0 4px 14px rgba(0,0,0,.35)}.miniControls{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.miniBadge{position:absolute;top:10px;right:10px;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800;background:rgba(0,0,0,.48);color:#f8ead0;border:1px solid rgba(241,200,111,.22);display:none}.miniTimer.paused .miniBadge{display:block}.miniTimer.done{box-shadow:0 0 0 1px rgba(241,200,111,.35),0 0 26px rgba(241,200,111,.25)}@media(max-width:520px){.multiGrid{grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}.miniClock{font-size:21px}.miniTimer canvas{max-height:190px}}
+
+
+/* === Mobile safety fixes === */
+body:has(.app.multiMode){
+  align-items:flex-start;
+}
+.app.multiMode{
+  width:min(960px,96vw);
+  min-height:100svh;
+  justify-content:flex-start;
+  padding-top:76px;
+  padding-bottom:28px;
+}
+.app.multiMode .controls{
+  max-height:calc(100svh - 90px - env(safe-area-inset-top));
+}
+.multiPanel{
+  max-width:100%;
+  padding-bottom:20px;
+}
+.multiGrid{
+  width:100%;
+  align-items:start;
+}
+@media (max-width:720px){
+  .app.multiMode{
+    padding-inline:10px;
+  }
+  .multiPanel{
+    width:100%;
+  }
+  .multiGrid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .miniTimer{
+    padding:8px;
+    border-radius:16px;
+  }
+  .miniTimer canvas{
+    max-height:165px;
+  }
+  .miniTimerName{
+    font-size:12px;
+    padding:7px 8px;
+  }
+  .miniClock{
+    font-size:20px;
+  }
+  .miniControls button{
+    padding:8px 6px;
+    font-size:12px;
+  }
+}
+@media (max-width:380px){
+  .multiGrid{
+    grid-template-columns:1fr;
+  }
+  .miniTimer canvas{
+    max-height:190px;
+  }
+}
+
 </style>
 </head>
 <body class="bg-dark">
@@ -252,6 +321,20 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
       </div>
     </div>
 
+
+    <div class="group">
+      <div class="groupTitle">⏳ الساعات المتعددة</div>
+      <label>عدد الساعات</label>
+      <select id="timerCount">
+        <option value="1">1 - ساعة واحدة</option>
+        <option value="2">2 ساعات</option>
+        <option value="3">3 ساعات</option>
+        <option value="4">4 ساعات</option>
+        <option value="5">5 ساعات</option>
+      </select>
+      <div class="hint">عند اختيار أكثر من ساعة تظهر شبكة مهام مصغرة. لمس أي ساعة يوقفها أو يستأنفها فقط.</div>
+    </div>
+
     <div class="group">
       <div class="groupTitle">💾 الحفظ</div>
       <div class="checks"><label><input id="saveSettings" type="checkbox" checked> حفظ الإعدادات تلقائيًا في المتصفح</label></div>
@@ -262,6 +345,17 @@ input[type="range"]{padding:0;accent-color:#d4a24d}
   <div class="stage"><canvas id="canvas" width="760" height="980"></canvas></div>
   <div class="timer" id="timer">05:00</div>
   <div class="status" id="status">اضغط تشغيل لبدء تساقط الرمل</div>
+
+  <section class="multiPanel" id="multiPanel">
+    <div class="multiToolbar">
+      <button id="multiStart">▶ تشغيل الكل</button>
+      <button id="multiPause" class="secondary">⏸ إيقاف الكل</button>
+      <button id="multiReset" class="secondary">🔄 إعادة ضبط الكل</button>
+    </div>
+    <div class="multiGrid" id="multiGrid"></div>
+    <div class="status" id="multiStatus">اضبط الساعات ثم شغّل الكل أو المس ساعة محددة.</div>
+  </section>
+
 
 </div>
 
@@ -274,14 +368,17 @@ const els={
   bg:document.getElementById('bg'), dust:document.getElementById('dust'), sound:document.getElementById('sound'),
   volume:document.getElementById('volume'), hideTimeRun:document.getElementById('hideTimeRun'), hideTitle:document.getElementById('hideTitle'),
   decorMode:document.getElementById('decorMode'), sandSound:document.getElementById('sandSound'), sandVolume:document.getElementById('sandVolume'), singleLast:document.getElementById('singleLast'), goldGlow:document.getElementById('goldGlow'),
-  autoFlip:document.getElementById('autoFlip'), repeatTimer:document.getElementById('repeatTimer'), saveSettings:document.getElementById('saveSettings')
+  autoFlip:document.getElementById('autoFlip'), repeatTimer:document.getElementById('repeatTimer'), timerCount:document.getElementById('timerCount'), saveSettings:document.getElementById('saveSettings')
 };
 const volText=document.getElementById('volText');
 const sandVolText=document.getElementById('sandVolText');
+const multiGrid=document.getElementById('multiGrid');
+const multiStatus=document.getElementById('multiStatus');
 
 let total=300, remain=300, running=false, finished=false;
 let last=performance.now(), t=0, particles=[], sparkle=[], bubbles=[];
 let sandAC=null, sandNoise=null, sandGain=null, sandFilter=null;
+let multiTimers=[]; let multiLastBell=0;
 const neckX=380, neckY=492;
 
 function G(){
@@ -356,6 +453,14 @@ function applyUI(){
 
   // وضع الديكور يخفي العنوان والحالة فقط ولا يغيّر منطق الوقت
   app.classList.toggle('decor', els.decorMode.checked);
+  const isMulti = parseInt(els.timerCount?.value || '1',10) > 1;
+  app.classList.toggle('multiMode', isMulti);
+  if(isMulti){
+    running=false;
+    stopSandSound();
+    app.classList.remove('hiddenTimer');
+  }
+  app.classList.toggle('multiMode', parseInt(els.timerCount?.value||'1',10)>1);
 
   volText.textContent=els.volume.value+'%';
   sandVolText.textContent=els.sandVolume.value+'%';
@@ -369,6 +474,7 @@ function setDuration(){
   canvas.classList.remove('pulse'); updateTimer(); applyUI();
 }
 function startTimer(){
+  if(parseInt(els.timerCount?.value || '1',10)>1) return;
   if(finished) setDuration();
   running=true; finished=false;
   controls.classList.remove('open');
@@ -425,14 +531,17 @@ function saveSettings(){
   if(!els.saveSettings.checked)return;
   const data={};
   for(const [k,e] of Object.entries(els)){data[k]=e.type==='checkbox'?e.checked:e.value}
+  data.multiTimers=multiTimers.map(t=>({name:t.name,mins:t.mins,secs:t.secs}));
   localStorage.setItem('hourglassSettingsV4',JSON.stringify(data));
 }
 function loadSettings(){
   try{
     const data=JSON.parse(localStorage.getItem('hourglassSettingsV4')||'{}');
     for(const [k,v] of Object.entries(data)){
+      if(k==='multiTimers') continue;
       if(els[k]){ if(els[k].type==='checkbox') els[k].checked=!!v; else els[k].value=v; }
     }
+    window.__savedMultiTimers=Array.isArray(data.multiTimers)?data.multiTimers:null;
   }catch(e){}
 }
 for(const e of Object.values(els)){
@@ -442,7 +551,8 @@ for(const e of Object.values(els)){
 els.sandSound.addEventListener('change',()=>{ if(els.sandSound.checked) ensureSandSound(); else stopSandSound(); });
 els.sandVolume.addEventListener('input',updateSandSoundVolume);
 els.material.addEventListener('change',()=>{ stopSandSound(); particles=[]; bubbles=[]; if(running) ensureSandSound(); applyUI(); });
-els.shape.addEventListener('change',()=>{ particles=[]; bubbles=[]; applyUI(); });
+els.shape.addEventListener('change',()=>{ particles=[]; bubbles=[]; applyUI(); buildMultiTimers(); });
+els.timerCount.addEventListener('change',()=>{ stopSandSound(); running=false; buildMultiTimers(); applyUI(); saveSettings(); });
 
 
 function makeNoiseBuffer(ac){
@@ -462,6 +572,7 @@ function makeNoiseBuffer(ac){
   return buffer;
 }
 function ensureSandSound(){
+  if(parseInt(els.timerCount?.value || '1',10)>1) return;
   if(!els.sandSound.checked || !running) return;
   if(sandAC) return;
   const AC=window.AudioContext||window.webkitAudioContext;
@@ -949,8 +1060,27 @@ function drawSparkles(){
 }
 function updateSparkles(dt){for(const s of sparkle){s.y+=s.vy*dt*60;s.a-=.018*dt*60}sparkle=sparkle.filter(s=>s.a>0)}
 
+
+function defaultTaskName(i){return ['📖 قراءة','☕ قهوة','📝 كتابة','📧 بريد','🕌 أذكار'][i]||`مهمة ${i+1}`}
+function defaultTaskTime(i){return [[1,0],[5,0],[20,0],[10,0],[30,0]][i]||[5,0]}
+function createMiniTimer(i,saved){const d=defaultTaskTime(i),m=parseInt(saved?.mins??d[0],10),s=parseInt(saved?.secs??d[1],10),tot=Math.max(1,m*60+s);return{id:i,name:saved?.name||defaultTaskName(i),mins:m,secs:s,total:tot,remain:tot,running:false,finished:false,particles:[],el:null,canvas:null,ctx:null}}
+function buildMultiTimers(){const count=clamp(parseInt(els.timerCount?.value||'1',10),1,5),saved=window.__savedMultiTimers||multiTimers.map(t=>({name:t.name,mins:t.mins,secs:t.secs}));multiTimers=[];multiGrid.innerHTML='';for(let i=0;i<count;i++){const t=createMiniTimer(i,saved[i]);multiTimers.push(t);const card=document.createElement('article');card.className='miniTimer';card.innerHTML=`<div class="miniBadge">⏸ متوقفة مؤقتًا</div><input class="miniTimerName" value="${t.name}" aria-label="اسم المهمة"><canvas width="360" height="460"></canvas><div class="miniClock">00:00</div><div class="miniTimeInputs"><input type="number" min="0" max="999" value="${t.mins}" inputmode="numeric"><input type="number" min="0" max="59" value="${t.secs}" inputmode="numeric"></div><div class="miniControls"><button class="miniToggle">▶/⏸</button><button class="secondary miniReset">🔄</button></div>`;multiGrid.appendChild(card);t.el=card;t.canvas=card.querySelector('canvas');t.ctx=t.canvas.getContext('2d');const name=card.querySelector('.miniTimerName'),inputs=card.querySelectorAll('.miniTimeInputs input');name.addEventListener('input',()=>{t.name=name.value||defaultTaskName(i);saveSettings()});inputs[0].addEventListener('input',()=>updateMiniDuration(t,inputs));inputs[1].addEventListener('input',()=>updateMiniDuration(t,inputs));card.querySelector('.miniToggle').addEventListener('click',e=>{e.stopPropagation();toggleMiniTimer(t)});card.querySelector('.miniReset').addEventListener('click',e=>{e.stopPropagation();resetMiniTimer(t)});t.canvas.addEventListener('click',e=>{e.stopPropagation();toggleMiniTimer(t)});updateMiniClock(t)}}
+function updateMiniDuration(t,inputs){t.mins=clamp(parseInt(inputs[0].value||0,10),0,999);t.secs=clamp(parseInt(inputs[1].value||0,10),0,59);inputs[1].value=t.secs;t.total=Math.max(1,t.mins*60+t.secs);if(!t.running&&!t.finished){t.remain=t.total;updateMiniClock(t)}saveSettings()}
+function updateMiniClock(t){const r=Math.max(0,Math.ceil(t.remain)),m=Math.floor(r/60),s=r%60,el=t.el?.querySelector('.miniClock');if(el)el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(t.el){t.el.classList.toggle('paused',!t.running&&!t.finished&&t.remain<t.total);t.el.classList.toggle('done',t.finished)}}
+function startMiniTimer(t){if(t.finished)resetMiniTimer(t);t.running=true;t.finished=false;updateMiniClock(t)}function pauseMiniTimer(t){t.running=false;updateMiniClock(t)}function toggleMiniTimer(t){t.running?pauseMiniTimer(t):startMiniTimer(t)}function resetMiniTimer(t){t.running=false;t.finished=false;t.remain=t.total;t.particles=[];updateMiniClock(t)}
+function startAllMini(){if(parseInt(els.timerCount.value,10)<=1){startTimer();return}multiTimers.forEach(startMiniTimer);multiStatus.textContent='كل الساعات تعمل الآن'}function pauseAllMini(){multiTimers.forEach(pauseMiniTimer);multiStatus.textContent='تم إيقاف كل الساعات مؤقتًا'}function resetAllMini(){multiTimers.forEach(resetMiniTimer);multiStatus.textContent='تمت إعادة ضبط كل الساعات'}
+document.getElementById('multiStart').onclick=startAllMini;document.getElementById('multiPause').onclick=pauseAllMini;document.getElementById('multiReset').onclick=resetAllMini;
+function roundMini(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}function miniTopGlass(c){c.beginPath();c.moveTo(118,64);c.bezierCurveTo(132,135,160,190,180,224);c.bezierCurveTo(200,190,228,135,242,64);c.closePath()}function miniBottomGlass(c){c.beginPath();c.moveTo(180,238);c.bezierCurveTo(160,276,132,335,118,402);c.lineTo(242,402);c.bezierCurveTo(228,335,200,276,180,238);c.closePath()}function miniClip(c){c.beginPath();c.moveTo(175,220);c.bezierCurveTo(176,230,178,236,180,238);c.bezierCurveTo(160,276,132,335,118,402);c.lineTo(242,402);c.bezierCurveTo(228,335,200,276,180,238);c.bezierCurveTo(182,236,184,230,185,220);c.closePath()}
+function drawMiniFrame(c){c.clearRect(0,0,360,460);const cap=c.createLinearGradient(76,0,284,0);cap.addColorStop(0,frameColors[0]);cap.addColorStop(.52,frameColors[1]);cap.addColorStop(1,frameColors[2]);c.fillStyle=cap;roundMini(c,76,35,208,24,12);c.fill();roundMini(c,76,415,208,24,12);c.fill();c.lineWidth=11;c.lineCap='round';c.strokeStyle=frameColors[2];c.beginPath();c.moveTo(94,50);c.lineTo(94,428);c.moveTo(266,50);c.lineTo(266,428);c.stroke();c.fillStyle='rgba(175,220,255,.105)';c.strokeStyle='rgba(225,250,255,.55)';c.lineWidth=2;miniTopGlass(c);c.fill();c.stroke();miniBottomGlass(c);c.fill();c.stroke();c.strokeStyle='rgba(255,255,255,.16)';c.lineWidth=3;c.beginPath();c.moveTo(145,78);c.bezierCurveTo(152,140,170,190,176,220);c.moveTo(145,390);c.bezierCurveTo(152,335,170,280,176,245);c.stroke()}
+function drawMiniSand(c,p){c.save();miniTopGlass(c);c.clip();const y=72+p*138,grad=c.createLinearGradient(0,y,0,224);grad.addColorStop(0,'#f4cd74');grad.addColorStop(1,'#a86f20');c.fillStyle=grad;c.beginPath();c.moveTo(108,y);for(let x=108;x<=252;x+=8)c.lineTo(x,y+Math.sin(x*.06+t)*2);c.lineTo(205,215);c.lineTo(185,222);c.lineTo(175,222);c.lineTo(155,215);c.closePath();c.fill();c.restore();if(p>.002){c.save();miniBottomGlass(c);c.clip();const h=20+p*126,w=40+p*112,base=402,peak=base-h,grad2=c.createLinearGradient(0,peak,0,base);grad2.addColorStop(0,'#f3ce76');grad2.addColorStop(1,'#9d641c');c.fillStyle=grad2;c.beginPath();c.moveTo(180-w/2,base);c.lineTo(180,peak);c.lineTo(180+w/2,base);c.closePath();c.fill();c.restore()}}
+function drawMiniWater(c,p){c.save();miniTopGlass(c);c.clip();const y=72+p*138;c.fillStyle='rgba(75,170,235,.58)';c.beginPath();c.moveTo(108,y);for(let x=108;x<=252;x+=8)c.lineTo(x,y+Math.sin(x*.08+t*2)*3);c.lineTo(205,215);c.lineTo(185,222);c.lineTo(175,222);c.lineTo(155,215);c.closePath();c.fill();c.restore();if(p>.002){c.save();miniBottomGlass(c);c.clip();const level=402-p*158;c.fillStyle='rgba(75,170,235,.58)';c.beginPath();c.moveTo(110,level);for(let x=110;x<=250;x+=8)c.lineTo(x,level+Math.sin(x*.08+t*2)*3);c.lineTo(258,410);c.lineTo(102,410);c.closePath();c.fill();c.restore()}}
+function addMiniParticles(t,dt,p){if(!t.running||p>=1)return;const count=Math.max(1,Math.floor(6*dt*60));for(let i=0;i<count;i++)t.particles.push({x:180+(Math.random()-.5)*4,y:222,vy:2+Math.random()*2,r:1+Math.random()*1.4,a:.75})}function updateMiniParticles(t,dt,p){const target=els.material.value==='water'?402-p*158:402-(20+p*126);for(const g of t.particles){g.y+=g.vy*dt*60;g.vy+=.05*dt*60;if(g.y>target)g.a-=.09}t.particles=t.particles.filter(g=>g.a>0&&g.y<408)}function drawMiniParticles(t){const c=t.ctx;c.save();miniClip(c);c.clip();c.fillStyle=els.material.value==='water'?'rgba(160,225,255,.75)':'#f1c86f';for(const g of t.particles){c.globalAlpha=g.a;c.beginPath();c.arc(g.x,g.y,g.r,0,Math.PI*2);c.fill()}c.globalAlpha=1;c.restore()}
+function drawMini(t){const c=t.ctx,p=1-clamp(t.remain/t.total,0,1);drawMiniFrame(c);els.material.value==='water'?drawMiniWater(c,p):drawMiniSand(c,p);if(t.running){c.save();miniClip(c);c.clip();c.strokeStyle=els.material.value==='water'?'rgba(145,220,255,.82)':'rgba(241,200,111,.86)';c.lineWidth=els.material.value==='water'?2.4:1.8;c.beginPath();c.moveTo(180,220);c.quadraticCurveTo(181,248,180,285);c.stroke();c.restore()}drawMiniParticles(t)}
+function tickMulti(dt){if(parseInt(els.timerCount?.value||'1',10)<=1)return;for(const tm of multiTimers){if(tm.running&&tm.remain>0){tm.remain-=dt;addMiniParticles(tm,dt,1-clamp(tm.remain/tm.total,0,1));if(tm.remain<=0){tm.remain=0;tm.running=false;tm.finished=true;multiStatus.textContent=`${tm.name} انتهت`;const now=Date.now();if(now-multiLastBell>900){multiLastBell=now;playSound()}}}updateMiniParticles(tm,dt,1-clamp(tm.remain/tm.total,0,1));updateMiniClock(tm);drawMini(tm)}}
+
 function animate(now){
   const dt=Math.min(.05,(now-last)/1000);last=now;t+=dt;
+  tickMulti(dt);
   if(running&&remain>0){
     remain-=dt;
     if(remain<=0){
@@ -967,6 +1097,7 @@ function animate(now){
 }
 
 loadSettings();
+buildMultiTimers();
 setDuration();
 applyUI();
 requestAnimationFrame(animate);
