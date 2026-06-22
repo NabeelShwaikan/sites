@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>كشاف الجالكسي</title>
+<title>كشاف الجالكسي التفاعلي</title>
 <meta name="theme-color" content="#050816" />
 <style>
 :root{
@@ -29,9 +29,10 @@ body{
   align-items:center;
   justify-content:center;
   padding:22px;
+  overflow:hidden;
 }
 .app{
-  width:min(440px,100%);
+  width:min(460px,100%);
   background:rgba(15,23,42,.76);
   border:1px solid rgba(255,255,255,.10);
   border-radius:30px;
@@ -39,27 +40,31 @@ body{
   box-shadow:0 24px 80px rgba(0,0,0,.45);
   backdrop-filter:blur(16px);
   text-align:center;
+  position:relative;
+  z-index:2;
 }
 .icon{
-  width:110px;
-  height:110px;
+  width:116px;
+  height:116px;
   margin:0 auto 18px;
   border-radius:50%;
   display:grid;
   place-items:center;
-  font-size:54px;
+  font-size:56px;
   background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.06));
   border:1px solid rgba(250,204,21,.25);
   box-shadow:0 0 0 rgba(250,204,21,0);
-  transition:.25s ease;
+  transition:.12s ease;
 }
-body.torch-on .icon{
+body.torch-on .icon,
+body.beat .icon{
   background:radial-gradient(circle,#fff8c7 0%,#facc15 45%,rgba(250,204,21,.18) 72%);
   box-shadow:0 0 55px rgba(250,204,21,.85),0 0 120px rgba(250,204,21,.35);
+  transform:scale(1.045);
 }
 h1{
   margin:0 0 8px;
-  font-size:30px;
+  font-size:29px;
   letter-spacing:-.5px;
 }
 p{
@@ -70,10 +75,10 @@ p{
 }
 button{
   width:100%;
-  min-height:72px;
+  min-height:68px;
   border:0;
   border-radius:22px;
-  font-size:24px;
+  font-size:22px;
   font-weight:800;
   cursor:pointer;
   color:#111827;
@@ -83,11 +88,6 @@ button{
 }
 button:active{transform:scale(.985)}
 button:disabled{opacity:.55; cursor:not-allowed}
-body.torch-on button{
-  background:linear-gradient(135deg,#334155,#64748b);
-  color:white;
-  box-shadow:none;
-}
 .controls{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -96,7 +96,7 @@ body.torch-on button{
 }
 .small{
   min-height:52px;
-  font-size:16px;
+  font-size:15px;
   color:var(--text);
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.10);
@@ -114,6 +114,23 @@ body.torch-on button{
 }
 .status.ok{color:#bbf7d0;border:1px solid rgba(34,197,94,.25)}
 .status.err{color:#fecaca;border:1px solid rgba(239,68,68,.28)}
+.sliderBox{
+  margin-top:16px;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  text-align:right;
+}
+.sliderBox label{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#cbd5e1;
+  font-size:14px;
+  margin-bottom:10px;
+}
+input[type=range]{width:100%}
 .note{
   margin-top:14px;
   font-size:12px;
@@ -124,37 +141,72 @@ body.torch-on button{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background:rgba(250,204,21,.08);
+  background:rgba(250,204,21,.06);
   opacity:0;
-  transition:.2s ease;
+  transition:.08s ease;
+  z-index:1;
 }
-body.torch-on .flash{opacity:1}
+body.torch-on .flash,
+body.beat .flash{opacity:1}
+.ring{
+  position:fixed;
+  width:52vmin;
+  height:52vmin;
+  border-radius:50%;
+  border:1px solid rgba(250,204,21,.18);
+  opacity:.35;
+  z-index:0;
+  animation:float 5s ease-in-out infinite;
+}
+.ring.r2{width:74vmin;height:74vmin;animation-duration:7s;opacity:.18}
+@keyframes float{
+  0%,100%{transform:scale(.92)}
+  50%{transform:scale(1.08)}
+}
 @media(max-width:420px){
   .app{padding:22px;border-radius:26px}
-  h1{font-size:27px}
+  h1{font-size:26px}
 }
 </style>
 </head>
 
 <body>
+<div class="ring"></div>
+<div class="ring r2"></div>
 <div class="flash"></div>
 
 <main class="app">
   <div class="icon">🔦</div>
-  <h1>كشاف الجالكسي</h1>
-  <p>اضغط تشغيل، وافق على إذن الكاميرا، وسيتم تشغيل فلاش الهاتف إذا كان المتصفح يدعم Torch API.</p>
+  <h1>كشاف يتفاعل مع نغمة</h1>
+  <p>اضغط تشغيل مرة واحدة. ستبدأ النغمة، ويتفاعل الكشاف والواجهة مع الإيقاع.</p>
 
-  <button id="mainBtn">تشغيل الكشاف</button>
+  <button id="mainBtn">تشغيل النغمة والكشاف</button>
 
   <div class="controls">
-    <button class="small" id="sosBtn">SOS</button>
-    <button class="small" id="blinkBtn">وميض</button>
+    <button class="small" id="torchOnlyBtn">كشاف ثابت</button>
+    <button class="small" id="patternBtn">تغيير الإيقاع</button>
   </div>
 
-  <div id="status" class="status">جاهز. افتح الصفحة من GitHub Pages عبر HTTPS ثم اضغط تشغيل.</div>
+  <div class="sliderBox">
+    <label>
+      <span>سرعة النغمة</span>
+      <b id="tempoLabel">120 BPM</b>
+    </label>
+    <input id="tempo" type="range" min="70" max="180" value="120" />
+  </div>
+
+  <div class="sliderBox">
+    <label>
+      <span>مستوى الصوت</span>
+      <b id="volLabel">35%</b>
+    </label>
+    <input id="volume" type="range" min="0" max="100" value="35" />
+  </div>
+
+  <div id="status" class="status">جاهز. افتح الصفحة من GitHub Pages واضغط تشغيل.</div>
 
   <div class="note">
-    ملاحظة: الفلاش يحتاج إذن الكاميرا. لا يتم تصوير أو حفظ أي شيء.
+    ملاحظة: المتصفح يحتاج ضغطة أولى لتشغيل الصوت وإذن الكاميرا لتشغيل الفلاش.
   </div>
 </main>
 
@@ -162,12 +214,27 @@ body.torch-on .flash{opacity:1}
 let stream = null;
 let track = null;
 let torchOn = false;
-let blinkTimer = null;
-let sosRunning = false;
+let running = false;
+let torchOnly = false;
+let beatTimer = null;
+let audioCtx = null;
+let masterGain = null;
+let patternIndex = 0;
+let beatStep = 0;
+
+const patterns = [
+  { name: "إيقاع هادئ", hits: [1,0,1,0,1,0,1,0], freqs:[440,520] },
+  { name: "إيقاع سريع", hits: [1,1,0,1,1,0,1,0], freqs:[520,660] },
+  { name: "SOS نغمي", hits: [1,1,1,0,1,0,1,0,1,1,1,0], freqs:[700,430] }
+];
 
 const mainBtn = document.getElementById("mainBtn");
-const sosBtn = document.getElementById("sosBtn");
-const blinkBtn = document.getElementById("blinkBtn");
+const torchOnlyBtn = document.getElementById("torchOnlyBtn");
+const patternBtn = document.getElementById("patternBtn");
+const tempo = document.getElementById("tempo");
+const volume = document.getElementById("volume");
+const tempoLabel = document.getElementById("tempoLabel");
+const volLabel = document.getElementById("volLabel");
 const statusBox = document.getElementById("status");
 
 function setStatus(msg, type=""){
@@ -178,7 +245,11 @@ function setStatus(msg, type=""){
 function setUi(on){
   torchOn = on;
   document.body.classList.toggle("torch-on", on);
-  mainBtn.textContent = on ? "إيقاف الكشاف" : "تشغيل الكشاف";
+}
+
+function beatVisual(){
+  document.body.classList.add("beat");
+  setTimeout(()=>document.body.classList.remove("beat"), 100);
 }
 
 async function initCamera(){
@@ -205,100 +276,151 @@ async function initCamera(){
 
 async function setTorch(on){
   if(!track) await initCamera();
-
-  await track.applyConstraints({
-    advanced: [{ torch: on }]
-  });
-
+  await track.applyConstraints({ advanced: [{ torch: on }] });
   setUi(on);
-  setStatus(on ? "الكشاف يعمل الآن." : "تم إيقاف الكشاف.", on ? "ok" : "");
 }
 
-function stopEffects(){
-  if(blinkTimer){
-    clearInterval(blinkTimer);
-    blinkTimer = null;
+function initAudio(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = Number(volume.value) / 100;
+  masterGain.connect(audioCtx.destination);
+}
+
+function playTone(freq=440, duration=0.09){
+  if(!audioCtx) return;
+
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = "sine";
+  osc.frequency.value = freq;
+
+  const now = audioCtx.currentTime;
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.7, now + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+  osc.connect(gain);
+  gain.connect(masterGain);
+  osc.start(now);
+  osc.stop(now + duration + 0.02);
+}
+
+function stopBeat(){
+  if(beatTimer){
+    clearInterval(beatTimer);
+    beatTimer = null;
   }
-  sosRunning = false;
-  blinkBtn.textContent = "وميض";
-  sosBtn.textContent = "SOS";
+}
+
+function startBeat(){
+  stopBeat();
+  const interval = Math.round(60000 / Number(tempo.value) / 2);
+
+  beatTimer = setInterval(async () => {
+    if(!running || torchOnly) return;
+
+    const pattern = patterns[patternIndex];
+    const hit = pattern.hits[beatStep % pattern.hits.length];
+
+    if(hit){
+      const freq = pattern.freqs[beatStep % pattern.freqs.length];
+      playTone(freq, 0.085);
+      beatVisual();
+
+      try{
+        await setTorch(true);
+        setTimeout(()=>setTorch(false).catch(()=>{}), 90);
+      }catch(e){
+        setStatus("النغمة تعمل، لكن تعذر مزامنة الكشاف: " + e.message, "err");
+      }
+    }
+
+    beatStep++;
+  }, interval);
 }
 
 mainBtn.addEventListener("click", async () => {
   try{
-    stopEffects();
     mainBtn.disabled = true;
-    await setTorch(!torchOn);
+
+    if(running){
+      running = false;
+      stopBeat();
+      await setTorch(false);
+      if(audioCtx) await audioCtx.suspend();
+      mainBtn.textContent = "تشغيل النغمة والكشاف";
+      setStatus("تم الإيقاف.");
+      return;
+    }
+
+    initAudio();
+    if(audioCtx.state === "suspended") await audioCtx.resume();
+    if(!track) await initCamera();
+
+    running = true;
+    torchOnly = false;
+    beatStep = 0;
+    mainBtn.textContent = "إيقاف";
+    torchOnlyBtn.textContent = "كشاف ثابت";
+    setStatus("النغمة تعمل والكشاف يتفاعل مع الإيقاع.", "ok");
+    startBeat();
+
   }catch(err){
+    running = false;
+    stopBeat();
     setUi(false);
-    setStatus("تعذر تشغيل الكشاف: " + err.message, "err");
+    setStatus("تعذر التشغيل: " + err.message, "err");
   }finally{
     mainBtn.disabled = false;
   }
 });
 
-blinkBtn.addEventListener("click", async () => {
+torchOnlyBtn.addEventListener("click", async () => {
   try{
-    if(blinkTimer){
-      stopEffects();
-      await setTorch(false);
-      return;
-    }
-
     if(!track) await initCamera();
-    blinkBtn.textContent = "إيقاف الوميض";
-    setStatus("وضع الوميض يعمل.", "ok");
 
-    blinkTimer = setInterval(async () => {
-      try{ await setTorch(!torchOn); }catch(e){}
-    }, 450);
+    torchOnly = !torchOnly;
+    if(torchOnly){
+      await setTorch(true);
+      torchOnlyBtn.textContent = "إيقاف الثابت";
+      setStatus("الكشاف ثابت. النغمة الإيقاعية متوقفة مؤقتًا.", "ok");
+    }else{
+      await setTorch(false);
+      torchOnlyBtn.textContent = "كشاف ثابت";
+      setStatus(running ? "رجع التفاعل مع الإيقاع." : "تم إيقاف الكشاف الثابت.", running ? "ok" : "");
+    }
   }catch(err){
-    stopEffects();
-    setStatus("تعذر تشغيل الوميض: " + err.message, "err");
+    setStatus("تعذر تشغيل الكشاف الثابت: " + err.message, "err");
   }
 });
 
-function wait(ms){ return new Promise(r => setTimeout(r, ms)); }
+patternBtn.addEventListener("click", () => {
+  patternIndex = (patternIndex + 1) % patterns.length;
+  beatStep = 0;
+  patternBtn.textContent = patterns[patternIndex].name;
+  setStatus("تم اختيار: " + patterns[patternIndex].name, "ok");
+});
 
-async function pulse(ms){
-  await setTorch(true);
-  await wait(ms);
-  await setTorch(false);
-  await wait(180);
-}
+tempo.addEventListener("input", () => {
+  tempoLabel.textContent = tempo.value + " BPM";
+  if(running) startBeat();
+});
 
-sosBtn.addEventListener("click", async () => {
-  try{
-    if(sosRunning){
-      stopEffects();
-      await setTorch(false);
-      return;
-    }
-
-    if(!track) await initCamera();
-    sosRunning = true;
-    sosBtn.textContent = "إيقاف SOS";
-    setStatus("وضع SOS يعمل.", "ok");
-
-    while(sosRunning){
-      for(let i=0;i<3 && sosRunning;i++) await pulse(180);
-      await wait(250);
-      for(let i=0;i<3 && sosRunning;i++) await pulse(520);
-      await wait(250);
-      for(let i=0;i<3 && sosRunning;i++) await pulse(180);
-      await wait(900);
-    }
-  }catch(err){
-    stopEffects();
-    setStatus("تعذر تشغيل SOS: " + err.message, "err");
-  }
+volume.addEventListener("input", () => {
+  volLabel.textContent = volume.value + "%";
+  if(masterGain) masterGain.gain.value = Number(volume.value) / 100;
 });
 
 window.addEventListener("pagehide", () => {
   try{
-    stopEffects();
+    running = false;
+    stopBeat();
     if(track) track.stop();
     if(stream) stream.getTracks().forEach(t => t.stop());
+    if(audioCtx) audioCtx.close();
   }catch(e){}
 });
 </script>
