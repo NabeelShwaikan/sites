@@ -3,137 +3,102 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>كشاف الجالكسي التفاعلي</title>
+<title>كشاف الجالكسي - موسيقى تفاعلية</title>
 <meta name="theme-color" content="#050816" />
 <style>
 :root{
-  --bg:#050816;
-  --card:#0f172a;
-  --card2:#111827;
-  --gold:#facc15;
-  --gold2:#fde68a;
-  --text:#f8fafc;
-  --muted:#94a3b8;
-  --line:rgba(255,255,255,.10);
-  --ok:#22c55e;
-  --err:#ef4444;
+  --bg:#050816;--card:#0f172a;--gold:#facc15;--gold2:#fde68a;
+  --text:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.10);
+  --ok:#22c55e;--err:#ef4444;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%}
 body{
-  min-height:100vh;
-  font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+  min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
   color:var(--text);
   background:
     radial-gradient(circle at 50% 0%, rgba(250,204,21,.18), transparent 32%),
     radial-gradient(circle at 100% 100%, rgba(59,130,246,.12), transparent 35%),
     linear-gradient(160deg,#020617,#0f172a 58%,#111827);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  overflow-x:hidden;
+  display:flex;align-items:center;justify-content:center;padding:16px;overflow-x:hidden;
 }
 .app{
-  width:min(480px,100%);
-  background:rgba(15,23,42,.78);
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:22px;
-  box-shadow:0 24px 80px rgba(0,0,0,.45);
-  backdrop-filter:blur(16px);
-  position:relative;
-  z-index:2;
+  width:min(500px,100%);background:rgba(15,23,42,.80);border:1px solid var(--line);
+  border-radius:30px;padding:20px;box-shadow:0 24px 80px rgba(0,0,0,.45);
+  backdrop-filter:blur(16px);position:relative;z-index:2;
 }
 .top{text-align:center}
 .icon{
-  width:112px;height:112px;margin:0 auto 14px;border-radius:50%;
-  display:grid;place-items:center;font-size:54px;
-  background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.05));
-  border:1px solid rgba(250,204,21,.25);
-  transition:.09s ease;
+  width:108px;height:108px;margin:0 auto 13px;border-radius:50%;display:grid;place-items:center;
+  font-size:52px;background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.05));
+  border:1px solid rgba(250,204,21,.25);transition:.08s ease;
 }
-body.light-on .icon,
-body.beat .icon{
+body.light-on .icon,body.beat .icon{
   background:radial-gradient(circle,#fff8c7 0%,#facc15 42%,rgba(250,204,21,.18) 75%);
   box-shadow:0 0 55px rgba(250,204,21,.88),0 0 120px rgba(250,204,21,.35);
   transform:scale(1.045);
 }
-h1{margin:0 0 8px;font-size:27px;letter-spacing:-.4px}
-.desc{margin:0 auto 16px;color:var(--muted);font-size:14px;line-height:1.8}
+h1{margin:0 0 8px;font-size:25px;letter-spacing:-.4px}
+.desc{margin:0 auto 14px;color:var(--muted);font-size:13px;line-height:1.8}
 .primary{
-  width:100%;min-height:64px;border:0;border-radius:21px;
-  font-size:21px;font-weight:900;cursor:pointer;color:#111827;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  width:100%;min-height:62px;border:0;border-radius:21px;font-size:20px;font-weight:900;
+  cursor:pointer;color:#111827;background:linear-gradient(135deg,var(--gold),var(--gold2));
   box-shadow:0 12px 35px rgba(250,204,21,.25);
 }
 .primary.stop{background:linear-gradient(135deg,#334155,#64748b);color:white;box-shadow:none}
-button{font-family:inherit}
+button{font-family:inherit;cursor:pointer}
 button:active{transform:scale(.985)}
 button:disabled{opacity:.55}
-.quick{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;
+.fileBox{
+  margin-top:12px;padding:14px;border-radius:20px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.08);
 }
-.quick button,.chip,.selectLike{
-  border:1px solid var(--line);background:rgba(255,255,255,.07);
-  color:var(--text);border-radius:17px;min-height:50px;font-weight:800;
+.fileLabel{
+  display:block;text-align:center;border:1px dashed rgba(250,204,21,.35);border-radius:18px;
+  padding:14px;color:#fde68a;font-weight:800;background:rgba(250,204,21,.07);
 }
-.quick button.active,.chip.active{
-  background:rgba(250,204,21,.16);
-  border-color:rgba(250,204,21,.36);
-  color:#fde68a;
+input[type=file]{display:none}
+.fileName{margin-top:9px;color:#94a3b8;font-size:12px;text-align:center;word-break:break-word}
+.levels{display:grid;grid-template-columns:1fr;gap:9px;margin-top:12px}
+.level{
+  border:1px solid var(--line);background:rgba(255,255,255,.065);color:var(--text);
+  border-radius:18px;min-height:56px;text-align:right;padding:10px 13px;
 }
+.level b{display:block;color:#fff;font-size:14px;margin-bottom:3px}
+.level span{display:block;color:#94a3b8;font-size:11px;line-height:1.5}
+.level.active{background:rgba(250,204,21,.15);border-color:rgba(250,204,21,.42)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .panel{
-  margin-top:12px;padding:14px;border-radius:20px;
-  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);
+  margin-top:12px;padding:13px;border-radius:20px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.08);
 }
-.panelTitle{
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:14px;color:#cbd5e1;margin-bottom:10px;font-weight:800;
-}
-select,input[type=range]{
-  width:100%;
-}
-select{
-  min-height:46px;border-radius:15px;border:1px solid var(--line);
-  background:#0b1220;color:var(--text);padding:0 12px;font-size:15px;
-}
+.panelTitle{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:#cbd5e1;margin-bottom:9px;font-weight:800}
+select{width:100%;min-height:44px;border-radius:15px;border:1px solid var(--line);background:#0b1220;color:var(--text);padding:0 10px;font-size:14px}
 .rangeLabel{display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;margin-bottom:8px}
-.status{
-  margin-top:12px;padding:13px 15px;border-radius:18px;
-  background:rgba(255,255,255,.06);color:var(--muted);
-  font-size:13px;line-height:1.75;text-align:right;
+input[type=range]{width:100%}
+.visual{
+  margin-top:12px;border-radius:22px;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08);
+  height:145px;overflow:hidden;position:relative;display:flex;align-items:end;gap:3px;padding:12px;
 }
-.status.ok{color:#bbf7d0;border:1px solid rgba(34,197,94,.25)}
-.status.err{color:#fecaca;border:1px solid rgba(239,68,68,.28)}
-.stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;
+.bar{flex:1;min-width:3px;border-radius:99px 99px 0 0;background:linear-gradient(180deg,#fde68a,#facc15);height:4%;opacity:.75}
+.visual::before{
+  content:"";position:absolute;inset:auto 50% 50% auto;width:90px;height:90px;border-radius:50%;
+  transform:translate(50%,50%);border:1px solid rgba(250,204,21,.20);box-shadow:0 0 50px rgba(250,204,21,.12);
 }
-.stat{
-  background:rgba(2,6,23,.42);border:1px solid rgba(255,255,255,.07);
-  border-radius:16px;padding:10px 6px;text-align:center;
-}
-.stat b{display:block;font-size:18px;color:#fde68a;margin-bottom:2px}
-.stat span{font-size:11px;color:#94a3b8}
+.meters{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.meterCard{background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:8px}
+.meterCard span{display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;margin-bottom:6px}
+.meter{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.meter div{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#facc15,#fde68a);transition:width .04s linear}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:rgba(2,6,23,.42);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:10px 6px;text-align:center}
+.stat b{display:block;font-size:17px;color:#fde68a;margin-bottom:2px}.stat span{font-size:11px;color:#94a3b8}
+.status{margin-top:12px;padding:13px 15px;border-radius:18px;background:rgba(255,255,255,.06);color:var(--muted);font-size:13px;line-height:1.75;text-align:right}
+.status.ok{color:#bbf7d0;border:1px solid rgba(34,197,94,.25)}.status.err{color:#fecaca;border:1px solid rgba(239,68,68,.28)}
 .note{margin-top:12px;color:#64748b;font-size:11px;line-height:1.7;text-align:center}
-.flash{
-  position:fixed;inset:0;pointer-events:none;z-index:1;
-  background:rgba(250,204,21,.06);opacity:0;transition:.06s ease;
-}
+.flash{position:fixed;inset:0;pointer-events:none;z-index:1;background:rgba(250,204,21,.06);opacity:0;transition:.05s ease}
 body.light-on .flash,body.beat .flash{opacity:1}
-.meter{
-  height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px;
-}
-.meter > div{
-  width:0%;height:100%;background:linear-gradient(90deg,#facc15,#fde68a);
-  transition:width .06s linear;
-}
-@media(max-width:420px){
-  .app{padding:18px;border-radius:25px}
-  h1{font-size:24px}
-  .quick button{font-size:13px}
-}
+@media(max-width:420px){.app{padding:17px;border-radius:25px}h1{font-size:23px}.visual{height:128px}.level{min-height:52px}}
 </style>
 </head>
 <body>
@@ -142,31 +107,33 @@ body.light-on .flash,body.beat .flash{opacity:1}
 <main class="app">
   <section class="top">
     <div class="icon">🔦</div>
-    <h1>كشاف الجالكسي التفاعلي</h1>
-    <p class="desc">نغمة داخلية، تفاعل مع موسيقى الميكروفون، أنماط جاهزة، مؤقت، وإحصائيات مباشرة.</p>
+    <h1>كشاف يتفاعل مع ملف موسيقى</h1>
+    <p class="desc">اختر ملفًا صوتيًا ثم شغّل. الصفحة تحلل الموسيقى وتحوّلها إلى وميض كشاف وعرض ضوئي.</p>
     <button id="mainBtn" class="primary">تشغيل</button>
   </section>
 
-  <div class="quick">
-    <button id="quickFast">⚡ سريع</button>
-    <button id="quickMusic">🎵 موسيقى</button>
-    <button id="quickSOS">🆘 SOS</button>
+  <div class="fileBox">
+    <label class="fileLabel" for="audioFile">🎵 اختر ملف موسيقى MP3 / M4A / WAV</label>
+    <input id="audioFile" type="file" accept="audio/*" />
+    <div id="fileName" class="fileName">لم يتم اختيار ملف بعد</div>
+  </div>
+
+  <div class="levels">
+    <button class="level active" data-level="1">
+      <b>المستوى 1: الإيقاع العام</b>
+      <span>الكشاف يومض مع الضربات القوية فقط. مناسب وآمن نسبيًا.</span>
+    </button>
+    <button class="level" data-level="2">
+      <b>المستوى 2: Bass / Mid / Treble</b>
+      <span>تحليل الجهير والمتوسط والحاد، والوميض حسب قوة كل نطاق.</span>
+    </button>
+    <button class="level" data-level="3">
+      <b>المستوى 3: عرض ضوئي كامل</b>
+      <span>طيف صوتي + وميض ذكي مع الضربات القوية فقط لتقليل استهلاك الفلاش.</span>
+    </button>
   </div>
 
   <div class="grid">
-    <div class="panel">
-      <div class="panelTitle"><span>النمط</span></div>
-      <select id="pattern">
-        <option value="pulse">نبض</option>
-        <option value="party">حفلة</option>
-        <option value="strobeFast">ستروب سريع</option>
-        <option value="strobeSlow">ستروب بطيء</option>
-        <option value="sos">SOS</option>
-        <option value="wave">موجة</option>
-        <option value="alert">تنبيه</option>
-      </select>
-    </div>
-
     <div class="panel">
       <div class="panelTitle"><span>المؤقت</span></div>
       <select id="timer">
@@ -177,92 +144,68 @@ body.light-on .flash,body.beat .flash{opacity:1}
         <option value="600">10 دقائق</option>
       </select>
     </div>
+    <div class="panel">
+      <div class="panelTitle"><span>الحساسية</span></div>
+      <select id="sensitivity">
+        <option value="1.25">هادئ</option>
+        <option value="1.00" selected>طبيعي</option>
+        <option value="0.82">حفلة</option>
+        <option value="0.65">مجنون</option>
+      </select>
+    </div>
   </div>
 
   <div class="panel">
-    <div class="rangeLabel">
-      <span>شدة الإيقاع</span>
-      <b id="intensityText">متوسط</b>
-    </div>
-    <input id="intensity" type="range" min="1" max="4" value="2" />
+    <div class="rangeLabel"><span>مستوى الصوت</span><b id="volumeText">50%</b></div>
+    <input id="volume" type="range" min="0" max="100" value="50" />
   </div>
 
   <div class="panel">
-    <div class="rangeLabel">
-      <span>BPM / سرعة النغمة</span>
-      <b id="bpmText">120</b>
-    </div>
-    <input id="bpm" type="range" min="60" max="190" value="120" />
+    <div class="rangeLabel"><span>تقدم الموسيقى</span><b id="progressText">00:00 / 00:00</b></div>
+    <input id="progress" type="range" min="0" max="1000" value="0" />
   </div>
 
-  <div class="panel">
-    <div class="rangeLabel">
-      <span>الصوت</span>
-      <b id="volumeText">35%</b>
-    </div>
-    <input id="volume" type="range" min="0" max="100" value="35" />
-  </div>
+  <div class="visual" id="visual"></div>
 
-  <div class="panel">
-    <div class="panelTitle">
-      <span>توفير البطارية</span>
-      <button id="batteryBtn" class="chip">إيقاف</button>
-    </div>
-    <div style="color:#94a3b8;font-size:12px;line-height:1.7">
-      يقلل كثافة الوميض تلقائيًا عند التشغيل الطويل أو عند انخفاض البطارية إن توفر دعم المتصفح.
-    </div>
+  <div class="meters">
+    <div class="meterCard"><span><b>Bass</b><b id="bassText">0</b></span><div class="meter"><div id="bassMeter"></div></div></div>
+    <div class="meterCard"><span><b>Mid</b><b id="midText">0</b></span><div class="meter"><div id="midMeter"></div></div></div>
+    <div class="meterCard"><span><b>Treble</b><b id="trebleText">0</b></span><div class="meter"><div id="trebleMeter"></div></div></div>
   </div>
-
-  <div class="meter"><div id="meterFill"></div></div>
 
   <div class="stats">
     <div class="stat"><b id="timeStat">00:00</b><span>مدة التشغيل</span></div>
     <div class="stat"><b id="flashStat">0</b><span>عدد الومضات</span></div>
-    <div class="stat"><b id="modeStat">نبض</b><span>النمط</span></div>
+    <div class="stat"><b id="levelStat">1</b><span>المستوى</span></div>
   </div>
 
-  <div id="status" class="status">جاهز. عند اختيار وضع الموسيقى سيطلب الميكروفون، وعند تشغيل الكشاف سيطلب الكاميرا.</div>
-
-  <div class="note">لا يتم تسجيل أو حفظ الصوت أو الصورة. الاستخدام الطويل للفلاش قد يسبب حرارة واستهلاك بطارية.</div>
+  <div id="status" class="status">جاهز. اختر ملف موسيقى ثم اضغط تشغيل.</div>
+  <div class="note">لا يتم رفع الملف أو حفظه. التحليل يتم داخل المتصفح فقط. الاستخدام الطويل للفلاش قد يسبب حرارة.</div>
 </main>
 
+<audio id="audio" crossorigin="anonymous"></audio>
+
 <script>
-let stream=null, track=null;
-let micStream=null, audioCtx=null, analyser=null, sourceNode=null, gainNode=null;
-let running=false, musicMode=false, batterySaver=false;
-let loopTimer=null, autoStopTimer=null, statsTimer=null, rafId=null;
-let lightOn=false, flashes=0, startedAt=0, beatStep=0;
-let batteryLevel=null;
-
+let stream=null, track=null, audioCtx=null, analyser=null, source=null, gainNode=null;
+let running=false, rafId=null, autoStopTimer=null, statsTimer=null;
+let level=1, flashes=0, startedAt=0, lastFlash=0, lastStrong=0;
+let bars=[];
 const $=id=>document.getElementById(id);
-const mainBtn=$("mainBtn"), statusBox=$("status");
-const pattern=$("pattern"), timer=$("timer"), intensity=$("intensity"), bpm=$("bpm"), volume=$("volume");
-const intensityText=$("intensityText"), bpmText=$("bpmText"), volumeText=$("volumeText");
-const timeStat=$("timeStat"), flashStat=$("flashStat"), modeStat=$("modeStat"), meterFill=$("meterFill");
-const batteryBtn=$("batteryBtn");
+const audio=$("audio"), mainBtn=$("mainBtn"), statusBox=$("status");
+const fileInput=$("audioFile"), fileName=$("fileName"), visual=$("visual");
+const progress=$("progress"), progressText=$("progressText"), volume=$("volume"), volumeText=$("volumeText");
+const bassMeter=$("bassMeter"), midMeter=$("midMeter"), trebleMeter=$("trebleMeter");
+const bassText=$("bassText"), midText=$("midText"), trebleText=$("trebleText");
+const timeStat=$("timeStat"), flashStat=$("flashStat"), levelStat=$("levelStat");
+const timer=$("timer"), sensitivity=$("sensitivity");
 
-const patternDefs={
-  pulse:{name:"نبض", hits:[1,0,1,0,0,1,0,0], freqs:[420,520], dur:90},
-  party:{name:"حفلة", hits:[1,1,0,1,0,1,1,0], freqs:[520,660,780], dur:70},
-  strobeFast:{name:"ستروب سريع", hits:[1,1,1,1,1,1,1,1], freqs:[760], dur:45},
-  strobeSlow:{name:"ستروب بطيء", hits:[1,0,0,0,1,0,0,0], freqs:[380], dur:140},
-  sos:{name:"SOS", hits:[1,1,1,0,2,0,2,0,2,0,1,1,1,0,0,0], freqs:[700,430], dur:130},
-  wave:{name:"موجة", hits:[1,0,1,0,1,1,0,0,1,0,0,0], freqs:[360,430,520,610], dur:85},
-  alert:{name:"تنبيه", hits:[1,0,1,1,0,0,1,0], freqs:[880,540], dur:75}
-};
+function setStatus(msg,type=""){statusBox.textContent=msg;statusBox.className="status "+type}
+function setLightVisual(on){document.body.classList.toggle("light-on",on)}
+function beatVisual(){document.body.classList.add("beat");setTimeout(()=>document.body.classList.remove("beat"),80)}
+function fmt(sec){sec=isFinite(sec)?Math.floor(sec):0;return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0")}
+function avg(data,start,end){let s=0,c=0;for(let i=start;i<end&&i<data.length;i++){s+=data[i];c++}return c?s/c:0}
+function pct(v){return Math.max(0,Math.min(100,v))}
 
-function setStatus(msg,type=""){
-  statusBox.textContent=msg;
-  statusBox.className="status "+type;
-}
-function visualBeat(){
-  document.body.classList.add("beat");
-  setTimeout(()=>document.body.classList.remove("beat"),90);
-}
-function setVisualLight(on){
-  lightOn=on;
-  document.body.classList.toggle("light-on",on);
-}
 async function initTorch(){
   if(track) return;
   if(!navigator.mediaDevices?.getUserMedia) throw new Error("المتصفح لا يدعم الكاميرا.");
@@ -272,222 +215,168 @@ async function initTorch(){
   });
   track=stream.getVideoTracks()[0];
   const caps=track.getCapabilities?track.getCapabilities():{};
-  if(!caps.torch) throw new Error("الجهاز أو المتصفح لا يدعم Torch API.");
+  if(!caps.torch) throw new Error("الجهاز أو المتصفح لا يدعم تشغيل الكشاف من صفحة الويب.");
 }
 async function torch(on){
   await initTorch();
   await track.applyConstraints({advanced:[{torch:on}]});
-  setVisualLight(on);
+  setLightVisual(on);
 }
-async function flash(duration=80){
-  if(!running) return;
-  let d=duration;
-  const longRun=(Date.now()-startedAt)>120000;
-  if(batterySaver && (longRun || (batteryLevel!==null && batteryLevel<0.25))) d=Math.min(d,55);
+async function flash(duration=70){
+  const now=Date.now();
+  if(now-lastFlash<105) return;
+  lastFlash=now;
   try{
     await torch(true);
     flashes++;
     flashStat.textContent=flashes;
-    setTimeout(()=>torch(false).catch(()=>{}),d);
-  }catch(e){
-    setStatus("تعذر تشغيل الكشاف: "+e.message,"err");
-  }
+    setTimeout(()=>torch(false).catch(()=>setLightVisual(false)),duration);
+  }catch(e){setStatus("تعذر تشغيل الكشاف: "+e.message,"err")}
 }
 function initAudio(){
   if(audioCtx) return;
   audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-  gainNode=audioCtx.createGain();
-  gainNode.gain.value=Number(volume.value)/100;
-  gainNode.connect(audioCtx.destination);
-}
-function tone(freq=440,dur=.08){
-  if(!audioCtx || musicMode) return;
-  const osc=audioCtx.createOscillator();
-  const g=audioCtx.createGain();
-  osc.type="sine";
-  osc.frequency.value=freq;
-  const now=audioCtx.currentTime;
-  g.gain.setValueAtTime(.0001,now);
-  g.gain.exponentialRampToValueAtTime(.75,now+.01);
-  g.gain.exponentialRampToValueAtTime(.0001,now+dur);
-  osc.connect(g); g.connect(gainNode);
-  osc.start(now); osc.stop(now+dur+.02);
-}
-function loopPattern(){
-  clearInterval(loopTimer);
-  const interval=Math.max(55, Math.round(60000/Number(bpm.value)/2));
-  loopTimer=setInterval(()=>{
-    if(!running || musicMode) return;
-    const def=patternDefs[pattern.value];
-    const hit=def.hits[beatStep%def.hits.length];
-    const strength=Number(intensity.value);
-    const skip=batterySaver && strength>2 && beatStep%3===0;
-    if(hit && !skip){
-      const freq=def.freqs[beatStep%def.freqs.length];
-      const dur=hit===2 ? def.dur*2.5 : def.dur;
-      tone(freq,Math.min(.18,dur/1000));
-      visualBeat();
-      for(let i=0;i<Math.min(strength,3);i++){
-        setTimeout(()=>flash(dur).catch(()=>{}),i*95);
-      }
-    }
-    beatStep++;
-  },interval);
-}
-async function startMusicMode(){
-  musicMode=true;
-  if(audioCtx?.state==="suspended") await audioCtx.resume();
-  micStream=await navigator.mediaDevices.getUserMedia({audio:true,video:false});
   analyser=audioCtx.createAnalyser();
   analyser.fftSize=1024;
-  sourceNode=audioCtx.createMediaStreamSource(micStream);
-  sourceNode.connect(analyser);
-  const data=new Uint8Array(analyser.frequencyBinCount);
-  let lastFlash=0;
-  const run=()=>{
-    if(!running || !musicMode) return;
-    analyser.getByteFrequencyData(data);
-    let bass=0;
-    for(let i=2;i<28;i++) bass+=data[i];
-    bass=bass/26;
-    meterFill.style.width=Math.min(100, bass*1.4)+"%";
-    const threshold=[90,75,60,45][Number(intensity.value)-1] || 75;
-    const now=Date.now();
-    if(bass>threshold && now-lastFlash>130){
-      lastFlash=now;
-      visualBeat();
-      flash(70).catch(()=>{});
-    }
-    rafId=requestAnimationFrame(run);
-  };
-  run();
+  gainNode=audioCtx.createGain();
+  gainNode.gain.value=Number(volume.value)/100;
+  source=audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
 }
-function stopMusicMode(){
-  musicMode=false;
-  if(rafId) cancelAnimationFrame(rafId);
-  rafId=null;
-  meterFill.style.width="0%";
-  if(micStream){
-    micStream.getTracks().forEach(t=>t.stop());
-    micStream=null;
+function createBars(){
+  visual.innerHTML="";
+  bars=[];
+  const count=42;
+  for(let i=0;i<count;i++){
+    const b=document.createElement("div");
+    b.className="bar";
+    visual.appendChild(b);
+    bars.push(b);
   }
 }
-function updateStats(){
-  if(!running){timeStat.textContent="00:00";return;}
-  const s=Math.floor((Date.now()-startedAt)/1000);
-  const m=String(Math.floor(s/60)).padStart(2,"0");
-  const ss=String(s%60).padStart(2,"0");
-  timeStat.textContent=`${m}:${ss}`;
+function updateVisual(data){
+  const step=Math.floor(data.length/bars.length);
+  bars.forEach((bar,i)=>{
+    const v=avg(data,i*step,(i+1)*step);
+    bar.style.height=Math.max(4,Math.min(100,v/2.4))+"%";
+    bar.style.opacity= level===3 ? ".95" : ".45";
+  });
 }
-function startStats(){
-  clearInterval(statsTimer);
-  statsTimer=setInterval(updateStats,500);
-}
-function stopAll(){
-  running=false;
-  clearInterval(loopTimer); clearInterval(statsTimer); clearTimeout(autoStopTimer);
-  loopTimer=null; statsTimer=null; autoStopTimer=null;
-  stopMusicMode();
-  torch(false).catch(()=>setVisualLight(false));
-  mainBtn.textContent="تشغيل";
-  mainBtn.classList.remove("stop");
-  setStatus("تم الإيقاف.");
+function analyzeLoop(){
+  const data=new Uint8Array(analyser.frequencyBinCount);
+  const loop=()=>{
+    if(!running) return;
+    analyser.getByteFrequencyData(data);
+    updateVisual(data);
+
+    const bass=avg(data,2,28);
+    const mid=avg(data,30,120);
+    const treble=avg(data,130,260);
+    const overall=(bass*1.25+mid*.75+treble*.45)/2.45;
+    const sens=Number(sensitivity.value);
+
+    bassMeter.style.width=pct(bass/2.2)+"%"; midMeter.style.width=pct(mid/2.2)+"%"; trebleMeter.style.width=pct(treble/2.2)+"%";
+    bassText.textContent=Math.round(bass); midText.textContent=Math.round(mid); trebleText.textContent=Math.round(treble);
+
+    const now=Date.now();
+    let hit=false, dur=65;
+
+    if(level===1){
+      hit = overall > (72*sens) && bass > (60*sens);
+      dur = 65;
+    }else if(level===2){
+      hit = bass > (68*sens) || (mid > (92*sens) && now-lastStrong>220) || treble > (120*sens);
+      dur = bass > mid ? 85 : 55;
+    }else{
+      hit = bass > (62*sens) && overall > (58*sens);
+      dur = bass > 115 ? 95 : 60;
+    }
+
+    if(hit && now-lastStrong>130){
+      lastStrong=now;
+      beatVisual();
+      flash(dur);
+    }
+
+    progress.value = audio.duration ? Math.round((audio.currentTime/audio.duration)*1000) : 0;
+    progressText.textContent = fmt(audio.currentTime)+" / "+fmt(audio.duration);
+    rafId=requestAnimationFrame(loop);
+  };
+  loop();
 }
 async function start(){
+  if(!audio.src) throw new Error("اختر ملف موسيقى أولًا.");
   initAudio();
   if(audioCtx.state==="suspended") await audioCtx.resume();
   await initTorch();
-  running=true;
-  startedAt=Date.now();
-  flashes=0; beatStep=0;
-  flashStat.textContent="0";
-  modeStat.textContent=musicMode ? "موسيقى" : patternDefs[pattern.value].name;
-  mainBtn.textContent="إيقاف";
-  mainBtn.classList.add("stop");
-  setStatus("يعمل الآن.","ok");
-  startStats();
+
+  running=true; flashes=0; startedAt=Date.now(); lastFlash=0; lastStrong=0;
+  flashStat.textContent="0"; levelStat.textContent=String(level);
+  mainBtn.textContent="إيقاف"; mainBtn.classList.add("stop");
+  setStatus("يعمل الآن: تحليل الموسيقى وتفاعل الكشاف.","ok");
+
   const seconds=Number(timer.value);
-  if(seconds>0){
-    autoStopTimer=setTimeout(()=>{
-      stopAll();
-      setStatus("تم الإيقاف تلقائيًا حسب المؤقت.","ok");
-    },seconds*1000);
-  }
-  if(musicMode) await startMusicMode();
-  else loopPattern();
+  if(seconds>0) autoStopTimer=setTimeout(()=>{stop();setStatus("تم الإيقاف تلقائيًا حسب المؤقت.","ok")},seconds*1000);
+
+  statsTimer=setInterval(()=>{timeStat.textContent=fmt((Date.now()-startedAt)/1000)},500);
+  await audio.play();
+  analyzeLoop();
 }
+function stop(){
+  running=false;
+  if(rafId) cancelAnimationFrame(rafId);
+  clearTimeout(autoStopTimer); clearInterval(statsTimer);
+  audio.pause();
+  torch(false).catch(()=>setLightVisual(false));
+  mainBtn.textContent="تشغيل"; mainBtn.classList.remove("stop");
+  setStatus("تم الإيقاف.");
+}
+fileInput.addEventListener("change",()=>{
+  const file=fileInput.files?.[0];
+  if(!file) return;
+  if(audio.src) URL.revokeObjectURL(audio.src);
+  audio.src=URL.createObjectURL(file);
+  fileName.textContent=file.name;
+  setStatus("تم اختيار الملف. اضغط تشغيل.","ok");
+});
 mainBtn.addEventListener("click",async()=>{
   try{
     mainBtn.disabled=true;
-    if(running) stopAll();
+    if(running) stop();
     else await start();
   }catch(e){
     running=false;
     setStatus("تعذر التشغيل: "+e.message,"err");
-  }finally{
-    mainBtn.disabled=false;
-  }
+  }finally{mainBtn.disabled=false}
 });
-$("quickFast").addEventListener("click",()=>{
-  musicMode=false; pattern.value="strobeFast"; bpm.value=165; intensity.value=3;
-  syncLabels(); markQuick("quickFast"); modeStat.textContent="سريع";
-  if(running) loopPattern();
+document.querySelectorAll(".level").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    level=Number(btn.dataset.level);
+    document.querySelectorAll(".level").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    levelStat.textContent=String(level);
+    setStatus("تم اختيار المستوى "+level+".","ok");
+  });
 });
-$("quickMusic").addEventListener("click",()=>{
-  musicMode=true; markQuick("quickMusic"); modeStat.textContent="موسيقى";
-  if(running){ clearInterval(loopTimer); startMusicMode().catch(e=>setStatus("تعذر تشغيل الميكروفون: "+e.message,"err")); }
-});
-$("quickSOS").addEventListener("click",()=>{
-  musicMode=false; pattern.value="sos"; bpm.value=105; intensity.value=2;
-  syncLabels(); markQuick("quickSOS"); modeStat.textContent="SOS";
-  if(running) loopPattern();
-});
-function markQuick(id){
-  ["quickFast","quickMusic","quickSOS"].forEach(x=>$(x).classList.toggle("active",x===id));
-}
-function syncLabels(){
-  const names=["هادئ","متوسط","قوي","مجنون"];
-  intensityText.textContent=names[Number(intensity.value)-1];
-  bpmText.textContent=bpm.value;
+volume.addEventListener("input",()=>{
   volumeText.textContent=volume.value+"%";
   if(gainNode) gainNode.gain.value=Number(volume.value)/100;
-  modeStat.textContent=musicMode ? "موسيقى" : patternDefs[pattern.value].name;
-}
-[intensity,bpm,volume,pattern].forEach(el=>el.addEventListener("input",()=>{
-  musicMode=false;
-  markQuick("");
-  syncLabels();
-  if(running) loopPattern();
-}));
-timer.addEventListener("input",()=>{
-  if(running){
-    clearTimeout(autoStopTimer);
-    const seconds=Number(timer.value);
-    if(seconds>0) autoStopTimer=setTimeout(()=>{stopAll();setStatus("تم الإيقاف تلقائيًا حسب المؤقت.","ok");},seconds*1000);
-  }
 });
-batteryBtn.addEventListener("click",()=>{
-  batterySaver=!batterySaver;
-  batteryBtn.textContent=batterySaver?"تشغيل":"إيقاف";
-  batteryBtn.classList.toggle("active",batterySaver);
-  setStatus(batterySaver?"تم تفعيل توفير البطارية.":"تم إيقاف توفير البطارية.",batterySaver?"ok":"");
+progress.addEventListener("input",()=>{
+  if(audio.duration) audio.currentTime=(Number(progress.value)/1000)*audio.duration;
 });
-if(navigator.getBattery){
-  navigator.getBattery().then(b=>{
-    batteryLevel=b.level;
-    b.addEventListener("levelchange",()=>batteryLevel=b.level);
-  }).catch(()=>{});
-}
+audio.addEventListener("ended",()=>{stop();setStatus("انتهى تشغيل الموسيقى.","ok")});
 window.addEventListener("pagehide",()=>{
   try{
-    stopMusicMode();
-    clearInterval(loopTimer); clearInterval(statsTimer); clearTimeout(autoStopTimer);
+    stop();
     if(track) track.stop();
     if(stream) stream.getTracks().forEach(t=>t.stop());
     if(audioCtx) audioCtx.close();
   }catch(e){}
 });
-syncLabels();
+createBars();
 </script>
 </body>
 </html>
