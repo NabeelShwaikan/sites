@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>كشاف الجالكسي</title>
+<meta name="theme-color" content="#050816" />
+<style>
+:root{
+  --bg:#050816;
+  --card:#0f172a;
+  --gold:#facc15;
+  --gold2:#fde68a;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --danger:#ef4444;
+  --ok:#22c55e;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(250,204,21,.18), transparent 30%),
+    linear-gradient(160deg,#020617,#0f172a 55%,#111827);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+}
+.app{
+  width:min(440px,100%);
+  background:rgba(15,23,42,.76);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:30px;
+  padding:26px;
+  box-shadow:0 24px 80px rgba(0,0,0,.45);
+  backdrop-filter:blur(16px);
+  text-align:center;
+}
+.icon{
+  width:110px;
+  height:110px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:54px;
+  background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.06));
+  border:1px solid rgba(250,204,21,.25);
+  box-shadow:0 0 0 rgba(250,204,21,0);
+  transition:.25s ease;
+}
+body.torch-on .icon{
+  background:radial-gradient(circle,#fff8c7 0%,#facc15 45%,rgba(250,204,21,.18) 72%);
+  box-shadow:0 0 55px rgba(250,204,21,.85),0 0 120px rgba(250,204,21,.35);
+}
+h1{
+  margin:0 0 8px;
+  font-size:30px;
+  letter-spacing:-.5px;
+}
+p{
+  margin:0 auto 18px;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+button{
+  width:100%;
+  min-height:72px;
+  border:0;
+  border-radius:22px;
+  font-size:24px;
+  font-weight:800;
+  cursor:pointer;
+  color:#111827;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  box-shadow:0 12px 35px rgba(250,204,21,.25);
+  transition:transform .12s ease, filter .2s ease, opacity .2s ease;
+}
+button:active{transform:scale(.985)}
+button:disabled{opacity:.55; cursor:not-allowed}
+body.torch-on button{
+  background:linear-gradient(135deg,#334155,#64748b);
+  color:white;
+  box-shadow:none;
+}
+.controls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:14px;
+}
+.small{
+  min-height:52px;
+  font-size:16px;
+  color:var(--text);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:none;
+}
+.status{
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  text-align:right;
+}
+.status.ok{color:#bbf7d0;border:1px solid rgba(34,197,94,.25)}
+.status.err{color:#fecaca;border:1px solid rgba(239,68,68,.28)}
+.note{
+  margin-top:14px;
+  font-size:12px;
+  color:#64748b;
+  line-height:1.7;
+}
+.flash{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:rgba(250,204,21,.08);
+  opacity:0;
+  transition:.2s ease;
+}
+body.torch-on .flash{opacity:1}
+@media(max-width:420px){
+  .app{padding:22px;border-radius:26px}
+  h1{font-size:27px}
+}
+</style>
+</head>
+
+<body>
+<div class="flash"></div>
+
+<main class="app">
+  <div class="icon">🔦</div>
+  <h1>كشاف الجالكسي</h1>
+  <p>اضغط تشغيل، وافق على إذن الكاميرا، وسيتم تشغيل فلاش الهاتف إذا كان المتصفح يدعم Torch API.</p>
+
+  <button id="mainBtn">تشغيل الكشاف</button>
+
+  <div class="controls">
+    <button class="small" id="sosBtn">SOS</button>
+    <button class="small" id="blinkBtn">وميض</button>
+  </div>
+
+  <div id="status" class="status">جاهز. افتح الصفحة من GitHub Pages عبر HTTPS ثم اضغط تشغيل.</div>
+
+  <div class="note">
+    ملاحظة: الفلاش يحتاج إذن الكاميرا. لا يتم تصوير أو حفظ أي شيء.
+  </div>
+</main>
+
+<script>
+let stream = null;
+let track = null;
+let torchOn = false;
+let blinkTimer = null;
+let sosRunning = false;
+
+const mainBtn = document.getElementById("mainBtn");
+const sosBtn = document.getElementById("sosBtn");
+const blinkBtn = document.getElementById("blinkBtn");
+const statusBox = document.getElementById("status");
+
+function setStatus(msg, type=""){
+  statusBox.textContent = msg;
+  statusBox.className = "status " + type;
+}
+
+function setUi(on){
+  torchOn = on;
+  document.body.classList.toggle("torch-on", on);
+  mainBtn.textContent = on ? "إيقاف الكشاف" : "تشغيل الكشاف";
+}
+
+async function initCamera(){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    throw new Error("المتصفح لا يدعم الوصول للكاميرا.");
+  }
+
+  stream = await navigator.mediaDevices.getUserMedia({
+    video: {
+      facingMode: { ideal: "environment" },
+      width: { ideal: 1280 },
+      height: { ideal: 720 }
+    },
+    audio: false
+  });
+
+  track = stream.getVideoTracks()[0];
+
+  const caps = track.getCapabilities ? track.getCapabilities() : {};
+  if(!caps.torch){
+    throw new Error("هذا المتصفح أو الجهاز لا يدعم تشغيل الكشاف من صفحة الويب.");
+  }
+}
+
+async function setTorch(on){
+  if(!track) await initCamera();
+
+  await track.applyConstraints({
+    advanced: [{ torch: on }]
+  });
+
+  setUi(on);
+  setStatus(on ? "الكشاف يعمل الآن." : "تم إيقاف الكشاف.", on ? "ok" : "");
+}
+
+function stopEffects(){
+  if(blinkTimer){
+    clearInterval(blinkTimer);
+    blinkTimer = null;
+  }
+  sosRunning = false;
+  blinkBtn.textContent = "وميض";
+  sosBtn.textContent = "SOS";
+}
+
+mainBtn.addEventListener("click", async () => {
+  try{
+    stopEffects();
+    mainBtn.disabled = true;
+    await setTorch(!torchOn);
+  }catch(err){
+    setUi(false);
+    setStatus("تعذر تشغيل الكشاف: " + err.message, "err");
+  }finally{
+    mainBtn.disabled = false;
+  }
+});
+
+blinkBtn.addEventListener("click", async () => {
+  try{
+    if(blinkTimer){
+      stopEffects();
+      await setTorch(false);
+      return;
+    }
+
+    if(!track) await initCamera();
+    blinkBtn.textContent = "إيقاف الوميض";
+    setStatus("وضع الوميض يعمل.", "ok");
+
+    blinkTimer = setInterval(async () => {
+      try{ await setTorch(!torchOn); }catch(e){}
+    }, 450);
+  }catch(err){
+    stopEffects();
+    setStatus("تعذر تشغيل الوميض: " + err.message, "err");
+  }
+});
+
+function wait(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+async function pulse(ms){
+  await setTorch(true);
+  await wait(ms);
+  await setTorch(false);
+  await wait(180);
+}
+
+sosBtn.addEventListener("click", async () => {
+  try{
+    if(sosRunning){
+      stopEffects();
+      await setTorch(false);
+      return;
+    }
+
+    if(!track) await initCamera();
+    sosRunning = true;
+    sosBtn.textContent = "إيقاف SOS";
+    setStatus("وضع SOS يعمل.", "ok");
+
+    while(sosRunning){
+      for(let i=0;i<3 && sosRunning;i++) await pulse(180);
+      await wait(250);
+      for(let i=0;i<3 && sosRunning;i++) await pulse(520);
+      await wait(250);
+      for(let i=0;i<3 && sosRunning;i++) await pulse(180);
+      await wait(900);
+    }
+  }catch(err){
+    stopEffects();
+    setStatus("تعذر تشغيل SOS: " + err.message, "err");
+  }
+});
+
+window.addEventListener("pagehide", () => {
+  try{
+    stopEffects();
+    if(track) track.stop();
+    if(stream) stream.getTracks().forEach(t => t.stop());
+  }catch(e){}
+});
+</script>
+</body>
+</html>
