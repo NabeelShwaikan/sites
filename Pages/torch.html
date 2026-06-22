@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>كشاف الجالكسي - موسيقى تفاعلية</title>
-<meta name="theme-color" content="#050816" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كشاف موسيقي للجالكسي</title>
+<meta name="theme-color" content="#050816">
 <style>
 :root{
   --bg:#050816;--card:#0f172a;--gold:#facc15;--gold2:#fde68a;
-  --text:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.10);
+  --text:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.1);
   --ok:#22c55e;--err:#ef4444;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%}
 body{
-  min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
-  color:var(--text);
+  margin:0;min-height:100vh;padding:16px;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
+  color:var(--text);display:flex;align-items:center;justify-content:center;
   background:
-    radial-gradient(circle at 50% 0%, rgba(250,204,21,.18), transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(59,130,246,.12), transparent 35%),
-    linear-gradient(160deg,#020617,#0f172a 58%,#111827);
-  display:flex;align-items:center;justify-content:center;padding:16px;overflow-x:hidden;
+    radial-gradient(circle at top,rgba(250,204,21,.18),transparent 33%),
+    linear-gradient(160deg,#020617,#0f172a 60%,#111827);
 }
 .app{
-  width:min(500px,100%);background:rgba(15,23,42,.80);border:1px solid var(--line);
-  border-radius:30px;padding:20px;box-shadow:0 24px 80px rgba(0,0,0,.45);
-  backdrop-filter:blur(16px);position:relative;z-index:2;
+  width:min(500px,100%);background:rgba(15,23,42,.82);border:1px solid var(--line);
+  border-radius:28px;padding:20px;box-shadow:0 24px 70px rgba(0,0,0,.45);backdrop-filter:blur(14px);
 }
 .top{text-align:center}
 .icon{
@@ -33,119 +29,98 @@ body{
   font-size:52px;background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.05));
   border:1px solid rgba(250,204,21,.25);transition:.08s ease;
 }
-body.light-on .icon,body.beat .icon{
+body.on .icon,body.beat .icon{
   background:radial-gradient(circle,#fff8c7 0%,#facc15 42%,rgba(250,204,21,.18) 75%);
   box-shadow:0 0 55px rgba(250,204,21,.88),0 0 120px rgba(250,204,21,.35);
   transform:scale(1.045);
 }
-h1{margin:0 0 8px;font-size:25px;letter-spacing:-.4px}
-.desc{margin:0 auto 14px;color:var(--muted);font-size:13px;line-height:1.8}
+h1{font-size:24px;margin:0 0 8px}
+p{font-size:13px;color:var(--muted);line-height:1.8;margin:0 0 14px}
+button{font-family:inherit;cursor:pointer;border:0}
 .primary{
-  width:100%;min-height:62px;border:0;border-radius:21px;font-size:20px;font-weight:900;
-  cursor:pointer;color:#111827;background:linear-gradient(135deg,var(--gold),var(--gold2));
-  box-shadow:0 12px 35px rgba(250,204,21,.25);
+  width:100%;min-height:62px;border-radius:20px;font-size:20px;font-weight:900;
+  color:#111827;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  box-shadow:0 12px 35px rgba(250,204,21,.22);
 }
 .primary.stop{background:linear-gradient(135deg,#334155,#64748b);color:white;box-shadow:none}
-button{font-family:inherit;cursor:pointer}
 button:active{transform:scale(.985)}
 button:disabled{opacity:.55}
-.fileBox{
-  margin-top:12px;padding:14px;border-radius:20px;background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
+.fileBox,.panel{
+  margin-top:12px;padding:13px;border-radius:19px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);
 }
 .fileLabel{
-  display:block;text-align:center;border:1px dashed rgba(250,204,21,.35);border-radius:18px;
-  padding:14px;color:#fde68a;font-weight:800;background:rgba(250,204,21,.07);
+  display:block;text-align:center;border:1px dashed rgba(250,204,21,.38);border-radius:17px;
+  padding:14px;color:#fde68a;font-weight:900;background:rgba(250,204,21,.07);
 }
 input[type=file]{display:none}
-.fileName{margin-top:9px;color:#94a3b8;font-size:12px;text-align:center;word-break:break-word}
-.levels{display:grid;grid-template-columns:1fr;gap:9px;margin-top:12px}
+.fileName{margin-top:9px;text-align:center;color:#94a3b8;font-size:12px;word-break:break-word}
+.levels{display:grid;gap:9px;margin-top:12px}
 .level{
-  border:1px solid var(--line);background:rgba(255,255,255,.065);color:var(--text);
-  border-radius:18px;min-height:56px;text-align:right;padding:10px 13px;
+  min-height:54px;text-align:right;border-radius:17px;border:1px solid var(--line);
+  background:rgba(255,255,255,.065);color:white;padding:10px 13px;
 }
-.level b{display:block;color:#fff;font-size:14px;margin-bottom:3px}
-.level span{display:block;color:#94a3b8;font-size:11px;line-height:1.5}
+.level b{display:block;font-size:14px;margin-bottom:3px}.level span{display:block;font-size:11px;color:#94a3b8;line-height:1.5}
 .level.active{background:rgba(250,204,21,.15);border-color:rgba(250,204,21,.42)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.panel{
-  margin-top:12px;padding:13px;border-radius:20px;background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
+select{
+  width:100%;min-height:44px;border-radius:15px;border:1px solid var(--line);background:#0b1220;color:white;padding:0 10px;
 }
-.panelTitle{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:#cbd5e1;margin-bottom:9px;font-weight:800}
-select{width:100%;min-height:44px;border-radius:15px;border:1px solid var(--line);background:#0b1220;color:var(--text);padding:0 10px;font-size:14px}
 .rangeLabel{display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;margin-bottom:8px}
 input[type=range]{width:100%}
 .visual{
-  margin-top:12px;border-radius:22px;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08);
-  height:145px;overflow:hidden;position:relative;display:flex;align-items:end;gap:3px;padding:12px;
+  margin-top:12px;border-radius:21px;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08);
+  height:135px;display:flex;align-items:end;gap:3px;padding:12px;overflow:hidden;
 }
-.bar{flex:1;min-width:3px;border-radius:99px 99px 0 0;background:linear-gradient(180deg,#fde68a,#facc15);height:4%;opacity:.75}
-.visual::before{
-  content:"";position:absolute;inset:auto 50% 50% auto;width:90px;height:90px;border-radius:50%;
-  transform:translate(50%,50%);border:1px solid rgba(250,204,21,.20);box-shadow:0 0 50px rgba(250,204,21,.12);
-}
+.bar{flex:1;min-width:3px;border-radius:99px 99px 0 0;background:linear-gradient(180deg,#fde68a,#facc15);height:4%;opacity:.8}
 .meters{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.meterCard{background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:8px}
+.meterCard{background:rgba(2,6,23,.36);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:8px}
 .meterCard span{display:flex;justify-content:space-between;color:#94a3b8;font-size:11px;margin-bottom:6px}
-.meter{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
-.meter div{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#facc15,#fde68a);transition:width .04s linear}
+.meter{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.meter div{height:100%;width:0%;background:linear-gradient(90deg,#facc15,#fde68a)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
 .stat{background:rgba(2,6,23,.42);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:10px 6px;text-align:center}
-.stat b{display:block;font-size:17px;color:#fde68a;margin-bottom:2px}.stat span{font-size:11px;color:#94a3b8}
-.status{margin-top:12px;padding:13px 15px;border-radius:18px;background:rgba(255,255,255,.06);color:var(--muted);font-size:13px;line-height:1.75;text-align:right}
+.stat b{display:block;color:#fde68a;font-size:17px}.stat span{font-size:11px;color:#94a3b8}
+.status{margin-top:12px;padding:13px 15px;border-radius:18px;background:rgba(255,255,255,.06);color:#94a3b8;font-size:13px;line-height:1.75;text-align:right}
 .status.ok{color:#bbf7d0;border:1px solid rgba(34,197,94,.25)}.status.err{color:#fecaca;border:1px solid rgba(239,68,68,.28)}
-.note{margin-top:12px;color:#64748b;font-size:11px;line-height:1.7;text-align:center}
-.flash{position:fixed;inset:0;pointer-events:none;z-index:1;background:rgba(250,204,21,.06);opacity:0;transition:.05s ease}
-body.light-on .flash,body.beat .flash{opacity:1}
-@media(max-width:420px){.app{padding:17px;border-radius:25px}h1{font-size:23px}.visual{height:128px}.level{min-height:52px}}
+.note{text-align:center;margin-top:12px;color:#64748b;font-size:11px;line-height:1.7}
+.flash{position:fixed;inset:0;pointer-events:none;background:rgba(250,204,21,.06);opacity:0;transition:.05s}
+body.on .flash,body.beat .flash{opacity:1}
 </style>
 </head>
 <body>
 <div class="flash"></div>
-
 <main class="app">
   <section class="top">
     <div class="icon">🔦</div>
-    <h1>كشاف يتفاعل مع ملف موسيقى</h1>
-    <p class="desc">اختر ملفًا صوتيًا ثم شغّل. الصفحة تحلل الموسيقى وتحوّلها إلى وميض كشاف وعرض ضوئي.</p>
+    <h1>كشاف موسيقي للجالكسي</h1>
+    <p>اختر ملف موسيقى، ثم اضغط تشغيل. هذه النسخة تستخدم تحليلًا مباشرًا للملف بدل عنصر الصوت لتعمل بثبات أعلى.</p>
     <button id="mainBtn" class="primary">تشغيل</button>
   </section>
 
   <div class="fileBox">
-    <label class="fileLabel" for="audioFile">🎵 اختر ملف موسيقى MP3 / M4A / WAV</label>
-    <input id="audioFile" type="file" accept="audio/*" />
-    <div id="fileName" class="fileName">لم يتم اختيار ملف بعد</div>
+    <label class="fileLabel" for="audioFile">🎵 اختر ملف موسيقى</label>
+    <input id="audioFile" type="file" accept="audio/*">
+    <div id="fileName" class="fileName">لم يتم اختيار ملف</div>
   </div>
 
   <div class="levels">
-    <button class="level active" data-level="1">
-      <b>المستوى 1: الإيقاع العام</b>
-      <span>الكشاف يومض مع الضربات القوية فقط. مناسب وآمن نسبيًا.</span>
-    </button>
-    <button class="level" data-level="2">
-      <b>المستوى 2: Bass / Mid / Treble</b>
-      <span>تحليل الجهير والمتوسط والحاد، والوميض حسب قوة كل نطاق.</span>
-    </button>
-    <button class="level" data-level="3">
-      <b>المستوى 3: عرض ضوئي كامل</b>
-      <span>طيف صوتي + وميض ذكي مع الضربات القوية فقط لتقليل استهلاك الفلاش.</span>
-    </button>
+    <button class="level active" data-level="1"><b>المستوى 1: الإيقاع العام</b><span>وميض مع الضربات القوية فقط.</span></button>
+    <button class="level" data-level="2"><b>المستوى 2: Bass / Mid / Treble</b><span>تحليل نطاقات الصوت وتفاعل أدق.</span></button>
+    <button class="level" data-level="3"><b>المستوى 3: عرض ضوئي كامل</b><span>طيف صوتي كامل + وميض ذكي.</span></button>
   </div>
 
   <div class="grid">
     <div class="panel">
-      <div class="panelTitle"><span>المؤقت</span></div>
+      <div class="rangeLabel"><span>المؤقت</span></div>
       <select id="timer">
         <option value="0">بدون مؤقت</option>
         <option value="30">30 ثانية</option>
         <option value="60">دقيقة</option>
         <option value="300">5 دقائق</option>
-        <option value="600">10 دقائق</option>
       </select>
     </div>
     <div class="panel">
-      <div class="panelTitle"><span>الحساسية</span></div>
+      <div class="rangeLabel"><span>الحساسية</span></div>
       <select id="sensitivity">
         <option value="1.25">هادئ</option>
         <option value="1.00" selected>طبيعي</option>
@@ -156,13 +131,8 @@ body.light-on .flash,body.beat .flash{opacity:1}
   </div>
 
   <div class="panel">
-    <div class="rangeLabel"><span>مستوى الصوت</span><b id="volumeText">50%</b></div>
-    <input id="volume" type="range" min="0" max="100" value="50" />
-  </div>
-
-  <div class="panel">
-    <div class="rangeLabel"><span>تقدم الموسيقى</span><b id="progressText">00:00 / 00:00</b></div>
-    <input id="progress" type="range" min="0" max="1000" value="0" />
+    <div class="rangeLabel"><span>الصوت</span><b id="volumeText">55%</b></div>
+    <input id="volume" type="range" min="0" max="100" value="55">
   </div>
 
   <div class="visual" id="visual"></div>
@@ -174,64 +144,58 @@ body.light-on .flash,body.beat .flash{opacity:1}
   </div>
 
   <div class="stats">
-    <div class="stat"><b id="timeStat">00:00</b><span>مدة التشغيل</span></div>
-    <div class="stat"><b id="flashStat">0</b><span>عدد الومضات</span></div>
+    <div class="stat"><b id="timeStat">00:00</b><span>المدة</span></div>
+    <div class="stat"><b id="flashStat">0</b><span>الومضات</span></div>
     <div class="stat"><b id="levelStat">1</b><span>المستوى</span></div>
   </div>
 
-  <div id="status" class="status">جاهز. اختر ملف موسيقى ثم اضغط تشغيل.</div>
-  <div class="note">لا يتم رفع الملف أو حفظه. التحليل يتم داخل المتصفح فقط. الاستخدام الطويل للفلاش قد يسبب حرارة.</div>
+  <div id="status" class="status">اختر ملف موسيقى ثم اضغط تشغيل.</div>
+  <div class="note">يفضل Chrome على أندرويد. لا يتم رفع الملف أو حفظه.</div>
 </main>
 
-<audio id="audio" crossorigin="anonymous"></audio>
-
 <script>
-let stream=null, track=null, audioCtx=null, analyser=null, source=null, gainNode=null;
-let running=false, rafId=null, autoStopTimer=null, statsTimer=null;
-let level=1, flashes=0, startedAt=0, lastFlash=0, lastStrong=0;
-let bars=[];
 const $=id=>document.getElementById(id);
-const audio=$("audio"), mainBtn=$("mainBtn"), statusBox=$("status");
-const fileInput=$("audioFile"), fileName=$("fileName"), visual=$("visual");
-const progress=$("progress"), progressText=$("progressText"), volume=$("volume"), volumeText=$("volumeText");
-const bassMeter=$("bassMeter"), midMeter=$("midMeter"), trebleMeter=$("trebleMeter");
+let audioCtx=null, analyser=null, gainNode=null, sourceNode=null, audioBuffer=null;
+let cameraStream=null, track=null;
+let running=false, startTime=0, pauseOffset=0, rafId=null, stopTimer=null, statsTimer=null;
+let level=1, flashes=0, lastFlash=0, lastHit=0, bars=[];
+
+const fileInput=$("audioFile"), fileName=$("fileName"), mainBtn=$("mainBtn"), statusBox=$("status");
+const volume=$("volume"), volumeText=$("volumeText"), sensitivity=$("sensitivity"), timer=$("timer");
+const visual=$("visual"), bassMeter=$("bassMeter"), midMeter=$("midMeter"), trebleMeter=$("trebleMeter");
 const bassText=$("bassText"), midText=$("midText"), trebleText=$("trebleText");
 const timeStat=$("timeStat"), flashStat=$("flashStat"), levelStat=$("levelStat");
-const timer=$("timer"), sensitivity=$("sensitivity");
 
-function setStatus(msg,type=""){statusBox.textContent=msg;statusBox.className="status "+type}
-function setLightVisual(on){document.body.classList.toggle("light-on",on)}
-function beatVisual(){document.body.classList.add("beat");setTimeout(()=>document.body.classList.remove("beat"),80)}
-function fmt(sec){sec=isFinite(sec)?Math.floor(sec):0;return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0")}
-function avg(data,start,end){let s=0,c=0;for(let i=start;i<end&&i<data.length;i++){s+=data[i];c++}return c?s/c:0}
+function status(msg,type=""){statusBox.textContent=msg;statusBox.className="status "+type}
+function fmt(s){s=Math.max(0,Math.floor(s||0));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
 function pct(v){return Math.max(0,Math.min(100,v))}
+function avg(data,a,b){let s=0,c=0;for(let i=a;i<b&&i<data.length;i++){s+=data[i];c++}return c?s/c:0}
+function beatVisual(){document.body.classList.add("beat");setTimeout(()=>document.body.classList.remove("beat"),75)}
+function setLight(on){document.body.classList.toggle("on",on)}
 
-async function initTorch(){
+async function initCamera(){
   if(track) return;
   if(!navigator.mediaDevices?.getUserMedia) throw new Error("المتصفح لا يدعم الكاميرا.");
-  stream=await navigator.mediaDevices.getUserMedia({
-    video:{facingMode:{ideal:"environment"},width:{ideal:1280},height:{ideal:720}},
-    audio:false
-  });
-  track=stream.getVideoTracks()[0];
+  cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}},audio:false});
+  track=cameraStream.getVideoTracks()[0];
   const caps=track.getCapabilities?track.getCapabilities():{};
-  if(!caps.torch) throw new Error("الجهاز أو المتصفح لا يدعم تشغيل الكشاف من صفحة الويب.");
+  if(!caps.torch) throw new Error("Torch API غير مدعوم في هذا المتصفح أو الجهاز.");
 }
 async function torch(on){
-  await initTorch();
+  await initCamera();
   await track.applyConstraints({advanced:[{torch:on}]});
-  setLightVisual(on);
+  setLight(on);
 }
-async function flash(duration=70){
+async function flash(dur=70){
   const now=Date.now();
-  if(now-lastFlash<105) return;
+  if(now-lastFlash<115) return;
   lastFlash=now;
   try{
     await torch(true);
     flashes++;
     flashStat.textContent=flashes;
-    setTimeout(()=>torch(false).catch(()=>setLightVisual(false)),duration);
-  }catch(e){setStatus("تعذر تشغيل الكشاف: "+e.message,"err")}
+    setTimeout(()=>torch(false).catch(()=>setLight(false)),dur);
+  }catch(e){status("تعذر تشغيل الفلاش: "+e.message,"err")}
 }
 function initAudio(){
   if(audioCtx) return;
@@ -240,40 +204,48 @@ function initAudio(){
   analyser.fftSize=1024;
   gainNode=audioCtx.createGain();
   gainNode.gain.value=Number(volume.value)/100;
-  source=audioCtx.createMediaElementSource(audio);
-  source.connect(analyser);
-  analyser.connect(gainNode);
   gainNode.connect(audioCtx.destination);
 }
-function createBars(){
-  visual.innerHTML="";
-  bars=[];
-  const count=42;
-  for(let i=0;i<count;i++){
+async function loadFile(file){
+  initAudio();
+  const arr=await file.arrayBuffer();
+  audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));
+  pauseOffset=0;
+  status("تم تحميل الملف. اضغط تشغيل.","ok");
+}
+function startSource(offset=0){
+  if(sourceNode) try{sourceNode.stop()}catch(e){}
+  sourceNode=audioCtx.createBufferSource();
+  sourceNode.buffer=audioBuffer;
+  sourceNode.connect(analyser);
+  analyser.connect(gainNode);
+  sourceNode.onended=()=>{ if(running) stop(true); };
+  sourceNode.start(0, offset);
+}
+function makeBars(){
+  visual.innerHTML="";bars=[];
+  for(let i=0;i<42;i++){
     const b=document.createElement("div");
     b.className="bar";
-    visual.appendChild(b);
-    bars.push(b);
+    visual.appendChild(b);bars.push(b);
   }
 }
-function updateVisual(data){
-  const step=Math.floor(data.length/bars.length);
-  bars.forEach((bar,i)=>{
+function drawBars(data){
+  const step=Math.floor(data.length/bars.length)||1;
+  bars.forEach((b,i)=>{
     const v=avg(data,i*step,(i+1)*step);
-    bar.style.height=Math.max(4,Math.min(100,v/2.4))+"%";
-    bar.style.opacity= level===3 ? ".95" : ".45";
+    b.style.height=Math.max(4,Math.min(100,v/2.4))+"%";
+    b.style.opacity=level===3?".95":".5";
   });
 }
-function analyzeLoop(){
+function loop(){
   const data=new Uint8Array(analyser.frequencyBinCount);
-  const loop=()=>{
+  const run=()=>{
     if(!running) return;
     analyser.getByteFrequencyData(data);
-    updateVisual(data);
+    drawBars(data);
 
-    const bass=avg(data,2,28);
-    const mid=avg(data,30,120);
-    const treble=avg(data,130,260);
+    const bass=avg(data,2,28), mid=avg(data,30,120), treble=avg(data,130,260);
     const overall=(bass*1.25+mid*.75+treble*.45)/2.45;
     const sens=Number(sensitivity.value);
 
@@ -281,75 +253,70 @@ function analyzeLoop(){
     bassText.textContent=Math.round(bass); midText.textContent=Math.round(mid); trebleText.textContent=Math.round(treble);
 
     const now=Date.now();
-    let hit=false, dur=65;
+    let hit=false,dur=65;
+    if(level===1){ hit=overall>(70*sens)&&bass>(58*sens); dur=65; }
+    else if(level===2){ hit=bass>(65*sens)||(mid>(90*sens)&&now-lastHit>220)||treble>(120*sens); dur=bass>mid?85:55; }
+    else { hit=bass>(60*sens)&&overall>(56*sens); dur=bass>115?95:60; }
 
-    if(level===1){
-      hit = overall > (72*sens) && bass > (60*sens);
-      dur = 65;
-    }else if(level===2){
-      hit = bass > (68*sens) || (mid > (92*sens) && now-lastStrong>220) || treble > (120*sens);
-      dur = bass > mid ? 85 : 55;
-    }else{
-      hit = bass > (62*sens) && overall > (58*sens);
-      dur = bass > 115 ? 95 : 60;
+    if(hit && now-lastHit>130){
+      lastHit=now; beatVisual(); flash(dur);
     }
 
-    if(hit && now-lastStrong>130){
-      lastStrong=now;
-      beatVisual();
-      flash(dur);
-    }
-
-    progress.value = audio.duration ? Math.round((audio.currentTime/audio.duration)*1000) : 0;
-    progressText.textContent = fmt(audio.currentTime)+" / "+fmt(audio.duration);
-    rafId=requestAnimationFrame(loop);
+    rafId=requestAnimationFrame(run);
   };
-  loop();
+  run();
 }
 async function start(){
-  if(!audio.src) throw new Error("اختر ملف موسيقى أولًا.");
+  if(!audioBuffer) throw new Error("اختر ملف موسيقى أولًا.");
   initAudio();
   if(audioCtx.state==="suspended") await audioCtx.resume();
-  await initTorch();
+  await initCamera();
 
-  running=true; flashes=0; startedAt=Date.now(); lastFlash=0; lastStrong=0;
+  running=true; flashes=0; lastFlash=0; lastHit=0;
   flashStat.textContent="0"; levelStat.textContent=String(level);
+  startTime=audioCtx.currentTime-pauseOffset;
+  startSource(pauseOffset);
+  loop();
+  statsTimer=setInterval(()=>{
+    const t=audioCtx.currentTime-startTime;
+    timeStat.textContent=fmt(t)+" / "+fmt(audioBuffer.duration);
+    if(t>=audioBuffer.duration) stop(true);
+  },300);
+
+  const sec=Number(timer.value);
+  if(sec>0) stopTimer=setTimeout(()=>{stop(false);status("تم الإيقاف حسب المؤقت.","ok")},sec*1000);
+
   mainBtn.textContent="إيقاف"; mainBtn.classList.add("stop");
-  setStatus("يعمل الآن: تحليل الموسيقى وتفاعل الكشاف.","ok");
-
-  const seconds=Number(timer.value);
-  if(seconds>0) autoStopTimer=setTimeout(()=>{stop();setStatus("تم الإيقاف تلقائيًا حسب المؤقت.","ok")},seconds*1000);
-
-  statsTimer=setInterval(()=>{timeStat.textContent=fmt((Date.now()-startedAt)/1000)},500);
-  await audio.play();
-  analyzeLoop();
+  status("يعمل الآن.","ok");
 }
-function stop(){
+function stop(ended=false){
   running=false;
   if(rafId) cancelAnimationFrame(rafId);
-  clearTimeout(autoStopTimer); clearInterval(statsTimer);
-  audio.pause();
-  torch(false).catch(()=>setLightVisual(false));
+  clearInterval(statsTimer); clearTimeout(stopTimer);
+  if(audioCtx && !ended) pauseOffset=Math.min(audioBuffer?.duration||0, audioCtx.currentTime-startTime);
+  if(ended) pauseOffset=0;
+  if(sourceNode) try{sourceNode.stop()}catch(e){}
+  torch(false).catch(()=>setLight(false));
   mainBtn.textContent="تشغيل"; mainBtn.classList.remove("stop");
-  setStatus("تم الإيقاف.");
+  if(ended) status("انتهى تشغيل الملف.","ok"); else status("تم الإيقاف.");
 }
-fileInput.addEventListener("change",()=>{
-  const file=fileInput.files?.[0];
-  if(!file) return;
-  if(audio.src) URL.revokeObjectURL(audio.src);
-  audio.src=URL.createObjectURL(file);
-  fileName.textContent=file.name;
-  setStatus("تم اختيار الملف. اضغط تشغيل.","ok");
+fileInput.addEventListener("change",async()=>{
+  try{
+    const file=fileInput.files?.[0];
+    if(!file) return;
+    if(running) stop(false);
+    fileName.textContent=file.name;
+    status("جاري قراءة الملف...");
+    await loadFile(file);
+    timeStat.textContent="00:00 / "+fmt(audioBuffer.duration);
+  }catch(e){status("تعذر قراءة الملف: "+e.message,"err")}
 });
 mainBtn.addEventListener("click",async()=>{
   try{
     mainBtn.disabled=true;
-    if(running) stop();
-    else await start();
-  }catch(e){
-    running=false;
-    setStatus("تعذر التشغيل: "+e.message,"err");
-  }finally{mainBtn.disabled=false}
+    if(running) stop(false); else await start();
+  }catch(e){running=false;status("تعذر التشغيل: "+e.message,"err")}
+  finally{mainBtn.disabled=false}
 });
 document.querySelectorAll(".level").forEach(btn=>{
   btn.addEventListener("click",()=>{
@@ -357,26 +324,23 @@ document.querySelectorAll(".level").forEach(btn=>{
     document.querySelectorAll(".level").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
     levelStat.textContent=String(level);
-    setStatus("تم اختيار المستوى "+level+".","ok");
+    status("تم اختيار المستوى "+level+".","ok");
   });
 });
 volume.addEventListener("input",()=>{
   volumeText.textContent=volume.value+"%";
   if(gainNode) gainNode.gain.value=Number(volume.value)/100;
 });
-progress.addEventListener("input",()=>{
-  if(audio.duration) audio.currentTime=(Number(progress.value)/1000)*audio.duration;
-});
-audio.addEventListener("ended",()=>{stop();setStatus("انتهى تشغيل الموسيقى.","ok")});
 window.addEventListener("pagehide",()=>{
   try{
-    stop();
+    running=false;
+    if(sourceNode) sourceNode.stop();
     if(track) track.stop();
-    if(stream) stream.getTracks().forEach(t=>t.stop());
+    if(cameraStream) cameraStream.getTracks().forEach(t=>t.stop());
     if(audioCtx) audioCtx.close();
   }catch(e){}
 });
-createBars();
+makeBars();
 </script>
 </body>
 </html>
