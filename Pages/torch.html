@@ -9,420 +9,485 @@
 :root{
   --bg:#050816;
   --card:#0f172a;
+  --card2:#111827;
   --gold:#facc15;
   --gold2:#fde68a;
   --text:#f8fafc;
   --muted:#94a3b8;
-  --danger:#ef4444;
+  --line:rgba(255,255,255,.10);
   --ok:#22c55e;
+  --err:#ef4444;
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
 body{
-  margin:0;
   min-height:100vh;
   font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
-  background:
-    radial-gradient(circle at 50% 15%, rgba(250,204,21,.18), transparent 30%),
-    linear-gradient(160deg,#020617,#0f172a 55%,#111827);
   color:var(--text);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(250,204,21,.18), transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(59,130,246,.12), transparent 35%),
+    linear-gradient(160deg,#020617,#0f172a 58%,#111827);
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:22px;
-  overflow:hidden;
+  padding:18px;
+  overflow-x:hidden;
 }
 .app{
-  width:min(460px,100%);
-  background:rgba(15,23,42,.76);
-  border:1px solid rgba(255,255,255,.10);
+  width:min(480px,100%);
+  background:rgba(15,23,42,.78);
+  border:1px solid var(--line);
   border-radius:30px;
-  padding:26px;
+  padding:22px;
   box-shadow:0 24px 80px rgba(0,0,0,.45);
   backdrop-filter:blur(16px);
-  text-align:center;
   position:relative;
   z-index:2;
 }
+.top{text-align:center}
 .icon{
-  width:116px;
-  height:116px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:56px;
-  background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.06));
+  width:112px;height:112px;margin:0 auto 14px;border-radius:50%;
+  display:grid;place-items:center;font-size:54px;
+  background:linear-gradient(180deg,rgba(250,204,21,.22),rgba(250,204,21,.05));
   border:1px solid rgba(250,204,21,.25);
-  box-shadow:0 0 0 rgba(250,204,21,0);
-  transition:.12s ease;
+  transition:.09s ease;
 }
-body.torch-on .icon,
+body.light-on .icon,
 body.beat .icon{
-  background:radial-gradient(circle,#fff8c7 0%,#facc15 45%,rgba(250,204,21,.18) 72%);
-  box-shadow:0 0 55px rgba(250,204,21,.85),0 0 120px rgba(250,204,21,.35);
+  background:radial-gradient(circle,#fff8c7 0%,#facc15 42%,rgba(250,204,21,.18) 75%);
+  box-shadow:0 0 55px rgba(250,204,21,.88),0 0 120px rgba(250,204,21,.35);
   transform:scale(1.045);
 }
-h1{
-  margin:0 0 8px;
-  font-size:29px;
-  letter-spacing:-.5px;
-}
-p{
-  margin:0 auto 18px;
-  color:var(--muted);
-  line-height:1.8;
-  font-size:15px;
-}
-button{
-  width:100%;
-  min-height:68px;
-  border:0;
-  border-radius:22px;
-  font-size:22px;
-  font-weight:800;
-  cursor:pointer;
-  color:#111827;
+h1{margin:0 0 8px;font-size:27px;letter-spacing:-.4px}
+.desc{margin:0 auto 16px;color:var(--muted);font-size:14px;line-height:1.8}
+.primary{
+  width:100%;min-height:64px;border:0;border-radius:21px;
+  font-size:21px;font-weight:900;cursor:pointer;color:#111827;
   background:linear-gradient(135deg,var(--gold),var(--gold2));
   box-shadow:0 12px 35px rgba(250,204,21,.25);
-  transition:transform .12s ease, filter .2s ease, opacity .2s ease;
 }
+.primary.stop{background:linear-gradient(135deg,#334155,#64748b);color:white;box-shadow:none}
+button{font-family:inherit}
 button:active{transform:scale(.985)}
-button:disabled{opacity:.55; cursor:not-allowed}
-.controls{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:14px;
+button:disabled{opacity:.55}
+.quick{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;
 }
-.small{
-  min-height:52px;
-  font-size:15px;
-  color:var(--text);
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:none;
+.quick button,.chip,.selectLike{
+  border:1px solid var(--line);background:rgba(255,255,255,.07);
+  color:var(--text);border-radius:17px;min-height:50px;font-weight:800;
 }
+.quick button.active,.chip.active{
+  background:rgba(250,204,21,.16);
+  border-color:rgba(250,204,21,.36);
+  color:#fde68a;
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.panel{
+  margin-top:12px;padding:14px;border-radius:20px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);
+}
+.panelTitle{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:14px;color:#cbd5e1;margin-bottom:10px;font-weight:800;
+}
+select,input[type=range]{
+  width:100%;
+}
+select{
+  min-height:46px;border-radius:15px;border:1px solid var(--line);
+  background:#0b1220;color:var(--text);padding:0 12px;font-size:15px;
+}
+.rangeLabel{display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;margin-bottom:8px}
 .status{
-  margin-top:18px;
-  padding:14px 16px;
-  border-radius:18px;
-  background:rgba(255,255,255,.06);
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.7;
-  text-align:right;
+  margin-top:12px;padding:13px 15px;border-radius:18px;
+  background:rgba(255,255,255,.06);color:var(--muted);
+  font-size:13px;line-height:1.75;text-align:right;
 }
 .status.ok{color:#bbf7d0;border:1px solid rgba(34,197,94,.25)}
 .status.err{color:#fecaca;border:1px solid rgba(239,68,68,.28)}
-.sliderBox{
-  margin-top:16px;
-  padding:14px;
-  border-radius:18px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-  text-align:right;
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;
 }
-.sliderBox label{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:#cbd5e1;
-  font-size:14px;
-  margin-bottom:10px;
+.stat{
+  background:rgba(2,6,23,.42);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;padding:10px 6px;text-align:center;
 }
-input[type=range]{width:100%}
-.note{
-  margin-top:14px;
-  font-size:12px;
-  color:#64748b;
-  line-height:1.7;
-}
+.stat b{display:block;font-size:18px;color:#fde68a;margin-bottom:2px}
+.stat span{font-size:11px;color:#94a3b8}
+.note{margin-top:12px;color:#64748b;font-size:11px;line-height:1.7;text-align:center}
 .flash{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:rgba(250,204,21,.06);
-  opacity:0;
-  transition:.08s ease;
-  z-index:1;
+  position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:rgba(250,204,21,.06);opacity:0;transition:.06s ease;
 }
-body.torch-on .flash,
-body.beat .flash{opacity:1}
-.ring{
-  position:fixed;
-  width:52vmin;
-  height:52vmin;
-  border-radius:50%;
-  border:1px solid rgba(250,204,21,.18);
-  opacity:.35;
-  z-index:0;
-  animation:float 5s ease-in-out infinite;
+body.light-on .flash,body.beat .flash{opacity:1}
+.meter{
+  height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px;
 }
-.ring.r2{width:74vmin;height:74vmin;animation-duration:7s;opacity:.18}
-@keyframes float{
-  0%,100%{transform:scale(.92)}
-  50%{transform:scale(1.08)}
+.meter > div{
+  width:0%;height:100%;background:linear-gradient(90deg,#facc15,#fde68a);
+  transition:width .06s linear;
 }
 @media(max-width:420px){
-  .app{padding:22px;border-radius:26px}
-  h1{font-size:26px}
+  .app{padding:18px;border-radius:25px}
+  h1{font-size:24px}
+  .quick button{font-size:13px}
 }
 </style>
 </head>
-
 <body>
-<div class="ring"></div>
-<div class="ring r2"></div>
 <div class="flash"></div>
 
 <main class="app">
-  <div class="icon">🔦</div>
-  <h1>كشاف يتفاعل مع نغمة</h1>
-  <p>اضغط تشغيل مرة واحدة. ستبدأ النغمة، ويتفاعل الكشاف والواجهة مع الإيقاع.</p>
+  <section class="top">
+    <div class="icon">🔦</div>
+    <h1>كشاف الجالكسي التفاعلي</h1>
+    <p class="desc">نغمة داخلية، تفاعل مع موسيقى الميكروفون، أنماط جاهزة، مؤقت، وإحصائيات مباشرة.</p>
+    <button id="mainBtn" class="primary">تشغيل</button>
+  </section>
 
-  <button id="mainBtn">تشغيل النغمة والكشاف</button>
-
-  <div class="controls">
-    <button class="small" id="torchOnlyBtn">كشاف ثابت</button>
-    <button class="small" id="patternBtn">تغيير الإيقاع</button>
+  <div class="quick">
+    <button id="quickFast">⚡ سريع</button>
+    <button id="quickMusic">🎵 موسيقى</button>
+    <button id="quickSOS">🆘 SOS</button>
   </div>
 
-  <div class="sliderBox">
-    <label>
-      <span>سرعة النغمة</span>
-      <b id="tempoLabel">120 BPM</b>
-    </label>
-    <input id="tempo" type="range" min="70" max="180" value="120" />
+  <div class="grid">
+    <div class="panel">
+      <div class="panelTitle"><span>النمط</span></div>
+      <select id="pattern">
+        <option value="pulse">نبض</option>
+        <option value="party">حفلة</option>
+        <option value="strobeFast">ستروب سريع</option>
+        <option value="strobeSlow">ستروب بطيء</option>
+        <option value="sos">SOS</option>
+        <option value="wave">موجة</option>
+        <option value="alert">تنبيه</option>
+      </select>
+    </div>
+
+    <div class="panel">
+      <div class="panelTitle"><span>المؤقت</span></div>
+      <select id="timer">
+        <option value="0">بدون مؤقت</option>
+        <option value="30">30 ثانية</option>
+        <option value="60">دقيقة</option>
+        <option value="300">5 دقائق</option>
+        <option value="600">10 دقائق</option>
+      </select>
+    </div>
   </div>
 
-  <div class="sliderBox">
-    <label>
-      <span>مستوى الصوت</span>
-      <b id="volLabel">35%</b>
-    </label>
+  <div class="panel">
+    <div class="rangeLabel">
+      <span>شدة الإيقاع</span>
+      <b id="intensityText">متوسط</b>
+    </div>
+    <input id="intensity" type="range" min="1" max="4" value="2" />
+  </div>
+
+  <div class="panel">
+    <div class="rangeLabel">
+      <span>BPM / سرعة النغمة</span>
+      <b id="bpmText">120</b>
+    </div>
+    <input id="bpm" type="range" min="60" max="190" value="120" />
+  </div>
+
+  <div class="panel">
+    <div class="rangeLabel">
+      <span>الصوت</span>
+      <b id="volumeText">35%</b>
+    </div>
     <input id="volume" type="range" min="0" max="100" value="35" />
   </div>
 
-  <div id="status" class="status">جاهز. افتح الصفحة من GitHub Pages واضغط تشغيل.</div>
-
-  <div class="note">
-    ملاحظة: المتصفح يحتاج ضغطة أولى لتشغيل الصوت وإذن الكاميرا لتشغيل الفلاش.
+  <div class="panel">
+    <div class="panelTitle">
+      <span>توفير البطارية</span>
+      <button id="batteryBtn" class="chip">إيقاف</button>
+    </div>
+    <div style="color:#94a3b8;font-size:12px;line-height:1.7">
+      يقلل كثافة الوميض تلقائيًا عند التشغيل الطويل أو عند انخفاض البطارية إن توفر دعم المتصفح.
+    </div>
   </div>
+
+  <div class="meter"><div id="meterFill"></div></div>
+
+  <div class="stats">
+    <div class="stat"><b id="timeStat">00:00</b><span>مدة التشغيل</span></div>
+    <div class="stat"><b id="flashStat">0</b><span>عدد الومضات</span></div>
+    <div class="stat"><b id="modeStat">نبض</b><span>النمط</span></div>
+  </div>
+
+  <div id="status" class="status">جاهز. عند اختيار وضع الموسيقى سيطلب الميكروفون، وعند تشغيل الكشاف سيطلب الكاميرا.</div>
+
+  <div class="note">لا يتم تسجيل أو حفظ الصوت أو الصورة. الاستخدام الطويل للفلاش قد يسبب حرارة واستهلاك بطارية.</div>
 </main>
 
 <script>
-let stream = null;
-let track = null;
-let torchOn = false;
-let running = false;
-let torchOnly = false;
-let beatTimer = null;
-let audioCtx = null;
-let masterGain = null;
-let patternIndex = 0;
-let beatStep = 0;
+let stream=null, track=null;
+let micStream=null, audioCtx=null, analyser=null, sourceNode=null, gainNode=null;
+let running=false, musicMode=false, batterySaver=false;
+let loopTimer=null, autoStopTimer=null, statsTimer=null, rafId=null;
+let lightOn=false, flashes=0, startedAt=0, beatStep=0;
+let batteryLevel=null;
 
-const patterns = [
-  { name: "إيقاع هادئ", hits: [1,0,1,0,1,0,1,0], freqs:[440,520] },
-  { name: "إيقاع سريع", hits: [1,1,0,1,1,0,1,0], freqs:[520,660] },
-  { name: "SOS نغمي", hits: [1,1,1,0,1,0,1,0,1,1,1,0], freqs:[700,430] }
-];
+const $=id=>document.getElementById(id);
+const mainBtn=$("mainBtn"), statusBox=$("status");
+const pattern=$("pattern"), timer=$("timer"), intensity=$("intensity"), bpm=$("bpm"), volume=$("volume");
+const intensityText=$("intensityText"), bpmText=$("bpmText"), volumeText=$("volumeText");
+const timeStat=$("timeStat"), flashStat=$("flashStat"), modeStat=$("modeStat"), meterFill=$("meterFill");
+const batteryBtn=$("batteryBtn");
 
-const mainBtn = document.getElementById("mainBtn");
-const torchOnlyBtn = document.getElementById("torchOnlyBtn");
-const patternBtn = document.getElementById("patternBtn");
-const tempo = document.getElementById("tempo");
-const volume = document.getElementById("volume");
-const tempoLabel = document.getElementById("tempoLabel");
-const volLabel = document.getElementById("volLabel");
-const statusBox = document.getElementById("status");
+const patternDefs={
+  pulse:{name:"نبض", hits:[1,0,1,0,0,1,0,0], freqs:[420,520], dur:90},
+  party:{name:"حفلة", hits:[1,1,0,1,0,1,1,0], freqs:[520,660,780], dur:70},
+  strobeFast:{name:"ستروب سريع", hits:[1,1,1,1,1,1,1,1], freqs:[760], dur:45},
+  strobeSlow:{name:"ستروب بطيء", hits:[1,0,0,0,1,0,0,0], freqs:[380], dur:140},
+  sos:{name:"SOS", hits:[1,1,1,0,2,0,2,0,2,0,1,1,1,0,0,0], freqs:[700,430], dur:130},
+  wave:{name:"موجة", hits:[1,0,1,0,1,1,0,0,1,0,0,0], freqs:[360,430,520,610], dur:85},
+  alert:{name:"تنبيه", hits:[1,0,1,1,0,0,1,0], freqs:[880,540], dur:75}
+};
 
-function setStatus(msg, type=""){
-  statusBox.textContent = msg;
-  statusBox.className = "status " + type;
+function setStatus(msg,type=""){
+  statusBox.textContent=msg;
+  statusBox.className="status "+type;
 }
-
-function setUi(on){
-  torchOn = on;
-  document.body.classList.toggle("torch-on", on);
-}
-
-function beatVisual(){
+function visualBeat(){
   document.body.classList.add("beat");
-  setTimeout(()=>document.body.classList.remove("beat"), 100);
+  setTimeout(()=>document.body.classList.remove("beat"),90);
 }
-
-async function initCamera(){
-  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-    throw new Error("المتصفح لا يدعم الوصول للكاميرا.");
-  }
-
-  stream = await navigator.mediaDevices.getUserMedia({
-    video: {
-      facingMode: { ideal: "environment" },
-      width: { ideal: 1280 },
-      height: { ideal: 720 }
-    },
-    audio: false
+function setVisualLight(on){
+  lightOn=on;
+  document.body.classList.toggle("light-on",on);
+}
+async function initTorch(){
+  if(track) return;
+  if(!navigator.mediaDevices?.getUserMedia) throw new Error("المتصفح لا يدعم الكاميرا.");
+  stream=await navigator.mediaDevices.getUserMedia({
+    video:{facingMode:{ideal:"environment"},width:{ideal:1280},height:{ideal:720}},
+    audio:false
   });
-
-  track = stream.getVideoTracks()[0];
-
-  const caps = track.getCapabilities ? track.getCapabilities() : {};
-  if(!caps.torch){
-    throw new Error("هذا المتصفح أو الجهاز لا يدعم تشغيل الكشاف من صفحة الويب.");
+  track=stream.getVideoTracks()[0];
+  const caps=track.getCapabilities?track.getCapabilities():{};
+  if(!caps.torch) throw new Error("الجهاز أو المتصفح لا يدعم Torch API.");
+}
+async function torch(on){
+  await initTorch();
+  await track.applyConstraints({advanced:[{torch:on}]});
+  setVisualLight(on);
+}
+async function flash(duration=80){
+  if(!running) return;
+  let d=duration;
+  const longRun=(Date.now()-startedAt)>120000;
+  if(batterySaver && (longRun || (batteryLevel!==null && batteryLevel<0.25))) d=Math.min(d,55);
+  try{
+    await torch(true);
+    flashes++;
+    flashStat.textContent=flashes;
+    setTimeout(()=>torch(false).catch(()=>{}),d);
+  }catch(e){
+    setStatus("تعذر تشغيل الكشاف: "+e.message,"err");
   }
 }
-
-async function setTorch(on){
-  if(!track) await initCamera();
-  await track.applyConstraints({ advanced: [{ torch: on }] });
-  setUi(on);
-}
-
 function initAudio(){
   if(audioCtx) return;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  masterGain = audioCtx.createGain();
-  masterGain.gain.value = Number(volume.value) / 100;
-  masterGain.connect(audioCtx.destination);
+  audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  gainNode=audioCtx.createGain();
+  gainNode.gain.value=Number(volume.value)/100;
+  gainNode.connect(audioCtx.destination);
 }
-
-function playTone(freq=440, duration=0.09){
-  if(!audioCtx) return;
-
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-
-  osc.type = "sine";
-  osc.frequency.value = freq;
-
-  const now = audioCtx.currentTime;
-  gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.exponentialRampToValueAtTime(0.7, now + 0.01);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-  osc.connect(gain);
-  gain.connect(masterGain);
-  osc.start(now);
-  osc.stop(now + duration + 0.02);
+function tone(freq=440,dur=.08){
+  if(!audioCtx || musicMode) return;
+  const osc=audioCtx.createOscillator();
+  const g=audioCtx.createGain();
+  osc.type="sine";
+  osc.frequency.value=freq;
+  const now=audioCtx.currentTime;
+  g.gain.setValueAtTime(.0001,now);
+  g.gain.exponentialRampToValueAtTime(.75,now+.01);
+  g.gain.exponentialRampToValueAtTime(.0001,now+dur);
+  osc.connect(g); g.connect(gainNode);
+  osc.start(now); osc.stop(now+dur+.02);
 }
-
-function stopBeat(){
-  if(beatTimer){
-    clearInterval(beatTimer);
-    beatTimer = null;
-  }
-}
-
-function startBeat(){
-  stopBeat();
-  const interval = Math.round(60000 / Number(tempo.value) / 2);
-
-  beatTimer = setInterval(async () => {
-    if(!running || torchOnly) return;
-
-    const pattern = patterns[patternIndex];
-    const hit = pattern.hits[beatStep % pattern.hits.length];
-
-    if(hit){
-      const freq = pattern.freqs[beatStep % pattern.freqs.length];
-      playTone(freq, 0.085);
-      beatVisual();
-
-      try{
-        await setTorch(true);
-        setTimeout(()=>setTorch(false).catch(()=>{}), 90);
-      }catch(e){
-        setStatus("النغمة تعمل، لكن تعذر مزامنة الكشاف: " + e.message, "err");
+function loopPattern(){
+  clearInterval(loopTimer);
+  const interval=Math.max(55, Math.round(60000/Number(bpm.value)/2));
+  loopTimer=setInterval(()=>{
+    if(!running || musicMode) return;
+    const def=patternDefs[pattern.value];
+    const hit=def.hits[beatStep%def.hits.length];
+    const strength=Number(intensity.value);
+    const skip=batterySaver && strength>2 && beatStep%3===0;
+    if(hit && !skip){
+      const freq=def.freqs[beatStep%def.freqs.length];
+      const dur=hit===2 ? def.dur*2.5 : def.dur;
+      tone(freq,Math.min(.18,dur/1000));
+      visualBeat();
+      for(let i=0;i<Math.min(strength,3);i++){
+        setTimeout(()=>flash(dur).catch(()=>{}),i*95);
       }
     }
-
     beatStep++;
-  }, interval);
+  },interval);
 }
-
-mainBtn.addEventListener("click", async () => {
-  try{
-    mainBtn.disabled = true;
-
-    if(running){
-      running = false;
-      stopBeat();
-      await setTorch(false);
-      if(audioCtx) await audioCtx.suspend();
-      mainBtn.textContent = "تشغيل النغمة والكشاف";
-      setStatus("تم الإيقاف.");
-      return;
+async function startMusicMode(){
+  musicMode=true;
+  if(audioCtx?.state==="suspended") await audioCtx.resume();
+  micStream=await navigator.mediaDevices.getUserMedia({audio:true,video:false});
+  analyser=audioCtx.createAnalyser();
+  analyser.fftSize=1024;
+  sourceNode=audioCtx.createMediaStreamSource(micStream);
+  sourceNode.connect(analyser);
+  const data=new Uint8Array(analyser.frequencyBinCount);
+  let lastFlash=0;
+  const run=()=>{
+    if(!running || !musicMode) return;
+    analyser.getByteFrequencyData(data);
+    let bass=0;
+    for(let i=2;i<28;i++) bass+=data[i];
+    bass=bass/26;
+    meterFill.style.width=Math.min(100, bass*1.4)+"%";
+    const threshold=[90,75,60,45][Number(intensity.value)-1] || 75;
+    const now=Date.now();
+    if(bass>threshold && now-lastFlash>130){
+      lastFlash=now;
+      visualBeat();
+      flash(70).catch(()=>{});
     }
-
-    initAudio();
-    if(audioCtx.state === "suspended") await audioCtx.resume();
-    if(!track) await initCamera();
-
-    running = true;
-    torchOnly = false;
-    beatStep = 0;
-    mainBtn.textContent = "إيقاف";
-    torchOnlyBtn.textContent = "كشاف ثابت";
-    setStatus("النغمة تعمل والكشاف يتفاعل مع الإيقاع.", "ok");
-    startBeat();
-
-  }catch(err){
-    running = false;
-    stopBeat();
-    setUi(false);
-    setStatus("تعذر التشغيل: " + err.message, "err");
+    rafId=requestAnimationFrame(run);
+  };
+  run();
+}
+function stopMusicMode(){
+  musicMode=false;
+  if(rafId) cancelAnimationFrame(rafId);
+  rafId=null;
+  meterFill.style.width="0%";
+  if(micStream){
+    micStream.getTracks().forEach(t=>t.stop());
+    micStream=null;
+  }
+}
+function updateStats(){
+  if(!running){timeStat.textContent="00:00";return;}
+  const s=Math.floor((Date.now()-startedAt)/1000);
+  const m=String(Math.floor(s/60)).padStart(2,"0");
+  const ss=String(s%60).padStart(2,"0");
+  timeStat.textContent=`${m}:${ss}`;
+}
+function startStats(){
+  clearInterval(statsTimer);
+  statsTimer=setInterval(updateStats,500);
+}
+function stopAll(){
+  running=false;
+  clearInterval(loopTimer); clearInterval(statsTimer); clearTimeout(autoStopTimer);
+  loopTimer=null; statsTimer=null; autoStopTimer=null;
+  stopMusicMode();
+  torch(false).catch(()=>setVisualLight(false));
+  mainBtn.textContent="تشغيل";
+  mainBtn.classList.remove("stop");
+  setStatus("تم الإيقاف.");
+}
+async function start(){
+  initAudio();
+  if(audioCtx.state==="suspended") await audioCtx.resume();
+  await initTorch();
+  running=true;
+  startedAt=Date.now();
+  flashes=0; beatStep=0;
+  flashStat.textContent="0";
+  modeStat.textContent=musicMode ? "موسيقى" : patternDefs[pattern.value].name;
+  mainBtn.textContent="إيقاف";
+  mainBtn.classList.add("stop");
+  setStatus("يعمل الآن.","ok");
+  startStats();
+  const seconds=Number(timer.value);
+  if(seconds>0){
+    autoStopTimer=setTimeout(()=>{
+      stopAll();
+      setStatus("تم الإيقاف تلقائيًا حسب المؤقت.","ok");
+    },seconds*1000);
+  }
+  if(musicMode) await startMusicMode();
+  else loopPattern();
+}
+mainBtn.addEventListener("click",async()=>{
+  try{
+    mainBtn.disabled=true;
+    if(running) stopAll();
+    else await start();
+  }catch(e){
+    running=false;
+    setStatus("تعذر التشغيل: "+e.message,"err");
   }finally{
-    mainBtn.disabled = false;
+    mainBtn.disabled=false;
   }
 });
-
-torchOnlyBtn.addEventListener("click", async () => {
-  try{
-    if(!track) await initCamera();
-
-    torchOnly = !torchOnly;
-    if(torchOnly){
-      await setTorch(true);
-      torchOnlyBtn.textContent = "إيقاف الثابت";
-      setStatus("الكشاف ثابت. النغمة الإيقاعية متوقفة مؤقتًا.", "ok");
-    }else{
-      await setTorch(false);
-      torchOnlyBtn.textContent = "كشاف ثابت";
-      setStatus(running ? "رجع التفاعل مع الإيقاع." : "تم إيقاف الكشاف الثابت.", running ? "ok" : "");
-    }
-  }catch(err){
-    setStatus("تعذر تشغيل الكشاف الثابت: " + err.message, "err");
+$("quickFast").addEventListener("click",()=>{
+  musicMode=false; pattern.value="strobeFast"; bpm.value=165; intensity.value=3;
+  syncLabels(); markQuick("quickFast"); modeStat.textContent="سريع";
+  if(running) loopPattern();
+});
+$("quickMusic").addEventListener("click",()=>{
+  musicMode=true; markQuick("quickMusic"); modeStat.textContent="موسيقى";
+  if(running){ clearInterval(loopTimer); startMusicMode().catch(e=>setStatus("تعذر تشغيل الميكروفون: "+e.message,"err")); }
+});
+$("quickSOS").addEventListener("click",()=>{
+  musicMode=false; pattern.value="sos"; bpm.value=105; intensity.value=2;
+  syncLabels(); markQuick("quickSOS"); modeStat.textContent="SOS";
+  if(running) loopPattern();
+});
+function markQuick(id){
+  ["quickFast","quickMusic","quickSOS"].forEach(x=>$(x).classList.toggle("active",x===id));
+}
+function syncLabels(){
+  const names=["هادئ","متوسط","قوي","مجنون"];
+  intensityText.textContent=names[Number(intensity.value)-1];
+  bpmText.textContent=bpm.value;
+  volumeText.textContent=volume.value+"%";
+  if(gainNode) gainNode.gain.value=Number(volume.value)/100;
+  modeStat.textContent=musicMode ? "موسيقى" : patternDefs[pattern.value].name;
+}
+[intensity,bpm,volume,pattern].forEach(el=>el.addEventListener("input",()=>{
+  musicMode=false;
+  markQuick("");
+  syncLabels();
+  if(running) loopPattern();
+}));
+timer.addEventListener("input",()=>{
+  if(running){
+    clearTimeout(autoStopTimer);
+    const seconds=Number(timer.value);
+    if(seconds>0) autoStopTimer=setTimeout(()=>{stopAll();setStatus("تم الإيقاف تلقائيًا حسب المؤقت.","ok");},seconds*1000);
   }
 });
-
-patternBtn.addEventListener("click", () => {
-  patternIndex = (patternIndex + 1) % patterns.length;
-  beatStep = 0;
-  patternBtn.textContent = patterns[patternIndex].name;
-  setStatus("تم اختيار: " + patterns[patternIndex].name, "ok");
+batteryBtn.addEventListener("click",()=>{
+  batterySaver=!batterySaver;
+  batteryBtn.textContent=batterySaver?"تشغيل":"إيقاف";
+  batteryBtn.classList.toggle("active",batterySaver);
+  setStatus(batterySaver?"تم تفعيل توفير البطارية.":"تم إيقاف توفير البطارية.",batterySaver?"ok":"");
 });
-
-tempo.addEventListener("input", () => {
-  tempoLabel.textContent = tempo.value + " BPM";
-  if(running) startBeat();
-});
-
-volume.addEventListener("input", () => {
-  volLabel.textContent = volume.value + "%";
-  if(masterGain) masterGain.gain.value = Number(volume.value) / 100;
-});
-
-window.addEventListener("pagehide", () => {
+if(navigator.getBattery){
+  navigator.getBattery().then(b=>{
+    batteryLevel=b.level;
+    b.addEventListener("levelchange",()=>batteryLevel=b.level);
+  }).catch(()=>{});
+}
+window.addEventListener("pagehide",()=>{
   try{
-    running = false;
-    stopBeat();
+    stopMusicMode();
+    clearInterval(loopTimer); clearInterval(statsTimer); clearTimeout(autoStopTimer);
     if(track) track.stop();
-    if(stream) stream.getTracks().forEach(t => t.stop());
+    if(stream) stream.getTracks().forEach(t=>t.stop());
     if(audioCtx) audioCtx.close();
   }catch(e){}
 });
+syncLabels();
 </script>
 </body>
 </html>
