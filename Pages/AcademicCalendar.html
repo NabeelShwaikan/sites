@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>التقويم الدراسي التفاعلي | بوابة مسار</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef5f8;--bg2:#dcecf2;--card:rgba(255,255,255,.86);--text:#16313c;--muted:#61757e;--line:rgba(22,49,60,.14);
+  --primary:#158aa2;--primary2:#0d6174;--accent:#d7a63f;--study:#28a978;--holiday:#e0a83d;--exam:#d35454;--national:#1976d2;--admin:#6b7280;--weekend:#7c3aed;--note:#2563eb;--task:#16a34a;
+  --shadow:0 18px 45px rgba(10,55,70,.14);--radius:22px;
+}
+[data-theme="dark"]{
+  --bg:#071820;--bg2:#102934;--card:rgba(18,45,57,.78);--text:#eaf7fb;--muted:#a8c4cc;--line:rgba(255,255,255,.13);
+  --primary:#20a7c3;--primary2:#158aa2;--accent:#e2bb5d;--shadow:0 22px 50px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:'Almarai','Arial',sans-serif;font-weight:400;line-height:1.75;background:radial-gradient(circle at top right,var(--bg2),var(--bg) 42%,var(--bg));color:var(--text);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(135deg,rgba(21,138,162,.10),transparent 32%),linear-gradient(315deg,rgba(215,166,63,.09),transparent 40%)}
+.container{width:min(1240px,94vw);margin:auto}.hero{padding:24px 0 12px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;gap:14px;align-items:center;min-width:0}.logo{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--primary2));display:grid;place-items:center;color:#fff;font-size:31px;box-shadow:var(--shadow);flex:0 0 auto}
+h1{margin:0;font-size:clamp(25px,4vw,42px);font-weight:800;line-height:1.25;letter-spacing:-.5px}.subtitle{margin:5px 0 0;color:var(--muted);line-height:1.7}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+button,.btn,input,textarea,select{font-family:inherit}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:14px;padding:10px 14px;cursor:pointer;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.06);transition:.18s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{transform:translateY(-2px);border-color:var(--primary)}.btn.primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border:0}.btn.gold{background:linear-gradient(135deg,#f0c86b,var(--accent));color:#3a2a05;border:0}.btn.danger{background:rgba(211,84,84,.12);border-color:rgba(211,84,84,.35)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(13px);overflow:hidden;min-width:0}
+.datetime-card{margin:18px 0;padding:22px 20px;text-align:center;background:linear-gradient(135deg,rgba(21,138,162,.16),rgba(215,166,63,.08))}
+.datetime-top{display:flex;align-items:center;justify-content:center;gap:13px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}
+.datetime-icon{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;font-size:26px}.datetime-day{font-size:21px;font-weight:700;line-height:1.35}.datetime-time{font-size:22px;font-weight:700;color:var(--primary);line-height:1.35}.datetime-h{font-size:20px;font-weight:700;line-height:1.8}.datetime-g{font-size:17px;color:var(--muted);line-height:1.8}
+.status-card{padding:18px;display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:center;background:linear-gradient(135deg,rgba(21,138,162,.16),rgba(255,255,255,.05))}
+.status-title{font-size:24px;font-weight:700;margin:0 0 6px;line-height:1.55}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.chip{border:1px solid var(--line);background:rgba(255,255,255,.16);border-radius:999px;padding:7px 10px;font-weight:700;font-size:13px;color:var(--text);max-width:100%;overflow-wrap:anywhere}
+.progress-wrap{padding:10px}.progress-line{height:18px;border-radius:999px;background:rgba(128,128,128,.18);overflow:hidden;border:1px solid var(--line);margin-top:8px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary2),var(--primary),var(--accent));border-radius:999px;transition:width .8s}
+.tabs{display:flex;gap:8px;overflow:auto;padding:12px 0;margin-top:10px;position:sticky;top:0;z-index:10;background:linear-gradient(var(--bg),rgba(255,255,255,0));scrollbar-width:thin}.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 15px;font-weight:700;cursor:pointer;color:var(--text)}.tab.active{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-color:transparent}
+.panel{display:none;padding:14px 0 34px}.panel.active{display:block}.section-title{font-size:25px;margin:12px 0;font-weight:700;line-height:1.35}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.event{padding:16px;position:relative}.event h3{margin:0 0 8px;font-size:21px;font-weight:700;line-height:1.55;padding-left:58px}.note{color:var(--muted);line-height:1.9;overflow-wrap:anywhere}.status-pill{position:absolute;left:14px;top:14px;border-radius:999px;padding:5px 9px;background:rgba(0,0,0,.08);font-weight:700;font-size:12px}
+.tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;color:#fff;font-weight:700;font-size:12px}.tag.study{background:var(--study)}.tag.holiday{background:var(--holiday);color:#231803}.tag.exam{background:var(--exam)}.tag.national{background:var(--national)}.tag.admin{background:var(--admin)}.tag.weekend{background:var(--weekend)}
+.meta{display:grid;grid-template-columns:1fr;gap:8px;margin:10px 0}.datebox{background:rgba(128,128,128,.10);border:1px solid var(--line);border-radius:14px;padding:10px;line-height:1.7}.datebox b{display:block;color:var(--muted);font-size:12px;margin-bottom:5px;font-weight:700}.dayname{display:block;font-weight:700;color:var(--text)}.hijri-line{display:block;font-weight:700;color:var(--text)}.greg-line{display:block;color:var(--muted);font-weight:400}.range-sep{display:inline-block;color:var(--muted);font-size:12px;margin:4px 0}.event-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.week-summary,.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:8px 0 16px}.stat{padding:14px;text-align:center}.stat b{font-size:30px;display:block;color:var(--primary);font-weight:700}.stat span{color:var(--muted)}
+.term-switch{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}.term-switch .btn.active{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff}
+.week-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.week{padding:12px}.week.current{outline:3px solid var(--accent)}.week.full{border-top:5px solid var(--study)}.week.national-week{border-top:5px solid var(--national)}.week.break-week{border-top:5px solid var(--holiday)}.week.exam-week{border-top:5px solid var(--exam)}
+.week-head{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:14px;padding:9px;font-weight:700;margin-bottom:8px;gap:8px}.week-type{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.week-badge{border-radius:999px;padding:5px 8px;font-size:11px;font-weight:700;color:#fff;line-height:1.5}.week-badge.full{background:var(--study)}.week-badge.national{background:var(--national)}.week-badge.break{background:var(--holiday);color:#231803}.week-badge.exam{background:var(--exam)}.week-badge.weekend{background:var(--weekend)}
+.week-days-list{display:grid;gap:6px;margin-top:8px}.week-day-item{display:grid;grid-template-columns:82px 1fr;gap:8px;align-items:center;padding:8px 9px;border:1px solid var(--line);border-radius:12px;background:rgba(128,128,128,.06);cursor:pointer}.week-day-name{font-weight:700;color:var(--primary);white-space:nowrap}.week-day-date{min-width:0;line-height:1.6}.week-day-date .greg-line{font-size:12px}.week-day-item.weekend-day{background:rgba(124,58,237,.10);border-color:rgba(124,58,237,.40)}.week-day-item.holiday-day{background:rgba(224,168,61,.13);border-color:rgba(224,168,61,.55)}.week-day-item.national-day{background:rgba(25,118,210,.12);border-color:rgba(25,118,210,.55)}.week-day-item.exam-day{background:rgba(211,84,84,.12);border-color:rgba(211,84,84,.55)}.week-day-item.has-personal{box-shadow:0 0 0 2px rgba(37,99,235,.18) inset}.weekend-note{display:inline-block;margin-top:4px;color:var(--weekend);font-weight:700;font-size:11px}
+.personal-summary{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.personal-summary span{border-radius:999px;padding:3px 7px;font-size:11px;font-weight:700;color:#fff}.personal-summary .note-pill{background:var(--note)}.personal-summary .task-pill{background:var(--task)}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}.weekday,.daycell{padding:9px;border-radius:14px;text-align:center;border:1px solid var(--line)}.weekday{font-weight:700;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff}.daycell{min-height:96px;background:var(--card);cursor:pointer;text-align:right}.daycell.out{opacity:.35}.daycell.today{outline:2px solid var(--accent)}.daycell.weekend-cell{background:linear-gradient(135deg,rgba(124,58,237,.10),rgba(255,255,255,.04)),var(--card)}.daycell.has-personal{box-shadow:0 0 0 2px rgba(37,99,235,.18) inset}.daycell .g{font-weight:700;font-size:18px}.daycell .h{font-size:12px;color:var(--muted);font-weight:400;line-height:1.4}.event-dot,.personal-dot{display:block;margin-top:5px;border-radius:9px;padding:3px 5px;color:#fff;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400}.personal-dot.note-dot{background:var(--note)}.personal-dot.task-dot{background:var(--task)}.event-dot.weekend{background:var(--weekend)}.daycell.national-cell{border-color:var(--national)}.daycell.holiday-cell{border-color:var(--holiday)}.daycell.exam-cell{border-color:var(--exam)}
+.donut-wrap{display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:center;padding:16px}.donut{width:260px;height:260px;margin:auto}.legend{display:grid;gap:10px}.legend div{padding:12px;border-radius:14px;border:1px solid var(--line);background:rgba(128,128,128,.08)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;place-items:center;z-index:99;padding:18px}.modal.show{display:grid}.modal-box{width:min(640px,94vw);padding:20px;max-height:88vh;overflow:auto}.close{float:left;font-size:24px;border:0;background:transparent;color:var(--text);cursor:pointer}.toast{position:fixed;bottom:18px;right:18px;background:var(--text);color:var(--bg);padding:12px 16px;border-radius:16px;box-shadow:var(--shadow);display:none;z-index:110;font-weight:700}.footer{padding:20px;text-align:center;color:var(--muted);font-weight:400}
+.day-manager{display:grid;gap:12px;margin-top:12px}.day-manager-section{border:1px solid var(--line);border-radius:16px;padding:12px;background:rgba(128,128,128,.07)}.day-manager-section h3{margin:0 0 8px;font-size:17px;padding-left:0}.day-manager textarea,.day-manager input{width:100%;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:12px;padding:10px;margin:6px 0}.day-manager textarea{min-height:88px;resize:vertical}.task-row{display:flex;gap:8px;align-items:center;margin:6px 0;padding:7px;border-radius:10px;background:rgba(128,128,128,.08)}.task-row input{width:auto;margin:0}.task-row span{flex:1}.day-manager-actions{display:flex;gap:8px;flex-wrap:wrap}
+.audit{padding:16px}.audit-list{display:grid;gap:8px}.audit-ok{padding:10px;border-radius:12px;background:rgba(40,169,120,.12);border:1px solid rgba(40,169,120,.35)}.center-card{text-align:center}.center-card h3{padding-left:0}.center-card .status-pill{position:static;display:inline-flex;margin-bottom:8px}
+@media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.week-grid{grid-template-columns:1fr}.stats,.week-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.status-card,.donut-wrap{grid-template-columns:1fr}}
+@media(max-width:640px){.container{width:min(100% - 24px,100%)}.hero{padding:16px 0 8px}.brand{align-items:flex-start}.logo{width:50px;height:50px;border-radius:16px;font-size:25px}h1{font-size:24px;letter-spacing:0}.subtitle{font-size:13px}.actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:8px}.btn{padding:10px 11px;font-size:13px;min-width:0}.datetime-card{padding:16px 12px}.datetime-icon{width:48px;height:48px;font-size:24px}.datetime-day{font-size:20px}.datetime-time{font-size:21px}.datetime-h{font-size:18px}.datetime-g{font-size:15px}.status-card{padding:14px}.status-title{font-size:19px}.chip{font-size:12px;padding:6px 8px}.tabs{margin-inline:-12px;padding:10px 12px}.tab{font-size:13px;padding:9px 12px}.section-title{font-size:21px}.cards,.stats,.week-summary{grid-template-columns:1fr}.event{padding:14px}.event h3{font-size:18px;padding-left:58px}.status-pill{left:12px;top:12px;font-size:11px}.datebox{font-size:13px}.datebox .hijri-line{font-size:14px}.datebox .greg-line{font-size:13px}.week{padding:10px}.week-head{font-size:13px}.week-badge{font-size:10.5px}.week-day-item{grid-template-columns:64px 1fr;padding:8px}.week-day-name{font-size:12px}.week-day-date .hijri-line{font-size:12px}.week-day-date .greg-line{font-size:11px}.month-grid{gap:3px}.weekday{font-size:10px;padding:7px 2px;border-radius:10px}.daycell{min-height:76px;padding:5px 3px;border-radius:10px}.daycell .g{font-size:14px}.daycell .h{font-size:9.5px}.event-dot,.personal-dot{font-size:8.5px;padding:2px 3px;margin-top:3px}.calendar-head .actions{width:100%;grid-template-columns:1fr 1.4fr 1fr}.calendar-head .btn.primary{font-size:11px;line-height:1.5;white-space:normal}.donut{width:220px;height:220px}.modal{padding:10px}.modal-box{width:100%;padding:16px}.footer{font-size:12px;padding:16px 12px}.center-card h3{padding-left:0}.day-manager-actions{display:grid;grid-template-columns:1fr}}
+@media(max-width:390px){.container{width:min(100% - 18px,100%)}h1{font-size:22px}.actions{grid-template-columns:1fr}.month-grid{gap:2px}.weekday{font-size:9px}.daycell{min-height:68px}.event-dot,.personal-dot{font-size:8px}}
+
+/* ===== شريط الحدث القادم مثل شريط المباراة القادمة ===== */
+.next-event-bar{
+  position:sticky;
+  top:0;
+  z-index:60;
+  background:rgba(7,24,32,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.14);
+  padding:8px 10px;
+}
+[data-theme="light"] .next-event-bar{
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid rgba(22,49,60,.14);
+}
+.next-event-inner{
+  width:min(1240px,94vw);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.next-event-mini{
+  position:relative;
+  border:1px solid rgba(215,166,63,.48);
+  background:rgba(255,255,255,.10);
+  color:var(--text);
+  border-radius:999px;
+  padding:7px 12px;
+  font-weight:800;
+  font-size:13px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  max-width:100%;
+}
+[data-theme="dark"] .next-event-mini{color:#eaf7fb}
+.next-event-mini::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 0 rgba(215,166,63,.55);
+  animation:nextAcademicPulse 1.8s infinite;
+}
+@keyframes nextAcademicPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(215,166,63,.55)}
+  50%{transform:scale(1.25);box-shadow:0 0 12px 4px rgba(215,166,63,.35)}
+}
+.speak-event-btn{
+  border:1px solid rgba(215,166,63,.50);
+  background:rgba(215,166,63,.14);
+  color:var(--accent);
+  border-radius:999px;
+  padding:5px 9px;
+  cursor:pointer;
+  font-weight:800;
+}
+.next-event-focus{
+  animation:nextEventFocus 1.9s ease-in-out 1;
+  outline:4px solid var(--accent);
+}
+@keyframes nextEventFocus{
+  0%{transform:scale(1);box-shadow:var(--shadow)}
+  35%{transform:scale(1.015);box-shadow:0 0 0 7px rgba(215,166,63,.23),var(--shadow)}
+  100%{transform:scale(1);box-shadow:var(--shadow)}
+}
+@media(max-width:640px){
+  .next-event-inner{width:min(100% - 20px,100%);display:grid;grid-template-columns:1fr auto}
+  .next-event-mini{white-space:normal;line-height:1.6;justify-content:center;text-align:center;border-radius:16px;font-size:12px}
+  .speak-event-btn{border-radius:14px}
+}
+
+
+/* ===== البطاقة العائمة الذكية: أين أنا الآن؟ ===== */
+.smart-now-card{
+  position:fixed;
+  inset-inline-end:18px;
+  bottom:18px;
+  z-index:95;
+  width:min(340px,calc(100vw - 28px));
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--line);
+  border-top:5px solid var(--accent);
+  border-radius:22px;
+  box-shadow:0 20px 48px rgba(0,0,0,.26);
+  backdrop-filter:blur(14px);
+  overflow:hidden;
+}
+.smart-now-card.collapsed .smart-now-body{display:none}
+.smart-now-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:12px 13px;
+  cursor:pointer;
+  background:linear-gradient(135deg,rgba(215,166,63,.16),rgba(21,138,162,.10));
+}
+.smart-now-title{
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.smart-now-title::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:smartNowPulse 1.8s infinite;
+}
+@keyframes smartNowPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(215,166,63,.55)}
+  50%{transform:scale(1.25);box-shadow:0 0 12px 4px rgba(215,166,63,.35)}
+}
+.smart-now-toggle{
+  border:0;
+  background:transparent;
+  color:var(--text);
+  font-weight:900;
+  cursor:pointer;
+  font-size:16px;
+}
+.smart-now-body{padding:13px;display:grid;gap:9px}
+.smart-now-line{
+  border:1px solid var(--line);
+  background:rgba(128,128,128,.08);
+  border-radius:14px;
+  padding:9px 10px;
+  line-height:1.7;
+}
+.smart-now-label{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+}
+.smart-now-value{font-weight:800}
+.smart-now-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:7px;
+}
+.smart-now-actions .btn{padding:9px 8px;font-size:12px}
+.smart-now-focus{
+  animation:smartNowFocus 1.9s ease-in-out 1;
+  outline:4px solid var(--accent);
+}
+@keyframes smartNowFocus{
+  0%{transform:scale(1);box-shadow:var(--shadow)}
+  35%{transform:scale(1.015);box-shadow:0 0 0 7px rgba(215,166,63,.23),var(--shadow)}
+  100%{transform:scale(1);box-shadow:var(--shadow)}
+}
+@media(max-width:640px){
+  .smart-now-card{
+    inset-inline:10px;
+    bottom:10px;
+    width:auto;
+    border-radius:18px;
+  }
+  .smart-now-body{padding:10px}
+  .smart-now-actions{grid-template-columns:1fr 1fr}
+  .smart-now-actions .speak-compact{grid-column:1 / -1}
+}
+
+
+/* Quick Monitor Rings */
+.quick-monitor{margin:16px 0 22px;padding:18px}
+.quick-monitor-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.quick-monitor-title{margin:0;font-size:23px;font-weight:800}
+.quick-monitor-subtitle{color:var(--muted);font-weight:700;font-size:13px}
+.quick-rings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.quick-ring-card{border:1px solid var(--line);background:rgba(128,128,128,.07);border-radius:22px;padding:15px 10px;text-align:center;cursor:pointer;transition:.18s;min-width:0}
+.quick-ring-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 30px rgba(0,0,0,.10)}
+.quick-ring{width:118px;height:118px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;background:radial-gradient(circle at center,var(--card) 0 57%,transparent 58%),conic-gradient(var(--ring-color) var(--ring-progress),rgba(128,128,128,.18) 0);border:1px solid var(--line)}
+.quick-ring-number{font-size:32px;line-height:1;font-weight:800;color:var(--text)}
+.quick-ring-unit{display:block;font-size:12px;color:var(--muted);font-weight:800;margin-top:5px}
+.quick-ring-days{display:inline-block;margin-top:3px;font-size:13px;color:var(--muted);font-weight:800}
+.quick-ring-label{font-weight:800;font-size:15px;line-height:1.5}
+.quick-ring-note{color:var(--muted);font-size:12px;font-weight:700;line-height:1.5}
+.quick-ring-card.danger{--ring-color:var(--exam)}
+.quick-ring-card.warn{--ring-color:var(--holiday)}
+.quick-ring-card.safe{--ring-color:var(--study)}
+.quick-ring-card.info{--ring-color:var(--primary)}
+@media(max-width:900px){.quick-rings{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.quick-monitor{padding:14px}.quick-rings{grid-template-columns:1fr 1fr;gap:10px}.quick-ring{width:96px;height:96px}.quick-ring-number{font-size:26px}.quick-ring-label{font-size:13px}.quick-ring-note,.quick-monitor-subtitle{font-size:11px}}
+
+
+.tasks-dashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.task-stat{padding:14px;text-align:center}
+.task-stat b{font-size:28px;color:var(--primary);display:block}
+.task-sections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.task-box{padding:14px}
+.task-item{padding:8px;border-radius:10px;margin:6px 0;background:rgba(128,128,128,.08)}
+@media(max-width:900px){.tasks-dashboard,.task-sections{grid-template-columns:1fr}}
+
+
+/* Eisenhower Matrix Task Priority */
+.eisenhower-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.eisenhower-option{border:1px solid var(--line);border-radius:14px;padding:9px;background:rgba(128,128,128,.07);cursor:pointer;display:flex;align-items:center;gap:7px;font-weight:700}
+.eisenhower-option input{width:auto;margin:0}
+.eisenhower-badge{display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800;color:#fff;margin-inline-start:6px}
+.eisenhower-do{background:#d35454}
+.eisenhower-plan{background:#1976d2}
+.eisenhower-delegate{background:#e0a83d;color:#231803}
+.eisenhower-low{background:#6b7280}
+.task-item{cursor:pointer;border-inline-start:5px solid transparent}
+.task-item.eisenhower-do{border-inline-start-color:#d35454;background:rgba(211,84,84,.10)}
+.task-item.eisenhower-plan{border-inline-start-color:#1976d2;background:rgba(25,118,210,.10)}
+.task-item.eisenhower-delegate{border-inline-start-color:#e0a83d;background:rgba(224,168,61,.13)}
+.task-item.eisenhower-low{border-inline-start-color:#6b7280;background:rgba(107,114,128,.12)}
+.task-meta{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-top:4px}
+.matrix-sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.matrix-box{padding:14px}.matrix-box h3{margin:0 0 8px}
+@media(max-width:760px){.eisenhower-grid,.matrix-sections{grid-template-columns:1fr}}
+
+
+.timeline-year{padding:18px;margin-top:18px}
+.timeline-list{position:relative;display:grid;gap:10px}
+.timeline-list:before{content:'';position:absolute;right:18px;top:0;bottom:0;width:4px;background:rgba(21,138,162,.25);border-radius:99px}
+.timeline-item{position:relative;margin-right:42px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(128,128,128,.06);cursor:pointer}
+.timeline-item:before{content:'';position:absolute;right:-31px;top:18px;width:14px;height:14px;border-radius:50%}
+.timeline-item.done:before{background:var(--study)}
+.timeline-item.current:before{background:var(--accent)}
+.timeline-item.upcoming:before{background:var(--primary)}
+.timeline-date{color:var(--muted);font-size:12px;font-weight:700}
+
+
+.personal-marker{
+ width:8px;height:8px;border-radius:50%;
+ background:#d35454;display:block;
+ margin:4px auto 0;
+}
+
+
+
+
+
+.theme-icon{
+ cursor:pointer;
+ font-size:24px;
+ line-height:1;
+ user-select:none;
+ transition:.2s;
+}
+.theme-icon:hover{
+ transform:scale(1.1);
+}
+
+
+.week-day-date .personal-marker{margin:5px 0 0 auto}
+.daycell .personal-marker{margin:5px auto 0}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <div class="topbar">
+      <div class="brand"><div class="logo">📅</div><div><div style="display:flex;align-items:center;gap:10px"><h1 style="margin:0">التقويم الدراسي التفاعلي</h1><span id="themeBtn" class="theme-icon">🌙</span></div><p class="subtitle">العام 1448-1449هـ / 2026-2027م </p></div></div>
+      <div class="actions"><button class="btn gold" id="allIcsBtn">إضافة جميع أحداث العام</button></div>
+    </div>
+    <div id="dateTimeBlock"></div>
+    <div class="card status-card">
+      <div><p class="status-title">نحن الآن في: <span id="nowWhere">—</span></p><div class="chips" id="statusChips"></div></div>
+      <div class="progress-wrap"><b id="progressText">تم إنجاز 0%</b><div class="progress-line"><div class="progress-fill" id="progressFill"></div></div></div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </div>
+</header>
+
+
+<main class="container" id="main"></main>
+
+<div class="smart-now-card" id="smartNowCard">
+  <div class="smart-now-head" onclick="toggleSmartNow()">
+    <div class="smart-now-title">أين أنا الآن؟</div>
+    <button class="smart-now-toggle" id="smartNowToggle" aria-label="طي البطاقة">−</button>
+  </div>
+  <div class="smart-now-body">
+    <div class="smart-now-line">
+      <span class="smart-now-label">الوضع الحالي</span>
+      <span class="smart-now-value" id="smartNowCurrent">—</span>
+    </div>
+    <div class="smart-now-line">
+      <span class="smart-now-label">الحدث القادم</span>
+      <span class="smart-now-value" id="smartNowNext">—</span>
+    </div>
+    <div class="smart-now-actions">
+      <button class="btn primary" onclick="goToCurrentWeek()">الأسبوع الحالي</button>
+      <button class="btn gold" onclick="goToNextEvent()">الحدث القادم</button>
+      <button class="btn speak-compact" onclick="speakSmartNow(event)">🔊</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal"><div class="modal-box card"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<div class="toast" id="toast"></div>
+<footer class="footer">التقويم الدراسي للعام الدراسي 1448/1449هـ</footer>
+<script>
+const academicCalendar={
+  yearLabel:'1448هـ / 2026-2027م',
+  start:'2026-08-23', end:'2027-06-24',
+  terms:[{name:'الفصل الدراسي الأول',start:'2026-08-23',end:'2027-01-07'},{name:'الفصل الدراسي الثاني',start:'2027-01-17',end:'2027-06-24'}],
+  events:[
+    {id:'teachers',title:'عودة المعلمين والمشرفين والمشرفات',type:'admin',start:'2026-08-16',end:'2026-08-16',hStart:'3 / 3 / 1448 هـ',hEnd:'3 / 3 / 1448 هـ',desc:'عودة المعلمين والمشرفين والمشرفات'},
+    {id:'start1',title:'بداية العام الدراسي',type:'study',start:'2026-08-23',end:'2026-08-23',hStart:'10 / 3 / 1448 هـ',hEnd:'10 / 3 / 1448 هـ',desc:'بداية الفصل الدراسي الأول'},
+    {id:'national',title:'إجازة اليوم الوطني',type:'national',start:'2026-09-23',end:'2026-09-24',hStart:'12 / 4 / 1448 هـ',hEnd:'13 / 4 / 1448 هـ',desc:'الأربعاء والخميس ضمن أيام الدراسة'},
+    {id:'fall',title:'إجازة الخريف',type:'holiday',start:'2026-11-20',end:'2026-11-28',hStart:'9 / 6 / 1448 هـ',hEnd:'18 / 6 / 1448 هـ',desc:'تبدأ نهاية دوام الخميس 19 / 11 / 2026 وتستمر حتى السبت 28 / 11 / 2026'},
+    {id:'exam1',title:'بداية اختبار الفصل الدراسي الأول',type:'exam',start:'2027-01-03',end:'2027-01-03',hStart:'25 / 7 / 1448 هـ',hEnd:'25 / 7 / 1448 هـ',desc:'بداية اختبار الفصل الدراسي الأول حسب التقويم الرسمي'},
+    {id:'midyear',title:'بداية إجازة منتصف العام الدراسي',type:'holiday',start:'2027-01-08',end:'2027-01-08',hStart:'30 / 7 / 1448 هـ',hEnd:'30 / 7 / 1448 هـ',desc:'بداية إجازة منتصف العام الدراسي حسب التقويم الرسمي'},
+
+    {id:'start2',title:'بداية الدراسة للفصل الدراسي الثاني',type:'study',start:'2027-01-17',end:'2027-01-17',hStart:'9 / 8 / 1448 هـ',hEnd:'9 / 8 / 1448 هـ',desc:'بداية الفصل الدراسي الثاني'},
+    {id:'founding',title:'إجازة يوم التأسيس',type:'national',start:'2027-02-22',end:'2027-02-22',hStart:'15 / 9 / 1448 هـ',hEnd:'15 / 9 / 1448 هـ',desc:'يوم التأسيس'},
+    {id:'fitr',title:'إجازة عيد الفطر المبارك',type:'holiday',start:'2027-02-25',end:'2027-03-13',hStart:'18 / 9 / 1448 هـ',hEnd:'5 / 10 / 1448 هـ',desc:'تبدأ بنهاية دوام الخميس 25 / 2 / 2027'},
+    {id:'afterfitr',title:'بداية الدراسة بعد إجازة عيد الفطر',type:'study',start:'2027-03-14',end:'2027-03-14',hStart:'6 / 10 / 1448 هـ',hEnd:'6 / 10 / 1448 هـ',desc:'العودة بعد عيد الفطر'},
+    {id:'adha',title:'إجازة عيد الأضحى المبارك',type:'holiday',start:'2027-05-06',end:'2027-05-22',hStart:'29 / 11 / 1448 هـ',hEnd:'16 / 12 / 1448 هـ',desc:'تبدأ بنهاية دوام الخميس 6 / 5 / 2027'},
+    {id:'afteradha',title:'بداية الدراسة بعد إجازة عيد الأضحى',type:'study',start:'2027-05-23',end:'2027-05-23',hStart:'17 / 12 / 1448 هـ',hEnd:'17 / 12 / 1448 هـ',desc:'العودة بعد عيد الأضحى'},
+    {id:'exam2',title:'بداية اختبار الفصل الدراسي الثاني',type:'exam',start:'2027-06-27',end:'2027-06-27',hStart:'22 / 1 / 1449 هـ',hEnd:'22 / 1 / 1449 هـ',desc:'بداية اختبار الفصل الدراسي الثاني حسب التقويم الرسمي'},
+    {id:'yearend',title:'بداية إجازة نهاية العام الدراسي',type:'holiday',start:'2027-06-24',end:'2027-06-24',hStart:'19 / 1 / 1449 هـ',hEnd:'19 / 1 / 1449 هـ',desc:'بداية إجازة نهاية العام الدراسي'},
+    {id:'return1449b',title:'عودة المعلمين والمشرفين والمشرفات 1449هـ',type:'admin',start:'2027-08-15',end:'2027-08-15',hStart:'13 / 3 / 1449 هـ',hEnd:'13 / 3 / 1449 هـ',desc:'عودة المعلمين للعام الجديد'},
+    {id:'start1449',title:'بداية العام الدراسي 1449هـ',type:'study',start:'2027-08-22',end:'2027-08-22',hStart:'20 / 3 / 1449 هـ',hEnd:'20 / 3 / 1449 هـ',desc:'بداية العام الدراسي 1449هـ'}
+  ],
+  stats:{term1:{weeks:19,studyDays:93,vacationDays:20},term2:{weeks:19,studyDays:93}}
+};
+const term1Weeks=[
+ ['2026-08-23','full','أسبوع دراسي كامل'],['2026-08-30','full','أسبوع دراسي كامل'],['2026-09-06','full','أسبوع دراسي كامل'],['2026-09-13','full','أسبوع دراسي كامل'],['2026-09-20','national','أسبوع اليوم الوطني'],['2026-09-27','full','أسبوع دراسي كامل'],['2026-10-04','full','أسبوع دراسي كامل'],['2026-10-11','full','أسبوع دراسي كامل'],['2026-10-18','full','أسبوع دراسي كامل'],['2026-10-25','full','أسبوع دراسي كامل'],['2026-11-01','full','أسبوع دراسي كامل'],['2026-11-08','full','أسبوع دراسي كامل'],['2026-11-15','break','أسبوع يسبق إجازة الخريف'],['2026-11-29','full','بعد إجازة الخريف'],['2026-12-06','full','أسبوع دراسي كامل'],['2026-12-13','full','أسبوع دراسي كامل'],['2026-12-20','full','أسبوع دراسي كامل'],['2026-12-27','full','أسبوع دراسي كامل'],['2027-01-03','exam','أسبوع نهاية الفصل الأول']
+].map((w,i)=>({term:'الفصل الأول',n:i+1,start:w[0],end:iso(addDays(d(w[0]),6)),type:w[1],label:w[2]}));
+const term2Weeks=[
+ ['2027-01-17','full','أسبوع دراسي كامل'],['2027-01-24','full','أسبوع دراسي كامل'],['2027-01-31','full','أسبوع دراسي كامل'],['2027-02-07','full','أسبوع دراسي كامل'],['2027-02-14','national','أسبوع يوم التأسيس'],['2027-02-21','break','أسبوع يسبق إجازة عيد الفطر'],['2027-03-14','full','بعد إجازة عيد الفطر'],['2027-03-21','full','أسبوع دراسي كامل'],['2027-03-28','full','أسبوع دراسي كامل'],['2027-04-04','full','أسبوع دراسي كامل'],['2027-04-11','full','أسبوع دراسي كامل'],['2027-04-18','full','أسبوع دراسي كامل'],['2027-04-25','full','أسبوع دراسي كامل'],['2027-05-02','break','أسبوع يسبق إجازة عيد الأضحى'],['2027-05-23','full','بعد إجازة عيد الأضحى'],['2027-05-30','full','أسبوع دراسي كامل'],['2027-06-06','full','أسبوع دراسي كامل'],['2027-06-13','full','أسبوع دراسي كامل'],['2027-06-20','exam','أسبوع نهاية العام']
+].map((w,i)=>({term:'الفصل الثاني',n:i+1,start:w[0],end:iso(addDays(d(w[0]),6)),type:w[1],label:w[2]}));
+const tabs=[['home','الرئيسية'],['annual','التقويم السنوي'],['weeks','الأسابيع الدراسية'],['monthly','التقويم الشهري'],['holidays','الإجازات'],['exams','الاختبارات'],['counters','العدادات'],['stats','الإحصائيات'],['tasks','مهامي'],['next','ماذا ينتظرني؟'],['settings','الإعدادات']];
+const typeInfo={study:['دراسة','study','🟢'],holiday:['إجازة','holiday','🟠'],exam:['اختبارات','exam','🔴'],national:['مناسبة وطنية','national','🔵'],admin:['إداري','admin','⚙️'],weekend:['عطلة أسبوعية','weekend','🟣']};
+const $=id=>document.getElementById(id);
+function d(s){let [y,m,day]=s.split('-').map(Number);return new Date(y,m-1,day,12,0,0)}
+function iso(x){let y=x.getFullYear(),m=String(x.getMonth()+1).padStart(2,'0'),day=String(x.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
+function addDays(date,n){let x=new Date(date);x.setDate(x.getDate()+n);return x}
+function fmtG(date){return new Intl.DateTimeFormat('ar-SA',{weekday:'long',year:'numeric',month:'long',day:'numeric',calendar:'gregory'}).format(date)}
+function fmtH(date){return new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{year:'numeric',month:'long',day:'numeric'}).format(date)}
+function fmtTime(date){return new Intl.DateTimeFormat('ar-SA',{hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(date)}
+function weekdayName(input){let date=typeof input==='string'?d(input):input;return new Intl.DateTimeFormat('ar-SA',{weekday:'long'}).format(date)}
+function fmtShortG(s){let x=d(s);return `${x.getDate()} / ${x.getMonth()+1} / ${x.getFullYear()} م`}
+function daysBetween(a,b){return Math.ceil((d(b)-d(a))/(864e5))}
+function eventStatus(e){let today=iso(new Date()),en=e.end||e.start;if(today<e.start)return 'قادم';if(today>=e.start&&today<=en)return 'اليوم';return 'انتهى'}
+function remainingText(e){let n=daysBetween(iso(new Date()),e.start);if(n>0)return `باقي ${n} يوم`;if(n===0)return 'اليوم';return `انتهى منذ ${Math.abs(n)} يوم`}
+function typeTag(t){let i=typeInfo[t]||typeInfo.study;return `<span class="tag ${i[1]}">${i[2]} ${i[0]}</span>`}
+function dateRangeHTML(e){let end=e.end&&e.end!==e.start?`<span class="range-sep">إلى</span><span class="dayname">${weekdayName(e.end)}</span><span class="hijri-line">${e.hEnd}</span><span class="greg-line">${fmtShortG(e.end)}</span>`:'';return `<span class="dayname">${weekdayName(e.start)}</span><span class="hijri-line">${e.hStart}</span><span class="greg-line">${fmtShortG(e.start)}</span>${end}`}
+function dateHTML(e){return `<div class="meta"><div class="datebox"><b>التاريخ</b>${dateRangeHTML(e)}</div></div>`}
+function eventCard(e,center=false){return `<article id="${eventElementId(e)}" class="card event ${center?'center-card':''}"><span class="status-pill">${eventStatus(e)}</span><h3>${e.title}</h3>${typeTag(e.type)}${dateHTML(e)}<p class="note">${e.desc}<br><b>${remainingText(e)}</b></p><div class="event-actions"><button class="btn primary" onclick='openCalendarOptions("${e.id}")'>إضافة إلى التقويم</button><button class="btn" onclick='openEvent("${e.id}")'>تفاصيل</button></div></article>`}
+function eventOnDay(id){return academicCalendar.events.filter(e=>id>=e.start&&id<=e.end)}
+function getTerm(today=new Date()){return academicCalendar.terms.find(t=>iso(today)>=t.start&&iso(today)<=t.end)||null}
+function getNextEvent(){let today=iso(new Date());return academicCalendar.events.filter(e=>e.start>=today).sort((a,b)=>d(a.start)-d(b.start))[0]||academicCalendar.events[academicCalendar.events.length-1]}
+function getWeekDays(w){let start=d(w.start),days=[];for(let i=0;i<7;i++)days.push(addDays(start,i));return days}
+function buildWeeks(term='all'){let arr=[...term1Weeks,...term2Weeks];if(term==='term1')return term1Weeks;if(term==='term2')return term2Weeks;return arr}
+function getCurrentWeek(){let today=iso(new Date());return buildWeeks().find(w=>today>=w.start&&today<=w.end)}
+function isWeekend(input){let date=typeof input==='string'?d(input):input;return date.getDay()===5||date.getDay()===6}
+function dayKind(id){let ev=eventOnDay(id);if(ev.some(e=>e.type==='exam'))return 'exam-day';if(ev.some(e=>e.type==='national'))return 'national-day';if(ev.some(e=>e.type==='holiday'))return 'holiday-day';if(isWeekend(id))return 'weekend-day';return ''}
+function weekClass(w){return w.type==='national'?'national-week':w.type==='break'?'break-week':w.type==='exam'?'exam-week':'full'}
+function weekBadgeHTML(w){let cls=w.type==='national'?'national':w.type==='break'?'break':w.type==='exam'?'exam':'full';let emoji=w.type==='national'?'🔵':w.type==='break'?'🟠':w.type==='exam'?'🔴':'🟢';return `<div class="week-type"><span class="week-badge ${cls}">${emoji} ${w.label}</span><span class="week-badge weekend">الجمعة والسبت عطلة أسبوعية</span></div>`}
+const personalKey='masarAcademicRC2PersonalDays';
+function loadPersonal(){try{return JSON.parse(localStorage.getItem(personalKey)||'{}')}catch(e){return {}}}
+function savePersonal(data){localStorage.setItem(personalKey,JSON.stringify(data))}
+function dayData(id){let data=loadPersonal();return data[id]||{note:'',tasks:[]}}
+function setDayData(id,obj){let data=loadPersonal();data[id]=obj;if(!obj.note&&(!obj.tasks||!obj.tasks.length))delete data[id];savePersonal(data)}
+function personalCounts(id){let p=dayData(id),tasks=(p.tasks||[]);return {note:(p.note&&String(p.note).trim())?1:0,tasks:tasks.length,open:tasks.filter(t=>!t.done).length}}
+function hasPersonal(id){let c=personalCounts(id);return !!(c.note||c.tasks)}
+function personalSummary(id){return hasPersonal(id)?'<span class="personal-marker"></span>':''}
+function personalDots(id){return hasPersonal(id)?'<span class="personal-marker"></span>':''}
+
+function eventElementId(e){return `event-card-${e.id}`}
+function goToNextEvent(){
+  let e=getNextEvent();
+  if(!e){toast('لا يوجد حدث قادم');return}
+  activateTab('annual');
+  renderAnnual();
+  setTimeout(()=>{
+    let el=document.getElementById(eventElementId(e));
+    if(!el){toast('لم يتم العثور على بطاقة الحدث القادم');return}
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.add('next-event-focus');
+    setTimeout(()=>el.classList.remove('next-event-focus'),2300);
+  },140);
+}
+function nextEventSpeechText(){
+  let e=getNextEvent();
+  if(!e)return 'لا يوجد حدث قادم في التقويم الدراسي.';
+  return `الحدث القادم: ${e.title}. اليوم: ${weekdayName(e.start)}. التاريخ الهجري: ${e.hStart}. التاريخ الميلادي: ${fmtShortG(e.start)}. ${remainingText(e)}.`;
+}
+function speakNextEvent(ev){
+  if(ev)ev.stopPropagation();
+  if(!('speechSynthesis' in window)){toast('النطق غير مدعوم في هذا المتصفح');return}
+  window.speechSynthesis.cancel();
+  let u=new SpeechSynthesisUtterance(nextEventSpeechText());
+  u.lang='ar-SA';
+  u.rate=.92;
+  u.pitch=1;
+  window.speechSynthesis.speak(u);
+}
+function updateSmartNow(){
+  let e=getNextEvent();
+  let el=$('nextEventMiniText');
+  if(!el||!e)return;
+  el.textContent=`${e.title} — ${weekdayName(e.start)} — ${fmtShortG(e.start)} — ${remainingText(e)}`;
+}
+
+
+
+function hijriReadable(txt){
+  const months=['','محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+  let m=txt.match(/(\d+)\s*\/\s*(\d+)\s*\/\s*(\d+)/);
+  if(!m) return txt;
+  return `${m[1]} من ${months[parseInt(m[2])]||''} لعام ${m[3]} هجرية`;
+}
+
+function termKeyFromWeek(w){return w.term.includes('الثاني')?'term2':'term1'}
+function weekElementId(w){return `week-card-${termKeyFromWeek(w)}-${w.n}`}
+function eventElementId(e){return `event-card-${e.id}`}
+function toggleSmartNow(){
+  const card=$('smartNowCard');
+  if(!card)return;
+  card.classList.toggle('collapsed');
+  $('smartNowToggle').textContent=card.classList.contains('collapsed')?'+':'−';
+}
+function goToCurrentWeek(){
+  let w=getCurrentWeek();
+  if(!w){toast('لا يوجد أسبوع دراسي حالي ضمن التقويم');return}
+  activateTab('weeks');
+  renderWeeks(termKeyFromWeek(w));
+  setTimeout(()=>{
+    let el=document.getElementById(weekElementId(w));
+    if(!el){toast('لم يتم العثور على بطاقة الأسبوع الحالي');return}
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.add('smart-now-focus');
+    setTimeout(()=>el.classList.remove('smart-now-focus'),2300);
+  },140);
+}
+function goToNextEvent(){
+  let e=getNextEvent();
+  if(!e){toast('لا يوجد حدث قادم');return}
+  activateTab('annual');
+  renderAnnual();
+  setTimeout(()=>{
+    let el=document.getElementById(eventElementId(e));
+    if(!el){toast('لم يتم العثور على بطاقة الحدث القادم');return}
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.add('smart-now-focus');
+    setTimeout(()=>el.classList.remove('smart-now-focus'),2300);
+  },140);
+}
+function smartNowSpeechText(){
+  let w=getCurrentWeek(), term=getTerm(new Date()), e=getNextEvent();
+  let current=w?`${w.term}، الأسبوع ${w.n}`:(term?term.name:'خارج العام الدراسي');
+  if(!e)return `أنت الآن في ${current}. لا يوجد حدث قادم.`;
+  return `أنت الآن في ${current}. الحدث القادم: ${e.title}. اليوم ${weekdayName(e.start)}. التاريخ الهجري ${hijriReadable(e.hStart)}. والتاريخ الميلادي ${fmtG(d(e.start))}. ${remainingText(e)}.`;
+}
+function speakSmartNow(ev){
+  if(ev)ev.stopPropagation();
+  if(!('speechSynthesis' in window)){toast('النطق غير مدعوم في هذا المتصفح');return}
+  window.speechSynthesis.cancel();
+  let u=new SpeechSynthesisUtterance(smartNowSpeechText());
+  u.lang='ar-SA';
+  u.rate=.92;
+  u.pitch=1;
+  window.speechSynthesis.speak(u);
+}
+function updateSmartNow(){
+  let w=getCurrentWeek(), term=getTerm(new Date()), e=getNextEvent();
+  let current=w?`${w.term} — الأسبوع ${w.n}`:(term?term.name:'خارج العام الدراسي');
+  if($('smartNowCurrent'))$('smartNowCurrent').textContent=current;
+  if($('smartNowNext'))$('smartNowNext').textContent=e?`${e.title} — ${weekdayName(e.start)} — ${remainingText(e)}`:'لا يوجد حدث قادم';
+}
+
+
+function daysUntilDate(dateStr){return daysBetween(iso(new Date()), dateStr)}
+function weeksFromDays(days){return Math.max(0, Math.ceil(Math.max(0,days)/7))}
+function statusClassFromDays(days){if(days<=14)return 'danger';if(days<=30)return 'warn';if(days<=70)return 'info';return 'safe'}
+function progressFromDays(days,maxDays=180){return Math.round(100-Math.min(100,Math.max(0,days)/maxDays*100))}
+function nextByTypes(types){let today=iso(new Date());return academicCalendar.events.filter(e=>types.includes(e.type)&&e.start>=today).sort((a,b)=>d(a.start)-d(b.start))[0]||null}
+function nextExamEvent(){return nextByTypes(['exam'])}
+function nextHolidayEvent(){return nextByTypes(['holiday','national'])}
+function currentOrNextTermEndEvent(){let today=iso(new Date()),term=getTerm(new Date());if(term)return {id:'term-end',title:'نهاية الفصل الحالي',start:term.end,virtual:true,targetTab:'weeks'};let nt=academicCalendar.terms.find(t=>t.start>=today);return nt?{id:'term-end',title:'نهاية الفصل القادم',start:nt.end,virtual:true,targetTab:'weeks'}:null}
+function yearEndEvent(){return academicCalendar.events.find(e=>e.id==='yearend')||{id:'year-end',title:'نهاية العام الدراسي',start:academicCalendar.end,virtual:true}}
+function goToMonitorTarget(kind){let target=null;if(kind==='holiday')target=nextHolidayEvent();if(kind==='exam')target=nextExamEvent();if(kind==='term')target=currentOrNextTermEndEvent();if(kind==='year')target=yearEndEvent();if(!target){toast('لا يوجد عنصر مناسب حالياً');return}if(target.virtual&&target.targetTab==='weeks'){let w=buildWeeks().find(x=>target.start>=x.start&&target.start<=x.end)||buildWeeks().slice(-1)[0];activateTab('weeks');renderWeeks(termKeyFromWeek(w));setTimeout(()=>{let el=document.getElementById(weekElementId(w));if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('smart-now-focus');setTimeout(()=>el.classList.remove('smart-now-focus'),2300)}},140);return}activateTab('annual');renderAnnual();setTimeout(()=>{let el=document.getElementById(eventElementId(target));if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('smart-now-focus');setTimeout(()=>el.classList.remove('smart-now-focus'),2300)}},140)}
+function monitorItemHTML(kind,label,target,icon){if(!target)return '';let days=Math.max(0,daysUntilDate(target.start)),weeks=weeksFromDays(days),cls=statusClassFromDays(days),prog=progressFromDays(days),dateTxt=weekdayName(target.start)+' — '+fmtShortG(target.start);return `<div class="quick-ring-card ${cls}" onclick="goToMonitorTarget('${kind}')" style="--ring-progress:${prog}%"><div class="quick-ring"><div><div class="quick-ring-number">${weeks}</div><span class="quick-ring-unit">أسابيع</span><span class="quick-ring-days">(${days} يوم)</span></div></div><div class="quick-ring-label">${icon} ${label}</div><div class="quick-ring-note">${target.title}<br>${dateTxt}</div></div>`}
+function renderQuickMonitor(){let holiday=nextHolidayEvent(),exam=nextExamEvent(),termEnd=currentOrNextTermEndEvent(),yearEnd=yearEndEvent();return `<section class="card quick-monitor"><div class="quick-monitor-head"><h2 class="quick-monitor-title">لوحة المتابعة السريعة</h2><span class="quick-monitor-subtitle">الرقم الكبير = عدد الأسابيع، وبين القوسين = عدد الأيام</span></div><div class="quick-rings">${monitorItemHTML('holiday','أقرب إجازة',holiday,'🟠')}${monitorItemHTML('exam','أقرب اختبار',exam,'🔴')}${monitorItemHTML('term','نهاية الفصل',termEnd,'🎓')}${monitorItemHTML('year','نهاية العام',yearEnd,'🏁')}</div></section>`}
+
+
+function renderYearTimeline(){
+ let today=iso(new Date());
+ let items=academicCalendar.events.filter(e=>['study','holiday','national','exam'].includes(e.type));
+ return `<section class="card timeline-year">
+ <h2 class="section-title">الخط الزمني السنوي</h2>
+ <div class="timeline-list">
+ ${items.map(e=>{
+ let cls=today>e.end?'done':(today>=e.start&&today<=e.end?'current':'upcoming');
+ return `<div class="timeline-item ${cls}" onclick="activateTab('annual');renderAnnual();setTimeout(()=>{let x=document.getElementById('event-card-${e.id}');if(x)x.scrollIntoView({behavior:'smooth',block:'center'});},150)">
+ <b>${e.title}</b>
+ <div class="timeline-date">${weekdayName(e.start)} — ${e.hStart} — ${fmtShortG(e.start)}</div>
+ </div>`}).join('')}
+ </div></section>`
+}
+
+
+function refreshCalendarViews(){
+  try{
+    if($('panel-weeks')) renderWeeks(localStorage.weekTerm || 'term1');
+    if($('panel-monthly') && $('panel-monthly').classList.contains('active')) renderMonthly();
+  }catch(e){}
+}
+
+function renderShell(){$('tabs').innerHTML=tabs.map(t=>`<button class="tab" data-tab="${t[0]}">${t[1]}</button>`).join('');$('main').innerHTML=tabs.map(t=>`<section class="panel" id="panel-${t[0]}"></section>`).join('');document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>activateTab(b.dataset.tab));activateTab(localStorage.lastAcademicTab||'home')}
+function activateTab(id){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+id));localStorage.lastAcademicTab=id;if(id==='monthly')renderMonthly()}
+function renderLive(){let now=new Date(),term=getTerm(now),week=getCurrentWeek(),next=getNextEvent();$('dateTimeBlock').innerHTML=`<div class="card datetime-card"><div class="datetime-top"><div class="datetime-icon">🕒</div><div><div class="datetime-day">${weekdayName(now)}</div><div class="datetime-time">${fmtTime(now)}</div></div></div><div class="datetime-h">${fmtH(now)}</div><div class="datetime-g">${fmtG(now)}</div></div>`;$('nowWhere').textContent=term?`${term.name} — ${week?'الأسبوع '+week.n:'خارج الأسابيع'}`:'خارج العام الدراسي';$('statusChips').innerHTML=`<span class="chip">${term?.name||'خارج الفصول'}</span><span class="chip">${week?week.term+' / الأسبوع '+week.n:'لا يوجد أسبوع حالي'}</span><span class="chip">الحدث القادم: ${next.title}</span><span class="chip">${remainingText(next)}</span>`;let p=Math.max(0,Math.min(100,Math.round((new Date()-d(academicCalendar.start))/(d(academicCalendar.end)-d(academicCalendar.start))*100)));$('progressText').textContent=`تم إنجاز ${p}% من العام الدراسي`;$('progressFill').style.width=p+'%';updateSmartNow()}
+function renderHome(){let next=getNextEvent();$('panel-home').innerHTML=`<h2 class="section-title">الرئيسية</h2><div class="cards"><div class="card event center-card"><h3>أين أنا الآن؟</h3><p class="note" id="homeWhere"></p></div>${eventCard(next,true)}<div class="card event center-card"><h3>متبقي على نهاية العام الدراسي</h3><p class="note" id="countdownEnd"></p></div></div>${renderQuickMonitor()}${renderYearTimeline()}`;updateCountdowns()}
+function updateCountdowns(){let w=getCurrentWeek(),term=getTerm(new Date()),home=$('homeWhere');if(home)home.innerHTML=`${term?.name||'خارج العام الدراسي'}<br>${w?w.term+' — الأسبوع '+w.n:'لا يوجد أسبوع حالي'}<br>${fmtH(new Date())}<br>${fmtG(new Date())}`;let c=$('countdownEnd');if(c){let diff=d(academicCalendar.end)-new Date();if(diff<0)c.textContent='انتهى العام الدراسي';else{let days=Math.floor(diff/864e5),hours=Math.floor(diff%864e5/36e5),mins=Math.floor(diff%36e5/6e4);c.innerHTML=`<b style="font-size:34px;color:var(--primary)">${days}</b> يوم<br>${hours} ساعة<br>${mins} دقيقة`}}}
+function renderAnnual(){$('panel-annual').innerHTML=`<h2 class="section-title">التقويم السنوي</h2><div class="cards">${academicCalendar.events.map(e=>eventCard(e)).join('')}</div>`}
+function renderWeeks(term=localStorage.weekTerm||'term1'){localStorage.weekTerm=term;let weeks=buildWeeks(term),cw=getCurrentWeek();$('panel-weeks').innerHTML=`<h2 class="section-title">الأسابيع الدراسية</h2><div class="term-switch"><button class="btn ${term==='term1'?'active':''}" onclick="renderWeeks('term1')">الفصل الأول</button><button class="btn ${term==='term2'?'active':''}" onclick="renderWeeks('term2')">الفصل الثاني</button></div><div class="week-summary"><div class="card stat"><b>19</b><span>أسابيع الفصل</span></div><div class="card stat"><b>93</b><span>أيام دراسة رسمية</span></div><div class="card stat"><b>7</b><span>أيام الأسبوع معروضة</span></div><div class="card stat"><b>2</b><span>عطلة أسبوعية</span></div></div><div class="week-grid">${weeks.map(w=>`<div id="${weekElementId(w)}" class="card week ${cw&&cw.term===w.term&&cw.n===w.n?'current':''} ${weekClass(w)}"><div class="week-head"><span>${w.term} — الأسبوع ${w.n}</span><span>${w.label}</span></div>${weekBadgeHTML(w)}<div class="week-days-list">${getWeekDays(w).map(day=>{let id=iso(day),evs=eventOnDay(id),names=evs.map(e=>e.title).join('، ');return `<div class="week-day-item ${dayKind(id)} ${hasPersonal(id)?'has-personal':''}" onclick="openDay('${id}')"><div class="week-day-name">${weekdayName(day)}</div><div class="week-day-date"><span class="hijri-line">${fmtH(day)}</span><span class="greg-line">${fmtShortG(id)}${names?' — '+names:''}</span>${isWeekend(day)?'<span class="weekend-note">عطلة أسبوعية</span>':''}${personalSummary(id)}</div></div>`}).join('')}</div></div>`).join('')}</div>`}
+function renderMonthly(base){let panel=$('panel-monthly'),todayIso=iso(new Date()),now=base||(todayIso>=academicCalendar.start&&todayIso<=academicCalendar.end?new Date():d(academicCalendar.start));let y=Number(localStorage.monthY||now.getFullYear()),m=Number(localStorage.monthM??now.getMonth()),first=new Date(y,m,1,12),start=addDays(first,-first.getDay()),cells=[];for(let i=0;i<42;i++){let day=addDays(start,i),id=iso(day),evs=eventOnDay(id),klass=evs.some(e=>e.type==='exam')?'exam-cell':evs.some(e=>e.type==='national')?'national-cell':evs.some(e=>e.type==='holiday')?'holiday-cell':'';cells.push(`<div class="daycell ${day.getMonth()!==m?'out':''} ${id===todayIso?'today':''} ${isWeekend(day)?'weekend-cell':''} ${hasPersonal(id)?'has-personal':''} ${klass}" onclick='openDay("${id}")'><div class="g">${day.getDate()}</div><div class="h">${fmtH(day).replace(' هـ','')}</div>${isWeekend(day)?'<span class="event-dot weekend">عطلة أسبوعية</span>':''}${evs.slice(0,2).map(e=>`<span class="event-dot" style="background:var(--${typeInfo[e.type][1]})">${e.title}</span>`).join('')}${personalDots(id)}</div>`)}panel.innerHTML=`<div class="calendar-head"><h2 class="section-title">التقويم الشهري</h2><div class="actions"><button class="btn" onclick="changeMonth(-1)">السابق</button><button class="btn primary">${new Intl.DateTimeFormat('ar-SA',{month:'long',year:'numeric'}).format(first)} — ${fmtH(first).split('،')[0]}</button><button class="btn" onclick="changeMonth(1)">التالي</button></div></div><div class="month-grid">${['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'].map(x=>`<div class="weekday">${x}</div>`).join('')}${cells.join('')}</div>`}
+function changeMonth(n){let y=Number(localStorage.monthY||d(academicCalendar.start).getFullYear()),m=Number(localStorage.monthM??d(academicCalendar.start).getMonth()),x=new Date(y,m+n,1,12);localStorage.monthY=x.getFullYear();localStorage.monthM=x.getMonth();renderMonthly(x)}
+function renderFiltered(type,id,title){let arr=academicCalendar.events.filter(e=>type.includes(e.type));$(id).innerHTML=`<h2 class="section-title">${title}</h2><div class="cards">${arr.map(e=>eventCard(e)).join('')}</div>`}
+function renderCounters(){let vals=[['أسابيع الفصل الأول',19],['أيام دراسة الفصل الأول',93],['أسابيع الفصل الثاني',19],['أيام دراسة الفصل الثاني',93],['إجمالي أيام الدراسة',186],['أحداث التقويم الرسمية',academicCalendar.events.length]];$('panel-counters').innerHTML=`<h2 class="section-title">العدادات الرسمية</h2><div class="stats">${vals.map(v=>`<div class="card stat"><b>${v[1]}</b><span>${v[0]}</span></div>`).join('')}</div>`}
+function renderStats(){let t1=academicCalendar.stats.term1,t2=academicCalendar.stats.term2;$('panel-stats').innerHTML=`<h2 class="section-title">الإحصائيات</h2><div class="card donut-wrap"><svg class="donut" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.915" fill="transparent" stroke="rgba(128,128,128,.18)" stroke-width="5"></circle><circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--study)" stroke-width="5" stroke-dasharray="50 50" stroke-dashoffset="25"></circle><circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--primary)" stroke-width="5" stroke-dasharray="50 50" stroke-dashoffset="-25"></circle><text x="21" y="22" text-anchor="middle" font-size="4" fill="currentColor">186 يوم</text></svg><div class="legend"><div>الفصل الأول: <b>${t1.weeks}</b> أسبوع — <b>${t1.studyDays}</b> يوم دراسة</div><div>الفصل الثاني: <b>${t2.weeks}</b> أسبوع — <b>${t2.studyDays}</b> يوم دراسة</div><div>إجمالي أيام الدراسة: <b>186</b> يوم</div><div>الجمعة والسبت تظهران للتخطيط الشخصي، ولا تُحسبان ضمن أيام الدراسة.</div></div></div>`}
+function renderNext(){let e=getNextEvent();$('panel-next').innerHTML=`<h2 class="section-title">ماذا ينتظرني؟</h2><div class="cards"><div></div>${eventCard(e,true)}<div></div></div>`}
+
+function renderExams(){
+  let arr=academicCalendar.events.filter(e=>e.type==='exam');
+  $('panel-exams').innerHTML=`<h2 class="section-title">الاختبارات</h2>
+  <div class="cards">
+    ${arr.map(e=>eventCard(e,true)).join('')}
+  </div>
+  <div class="card audit" style="margin-top:14px">
+    <div class="audit-list">
+      <div class="audit-ok">✓ الفصل الأول: بداية اختبار الفصل الدراسي الأول يوم الأحد 3 / 1 / 2027 م — 25 / 7 / 1448 هـ.</div>
+      <div class="audit-ok">✓ الفصل الثاني: بداية اختبار الفصل الدراسي الثاني يوم الأحد 27 / 6 / 2027 م — 22 / 1 / 1449 هـ.</div>
+      <div class="audit-ok">تنبيه: تم عرض تاريخ بداية إجازة نهاية العام كما ورد في التقويم الرسمي ضمن تبويب الإجازات والتقويم السنوي.</div>
+    </div>
+  </div>`;
+}
+
+
+function renderTasks(){
+ let data=loadPersonal(),today=iso(new Date());
+ let all=[];
+ Object.keys(data).forEach(k=>{
+   let dta=data[k]||{};
+   (dta.tasks||[]).forEach((t,i)=>all.push({date:k,index:i,text:t.text||t.title||'مهمة',done:!!t.done,important:!!t.important,urgent:!!t.urgent}));
+ });
+ let total=all.length,done=all.filter(x=>x.done).length,open=total-done;
+ let todayTasks=all.filter(x=>x.date===today);
+ let weekTasks=all.filter(x=>daysBetween(today,x.date)>=0 && daysBetween(today,x.date)<=7);
+ let late=all.filter(x=>!x.done && x.date<today);
+ let groups={
+   do:all.filter(t=>!t.done && taskMatrixInfo(t).key==='do'),
+   plan:all.filter(t=>!t.done && taskMatrixInfo(t).key==='plan'),
+   delegate:all.filter(t=>!t.done && taskMatrixInfo(t).key==='delegate'),
+   low:all.filter(t=>!t.done && taskMatrixInfo(t).key==='low')
+ };
+ $('panel-tasks').innerHTML=`
+ <h2 class="section-title">مهامي</h2>
+ <div class="tasks-dashboard">
+   <div class="card task-stat"><b>${total}</b><span>إجمالي المهام</span></div>
+   <div class="card task-stat"><b>${done}</b><span>منجزة</span></div>
+   <div class="card task-stat"><b>${open}</b><span>متبقية</span></div>
+   <div class="card task-stat"><b>${total?Math.round(done/total*100):0}%</b><span>نسبة الإنجاز</span></div>
+ </div>
+ <div class="task-sections">
+   <div class="card task-box"><h3>اليوم</h3>${todayTasks.length?todayTasks.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام'}</div>
+   <div class="card task-box"><h3>هذا الأسبوع</h3>${weekTasks.length?weekTasks.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام'}</div>
+   <div class="card task-box"><h3>متأخرة</h3>${late.length?late.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام متأخرة'}</div>
+ </div>
+ <h2 class="section-title">مصفوفة أيزنهاور</h2>
+ <div class="matrix-sections">
+   <div class="card matrix-box"><h3>🔴 نفّذ الآن</h3>${groups.do.length?groups.do.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام'}</div>
+   <div class="card matrix-box"><h3>🔵 خطّط لها</h3>${groups.plan.length?groups.plan.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام'}</div>
+   <div class="card matrix-box"><h3>🟡 فوّض / أنجز سريعاً</h3>${groups.delegate.length?groups.delegate.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام'}</div>
+   <div class="card matrix-box"><h3>⚪ منخفضة</h3>${groups.low.length?groups.low.map(t=>taskItemHTML(t,t.date)).join(''):'لا توجد مهام'}</div>
+ </div>`;
+}
+function renderSettings(){$('panel-settings').innerHTML=`<h2 class="section-title">الإعدادات</h2><div class="cards"><div class="card event"><h3>المظهر</h3><button class="btn primary" onclick="toggleTheme()">تبديل /الفاتح</button></div><div class="card event"><h3>الملاحظات والمهام</h3><p class="note">تُحفظ محلياً على نفس الجهاز، ويمكن استخدامها في أيام الدراسة أو الجمعة والسبت.</p><div class="event-actions"><button class="btn primary" onclick="exportPersonalJSON()">تصدير JSON</button><button class="btn" onclick="exportPersonalCSV()">تصدير CSV</button><button class="btn" onclick="importPersonalJSON()">استيراد JSON</button><button class="btn danger" onclick="clearPersonalData()">مسح الكل</button></div></div><div class="card event"><h3>المصدر</h3><p class="note">تم الاعتماد على ملف PDF المرفق: صفحات التقويم العام وتوزيع أسابيع الفصلين.</p></div></div>`}
+function renderAudit(){$('panel-audit').innerHTML=`<h2 class="section-title">مراجعة وتدقيق قبل النشر</h2><div class="card audit"><div class="audit-list"><div class="audit-ok">✓ الفصل الأول: 19 أسبوعاً من صفحة توزيع الأسابيع.</div><div class="audit-ok">✓ الفصل الثاني: 19 أسبوعاً من صفحة توزيع الأسابيع.</div><div class="audit-ok">✓ أيام الدراسة الرسمية: الأحد إلى الخميس.</div><div class="audit-ok">✓ الجمعة والسبت معروضان كعطلة أسبوعية لاستخدام الملاحظات والمهام.</div><div class="audit-ok">✓ اختبارات الفصل الأول: الأحد 3 / 1 / 2027 م.</div><div class="audit-ok">✓ اختبارات الفصل الثاني: الأحد 27 / 6 / 2027 م.</div><div class="audit-ok">✓ مجموع أيام الدراسة الرسمي: 93 + 93 = 186 يوم.</div><div class="audit-ok">✓ دالة التاريخ محلية لتجنب انزياح اليوم.</div><div class="audit-ok">✓ البطاقة العائمة "أين أنا الآن؟" تعرض الوضع الحالي والحدث القادم وتدعم الانتقال المباشر وقراءة النص.</div><div class="audit-ok">✓ البطاقة العائمة "أين أنا الآن؟" تعرض الوضع الحالي والحدث القادم وتدعم الانتقال المباشر وقراءة النص.</div></div></div>`}
+
+function taskMatrixInfo(t){
+  let important=!!t.important, urgent=!!t.urgent;
+  if(important&&urgent)return {key:'do',label:'نفّذ الآن',cls:'eisenhower-do',icon:'🔴'};
+  if(important&&!urgent)return {key:'plan',label:'خطّط لها',cls:'eisenhower-plan',icon:'🔵'};
+  if(!important&&urgent)return {key:'delegate',label:'فوّض / أنجز سريعاً',cls:'eisenhower-delegate',icon:'🟡'};
+  return {key:'low',label:'منخفضة',cls:'eisenhower-low',icon:'⚪'};
+}
+function taskBadge(t){let m=taskMatrixInfo(t);return `<span class="eisenhower-badge ${m.cls}">${m.icon} ${m.label}</span>`}
+function taskDateLabel(dateStr){return `${weekdayName(dateStr)} — ${fmtShortG(dateStr)}`}
+function taskItemHTML(t,dateStr){
+  let m=taskMatrixInfo(t);
+  return `<div class="task-item ${m.cls}" onclick="openDay('${dateStr}')">${t.done?'✅':'□'} ${t.text||t.title||'مهمة'} ${taskBadge(t)}<span class="task-meta">${taskDateLabel(dateStr)}</span></div>`;
+}
+
+function renderDayManager(id){
+let p=dayData(id);
+return `<div class="day-manager">
+  <div class="day-manager-section">
+    <h3>📝 ملاحظة</h3>
+    <textarea id="dm-note" placeholder="اكتب ملاحظة لهذا اليوم">${p.note||''}</textarea>
+  </div>
+  <div class="day-manager-section">
+    <h3>✅ المهام</h3>
+    ${(p.tasks||[]).map((t,i)=>`<div class="task-row"><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${id}',${i},this.checked)"><span>${t.text} ${taskBadge(t)}</span><button class="btn" onclick="deleteTask('${id}',${i})">حذف</button></div>`).join('')||'<p class="note">لا توجد مهام.</p>'}
+    <input id="dm-task-new" placeholder="أضف مهمة جديدة">
+    <div class="eisenhower-grid">
+      <label class="eisenhower-option"><input type="checkbox" id="dm-important"> مهمة</label>
+      <label class="eisenhower-option"><input type="checkbox" id="dm-urgent"> عاجلة</label>
+    </div>
+    <p class="note">التصنيف يتم حسب مصفوفة أيزنهاور: مهمة + عاجلة = نفّذ الآن، مهمة فقط = خطّط لها، عاجلة فقط = فوّض/أنجز سريعاً.</p>
+    <button class="btn" onclick="addTask('${id}')">إضافة مهمة</button>
+  </div>
+  <div class="day-manager-actions">
+    <button class="btn primary" onclick="saveDayManager('${id}')">حفظ اليوم</button>
+    <button class="btn danger" onclick="clearDay('${id}')">مسح بيانات اليوم</button>
+  </div>
+</div>`}
+function saveDayManager(id){let p=dayData(id);p.note=$('dm-note')?.value.trim()||'';setDayData(id,p);renderAll();openDay(id);toast('تم حفظ بيانات اليوم')
+refreshCalendarViews();
+}
+function addTask(id){
+let inp=$('dm-task-new');
+if(!inp||!inp.value.trim())return;
+let p=dayData(id);
+p.tasks=p.tasks||[];
+p.tasks.push({text:inp.value.trim(),done:false,important:!!$('dm-important')?.checked,urgent:!!$('dm-urgent')?.checked});
+setDayData(id,p);
+openDay(id)
+
+refreshCalendarViews();
+}
+function toggleTask(id,i,done){let p=dayData(id);if(p.tasks&&p.tasks[i])p.tasks[i].done=done;setDayData(id,p);renderAll()
+refreshCalendarViews();
+}
+function deleteTask(id,i){let p=dayData(id);p.tasks=(p.tasks||[]).filter((_,idx)=>idx!==i);setDayData(id,p);openDay(id)
+refreshCalendarViews();
+}
+function clearDay(id){setDayData(id,{note:'',tasks:[]});renderAll();openDay(id);toast('تم مسح بيانات اليوم')
+refreshCalendarViews();
+}
+function openDay(id){let evs=eventOnDay(id),day=d(id);openModal(`<h2>${weekdayName(day)}</h2><p class="note">${fmtH(day)}<br>${fmtG(day)}</p>${isWeekend(day)?typeTag('weekend'):''}${personalSummary(id)}${evs.length?evs.map(e=>eventCard(e)).join(''):'<p class="note">لا توجد أحداث رسمية مسجلة في هذا اليوم.</p>'}${renderDayManager(id)}`)}
+function openEvent(id){let e=academicCalendar.events.find(x=>x.id===id);openModal(`<h2>${e.title}</h2>${typeTag(e.type)}${dateHTML(e)}<p class="note">${e.desc}<br>${remainingText(e)}</p><button class="btn primary" onclick='openCalendarOptions("${e.id}")'>إضافة إلى التقويم</button>`)}
+function openCalendarOptions(id){let e=academicCalendar.events.find(x=>x.id===id),google=googleUrl(e),outlook=outlookUrl(e);openModal(`<h2>إضافة إلى التقويم</h2><p class="note">${e.title}<br>${weekdayName(e.start)}<br>${e.hStart}<br>${fmtShortG(e.start)}</p><div class="event-actions"><a class="btn primary" href="${google}" target="_blank">Google Calendar</a><a class="btn" href="${outlook}" target="_blank">Outlook Calendar</a><button class="btn gold" onclick='downloadICS(["${e.id}"],"${e.id}.ics")'>تحميل ICS</button></div>`)}
+function openModal(html){$('modalContent').innerHTML=html;$('modal').classList.add('show')}function closeModal(){$('modal').classList.remove('show')}window.onclick=e=>{if(e.target===$('modal'))closeModal()}
+function icsDate(s){return s.replaceAll('-','')}function esc(s){return String(s).replace(/[\\,;]/g,'\\$&').replace(/\n/g,'\\n')}
+function eventToICS(e){let end=iso(addDays(d(e.end||e.start),1));return `BEGIN:VEVENT\nUID:${e.id}@masar-calendar\nDTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z\nDTSTART;VALUE=DATE:${icsDate(e.start)}\nDTEND;VALUE=DATE:${icsDate(end)}\nSUMMARY:${esc(e.title)}\nDESCRIPTION:${esc('التقويم الدراسي '+academicCalendar.yearLabel+'\nالحدث: '+e.title+'\nاليوم: '+weekdayName(e.start)+'\nهجري: '+e.hStart+(e.hEnd&&e.hEnd!==e.hStart?' إلى '+e.hEnd:'')+'\nميلادي: '+fmtShortG(e.start)+(e.end&&e.end!==e.start?' إلى '+fmtShortG(e.end):'')+'\nالنوع: '+typeInfo[e.type][0])}\nEND:VEVENT`}
+function downloadICS(ids,filename){let arr=academicCalendar.events.filter(e=>ids.includes(e.id)),ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Masar//Academic Calendar//AR\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\n'+arr.map(eventToICS).join('\n')+'\nEND:VCALENDAR',blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();URL.revokeObjectURL(a.href);toast('تم إنشاء ملف التقويم')}
+function googleUrl(e){let end=iso(addDays(d(e.end||e.start),1));return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.title)}&dates=${icsDate(e.start)}/${icsDate(end)}&details=${encodeURIComponent(e.desc+'\nاليوم: '+weekdayName(e.start)+'\nهجري: '+e.hStart+'\nميلادي: '+fmtShortG(e.start))}`}
+function outlookUrl(e){let end=iso(addDays(d(e.end||e.start),1));return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(e.title)}&startdt=${e.start}&enddt=${end}&allday=true&body=${encodeURIComponent(e.desc+'\nاليوم: '+weekdayName(e.start)+'\nهجري: '+e.hStart+'\nميلادي: '+fmtShortG(e.start))}`}
+function exportPersonalJSON(){let blob=new Blob([JSON.stringify(loadPersonal(),null,2)],{type:'application/json;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='masar-calendar-notes.json';a.click();URL.revokeObjectURL(a.href);toast('تم تصدير البيانات')}
+function exportPersonalCSV(){let data=loadPersonal(),rows=[['date','hijri','gregorian','note','tasks']];Object.keys(data).sort().forEach(id=>{let p=data[id];rows.push([id,fmtH(d(id)),fmtShortG(id),p.note||'',(p.tasks||[]).map(t=>(t.done?'[x] ':'[ ] ')+t.text).join(' | ')])});let csv=rows.map(r=>r.map(x=>`"${String(x).replaceAll('"','""')}"`).join(',')).join('\n'),blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='masar-calendar-notes.csv';a.click();URL.revokeObjectURL(a.href);toast('تم تصدير CSV')}
+function importPersonalJSON(){let input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>{let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{savePersonal(JSON.parse(r.result));renderAll();toast('تم الاستيراد')}catch(e){toast('ملف غير صالح')}};r.readAsText(f)};input.click()}
+function clearPersonalData(){if(confirm('مسح جميع الملاحظات والمهام؟')){localStorage.removeItem(personalKey);renderAll();toast('تم المسح')}}
+function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2500)}
+function toggleTheme(){let n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;localStorage.academicTheme=n;$('themeBtn').textContent=n==='dark'?'':''}
+$('themeBtn').onclick=toggleTheme;$('allIcsBtn').onclick=()=>downloadICS(academicCalendar.events.map(e=>e.id),'academic-calendar-rc2.ics');
+function renderAll(){renderHome();renderAnnual();renderWeeks(localStorage.weekTerm||'term1');renderMonthly();renderFiltered(['holiday','national'],'panel-holidays','الإجازات');renderExams();renderCounters();renderStats();renderTasks();renderNext();renderSettings();renderLive()}
+function init(){document.documentElement.dataset.theme=localStorage.academicTheme||'light';$('themeBtn').textContent=document.documentElement.dataset.theme==='dark'?'':'';renderShell();renderAll();setInterval(()=>{renderLive();updateCountdowns()},1000)}
+init();
+</script>
+</body>
+</html>
