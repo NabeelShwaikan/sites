@@ -83,25 +83,28 @@
     .muted{color:var(--muted)}
 
     footer{margin-top:24px; text-align:center; color:var(--muted); font-size:13px}
-      .topbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px}
-    .pill{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); font-size:13px; color:var(--ink)}
-    .pill::before{content:""; width:6px; height:6px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2))}
-
-      /* انتقال ناعم بين السمات (ثالثًا-2) */
+/* انتقال ناعم بين السمات (ثالثًا-2) */
     html[data-theme], body{transition: background-color .4s ease, color .4s ease}
-    .panel, .card, .pill, .btn, .logo{transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease}
+    .panel, .card, .btn, .logo{transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease}
+
+  
+    .status-line{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;margin:2px 0 14px;color:var(--muted);font-size:13px;font-weight:600}
+    .status-line span{white-space:nowrap}.status-line .time-value{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
+    .knowledge-card{margin:6px 0 18px;background:radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 34%),radial-gradient(circle at bottom right,rgba(16,185,129,.10),transparent 36%),var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;position:relative;overflow:hidden}
+    .knowledge-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--brand),var(--brand-2))}
+    .knowledge-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.knowledge-title{font-size:15px;font-weight:800;color:var(--ink)}
+    .knowledge-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:5px 9px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700}
+    .knowledge-text{font-size:clamp(17px,2.2vw,22px);line-height:1.85;font-weight:700;margin:4px 0 12px;color:var(--ink)}
+        .knowledge-practical{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);color:var(--muted);font-size:14px;line-height:1.8}.knowledge-card.is-open .knowledge-practical{display:block}
+    .wellness-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:0 0 18px}.wellness-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;display:flex;align-items:center;gap:16px;min-height:142px}.wellness-meta{flex:1;min-width:0}.wellness-title{font-size:15px;font-weight:800;margin-bottom:6px}.wellness-date{color:var(--muted);font-size:13px;line-height:1.5}
+    .ring-wrap{position:relative;width:104px;height:104px;flex:0 0 104px;display:grid;place-items:center}.ring-svg{width:104px;height:104px;transform:rotate(-90deg)}.ring-bg{fill:none;stroke:rgba(148,163,184,.22);stroke-width:10}.ring-progress{fill:none;stroke:url(#ringGradient);stroke-width:10;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease}
+    .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05}.ring-number{font-size:28px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}.ring-unit{font-size:11px;color:var(--muted);font-weight:700;margin-top:4px}
+    @media (max-width:520px){.wrap{padding:20px}.knowledge-card{padding:15px}.knowledge-head{align-items:flex-start}.knowledge-text{font-size:17px}.wellness-card{min-height:132px;padding:14px}.ring-wrap,.ring-svg{width:94px;height:94px;flex-basis:94px}.ring-number{font-size:25px}.status-line{gap:10px;font-size:12.5px}}
 
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- شريط علوي: الوقت واليوم والتاريخ الهجري/الميلادي -->
-    <div class="topbar" role="status" aria-live="polite">
-      <span class="pill" id="timeNow" title="الوقت (الرياض)">--:--</span>
-      <span class="pill" id="dayName" title="اليوم">—</span>
-      <span class="pill" id="hijriDate" title="التاريخ الهجري">—</span>
-      <span class="pill" id="gregDate" title="التاريخ الميلادي">—</span>
-    </div>
     <header>
       <div class="brand">
         <div class="logo" aria-hidden="true">
@@ -114,6 +117,43 @@
       </div>
       <button class="btn icon" id="themeBtn" aria-label="تبديل السمة" title="تبديل السمة"></button>
     </header>
+
+    <div class="status-line" role="status" aria-live="polite">
+      <span class="time-value" id="timeNow">--:--</span>
+      <span id="dayName">—</span>
+      <span id="hijriDate">—</span>
+      <span id="gregDate">—</span>
+    </div>
+
+    <section class="knowledge-card" id="knowledgeCard" aria-label="رسالة اليوم">
+      <div class="knowledge-head">
+        <div class="knowledge-title" id="knowledgeTitle">رسالة اليوم</div>
+        <div class="knowledge-actions">
+          <button class="mini-btn" id="toggleKnowledge" type="button">التطبيق العملي</button>
+          <button class="mini-btn" id="nextKnowledge" type="button">رسالة أخرى</button>
+        </div>
+      </div>
+      <div class="knowledge-text" id="knowledgeText">الفعل يسبق الحماس؛ ابدأ بخطوة صغيرة ثم دع الدافع يلحق بك.</div>
+      <div class="knowledge-practical" id="knowledgePractical">ابدأ اليوم بمهمة واحدة لا تتجاوز دقيقتين، ثم وسّعها بعد كسر حاجز البداية.</div>
+    </section>
+
+    <div class="wellness-grid" aria-label="عدادات بوابة مسار">
+      <article class="wellness-card">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><defs><linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/></linearGradient></defs><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="ring-progress" id="salaryRing" cx="52" cy="52" r="45"></circle></svg>
+          <div class="ring-center"><div class="ring-number" id="salaryDays">--</div><div class="ring-unit">يوماً</div></div>
+        </div>
+        <div class="wellness-meta"><div class="wellness-title">الراتب القادم</div><div class="wellness-date" id="salaryDate">—</div></div>
+      </article>
+      <article class="wellness-card">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="ring-progress" id="ramadanRing" cx="52" cy="52" r="45"></circle></svg>
+          <div class="ring-center"><div class="ring-number" id="ramadanDays">--</div><div class="ring-unit">يوماً</div></div>
+        </div>
+        <div class="wellness-meta"><div class="wellness-title">رمضان القادم</div><div class="wellness-date" id="ramadanDate">—</div></div>
+      </article>
+    </div>
+
 
     <section class="panel">
       <h2 style="padding:12px 14px">📚 الصفحات المتاحة</h2>
@@ -273,23 +313,11 @@
         // 1) يتوافق عدد البطاقات مع PAGES
         const cards = document.querySelectorAll('.card');
         console.assert(cards.length === PAGES.length, `Expected ${PAGES.length} cards, got ${cards.length}`);
-
-        // 2) تبديل السمة يُحدّث localStorage و الأيقونة (عبر data-icon)
-        const beforeMode = document.documentElement.getAttribute('data-theme') || 'light';
-        const beforeIcon = themeBtn.dataset.icon;
-        toggleTheme();
-        const afterMode = document.documentElement.getAttribute('data-theme');
-        const stored = localStorage.getItem('theme');
-        console.assert(afterMode === stored, 'Theme in DOM should match localStorage');
-        console.assert(themeBtn.dataset.icon !== beforeIcon, 'SVG icon state should change after toggle');
-        // ارجاع الحالة الأصلية
-        toggleTheme();
-
-        // 3) الروابط غير فارغة
+        // 2) الروابط غير فارغة
         const links = Array.from(document.querySelectorAll('.card a'));
         console.assert(links.every(a => a.getAttribute('href')), 'Every card must contain a link with href');
 
-        // 4) عناصر الوقت والتواريخ غير فارغة
+        // 3) عناصر الوقت والتواريخ غير فارغة
         const t1 = document.getElementById('timeNow').textContent.trim();
         const d1 = document.getElementById('dayName').textContent.trim();
         const h1 = document.getElementById('hijriDate').textContent.trim();
@@ -301,6 +329,213 @@
         console.error('Tests failed:', err);
       }
     }
+
+
+    const KNOWLEDGE_TYPE_LABELS = {
+      rule: 'قاعدة اليوم',
+      principle: 'مبدأ اليوم',
+      insight: 'بصيرة اليوم',
+      question: 'سؤال اليوم',
+      challenge: 'تحدي اليوم',
+      exercise: 'تمرين اليوم',
+      mistake: 'خطأ شائع',
+      strategy: 'استراتيجية اليوم'
+    };
+
+    const FALLBACK_KNOWLEDGE = [{"id":1,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":1,"title":"ابدأ قبل أن تشعر بالحماس","message":"الفعل يسبق الحماس، ولا ينتظره.","details":"كثير من المهام تتأخر لأننا ننتظر الشعور المناسب، بينما البداية نفسها هي التي تولّد الدافع وتخفف مقاومة العمل.","action":"ابدأ المهمة لمدة دقيقتين فقط، ثم قرر بعدها إن كنت ستتوقف أو تكمل.","question":"ما المهمة التي تؤجلها انتظارًا للحماس؟","source":"Willpower","tags":["الأنظمة والعادات","الانضباط","rule","مستويات تنفيذية"],"concept_id":"SYS-001","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"الانضباط","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":2,"status":"Published","type":"principle","category":"الانتباه","level":2,"title":"مهمة واحدة أفضل من خمس بدايات","message":"تعدد البدايات يقلل عدد النهايات.","details":"الانتقال بين عدة مهام يستهلك الانتباه ويزيد الحمل الذهني. الإنجاز يظهر عندما تمنح مهمة واحدة وقتًا كافيًا لتتقدم.","action":"اختر مهمة واحدة اليوم، ولا تنتقل لغيرها حتى تصل إلى نقطة توقف واضحة.","question":"كم مهمة بدأت اليوم ولم تُنهِها؟","source":"The Organized Mind","tags":["الانتباه","التركيز","principle","مستويات تنفيذية"],"concept_id":"ATT-001","domain":"الانتباه","domain_order":1,"subcategory":"التركيز","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":3,"status":"Published","type":"mistake","category":"التنفيذ","level":2,"title":"قياس الجهد بدل الإنجاز","message":"عدد الساعات لا يساوي دائمًا مقدار التقدم.","details":"قد تعمل ساعات طويلة دون مخرجات واضحة. الإنتاجية تقاس بما تغير فعليًا، لا بما شعرت أنك بذلته.","action":"في نهاية اليوم، اكتب ثلاثة مخرجات واضحة بدل حساب ساعات العمل فقط.","question":"هل تقيس وقتك أم نتائجك؟","source":"مشروع المستويات التنفيذية","tags":["التنفيذ","الإنتاجية","mistake","مستويات تنفيذية"],"concept_id":"EXEC-001","domain":"التنفيذ","domain_order":6,"subcategory":"الإنتاجية","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":4,"status":"Published","type":"strategy","category":"التخطيط والتنفيذ","level":3,"title":"اجعل القرار التالي واضحًا","message":"الغموض يؤخر التنفيذ.","details":"عندما لا تعرف الخطوة التالية بدقة، يتحول المشروع إلى عبء ذهني. الوضوح يقلل التردد ويزيد سرعة الحركة.","action":"قبل إنهاء أي جلسة عمل، اكتب أول خطوة ستبدأ بها في الجلسة القادمة.","question":"ما أول خطوة محددة في مشروعك الحالي؟","source":"مشروع المستويات التنفيذية","tags":["التخطيط والتنفيذ","اتخاذ القرار","strategy","مستويات تنفيذية"],"concept_id":"PLAN-001","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"اتخاذ القرار","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":5,"status":"Published","type":"exercise","category":"الذاكرة العاملة والتعلم","level":2,"title":"استرجع قبل أن تراجع","message":"الاسترجاع أقوى من إعادة القراءة.","details":"محاولة تذكر المعلومة قبل مراجعتها تنشّط الذاكرة وتكشف الفجوات الحقيقية في الفهم.","action":"أغلق الكتاب أو الملخص، واكتب ما تتذكره خلال دقيقة واحدة، ثم راجع ما فاتك.","question":"ماذا استطعت أن تتذكر دون الرجوع للمصدر؟","source":"Peak","tags":["الذاكرة العاملة والتعلم","التعلم","exercise","مستويات تنفيذية"],"concept_id":"WM-001","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"التعلم","reference":"Ericsson & Pool - Peak","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":6,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":1,"title":"صمّم البيئة قبل مقاومة النفس","message":"البيئة الجيدة تقلل حاجتك للإرادة.","details":"الاعتماد على قوة الإرادة وحدها يجعل السلوك هشًا. البيئة المصممة جيدًا تجعل السلوك الصحيح أسهل والسلوك الخاطئ أصعب.","action":"أزل مشتتًا واحدًا من مكان عملك قبل أن تبدأ.","question":"ما الشيء الموجود حولك ويضعف سلوكك دون أن تنتبه؟","source":"Willpower","tags":["الأنظمة والعادات","العادات","rule","مستويات تنفيذية"],"concept_id":"SYS-002","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"العادات","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":7,"status":"Published","type":"insight","category":"المرونة المعرفية","level":3,"title":"العقل يرهق من الملفات المفتوحة","message":"المهام غير المحسومة تستهلك انتباهًا صامتًا.","details":"ليست كل الضغوط ظاهرة. بعض التشتت يأتي من مهام معلقة لم تتحول إلى قرار أو موعد أو خطوة واضحة.","action":"اكتب ثلاث مهام مفتوحة، وحوّل كل واحدة منها إلى: قرار، موعد، أو حذف.","question":"ما المهمة التي تشغل بالك لأنها لم تُحسم؟","source":"The Organized Mind","tags":["المرونة المعرفية","التفكير","insight","مستويات تنفيذية"],"concept_id":"CF-001","domain":"المرونة المعرفية","domain_order":4,"subcategory":"التفكير","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":8,"status":"Published","type":"challenge","category":"التنفيذ","level":2,"title":"أغلق حلقة واحدة","message":"إنهاء صغير أفضل من نية كبيرة.","details":"الإنجاز لا يحتاج دائمًا إلى قفزة. أحيانًا يكفي إغلاق حلقة مفتوحة لتستعيد الشعور بالسيطرة.","action":"اختر مهمة صغيرة معلقة وأنهِها اليوم بالكامل.","question":"ما الحلقة الصغيرة التي تستطيع إغلاقها الآن؟","source":"مشروع المستويات التنفيذية","tags":["التنفيذ","challenge","مستويات تنفيذية"],"concept_id":"EXEC-002","domain":"التنفيذ","domain_order":6,"subcategory":"التنفيذ","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":9,"status":"Published","type":"principle","category":"التخطيط والتنفيذ","level":2,"title":"احجز وقتًا لما يهم","message":"ما لا يدخل التقويم يظل أمنية.","details":"النوايا العامة تنهزم أمام انشغال اليوم. تحويل الشيء المهم إلى موعد يحميه من التأجيل.","action":"احجز 30 دقيقة اليوم لشيء مهم غير عاجل.","question":"ما الشيء المهم الذي لم تخصص له وقتًا؟","source":"مشروع المستويات التنفيذية","tags":["التخطيط والتنفيذ","إدارة الوقت","principle","مستويات تنفيذية"],"concept_id":"PLAN-002","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"إدارة الوقت","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":10,"status":"Published","type":"question","category":"التخطيط والتنفيذ","level":3,"title":"اسأل عن الأثر","message":"ليست كل مهمة تستحق نفس الطاقة.","details":"بعض الأعمال تعطي أثرًا عاليًا وبعضها يستهلك اليوم دون نتيجة حقيقية. سؤال الأثر يساعدك على ترتيب الطاقة.","action":"قبل بدء العمل، اختر مهمة واحدة لو أنجزتها ستجعل اليوم أفضل.","question":"ما المهمة الأعلى أثرًا اليوم؟","source":"مشروع المستويات التنفيذية","tags":["التخطيط والتنفيذ","الأولويات","question","مستويات تنفيذية"],"concept_id":"PLAN-003","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"الأولويات","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":11,"status":"Published","type":"strategy","category":"الانتباه","level":2,"title":"اخفض ضجيج البداية","message":"البداية الثقيلة تقتل الاستمرارية.","details":"كلما احتاجت المهمة إلى تجهيز طويل زادت فرصة الهروب منها. تقليل خطوات البداية يجعل الالتزام أسهل.","action":"جهز أدوات مهمة الغد قبل نهاية اليوم.","question":"ما الشيء الذي يمكن تجهيزه الآن ليجعل بداية الغد أسهل؟","source":"Peak","tags":["الانتباه","التركيز","strategy","مستويات تنفيذية"],"concept_id":"ATT-002","domain":"الانتباه","domain_order":1,"subcategory":"التركيز","reference":"Ericsson & Pool - Peak","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":12,"status":"Published","type":"mistake","category":"الذاكرة العاملة والتعلم","level":3,"title":"القراءة بلا اختبار ذاتي","message":"الفهم الذي لا يُختبر قد يكون وهمًا.","details":"الشعور بالألفة أثناء القراءة لا يعني امتلاك المعلومة. الاختبار الذاتي يكشف ما ثبت فعلًا وما مرّ مرورًا سريعًا.","action":"بعد قراءة أي فقرة مهمة، اكتب سؤالًا واحدًا عنها وأجب دون الرجوع للنص.","question":"ما المعلومة التي تظن أنك فهمتها ولم تختبرها؟","source":"Peak","tags":["الذاكرة العاملة والتعلم","التعلم","mistake","مستويات تنفيذية"],"concept_id":"WM-002","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"التعلم","reference":"Ericsson & Pool - Peak","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":13,"status":"Published","type":"rule","category":"المراجعة والتحسين","level":4,"title":"راجع قبل أن تزيد","message":"زيادة الجهد دون مراجعة تكرر الخطأ.","details":"عندما لا تتوقف للمراجعة، قد تضاعف العمل في الاتجاه الخطأ. المراجعة القصيرة توفر وقتًا طويلًا لاحقًا.","action":"قبل إضافة مهمة جديدة، راجع آخر نتيجة: ما الذي نجح وما الذي تعطل؟","question":"ما الخطأ الذي تكرره لأنك لم تراجعه؟","source":"مشروع المستويات التنفيذية","tags":["المراجعة والتحسين","المراجعة","rule","مستويات تنفيذية"],"concept_id":"REF-001","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["REF-003","REF-004"]},{"id":14,"status":"Published","type":"insight","category":"الكبح الذاتي","level":3,"title":"الإرادة مورد لا خطة","message":"لا تبنِ يومك على قوة تحملك فقط.","details":"الإرادة تتأثر بالتعب والجوع والضغط. الخطة الجيدة تقلل الحاجة لاستخدام الإرادة في كل قرار صغير.","action":"اختر قرارًا متكررًا واجعله قاعدة ثابتة بدل اتخاذه كل يوم.","question":"ما القرار المتكرر الذي يستنزفك؟","source":"Willpower","tags":["الكبح الذاتي","الإرادة","insight","مستويات تنفيذية"],"concept_id":"IC-001","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الإرادة","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":15,"status":"Published","type":"principle","category":"التخطيط والتنفيذ","level":4,"title":"وضوح التوقعات يقلل الاحتكاك","message":"الغموض الإداري يصنع مقاومة غير ضرورية.","details":"عندما لا يعرف الناس المطلوب بدقة، تكثر التفسيرات والاجتهادات. الوضوح يحسن الأداء ويقلل النزاع.","action":"حوّل أي طلب عام إلى نتيجة محددة، موعد، ومعيار قبول.","question":"هل يعرف الطرف الآخر شكل النتيجة المطلوبة؟","source":"مشروع المستويات التنفيذية","tags":["التخطيط والتنفيذ","القيادة","principle","مستويات تنفيذية"],"concept_id":"PLAN-004","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"القيادة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":16,"status":"Published","type":"challenge","category":"الذاكرة العاملة والتعلم","level":3,"title":"حوّل الفكرة إلى أصل","message":"الفكرة غير المحفوظة تُفقد مرتين.","details":"تضيع الفكرة أولًا عندما لا تُكتب، وتضيع ثانيًا عندما تُكتب في مكان لا يمكن الرجوع إليه.","action":"اختر فكرة واحدة اليوم واحفظها في مكان مصنف يمكن البحث فيه لاحقًا.","question":"أين تذهب أفكارك بعد أن تظهر؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","إدارة المعرفة","challenge","مستويات تنفيذية"],"concept_id":"WM-003","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"إدارة المعرفة","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":17,"status":"Published","type":"strategy","category":"التنفيذ","level":2,"title":"ابدأ بالنسخة الرديئة","message":"المسودة الرديئة تكسر جمود المثالية.","details":"المثالية تجعل البداية صعبة. المسودة الأولى ليست للحكم، بل لإخراج الفكرة من الذهن إلى الواقع.","action":"اكتب نسخة أولى سيئة عمدًا خلال 10 دقائق.","question":"ما العمل الذي تؤخره لأنك تريد بدايته مثالية؟","source":"مشروع المستويات التنفيذية","tags":["التنفيذ","الإنتاجية","strategy","مستويات تنفيذية"],"concept_id":"EXEC-003","domain":"التنفيذ","domain_order":6,"subcategory":"الإنتاجية","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":18,"status":"Published","type":"question","category":"المرونة المعرفية","level":4,"title":"اسأل عن الافتراض الخفي","message":"كل قرار يحمل افتراضًا غير معلن.","details":"أحيانًا لا تكون المشكلة في القرار نفسه، بل في الافتراض الذي بُني عليه ولم تتم مراجعته.","action":"قبل قرار مهم، اكتب الافتراض الرئيسي الذي تعتمد عليه.","question":"ما الافتراض الذي لو كان خاطئًا سيتغير قرارك؟","source":"مشروع المستويات التنفيذية","tags":["المرونة المعرفية","التفكير","question","مستويات تنفيذية"],"concept_id":"CF-002","domain":"المرونة المعرفية","domain_order":4,"subcategory":"التفكير","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":19,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":2,"title":"اربط السلوك بمحفز ثابت","message":"العادة تحتاج مرساة.","details":"السلوك الجديد يصبح أسهل عندما يرتبط بشيء يحدث يوميًا بالفعل، مثل صلاة، قهوة، أو بداية دوام.","action":"اختر عادة صغيرة واربطها بحدث ثابت اليوم.","question":"ما الحدث اليومي الذي يمكن أن يصبح مرساة لعادتك؟","source":"Willpower","tags":["الأنظمة والعادات","العادات","rule","مستويات تنفيذية"],"concept_id":"SYS-003","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"العادات","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":20,"status":"Published","type":"exercise","category":"المرونة المعرفية","level":3,"title":"قرار بثلاثة خيارات","message":"الخياران فقط يصنعان وهم الحصر.","details":"عندما تحصر نفسك بين خيارين، قد تفوت حلًا ثالثًا أفضل. إضافة خيار ثالث تكشف مساحة تفكير جديدة.","action":"اكتب ثلاثة خيارات لأي قرار مؤجل، حتى لو كان الثالث غير مثالي.","question":"ما الخيار الثالث الذي لم تفكر فيه؟","source":"مشروع المستويات التنفيذية","tags":["المرونة المعرفية","اتخاذ القرار","exercise","مستويات تنفيذية"],"concept_id":"CF-003","domain":"المرونة المعرفية","domain_order":4,"subcategory":"اتخاذ القرار","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":21,"status":"Published","type":"principle","category":"التنفيذ","level":4,"title":"النظام يهزم النية","message":"النية الجيدة لا تكفي بلا مسار واضح.","details":"النية تبدأ الحركة، لكن النظام يحافظ عليها. ما يتكرر يحتاج آلية لا مجرد رغبة.","action":"حوّل هدفًا واحدًا إلى موعد ثابت وخطوة محددة.","question":"ما الهدف الذي بقي نية لأنه بلا نظام؟","source":"مشروع المستويات التنفيذية","tags":["التنفيذ","principle","مستويات تنفيذية"],"concept_id":"EXEC-004","domain":"التنفيذ","domain_order":6,"subcategory":"التنفيذ","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["EXEC-002","REF-004"]},{"id":22,"status":"Published","type":"mistake","category":"التخطيط والتنفيذ","level":3,"title":"ملء اليوم حتى الحافة","message":"اليوم الممتلئ بلا هامش هش.","details":"عندما تخطط لكل دقيقة، يصبح أي طارئ سببًا لانهيار الخطة. الهامش ليس ترفًا بل حماية.","action":"اترك اليوم مساحة واحدة فارغة للطوارئ أو التعافي.","question":"أين هامش اليوم في جدولك؟","source":"The Organized Mind","tags":["التخطيط والتنفيذ","إدارة الوقت","mistake","مستويات تنفيذية"],"concept_id":"PLAN-005","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"إدارة الوقت","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":23,"status":"Published","type":"insight","category":"الذاكرة العاملة والتعلم","level":4,"title":"المران المتعمد ليس تكرارًا فقط","message":"التكرار بلا تغذية راجعة يثبت المستوى.","details":"المهارة لا تتحسن بمجرد إعادة العمل. تحتاج إلى هدف دقيق، ملاحظة خطأ، وتصحيح مقصود.","action":"اختر مهارة واحدة وحدد خطأ واحدًا ستراقبه في التدريب القادم.","question":"ما الخطأ المحدد الذي تعمل على تحسينه؟","source":"Peak","tags":["الذاكرة العاملة والتعلم","التعلم","insight","مستويات تنفيذية"],"concept_id":"WM-004","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"التعلم","reference":"Ericsson & Pool - Peak","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":24,"status":"Published","type":"strategy","category":"الانتباه","level":3,"title":"احمِ أول ساعة","message":"بداية اليوم تحدد إيقاعه.","details":"أول ساعة تملك أثرًا مضاعفًا على بقية اليوم. إذا امتلأت بالمشتتات، يصبح استعادة التركيز أصعب.","action":"خصص أول 30 دقيقة من يومك لمهمة واحدة بلا إشعارات.","question":"ما الذي يسرق أول ساعة من يومك؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","التركيز","strategy","مستويات تنفيذية"],"concept_id":"ATT-003","domain":"الانتباه","domain_order":1,"subcategory":"التركيز","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":25,"status":"Published","type":"challenge","category":"المراجعة والتحسين","level":4,"title":"مراجعة نهاية اليوم","message":"اليوم غير المراجع يتكرر كما هو.","details":"مراجعة قصيرة تكشف نمط اليوم: أين ضاع الانتباه، وما الذي يستحق التكرار، وما الذي يحتاج تعديلًا.","action":"اكتب قبل النوم: شيء نجح، شيء تعطل، وخطوة واحدة للغد.","question":"ما التعديل الصغير الذي يجعل الغد أفضل؟","source":"مشروع المستويات التنفيذية","tags":["المراجعة والتحسين","المراجعة","challenge","مستويات تنفيذية"],"concept_id":"REF-002","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":26,"status":"Published","type":"principle","category":"الانتباه","level":3,"title":"الانتباه يسبق التحكم","message":"لا يمكنك التحكم فيما لا تنتبه إليه.","details":"الوعي باتجاه الانتباه هو أول خطوة في التحكم التنفيذي؛ فالسلوك يبدأ بما يلتقطه انتباهك.","action":"توقف ثلاث مرات اليوم واسأل: أين يتجه انتباهي الآن؟","question":"ما الذي يستحوذ على انتباهك دون اختيار؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","principle","مستويات تنفيذية"],"concept_id":"ATT-004","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["ATT-005","ATT-006","ATT-008"]},{"id":27,"status":"Published","type":"insight","category":"الانتباه","level":3,"title":"الانتباه مورد محدود","message":"الانتباه رصيد محدود.","details":"الانتباه مورد محدود، وكل انتقال بين المثيرات يستهلك طاقة ذهنية.","action":"قلل عدد النوافذ والإشعارات أثناء العمل.","question":"ما أكثر مصدر يستنزف انتباهك؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","insight","مستويات تنفيذية"],"concept_id":"ATT-005","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["ATT-006","ATT-010"]},{"id":28,"status":"Published","type":"mistake","category":"الانتباه","level":3,"title":"تكلفة تبديل الانتباه","message":"تبديل الانتباه له تكلفة.","details":"كل انتقال لمهمة جديدة يفرض تكلفة ذهنية لاستعادة السياق.","action":"خصص فترات عمل بلا مقاطعات لمدة 25 دقيقة.","question":"كم مرة بدلت بين المهام اليوم؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","mistake","مستويات تنفيذية"],"concept_id":"ATT-006","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["ATT-012","ATT-013"]},{"id":29,"status":"Published","type":"rule","category":"الانتباه","level":2,"title":"احمِ مدخلات عقلك","message":"ما يدخل ذهنك اليوم يصنع قرارات الغد.","details":"جودة الانتباه تتأثر بما تتعرض له باستمرار.","action":"استبعد مصدرًا واحدًا منخفض القيمة لمدة أسبوع.","question":"ما المحتوى الذي يستحق الإزالة؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","rule","مستويات تنفيذية"],"concept_id":"ATT-007","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":30,"status":"Published","type":"strategy","category":"الانتباه","level":3,"title":"الانتباه الانتقائي","message":"اختر ما يستحق انتباهك.","details":"يمكن تدريب الانتباه على اختيار ما يخدم أهدافك.","action":"حدد هدف المهمة قبل البدء بها.","question":"هل يخدم انتباهك هدفك الحالي؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","strategy","مستويات تنفيذية"],"concept_id":"ATT-008","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["ATT-011"]},{"id":31,"status":"Published","type":"exercise","category":"الانتباه","level":2,"title":"تمرين دقيقة الانتباه","message":"دقيقة واعية أفضل من عشر دقائق مشتتة.","details":"الانتباه مهارة تحتاج تدريبًا متكررًا.","action":"راقب تنفسك لمدة دقيقة دون النظر للهاتف.","question":"كم مرة شرد ذهنك؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","exercise","مستويات تنفيذية"],"concept_id":"ATT-009","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":32,"status":"Published","type":"challenge","category":"الانتباه","level":3,"title":"ساعة بلا مقاطعات","message":"التركيز العميق يُبنى ولا يُنتظر.","details":"فترات العمل المتصلة ترفع جودة التفكير.","action":"خصص ساعة واحدة اليوم بلا إشعارات.","question":"هل أكملت الساعة كاملة؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","challenge","مستويات تنفيذية"],"concept_id":"ATT-010","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":33,"status":"Published","type":"question","category":"الانتباه","level":4,"title":"ماذا يستحق انتباهك؟","message":"ليست المشكلة فيما يجذبك بل فيما تسمح له بالبقاء.","details":"توجيه الانتباه يصنع الأولويات.","action":"اكتب أهم ثلاثة أشياء تستحق انتباهك هذا الأسبوع.","question":"هل يعيش وقتك أولوياتك؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","question","مستويات تنفيذية"],"concept_id":"ATT-011","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":34,"status":"Published","type":"principle","category":"الانتباه","level":4,"title":"استعادة الانتباه مهارة","message":"الشرود طبيعي والعودة هي المهارة.","details":"التركيز لا يعني غياب الشرود بل سرعة العودة.","action":"عند الشرود، عد مباشرة دون لوم نفسك.","question":"كم تستغرق للعودة؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","principle","مستويات تنفيذية"],"concept_id":"ATT-012","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":35,"status":"Published","type":"insight","category":"الانتباه","level":4,"title":"جودة الانتباه تقاس بالنتيجة","message":"التركيز يظهر في الأثر.","details":"أفضل مقياس للانتباه هو مقدار التقدم.","action":"قيّم جلستك بما أنجزته.","question":"ما النتيجة التي حققتها؟","source":"مشروع المستويات التنفيذية","tags":["الانتباه","insight","مستويات تنفيذية"],"concept_id":"ATT-013","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":36,"status":"Published","type":"principle","category":"الذاكرة العاملة والتعلم","level":3,"title":"الذاكرة العاملة مساحة تشغيل لا مستودع","message":"ذهنك مساحة تشغيل لا مستودع.","details":"الذاكرة العاملة محدودة ومخصصة لمعالجة المعلومات الحالية، لا لتخزين كل المهام والمواعيد والأفكار المفتوحة.","action":"اكتب كل مهمة مفتوحة في قائمة خارجية بدل محاولة تذكرها.","question":"ما الشيء الذي تحاول تذكره بينما يجب أن يكون مكتوبًا؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","principle","مستويات تنفيذية"],"concept_id":"WM-005","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["WM-006","WM-007","WM-008"]},{"id":37,"status":"Published","type":"strategy","category":"الذاكرة العاملة والتعلم","level":3,"title":"قسّم المعلومات قبل معالجتها","message":"قسّم الفوضى إلى كتل.","details":"عندما تكون المعلومات كثيرة ومتناثرة، تضعف القدرة على التفكير. التقسيم يحول الحمل الذهني إلى وحدات قابلة للإدارة.","action":"قسّم أي مهمة كبيرة إلى ثلاث كتل: ما أعرفه، ما أحتاجه، والخطوة التالية.","question":"ما المعلومات التي تحتاج إلى تجميع قبل أن تفكر فيها؟","source":"مشروع المستويات التنفيذية","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","strategy","مستويات تنفيذية"],"concept_id":"WM-006","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["WM-009"]},{"id":38,"status":"Published","type":"mistake","category":"الذاكرة العاملة والتعلم","level":2,"title":"الاعتماد على التذكر اللحظي","message":"لا تترك المهم للذاكرة.","details":"الاعتماد على التذكر أثناء الانشغال يجعل القرارات والمهام عرضة للنسيان. النظام الخارجي يحمي العقل من الحمل الزائد.","action":"حوّل أي فكرة تظهر لك اليوم إلى ملاحظة مكتوبة خلال أقل من دقيقة.","question":"كم فكرة جيدة ضاعت لأنها لم تُسجل؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","mistake","مستويات تنفيذية"],"concept_id":"WM-007","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":39,"status":"Published","type":"exercise","category":"الذاكرة العاملة والتعلم","level":3,"title":"تفريغ الحمل الذهني","message":"الكتابة تنظف مساحة التفكير.","details":"تفريغ ما في الذهن على الورق يقلل الضجيج الداخلي، ويجعل التفكير أهدأ وأكثر ترتيبًا.","action":"اكتب لمدة ثلاث دقائق كل ما يدور في ذهنك دون ترتيب، ثم اختر منه إجراءً واحدًا.","question":"ما الفكرة التي تكررت في ذهنك أكثر من مرة؟","source":"مشروع المستويات التنفيذية","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","exercise","مستويات تنفيذية"],"concept_id":"WM-008","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":40,"status":"Published","type":"insight","category":"الذاكرة العاملة والتعلم","level":4,"title":"وضوح الذاكرة يبدأ من وضوح السياق","message":"السياق يخفف حمل الذاكرة.","details":"عندما تعرف لماذا تحتاج المعلومة وأين ستستخدمها، تصبح أسهل في التذكر والمعالجة.","action":"قبل حفظ أي معلومة، اكتب بجانبها: لماذا أحتاجها؟","question":"ما المعلومة التي تحفظها دون أن تعرف استخدامها؟","source":"Peak","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","insight","مستويات تنفيذية"],"concept_id":"WM-009","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Ericsson & Pool - Peak","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":41,"status":"Published","type":"principle","category":"الكبح الذاتي","level":3,"title":"المسافة بين الرغبة والفعل","message":"اصنع فاصلاً قبل الفعل.","details":"الكبح الذاتي لا يعني منع الرغبة، بل خلق مسافة قصيرة بين ظهورها وتنفيذها حتى يتدخل القرار الواعي.","action":"عند اندفاعك لفعل شيء، انتظر عشر ثوانٍ قبل الاستجابة.","question":"ما السلوك الذي يحتاج منك فاصلاً قبل تنفيذه؟","source":"Willpower","tags":["الكبح الذاتي","principle","مستويات تنفيذية"],"concept_id":"IC-002","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["IC-003","IC-005","IC-006"]},{"id":42,"status":"Published","type":"rule","category":"الكبح الذاتي","level":2,"title":"لا تفاوض المشتت وقت الضعف","message":"امنع المشتت قبل لحظة الضعف.","details":"عندما يظهر المشتت في لحظة التعب، تصبح مقاومته أصعب. الأفضل أن تمنعه من الوصول قبل أن يبدأ الصراع.","action":"أبعد أكثر تطبيق يشتتك عن الشاشة الرئيسية اليوم.","question":"ما المشتت الذي يجب أن تمنعه قبل أن تفاوضه؟","source":"Willpower","tags":["الكبح الذاتي","rule","مستويات تنفيذية"],"concept_id":"IC-003","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["IC-004"]},{"id":43,"status":"Published","type":"mistake","category":"الكبح الذاتي","level":3,"title":"الاعتماد على المنع المطلق","message":"المنع بلا بديل فراغ.","details":"إيقاف عادة أو اندفاع دون بديل عملي يجعل العودة أسهل. الكبح الناجح يحتاج مسارًا بديلًا جاهزًا.","action":"حدد بديلًا واحدًا لكل سلوك تريد تقليله.","question":"ما السلوك الذي تحاول منعه دون بديل واضح؟","source":"مشروع المستويات التنفيذية","tags":["الكبح الذاتي","mistake","مستويات تنفيذية"],"concept_id":"IC-004","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":44,"status":"Published","type":"challenge","category":"الكبح الذاتي","level":3,"title":"تحدي التأجيل القصير","message":"تأجيل الاندفاع يضعف قوته.","details":"ليس المطلوب مقاومة دائمة؛ أحيانًا يكفي تأجيل السلوك دقائق قليلة حتى تنخفض شدته.","action":"اختر اندفاعًا واحدًا اليوم وأجّله خمس دقائق قبل الاستجابة.","question":"هل بقيت الرغبة بنفس القوة بعد التأجيل؟","source":"Willpower","tags":["الكبح الذاتي","challenge","مستويات تنفيذية"],"concept_id":"IC-005","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":45,"status":"Published","type":"strategy","category":"الكبح الذاتي","level":4,"title":"حوّل المنع إلى قاعدة مسبقة","message":"القواعد المسبقة تقلل صراع اللحظة.","details":"عندما تحدد مسبقًا متى تفعل ومتى تمتنع، تقل الحاجة لاتخاذ القرار في لحظة الإغراء.","action":"اكتب قاعدة واحدة بصيغة: إذا حدث كذا، فسأفعل كذا.","question":"ما القاعدة التي لو كتبتها ستقلل ترددك؟","source":"مشروع المستويات التنفيذية","tags":["الكبح الذاتي","strategy","مستويات تنفيذية"],"concept_id":"IC-006","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":46,"status":"Published","type":"principle","category":"المرونة المعرفية","level":4,"title":"غيّر الاستراتيجية لا الهدف","message":"غيّر الطريقة لا الهدف.","details":"المرونة المعرفية تسمح لك بتغيير المسار عندما لا يعمل الأسلوب الحالي دون التخلي السريع عن الهدف نفسه.","action":"اختر هدفًا متعثرًا واكتب طريقة بديلة للوصول إليه.","question":"هل تحتاج إلى تغيير الهدف أم تغيير الطريقة؟","source":"مشروع المستويات التنفيذية","tags":["المرونة المعرفية","principle","مستويات تنفيذية"],"concept_id":"CF-004","domain":"المرونة المعرفية","domain_order":4,"subcategory":"المرونة المعرفية","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["CF-005","CF-006"]},{"id":47,"status":"Published","type":"insight","category":"المرونة المعرفية","level":4,"title":"التعلق بالخطة قد يعطل التعلم","message":"الخطة أداة لا قيد.","details":"الخطة تساعد على الاتجاه، لكنها تصبح عائقًا إذا منعتك من ملاحظة الواقع وتعديل المسار.","action":"راجع خطة حالية واسأل: ما الدليل أن هذه الطريقة ما زالت مناسبة؟","question":"ما الخطة التي تتمسك بها رغم تغير الظروف؟","source":"مشروع المستويات التنفيذية","tags":["المرونة المعرفية","insight","مستويات تنفيذية"],"concept_id":"CF-005","domain":"المرونة المعرفية","domain_order":4,"subcategory":"المرونة المعرفية","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":48,"status":"Published","type":"exercise","category":"المرونة المعرفية","level":3,"title":"تمرين الزاوية الأخرى","message":"رؤية بديلة قد تكشف حلًا مخفيًا.","details":"عندما تنظر للمشكلة من زاوية واحدة، تضيق الحلول. تغيير المنظور يوسع الخيارات.","action":"اكتب المشكلة من وجهة نظر شخص آخر يتأثر بها.","question":"كيف تبدو المشكلة لو نظر إليها شخص مختلف عنك؟","source":"مشروع المستويات التنفيذية","tags":["المرونة المعرفية","exercise","مستويات تنفيذية"],"concept_id":"CF-006","domain":"المرونة المعرفية","domain_order":4,"subcategory":"المرونة المعرفية","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]},{"id":49,"status":"Published","type":"mistake","category":"المراجعة والتحسين","level":4,"title":"المراجعة بعد الفشل فقط","message":"راجع النجاح كما تراجع الخطأ.","details":"النجاح غير المراجع قد يتكرر بالصدفة. فهم سبب النجاح يجعله قابلاً للتكرار.","action":"اكتب سببًا واحدًا لنجاح مهمة أنجزتها هذا الأسبوع.","question":"ما السلوك الذي نجح وتريد تكراره عمدًا؟","source":"مشروع المستويات التنفيذية","tags":["المراجعة والتحسين","المراجعة","mistake","مستويات تنفيذية"],"concept_id":"REF-003","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":["REF-004"]},{"id":50,"status":"Published","type":"strategy","category":"المراجعة والتحسين","level":5,"title":"حوّل المراجعة إلى تعديل","message":"المراجعة بلا تعديل وصف.","details":"قيمة المراجعة تظهر عندما تنتج عنها خطوة مختلفة في المرة القادمة، لا عندما تكتفي بتفسير ما حدث.","action":"بعد مراجعة أي تعثر، اكتب تعديلًا واحدًا ستطبقه في المحاولة القادمة.","question":"ما التعديل العملي الناتج عن آخر مراجعة؟","source":"مشروع المستويات التنفيذية","tags":["المراجعة والتحسين","المراجعة","strategy","مستويات تنفيذية"],"concept_id":"REF-004","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":[],"related":[]}];
+
+    let knowledgeItems = [];
+    let typeQueues = {};
+    let typeCycle = [];
+    let lastKnowledgeId = null;
+    let lastKnowledgeType = null;
+
+    function shuffleArray(arr){
+      const copy = [...arr];
+      for(let i = copy.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getPublishedKnowledge(){
+      return (knowledgeItems.length ? knowledgeItems : FALLBACK_KNOWLEDGE)
+        .filter(item => !item.status || item.status === 'Published');
+    }
+
+    function rebuildTypeQueues(){
+      const published = getPublishedKnowledge();
+      typeQueues = {};
+
+      published.forEach(item => {
+        const t = item.type || 'general';
+        if(!typeQueues[t]) typeQueues[t] = [];
+        typeQueues[t].push(item);
+      });
+
+      Object.keys(typeQueues).forEach(t => {
+        typeQueues[t] = shuffleArray(typeQueues[t]);
+      });
+
+      typeCycle = shuffleArray(Object.keys(typeQueues));
+
+      if(typeCycle.length > 1 && lastKnowledgeType && typeCycle[0] === lastKnowledgeType){
+        typeCycle.push(typeCycle.shift());
+      }
+    }
+
+    function pickKnowledge(){
+      const published = getPublishedKnowledge();
+      if(!published.length) return FALLBACK_KNOWLEDGE[0];
+
+      if(!typeCycle.length) rebuildTypeQueues();
+
+      let selectedType = null;
+
+      while(typeCycle.length){
+        const candidateType = typeCycle.shift();
+        if(typeQueues[candidateType] && typeQueues[candidateType].length){
+          selectedType = candidateType;
+          break;
+        }
+      }
+
+      if(!selectedType){
+        rebuildTypeQueues();
+        selectedType = typeCycle.shift();
+      }
+
+      let item = (typeQueues[selectedType] || []).shift();
+
+      if(item && published.length > 1 && item.id === lastKnowledgeId){
+        const alternativeType = typeCycle.find(t => typeQueues[t] && typeQueues[t].length);
+        if(alternativeType){
+          typeCycle = typeCycle.filter(t => t !== alternativeType);
+          typeCycle.unshift(selectedType);
+          selectedType = alternativeType;
+          item = typeQueues[selectedType].shift();
+        }
+      }
+
+      if(typeQueues[selectedType] && typeQueues[selectedType].length){
+        typeCycle.push(selectedType);
+      }
+
+      lastKnowledgeId = item?.id ?? null;
+      lastKnowledgeType = item?.type ?? null;
+
+      return item || published[0];
+    }
+
+    function practicalFromItem(item){
+      return item.action || item.practical || 'حوّل هذه الرسالة إلى خطوة صغيرة قابلة للتنفيذ خلال أقل من دقيقتين.';
+    }
+
+    function renderKnowledge(item){
+      const card = document.getElementById('knowledgeCard');
+      if(card) card.classList.remove('is-open');
+
+      document.getElementById('knowledgeTitle').textContent = KNOWLEDGE_TYPE_LABELS[item.type] || 'رسالة اليوم';
+      document.getElementById('knowledgeText').textContent = item.message || item.content || item.title || 'رسالة اليوم';
+      document.getElementById('knowledgePractical').textContent = practicalFromItem(item);
+    }
+
+    async function loadKnowledgeBase(){
+      try{
+        const res = await fetch('Data/executive_knowledge.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('not found');
+        const data = await res.json();
+        knowledgeItems = Array.isArray(data.items) ? data.items : [];
+      }catch(e){
+        knowledgeItems = FALLBACK_KNOWLEDGE;
+      }
+
+      typeQueues = {};
+      typeCycle = [];
+      renderKnowledge(pickKnowledge());
+    }
+
+    function daysBetween(from, to){
+      const s = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+      const e = new Date(to.getFullYear(), to.getMonth(), to.getDate());
+      return Math.ceil((e - s) / 86400000);
+    }
+
+    function formatGregReadable(d){
+      return new Intl.DateTimeFormat('ar-SA-u-ca-gregory', {
+        day:'numeric',
+        month:'long',
+        year:'numeric',
+        timeZone:TZ
+      }).format(d);
+    }
+
+    function nextSalaryDate(){
+      const now = new Date();
+      let y = now.getFullYear();
+      let m = now.getMonth();
+
+      function salaryFor(Y, M){
+        const d = new Date(Y, M, 27);
+        const day = d.getDay();
+        if(day === 5) d.setDate(26);
+        else if(day === 6) d.setDate(28);
+        return d;
+      }
+
+      let salary = salaryFor(y, m);
+      if(daysBetween(now, salary) < 0){
+        m++;
+        if(m > 11){ m = 0; y++; }
+        salary = salaryFor(y, m);
+      }
+
+      return salary;
+    }
+
+    function setRing(id, ratio){
+      const el = document.getElementById(id);
+      if(!el) return;
+
+      const c = 2 * Math.PI * 45;
+      el.style.strokeDasharray = String(c);
+      el.style.strokeDashoffset = String(c);
+
+      requestAnimationFrame(() => {
+        const v = Math.max(0, Math.min(1, ratio));
+        el.style.strokeDashoffset = String(c * (1 - v));
+      });
+    }
+
+    function updateWellnessCounters(){
+      const now = new Date();
+
+      const salary = nextSalaryDate();
+      const sd = Math.max(0, daysBetween(now, salary));
+      document.getElementById('salaryDays').textContent = sd;
+      document.getElementById('salaryDate').textContent = formatGregReadable(salary);
+      setRing('salaryRing', (31 - Math.min(31, sd)) / 31);
+
+      const ramadan = new Date(2027, 1, 8);
+      const rd = Math.max(0, daysBetween(now, ramadan));
+      document.getElementById('ramadanDays').textContent = rd;
+      document.getElementById('ramadanDate').textContent = formatGregReadable(ramadan);
+      setRing('ramadanRing', (365 - Math.min(365, rd)) / 365);
+    }
+
+    document.getElementById('nextKnowledge').addEventListener('click', () => {
+      renderKnowledge(pickKnowledge());
+    });
+
+    document.getElementById('toggleKnowledge').addEventListener('click', () => {
+      document.getElementById('knowledgeCard').classList.toggle('is-open');
+    });
+
+    loadKnowledgeBase();
+    updateWellnessCounters();
+
+
   </script>
 </body>
 </html>
