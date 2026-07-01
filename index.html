@@ -123,6 +123,7 @@
       <span id="dayName">—</span>
       <span id="hijriDate">—</span>
       <span id="gregDate">—</span>
+      <span id="contextPulse">—</span>
     </div>
 
     <section class="knowledge-card" id="knowledgeCard" aria-label="رسالة اليوم">
@@ -274,12 +275,51 @@
     function greg(d){
       return new Intl.DateTimeFormat('ar-SA-u-ca-gregory', { day:'numeric', month:'long', year:'numeric', timeZone: TZ }).format(d);
     }
+
+    function contextPulse(d){
+      const hour = Number(new Intl.DateTimeFormat('en-US', { hour:'2-digit', hour12:false, timeZone: TZ }).format(d));
+      const weekday = new Intl.DateTimeFormat('en-US', { weekday:'short', timeZone: TZ }).format(d);
+
+      const hijriParts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+        day:'numeric',
+        month:'numeric',
+        timeZone: TZ
+      }).formatToParts(d);
+
+      const hijriDay = Number(hijriParts.find(p => p.type === 'day')?.value);
+      const hijriMonth = Number(hijriParts.find(p => p.type === 'month')?.value);
+
+      // المناسبات الإسلامية أولاً
+      if(hijriMonth === 9) return '🌙 رمضان مبارك';
+      if(hijriMonth === 10 && hijriDay === 1) return '🎉 عيد فطر مبارك';
+      if(hijriMonth === 12 && hijriDay >= 1 && hijriDay <= 8) return '🕋 عشر ذي الحجة المباركة';
+      if(hijriMonth === 12 && hijriDay === 9) return '🤲 يوم عرفة';
+      if(hijriMonth === 12 && hijriDay >= 10 && hijriDay <= 13) return '🐑 عيد أضحى مبارك';
+
+      // أيام الأسبوع
+      if(weekday === 'Fri') return '🤍 جمعة مباركة';
+      if(weekday === 'Sun' && hour >= 5 && hour < 12) return '🚀 بداية أسبوع جديد';
+      if(weekday === 'Thu' && hour >= 15) return '🎉 بداية عطلة نهاية الأسبوع';
+      if(weekday === 'Sat' && hour >= 16) return '📅 مساء السبت';
+
+      // الوقت
+      if(hour >= 4 && hour < 6) return '🌅 بداية يوم جديد';
+      if(hour >= 6 && hour < 10) return '☀️ صباح الخير';
+      if(hour >= 10 && hour < 12) return '🌞 صباح متأخر';
+      if(hour >= 12 && hour < 15) return '🌤️ منتصف النهار';
+      if(hour >= 15 && hour < 18) return '🌇 مساء الخير';
+      if(hour >= 18 && hour < 22) return '🌙 مساء الخير';
+      if(hour >= 22 || hour < 1) return '🌌 ليلة هادئة';
+      return '😴 تصبح على خير';
+    }
+
     function updateClock(){
       const now = new Date();
       document.getElementById('timeNow').textContent = formatTime(now);
       document.getElementById('dayName').textContent = dayName(now);
       document.getElementById('hijriDate').textContent = hijri(now);
       document.getElementById('gregDate').textContent = greg(now);
+      document.getElementById('contextPulse').textContent = contextPulse(now);
     }
     function scheduleMinuteTick(){
       const now = new Date();
