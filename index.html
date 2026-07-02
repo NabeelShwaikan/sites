@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>بوابة مسار</title>
   <meta name="description" content="فهرس نظيف وهادئ بدون شريط البحث." />
-  <link rel="manifest" href="Data\icons\manifest.json">
-  <link rel="icon" href="Data\icons\favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="Data\icons\favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="Data\icons\favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="Data\icons\icon-192.png">
-  <link rel="apple-touch-icon" href="Data\icons\apple-touch-icon.png">
+  <link rel="manifest" href="Data/icons\manifest.json">
+  <link rel="icon" href="Data/icons\favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="Data/icons\favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Data/icons\favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="Data/icons\icon-192.png">
+  <link rel="apple-touch-icon" href="Data/icons\apple-touch-icon.png">
   <meta name="theme-color" content="#2563eb">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,8 +55,23 @@
 
     header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px}
     .brand{display:flex; align-items:center; gap:14px}
-    .logo{width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow); display:grid; place-items:center}
-    .logo svg{width:22px; height:22px; fill:#fff}
+    .logo{
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      overflow:hidden;
+      background:transparent;
+      box-shadow:var(--shadow);
+      display:grid;
+      place-items:center
+    }
+    .logo-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:18px
+    }
     h1{margin:0; font-size:clamp(20px, 3.5vw, 28px)}
     .subtitle{color:var(--muted); font-size:14px; margin-top:2px}
 
@@ -138,7 +153,7 @@
     <header>
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 5h8v6H3V5Zm10 0h8v6h-8V5ZM3 13h8v6H3v-6Zm10 0h8v6h-8v-6Z"/></svg>
+          <img src="Data/icons/icon-192.png" alt="بوابة مسار" class="logo-img">
         </div>
         <div>
           <h1>بوابة مسار</h1>
