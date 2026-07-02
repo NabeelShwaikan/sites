@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>بوابة مسار</title>
   <meta name="description" content="فهرس نظيف وهادئ بدون شريط البحث." />
-  <link rel="manifest" href="Data/icons\manifest.json">
-  <link rel="icon" href="Data/icons\favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="Data/icons\favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="Data/icons\favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="Data/icons\icon-192.png">
-  <link rel="apple-touch-icon" href="Data/icons\apple-touch-icon.png">
+  <link rel="manifest" href="Data/icons/manifest.json">
+  <link rel="icon" href="Data/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="Data/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Data/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="Data/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="Data/icons/apple-touch-icon.png">
   <meta name="theme-color" content="#2563eb">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -90,7 +90,7 @@
     @keyframes twirl{from{transform:rotate(0deg)} to{transform:rotate(180deg)}}
     .btn.icon.twirl{animation: twirl .45s ease}
 
-    .panel{background: var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .panel{background: var(--panel); border:1.5px solid rgba(16,185,129,.24); border-inline-start:5px solid rgba(16,185,129,.62); border-radius:var(--radius); box-shadow:var(--shadow)}
 
     section{margin-top:18px}
     section h2{margin:0 0 8px; font-size:16px}
@@ -123,6 +123,20 @@
     .status-line{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;margin:2px 0 14px;color:var(--muted);font-size:13px;font-weight:600}
     .status-line span{white-space:nowrap}.status-line .time-value{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
 
+    .adhkar-card{margin:6px 0 18px;background:radial-gradient(circle at top left,rgba(16,185,129,.10),transparent 34%),radial-gradient(circle at bottom right,rgba(245,158,11,.12),transparent 36%),var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;position:relative;overflow:hidden}
+    .adhkar-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#10b981,#f59e0b)}
+    .adhkar-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+    .adhkar-title{font-size:14px;font-weight:900;color:var(--ink)}
+    .adhkar-controls{display:flex;gap:7px;align-items:center}
+    .adhkar-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:28px;height:28px;border-radius:999px;cursor:pointer;display:grid;place-items:center;font-family:inherit;font-weight:900;line-height:1}
+    .adhkar-body{min-height:76px;display:grid;gap:8px;align-content:center;transition:opacity .28s ease,transform .28s ease}
+    .adhkar-body.is-changing{opacity:0;transform:translateY(6px)}
+    .adhkar-text{font-size:clamp(16px,2vw,20px);line-height:1.9;font-weight:800;color:var(--ink)}
+    .adhkar-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12.5px;font-weight:800}
+    .adhkar-count{color:#b45309;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.22);border-radius:999px;padding:3px 9px}
+    @media (max-width:520px){.adhkar-card{padding:13px 14px}.adhkar-head{align-items:flex-start}.adhkar-text{font-size:16px;line-height:1.85}.adhkar-body{min-height:92px}}
+
+
     .knowledge-card{margin:6px 0 18px;background:radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 34%),radial-gradient(circle at bottom right,rgba(16,185,129,.10),transparent 36%),var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;position:relative;overflow:hidden}
     .knowledge-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--brand),var(--brand-2))}
     .knowledge-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.knowledge-title{font-size:15px;font-weight:800;color:var(--ink)}
@@ -130,12 +144,12 @@
     .knowledge-text{font-size:clamp(17px,2.2vw,22px);line-height:1.85;font-weight:700;margin:4px 0 12px;color:var(--ink)}
         .knowledge-practical{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);color:var(--muted);font-size:14px;line-height:1.8}.knowledge-card.is-open .knowledge-practical{display:block}
     .pulse-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 10px}
-    .wellness-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 14px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:104px}
+    .wellness-card{background:var(--panel);border:1.5px solid rgba(37,99,235,.28);border-inline-start:5px solid rgba(37,99,235,.62);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 14px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:104px}
     .wellness-meta{min-width:0}.wellness-title{font-size:13px;font-weight:900;margin-bottom:4px}.wellness-date{color:var(--muted);font-size:11.5px;line-height:1.45}
     .ring-wrap{position:relative;width:76px;height:76px;flex:0 0 76px;display:grid;place-items:center}.ring-svg{width:76px;height:76px;transform:rotate(-90deg)}.ring-bg{fill:none;stroke:rgba(148,163,184,.22);stroke-width:8}.ring-progress{fill:none;stroke:url(#ringGradient);stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease}
     .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}.ring-number{font-size:22px;font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums}.ring-unit{font-size:10px;color:var(--muted);font-weight:800;margin-top:3px}
-    .gold-ticker{position:relative;overflow:hidden;margin:0 0 18px;border-radius:999px;border:1px solid rgba(245,158,11,.26);background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(251,191,36,.06)),var(--panel);box-shadow:var(--shadow);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .gold-ticker::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 6% 50%,rgba(255,255,255,.55),transparent 18%);pointer-events:none}
+    .gold-ticker{position:relative;overflow:hidden;margin:0 0 18px;border-radius:999px;border:1.5px solid rgba(212,175,55,.55);border-inline-start:7px solid #d4af37;background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(251,191,36,.06)),var(--panel);box-shadow:var(--shadow);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .gold-ticker::before{display:none}
     .gold-ticker-main,.gold-ticker-price{position:relative;z-index:1;display:flex;align-items:center;gap:8px;min-width:0}
     .gold-badge{width:32px;height:32px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#ca8a04,#fde68a);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 16px rgba(146,64,14,.18);font-size:18px}
     .gold-title{font-size:13px;font-weight:900;color:#92400e;white-space:nowrap}
@@ -170,6 +184,24 @@
       <span id="gregDate">—</span>
       <span id="contextPulse">—</span>
     </div>
+
+
+    <section class="adhkar-card" id="adhkarCard" aria-label="ذكر مناسب لهذا الوقت">
+      <div class="adhkar-head">
+        <div class="adhkar-title" id="adhkarTitle">🌿 ذكر هذا الوقت</div>
+        <div class="adhkar-controls">
+          <button class="adhkar-btn" id="prevAdhkar" type="button" aria-label="الذكر السابق">‹</button>
+          <button class="adhkar-btn" id="nextAdhkar" type="button" aria-label="الذكر التالي">›</button>
+        </div>
+      </div>
+      <div class="adhkar-body" id="adhkarBody">
+        <div class="adhkar-text" id="adhkarText">سبحان الله وبحمده، سبحان الله العظيم</div>
+        <div class="adhkar-meta">
+          <span id="adhkarSource">ورد مناسب</span>
+          <span class="adhkar-count" id="adhkarCount">بدون عدد محدد</span>
+        </div>
+      </div>
+    </section>
 
     <section class="knowledge-card" id="knowledgeCard" aria-label="رسالة اليوم">
       <div class="knowledge-head">
@@ -417,6 +449,116 @@
       setTimeout(()=>{ updateClock(); setInterval(updateClock, 60*1000); }, Math.max(0, ms));
     }
 
+
+    // ——— شريط الأذكار حسب الوقت ———
+    const ADHKAR_BANK = {
+      morning:{title:'🌅 أذكار الصباح',items:[
+        {text:'آية الكرسي: الله لا إله إلا هو الحي القيوم...',count:'مرة واحدة',source:'أذكار الصباح'},
+        {text:'قل هو الله أحد، قل أعوذ برب الفلق، قل أعوذ برب الناس.',count:'٣ مرات',source:'المعوذات'},
+        {text:'اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت.',count:'٣ مرات',source:'أذكار الصباح'},
+        {text:'حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم.',count:'٧ مرات',source:'أذكار الصباح'},
+        {text:'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.',count:'٣ مرات',source:'أذكار الصباح'},
+        {text:'اللهم بك أصبحنا وبك أمسينا، وبك نحيا وبك نموت وإليك النشور.',count:'مرة واحدة',source:'أذكار الصباح'},
+        {text:'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.',count:'٣ مرات',source:'أذكار الصباح'},
+        {text:'سبحان الله وبحمده.',count:'١٠٠ مرة',source:'ورد الصباح'},
+        {text:'أستغفر الله وأتوب إليه.',count:'١٠٠ مرة',source:'ورد الصباح'},
+        {text:'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.',count:'١٠٠ مرة',source:'ورد الصباح'},
+        {text:'اللهم صل وسلم وبارك على نبينا محمد.',count:'١٠ مرات',source:'الصلاة على النبي ﷺ'},
+        {text:'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، رب أسألك خير ما في هذا اليوم وخير ما بعده، وأعوذ بك من شر ما في هذا اليوم وشر ما بعده، رب أعوذ بك من الكسل وسوء الكبر، رب أعوذ بك من عذاب في النار وعذاب في القبر.',count:'مرة واحدة',source:'أذكار الصباح'},
+        {text:'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليّ وأبوء بذنبي فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.',count:'مرة واحدة',source:'سيد الاستغفار'},
+        {text:'اللهم إني أصبحت أشهدك، وأشهد حملة عرشك، وملائكتك، وجميع خلقك، أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمدًا عبدك ورسولك.',count:'٤ مرات',source:'أذكار الصباح'},
+        {text:'اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي، اللهم استر عوراتي وآمن روعاتي، اللهم احفظني من بين يدي ومن خلفي، وعن يميني وعن شمالي، ومن فوقي، وأعوذ بعظمتك أن أغتال من تحتي.',count:'مرة واحدة',source:'أذكار الصباح'},
+        {text:'اللهم عالم الغيب والشهادة، فاطر السماوات والأرض، رب كل شيء ومليكه، أشهد أن لا إله إلا أنت، أعوذ بك من شر نفسي ومن شر الشيطان وشركه، وأن أقترف على نفسي سوءًا أو أجره إلى مسلم.',count:'مرة واحدة',source:'أذكار الصباح'}
+      ]},
+      dhuha:{title:'☀️ تذكرة الضحى',items:[
+        {text:'يصبح على كل سلامى من أحدكم صدقة، فكل تسبيحة صدقة، وكل تحميدة صدقة، وكل تهليلة صدقة، وكل تكبيرة صدقة، وأمر بالمعروف صدقة، ونهي عن المنكر صدقة، ويجزئ من ذلك ركعتان يركعهما من الضحى.',count:'ركعتان',source:'صلاة الضحى'},
+        {text:'قال الله عز وجل: ابن آدم، صل لي أربع ركعات من أول النهار أكفك آخره.',count:'٤ ركعات',source:'صلاة الضحى'},
+        {text:'أوصاني خليلي صلى الله عليه وسلم بثلاث: صيام ثلاثة أيام من كل شهر، وركعتي الضحى، وأن أوتر قبل أن أنام.',count:'تذكير',source:'وصية نبوية'},
+        {text:'لا يحافظ على صلاة الضحى إلا أواب، وهي صلاة الأوابين.',count:'تذكير',source:'صلاة الضحى'}
+      ]},
+      day:{title:'☀️ ورد النهار',items:[
+        {text:'سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر.',count:'ما تيسر',source:'ذكر مطلق'},
+        {text:'أستغفر الله وأتوب إليه.',count:'ما تيسر',source:'استغفار'},
+        {text:'لا حول ولا قوة إلا بالله.',count:'ما تيسر',source:'ذكر مطلق'},
+        {text:'اللهم أعني على ذكرك وشكرك وحسن عبادتك.',count:'مرة أو أكثر',source:'دعاء'}
+      ]},
+      evening:{title:'🌇 أذكار المساء',items:[
+        {text:'آية الكرسي: الله لا إله إلا هو الحي القيوم...',count:'مرة واحدة',source:'أذكار المساء'},
+        {text:'قل هو الله أحد، قل أعوذ برب الفلق، قل أعوذ برب الناس.',count:'٣ مرات',source:'المعوذات'},
+        {text:'اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت.',count:'٣ مرات',source:'أذكار المساء'},
+        {text:'حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم.',count:'٧ مرات',source:'أذكار المساء'},
+        {text:'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.',count:'٣ مرات',source:'أذكار المساء'},
+        {text:'اللهم بك أمسينا وبك أصبحنا، وبك نحيا وبك نموت وإليك المصير.',count:'مرة واحدة',source:'أذكار المساء'},
+        {text:'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.',count:'٣ مرات',source:'أذكار المساء'},
+        {text:'سبحان الله وبحمده.',count:'١٠٠ مرة',source:'ورد المساء'},
+        {text:'أعوذ بكلمات الله التامات من شر ما خلق.',count:'٣ مرات',source:'أذكار المساء'},
+        {text:'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.',count:'١٠٠ مرة',source:'ورد المساء'},
+        {text:'اللهم صل وسلم وبارك على نبينا محمد.',count:'١٠ مرات',source:'الصلاة على النبي ﷺ'},
+        {text:'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، رب أسألك خير ما في هذه الليلة وخير ما بعدها، وأعوذ بك من شر ما في هذه الليلة وشر ما بعدها، رب أعوذ بك من الكسل وسوء الكبر، رب أعوذ بك من عذاب في النار وعذاب في القبر.',count:'مرة واحدة',source:'أذكار المساء'},
+        {text:'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليّ وأبوء بذنبي فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.',count:'مرة واحدة',source:'سيد الاستغفار'},
+        {text:'اللهم إني أمسيت أشهدك، وأشهد حملة عرشك، وملائكتك، وجميع خلقك، أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمدًا عبدك ورسولك.',count:'٤ مرات',source:'أذكار المساء'},
+        {text:'اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي، اللهم استر عوراتي وآمن روعاتي، اللهم احفظني من بين يدي ومن خلفي، وعن يميني وعن شمالي، ومن فوقي، وأعوذ بعظمتك أن أغتال من تحتي.',count:'مرة واحدة',source:'أذكار المساء'},
+        {text:'اللهم عالم الغيب والشهادة، فاطر السماوات والأرض، رب كل شيء ومليكه، أشهد أن لا إله إلا أنت، أعوذ بك من شر نفسي ومن شر الشيطان وشركه، وأن أقترف على نفسي سوءًا أو أجره إلى مسلم.',count:'مرة واحدة',source:'أذكار المساء'}
+      ]},
+      night:{title:'🌙 ورد الليل والوتر',items:[
+        {text:'إن الله وتر يحب الوتر، فأوتروا يا أهل القرآن.',count:'تذكير',source:'الوتر'},
+        {text:'من كل الليل قد أوتر رسول الله صلى الله عليه وسلم، من أول الليل وأوسطه وآخره، وانتهى وتره إلى السحر.',count:'تذكير',source:'الوتر'},
+        {text:'من خاف أن لا يقوم من آخر الليل فليوتر أوله، ومن طمع أن يقوم آخره فليوتر آخر الليل، فإن صلاة آخر الليل مشهودة، وذلك أفضل.',count:'تذكير',source:'الوتر'},
+        {text:'اجعلوا آخر صلاتكم بالليل وترًا.',count:'تذكير',source:'الوتر'},
+        {text:'اللهم إنك عفو تحب العفو فاعف عني.',count:'ما تيسر',source:'دعاء'},
+        {text:'أستغفر الله وأتوب إليه.',count:'ما تيسر',source:'استغفار'},
+        {text:'سبحان الله وبحمده، سبحان الله العظيم.',count:'ما تيسر',source:'ذكر مطلق'}
+      ]},
+      sleep:{title:'😴 أذكار النوم',items:[
+        {text:'باسمك اللهم أموت وأحيا.',count:'مرة واحدة',source:'ذكر النوم'},
+        {text:'اللهم قني عذابك يوم تبعث عبادك.',count:'٣ مرات',source:'ذكر النوم'},
+        {text:'سبحان الله، والحمد لله، والله أكبر.',count:'٣٣، ٣٣، ٣٤',source:'قبل النوم'},
+        {text:'اللهم أسلمت نفسي إليك، وفوضت أمري إليك، وألجأت ظهري إليك، رغبة ورهبة إليك.',count:'مرة واحدة',source:'ذكر النوم'}
+      ]}
+    };
+    let adhkarMode='day';
+    let adhkarIndex=0;
+    function getAdhkarMode(d){
+      const hour=Number(new Intl.DateTimeFormat('en-US',{hour:'2-digit',hour12:false,timeZone:TZ}).format(d));
+      if(hour>=4 && hour<9) return 'morning';
+      if(hour>=9 && hour<12) return 'dhuha';
+      if(hour>=12 && hour<16) return 'day';
+      if(hour>=16 && hour<21) return 'evening';
+      if(hour>=21 && hour<23) return 'night';
+      return 'sleep';
+    }
+    function renderAdhkar(animate=true){
+      const group=ADHKAR_BANK[adhkarMode]||ADHKAR_BANK.day;
+      const item=group.items[adhkarIndex%group.items.length];
+      const body=document.getElementById('adhkarBody');
+      const apply=()=>{
+        document.getElementById('adhkarTitle').textContent=group.title;
+        document.getElementById('adhkarText').textContent=item.text;
+        document.getElementById('adhkarSource').textContent=item.source;
+        document.getElementById('adhkarCount').textContent=item.count;
+      };
+      if(!animate){apply();return}
+      body.classList.add('is-changing');
+      setTimeout(()=>{apply();body.classList.remove('is-changing')},260);
+    }
+    function refreshAdhkarByTime(){
+      const mode=getAdhkarMode(new Date());
+      if(mode!==adhkarMode){adhkarMode=mode;adhkarIndex=0}
+      renderAdhkar(false);
+    }
+    function nextAdhkarItem(step=1){
+      const group=ADHKAR_BANK[adhkarMode]||ADHKAR_BANK.day;
+      adhkarIndex=(adhkarIndex+step+group.items.length)%group.items.length;
+      renderAdhkar(true);
+    }
+    function initAdhkar(){
+      refreshAdhkarByTime();
+      document.getElementById('nextAdhkar')?.addEventListener('click',()=>nextAdhkarItem(1));
+      document.getElementById('prevAdhkar')?.addEventListener('click',()=>nextAdhkarItem(-1));
+      setInterval(()=>nextAdhkarItem(1),22000);
+      setInterval(refreshAdhkarByTime,60*1000);
+    }
+
     // ——— بدء التشغيل ———
     (function init(){
       // سنة الفوتر
@@ -432,6 +574,7 @@
       themeBtn.addEventListener('click', toggleTheme);
       // تحديث الوقت الآن ثم جدولة التحديث كل دقيقة
       updateClock();
+      initAdhkar();
       scheduleMinuteTick();
       // —— اختبارات بسيطة (test cases) ——
       runTests();
