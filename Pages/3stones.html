@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لعبة الثلاثة أحجار | بوابة مسار</title>
+  <meta name="description" content="لعبة الثلاثة أحجار: لعبة تفكير سريعة للاعبين ضمن بوابة مسار." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --surface:#ffffff;
+      --surface-2:#f1f5f9;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#cbd5e1;
+      --primary:#0f766e;
+      --primary-2:#14b8a6;
+      --blue:#2563eb;
+      --orange:#f97316;
+      --danger:#ef4444;
+      --gold:#d6a94a;
+      --shadow:0 16px 40px rgba(15,23,42,.12);
+      --radius:22px;
+    }
+    [data-theme="dark"]{
+      --bg:#0b1120;
+      --surface:#111827;
+      --surface-2:#172033;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --line:#334155;
+      --primary:#2dd4bf;
+      --primary-2:#14b8a6;
+      --blue:#60a5fa;
+      --orange:#fb923c;
+      --danger:#f87171;
+      --gold:#f4c96b;
+      --shadow:0 18px 48px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:"Almarai",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(20,184,166,.22), transparent 28%),
+        radial-gradient(circle at 85% 0%, rgba(214,169,74,.16), transparent 30%),
+        linear-gradient(135deg,var(--bg),var(--surface-2));
+    }
+    .page{
+      width:min(1120px,94vw);
+      margin:0 auto;
+      padding:28px 0 36px;
+    }
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:48px;height:48px;
+      display:grid;place-items:center;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--primary),var(--gold));
+      color:#fff;
+      box-shadow:var(--shadow);
+      font-size:24px;
+      font-weight:800;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(24px,4vw,38px);
+      letter-spacing:-.5px;
+    }
+    .subtitle{margin:7px 0 0;color:var(--muted);font-size:15px;line-height:1.8}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    button{
+      font-family:inherit;
+      border:0;
+      cursor:pointer;
+      border-radius:14px;
+      padding:11px 16px;
+      font-weight:800;
+      color:var(--text);
+      background:var(--surface);
+      box-shadow:0 8px 24px rgba(15,23,42,.10);
+      transition:.2s transform,.2s opacity,.2s background;
+    }
+    button:hover{transform:translateY(-1px)}
+    .primary{
+      color:#06201d;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    }
+    [data-theme="dark"] .primary{color:#06201d}
+    .layout{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:18px;
+      align-items:start;
+    }
+    .panel{
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(148,163,184,.22);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    [data-theme="dark"] .panel{background:rgba(17,24,39,.84)}
+    .game{
+      padding:22px;
+      display:grid;
+      place-items:center;
+      min-height:620px;
+    }
+    .status{
+      width:min(520px,100%);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:var(--surface-2);
+      margin-bottom:18px;
+      border:1px solid var(--line);
+    }
+    .turn{
+      display:flex;align-items:center;gap:10px;font-weight:800;
+    }
+    .stone-mini{
+      width:20px;height:20px;border-radius:50%;
+      display:inline-block;
+      box-shadow:inset 0 -3px 6px rgba(0,0,0,.25),0 4px 10px rgba(0,0,0,.18);
+    }
+    .blue{background:linear-gradient(135deg,#93c5fd,var(--blue))}
+    .orange{background:linear-gradient(135deg,#fed7aa,var(--orange))}
+    .phase{color:var(--muted);font-size:13px;font-weight:700}
+    .board-wrap{
+      width:min(520px,92vw);
+      aspect-ratio:1/1;
+      position:relative;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(20,184,166,.10), transparent 35%),
+        var(--surface);
+      border:1px solid var(--line);
+      box-shadow:inset 0 0 0 10px rgba(148,163,184,.06), var(--shadow);
+      padding:34px;
+    }
+    svg.lines{
+      position:absolute;
+      inset:34px;
+      width:calc(100% - 68px);
+      height:calc(100% - 68px);
+      overflow:visible;
+      pointer-events:none;
+    }
+    .line{
+      stroke:var(--line);
+      stroke-width:5;
+      stroke-linecap:round;
+    }
+    .line.win{
+      stroke:var(--gold);
+      stroke-width:9;
+      filter:drop-shadow(0 0 8px rgba(244,201,107,.75));
+    }
+    .point{
+      position:absolute;
+      width:54px;height:54px;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:var(--surface-2);
+      border:3px solid var(--line);
+      display:grid;
+      place-items:center;
+      box-shadow:0 8px 20px rgba(15,23,42,.16);
+      transition:.2s transform,.2s border,.2s background;
+    }
+    .point:hover{transform:translate(-50%,-50%) scale(1.06)}
+    .point.selected{
+      border-color:var(--gold);
+      box-shadow:0 0 0 7px rgba(214,169,74,.18),0 8px 24px rgba(0,0,0,.2);
+    }
+    .stone{
+      width:38px;height:38px;
+      border-radius:50%;
+      box-shadow:inset 0 -5px 8px rgba(0,0,0,.28),0 5px 12px rgba(0,0,0,.25);
+      animation:pop .22s ease-out;
+    }
+    @keyframes pop{from{transform:scale(.4);opacity:.2}to{transform:scale(1);opacity:1}}
+    .side{padding:18px}
+    .box{
+      padding:16px;
+      background:var(--surface-2);
+      border:1px solid var(--line);
+      border-radius:18px;
+      margin-bottom:14px;
+    }
+    .box h2{
+      margin:0 0 10px;
+      font-size:18px;
+    }
+    .rules{
+      margin:0;
+      padding-right:20px;
+      color:var(--muted);
+      line-height:2;
+      font-size:14px;
+    }
+    .score{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .score-card{
+      padding:14px;
+      border-radius:16px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      text-align:center;
+    }
+    .score-card strong{font-size:28px;display:block;margin-top:5px}
+    .message{
+      min-height:54px;
+      color:var(--muted);
+      line-height:1.8;
+      font-weight:700;
+    }
+    .footer-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .toast{
+      position:fixed;
+      right:50%;
+      bottom:22px;
+      transform:translateX(50%);
+      background:var(--surface);
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:12px 18px;
+      font-weight:800;
+      opacity:0;
+      pointer-events:none;
+      transition:.25s;
+    }
+    .toast.show{opacity:1;bottom:34px}
+    @media(max-width:860px){
+      header{align-items:flex-start;flex-direction:column}
+      .layout{grid-template-columns:1fr}
+      .game{min-height:auto}
+      .side{order:-1}
+      .board-wrap{padding:24px}
+      svg.lines{inset:24px;width:calc(100% - 48px);height:calc(100% - 48px)}
+      .point{width:48px;height:48px}
+      .stone{width:34px;height:34px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="brand">
+        <div class="logo">▦</div>
+        <div>
+          <h1>لعبة الثلاثة أحجار</h1>
+          <p class="subtitle">لعبة تركيز سريعة للاعبين: ضع أحجارك الثلاثة ثم حرّكها حتى تكوّن خطًا مستقيمًا.</p>
+        </div>
+      </div>
+      <div class="tools">
+        <button id="themeBtn">الوضع النهاري</button>
+        <button class="primary" id="newBtn">لعبة جديدة</button>
+      </div>
+    </header>
+
+    <section class="layout">
+      <div class="panel game">
+        <div class="status">
+          <div class="turn">
+            <span>الدور:</span>
+            <span id="turnStone" class="stone-mini blue"></span>
+            <span id="turnText">الأزرق</span>
+          </div>
+          <div id="phaseText" class="phase">مرحلة وضع الأحجار</div>
+        </div>
+
+        <div class="board-wrap" id="board">
+          <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <line class="line l0" x1="0" y1="0" x2="100" y2="0"/>
+            <line class="line l1" x1="0" y1="50" x2="100" y2="50"/>
+            <line class="line l2" x1="0" y1="100" x2="100" y2="100"/>
+            <line class="line l3" x1="0" y1="0" x2="0" y2="100"/>
+            <line class="line l4" x1="50" y1="0" x2="50" y2="100"/>
+            <line class="line l5" x1="100" y1="0" x2="100" y2="100"/>
+            <line class="line l6" x1="0" y1="0" x2="100" y2="100"/>
+            <line class="line l7" x1="100" y1="0" x2="0" y2="100"/>
+          </svg>
+        </div>
+      </div>
+
+      <aside class="panel side">
+        <div class="box">
+          <h2>طريقة اللعب</h2>
+          <ol class="rules">
+            <li>كل لاعب يملك ٣ أحجار.</li>
+            <li>في البداية يضع اللاعبون الأحجار بالتناوب.</li>
+            <li>بعد اكتمال الوضع، يحرّك اللاعب حجرًا واحدًا في كل دور.</li>
+            <li>الفائز من يكوّن ٣ أحجار على خط مستقيم.</li>
+          </ol>
+        </div>
+
+        <div class="box">
+          <h2>النتائج</h2>
+          <div class="score">
+            <div class="score-card">
+              الأزرق
+              <strong id="blueScore">0</strong>
+            </div>
+            <div class="score-card">
+              البرتقالي
+              <strong id="orangeScore">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <h2>حالة اللعبة</h2>
+          <div id="message" class="message">ابدأ بوضع حجر في أي نقطة فارغة.</div>
+        </div>
+
+        <div class="footer-actions">
+          <button id="resetScoreBtn">تصفير النتائج</button>
+          <button id="undoBtn">تراجع</button>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const points = [
+      {x:0,y:0},{x:50,y:0},{x:100,y:0},
+      {x:0,y:50},{x:50,y:50},{x:100,y:50},
+      {x:0,y:100},{x:50,y:100},{x:100,y:100}
+    ];
+
+    const winningLines = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+
+    const neighbors = {
+      0:[1,3,4], 1:[0,2,4], 2:[1,5,4],
+      3:[0,6,4], 4:[0,1,2,3,5,6,7,8], 5:[2,8,4],
+      6:[3,7,4], 7:[6,8,4], 8:[5,7,4]
+    };
+
+    const boardEl = document.getElementById("board");
+    const messageEl = document.getElementById("message");
+    const turnText = document.getElementById("turnText");
+    const turnStone = document.getElementById("turnStone");
+    const phaseText = document.getElementById("phaseText");
+    const blueScoreEl = document.getElementById("blueScore");
+    const orangeScoreEl = document.getElementById("orangeScore");
+    const toast = document.getElementById("toast");
+
+    let board, current, placed, selected, gameOver, history;
+    let scores = JSON.parse(localStorage.getItem("morrisScoresMasar") || '{"B":0,"O":0}');
+
+    function init(){
+      board = Array(9).fill(null);
+      current = "B";
+      placed = {B:0,O:0};
+      selected = null;
+      gameOver = false;
+      history = [];
+      clearWinLines();
+      render();
+      updateStatus("ابدأ بوضع حجر في أي نقطة فارغة.");
+    }
+
+    function saveHistory(){
+      history.push(JSON.stringify({board,current,placed,selected,gameOver}));
+      if(history.length > 40) history.shift();
+    }
+
+    function undo(){
+      if(!history.length || gameOver){
+        showToast("لا توجد حركة للتراجع.");
+        return;
+      }
+      const state = JSON.parse(history.pop());
+      board = state.board;
+      current = state.current;
+      placed = state.placed;
+      selected = state.selected;
+      gameOver = state.gameOver;
+      clearWinLines();
+      render();
+      updateStatus("تم التراجع عن آخر حركة.");
+    }
+
+    function render(){
+      document.querySelectorAll(".point").forEach(e=>e.remove());
+      points.forEach((p,i)=>{
+        const cell = document.createElement("button");
+        cell.className = "point" + (selected === i ? " selected":"");
+        // SVG coordinates start from the left, so point positions must use left even in RTL.
+        cell.style.left = p.x + "%";
+        cell.style.top = p.y + "%";
+        cell.setAttribute("aria-label","نقطة " + (i+1));
+        cell.onclick = ()=>handlePoint(i);
+        if(board[i]){
+          const s = document.createElement("span");
+          s.className = "stone " + (board[i] === "B" ? "blue":"orange");
+          cell.appendChild(s);
+        }
+        boardEl.appendChild(cell);
+      });
+      blueScoreEl.textContent = scores.B;
+      orangeScoreEl.textContent = scores.O;
+      const isPlace = placed.B < 3 || placed.O < 3;
+      phaseText.textContent = isPlace ? "مرحلة وضع الأحجار" : "مرحلة تحريك الأحجار";
+      turnText.textContent = current === "B" ? "الأزرق" : "البرتقالي";
+      turnStone.className = "stone-mini " + (current === "B" ? "blue":"orange");
+    }
+
+    function handlePoint(i){
+      if(gameOver) return;
+      const placing = placed[current] < 3;
+
+      if(placing){
+        if(board[i]) return showToast("اختر نقطة فارغة.");
+        saveHistory();
+        board[i] = current;
+        placed[current]++;
+        afterMove();
+        return;
+      }
+
+      if(selected === null){
+        if(board[i] !== current) return showToast("اختر حجرًا من أحجارك.");
+        selected = i;
+        render();
+        updateStatus("اختر نقطة متصلة وفارغة لتحريك الحجر.");
+        return;
+      }
+
+      if(i === selected){
+        selected = null;
+        render();
+        updateStatus("تم إلغاء الاختيار.");
+        return;
+      }
+
+      if(board[i] === current){
+        selected = i;
+        render();
+        updateStatus("تم تغيير الحجر المحدد.");
+        return;
+      }
+
+      if(board[i]) return showToast("النقطة مشغولة.");
+      if(!neighbors[selected].includes(i)) return showToast("الحركة يجب أن تكون على خط متصل.");
+
+      saveHistory();
+      board[i] = current;
+      board[selected] = null;
+      selected = null;
+      afterMove();
+    }
+
+    function afterMove(){
+      render();
+      const win = getWinner();
+      if(win){
+        gameOver = true;
+        scores[win.player]++;
+        localStorage.setItem("morrisScoresMasar", JSON.stringify(scores));
+        markWin(win.line);
+        render();
+        updateStatus("فاز " + (win.player === "B" ? "الأزرق" : "البرتقالي") + " بتكوين خط مستقيم.");
+        showToast("انتهت اللعبة: فوز " + (win.player === "B" ? "الأزرق" : "البرتقالي"));
+        return;
+      }
+      current = current === "B" ? "O" : "B";
+      render();
+      updateStatus(placed.B < 3 || placed.O < 3 ? "ضع حجرًا في نقطة فارغة." : "حرّك حجرًا واحدًا إلى نقطة متصلة.");
+    }
+
+    function getWinner(){
+      for(const line of winningLines){
+        const [a,b,c] = line;
+        if(board[a] && board[a] === board[b] && board[b] === board[c]){
+          return {player:board[a],line};
+        }
+      }
+      return null;
+    }
+
+    function markWin(line){
+      clearWinLines();
+      const index = winningLines.findIndex(l => l.join(",") === line.join(","));
+      const svgLine = document.querySelector(".l" + index);
+      if(svgLine) svgLine.classList.add("win");
+    }
+
+    function clearWinLines(){
+      document.querySelectorAll(".line").forEach(l=>l.classList.remove("win"));
+    }
+
+    function updateStatus(msg){
+      messageEl.textContent = msg;
+    }
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"),1600);
+    }
+
+    document.getElementById("newBtn").onclick = init;
+    document.getElementById("undoBtn").onclick = undo;
+    document.getElementById("resetScoreBtn").onclick = ()=>{
+      scores = {B:0,O:0};
+      localStorage.setItem("morrisScoresMasar", JSON.stringify(scores));
+      render();
+      showToast("تم تصفير النتائج.");
+    };
+    document.getElementById("themeBtn").onclick = ()=>{
+      const root = document.documentElement;
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      document.getElementById("themeBtn").textContent = next === "dark" ? "الوضع النهاري" : "الوضع الليلي";
+    };
+
+    init();
+  </script>
+</body>
+</html>
