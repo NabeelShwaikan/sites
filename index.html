@@ -284,6 +284,7 @@
       // 🎮 الترفيه والألعاب
       { title: "لعبة الحروف", href: "LettersGame/index.html", desc: "إنسان، حيوان، نبات ...", emoji: "🎲" },
       { title: "عجلة الحظ", href: "Pages/luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🎡" },
+      { title: "لعبة الثلاثة أحجار", href: "Pages/3stones.html", desc: "كوّن ثلاثة أحجار على خط مستقيم", emoji: "🔳" },
           { title: "كشاف الجالكسي برو",  href: "Pages/torch.html", desc: "SOS، عرض ضوئي تفاعلي",    emoji: "🔦"},
       // ⚽ المناسبات والأحداث
       { title: "مباريات كأس العالم 2026", href: "Pages/WorldCup2026.html", desc: "بوابة كأس العالم 2026", emoji: "🏆" },
@@ -346,6 +347,7 @@
         'تصويت':'تصويت',
         'لعبة الحروف':'لعبة الحروف',
         'عجلة الحظ':'عجلة الحظ',
+        'لعبة الثلاثة أحجار':'الثلاثة أحجار',
         'كشاف الجالكسي برو':'الكشاف',
         'مباريات كأس العالم 2026':'كأس العالم'
       };
@@ -359,7 +361,7 @@
       if(['بوابة القهوة','الساعة الرملية','كشاف الجالكسي برو'].includes(title)) return 'cat-personal';
       if(['قياس المؤشرات الصحية'].includes(title)) return 'cat-health';
       if(['شجرة العائلة','تصويت'].includes(title)) return 'cat-family';
-      if(['لعبة الحروف','عجلة الحظ'].includes(title)) return 'cat-fun';
+      if(['لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
       if(['مباريات كأس العالم 2026'].includes(title)) return 'cat-event';
       return 'cat-tool';
     }
