@@ -179,7 +179,7 @@
     }
     .point{
       position:absolute;
-      width:54px;height:54px;
+      width:58px;height:58px;
       transform:translate(-50%,-50%);
       border-radius:50%;
       background:var(--surface-2);
@@ -190,12 +190,13 @@
       transition:.2s transform,.2s border,.2s background;
     }
     .point:hover{transform:translate(-50%,-50%) scale(1.06)}
+    .point.ai-wait{opacity:.72;cursor:not-allowed}
     .point.selected{
       border-color:var(--gold);
       box-shadow:0 0 0 7px rgba(214,169,74,.18),0 8px 24px rgba(0,0,0,.2);
     }
     .stone{
-      width:38px;height:38px;
+      width:32px;height:32px;
       border-radius:50%;
       box-shadow:inset 0 -5px 8px rgba(0,0,0,.28),0 5px 12px rgba(0,0,0,.25);
       animation:pop .22s ease-out;
@@ -261,6 +262,35 @@
       transition:.25s;
     }
     .toast.show{opacity:1;bottom:34px}
+
+    .win-modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      padding:22px;
+      background:rgba(2,6,23,.58);
+      backdrop-filter:blur(8px);
+      z-index:20;
+    }
+    .win-modal.show{display:grid}
+    .win-card{
+      width:min(390px,94vw);
+      background:var(--surface);
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:22px;
+      text-align:center;
+      animation:modalPop .22s ease-out;
+    }
+    @keyframes modalPop{from{transform:scale(.92);opacity:.2}to{transform:scale(1);opacity:1}}
+    .win-icon{font-size:42px;margin-bottom:8px}
+    .win-title{font-size:24px;font-weight:900;margin:0 0 8px}
+    .win-sub{color:var(--muted);line-height:1.8;margin:0 0 18px;font-weight:700}
+    .win-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
     @media(max-width:860px){
       header{align-items:flex-start;flex-direction:column}
       .layout{grid-template-columns:1fr}
@@ -268,9 +298,581 @@
       .side{order:-1}
       .board-wrap{padding:24px}
       svg.lines{inset:24px;width:calc(100% - 48px);height:calc(100% - 48px)}
-      .point{width:48px;height:48px}
-      .stone{width:34px;height:34px}
+      .point{width:54px;height:54px}
+      .stone{width:30px;height:30px}
     }
+  
+    /* تحسينات بصرية للوحة والأحجار */
+    .board-wrap{
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 22%),
+        linear-gradient(145deg, rgba(214,169,74,.20), transparent 38%),
+        linear-gradient(135deg, #c9964b, #8b5a2b 48%, #5c351c);
+      border:1px solid rgba(244,201,107,.45);
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.25),
+        inset 0 -18px 32px rgba(48,28,12,.38),
+        0 24px 55px rgba(0,0,0,.32);
+    }
+    [data-theme="light"] .board-wrap{
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.34), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,.16), transparent 38%),
+        linear-gradient(135deg, #e3b86c, #b77837 52%, #7a471f);
+    }
+    .board-wrap::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:inset 0 0 22px rgba(0,0,0,.22);
+      pointer-events:none;
+    }
+    .board-wrap::after{
+      content:"";
+      position:absolute;
+      inset:34px;
+      border-radius:18px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:28px 28px;
+      opacity:.45;
+      pointer-events:none;
+      mix-blend-mode:soft-light;
+    }
+    .line{
+      stroke:rgba(48,28,12,.72);
+      stroke-width:4.4;
+      filter:drop-shadow(0 1px 0 rgba(255,255,255,.18));
+    }
+    [data-theme="dark"] .line{stroke:rgba(250,214,142,.64)}
+    .line.win{
+      stroke:#f7d56f;
+      stroke-width:10;
+      filter:drop-shadow(0 0 12px rgba(247,213,111,.9));
+      animation:winGlow 1s ease-in-out infinite alternate;
+    }
+    @keyframes winGlow{from{opacity:.72}to{opacity:1}}
+    .point{
+      width:60px;
+      height:60px;
+      background:
+        radial-gradient(circle at 40% 35%, rgba(255,255,255,.20), transparent 30%),
+        radial-gradient(circle at 50% 55%, rgba(0,0,0,.20), transparent 58%),
+        rgba(92,53,28,.52);
+      border:2px solid rgba(250,214,142,.55);
+      box-shadow:
+        inset 0 5px 12px rgba(0,0,0,.35),
+        inset 0 -2px 4px rgba(255,255,255,.08),
+        0 8px 18px rgba(0,0,0,.18);
+      z-index:4;
+    }
+    .point:hover{transform:translate(-50%,-50%) scale(1.05)}
+    .point.selected{
+      border-color:#f7d56f;
+      box-shadow:
+        0 0 0 8px rgba(247,213,111,.22),
+        inset 0 5px 12px rgba(0,0,0,.35),
+        0 14px 26px rgba(0,0,0,.28);
+    }
+    .point.selected .stone{
+      transform:translateY(-5px) scale(1.08);
+      filter:drop-shadow(0 10px 12px rgba(0,0,0,.30));
+    }
+    .stone{
+      width:34px;
+      height:34px;
+      border:1px solid rgba(255,255,255,.45);
+      transition:.18s transform,.18s filter;
+      position:relative;
+    }
+    .stone::before{
+      content:"";
+      position:absolute;
+      inset:5px 8px auto auto;
+      width:11px;
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.58);
+      filter:blur(.3px);
+    }
+    .stone.blue{
+      background:
+        radial-gradient(circle at 32% 25%, #dbeafe, transparent 21%),
+        radial-gradient(circle at 65% 75%, #1d4ed8, #2563eb 58%, #1e3a8a);
+    }
+    .stone.orange{
+      background:
+        radial-gradient(circle at 32% 25%, #ffedd5, transparent 21%),
+        radial-gradient(circle at 65% 75%, #c2410c, #f97316 58%, #7c2d12);
+    }
+    .stone-mini.blue{
+      background:
+        radial-gradient(circle at 32% 25%, #dbeafe, transparent 24%),
+        linear-gradient(135deg,#60a5fa,#1d4ed8);
+    }
+    .stone-mini.orange{
+      background:
+        radial-gradient(circle at 32% 25%, #ffedd5, transparent 24%),
+        linear-gradient(135deg,#fb923c,#c2410c);
+    }
+    .win-stone .stone{
+      animation:stoneWinPulse .7s ease-in-out infinite alternate;
+    }
+    @keyframes stoneWinPulse{
+      from{transform:scale(1);filter:drop-shadow(0 0 0 rgba(247,213,111,0))}
+      to{transform:scale(1.16);filter:drop-shadow(0 0 14px rgba(247,213,111,.95))}
+    }
+    .status{
+      background:linear-gradient(135deg, rgba(20,184,166,.12), rgba(214,169,74,.10)), var(--surface-2);
+    }
+    .score-card{
+      background:linear-gradient(145deg, rgba(255,255,255,.04), rgba(20,184,166,.06)), var(--surface);
+    }
+    .ai-dots::after{
+      content:"";
+      animation:dots 1.1s infinite steps(4,end);
+    }
+    @keyframes dots{
+      0%{content:""}
+      25%{content:"."}
+      50%{content:".."}
+      75%,100%{content:"..."}
+    }
+    .win-card{
+      background:
+        radial-gradient(circle at 50% 0%, rgba(247,213,111,.18), transparent 34%),
+        var(--surface);
+    }
+    .win-icon{
+      width:64px;
+      height:64px;
+      margin:0 auto 10px;
+      border-radius:22px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,#ca8a04,#fde68a);
+      box-shadow:0 16px 28px rgba(146,64,14,.25);
+    }
+    @media(max-width:860px){
+      .point{width:54px;height:54px}
+      .stone{width:30px;height:30px}
+    }
+
+    /* تحسينات الجوال: منع الحاجة للتصغير اليدوي */
+    @media(max-width:700px){
+      body{
+        min-height:100svh;
+        overflow-x:hidden;
+      }
+      .page{
+        width:100%;
+        padding:12px 10px 18px;
+      }
+      header{
+        margin-bottom:10px;
+        gap:10px;
+      }
+      .brand{
+        gap:9px;
+        align-items:flex-start;
+      }
+      .logo{
+        width:42px;
+        height:42px;
+        min-width:42px;
+        border-radius:14px;
+        font-size:21px;
+      }
+      h1{
+        font-size:22px;
+        line-height:1.25;
+      }
+      .subtitle{
+        font-size:12.5px;
+        line-height:1.55;
+        margin-top:4px;
+      }
+      .tools{
+        width:100%;
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+        gap:8px;
+      }
+      button{
+        padding:10px 8px;
+        border-radius:12px;
+        font-size:12.5px;
+        white-space:nowrap;
+      }
+      .layout{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+      }
+      .side{
+        order:2;
+        padding:10px;
+      }
+      .game{
+        order:1;
+        padding:10px;
+        min-height:auto;
+      }
+      .status{
+        width:100%;
+        margin-bottom:10px;
+        padding:10px 12px;
+        border-radius:14px;
+        font-size:13px;
+      }
+      .phase{
+        font-size:11.5px;
+        text-align:left;
+      }
+      .board-wrap{
+        width:min(94vw,390px);
+        max-width:390px;
+        padding:22px;
+        border-radius:24px;
+      }
+      svg.lines{
+        inset:22px;
+        width:calc(100% - 44px);
+        height:calc(100% - 44px);
+      }
+      .board-wrap::before{
+        inset:12px;
+        border-radius:18px;
+      }
+      .board-wrap::after{
+        inset:22px;
+        border-radius:16px;
+        background-size:22px 22px;
+      }
+      .point{
+        width:46px !important;
+        height:46px !important;
+        border-width:2px;
+      }
+      .stone{
+        width:26px !important;
+        height:26px !important;
+      }
+      .stone::before{
+        inset:4px 6px auto auto;
+        width:8px;
+        height:6px;
+      }
+      .line{
+        stroke-width:4;
+      }
+      .line.win{
+        stroke-width:8;
+      }
+      .box{
+        padding:11px;
+        border-radius:14px;
+        margin-bottom:9px;
+      }
+      .box h2{
+        font-size:14px;
+        margin-bottom:6px;
+      }
+      .rules{
+        font-size:12px;
+        line-height:1.65;
+        padding-right:17px;
+      }
+      .message{
+        min-height:38px;
+        font-size:12.5px;
+        line-height:1.65;
+      }
+      .score{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+      }
+      .score-card{
+        padding:9px;
+        border-radius:13px;
+        font-size:12px;
+      }
+      .score-card strong{
+        font-size:22px;
+        margin-top:2px;
+      }
+      .footer-actions{
+        gap:8px;
+      }
+      .win-card{
+        width:min(340px,92vw);
+        padding:18px;
+        border-radius:20px;
+      }
+      .win-icon{
+        width:56px;
+        height:56px;
+        border-radius:18px;
+        font-size:34px;
+      }
+      .win-title{
+        font-size:20px;
+      }
+      .win-sub{
+        font-size:13px;
+        line-height:1.7;
+      }
+      .win-actions{
+        gap:8px;
+      }
+      .toast{
+        max-width:92vw;
+        text-align:center;
+        font-size:12.5px;
+        padding:10px 14px;
+      }
+    }
+
+    @media(max-width:380px){
+      .board-wrap{
+        width:94vw;
+        padding:18px;
+      }
+      svg.lines{
+        inset:18px;
+        width:calc(100% - 36px);
+        height:calc(100% - 36px);
+      }
+      .point{
+        width:42px !important;
+        height:42px !important;
+      }
+      .stone{
+        width:24px !important;
+        height:24px !important;
+      }
+      .tools{
+        grid-template-columns:1fr;
+      }
+    }
+
+  
+    /* ثيمات الطاولة والأحجار */
+    select{
+      font-family:inherit;
+      border:0;
+      cursor:pointer;
+      border-radius:14px;
+      padding:11px 14px;
+      font-weight:800;
+      color:var(--text);
+      background:var(--surface);
+      box-shadow:0 8px 24px rgba(15,23,42,.10);
+      outline:none;
+    }
+    .board-wrap,.stone,.line,.point{transition:background .35s ease, stroke .35s ease, border-color .35s ease, box-shadow .35s ease, filter .35s ease}
+
+    :root{
+      --board-a:#e3b86c;
+      --board-b:#b77837;
+      --board-c:#7a471f;
+      --board-line:rgba(48,28,12,.72);
+      --point-bg:rgba(92,53,28,.52);
+      --point-border:rgba(250,214,142,.55);
+      --p1-a:#dbeafe;
+      --p1-b:#60a5fa;
+      --p1-c:#2563eb;
+      --p1-d:#1e3a8a;
+      --p2-a:#ffedd5;
+      --p2-b:#fb923c;
+      --p2-c:#f97316;
+      --p2-d:#7c2d12;
+    }
+    body[data-skin="classicWood"]{
+      --board-a:#d7a65d;--board-b:#9b612c;--board-c:#4f2f17;
+      --board-line:rgba(39,24,12,.82);--point-bg:rgba(58,34,17,.62);--point-border:rgba(246,216,160,.62);
+      --p1-a:#f8fafc;--p1-b:#e5e7eb;--p1-c:#cbd5e1;--p1-d:#475569;
+      --p2-a:#64748b;--p2-b:#334155;--p2-c:#111827;--p2-d:#020617;
+    }
+    body[data-skin="marble"]{
+      --board-a:#f8fafc;--board-b:#dbe3ea;--board-c:#aab5c2;
+      --board-line:rgba(71,85,105,.70);--point-bg:rgba(226,232,240,.76);--point-border:rgba(100,116,139,.42);
+      --p1-a:#fff7ed;--p1-b:#fcd34d;--p1-c:#d97706;--p1-d:#92400e;
+      --p2-a:#f8fafc;--p2-b:#64748b;--p2-c:#1f2937;--p2-d:#020617;
+    }
+    body[data-skin="emerald"]{
+      --board-a:#0f766e;--board-b:#065f46;--board-c:#022c22;
+      --board-line:rgba(236,253,245,.68);--point-bg:rgba(4,120,87,.58);--point-border:rgba(167,243,208,.55);
+      --p1-a:#fff7ed;--p1-b:#fde68a;--p1-c:#f59e0b;--p1-d:#92400e;
+      --p2-a:#ede9fe;--p2-b:#a78bfa;--p2-c:#7c3aed;--p2-d:#4c1d95;
+    }
+    body[data-skin="night"]{
+      --board-a:#172554;--board-b:#0f172a;--board-c:#020617;
+      --board-line:rgba(125,211,252,.62);--point-bg:rgba(15,23,42,.72);--point-border:rgba(96,165,250,.45);
+      --p1-a:#ecfeff;--p1-b:#67e8f9;--p1-c:#06b6d4;--p1-d:#155e75;
+      --p2-a:#ffedd5;--p2-b:#fb923c;--p2-c:#f97316;--p2-d:#7c2d12;
+    }
+    body[data-skin="royal"]{
+      --board-a:#7c2d12;--board-b:#451a03;--board-c:#1c0a00;
+      --board-line:rgba(253,230,138,.75);--point-bg:rgba(69,26,3,.72);--point-border:rgba(250,204,21,.62);
+      --p1-a:#fff7ed;--p1-b:#facc15;--p1-c:#ca8a04;--p1-d:#713f12;
+      --p2-a:#f8fafc;--p2-b:#cbd5e1;--p2-c:#94a3b8;--p2-d:#475569;
+    }
+    body[data-skin="modern"]{
+      --board-a:#475569;--board-b:#1e293b;--board-c:#020617;
+      --board-line:rgba(226,232,240,.58);--point-bg:rgba(15,23,42,.70);--point-border:rgba(148,163,184,.50);
+      --p1-a:#dbeafe;--p1-b:#60a5fa;--p1-c:#2563eb;--p1-d:#1e3a8a;
+      --p2-a:#ffedd5;--p2-b:#fb923c;--p2-c:#f97316;--p2-d:#7c2d12;
+    }
+    body[data-skin="arabic"]{
+      --board-a:#a16207;--board-b:#713f12;--board-c:#3f2307;
+      --board-line:rgba(153,246,228,.70);--point-bg:rgba(63,35,7,.66);--point-border:rgba(94,234,212,.55);
+      --p1-a:#ccfbf1;--p1-b:#2dd4bf;--p1-c:#0f766e;--p1-d:#134e4a;
+      --p2-a:#ffedd5;--p2-b:#fdba74;--p2-c:#c2410c;--p2-d:#7c2d12;
+    }
+
+    .board-wrap{
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 22%),
+        linear-gradient(145deg, rgba(255,255,255,.13), transparent 38%),
+        linear-gradient(135deg, var(--board-a), var(--board-b) 52%, var(--board-c)) !important;
+    }
+    .line{stroke:var(--board-line) !important}
+    .point{
+      background:
+        radial-gradient(circle at 40% 35%, rgba(255,255,255,.18), transparent 30%),
+        radial-gradient(circle at 50% 55%, rgba(0,0,0,.20), transparent 58%),
+        var(--point-bg) !important;
+      border-color:var(--point-border) !important;
+    }
+    .stone.blue{
+      background:
+        radial-gradient(circle at 32% 25%, var(--p1-a), transparent 21%),
+        radial-gradient(circle at 65% 75%, var(--p1-d), var(--p1-c) 58%, var(--p1-d)) !important;
+    }
+    .stone.orange{
+      background:
+        radial-gradient(circle at 32% 25%, var(--p2-a), transparent 21%),
+        radial-gradient(circle at 65% 75%, var(--p2-d), var(--p2-c) 58%, var(--p2-d)) !important;
+    }
+    .stone-mini.blue{
+      background:
+        radial-gradient(circle at 32% 25%, var(--p1-a), transparent 24%),
+        linear-gradient(135deg,var(--p1-b),var(--p1-c)) !important;
+    }
+    .stone-mini.orange{
+      background:
+        radial-gradient(circle at 32% 25%, var(--p2-a), transparent 24%),
+        linear-gradient(135deg,var(--p2-b),var(--p2-c)) !important;
+    }
+
+    @media(max-width:700px){
+      .tools{
+        grid-template-columns:1fr 1fr;
+      }
+      .tools .primary{
+        grid-column:1 / -1;
+      }
+      select{
+        padding:10px 8px;
+        border-radius:12px;
+        font-size:12.5px;
+        min-width:0;
+        width:100%;
+      }
+    }
+
+  
+    /* اختيار حر لألوان الأحجار والطاولة */
+    :root{
+      --custom-p1:#2563eb;
+      --custom-p2:#f97316;
+      --custom-table:#b77837;
+      --custom-table-dark:#7a471f;
+      --custom-table-light:#e3b86c;
+      --custom-line:rgba(255,255,255,.66);
+      --custom-point:rgba(0,0,0,.24);
+    }
+    .color-tools{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      background:var(--surface);
+      border-radius:14px;
+      padding:7px 9px;
+      box-shadow:0 8px 24px rgba(15,23,42,.10);
+    }
+    .color-tools label{
+      display:flex;
+      align-items:center;
+      gap:5px;
+      font-size:12px;
+      font-weight:900;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .color-tools input[type="color"]{
+      width:28px;
+      height:28px;
+      padding:0;
+      border:1px solid var(--line);
+      border-radius:50%;
+      overflow:hidden;
+      background:transparent;
+      cursor:pointer;
+    }
+    .color-tools input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
+    .color-tools input[type="color"]::-webkit-color-swatch{border:0;border-radius:50%}
+
+    .board-wrap{
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.24), transparent 22%),
+        linear-gradient(145deg, rgba(255,255,255,.15), transparent 38%),
+        linear-gradient(135deg, var(--custom-table-light), var(--custom-table) 52%, var(--custom-table-dark)) !important;
+      border-color:color-mix(in srgb, var(--custom-table) 55%, white 45%) !important;
+    }
+    .line{stroke:var(--custom-line) !important}
+    .point{
+      background:
+        radial-gradient(circle at 40% 35%, rgba(255,255,255,.18), transparent 30%),
+        radial-gradient(circle at 50% 55%, rgba(0,0,0,.20), transparent 58%),
+        var(--custom-point) !important;
+      border-color:color-mix(in srgb, var(--custom-table) 45%, white 55%) !important;
+    }
+    .stone.blue{
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,.88), transparent 19%),
+        radial-gradient(circle at 66% 76%, color-mix(in srgb, var(--custom-p1) 60%, black 40%), var(--custom-p1) 58%, color-mix(in srgb, var(--custom-p1) 55%, black 45%)) !important;
+    }
+    .stone.orange{
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,.88), transparent 19%),
+        radial-gradient(circle at 66% 76%, color-mix(in srgb, var(--custom-p2) 60%, black 40%), var(--custom-p2) 58%, color-mix(in srgb, var(--custom-p2) 55%, black 45%)) !important;
+    }
+    .stone-mini.blue{
+      background:
+        radial-gradient(circle at 32% 25%, rgba(255,255,255,.85), transparent 24%),
+        linear-gradient(135deg,color-mix(in srgb, var(--custom-p1) 55%, white 45%),var(--custom-p1)) !important;
+    }
+    .stone-mini.orange{
+      background:
+        radial-gradient(circle at 32% 25%, rgba(255,255,255,.85), transparent 24%),
+        linear-gradient(135deg,color-mix(in srgb, var(--custom-p2) 55%, white 45%),var(--custom-p2)) !important;
+    }
+    @media(max-width:700px){
+      .color-tools{
+        grid-column:1 / -1;
+        justify-content:space-between;
+        padding:8px 10px;
+      }
+      .color-tools label{font-size:11.5px}
+      .color-tools input[type="color"]{width:26px;height:26px}
+    }
+
   </style>
 </head>
 <body>
@@ -280,11 +882,17 @@
         <div class="logo">▦</div>
         <div>
           <h1>لعبة الثلاثة أحجار</h1>
-          <p class="subtitle">لعبة تركيز سريعة للاعبين: ضع أحجارك الثلاثة ثم حرّكها حتى تكوّن خطًا مستقيمًا.</p>
+          <p class="subtitle">لعبة طاولة ذكية وسريعة: ضع أحجارك الثلاثة ثم حرّكها لتكوّن خطًا مستقيمًا.</p>
         </div>
       </div>
       <div class="tools">
         <button id="themeBtn">الوضع النهاري</button>
+        <div class="color-tools" aria-label="ألوان اللعبة">
+          <label title="لون حجر اللاعب الأول">حجر ١ <input type="color" id="p1Color" value="#2563eb"></label>
+          <label title="لون حجر اللاعب الثاني">حجر ٢ <input type="color" id="p2Color" value="#f97316"></label>
+          <label title="لون الطاولة">الطاولة <input type="color" id="tableColor" value="#b77837"></label>
+        </div>
+        <button id="modeBtn">الوضع: ضد لاعب</button>
         <button class="primary" id="newBtn">لعبة جديدة</button>
       </div>
     </header>
@@ -321,7 +929,7 @@
             <li>كل لاعب يملك ٣ أحجار.</li>
             <li>في البداية يضع اللاعبون الأحجار بالتناوب.</li>
             <li>بعد اكتمال الوضع، يحرّك اللاعب حجرًا واحدًا في كل دور.</li>
-            <li>الفائز من يكوّن ٣ أحجار على خط مستقيم.</li>
+            <li>الفائز من يكوّن ٣ أحجار على خط مستقيم.</li><li>يمكنك اختيار لون الحجرين والطاولة من أعلى الصفحة.</li><li>في وضع الذكاء الاصطناعي: أنت الأزرق، والذكاء البرتقالي.</li>
           </ol>
         </div>
 
@@ -352,6 +960,19 @@
     </section>
   </main>
 
+
+  <div id="winModal" class="win-modal" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+    <div class="win-card">
+      <div class="win-icon">🏆</div>
+      <h2 id="winTitle" class="win-title">انتهت اللعبة</h2>
+      <p id="winSub" class="win-sub">تم تكوين خط مستقيم.</p>
+      <div class="win-actions">
+        <button class="primary" id="modalNewBtn">لعبة جديدة</button>
+        <button id="modalCloseBtn">متابعة مشاهدة اللوحة</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="toast"></div>
 
   <script>
@@ -381,8 +1002,17 @@
     const blueScoreEl = document.getElementById("blueScore");
     const orangeScoreEl = document.getElementById("orangeScore");
     const toast = document.getElementById("toast");
+    const modeBtn = document.getElementById("modeBtn");
+    const p1Color = document.getElementById("p1Color");
+    const p2Color = document.getElementById("p2Color");
+    const tableColor = document.getElementById("tableColor");
+    
+    const winModal = document.getElementById("winModal");
+    const winTitle = document.getElementById("winTitle");
+    const winSub = document.getElementById("winSub");
 
-    let board, current, placed, selected, gameOver, history;
+    let board, current, placed, selected, gameOver, history, aiThinking;
+    let aiMode = localStorage.getItem("morrisAiModeMasar") === "true";
     let scores = JSON.parse(localStorage.getItem("morrisScoresMasar") || '{"B":0,"O":0}');
 
     function init(){
@@ -392,9 +1022,12 @@
       selected = null;
       gameOver = false;
       history = [];
+      aiThinking = false;
       clearWinLines();
-      render();
-      updateStatus("ابدأ بوضع حجر في أي نقطة فارغة.");
+      hideWinModal();
+        render();
+      updateStatus(aiMode ? "أنت الأزرق، والذكاء الاصطناعي هو البرتقالي." : "ابدأ بوضع حجر في أي نقطة فارغة.");
+      maybeAiMove();
     }
 
     function saveHistory(){
@@ -403,6 +1036,7 @@
     }
 
     function undo(){
+      if(aiThinking) return showToast("انتظر حركة الذكاء الاصطناعي.");
       if(!history.length || gameOver){
         showToast("لا توجد حركة للتراجع.");
         return;
@@ -414,6 +1048,16 @@
       selected = state.selected;
       gameOver = state.gameOver;
       clearWinLines();
+
+      if(aiMode && current === "O" && history.length){
+        const prev = JSON.parse(history.pop());
+        board = prev.board;
+        current = prev.current;
+        placed = prev.placed;
+        selected = prev.selected;
+        gameOver = prev.gameOver;
+      }
+
       render();
       updateStatus("تم التراجع عن آخر حركة.");
     }
@@ -422,8 +1066,7 @@
       document.querySelectorAll(".point").forEach(e=>e.remove());
       points.forEach((p,i)=>{
         const cell = document.createElement("button");
-        cell.className = "point" + (selected === i ? " selected":"");
-        // SVG coordinates start from the left, so point positions must use left even in RTL.
+        cell.className = "point" + (selected === i ? " selected":"") + (aiThinking ? " ai-wait":"");
         cell.style.left = p.x + "%";
         cell.style.top = p.y + "%";
         cell.setAttribute("aria-label","نقطة " + (i+1));
@@ -439,12 +1082,16 @@
       orangeScoreEl.textContent = scores.O;
       const isPlace = placed.B < 3 || placed.O < 3;
       phaseText.textContent = isPlace ? "مرحلة وضع الأحجار" : "مرحلة تحريك الأحجار";
-      turnText.textContent = current === "B" ? "الأزرق" : "البرتقالي";
+      turnText.textContent = current === "B" ? "الأزرق" : (aiMode ? "الذكاء الاصطناعي" : "البرتقالي");
       turnStone.className = "stone-mini " + (current === "B" ? "blue":"orange");
+      modeBtn.textContent = aiMode ? "الوضع: ضد الذكاء" : "الوضع: ضد لاعب";
     }
 
     function handlePoint(i){
       if(gameOver) return;
+      if(aiThinking) return showToast("الذكاء الاصطناعي يفكر...");
+      if(aiMode && current === "O") return;
+
       const placing = placed[current] < 3;
 
       if(placing){
@@ -497,20 +1144,22 @@
         localStorage.setItem("morrisScoresMasar", JSON.stringify(scores));
         markWin(win.line);
         render();
-        updateStatus("فاز " + (win.player === "B" ? "الأزرق" : "البرتقالي") + " بتكوين خط مستقيم.");
-        showToast("انتهت اللعبة: فوز " + (win.player === "B" ? "الأزرق" : "البرتقالي"));
+        const winnerName = win.player === "B" ? "الأزرق" : (aiMode ? "الذكاء الاصطناعي" : "البرتقالي");
+        updateStatus("فاز " + winnerName + " بتكوين خط مستقيم. اضغط لعبة جديدة للبدء من جديد.");
+        showWinModal(winnerName);
         return;
       }
       current = current === "B" ? "O" : "B";
       render();
       updateStatus(placed.B < 3 || placed.O < 3 ? "ضع حجرًا في نقطة فارغة." : "حرّك حجرًا واحدًا إلى نقطة متصلة.");
+      maybeAiMove();
     }
 
-    function getWinner(){
+    function getWinner(testBoard = board){
       for(const line of winningLines){
         const [a,b,c] = line;
-        if(board[a] && board[a] === board[b] && board[b] === board[c]){
-          return {player:board[a],line};
+        if(testBoard[a] && testBoard[a] === testBoard[b] && testBoard[b] === testBoard[c]){
+          return {player:testBoard[a],line};
         }
       }
       return null;
@@ -521,15 +1170,78 @@
       const index = winningLines.findIndex(l => l.join(",") === line.join(","));
       const svgLine = document.querySelector(".l" + index);
       if(svgLine) svgLine.classList.add("win");
+      line.forEach(i=>{
+        const p = document.querySelectorAll(".point")[i];
+        if(p) p.classList.add("win-stone");
+      });
     }
 
     function clearWinLines(){
       document.querySelectorAll(".line").forEach(l=>l.classList.remove("win"));
+      document.querySelectorAll(".point").forEach(p=>p.classList.remove("win-stone"));
     }
 
     function updateStatus(msg){
       messageEl.textContent = msg;
     }
+
+
+    function showWinModal(winnerName){
+      winTitle.textContent = "فاز " + winnerName;
+      winSub.textContent = "تم تكوين ثلاثة أحجار متتالية. لن تبدأ لعبة جديدة إلا عند اختيارك.";
+      winModal.classList.add("show");
+    }
+
+    function hideWinModal(){
+      winModal.classList.remove("show");
+    }
+
+    function shadeColor(hex, percent){
+      hex = hex.replace("#","");
+      const num = parseInt(hex,16);
+      let r = (num >> 16) + percent;
+      let g = ((num >> 8) & 0x00FF) + percent;
+      let b = (num & 0x0000FF) + percent;
+      r = Math.max(0,Math.min(255,r));
+      g = Math.max(0,Math.min(255,g));
+      b = Math.max(0,Math.min(255,b));
+      return "#" + (b | (g << 8) | (r << 16)).toString(16).padStart(6,"0");
+    }
+
+    function hexToRgb(hex){
+      hex = hex.replace("#","");
+      const n = parseInt(hex,16);
+      return {r:n>>16, g:(n>>8)&255, b:n&255};
+    }
+
+    function readableLineColor(hex){
+      const {r,g,b} = hexToRgb(hex);
+      const luminance = (0.2126*r + 0.7152*g + 0.0722*b);
+      return luminance > 150 ? "rgba(40,24,12,.78)" : "rgba(255,255,255,.72)";
+    }
+
+    function applyCustomColors(){
+      const saved = JSON.parse(localStorage.getItem("morrisCustomColorsMasar") || "{}");
+      const c1 = p1Color?.value || saved.p1 || "#2563eb";
+      const c2 = p2Color?.value || saved.p2 || "#f97316";
+      const table = tableColor?.value || saved.table || "#b77837";
+
+      document.documentElement.style.setProperty("--custom-p1", c1);
+      document.documentElement.style.setProperty("--custom-p2", c2);
+      document.documentElement.style.setProperty("--custom-table", table);
+      document.documentElement.style.setProperty("--custom-table-light", shadeColor(table, 55));
+      document.documentElement.style.setProperty("--custom-table-dark", shadeColor(table, -55));
+      document.documentElement.style.setProperty("--custom-line", readableLineColor(table));
+      document.documentElement.style.setProperty("--custom-point", "rgba(0,0,0,.24)");
+
+      if(p1Color) p1Color.value = c1;
+      if(p2Color) p2Color.value = c2;
+      if(tableColor) tableColor.value = table;
+
+      localStorage.setItem("morrisCustomColorsMasar", JSON.stringify({p1:c1,p2:c2,table}));
+    }
+
+
 
     function showToast(msg){
       toast.textContent = msg;
@@ -537,6 +1249,138 @@
       setTimeout(()=>toast.classList.remove("show"),1600);
     }
 
+    function maybeAiMove(){
+      if(!aiMode || gameOver || current !== "O") return;
+      aiThinking = true;
+      render();
+      updateStatus("الذكاء الاصطناعي يفكر");
+      messageEl.classList.add("ai-dots");
+      setTimeout(()=>{
+        saveHistory();
+        const move = chooseAiMove();
+        if(!move){
+          aiThinking = false;
+          messageEl.classList.remove("ai-dots");
+          updateStatus("لا توجد حركة متاحة للذكاء الاصطناعي.");
+          render();
+          return;
+        }
+
+        if(move.type === "place"){
+          board[move.to] = "O";
+          placed.O++;
+        }else{
+          board[move.to] = "O";
+          board[move.from] = null;
+        }
+
+        selected = null;
+        aiThinking = false;
+        messageEl.classList.remove("ai-dots");
+        afterMove();
+      }, 520);
+    }
+
+    function chooseAiMove(){
+      const placing = placed.O < 3;
+
+      if(placing){
+        const empty = emptyCells();
+
+        for(const to of empty){
+          const b = board.slice(); b[to] = "O";
+          if(getWinner(b)?.player === "O") return {type:"place", to};
+        }
+
+        for(const to of empty){
+          const b = board.slice(); b[to] = "B";
+          if(getWinner(b)?.player === "B") return {type:"place", to};
+        }
+
+        if(empty.includes(4)) return {type:"place", to:4};
+
+        const corners = [0,2,6,8].filter(i=>empty.includes(i));
+        if(corners.length) return {type:"place", to:randomOf(corners)};
+        return {type:"place", to:randomOf(empty)};
+      }
+
+      const moves = legalMoves("O");
+      if(!moves.length) return null;
+
+      for(const m of moves){
+        const b = board.slice();
+        b[m.to] = "O"; b[m.from] = null;
+        if(getWinner(b)?.player === "O") return {...m,type:"move"};
+      }
+
+      const humanThreats = immediateThreats("B");
+      if(humanThreats.length){
+        const blockers = moves.filter(m => humanThreats.includes(m.to));
+        if(blockers.length) return {...bestMoveByScore(blockers), type:"move"};
+      }
+
+      const setupMoves = moves.filter(m=>{
+        const b = board.slice();
+        b[m.to] = "O"; b[m.from] = null;
+        return countThreats("O", b) > 0;
+      });
+      if(setupMoves.length) return {...bestMoveByScore(setupMoves), type:"move"};
+
+      return {...bestMoveByScore(moves), type:"move"};
+    }
+
+    function emptyCells(){
+      return board.map((v,i)=>v ? null : i).filter(v=>v !== null);
+    }
+
+    function legalMoves(player){
+      const moves = [];
+      board.forEach((v,from)=>{
+        if(v !== player) return;
+        neighbors[from].forEach(to=>{
+          if(!board[to]) moves.push({from,to});
+        });
+      });
+      return moves;
+    }
+
+    function immediateThreats(player, testBoard = board){
+      const threats = [];
+      for(const line of winningLines){
+        const vals = line.map(i=>testBoard[i]);
+        const playerCount = vals.filter(v=>v === player).length;
+        const emptyCount = vals.filter(v=>!v).length;
+        if(playerCount === 2 && emptyCount === 1){
+          threats.push(line[vals.findIndex(v=>!v)]);
+        }
+      }
+      return [...new Set(threats)];
+    }
+
+    function countThreats(player, testBoard){
+      return immediateThreats(player, testBoard).length;
+    }
+
+    function bestMoveByScore(moves){
+      const scoreCell = i => {
+        let score = 0;
+        if(i === 4) score += 6;
+        if([0,2,6,8].includes(i)) score += 3;
+        score += neighbors[i].length;
+        return score;
+      };
+      const sorted = moves.slice().sort((a,b)=>scoreCell(b.to)-scoreCell(a.to));
+      const bestScore = scoreCell(sorted[0].to);
+      const best = sorted.filter(m=>scoreCell(m.to) === bestScore);
+      return randomOf(best);
+    }
+
+    function randomOf(arr){
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    document.getElementById("modalNewBtn").onclick = init;
+    document.getElementById("modalCloseBtn").onclick = ()=>hideWinModal();
     document.getElementById("newBtn").onclick = init;
     document.getElementById("undoBtn").onclick = undo;
     document.getElementById("resetScoreBtn").onclick = ()=>{
@@ -551,6 +1395,29 @@
       root.setAttribute("data-theme", next);
       document.getElementById("themeBtn").textContent = next === "dark" ? "الوضع النهاري" : "الوضع الليلي";
     };
+    modeBtn.onclick = ()=>{
+      if(aiThinking) return;
+      aiMode = !aiMode;
+      localStorage.setItem("morrisAiModeMasar", String(aiMode));
+      showToast(aiMode ? "تم تفعيل اللعب ضد الذكاء الاصطناعي" : "تم تفعيل اللعب ضد لاعب");
+  
+
+    [p1Color,p2Color,tableColor].forEach(input=>{
+      if(input) input.oninput = applyCustomColors;
+    });
+
+    applyCustomColors();
+
+    init();
+    };
+
+
+
+    [p1Color,p2Color,tableColor].forEach(input=>{
+      if(input) input.oninput = applyCustomColors;
+    });
+
+    applyCustomColors();
 
     init();
   </script>
