@@ -1,1 +1,53 @@
-
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>الأسهم الشرعية | بوابة مسار</title>
+  <link rel="stylesheet" href="Styles/main.css">
+  <link rel="stylesheet" href="Styles/updater.css">
+  <link rel="stylesheet" href="Styles/theme.css">
+</head>
+<body>
+<header class="pageHero">
+  <div class="wrap heroSlim">
+    <div class="heroText">
+      <h1>الأسهم الشرعية <span class="dataBadge updated" id="dataStatusBadge">محدثة</span></h1>
+      <p>صفحة مرجعية مختصرة لعرض الشركات والصناديق حسب الرمز، المجال، وعدد الجهات التي أجازتها شرعياً.</p>
+      <div class="heroTips">
+        <span>استخدم البحث للوصول السريع للشركة أو الرمز.</span>
+        <span>صفِّ النتائج حسب المجال أو عدد المجيزين أو الجهة الشرعية.</span>
+        <span>القائمة استرشادية وليست توصية شراء أو بيع.</span>
+      </div>
+      <div class="statusPanel" id="statusPanel"></div>
+    </div>
+    <button class="themeSwitch" id="themeToggle" type="button" aria-label="تبديل الوضع">
+<span id="themeIcon">☀️</span>
+</button>
+  </div>
+</header>
+<main class="wrap"><section class="cards"><div class="card"><div class="label">إجمالي القائمة</div><div class="num" id="total">0</div></div><div class="card"><div class="label">مجازة من 3 جهات</div><div class="num" id="c3">0</div></div><div class="card"><div class="label">مجازة من جهتين</div><div class="num" id="c2">0</div></div><div class="card"><div class="label">مجازة من جهة واحدة</div><div class="num" id="c1">0</div></div><div class="card"><div class="label">غير مجازة في الجهات الثلاث</div><div class="num" id="c0">0</div></div></section><section class="panel"><div class="filters"><input id="q" placeholder="ابحث بالرمز أو الشركة أو المجال"><select id="sector"><option value="">كل المجالات</option></select><select id="count"><option value="">كل أعداد الإجازة</option><option value="3">3 جهات</option><option value="2">جهتان</option><option value="1">جهة واحدة</option><option value="0">صفر</option></select><select id="auth"><option value="">كل الجهات</option><option value="rajhi">الراجحي المالية</option><option value="osaimi">د. محمد بن سعود العصيمي</option><option value="albilad">البلاد المالية</option></select><select id="sort"><option value="sector">ترتيب حسب المجال</option><option value="symbol">ترتيب حسب الرمز</option><option value="count">الأكثر إجازة</option><option value="name">ترتيب حسب الشركة</option></select></div><div class="quick"><button class="chip active" data-quick="all">الكل</button><button class="chip" data-quick="3">المجازة من 3 جهات</button><button class="chip" data-quick="2plus">جهتان فأكثر</button><button class="chip" data-quick="1">جهة واحدة فقط</button><button class="chip" data-quick="0">غير مجازة</button><button class="chip" data-quick="rajhi">أجازها الراجحي</button><button class="chip" data-quick="osaimi">أجازها العصيمي</button><button class="chip" data-quick="albilad">أجازتها البلاد</button></div><div class="resultLine" id="resultLine">النتائج المعروضة: 0</div><div class="tools"><button class="btn" onclick="downloadCSV()">تصدير CSV</button><button class="btn" onclick="resetFilters()">مسح الفلاتر</button></div><div class="warn">القائمة استرشادية وليست توصية شراء أو بيع.</div></section><section class="panel tableWrap"><table><thead><tr><th>رمز السهم</th><th>الشركة</th><th>المجال</th><th>عدد المجيزين</th><th>الجهات التي أجازتها</th></tr></thead><tbody id="body"></tbody></table></section><div class="footerVersion">إصدار البيانات الرسمي يظهر في لوحة حالة البيانات أعلى الصفحة.</div></main>
+  <script src="Utils/constants.js"></script>
+  <script src="Utils/helpers.js"></script>
+  <script src="Utils/storage.js"></script>
+  <script src="Data/shariaMeta.js"></script>
+  <script src="Data/shariaSources.js"></script>
+  <script src="Data/shariaSchema.js"></script>
+  <script src="Data/shariaStocks.js"></script>
+  <script src="Data/shariaHistory.js"></script>
+  <script src="Services/dataService.js"></script>
+  <script src="Services/validationService.js"></script>
+  <script src="Services/parserService.js"></script>
+  <script src="Services/compareService.js"></script>
+  <script src="Services/exportService.js"></script>
+  <script src="UI/themeUI.js"></script>
+  <script src="UI/statusPanelUI.js"></script>
+  <script src="UI/tableUI.js"></script>
+  <script src="UI/filtersUI.js"></script>
+  <script src="UI/updaterUI.js"></script>
+  <script src="Features/statistics.js"></script>
+  <script src="Features/favorites.js"></script>
+  <script src="Features/updater.js"></script>
+  <script src="UI/app.js"></script>
+</body>
+</html>
