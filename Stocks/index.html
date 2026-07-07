@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>الأسهم الشرعية | بوابة مسار</title>
+  <title>الأسهم الشرعية</title>
   <link rel="stylesheet" href="Styles/main.css">
   <link rel="stylesheet" href="Styles/updater.css">
   <link rel="stylesheet" href="Styles/theme.css">
@@ -14,11 +14,6 @@
     <div class="heroText">
       <h1>الأسهم الشرعية <span class="dataBadge updated" id="dataStatusBadge">محدثة</span></h1>
       <p>صفحة مرجعية مختصرة لعرض الشركات والصناديق حسب الرمز، المجال، وعدد الجهات التي أجازتها شرعياً.</p>
-      <div class="heroTips">
-        <span>استخدم البحث للوصول السريع للشركة أو الرمز.</span>
-        <span>صفِّ النتائج حسب المجال أو عدد المجيزين أو الجهة الشرعية.</span>
-        <span>القائمة استرشادية وليست توصية شراء أو بيع.</span>
-      </div>
       <div class="statusPanel" id="statusPanel"></div>
     </div>
     <button class="themeSwitch" id="themeToggle" type="button" aria-label="تبديل الوضع">
@@ -26,7 +21,24 @@
 </button>
   </div>
 </header>
-<main class="wrap"><section class="cards"><div class="card"><div class="label">إجمالي القائمة</div><div class="num" id="total">0</div></div><div class="card"><div class="label">مجازة من 3 جهات</div><div class="num" id="c3">0</div></div><div class="card"><div class="label">مجازة من جهتين</div><div class="num" id="c2">0</div></div><div class="card"><div class="label">مجازة من جهة واحدة</div><div class="num" id="c1">0</div></div><div class="card"><div class="label">غير مجازة في الجهات الثلاث</div><div class="num" id="c0">0</div></div></section><section class="panel"><div class="filters"><input id="q" placeholder="ابحث بالرمز أو الشركة أو المجال"><select id="sector"><option value="">كل المجالات</option></select><select id="count"><option value="">كل أعداد الإجازة</option><option value="3">3 جهات</option><option value="2">جهتان</option><option value="1">جهة واحدة</option><option value="0">صفر</option></select><select id="auth"><option value="">كل الجهات</option><option value="rajhi">الراجحي المالية</option><option value="osaimi">د. محمد بن سعود العصيمي</option><option value="albilad">البلاد المالية</option></select><select id="sort"><option value="sector">ترتيب حسب المجال</option><option value="symbol">ترتيب حسب الرمز</option><option value="count">الأكثر إجازة</option><option value="name">ترتيب حسب الشركة</option></select></div><div class="quick"><button class="chip active" data-quick="all">الكل</button><button class="chip" data-quick="3">المجازة من 3 جهات</button><button class="chip" data-quick="2plus">جهتان فأكثر</button><button class="chip" data-quick="1">جهة واحدة فقط</button><button class="chip" data-quick="0">غير مجازة</button><button class="chip" data-quick="rajhi">أجازها الراجحي</button><button class="chip" data-quick="osaimi">أجازها العصيمي</button><button class="chip" data-quick="albilad">أجازتها البلاد</button></div><div class="resultLine" id="resultLine">النتائج المعروضة: 0</div><div class="tools"><button class="btn" onclick="downloadCSV()">تصدير CSV</button><button class="btn" onclick="resetFilters()">مسح الفلاتر</button></div><div class="warn">القائمة استرشادية وليست توصية شراء أو بيع.</div></section><section class="panel tableWrap"><table><thead><tr><th>رمز السهم</th><th>الشركة</th><th>المجال</th><th>عدد المجيزين</th><th>الجهات التي أجازتها</th></tr></thead><tbody id="body"></tbody></table></section><div class="footerVersion">إصدار البيانات الرسمي يظهر في لوحة حالة البيانات أعلى الصفحة.</div></main>
+<main class="wrap"><section class="statsCompact panel">
+  <div class="statsCompactHead">
+    <div>
+      <span class="eyebrow">ملخص القائمة</span>
+      <strong>إحصائيات الأسهم الشرعية</strong>
+    </div>
+    <span class="statsTotal"><span id="total">0</span> شركة/صندوق</span>
+  </div>
+  <div class="statsMiniGrid">
+    <div><b id="c3">0</b><span>٣ جهات</span></div>
+    <div><b id="c2">0</b><span>جهتان</span></div>
+    <div><b id="c1">0</b><span>جهة واحدة</span></div>
+    <div><b id="c0">0</b><span>غير مجازة</span></div>
+  </div>
+</section><section class="panel filterPanel">
+<div class="filters"><input id="q" placeholder="ابحث بالرمز أو الشركة أو المجال"><select id="sector"><option value="">كل المجالات</option></select><select id="count"><option value="">كل أعداد الإجازة</option><option value="3">3 جهات</option><option value="2">جهتان</option><option value="1">جهة واحدة</option><option value="0">صفر</option></select><select id="auth"><option value="">كل الجهات</option><option value="rajhi">الراجحي المالية</option><option value="osaimi">د. محمد بن سعود العصيمي</option><option value="albilad">البلاد المالية</option></select><select id="sort"><option value="sector">ترتيب حسب المجال</option><option value="symbol">ترتيب حسب الرمز</option><option value="count">الأكثر إجازة</option><option value="name">ترتيب حسب الشركة</option></select></div><div class="quick"><button class="chip active" data-quick="all">الكل</button><button class="chip" data-quick="3">المجازة من 3 جهات</button><button class="chip" data-quick="2plus">جهتان فأكثر</button><button class="chip" data-quick="1">جهة واحدة فقط</button><button class="chip" data-quick="0">غير مجازة</button><button class="chip" data-quick="rajhi">أجازها الراجحي</button><button class="chip" data-quick="osaimi">أجازها العصيمي</button><button class="chip" data-quick="albilad">أجازتها البلاد</button></div><div class="resultLine" id="resultLine">النتائج المعروضة: 0</div><div class="tools"><button class="btn" onclick="downloadCSV()">تصدير CSV</button><button class="btn" onclick="resetFilters()">مسح الفلاتر</button></div><div class="warn">القائمة استرشادية وليست توصية شراء أو بيع.</div></section>
+<section class="stocksList stocksListV3" id="body" aria-label="قائمة الشركات"></section><div class="footerVersion">إصدار البيانات الرسمي يظهر في لوحة حالة البيانات أعلى الصفحة.</div></main>
+<button class="backToTop" id="backToTopBtn" type="button" aria-label="العودة للأعلى">↑</button>
   <script src="Utils/constants.js"></script>
   <script src="Utils/helpers.js"></script>
   <script src="Utils/storage.js"></script>
