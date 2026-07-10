@@ -673,7 +673,7 @@
     }
 
     function loadExecutiveState(){
-      const empty = {schemaVersion:1,favorites:[],today:null};
+      const empty = {schemaVersion:1,favorites:[],today:null,seen:[]};
       try{
         const parsed = JSON.parse(localStorage.getItem(EXEC_STATE_KEY) || 'null');
         if(!parsed || parsed.schemaVersion !== 1) return empty;
@@ -681,7 +681,8 @@
           schemaVersion:1,
           favorites:Array.isArray(parsed.favorites) ? parsed.favorites.filter(x => typeof x === 'string') : [],
           today:parsed.today && typeof parsed.today.conceptId === 'string' && typeof parsed.today.date === 'string'
-            ? {conceptId:parsed.today.conceptId,date:parsed.today.date,completed:Boolean(parsed.today.completed)} : null
+            ? {conceptId:parsed.today.conceptId,date:parsed.today.date,completed:Boolean(parsed.today.completed)} : null,
+          seen:Array.isArray(parsed.seen) ? [...new Set(parsed.seen.filter(x => typeof x === 'string'))] : []
         };
       }catch(error){
         console.warn('Executive state was reset', error);
@@ -748,9 +749,16 @@
 
     function rebuildTypeQueues(){
       const published = getPublishedKnowledge();
+      const seen = new Set(executiveState.seen || []);
+      let available = published.filter(item => !seen.has(item.concept_id));
+      if(!available.length){
+        executiveState.seen = [];
+        saveExecutiveState();
+        available = published;
+      }
       typeQueues = {};
 
-      published.forEach(item => {
+      available.forEach(item => {
         const t = item.type || 'general';
         if(!typeQueues[t]) typeQueues[t] = [];
         typeQueues[t].push(item);
@@ -806,6 +814,11 @@
 
       lastKnowledgeId = item?.id ?? null;
       lastKnowledgeType = item?.type ?? null;
+
+      if(item?.concept_id && !executiveState.seen.includes(item.concept_id)){
+        executiveState.seen.push(item.concept_id);
+        saveExecutiveState();
+      }
 
       return item || published[0];
     }
