@@ -1,7 +1,7 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated": "2026-07-10",
-  "description": "قاعدة المعرفة التنفيذية لبوابة مسار - 100 مفهوم تنفيذي مراجع ومهيكل",
+  "description": "قاعدة المعرفة التنفيذية لبوابة مسار — 100 مفهوم موثق حصريًا من الكتب العشرة المعتمدة",
   "items_count": 100,
   "schema": {
     "stable_fields": [
@@ -25,7 +25,12 @@
       "atomic",
       "prerequisites",
       "related",
-      "tags"
+      "tags",
+      "source_title_ar",
+      "author",
+      "source_topic",
+      "source_basis",
+      "source_confidence"
     ],
     "principle": "كل سجل يمثل مفهومًا ذريًا واحدًا."
   },
@@ -95,22 +100,28 @@
       "details": "كثير من المهام تتأخر لأننا ننتظر الشعور المناسب، بينما البداية نفسها هي التي تولّد الدافع وتخفف مقاومة العمل.",
       "action": "ابدأ المهمة لمدة دقيقتين فقط، ثم قرر بعدها إن كنت ستتوقف أو تكمل.",
       "question": "ما المهمة التي تؤجلها انتظارًا للحماس؟",
-      "source": "Willpower",
+      "source": "Atomic Habits",
       "tags": [
         "الأنظمة والعادات",
         "الانضباط",
         "rule",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Atomic Habits"
       ],
       "concept_id": "SYS-001",
       "domain": "الأنظمة والعادات",
       "domain_order": 7,
       "subcategory": "الانضباط",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "James Clear — Atomic Habits — قاعدة الدقيقتين للبدء",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "قاعدة الدقيقتين للبدء",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 2,
@@ -128,17 +139,23 @@
         "الانتباه",
         "التركيز",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "ATT-001",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "التركيز",
-      "reference": "Daniel Levitin - The Organized Mind",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — محدودية الانتباه وتكلفة تبديل المهام",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "محدودية الانتباه وتكلفة تبديل المهام",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 3,
@@ -151,22 +168,28 @@
       "details": "قد تعمل ساعات طويلة دون مخرجات واضحة. الإنتاجية تقاس بما تغير فعليًا، لا بما شعرت أنك بذلته.",
       "action": "في نهاية اليوم، اكتب ثلاثة مخرجات واضحة بدل حساب ساعات العمل فقط.",
       "question": "هل تقيس وقتك أم نتائجك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Peak",
       "tags": [
         "التنفيذ",
         "الإنتاجية",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Peak"
       ],
       "concept_id": "EXEC-001",
       "domain": "التنفيذ",
       "domain_order": 6,
       "subcategory": "الإنتاجية",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — قياس التحسن في المران الهادف",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "قياس التحسن في المران الهادف",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 4,
@@ -179,22 +202,28 @@
       "details": "عندما لا تعرف الخطوة التالية بدقة، يتحول المشروع إلى عبء ذهني. الوضوح يقلل التردد ويزيد سرعة الحركة.",
       "action": "قبل إنهاء أي جلسة عمل، اكتب أول خطوة ستبدأ بها في الجلسة القادمة.",
       "question": "ما أول خطوة محددة في مشروعك الحالي؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Now Habit",
       "tags": [
         "التخطيط والتنفيذ",
         "اتخاذ القرار",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Now Habit"
       ],
       "concept_id": "PLAN-001",
       "domain": "التخطيط والتنفيذ",
       "domain_order": 5,
       "subcategory": "اتخاذ القرار",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Neil Fiore — The Now Habit — البدء الآمن بدل ضغط الإنهاء",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "عادة الآن",
+      "author": "Neil Fiore",
+      "source_topic": "البدء الآمن بدل ضغط الإنهاء",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 5,
@@ -207,22 +236,28 @@
       "details": "محاولة تذكر المعلومة قبل مراجعتها تنشّط الذاكرة وتكشف الفجوات الحقيقية في الفهم.",
       "action": "أغلق الكتاب أو الملخص، واكتب ما تتذكره خلال دقيقة واحدة، ثم راجع ما فاتك.",
       "question": "ماذا استطعت أن تتذكر دون الرجوع للمصدر؟",
-      "source": "Peak",
+      "source": "Make It Stick",
       "tags": [
         "الذاكرة العاملة والتعلم",
         "التعلم",
         "exercise",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Make It Stick"
       ],
       "concept_id": "WM-001",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "التعلم",
-      "reference": "Ericsson & Pool - Peak",
-      "review_status": "Reviewed",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — ممارسة الاسترجاع قبل إعادة الدراسة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "ممارسة الاسترجاع قبل إعادة الدراسة",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 6,
@@ -235,22 +270,28 @@
       "details": "الاعتماد على قوة الإرادة وحدها يجعل السلوك هشًا. البيئة المصممة جيدًا تجعل السلوك الصحيح أسهل والسلوك الخاطئ أصعب.",
       "action": "أزل مشتتًا واحدًا من مكان عملك قبل أن تبدأ.",
       "question": "ما الشيء الموجود حولك ويضعف سلوكك دون أن تنتبه؟",
-      "source": "Willpower",
+      "source": "Atomic Habits",
       "tags": [
         "الأنظمة والعادات",
         "العادات",
         "rule",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Atomic Habits"
       ],
       "concept_id": "SYS-002",
       "domain": "الأنظمة والعادات",
       "domain_order": 7,
       "subcategory": "العادات",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "James Clear — Atomic Habits — تصميم البيئة وجعل السلوك الجيد سهلًا",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "تصميم البيئة وجعل السلوك الجيد سهلًا",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 7,
@@ -268,17 +309,23 @@
         "المرونة المعرفية",
         "التفكير",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "CF-001",
       "domain": "المرونة المعرفية",
       "domain_order": 4,
       "subcategory": "التفكير",
-      "reference": "Daniel Levitin - The Organized Mind",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — تفريغ الالتزامات إلى نظام خارجي",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تفريغ الالتزامات إلى نظام خارجي",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 8,
@@ -291,21 +338,27 @@
       "details": "الإنجاز لا يحتاج دائمًا إلى قفزة. أحيانًا يكفي إغلاق حلقة مفتوحة لتستعيد الشعور بالسيطرة.",
       "action": "اختر مهمة صغيرة معلقة وأنهِها اليوم بالكامل.",
       "question": "ما الحلقة الصغيرة التي تستطيع إغلاقها الآن؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Now Habit",
       "tags": [
         "التنفيذ",
         "challenge",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Now Habit"
       ],
       "concept_id": "EXEC-002",
       "domain": "التنفيذ",
       "domain_order": 6,
       "subcategory": "التنفيذ",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Neil Fiore — The Now Habit — البداية الصغيرة لمقاومة التسويف",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "عادة الآن",
+      "author": "Neil Fiore",
+      "source_topic": "البداية الصغيرة لمقاومة التسويف",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 9,
@@ -318,22 +371,28 @@
       "details": "النوايا العامة تنهزم أمام انشغال اليوم. تحويل الشيء المهم إلى موعد يحميه من التأجيل.",
       "action": "احجز 30 دقيقة اليوم لشيء مهم غير عاجل.",
       "question": "ما الشيء المهم الذي لم تخصص له وقتًا؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Now Habit",
       "tags": [
         "التخطيط والتنفيذ",
         "إدارة الوقت",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Now Habit"
       ],
       "concept_id": "PLAN-002",
       "domain": "التخطيط والتنفيذ",
       "domain_order": 5,
       "subcategory": "إدارة الوقت",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Neil Fiore — The Now Habit — الجدولة العكسية وحماية وقت البدء",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "عادة الآن",
+      "author": "Neil Fiore",
+      "source_topic": "الجدولة العكسية وحماية وقت البدء",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 10,
@@ -341,27 +400,33 @@
       "type": "question",
       "category": "التخطيط والتنفيذ",
       "level": 3,
-      "title": "اسأل عن الأثر",
-      "message": "ليست كل مهمة تستحق نفس الطاقة.",
-      "details": "بعض الأعمال تعطي أثرًا عاليًا وبعضها يستهلك اليوم دون نتيجة حقيقية. سؤال الأثر يساعدك على ترتيب الطاقة.",
-      "action": "قبل بدء العمل، اختر مهمة واحدة لو أنجزتها ستجعل اليوم أفضل.",
-      "question": "ما المهمة الأعلى أثرًا اليوم؟",
-      "source": "مشروع المستويات التنفيذية",
+      "title": "احمِ قراراتك المهمة من الخيارات الصغيرة",
+      "message": "القرارات الصغيرة تستهلك من جودة القرارات الكبيرة.",
+      "details": "إبقاء الخيارات الروتينية في الذهن يرفع حمل القرار ويترك طاقة أقل للمسائل الأعلى أثرًا.",
+      "action": "حوّل قرارًا منخفض القيمة ومتكررًا إلى قاعدة ثابتة.",
+      "question": "أي قرار صغير تستطيع حسمه بقاعدة مسبقة؟",
+      "source": "The Organized Mind",
       "tags": [
         "التخطيط والتنفيذ",
         "الأولويات",
         "question",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "PLAN-003",
       "domain": "التخطيط والتنفيذ",
       "domain_order": 5,
       "subcategory": "الأولويات",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — تقليل إرهاق القرار في الخيارات منخفضة القيمة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تقليل إرهاق القرار في الخيارات منخفضة القيمة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 11,
@@ -374,22 +439,28 @@
       "details": "كلما احتاجت المهمة إلى تجهيز طويل زادت فرصة الهروب منها. تقليل خطوات البداية يجعل الالتزام أسهل.",
       "action": "جهز أدوات مهمة الغد قبل نهاية اليوم.",
       "question": "ما الشيء الذي يمكن تجهيزه الآن ليجعل بداية الغد أسهل؟",
-      "source": "Peak",
+      "source": "Atomic Habits",
       "tags": [
         "الانتباه",
         "التركيز",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Atomic Habits"
       ],
       "concept_id": "ATT-002",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "التركيز",
-      "reference": "Ericsson & Pool - Peak",
-      "review_status": "Reviewed",
+      "reference": "James Clear — Atomic Habits — تقليل الاحتكاك وتهيئة البيئة مسبقًا",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "تقليل الاحتكاك وتهيئة البيئة مسبقًا",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 12,
@@ -402,22 +473,28 @@
       "details": "الشعور بالألفة أثناء القراءة لا يعني امتلاك المعلومة. الاختبار الذاتي يكشف ما ثبت فعلًا وما مرّ مرورًا سريعًا.",
       "action": "بعد قراءة أي فقرة مهمة، اكتب سؤالًا واحدًا عنها وأجب دون الرجوع للنص.",
       "question": "ما المعلومة التي تظن أنك فهمتها ولم تختبرها؟",
-      "source": "Peak",
+      "source": "Make It Stick",
       "tags": [
         "الذاكرة العاملة والتعلم",
         "التعلم",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Make It Stick"
       ],
       "concept_id": "WM-002",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "التعلم",
-      "reference": "Ericsson & Pool - Peak",
-      "review_status": "Reviewed",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — وهم الألفة والاختبار الذاتي",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "وهم الألفة والاختبار الذاتي",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 13,
@@ -430,25 +507,31 @@
       "details": "عندما لا تتوقف للمراجعة، قد تضاعف العمل في الاتجاه الخطأ. المراجعة القصيرة توفر وقتًا طويلًا لاحقًا.",
       "action": "قبل إضافة مهمة جديدة، راجع آخر نتيجة: ما الذي نجح وما الذي تعطل؟",
       "question": "ما الخطأ الذي تكرره لأنك لم تراجعه؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Peak",
       "tags": [
         "المراجعة والتحسين",
         "المراجعة",
         "rule",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Peak"
       ],
       "concept_id": "REF-001",
       "domain": "المراجعة والتحسين",
       "domain_order": 8,
       "subcategory": "المراجعة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — التغذية الراجعة وتعديل المحاولة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "REF-003",
         "REF-004"
-      ]
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "التغذية الراجعة وتعديل المحاولة",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 14,
@@ -466,17 +549,23 @@
         "الكبح الذاتي",
         "الإرادة",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Willpower"
       ],
       "concept_id": "IC-001",
       "domain": "الكبح الذاتي",
       "domain_order": 3,
       "subcategory": "الإرادة",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "Roy F. Baumeister & John Tierney — Willpower — إرهاق القرار ومحدودية ضبط النفس",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "قوة الإرادة",
+      "author": "Roy F. Baumeister & John Tierney",
+      "source_topic": "إرهاق القرار ومحدودية ضبط النفس",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 15,
@@ -484,27 +573,33 @@
       "type": "principle",
       "category": "التخطيط والتنفيذ",
       "level": 4,
-      "title": "وضوح التوقعات يقلل الاحتكاك",
-      "message": "الغموض الإداري يصنع مقاومة غير ضرورية.",
-      "details": "عندما لا يعرف الناس المطلوب بدقة، تكثر التفسيرات والاجتهادات. الوضوح يحسن الأداء ويقلل النزاع.",
-      "action": "حوّل أي طلب عام إلى نتيجة محددة، موعد، ومعيار قبول.",
-      "question": "هل يعرف الطرف الآخر شكل النتيجة المطلوبة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "title": "حدّد معيار الأداء قبل أن تطلب التنفيذ",
+      "message": "المطلوب الغامض لا ينتج تعلمًا دقيقًا.",
+      "details": "المران الهادف يحتاج هدفًا محددًا ومعيارًا يمكن مقارنة الأداء به؛ وينطبق ذلك على التكليف المهني.",
+      "action": "اكتب النتيجة المطلوبة ومعيار قبول واحد قبل بدء المهمة.",
+      "question": "هل يعرف المنفذ كيف يبدو الأداء الجيد؟",
+      "source": "Peak",
       "tags": [
         "التخطيط والتنفيذ",
         "القيادة",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Peak"
       ],
       "concept_id": "PLAN-004",
       "domain": "التخطيط والتنفيذ",
       "domain_order": 5,
       "subcategory": "القيادة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — الأهداف المحددة ومعيار الأداء",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "الأهداف المحددة ومعيار الأداء",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 16,
@@ -522,17 +617,23 @@
         "الذاكرة العاملة والتعلم",
         "إدارة المعرفة",
         "challenge",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "WM-003",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "إدارة المعرفة",
-      "reference": "Daniel Levitin - The Organized Mind",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — الذاكرة الخارجية القابلة للاسترجاع",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "الذاكرة الخارجية القابلة للاسترجاع",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 17,
@@ -545,22 +646,28 @@
       "details": "المثالية تجعل البداية صعبة. المسودة الأولى ليست للحكم، بل لإخراج الفكرة من الذهن إلى الواقع.",
       "action": "اكتب نسخة أولى سيئة عمدًا خلال 10 دقائق.",
       "question": "ما العمل الذي تؤخره لأنك تريد بدايته مثالية؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Now Habit",
       "tags": [
         "التنفيذ",
         "الإنتاجية",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Now Habit"
       ],
       "concept_id": "EXEC-003",
       "domain": "التنفيذ",
       "domain_order": 6,
       "subcategory": "الإنتاجية",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Neil Fiore — The Now Habit — المثالية والخوف من الخطأ والتسويف",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "عادة الآن",
+      "author": "Neil Fiore",
+      "source_topic": "المثالية والخوف من الخطأ والتسويف",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 18,
@@ -568,27 +675,33 @@
       "type": "question",
       "category": "المرونة المعرفية",
       "level": 4,
-      "title": "اسأل عن الافتراض الخفي",
-      "message": "كل قرار يحمل افتراضًا غير معلن.",
-      "details": "أحيانًا لا تكون المشكلة في القرار نفسه، بل في الافتراض الذي بُني عليه ولم تتم مراجعته.",
-      "action": "قبل قرار مهم، اكتب الافتراض الرئيسي الذي تعتمد عليه.",
-      "question": "ما الافتراض الذي لو كان خاطئًا سيتغير قرارك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "title": "افصل التعثر عن القدرة",
+      "message": "النتيجة الحالية لا تحكم على قدرتك النهائية.",
+      "details": "العقلية الثابتة تفسر التعثر كدليل عجز، بينما العقلية النامية تستخدمه لتحديد استراتيجية تحتاج إلى تغيير أو مهارة تحتاج إلى تدريب.",
+      "action": "اكتب ما كشفه التعثر عن الاستراتيجية بدل وصف نفسك بالفشل.",
+      "question": "هل تفسر النتيجة كحكم على هويتك أم كمعلومة للتعلم؟",
+      "source": "Mindset",
       "tags": [
         "المرونة المعرفية",
         "التفكير",
         "question",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Mindset"
       ],
       "concept_id": "CF-002",
       "domain": "المرونة المعرفية",
       "domain_order": 4,
       "subcategory": "التفكير",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Carol S. Dweck — Mindset — العقلية النامية وإعادة تفسير التعثر",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقلية",
+      "author": "Carol S. Dweck",
+      "source_topic": "العقلية النامية وإعادة تفسير التعثر",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 19,
@@ -601,22 +714,28 @@
       "details": "السلوك الجديد يصبح أسهل عندما يرتبط بشيء يحدث يوميًا بالفعل، مثل صلاة، قهوة، أو بداية دوام.",
       "action": "اختر عادة صغيرة واربطها بحدث ثابت اليوم.",
       "question": "ما الحدث اليومي الذي يمكن أن يصبح مرساة لعادتك؟",
-      "source": "Willpower",
+      "source": "Atomic Habits",
       "tags": [
         "الأنظمة والعادات",
         "العادات",
         "rule",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Atomic Habits"
       ],
       "concept_id": "SYS-003",
       "domain": "الأنظمة والعادات",
       "domain_order": 7,
       "subcategory": "العادات",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "James Clear — Atomic Habits — تكديس العادات وربطها بإشارة ثابتة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "تكديس العادات وربطها بإشارة ثابتة",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 20,
@@ -624,27 +743,33 @@
       "type": "exercise",
       "category": "المرونة المعرفية",
       "level": 3,
-      "title": "قرار بثلاثة خيارات",
-      "message": "الخياران فقط يصنعان وهم الحصر.",
-      "details": "عندما تحصر نفسك بين خيارين، قد تفوت حلًا ثالثًا أفضل. إضافة خيار ثالث تكشف مساحة تفكير جديدة.",
-      "action": "اكتب ثلاثة خيارات لأي قرار مؤجل، حتى لو كان الثالث غير مثالي.",
-      "question": "ما الخيار الثالث الذي لم تفكر فيه؟",
-      "source": "مشروع المستويات التنفيذية",
+      "title": "وسّع انتباهك قبل أن تختار",
+      "message": "التضييق المبكر يخفي البدائل.",
+      "details": "الوعي المفتوح يسمح بملاحظة إشارات واحتمالات متعددة قبل توجيه الانتباه نحو خيار واحد.",
+      "action": "دوّن ثلاث ملاحظات أو احتمالات قبل حسم قرارك.",
+      "question": "ما البديل الذي ظهر عندما وسّعت مجال النظر؟",
+      "source": "Focus",
       "tags": [
         "المرونة المعرفية",
         "اتخاذ القرار",
         "exercise",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "CF-003",
       "domain": "المرونة المعرفية",
       "domain_order": 4,
       "subcategory": "اتخاذ القرار",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — الوعي المفتوح قبل تضييق الاختيار",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الوعي المفتوح قبل تضييق الاختيار",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 21,
@@ -657,24 +782,30 @@
       "details": "النية تبدأ الحركة، لكن النظام يحافظ عليها. ما يتكرر يحتاج آلية لا مجرد رغبة.",
       "action": "حوّل هدفًا واحدًا إلى موعد ثابت وخطوة محددة.",
       "question": "ما الهدف الذي بقي نية لأنه بلا نظام؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Atomic Habits",
       "tags": [
         "التنفيذ",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Atomic Habits"
       ],
       "concept_id": "EXEC-004",
       "domain": "التنفيذ",
       "domain_order": 6,
       "subcategory": "التنفيذ",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "James Clear — Atomic Habits — الأنظمة أهم من الأهداف المجردة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "EXEC-002",
         "REF-004"
-      ]
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "الأنظمة أهم من الأهداف المجردة",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 22,
@@ -682,27 +813,33 @@
       "type": "mistake",
       "category": "التخطيط والتنفيذ",
       "level": 3,
-      "title": "ملء اليوم حتى الحافة",
-      "message": "اليوم الممتلئ بلا هامش هش.",
-      "details": "عندما تخطط لكل دقيقة، يصبح أي طارئ سببًا لانهيار الخطة. الهامش ليس ترفًا بل حماية.",
-      "action": "اترك اليوم مساحة واحدة فارغة للطوارئ أو التعافي.",
-      "question": "أين هامش اليوم في جدولك؟",
+      "title": "ملء اليوم بلا فواصل",
+      "message": "الانتباه المستمر بلا استعادة يفقد جودته.",
+      "details": "العقل يتناوب بين التركيز والاسترخاء؛ ملء الجدول حتى الحافة يضعف استعادة الانتباه ويرفع كلفة الانتقال.",
+      "action": "ضع فاصلاً قصيرًا بعد جلسة تركيز عميق قبل المهمة التالية.",
+      "question": "أين يحتاج يومك إلى مساحة لاستعادة الانتباه؟",
       "source": "The Organized Mind",
       "tags": [
         "التخطيط والتنفيذ",
         "إدارة الوقت",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "PLAN-005",
       "domain": "التخطيط والتنفيذ",
       "domain_order": 5,
       "subcategory": "إدارة الوقت",
-      "reference": "Daniel Levitin - The Organized Mind",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — تناوب التركيز والراحة واستعادة الانتباه",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تناوب التركيز والراحة واستعادة الانتباه",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 23,
@@ -720,17 +857,23 @@
         "الذاكرة العاملة والتعلم",
         "التعلم",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Peak"
       ],
       "concept_id": "WM-004",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "التعلم",
-      "reference": "Ericsson & Pool - Peak",
-      "review_status": "Reviewed",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — عناصر المران المتعمد",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "عناصر المران المتعمد",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 24,
@@ -738,27 +881,33 @@
       "type": "strategy",
       "category": "الانتباه",
       "level": 3,
-      "title": "احمِ أول ساعة",
-      "message": "بداية اليوم تحدد إيقاعه.",
-      "details": "أول ساعة تملك أثرًا مضاعفًا على بقية اليوم. إذا امتلأت بالمشتتات، يصبح استعادة التركيز أصعب.",
-      "action": "خصص أول 30 دقيقة من يومك لمهمة واحدة بلا إشعارات.",
-      "question": "ما الذي يسرق أول ساعة من يومك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "title": "احمِ فترة صفائك",
+      "message": "أفضل وقت ذهني يستحق مهمة واحدة.",
+      "details": "قيمة الفترة ليست في كونها أول ساعة، بل في ارتفاع اليقظة وقدرتك على حماية الانتباه فيها من الانقطاعات.",
+      "action": "حدد أكثر فتراتك صفاءً واحجزها لمهمة واحدة مهمة.",
+      "question": "متى يكون انتباهك في أفضل حالاته؟",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "التركيز",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-003",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "التركيز",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — حماية فترة اليقظة من الانقطاعات",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "حماية فترة اليقظة من الانقطاعات",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 25,
@@ -771,22 +920,28 @@
       "details": "مراجعة قصيرة تكشف نمط اليوم: أين ضاع الانتباه، وما الذي يستحق التكرار، وما الذي يحتاج تعديلًا.",
       "action": "اكتب قبل النوم: شيء نجح، شيء تعطل، وخطوة واحدة للغد.",
       "question": "ما التعديل الصغير الذي يجعل الغد أفضل؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Make It Stick",
       "tags": [
         "المراجعة والتحسين",
         "المراجعة",
         "challenge",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Make It Stick"
       ],
       "concept_id": "REF-002",
       "domain": "المراجعة والتحسين",
       "domain_order": 8,
       "subcategory": "المراجعة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التأمل والاسترجاع لتحسين التعلم",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "التأمل والاسترجاع لتحسين التعلم",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 26,
@@ -799,25 +954,31 @@
       "details": "الوعي باتجاه الانتباه هو أول خطوة في التحكم التنفيذي؛ فالسلوك يبدأ بما يلتقطه انتباهك.",
       "action": "توقف ثلاث مرات اليوم واسأل: أين يتجه انتباهي الآن؟",
       "question": "ما الذي يستحوذ على انتباهك دون اختيار؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-004",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — الوعي بالانتباه أساس التحكم فيه",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "ATT-005",
         "ATT-006",
         "ATT-008"
-      ]
+      ],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الوعي بالانتباه أساس التحكم فيه",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 27,
@@ -830,24 +991,30 @@
       "details": "الانتباه مورد محدود، وكل انتقال بين المثيرات يستهلك طاقة ذهنية.",
       "action": "قلل عدد النوافذ والإشعارات أثناء العمل.",
       "question": "ما أكثر مصدر يستنزف انتباهك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-005",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — الانتباه مورد محدود",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "ATT-006",
         "ATT-010"
-      ]
+      ],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الانتباه مورد محدود",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 28,
@@ -860,24 +1027,30 @@
       "details": "كل انتقال لمهمة جديدة يفرض تكلفة ذهنية لاستعادة السياق.",
       "action": "خصص فترات عمل بلا مقاطعات لمدة 25 دقيقة.",
       "question": "كم مرة بدلت بين المهام اليوم؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Organized Mind",
       "tags": [
         "الانتباه",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "ATT-006",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — تكلفة تبديل السياق ووهم تعدد المهام",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "ATT-012",
         "ATT-013"
-      ]
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تكلفة تبديل السياق ووهم تعدد المهام",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 29,
@@ -885,26 +1058,32 @@
       "type": "rule",
       "category": "الانتباه",
       "level": 2,
-      "title": "احمِ مدخلات عقلك",
-      "message": "ما يدخل ذهنك اليوم يصنع قرارات الغد.",
-      "details": "جودة الانتباه تتأثر بما تتعرض له باستمرار.",
-      "action": "استبعد مصدرًا واحدًا منخفض القيمة لمدة أسبوع.",
-      "question": "ما المحتوى الذي يستحق الإزالة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "title": "أضعف المثير الذي يختطف انتباهك",
+      "message": "بعض المشتتات تبدأ قبل أن تتخذ قرارًا واعيًا.",
+      "details": "المثيرات البارزة تستولي على الانتباه تلقائيًا؛ تقليل ظهورها يحمي التركيز الموجه للهدف.",
+      "action": "أخفِ أكثر إشارة بصرية أو صوتية تقطع انتباهك.",
+      "question": "ما المثير الذي يختطف انتباهك قبل أن تختاره؟",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "rule",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-007",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — المثيرات الصاعدة التي تختطف الانتباه",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "المثيرات الصاعدة التي تختطف الانتباه",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 30,
@@ -917,23 +1096,29 @@
       "details": "يمكن تدريب الانتباه على اختيار ما يخدم أهدافك.",
       "action": "حدد هدف المهمة قبل البدء بها.",
       "question": "هل يخدم انتباهك هدفك الحالي؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-008",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — الانتباه الانتقائي الموجه للهدف",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "ATT-011"
-      ]
+      ],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الانتباه الانتقائي الموجه للهدف",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 31,
@@ -946,21 +1131,27 @@
       "details": "الانتباه مهارة تحتاج تدريبًا متكررًا.",
       "action": "راقب تنفسك لمدة دقيقة دون النظر للهاتف.",
       "question": "كم مرة شرد ذهنك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "exercise",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-009",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — تدريب الانتباه بالملاحظة والعودة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "تدريب الانتباه بالملاحظة والعودة",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 32,
@@ -973,21 +1164,27 @@
       "details": "فترات العمل المتصلة ترفع جودة التفكير.",
       "action": "خصص ساعة واحدة اليوم بلا إشعارات.",
       "question": "هل أكملت الساعة كاملة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "challenge",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-010",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — حماية الانتباه المستمر من المقاطعات",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "حماية الانتباه المستمر من المقاطعات",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 33,
@@ -1000,21 +1197,27 @@
       "details": "توجيه الانتباه يصنع الأولويات.",
       "action": "اكتب أهم ثلاثة أشياء تستحق انتباهك هذا الأسبوع.",
       "question": "هل يعيش وقتك أولوياتك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "question",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-011",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — اختيار ما يستحق الانتباه",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "اختيار ما يستحق الانتباه",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 34,
@@ -1027,21 +1230,27 @@
       "details": "التركيز لا يعني غياب الشرود بل سرعة العودة.",
       "action": "عند الشرود، عد مباشرة دون لوم نفسك.",
       "question": "كم تستغرق للعودة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "الانتباه",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "ATT-012",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — استعادة الانتباه بعد الشرود",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "استعادة الانتباه بعد الشرود",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 35,
@@ -1054,21 +1263,27 @@
       "details": "أفضل مقياس للانتباه هو مقدار التقدم.",
       "action": "قيّم جلستك بما أنجزته.",
       "question": "ما النتيجة التي حققتها؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Peak",
       "tags": [
         "الانتباه",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Peak"
       ],
       "concept_id": "ATT-013",
       "domain": "الانتباه",
       "domain_order": 1,
       "subcategory": "الانتباه",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — قياس الأداء والتغذية الراجعة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "قياس الأداء والتغذية الراجعة",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 36,
@@ -1086,21 +1301,27 @@
         "الذاكرة العاملة والتعلم",
         "الذاكرة العاملة",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "WM-005",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "الذاكرة العاملة",
-      "reference": "Daniel Levitin - The Organized Mind",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — محدودية الذاكرة العاملة والذاكرة الخارجية",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "WM-006",
         "WM-007",
         "WM-008"
-      ]
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "محدودية الذاكرة العاملة والذاكرة الخارجية",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 37,
@@ -1113,24 +1334,30 @@
       "details": "عندما تكون المعلومات كثيرة ومتناثرة، تضعف القدرة على التفكير. التقسيم يحول الحمل الذهني إلى وحدات قابلة للإدارة.",
       "action": "قسّم أي مهمة كبيرة إلى ثلاث كتل: ما أعرفه، ما أحتاجه، والخطوة التالية.",
       "question": "ما المعلومات التي تحتاج إلى تجميع قبل أن تفكر فيها؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Organized Mind",
       "tags": [
         "الذاكرة العاملة والتعلم",
         "الذاكرة العاملة",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "WM-006",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "الذاكرة العاملة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — تصنيف المعلومات وتقليل الحمل المعرفي",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "WM-009"
-      ]
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تصنيف المعلومات وتقليل الحمل المعرفي",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 38,
@@ -1148,17 +1375,23 @@
         "الذاكرة العاملة والتعلم",
         "الذاكرة العاملة",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "WM-007",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "الذاكرة العاملة",
-      "reference": "Daniel Levitin - The Organized Mind",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — إخراج التذكر إلى نظام موثوق",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "إخراج التذكر إلى نظام موثوق",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 39,
@@ -1171,22 +1404,28 @@
       "details": "تفريغ ما في الذهن على الورق يقلل الضجيج الداخلي، ويجعل التفكير أهدأ وأكثر ترتيبًا.",
       "action": "اكتب لمدة ثلاث دقائق كل ما يدور في ذهنك دون ترتيب، ثم اختر منه إجراءً واحدًا.",
       "question": "ما الفكرة التي تكررت في ذهنك أكثر من مرة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Organized Mind",
       "tags": [
         "الذاكرة العاملة والتعلم",
         "الذاكرة العاملة",
         "exercise",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Organized Mind"
       ],
       "concept_id": "WM-008",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "الذاكرة العاملة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel J. Levitin — The Organized Mind — التفريغ الذهني لتحرير الانتباه",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "التفريغ الذهني لتحرير الانتباه",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 40,
@@ -1199,22 +1438,28 @@
       "details": "عندما تعرف لماذا تحتاج المعلومة وأين ستستخدمها، تصبح أسهل في التذكر والمعالجة.",
       "action": "قبل حفظ أي معلومة، اكتب بجانبها: لماذا أحتاجها؟",
       "question": "ما المعلومة التي تحفظها دون أن تعرف استخدامها؟",
-      "source": "Peak",
+      "source": "Make It Stick",
       "tags": [
         "الذاكرة العاملة والتعلم",
         "الذاكرة العاملة",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Make It Stick"
       ],
       "concept_id": "WM-009",
       "domain": "الذاكرة العاملة والتعلم",
       "domain_order": 2,
       "subcategory": "الذاكرة العاملة",
-      "reference": "Ericsson & Pool - Peak",
-      "review_status": "Reviewed",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التفصيل وربط المعلومة بالمعنى والاستخدام",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "التفصيل وربط المعلومة بالمعنى والاستخدام",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 41,
@@ -1227,25 +1472,31 @@
       "details": "الكبح الذاتي لا يعني منع الرغبة، بل خلق مسافة قصيرة بين ظهورها وتنفيذها حتى يتدخل القرار الواعي.",
       "action": "عند اندفاعك لفعل شيء، انتظر عشر ثوانٍ قبل الاستجابة.",
       "question": "ما السلوك الذي يحتاج منك فاصلاً قبل تنفيذه؟",
-      "source": "Willpower",
+      "source": "The Marshmallow Test",
       "tags": [
         "الكبح الذاتي",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Marshmallow Test"
       ],
       "concept_id": "IC-002",
       "domain": "الكبح الذاتي",
       "domain_order": 3,
       "subcategory": "الكبح الذاتي",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "Walter Mischel — The Marshmallow Test — النظام الساخن والبارد والمسافة النفسية",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "IC-003",
         "IC-005",
         "IC-006"
-      ]
+      ],
+      "source_title_ar": "اختبار المارشميلو",
+      "author": "Walter Mischel",
+      "source_topic": "النظام الساخن والبارد والمسافة النفسية",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 42,
@@ -1262,19 +1513,25 @@
       "tags": [
         "الكبح الذاتي",
         "rule",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Willpower"
       ],
       "concept_id": "IC-003",
       "domain": "الكبح الذاتي",
       "domain_order": 3,
       "subcategory": "الكبح الذاتي",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "Roy F. Baumeister & John Tierney — Willpower — تجنب الإغراء والالتزام المسبق",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "IC-004"
-      ]
+      ],
+      "source_title_ar": "قوة الإرادة",
+      "author": "Roy F. Baumeister & John Tierney",
+      "source_topic": "تجنب الإغراء والالتزام المسبق",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 43,
@@ -1287,21 +1544,27 @@
       "details": "إيقاف عادة أو اندفاع دون بديل عملي يجعل العودة أسهل. الكبح الناجح يحتاج مسارًا بديلًا جاهزًا.",
       "action": "حدد بديلًا واحدًا لكل سلوك تريد تقليله.",
       "question": "ما السلوك الذي تحاول منعه دون بديل واضح؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Atomic Habits",
       "tags": [
         "الكبح الذاتي",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Atomic Habits"
       ],
       "concept_id": "IC-004",
       "domain": "الكبح الذاتي",
       "domain_order": 3,
       "subcategory": "الكبح الذاتي",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "James Clear — Atomic Habits — حلقة العادة واستبدال الاستجابة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "حلقة العادة واستبدال الاستجابة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
     },
     {
       "id": 44,
@@ -1314,21 +1577,27 @@
       "details": "ليس المطلوب مقاومة دائمة؛ أحيانًا يكفي تأجيل السلوك دقائق قليلة حتى تنخفض شدته.",
       "action": "اختر اندفاعًا واحدًا اليوم وأجّله خمس دقائق قبل الاستجابة.",
       "question": "هل بقيت الرغبة بنفس القوة بعد التأجيل؟",
-      "source": "Willpower",
+      "source": "The Marshmallow Test",
       "tags": [
         "الكبح الذاتي",
         "challenge",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Marshmallow Test"
       ],
       "concept_id": "IC-005",
       "domain": "الكبح الذاتي",
       "domain_order": 3,
       "subcategory": "الكبح الذاتي",
-      "reference": "Baumeister & Tierney - Willpower",
-      "review_status": "Reviewed",
+      "reference": "Walter Mischel — The Marshmallow Test — تأخير الإشباع وتبريد الاندفاع",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اختبار المارشميلو",
+      "author": "Walter Mischel",
+      "source_topic": "تأخير الإشباع وتبريد الاندفاع",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 45,
@@ -1341,21 +1610,27 @@
       "details": "عندما تحدد مسبقًا متى تفعل ومتى تمتنع، تقل الحاجة لاتخاذ القرار في لحظة الإغراء.",
       "action": "اكتب قاعدة واحدة بصيغة: إذا حدث كذا، فسأفعل كذا.",
       "question": "ما القاعدة التي لو كتبتها ستقلل ترددك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "The Marshmallow Test",
       "tags": [
         "الكبح الذاتي",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "The Marshmallow Test"
       ],
       "concept_id": "IC-006",
       "domain": "الكبح الذاتي",
       "domain_order": 3,
       "subcategory": "الكبح الذاتي",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Walter Mischel — The Marshmallow Test — خطط إذا–فإن لضبط الاستجابة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اختبار المارشميلو",
+      "author": "Walter Mischel",
+      "source_topic": "خطط إذا–فإن لضبط الاستجابة",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 46,
@@ -1368,24 +1643,30 @@
       "details": "المرونة المعرفية تسمح لك بتغيير المسار عندما لا يعمل الأسلوب الحالي دون التخلي السريع عن الهدف نفسه.",
       "action": "اختر هدفًا متعثرًا واكتب طريقة بديلة للوصول إليه.",
       "question": "هل تحتاج إلى تغيير الهدف أم تغيير الطريقة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Grit",
       "tags": [
         "المرونة المعرفية",
         "principle",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Grit"
       ],
       "concept_id": "CF-004",
       "domain": "المرونة المعرفية",
       "domain_order": 4,
       "subcategory": "المرونة المعرفية",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Angela Duckworth — Grit — هرمية الأهداف وثبات الغاية العليا",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "CF-005",
         "CF-006"
-      ]
+      ],
+      "source_title_ar": "العزم",
+      "author": "Angela Duckworth",
+      "source_topic": "هرمية الأهداف وثبات الغاية العليا",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 47,
@@ -1398,21 +1679,27 @@
       "details": "الخطة تساعد على الاتجاه، لكنها تصبح عائقًا إذا منعتك من ملاحظة الواقع وتعديل المسار.",
       "action": "راجع خطة حالية واسأل: ما الدليل أن هذه الطريقة ما زالت مناسبة؟",
       "question": "ما الخطة التي تتمسك بها رغم تغير الظروف؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Peak",
       "tags": [
         "المرونة المعرفية",
         "insight",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Peak"
       ],
       "concept_id": "CF-005",
       "domain": "المرونة المعرفية",
       "domain_order": 4,
       "subcategory": "المرونة المعرفية",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — تعديل التدريب بناءً على التغذية الراجعة",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "تعديل التدريب بناءً على التغذية الراجعة",
+      "source_basis": "derived",
+      "source_confidence": "High"
     },
     {
       "id": 48,
@@ -1425,21 +1712,27 @@
       "details": "عندما تنظر للمشكلة من زاوية واحدة، تضيق الحلول. تغيير المنظور يوسع الخيارات.",
       "action": "اكتب المشكلة من وجهة نظر شخص آخر يتأثر بها.",
       "question": "كيف تبدو المشكلة لو نظر إليها شخص مختلف عنك؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Focus",
       "tags": [
         "المرونة المعرفية",
         "exercise",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Focus"
       ],
       "concept_id": "CF-006",
       "domain": "المرونة المعرفية",
       "domain_order": 4,
       "subcategory": "المرونة المعرفية",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Daniel Goleman — Focus — التركيز على الآخر وتبني منظوره",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "التركيز على الآخر وتبني منظوره",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 49,
@@ -1452,24 +1745,30 @@
       "details": "النجاح غير المراجع قد يتكرر بالصدفة. فهم سبب النجاح يجعله قابلاً للتكرار.",
       "action": "اكتب سببًا واحدًا لنجاح مهمة أنجزتها هذا الأسبوع.",
       "question": "ما السلوك الذي نجح وتريد تكراره عمدًا؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Make It Stick",
       "tags": [
         "المراجعة والتحسين",
         "المراجعة",
         "mistake",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Make It Stick"
       ],
       "concept_id": "REF-003",
       "domain": "المراجعة والتحسين",
       "domain_order": 8,
       "subcategory": "المراجعة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التأمل في أسباب النجاح والفشل",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
       "related": [
         "REF-004"
-      ]
+      ],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "التأمل في أسباب النجاح والفشل",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
     {
       "id": 50,
@@ -1482,78 +1781,1939 @@
       "details": "قيمة المراجعة تظهر عندما تنتج عنها خطوة مختلفة في المرة القادمة، لا عندما تكتفي بتفسير ما حدث.",
       "action": "بعد مراجعة أي تعثر، اكتب تعديلًا واحدًا ستطبقه في المحاولة القادمة.",
       "question": "ما التعديل العملي الناتج عن آخر مراجعة؟",
-      "source": "مشروع المستويات التنفيذية",
+      "source": "Make It Stick",
       "tags": [
         "المراجعة والتحسين",
         "المراجعة",
         "strategy",
-        "مستويات تنفيذية"
+        "مستويات تنفيذية",
+        "Make It Stick"
       ],
       "concept_id": "REF-004",
       "domain": "المراجعة والتحسين",
       "domain_order": 8,
       "subcategory": "المراجعة",
-      "reference": "مشروع المستويات التنفيذية",
-      "review_status": "Reviewed",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التأمل ثم تعديل الاستراتيجية",
+      "review_status": "CommitteeApproved",
       "atomic": true,
       "prerequisites": [],
-      "related": []
+      "related": [],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "التأمل ثم تعديل الاستراتيجية",
+      "source_basis": "direct",
+      "source_confidence": "High"
     },
-    {"id":51,"status":"Published","type":"rule","category":"الذاكرة العاملة والتعلم","level":4,"title":"افصل الالتقاط عن المعالجة","message":"سجّل الفكرة أولًا، وقرّر بشأنها لاحقًا.","details":"معالجة كل معلومة لحظة وصولها تقطع العمل وتستهلك الذاكرة العاملة؛ الالتقاط السريع يحفظها وموعد المعالجة يحولها إلى قرار.","action":"أنشئ صندوق التقاط واحدًا وحدد عشر دقائق يوميًا لمعالجته.","question":"هل تملك مكانًا واحدًا موثوقًا لكل ما يحتاج معالجة؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","إدارة المعرفة","rule","مستويات تنفيذية"],"concept_id":"WM-010","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"إدارة المعرفة","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":["WM-005"],"related":["WM-003","WM-007"]},
-    {"id":52,"status":"Published","type":"question","category":"الذاكرة العاملة والتعلم","level":5,"title":"ما الذي يجب أن يبقى خارج رأسك؟","message":"كل التزام محفوظ ذهنيًا يزاحم التفكير الجاري.","details":"المدير لا يحتاج تذكر كل التفاصيل، بل نظامًا يُظهر المعلومة المناسبة عند القرار المناسب.","action":"انقل التزامًا متكررًا إلى قائمة أو تقويم مع موعد مراجعة.","question":"ما الذي تخشى نسيانه لأنه لم يدخل نظامًا موثوقًا؟","source":"Getting Things Done","tags":["الذاكرة العاملة والتعلم","إدارة الالتزامات","question","مستويات تنفيذية"],"concept_id":"WM-011","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"إدارة الالتزامات","reference":"David Allen - Getting Things Done","review_status":"Reviewed","atomic":true,"prerequisites":["WM-005"],"related":["WM-010"]},
-    {"id":53,"status":"Published","type":"challenge","category":"الذاكرة العاملة والتعلم","level":4,"title":"اختبر قرارك من الذاكرة","message":"إن لم تستطع تلخيص القرار، فغالبًا لم يتضح بعد.","details":"القرار الواضح يُختزل إلى مشكلة وخيار وسبب وخطوة تالية؛ تعذر استرجاعها يكشف تشتت منطقه.","action":"أغلق المستند واكتب من الذاكرة: المشكلة، القرار، السبب، وأول إجراء.","question":"أي عنصر لم تستطع استرجاعه بوضوح؟","source":"مشروع المستويات التنفيذية","tags":["الذاكرة العاملة والتعلم","اتخاذ القرار","challenge","مستويات تنفيذية"],"concept_id":"WM-012","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"اتخاذ القرار","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":["WM-001"],"related":["PLAN-001"]},
-    {"id":54,"status":"Published","type":"exercise","category":"الذاكرة العاملة والتعلم","level":5,"title":"ابنِ نموذجًا ذهنيًا لا قائمة معلومات","message":"المعلومة المنفصلة تُنسى؛ العلاقة تُفهم.","details":"الخبرة تتطور عندما ترتبط الحقائق في نموذج يفسر السبب والنتيجة، لا في أرشيف ملاحظات منفصلة.","action":"ارسم خمس عقد: السبب، الإشارة، القرار، الإجراء، والنتيجة.","question":"ما العلاقة التي لم تكن واضحة قبل رسم النموذج؟","source":"Peak","tags":["الذاكرة العاملة والتعلم","النماذج الذهنية","exercise","مستويات تنفيذية"],"concept_id":"WM-013","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"النماذج الذهنية","reference":"Ericsson & Pool - Peak","review_status":"Reviewed","atomic":true,"prerequisites":["WM-004"],"related":["CF-002"]},
-    {"id":55,"status":"Published","type":"principle","category":"الكبح الذاتي","level":4,"title":"اضبط الاستجابة قبل أن تضبط الشعور","message":"لا تنتظر هدوءك كي تتصرف بحكمة.","details":"المشاعر لا تخضع دائمًا للتحكم المباشر، لكن السلوك التالي يمكن تصميمه مسبقًا لمنع قرار يصعب التراجع عنه.","action":"اعتمد قاعدة: لا ترسل ردًا حساسًا قبل مراجعته بعد عشر دقائق.","question":"ما التصرف الذي تحتاج إلى تأخيره عند الانفعال؟","source":"Willpower","tags":["الكبح الذاتي","إدارة الانفعال","principle","مستويات تنفيذية"],"concept_id":"IC-007","domain":"الكبح الذاتي","domain_order":3,"subcategory":"إدارة الانفعال","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":["IC-002"],"related":["IC-006"]},
-    {"id":56,"status":"Published","type":"insight","category":"الكبح الذاتي","level":5,"title":"القرار المتعب يصبح قصير النظر","message":"التعب يرفع قيمة الراحة الآنية.","details":"عندما تنخفض الطاقة الذهنية يميل العقل للحل الأسهل حتى لو كانت كلفته اللاحقة أعلى؛ توقيت القرار جزء من جودته.","action":"انقل قرارًا عالي الأثر إلى أول فترة صفاء متاحة.","question":"هل صعوبة القرار حقيقية أم أن توقيته سيئ؟","source":"Willpower","tags":["الكبح الذاتي","جودة القرار","insight","مستويات تنفيذية"],"concept_id":"IC-008","domain":"الكبح الذاتي","domain_order":3,"subcategory":"جودة القرار","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":["IC-001"],"related":["PLAN-010"]},
-    {"id":57,"status":"Published","type":"strategy","category":"الكبح الذاتي","level":5,"title":"استخدم الاحتكاك المتعمد","message":"اجعل الخطأ أبطأ والصواب أسرع.","details":"ثوانٍ إضافية قبل السلوك الاندفاعي قد تستعيد الاختيار الواعي، وتقليل خطوات السلوك الصحيح يزيد احتماله.","action":"أضف خطوة تحقق قبل إجراء خطر واحذف خطوة من الإجراء المرغوب.","question":"أين تمنع ثوانٍ من الاحتكاك خطأ مرتفع الكلفة؟","source":"Nudge","tags":["الكبح الذاتي","تصميم السلوك","strategy","مستويات تنفيذية"],"concept_id":"IC-009","domain":"الكبح الذاتي","domain_order":3,"subcategory":"تصميم السلوك","reference":"Thaler & Sunstein - Nudge","review_status":"Reviewed","atomic":true,"prerequisites":["IC-003"],"related":["SYS-002"]},
-    {"id":58,"status":"Published","type":"mistake","category":"الكبح الذاتي","level":4,"title":"اختبار الانضباط طوال اليوم","message":"كثرة الإغراءات ليست تدريبًا؛ إنها استنزاف.","details":"التعرض المتكرر للمشتت ثم مقاومته يستهلك التحكم؛ الانضباط الأقوى يقلل عدد المواجهات أصلًا.","action":"احذف محفزًا واحدًا يفرض عليك قرار مقاومة متكررًا.","question":"كم مرة تقاوم الشيء نفسه لأن بيئتك لم تتغير؟","source":"Willpower","tags":["الكبح الذاتي","الانضباط","mistake","مستويات تنفيذية"],"concept_id":"IC-010","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الانضباط","reference":"Baumeister & Tierney - Willpower","review_status":"Reviewed","atomic":true,"prerequisites":["IC-003"],"related":["SYS-002"]},
-    {"id":59,"status":"Published","type":"question","category":"الكبح الذاتي","level":5,"title":"ما الثمن المؤجل لهذا الاندفاع؟","message":"الاندفاع يبرز المكسب الآن ويخفي الفاتورة لاحقًا.","details":"السلوك الاندفاعي يضيق نافذة الزمن، فتظهر الراحة الفورية وتختفي كلفة الغد.","action":"اكتب نتيجة القرار بعد ساعة وبعد أسبوع.","question":"ما الكلفة التي لا تراها لأنك تنظر إلى اللحظة فقط؟","source":"Thinking, Fast and Slow","tags":["الكبح الذاتي","التفكير الزمني","question","مستويات تنفيذية"],"concept_id":"IC-011","domain":"الكبح الذاتي","domain_order":3,"subcategory":"التفكير الزمني","reference":"Daniel Kahneman - Thinking, Fast and Slow","review_status":"Reviewed","atomic":true,"prerequisites":["IC-002"],"related":["PLAN-007"]},
-    {"id":60,"status":"Published","type":"challenge","category":"الكبح الذاتي","level":5,"title":"يوم بلا قرارات منخفضة القيمة","message":"وفّر قدرتك على القرار لما يستحقها.","details":"الاختيارات الصغيرة المتكررة تستهلك الانتباه وتفتح باب التسويف؛ تثبيت الروتين يترك مساحة للقرارات المعقدة.","action":"ثبّت مسبقًا ثلاثة اختيارات روتينية ليوم واحد.","question":"أي قرار صغير استهلك وقتًا أكبر من قيمته؟","source":"The Organized Mind","tags":["الكبح الذاتي","إرهاق القرار","challenge","مستويات تنفيذية"],"concept_id":"IC-012","domain":"الكبح الذاتي","domain_order":3,"subcategory":"إرهاق القرار","reference":"Daniel Levitin - The Organized Mind","review_status":"Reviewed","atomic":true,"prerequisites":["IC-008"],"related":["SYS-006"]},
-    {"id":61,"status":"Published","type":"exercise","category":"المرونة المعرفية","level":5,"title":"اعكس موقفك قبل الدفاع عنه","message":"ابنِ أقوى حجة ضد رأيك.","details":"العقل يجمع الأدلة المؤيدة بعد تكوين الرأي؛ صياغة الحجة المضادة تكشف الافتراضات الهشة.","action":"اكتب ثلاث نقاط تجعل الخيار المرفوض منطقيًا لشخص عاقل.","question":"أي حجة مضادة غيّرت درجة ثقتك؟","source":"Decisive","tags":["المرونة المعرفية","التحيز التأكيدي","exercise","مستويات تنفيذية"],"concept_id":"CF-007","domain":"المرونة المعرفية","domain_order":4,"subcategory":"التحيزات المعرفية","reference":"Chip Heath & Dan Heath - Decisive","review_status":"Reviewed","atomic":true,"prerequisites":["CF-002"],"related":["CF-006"]},
-    {"id":62,"status":"Published","type":"rule","category":"المرونة المعرفية","level":5,"title":"غيّر رأيك عند تغير الدليل","message":"الثبات على الهدف لا يعني الثبات على الاعتقاد.","details":"القيادة الناضجة تفصل الهوية عن الرأي؛ تحديث الموقف عند ظهور معلومة جديدة اتباع للواقع لا ضعف.","action":"حدد معلومة واحدة لو ظهرت ستجعلك تعيد تقييم قرارك.","question":"ما الدليل الذي يكفي لتغيير موقفك؟","source":"Think Again","tags":["المرونة المعرفية","تحديث المعتقد","rule","مستويات تنفيذية"],"concept_id":"CF-008","domain":"المرونة المعرفية","domain_order":4,"subcategory":"تحديث المعتقد","reference":"Adam Grant - Think Again","review_status":"Reviewed","atomic":true,"prerequisites":["CF-002"],"related":["CF-005"]},
-    {"id":63,"status":"Published","type":"question","category":"المرونة المعرفية","level":6,"title":"ما المشكلة التي يحلها هذا الحل؟","message":"قد نتمسك بحل بعد أن تتغير المشكلة.","details":"الحلول الناجحة تكتسب زخمًا حتى بعد تغير السياق؛ الرجوع للمشكلة يمنع تحسين أداة لم تعد تخدم الهدف.","action":"اكتب المشكلة الحالية في جملة دون ذكر الحل المستخدم.","question":"لو أزلنا الحل، كيف سنعرّف المشكلة من جديد؟","source":"Good Strategy Bad Strategy","tags":["المرونة المعرفية","تعريف المشكلة","question","مستويات تنفيذية"],"concept_id":"CF-009","domain":"المرونة المعرفية","domain_order":4,"subcategory":"تعريف المشكلة","reference":"Richard Rumelt - Good Strategy Bad Strategy","review_status":"Reviewed","atomic":true,"prerequisites":["CF-004"],"related":["PLAN-006"]},
-    {"id":64,"status":"Published","type":"insight","category":"المرونة المعرفية","level":5,"title":"الاستثناء المتكرر إشارة إلى خلل في النموذج","message":"ما يتكرر ليس استثناءً.","details":"إذا احتاجت الخطة إلى استثناءات مستمرة فقد يكون نموذجها ناقصًا؛ المرونة تبدأ بالاعتراف أن الخريطة لم تعد تصف الواقع.","action":"اجمع آخر ثلاثة استثناءات وابحث عن نمط يجمعها.","question":"ما الافتراض الذي تضعفه هذه الاستثناءات؟","source":"Thinking in Systems","tags":["المرونة المعرفية","التفكير المنظومي","insight","مستويات تنفيذية"],"concept_id":"CF-010","domain":"المرونة المعرفية","domain_order":4,"subcategory":"التفكير المنظومي","reference":"Donella Meadows - Thinking in Systems","review_status":"Reviewed","atomic":true,"prerequisites":["CF-002"],"related":["REF-007"]},
-    {"id":65,"status":"Published","type":"challenge","category":"المرونة المعرفية","level":5,"title":"ابحث عن خيار يغير السؤال","message":"أفضل البدائل قد لا تجيب السؤال القديم.","details":"بعض المعضلات تبدو مغلقة لأن الخيارات مبنية على افتراض واحد؛ تغيير الإطار قد يفتح تصميمًا جديدًا.","action":"أعد صياغة معضلة حالية بثلاث صيغ قبل اختيار الحل.","question":"أي صياغة فتحت خيارًا لم يكن ظاهرًا؟","source":"Decisive","tags":["المرونة المعرفية","إعادة التأطير","challenge","مستويات تنفيذية"],"concept_id":"CF-011","domain":"المرونة المعرفية","domain_order":4,"subcategory":"إعادة التأطير","reference":"Chip Heath & Dan Heath - Decisive","review_status":"Reviewed","atomic":true,"prerequisites":["CF-003"],"related":["CF-006"]},
-    {"id":66,"status":"Published","type":"mistake","category":"المرونة المعرفية","level":5,"title":"تغيير الخطة عند أول مقاومة","message":"المرونة ليست تقلبًا.","details":"التعديل السريع دون بيانات يحرم الخطة من وقت إظهار أثرها؛ المرونة المنضبطة تربط التغيير بإشارة متفق عليها.","action":"حدد مدة اختبار ومؤشر نجاح قبل تعديل الخطة.","question":"هل غيرت المسار بسبب دليل أم نفاد الصبر؟","source":"مشروع المستويات التنفيذية","tags":["المرونة المعرفية","ثبات التنفيذ","mistake","مستويات تنفيذية"],"concept_id":"CF-012","domain":"المرونة المعرفية","domain_order":4,"subcategory":"ثبات التنفيذ","reference":"مشروع المستويات التنفيذية","review_status":"Reviewed","atomic":true,"prerequisites":["CF-004"],"related":["REF-006"]},
-    {"id":67,"status":"Published","type":"strategy","category":"التخطيط والتنفيذ","level":6,"title":"ابدأ بالتشخيص قبل المبادرات","message":"الخطة بلا تشخيص قائمة رغبات.","details":"الاستراتيجية تحدد التحدي الحاسم ثم توجه الموارد نحوه؛ القفز إلى مبادرات كثيرة يوزع الجهد ويخفي غياب الاختيار.","action":"اكتب في جملة العائق الأهم الذي يمنع النتيجة.","question":"ما المشكلة التي ستبقى حتى لو نفذنا بقية المبادرات؟","source":"Good Strategy Bad Strategy","tags":["التخطيط والتنفيذ","الاستراتيجية","strategy","مستويات تنفيذية"],"concept_id":"PLAN-006","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"الاستراتيجية","reference":"Richard Rumelt - Good Strategy Bad Strategy","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-003"],"related":["CF-009"]},
-    {"id":68,"status":"Published","type":"principle","category":"التخطيط والتنفيذ","level":5,"title":"الخطة التزام بتخصيص الموارد","message":"الأولوية التي لا تحصل على موارد ليست أولوية.","details":"الاختيار الحقيقي يظهر في الوقت والميزانية والانتباه القيادي؛ تعدد الأولويات دون مفاضلة يصنع أمنيات متنافسة.","action":"اربط كل أولوية بوقت ومالك ومورد واحذف ما لا يمكن تمويله.","question":"أين تختلف أولوياتك المعلنة عن توزيع الموارد؟","source":"High Output Management","tags":["التخطيط والتنفيذ","تخصيص الموارد","principle","مستويات تنفيذية"],"concept_id":"PLAN-007","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"تخصيص الموارد","reference":"Andrew Grove - High Output Management","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-003"],"related":["EXEC-006"]},
-    {"id":69,"status":"Published","type":"question","category":"التخطيط والتنفيذ","level":6,"title":"ما الذي لن نفعله؟","message":"الاستراتيجية تتضح بما تستبعده.","details":"غياب قائمة الاستبعاد يسمح للمبادرات القديمة والجديدة بالتعايش حتى ينهار التركيز.","action":"أضف إلى خطتك بندين ستوقفهما أو تؤجلهما لحماية الأولوية الأولى.","question":"ما النشاط الجيد الذي يجب رفضه لصالح الأهم؟","source":"Essentialism","tags":["التخطيط والتنفيذ","الأولويات","question","مستويات تنفيذية"],"concept_id":"PLAN-008","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"الأولويات","reference":"Greg McKeown - Essentialism","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-003"],"related":["PLAN-006"]},
-    {"id":70,"status":"Published","type":"exercise","category":"التخطيط والتنفيذ","level":5,"title":"حوّل الهدف إلى سلسلة أدلة","message":"الهدف القابل للمتابعة يترك أثرًا يمكن رؤيته.","details":"الربط بين النشاط والمخرج والنتيجة يمنع الاحتفال بحركة لا تنتج أثرًا.","action":"اكتب لهدف واحد: نشاطًا، مخرجًا، مؤشرًا مبكرًا، ونتيجة نهائية.","question":"أي رابط في سلسلة الأثر ما زال افتراضًا؟","source":"Measure What Matters","tags":["التخطيط والتنفيذ","قياس الأداء","exercise","مستويات تنفيذية"],"concept_id":"PLAN-009","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"قياس الأداء","reference":"John Doerr - Measure What Matters","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-004"],"related":["REF-005"]},
-    {"id":71,"status":"Published","type":"rule","category":"التخطيط والتنفيذ","level":5,"title":"طابق القرار مع أفقه الزمني","message":"لا تتخذ قرارًا طويل الأثر تحت ضغط قصير.","details":"المشكلة العاجلة تضخم الحاضر؛ يجب أن تعكس مدة التحليل حجم الأثر وصعوبة التراجع.","action":"صنّف قرارك: قابل للعكس أم صعب العكس، واضبط سرعة الحسم.","question":"هل سرعة القرار متناسبة مع كلفة الرجوع عنه؟","source":"Thinking in Bets","tags":["التخطيط والتنفيذ","اتخاذ القرار","rule","مستويات تنفيذية"],"concept_id":"PLAN-010","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"اتخاذ القرار","reference":"Annie Duke - Thinking in Bets","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-001"],"related":["IC-008"]},
-    {"id":72,"status":"Published","type":"challenge","category":"التخطيط والتنفيذ","level":5,"title":"اختبر الخطة بيوم سيئ","message":"الخطة التي تنجح في الظروف المثالية فقط ليست خطة تشغيل.","details":"اختبار غياب شخص أو تأخر معلومة يكشف نقاط الاعتماد الهشة قبل تحولها إلى توقف.","action":"افترض غياب مورد رئيسي واكتب كيف يستمر الحد الأدنى من العمل.","question":"أي اعتماد واحد يمكنه إيقاف الخطة بالكامل؟","source":"The Checklist Manifesto","tags":["التخطيط والتنفيذ","استمرارية العمل","challenge","مستويات تنفيذية"],"concept_id":"PLAN-011","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"استمرارية العمل","reference":"Atul Gawande - The Checklist Manifesto","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-004"],"related":["SYS-010"]},
-    {"id":73,"status":"Published","type":"mistake","category":"التخطيط والتنفيذ","level":5,"title":"التخطيط بالتواريخ دون الاعتماديات","message":"الموعد لا يحل التعارض بين الأعمال.","details":"قد تبدو الخطة مرتبة بينما تتجاهل أن مهمة تنتظر قرارًا أو بيانات أو تسليمًا سابقًا.","action":"ضع أمام كل مهمة حرجة اعتمادها السابق ومن يملكه.","question":"أي موعد يبدو واقعيًا لأن اعتمادياته غير ظاهرة؟","source":"Critical Chain","tags":["التخطيط والتنفيذ","إدارة المشاريع","mistake","مستويات تنفيذية"],"concept_id":"PLAN-012","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"إدارة المشاريع","reference":"Eliyahu Goldratt - Critical Chain","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-001"],"related":["EXEC-009"]},
-    {"id":74,"status":"Published","type":"question","category":"التخطيط والتنفيذ","level":6,"title":"من يملك القرار عند التعارض؟","message":"الغموض في الصلاحية يؤخر أكثر من نقص الجهد.","details":"عندما تتقاطع الفرق قد يعرف الجميع المشكلة ولا يعرف أحد من يحسمها.","action":"اكتب للقرار المتعثر: المالك، المستشارون، موعد الحسم، والمدخلات.","question":"هل التأخير بسبب نقص المعلومات أم غياب صاحب الصلاحية؟","source":"High Output Management","tags":["التخطيط والتنفيذ","الحوكمة","question","مستويات تنفيذية"],"concept_id":"PLAN-013","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"الحوكمة","reference":"Andrew Grove - High Output Management","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-004"],"related":["EXEC-007"]},
-    {"id":75,"status":"Published","type":"insight","category":"التنفيذ","level":5,"title":"عنق الزجاجة يحدد سرعة النظام","message":"تحسين غير القيد قد لا يرفع الناتج.","details":"العمل المتراكم أمام خطوة واحدة يكشف أن قدرة النظام محكومة بها؛ تسريع البقية قد يضخم الانتظار.","action":"حدد المرحلة التي يتجمع العمل قبلها ووجّه التحسين إليها.","question":"أين ينتظر العمل أطول مما يُنفذ؟","source":"The Goal","tags":["التنفيذ","نظرية القيود","insight","مستويات تنفيذية"],"concept_id":"EXEC-005","domain":"التنفيذ","domain_order":6,"subcategory":"نظرية القيود","reference":"Eliyahu Goldratt - The Goal","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-004"],"related":["SYS-008"]},
-    {"id":76,"status":"Published","type":"strategy","category":"التنفيذ","level":6,"title":"قلّل العمل الجاري قبل زيادة السرعة","message":"البدء الكثير يبطئ الإنهاء.","details":"كل عنصر مفتوح يضيف تنسيقًا وانتظارًا وتبديلًا للسياق؛ حد العمل الجاري يحول الضغط إلى إنهاء الموجود.","action":"حدد سقفًا للمهام المفتوحة ولا تبدأ جديدًا قبل إغلاق واحدة.","question":"كم عملًا بدأ ولم يصل إلى نتيجة؟","source":"Kanban","tags":["التنفيذ","تدفق العمل","strategy","مستويات تنفيذية"],"concept_id":"EXEC-006","domain":"التنفيذ","domain_order":6,"subcategory":"تدفق العمل","reference":"David J. Anderson - Kanban","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-002"],"related":["PLAN-007"]},
-    {"id":77,"status":"Published","type":"exercise","category":"التنفيذ","level":5,"title":"حوّل الاجتماع إلى سجل التزامات","message":"الاجتماع الذي لا يغيّر ملكية العمل مجرد حديث.","details":"تسجيل القرار والمالك والموعد ومعيار الاكتمال يحول الاتفاق الشفهي إلى تنفيذ قابل للمتابعة.","action":"اختم اجتماعك بجدول: القرار، الإجراء، المالك، الموعد، ومعيار الإنجاز.","question":"ما الذي سيتغير بعد الاجتماع ومن سيحمله؟","source":"High Output Management","tags":["التنفيذ","إدارة الاجتماعات","exercise","مستويات تنفيذية"],"concept_id":"EXEC-007","domain":"التنفيذ","domain_order":6,"subcategory":"إدارة الاجتماعات","reference":"Andrew Grove - High Output Management","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-004"],"related":["PLAN-013"]},
-    {"id":78,"status":"Published","type":"rule","category":"التنفيذ","level":5,"title":"لا ترفع المشكلة بلا توصية","message":"التصعيد الجيد يختصر طريق القرار.","details":"نقل المشكلة وحدها يحمّل المستوى الأعلى إعادة التحليل؛ التصعيد المهني يوضح الأثر والخيارات والتوصية.","action":"استخدم قالبًا: المشكلة، الأثر، الخيارات، وتوصيتي.","question":"ما القرار المحدد الذي تطلبه ممن صعّدت إليه؟","source":"The Effective Executive","tags":["التنفيذ","التصعيد","rule","مستويات تنفيذية"],"concept_id":"EXEC-008","domain":"التنفيذ","domain_order":6,"subcategory":"التصعيد","reference":"Peter Drucker - The Effective Executive","review_status":"Reviewed","atomic":true,"prerequisites":["PLAN-001"],"related":["EXEC-007"]},
-    {"id":79,"status":"Published","type":"question","category":"التنفيذ","level":6,"title":"ما الذي يمنع التسليم الآن؟","message":"ناقش العائق الحالي لا قائمة الأعذار.","details":"التقارير العامة تخلط بين ما حدث وما يمنع الخطوة التالية؛ تحديد العائق يركز التدخل على ما يمكن إزالته.","action":"لكل عمل متأخر اكتب عائقًا واحدًا ومالك إزالته وموعده.","question":"لو أزلنا عائقًا واحدًا اليوم، أيها يحرك التسليم؟","source":"The Goal","tags":["التنفيذ","إزالة العوائق","question","مستويات تنفيذية"],"concept_id":"EXEC-009","domain":"التنفيذ","domain_order":6,"subcategory":"إزالة العوائق","reference":"Eliyahu Goldratt - The Goal","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-005"],"related":["PLAN-012"]},
-    {"id":80,"status":"Published","type":"challenge","category":"التنفيذ","level":5,"title":"سلّم نسخة قابلة للفحص","message":"التقدم المرئي أفضل من نسبة إنجاز تقديرية.","details":"نسبة الإنجاز قد تخفي أن الأجزاء لا تعمل معًا؛ مخرج قابل للفحص يكشف الواقع ويولد تغذية راجعة.","action":"حوّل عمل اليوم إلى نموذج يمكن لشخص آخر مراجعته فعليًا.","question":"ما الدليل المرئي على أن العمل تقدم؟","source":"The Lean Startup","tags":["التنفيذ","التسليم التكراري","challenge","مستويات تنفيذية"],"concept_id":"EXEC-010","domain":"التنفيذ","domain_order":6,"subcategory":"التسليم التكراري","reference":"Eric Ries - The Lean Startup","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-003"],"related":["REF-005"]},
-    {"id":81,"status":"Published","type":"mistake","category":"التنفيذ","level":5,"title":"مكافأة الإطفاء وإهمال الوقاية","message":"البطولة المتكررة قد تخفي نظامًا ضعيفًا.","details":"تمجيد إنقاذ اللحظة الأخيرة دون معالجة السبب يجعل المؤسسة تعتمد على الأزمات.","action":"اختر أزمة متكررة وحدد إجراءً وقائيًا ومالكًا له.","question":"أي بطولة نحتفل بها لأنها تعالج مشكلة كان يمكن منعها؟","source":"Thinking in Systems","tags":["التنفيذ","الوقاية","mistake","مستويات تنفيذية"],"concept_id":"EXEC-011","domain":"التنفيذ","domain_order":6,"subcategory":"الوقاية","reference":"Donella Meadows - Thinking in Systems","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-005"],"related":["REF-007"]},
-    {"id":82,"status":"Published","type":"principle","category":"التنفيذ","level":6,"title":"ارفع سرعة التغذية الراجعة","message":"كلما تأخر الكشف ارتفعت كلفة التصحيح.","details":"الدورات الطويلة تسمح للخطأ أن يتراكم؛ نقاط التحقق القصيرة تجعل الانحراف صغيرًا وقابلًا للعكس.","action":"أضف نقطة فحص مبكرة قبل اكتمال نصف العمل.","question":"ما الخطأ الذي لن تكتشفه إلا قرب التسليم؟","source":"The Lean Startup","tags":["التنفيذ","التغذية الراجعة","principle","مستويات تنفيذية"],"concept_id":"EXEC-012","domain":"التنفيذ","domain_order":6,"subcategory":"التغذية الراجعة","reference":"Eric Ries - The Lean Startup","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-010"],"related":["REF-005"]},
-    {"id":83,"status":"Published","type":"question","category":"التنفيذ","level":6,"title":"هل ننجز العمل أم ننقل الانتظار؟","message":"انتقال المهمة لا يعني تقدمها.","details":"قد تتحسن أرقام فريق لأن المهمة خرجت من قائمته بينما تنتظر لدى فريق آخر؛ القياس المحلي يخفي بطء التدفق الكلي.","action":"تتبع مهمة من الطلب حتى القيمة وسجل زمن العمل والانتظار.","question":"أين تختفي مدة الانتظار من تقارير الأداء؟","source":"The Goal","tags":["التنفيذ","التدفق الكلي","question","مستويات تنفيذية"],"concept_id":"EXEC-013","domain":"التنفيذ","domain_order":6,"subcategory":"التدفق الكلي","reference":"Eliyahu Goldratt - The Goal","review_status":"Reviewed","atomic":true,"prerequisites":["EXEC-005"],"related":["REF-010"]},
-    {"id":84,"status":"Published","type":"exercise","category":"الأنظمة والعادات","level":4,"title":"صمّم بداية العمل في الليلة السابقة","message":"بداية الغد تُبنى اليوم.","details":"القرارات الصغيرة عند البداية ترفع مقاومة المهمة؛ تجهيز المكان والملف والخطوة الأولى يحول الاختيار إلى تنفيذ.","action":"افتح الملف المطلوب واكتب أول إجراء ستنفذه غدًا.","question":"ما القرار الصغير الذي يمكن إلغاؤه من بداية يومك؟","source":"Atomic Habits","tags":["الأنظمة والعادات","تهيئة البيئة","exercise","مستويات تنفيذية"],"concept_id":"SYS-004","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"تهيئة البيئة","reference":"James Clear - Atomic Habits","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-002"],"related":["ATT-002"]},
-    {"id":85,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":5,"title":"اجعل المسار الافتراضي هو الصحيح","message":"الافتراضات اليومية أقوى من التعليمات الموسمية.","details":"السلوك يتبع الإعداد الافتراضي؛ إذا احتاج الصواب جهدًا إضافيًا فسيخسر أمام ضغط العمل.","action":"غيّر إعدادًا افتراضيًا بحيث ينتج السلوك المطلوب دون تذكير.","question":"أي خطأ يتكرر لأن النظام يجعله الخيار الأسهل؟","source":"Nudge","tags":["الأنظمة والعادات","التصميم الافتراضي","rule","مستويات تنفيذية"],"concept_id":"SYS-005","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"التصميم الافتراضي","reference":"Thaler & Sunstein - Nudge","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-002"],"related":["IC-009"]},
-    {"id":86,"status":"Published","type":"insight","category":"الأنظمة والعادات","level":5,"title":"التوحيد يحرر الحكم للقرارات المهمة","message":"لا تعِد اختراع العمل المتكرر.","details":"الإجراءات القياسية تحمي التفكير من الاستنزاف في خطوات معروفة، وتترك الحكم المهني للاستثناءات.","action":"حوّل مهمة متكررة مستقرة إلى خطوات قياسية قصيرة.","question":"ما القرار المتكرر الذي لا يضيف قيمة جديدة؟","source":"The Checklist Manifesto","tags":["الأنظمة والعادات","توحيد العمل","insight","مستويات تنفيذية"],"concept_id":"SYS-006","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"توحيد العمل","reference":"Atul Gawande - The Checklist Manifesto","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-001"],"related":["IC-012"]},
-    {"id":87,"status":"Published","type":"strategy","category":"الأنظمة والعادات","level":6,"title":"افصل المسار الطبيعي عن الاستثناء","message":"الاستثناء يحتاج بوابة لا فوضى.","details":"مسار عادي سريع وبوابة استثناء واضحة يوازنان السرعة والرقابة دون تحميل كل الحالات الإجراء الكامل.","action":"حدد شروط الاستثناء ومن يوافق عليه وما يجب توثيقه.","question":"هل الاستثناء الحقيقي واضح أم يستطيع الجميع تجاوز النظام؟","source":"The Checklist Manifesto","tags":["الأنظمة والعادات","إدارة الاستثناءات","strategy","مستويات تنفيذية"],"concept_id":"SYS-007","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"إدارة الاستثناءات","reference":"Atul Gawande - The Checklist Manifesto","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-006"],"related":["PLAN-013"]},
-    {"id":88,"status":"Published","type":"challenge","category":"الأنظمة والعادات","level":5,"title":"أزل خطوة لا تضيف قيمة","message":"التحسين يبدأ أحيانًا بالحذف.","details":"الموافقات والنماذج تتراكم بعد زوال أسبابها؛ حذف خطوة آمنة قد يرفع السرعة أكثر من أتمتة عملية متضخمة.","action":"اسأل عن كل خطوة: ما الخطر الذي تمنعه؟ واحذف خطوة بلا جواب.","question":"أي خطوة باقية فقط لأننا اعتدنا عليها؟","source":"Lean Thinking","tags":["الأنظمة والعادات","تبسيط العمليات","challenge","مستويات تنفيذية"],"concept_id":"SYS-008","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"تبسيط العمليات","reference":"Womack & Jones - Lean Thinking","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-006"],"related":["EXEC-005"]},
-    {"id":89,"status":"Published","type":"mistake","category":"الأنظمة والعادات","level":5,"title":"أتمتة عملية غير مفهومة","message":"الأتمتة تسرّع الجيد والسيئ معًا.","details":"أتمتة إجراء مضطرب تثبت مشكلاته؛ يجب فهم التدفق وإزالة الهدر وتحديد الاستثناءات أولًا.","action":"ارسم العملية وحدد الهدر والاستثناءات قبل طلب أتمتتها.","question":"هل نعرف لماذا توجد كل خطوة قبل أن نبرمجها؟","source":"Lean Thinking","tags":["الأنظمة والعادات","الأتمتة","mistake","مستويات تنفيذية"],"concept_id":"SYS-009","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"الأتمتة","reference":"Womack & Jones - Lean Thinking","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-008"],"related":["SYS-007"]},
-    {"id":90,"status":"Published","type":"question","category":"الأنظمة والعادات","level":6,"title":"كيف يفشل النظام بأمان؟","message":"الفشل المتوقع يحتاج استجابة مصممة.","details":"لا يمكن منع كل انقطاع، لكن يمكن منع انتشاره عبر وضع آمن وتنبيه ومسؤول استعادة محدد مسبقًا.","action":"اكتب لنقطة فشل: الكشف، الاحتواء، البديل، ومسؤول الاستعادة.","question":"عند التعطل، هل يتوقف الضرر أم ينتشر بصمت؟","source":"Thinking in Systems","tags":["الأنظمة والعادات","المرونة التشغيلية","question","مستويات تنفيذية"],"concept_id":"SYS-010","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"المرونة التشغيلية","reference":"Donella Meadows - Thinking in Systems","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-007"],"related":["PLAN-011"]},
-    {"id":91,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":5,"title":"اجعل الجودة جزءًا من العملية","message":"لا تؤجل اكتشاف الخطأ إلى التفتيش النهائي.","details":"الفحص النهائي يكتشف العيب بعد تراكم كلفته؛ التحقق عند المصدر يمنع انتقاله للمراحل التالية.","action":"أضف معيار قبول عند أول نقطة يمكن فيها اكتشاف الخطأ.","question":"ما العيب الذي يمكن منعه عند المصدر؟","source":"Lean Thinking","tags":["الأنظمة والعادات","الجودة عند المصدر","rule","مستويات تنفيذية"],"concept_id":"SYS-011","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"الجودة عند المصدر","reference":"Womack & Jones - Lean Thinking","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-006"],"related":["EXEC-012"]},
-    {"id":92,"status":"Published","type":"exercise","category":"الأنظمة والعادات","level":5,"title":"اختبر الإجراء مع شخص جديد","message":"ما يعتمد على الخبرة الضمنية ليس إجراءً مكتملًا.","details":"مصمم الإجراء يملأ فجوات التعليمات من ذاكرته؛ تجربة شخص جديد تكشف الغموض والتفسير المتعدد.","action":"اطلب من شخص غير معتاد تنفيذ الإجراء وسجل مواضع التوقف.","question":"أي خطوة كانت واضحة لك فقط لأنك تعرف الخلفية؟","source":"The Checklist Manifesto","tags":["الأنظمة والعادات","وضوح الإجراءات","exercise","مستويات تنفيذية"],"concept_id":"SYS-012","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"وضوح الإجراءات","reference":"Atul Gawande - The Checklist Manifesto","review_status":"Reviewed","atomic":true,"prerequisites":["SYS-006"],"related":["REF-008"]},
-    {"id":93,"status":"Published","type":"principle","category":"المراجعة والتحسين","level":5,"title":"قس النتيجة والسلوك معًا","message":"النتيجة تخبرك ماذا حدث؛ والسلوك يفسره.","details":"النتائج وحدها قد تعاقب قرارًا جيدًا ساء حظه أو تكافئ قرارًا ضعيفًا نجح مصادفة.","action":"راجع قرارًا وفق جودة العملية والنتيجة الفعلية.","question":"هل كانت النتيجة الجيدة ثمرة قرار جيد أم حظ؟","source":"Thinking in Bets","tags":["المراجعة والتحسين","جودة القرار","principle","مستويات تنفيذية"],"concept_id":"REF-005","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"جودة القرار","reference":"Annie Duke - Thinking in Bets","review_status":"Reviewed","atomic":true,"prerequisites":["REF-001"],"related":["PLAN-009","EXEC-010"]},
-    {"id":94,"status":"Published","type":"insight","category":"المراجعة والتحسين","level":6,"title":"المؤشر يقود السلوك الذي يكافئه","message":"ما تقيسه يعيد تشكيل العمل.","details":"عندما يصبح المؤشر هدفًا قد يتحسن رقمه بينما تتدهور الغاية الأصلية.","action":"اكتب طريقة يمكن بها تحسين مؤشر حالي دون تحسين القيمة.","question":"ما السلوك غير المقصود الذي يشجعه المؤشر؟","source":"The Tyranny of Metrics","tags":["المراجعة والتحسين","مؤشرات الأداء","insight","مستويات تنفيذية"],"concept_id":"REF-006","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"مؤشرات الأداء","reference":"Jerry Z. Muller - The Tyranny of Metrics","review_status":"Reviewed","atomic":true,"prerequisites":["REF-005"],"related":["PLAN-009"]},
-    {"id":95,"status":"Published","type":"strategy","category":"المراجعة والتحسين","level":6,"title":"راجع النظام لا الشخص فقط","message":"الخطأ الفردي قد يكون نتيجة متوقعة لتصميم العمل.","details":"التركيز على آخر شخص يخفي ضغط الوقت والأدوات والحوافز ونقاط التسليم التي صنعت الخطأ.","action":"حلل حادثة عبر: المهمة، الأداة، المعلومات، الحافز، والرقابة.","question":"ما الذي جعل الخطأ سهل الوقوع وصعب الاكتشاف؟","source":"Thinking in Systems","tags":["المراجعة والتحسين","تحليل النظام","strategy","مستويات تنفيذية"],"concept_id":"REF-007","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"تحليل النظام","reference":"Donella Meadows - Thinking in Systems","review_status":"Reviewed","atomic":true,"prerequisites":["REF-001"],"related":["CF-010","EXEC-011"]},
-    {"id":96,"status":"Published","type":"challenge","category":"المراجعة والتحسين","level":5,"title":"أغلق المراجعة بدليل تغيير","message":"التعلم الحقيقي يترك أثرًا في النظام.","details":"الدروس المستفادة تفقد قيمتها حين تنتهي بتوصيات عامة؛ التعلم يظهر في إجراء أو قالب أو صلاحية تغيرت.","action":"حوّل درسًا سابقًا إلى تعديل موثق في أداة العمل.","question":"أين يمكن رؤية الدرس بعد انتهاء الاجتماع؟","source":"The Checklist Manifesto","tags":["المراجعة والتحسين","التعلم المؤسسي","challenge","مستويات تنفيذية"],"concept_id":"REF-008","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"التعلم المؤسسي","reference":"Atul Gawande - The Checklist Manifesto","review_status":"Reviewed","atomic":true,"prerequisites":["REF-004"],"related":["SYS-012"]},
-    {"id":97,"status":"Published","type":"mistake","category":"المراجعة والتحسين","level":5,"title":"مراجعة المتوسط وإخفاء التفاوت","message":"المتوسط الهادئ قد يخفي حالات شديدة السوء.","details":"رقم إجمالي واحد قد يخفي اختلافًا كبيرًا بين الفرق والفترات وأنواع الطلبات.","action":"قسّم مؤشرًا حسب فريق أو نوع أو فترة وقارن نطاق النتائج.","question":"أي مجموعة تخفيها النتيجة الإجمالية؟","source":"The Signal and the Noise","tags":["المراجعة والتحسين","تحليل البيانات","mistake","مستويات تنفيذية"],"concept_id":"REF-009","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"تحليل البيانات","reference":"Nate Silver - The Signal and the Noise","review_status":"Reviewed","atomic":true,"prerequisites":["REF-005"],"related":["REF-006"]},
-    {"id":98,"status":"Published","type":"question","category":"المراجعة والتحسين","level":6,"title":"أين يضيع الزمن بين الخطوات؟","message":"زمن الانتظار غالبًا أكبر من زمن العمل.","details":"الفرق تراجع مدة التنفيذ وتغفل الأيام في الطوابير والموافقات؛ قياس الزمن الكلي يكشف فرصة التحسين.","action":"تتبع حالة من البداية للنهاية وافصل زمن العمل عن الانتظار.","question":"أي انتظار يمكن إزالته دون زيادة سرعة أي موظف؟","source":"Lean Thinking","tags":["المراجعة والتحسين","زمن التدفق","question","مستويات تنفيذية"],"concept_id":"REF-010","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"زمن التدفق","reference":"Womack & Jones - Lean Thinking","review_status":"Reviewed","atomic":true,"prerequisites":["REF-005"],"related":["EXEC-013"]},
-    {"id":99,"status":"Published","type":"rule","category":"المراجعة والتحسين","level":6,"title":"لا تعمم من حادثة واحدة","message":"الإشارة تحتاج مقارنة قبل أن تصبح قاعدة.","details":"الحدث البارز قد يدفع إلى تعديل واسع لا تدعمه البيانات؛ ميّز بين حالة فردية ونمط متكرر.","action":"قارن الحادثة بثلاث فترات أو حالات مشابهة قبل تغيير عام.","question":"هل تعالج نمطًا مثبتًا أم قصة لافتة؟","source":"The Signal and the Noise","tags":["المراجعة والتحسين","الاستدلال","rule","مستويات تنفيذية"],"concept_id":"REF-011","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"الاستدلال","reference":"Nate Silver - The Signal and the Noise","review_status":"Reviewed","atomic":true,"prerequisites":["REF-005"],"related":["CF-008"]},
-    {"id":100,"status":"Published","type":"exercise","category":"المراجعة والتحسين","level":6,"title":"ابنِ حلقة تعلم كاملة","message":"نفّذ، قس، فسّر، ثم عدّل.","details":"التحسين يبدأ بفرضية، يختبرها بمقياس، يفسر النتيجة، ثم يثبت التعديل أو يتراجع عنه.","action":"صغ تجربة: الفرضية، التغيير، المقياس، المدة، وقرار الاستمرار.","question":"ما النتيجة التي ستجعلك تثبت التغيير أو تلغيه؟","source":"The Lean Startup","tags":["المراجعة والتحسين","التجارب","exercise","مستويات تنفيذية"],"concept_id":"REF-012","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"التجارب","reference":"Eric Ries - The Lean Startup","review_status":"Reviewed","atomic":true,"prerequisites":["REF-004"],"related":["EXEC-012"]}
+    {
+      "id": 51,
+      "status": "Published",
+      "type": "rule",
+      "category": "الذاكرة العاملة والتعلم",
+      "level": 4,
+      "title": "افصل الالتقاط عن المعالجة",
+      "message": "سجّل الفكرة أولًا، وقرّر بشأنها لاحقًا.",
+      "details": "معالجة كل معلومة لحظة وصولها تقطع العمل وتستهلك الذاكرة العاملة؛ الالتقاط السريع يحفظها وموعد المعالجة يحولها إلى قرار.",
+      "action": "أنشئ صندوق التقاط واحدًا وحدد عشر دقائق يوميًا لمعالجته.",
+      "question": "هل تملك مكانًا واحدًا موثوقًا لكل ما يحتاج معالجة؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "الذاكرة العاملة والتعلم",
+        "إدارة المعرفة",
+        "rule",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "WM-010",
+      "domain": "الذاكرة العاملة والتعلم",
+      "domain_order": 2,
+      "subcategory": "إدارة المعرفة",
+      "reference": "Daniel J. Levitin — The Organized Mind — التقاط المعلومات خارجيًا ثم معالجتها",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "WM-005"
+      ],
+      "related": [
+        "WM-003",
+        "WM-007"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "التقاط المعلومات خارجيًا ثم معالجتها",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 52,
+      "status": "Published",
+      "type": "question",
+      "category": "الذاكرة العاملة والتعلم",
+      "level": 5,
+      "title": "ما الذي يجب أن يبقى خارج رأسك؟",
+      "message": "كل التزام محفوظ ذهنيًا يزاحم التفكير الجاري.",
+      "details": "المدير لا يحتاج تذكر كل التفاصيل، بل نظامًا يُظهر المعلومة المناسبة عند القرار المناسب.",
+      "action": "انقل التزامًا متكررًا إلى قائمة أو تقويم مع موعد مراجعة.",
+      "question": "ما الذي تخشى نسيانه لأنه لم يدخل نظامًا موثوقًا؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "الذاكرة العاملة والتعلم",
+        "إدارة الالتزامات",
+        "question",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "WM-011",
+      "domain": "الذاكرة العاملة والتعلم",
+      "domain_order": 2,
+      "subcategory": "إدارة الالتزامات",
+      "reference": "Daniel J. Levitin — The Organized Mind — القوائم والتقويمات كعقل خارجي",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "WM-005"
+      ],
+      "related": [
+        "WM-010"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "القوائم والتقويمات كعقل خارجي",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 53,
+      "status": "Published",
+      "type": "challenge",
+      "category": "الذاكرة العاملة والتعلم",
+      "level": 4,
+      "title": "اختبر قرارك من الذاكرة",
+      "message": "إن لم تستطع تلخيص القرار، فغالبًا لم يتضح بعد.",
+      "details": "القرار الواضح يُختزل إلى مشكلة وخيار وسبب وخطوة تالية؛ تعذر استرجاعها يكشف تشتت منطقه.",
+      "action": "أغلق المستند واكتب من الذاكرة: المشكلة، القرار، السبب، وأول إجراء.",
+      "question": "أي عنصر لم تستطع استرجاعه بوضوح؟",
+      "source": "Make It Stick",
+      "tags": [
+        "الذاكرة العاملة والتعلم",
+        "اتخاذ القرار",
+        "challenge",
+        "مستويات تنفيذية",
+        "Make It Stick"
+      ],
+      "concept_id": "WM-012",
+      "domain": "الذاكرة العاملة والتعلم",
+      "domain_order": 2,
+      "subcategory": "اتخاذ القرار",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — الاسترجاع لكشف غموض الفهم",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "WM-001"
+      ],
+      "related": [
+        "PLAN-001"
+      ],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "الاسترجاع لكشف غموض الفهم",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 54,
+      "status": "Published",
+      "type": "exercise",
+      "category": "الذاكرة العاملة والتعلم",
+      "level": 5,
+      "title": "ابنِ نموذجًا ذهنيًا لا قائمة معلومات",
+      "message": "المعلومة المنفصلة تُنسى؛ العلاقة تُفهم.",
+      "details": "الخبرة تتطور عندما ترتبط الحقائق في نموذج يفسر السبب والنتيجة، لا في أرشيف ملاحظات منفصلة.",
+      "action": "ارسم خمس عقد: السبب، الإشارة، القرار، الإجراء، والنتيجة.",
+      "question": "ما العلاقة التي لم تكن واضحة قبل رسم النموذج؟",
+      "source": "Peak",
+      "tags": [
+        "الذاكرة العاملة والتعلم",
+        "النماذج الذهنية",
+        "exercise",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "WM-013",
+      "domain": "الذاكرة العاملة والتعلم",
+      "domain_order": 2,
+      "subcategory": "النماذج الذهنية",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — التمثيلات الذهنية للخبراء",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "WM-004"
+      ],
+      "related": [
+        "CF-002"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "التمثيلات الذهنية للخبراء",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 55,
+      "status": "Published",
+      "type": "principle",
+      "category": "الكبح الذاتي",
+      "level": 4,
+      "title": "اضبط الاستجابة قبل أن تضبط الشعور",
+      "message": "لا تنتظر هدوءك كي تتصرف بحكمة.",
+      "details": "المشاعر لا تخضع دائمًا للتحكم المباشر، لكن السلوك التالي يمكن تصميمه مسبقًا لمنع قرار يصعب التراجع عنه.",
+      "action": "اعتمد قاعدة: لا ترسل ردًا حساسًا قبل مراجعته بعد عشر دقائق.",
+      "question": "ما التصرف الذي تحتاج إلى تأخيره عند الانفعال؟",
+      "source": "The Marshmallow Test",
+      "tags": [
+        "الكبح الذاتي",
+        "إدارة الانفعال",
+        "principle",
+        "مستويات تنفيذية",
+        "The Marshmallow Test"
+      ],
+      "concept_id": "IC-007",
+      "domain": "الكبح الذاتي",
+      "domain_order": 3,
+      "subcategory": "إدارة الانفعال",
+      "reference": "Walter Mischel — The Marshmallow Test — تبريد الاستجابة قبل التصرف",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "IC-002"
+      ],
+      "related": [
+        "IC-006"
+      ],
+      "source_title_ar": "اختبار المارشميلو",
+      "author": "Walter Mischel",
+      "source_topic": "تبريد الاستجابة قبل التصرف",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 56,
+      "status": "Published",
+      "type": "insight",
+      "category": "الكبح الذاتي",
+      "level": 5,
+      "title": "القرار المتعب يصبح قصير النظر",
+      "message": "التعب يرفع قيمة الراحة الآنية.",
+      "details": "عندما تنخفض الطاقة الذهنية يميل العقل للحل الأسهل حتى لو كانت كلفته اللاحقة أعلى؛ توقيت القرار جزء من جودته.",
+      "action": "انقل قرارًا عالي الأثر إلى أول فترة صفاء متاحة.",
+      "question": "هل صعوبة القرار حقيقية أم أن توقيته سيئ؟",
+      "source": "Willpower",
+      "tags": [
+        "الكبح الذاتي",
+        "جودة القرار",
+        "insight",
+        "مستويات تنفيذية",
+        "Willpower"
+      ],
+      "concept_id": "IC-008",
+      "domain": "الكبح الذاتي",
+      "domain_order": 3,
+      "subcategory": "جودة القرار",
+      "reference": "Roy F. Baumeister & John Tierney — Willpower — إرهاق القرار وتأثير التعب",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "IC-001"
+      ],
+      "related": [
+        "PLAN-010"
+      ],
+      "source_title_ar": "قوة الإرادة",
+      "author": "Roy F. Baumeister & John Tierney",
+      "source_topic": "إرهاق القرار وتأثير التعب",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 57,
+      "status": "Published",
+      "type": "strategy",
+      "category": "الكبح الذاتي",
+      "level": 5,
+      "title": "استخدم الاحتكاك المتعمد",
+      "message": "اجعل الخطأ أبطأ والصواب أسرع.",
+      "details": "ثوانٍ إضافية قبل السلوك الاندفاعي قد تستعيد الاختيار الواعي، وتقليل خطوات السلوك الصحيح يزيد احتماله.",
+      "action": "أضف خطوة تحقق قبل إجراء خطر واحذف خطوة من الإجراء المرغوب.",
+      "question": "أين تمنع ثوانٍ من الاحتكاك خطأ مرتفع الكلفة؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "الكبح الذاتي",
+        "تصميم السلوك",
+        "strategy",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "IC-009",
+      "domain": "الكبح الذاتي",
+      "domain_order": 3,
+      "subcategory": "تصميم السلوك",
+      "reference": "James Clear — Atomic Habits — زيادة الاحتكاك للسيئ وتقليله للجيد",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "IC-003"
+      ],
+      "related": [
+        "SYS-002"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "زيادة الاحتكاك للسيئ وتقليله للجيد",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 58,
+      "status": "Published",
+      "type": "mistake",
+      "category": "الكبح الذاتي",
+      "level": 4,
+      "title": "اختبار الانضباط طوال اليوم",
+      "message": "كثرة الإغراءات ليست تدريبًا؛ إنها استنزاف.",
+      "details": "التعرض المتكرر للمشتت ثم مقاومته يستهلك التحكم؛ الانضباط الأقوى يقلل عدد المواجهات أصلًا.",
+      "action": "احذف محفزًا واحدًا يفرض عليك قرار مقاومة متكررًا.",
+      "question": "كم مرة تقاوم الشيء نفسه لأن بيئتك لم تتغير؟",
+      "source": "Willpower",
+      "tags": [
+        "الكبح الذاتي",
+        "الانضباط",
+        "mistake",
+        "مستويات تنفيذية",
+        "Willpower"
+      ],
+      "concept_id": "IC-010",
+      "domain": "الكبح الذاتي",
+      "domain_order": 3,
+      "subcategory": "الانضباط",
+      "reference": "Roy F. Baumeister & John Tierney — Willpower — تقليل التعرض للإغراء بدل استنزاف المقاومة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "IC-003"
+      ],
+      "related": [
+        "SYS-002"
+      ],
+      "source_title_ar": "قوة الإرادة",
+      "author": "Roy F. Baumeister & John Tierney",
+      "source_topic": "تقليل التعرض للإغراء بدل استنزاف المقاومة",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 59,
+      "status": "Published",
+      "type": "question",
+      "category": "الكبح الذاتي",
+      "level": 5,
+      "title": "ما الثمن المؤجل لهذا الاندفاع؟",
+      "message": "الاندفاع يبرز المكسب الآن ويخفي الفاتورة لاحقًا.",
+      "details": "السلوك الاندفاعي يضيق نافذة الزمن، فتظهر الراحة الفورية وتختفي كلفة الغد.",
+      "action": "اكتب نتيجة القرار بعد ساعة وبعد أسبوع.",
+      "question": "ما الكلفة التي لا تراها لأنك تنظر إلى اللحظة فقط؟",
+      "source": "The Marshmallow Test",
+      "tags": [
+        "الكبح الذاتي",
+        "التفكير الزمني",
+        "question",
+        "مستويات تنفيذية",
+        "The Marshmallow Test"
+      ],
+      "concept_id": "IC-011",
+      "domain": "الكبح الذاتي",
+      "domain_order": 3,
+      "subcategory": "التفكير الزمني",
+      "reference": "Walter Mischel — The Marshmallow Test — إحضار النتيجة المستقبلية إلى لحظة الاختيار",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "IC-002"
+      ],
+      "related": [
+        "PLAN-007"
+      ],
+      "source_title_ar": "اختبار المارشميلو",
+      "author": "Walter Mischel",
+      "source_topic": "إحضار النتيجة المستقبلية إلى لحظة الاختيار",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 60,
+      "status": "Published",
+      "type": "challenge",
+      "category": "الكبح الذاتي",
+      "level": 5,
+      "title": "يوم بلا قرارات منخفضة القيمة",
+      "message": "وفّر قدرتك على القرار لما يستحقها.",
+      "details": "الاختيارات الصغيرة المتكررة تستهلك الانتباه وتفتح باب التسويف؛ تثبيت الروتين يترك مساحة للقرارات المعقدة.",
+      "action": "ثبّت مسبقًا ثلاثة اختيارات روتينية ليوم واحد.",
+      "question": "أي قرار صغير استهلك وقتًا أكبر من قيمته؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "الكبح الذاتي",
+        "إرهاق القرار",
+        "challenge",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "IC-012",
+      "domain": "الكبح الذاتي",
+      "domain_order": 3,
+      "subcategory": "إرهاق القرار",
+      "reference": "Daniel J. Levitin — The Organized Mind — تثبيت القرارات الروتينية لتوفير الانتباه",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "IC-008"
+      ],
+      "related": [
+        "SYS-006"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تثبيت القرارات الروتينية لتوفير الانتباه",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 61,
+      "status": "Published",
+      "type": "exercise",
+      "category": "المرونة المعرفية",
+      "level": 5,
+      "title": "استخرج درسًا من النقد",
+      "message": "الملاحظة الصعبة قد تصبح تجربة تعلم.",
+      "details": "العقلية النامية لا تتعامل مع النقد كحكم ثابت على القدرة، بل تبحث فيه عن سلوك أو استراتيجية قابلة للتحسين.",
+      "action": "اختر ملاحظة نقدية وحدد منها سلوكًا واحدًا ستجرب تغييره.",
+      "question": "ما الجزء القابل للتعلم داخل هذه الملاحظة؟",
+      "source": "Mindset",
+      "tags": [
+        "المرونة المعرفية",
+        "التحيز التأكيدي",
+        "exercise",
+        "مستويات تنفيذية",
+        "Mindset"
+      ],
+      "concept_id": "CF-007",
+      "domain": "المرونة المعرفية",
+      "domain_order": 4,
+      "subcategory": "التحيزات المعرفية",
+      "reference": "Carol S. Dweck — Mindset — استخدام النقد كمدخل للتعلم",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "CF-002"
+      ],
+      "related": [
+        "CF-006"
+      ],
+      "source_title_ar": "العقلية",
+      "author": "Carol S. Dweck",
+      "source_topic": "استخدام النقد كمدخل للتعلم",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 62,
+      "status": "Published",
+      "type": "rule",
+      "category": "المرونة المعرفية",
+      "level": 5,
+      "title": "افصل الخطأ عن هويتك",
+      "message": "أخطأت في المحاولة؛ لست أنت الخطأ.",
+      "details": "العقلية الثابتة تدمج الأداء بالهوية، بينما العقلية النامية تفصل النتيجة الحالية عن القدرة على التعلم.",
+      "action": "أعد صياغة حكم سلبي على نفسك إلى مهارة لم تتقنها بعد.",
+      "question": "ما الذي لم تتقنه بعد بدل أن تحكم أنه ليس لك؟",
+      "source": "Mindset",
+      "tags": [
+        "المرونة المعرفية",
+        "تحديث المعتقد",
+        "rule",
+        "مستويات تنفيذية",
+        "Mindset"
+      ],
+      "concept_id": "CF-008",
+      "domain": "المرونة المعرفية",
+      "domain_order": 4,
+      "subcategory": "تحديث المعتقد",
+      "reference": "Carol S. Dweck — Mindset — فصل الخطأ عن الهوية والقدرة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "CF-002"
+      ],
+      "related": [
+        "CF-005"
+      ],
+      "source_title_ar": "العقلية",
+      "author": "Carol S. Dweck",
+      "source_topic": "فصل الخطأ عن الهوية والقدرة",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 63,
+      "status": "Published",
+      "type": "question",
+      "category": "المرونة المعرفية",
+      "level": 6,
+      "title": "ما الذي كشفه الاختبار عن فهمك؟",
+      "message": "الاختبار أداة تعلم قبل أن يكون أداة حكم.",
+      "details": "محاولة الاسترجاع تكشف فجوات المعرفة وتصحح الثقة الزائدة التي قد تصنعها إعادة القراءة.",
+      "action": "اختبر نفسك دون المصدر ثم صنف ما نسيته إلى فجوات محددة.",
+      "question": "أي فجوة لم تكن تعرف بوجودها قبل الاختبار؟",
+      "source": "Make It Stick",
+      "tags": [
+        "المرونة المعرفية",
+        "تعريف المشكلة",
+        "question",
+        "مستويات تنفيذية",
+        "Make It Stick"
+      ],
+      "concept_id": "CF-009",
+      "domain": "المرونة المعرفية",
+      "domain_order": 4,
+      "subcategory": "تعريف المشكلة",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — الاختبار لكشف فجوات المعرفة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "CF-004"
+      ],
+      "related": [
+        "PLAN-006"
+      ],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "الاختبار لكشف فجوات المعرفة",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 64,
+      "status": "Published",
+      "type": "insight",
+      "category": "المرونة المعرفية",
+      "level": 5,
+      "title": "الاستثناء المتكرر إشارة إلى خلل في النموذج",
+      "message": "ما يتكرر ليس استثناءً.",
+      "details": "إذا احتاجت الخطة إلى استثناءات مستمرة فقد يكون نموذجها ناقصًا؛ المرونة تبدأ بالاعتراف أن الخريطة لم تعد تصف الواقع.",
+      "action": "اجمع آخر ثلاثة استثناءات وابحث عن نمط يجمعها.",
+      "question": "ما الافتراض الذي تضعفه هذه الاستثناءات؟",
+      "source": "Peak",
+      "tags": [
+        "المرونة المعرفية",
+        "التفكير المنظومي",
+        "insight",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "CF-010",
+      "domain": "المرونة المعرفية",
+      "domain_order": 4,
+      "subcategory": "التفكير المنظومي",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — تنقيح التمثيلات الذهنية بالتغذية الراجعة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "CF-002"
+      ],
+      "related": [
+        "REF-007"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "تنقيح التمثيلات الذهنية بالتغذية الراجعة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 65,
+      "status": "Published",
+      "type": "challenge",
+      "category": "المرونة المعرفية",
+      "level": 5,
+      "title": "ابحث عن خيار يغير السؤال",
+      "message": "أفضل البدائل قد لا تجيب السؤال القديم.",
+      "details": "بعض المعضلات تبدو مغلقة لأن الخيارات مبنية على افتراض واحد؛ تغيير الإطار قد يفتح تصميمًا جديدًا.",
+      "action": "أعد صياغة معضلة حالية بثلاث صيغ قبل اختيار الحل.",
+      "question": "أي صياغة فتحت خيارًا لم يكن ظاهرًا؟",
+      "source": "Focus",
+      "tags": [
+        "المرونة المعرفية",
+        "إعادة التأطير",
+        "challenge",
+        "مستويات تنفيذية",
+        "Focus"
+      ],
+      "concept_id": "CF-011",
+      "domain": "المرونة المعرفية",
+      "domain_order": 4,
+      "subcategory": "إعادة التأطير",
+      "reference": "Daniel Goleman — Focus — الوعي المفتوح ورؤية بدائل جديدة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "CF-003"
+      ],
+      "related": [
+        "CF-006"
+      ],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الوعي المفتوح ورؤية بدائل جديدة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 66,
+      "status": "Published",
+      "type": "mistake",
+      "category": "المرونة المعرفية",
+      "level": 5,
+      "title": "تغيير الخطة عند أول مقاومة",
+      "message": "المرونة ليست تقلبًا.",
+      "details": "التعديل السريع دون بيانات يحرم الخطة من وقت إظهار أثرها؛ المرونة المنضبطة تربط التغيير بإشارة متفق عليها.",
+      "action": "حدد مدة اختبار ومؤشر نجاح قبل تعديل الخطة.",
+      "question": "هل غيرت المسار بسبب دليل أم نفاد الصبر؟",
+      "source": "Grit",
+      "tags": [
+        "المرونة المعرفية",
+        "ثبات التنفيذ",
+        "mistake",
+        "مستويات تنفيذية",
+        "Grit"
+      ],
+      "concept_id": "CF-012",
+      "domain": "المرونة المعرفية",
+      "domain_order": 4,
+      "subcategory": "ثبات التنفيذ",
+      "reference": "Angela Duckworth — Grit — ثبات الهدف الأعلى ومرونة الوسائل",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "CF-004"
+      ],
+      "related": [
+        "REF-006"
+      ],
+      "source_title_ar": "العزم",
+      "author": "Angela Duckworth",
+      "source_topic": "ثبات الهدف الأعلى ومرونة الوسائل",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 67,
+      "status": "Published",
+      "type": "strategy",
+      "category": "التخطيط والتنفيذ",
+      "level": 6,
+      "title": "شخّص المهارة الأضعف قبل خطة التدريب",
+      "message": "التدريب العام يكرر نقاط القوة ويترك موضع الضعف.",
+      "details": "المران المتعمد يستهدف جانبًا محددًا يحتاج تحسينًا، بهدف واضح وتغذية راجعة مناسبة.",
+      "action": "حدد مهارة فرعية واحدة تعيق الأداء وصمم لها محاولة مركزة.",
+      "question": "ما العنصر الأضعف الذي يحد أداءك الآن؟",
+      "source": "Peak",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "الاستراتيجية",
+        "strategy",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "PLAN-006",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "الاستراتيجية",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — استهداف المهارة الأضعف في المران المتعمد",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-003"
+      ],
+      "related": [
+        "CF-009"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "استهداف المهارة الأضعف في المران المتعمد",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 68,
+      "status": "Published",
+      "type": "principle",
+      "category": "التخطيط والتنفيذ",
+      "level": 5,
+      "title": "اربط العمل اليومي بالغاية العليا",
+      "message": "الهدف الأدنى يستحق البقاء إذا خدم هدفًا أعلى.",
+      "details": "هرمية الأهداف تمنع التشتت عندما ترتبط الأعمال والمشروعات بغاية عليا ثابتة نسبيًا.",
+      "action": "اكتب أمام كل مشروع الهدف الأعلى الذي يخدمه واحذف ما لا يرتبط بغاية واضحة.",
+      "question": "أي عمل لا يخدم هدفًا أعلى لديك؟",
+      "source": "Grit",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "تخصيص الموارد",
+        "principle",
+        "مستويات تنفيذية",
+        "Grit"
+      ],
+      "concept_id": "PLAN-007",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "تخصيص الموارد",
+      "reference": "Angela Duckworth — Grit — هرمية الأهداف وربط العمل بالغاية العليا",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-003"
+      ],
+      "related": [
+        "EXEC-006"
+      ],
+      "source_title_ar": "العزم",
+      "author": "Angela Duckworth",
+      "source_topic": "هرمية الأهداف وربط العمل بالغاية العليا",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 69,
+      "status": "Published",
+      "type": "question",
+      "category": "التخطيط والتنفيذ",
+      "level": 6,
+      "title": "ما الذي لن نفعله؟",
+      "message": "الاستراتيجية تتضح بما تستبعده.",
+      "details": "غياب قائمة الاستبعاد يسمح للمبادرات القديمة والجديدة بالتعايش حتى ينهار التركيز.",
+      "action": "أضف إلى خطتك بندين ستوقفهما أو تؤجلهما لحماية الأولوية الأولى.",
+      "question": "ما النشاط الجيد الذي يجب رفضه لصالح الأهم؟",
+      "source": "Focus",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "الأولويات",
+        "question",
+        "مستويات تنفيذية",
+        "Focus"
+      ],
+      "concept_id": "PLAN-008",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "الأولويات",
+      "reference": "Daniel Goleman — Focus — الانتقاء المتعمد للانتباه وحماية الهدف",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-003"
+      ],
+      "related": [
+        "PLAN-006"
+      ],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الانتقاء المتعمد للانتباه وحماية الهدف",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 70,
+      "status": "Published",
+      "type": "exercise",
+      "category": "التخطيط والتنفيذ",
+      "level": 5,
+      "title": "حوّل الهدف إلى سلسلة أدلة",
+      "message": "الهدف القابل للمتابعة يترك أثرًا يمكن رؤيته.",
+      "details": "الربط بين النشاط والمخرج والنتيجة يمنع الاحتفال بحركة لا تنتج أثرًا.",
+      "action": "اكتب لهدف واحد: نشاطًا، مخرجًا، مؤشرًا مبكرًا، ونتيجة نهائية.",
+      "question": "أي رابط في سلسلة الأثر ما زال افتراضًا؟",
+      "source": "Peak",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "قياس الأداء",
+        "exercise",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "PLAN-009",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "قياس الأداء",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — هدف أداء قابل للرصد والتغذية الراجعة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-004"
+      ],
+      "related": [
+        "REF-005"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "هدف أداء قابل للرصد والتغذية الراجعة",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 71,
+      "status": "Published",
+      "type": "rule",
+      "category": "التخطيط والتنفيذ",
+      "level": 5,
+      "title": "برّد القرار طويل الأثر",
+      "message": "لا تدع ضغط اللحظة يحسم ما يمتد أثره طويلًا.",
+      "details": "النظام الساخن يضخم المكسب أو الخوف الآني، بينما التبريد والمسافة النفسية يعيدان النتائج المستقبلية إلى القرار.",
+      "action": "أجّل قرارًا صعب الرجوع عنه حتى تهدأ الاستجابة الآنية ثم راجعه.",
+      "question": "كيف سيتغير القرار إذا نظرت إليه من زمن أبعد؟",
+      "source": "The Marshmallow Test",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "اتخاذ القرار",
+        "rule",
+        "مستويات تنفيذية",
+        "The Marshmallow Test"
+      ],
+      "concept_id": "PLAN-010",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "اتخاذ القرار",
+      "reference": "Walter Mischel — The Marshmallow Test — تبريد القرار ذي الأثر البعيد",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-001"
+      ],
+      "related": [
+        "IC-008"
+      ],
+      "source_title_ar": "اختبار المارشميلو",
+      "author": "Walter Mischel",
+      "source_topic": "تبريد القرار ذي الأثر البعيد",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 72,
+      "status": "Published",
+      "type": "challenge",
+      "category": "التخطيط والتنفيذ",
+      "level": 5,
+      "title": "اختبر النظام في يوم ضعيف",
+      "message": "الاستمرار يحتاج نسخة حد أدنى.",
+      "details": "السلوك القابل للاستمرار لا يعتمد على يوم مثالي؛ نسخة صغيرة وخطة عودة تمنع التعثر الواحد من التحول إلى انقطاع.",
+      "action": "حدد أصغر نسخة من سلوكك يمكن تنفيذها في يوم مزدحم.",
+      "question": "ما الحد الأدنى الذي يحفظ استمراريتك؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "استمرارية العمل",
+        "challenge",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "PLAN-011",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "استمرارية العمل",
+      "reference": "James Clear — Atomic Habits — نسخة الحد الأدنى وعدم تفويت السلوك مرتين",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-004"
+      ],
+      "related": [
+        "SYS-010"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "نسخة الحد الأدنى وعدم تفويت السلوك مرتين",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 73,
+      "status": "Published",
+      "type": "mistake",
+      "category": "التخطيط والتنفيذ",
+      "level": 5,
+      "title": "خطط من الموعد إلى أول بداية",
+      "message": "الموعد البعيد يحتاج بدايات قريبة.",
+      "details": "الجدولة العكسية تحول المشروع من كتلة مؤجلة إلى بدايات محددة موزعة قبل موعده النهائي.",
+      "action": "ابدأ من موعد التسليم وارجع للخلف حتى تكتب أول جلسة بدء.",
+      "question": "ما أول بداية يجب حجزها الآن؟",
+      "source": "The Now Habit",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "إدارة المشاريع",
+        "mistake",
+        "مستويات تنفيذية",
+        "The Now Habit"
+      ],
+      "concept_id": "PLAN-012",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "إدارة المشاريع",
+      "reference": "Neil Fiore — The Now Habit — الجدولة العكسية من الموعد إلى بدايات محددة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-001"
+      ],
+      "related": [
+        "EXEC-009"
+      ],
+      "source_title_ar": "عادة الآن",
+      "author": "Neil Fiore",
+      "source_topic": "الجدولة العكسية من الموعد إلى بدايات محددة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 74,
+      "status": "Published",
+      "type": "question",
+      "category": "التخطيط والتنفيذ",
+      "level": 6,
+      "title": "أخرج الملكية والموعد من الذاكرة",
+      "message": "ما يبقى شفهيًا يبقى معرضًا للضياع.",
+      "details": "النظام الخارجي الموثوق يوضح الالتزام ومن يملكه وموعد مراجعته بدل تركه لذاكرة الفريق.",
+      "action": "سجّل قرارًا متعثرًا بصيغة: المالك، الإجراء، الموعد.",
+      "question": "من يملك الخطوة التالية ومتى تظهر مجددًا؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "التخطيط والتنفيذ",
+        "الحوكمة",
+        "question",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "PLAN-013",
+      "domain": "التخطيط والتنفيذ",
+      "domain_order": 5,
+      "subcategory": "الحوكمة",
+      "reference": "Daniel J. Levitin — The Organized Mind — إخراج الملكية والمواعيد إلى نظام خارجي",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-004"
+      ],
+      "related": [
+        "EXEC-007"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "إخراج الملكية والمواعيد إلى نظام خارجي",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 75,
+      "status": "Published",
+      "type": "insight",
+      "category": "التنفيذ",
+      "level": 5,
+      "title": "احمِ قيد الانتباه",
+      "message": "العمل المهم يتباطأ عندما يتوزع الانتباه المحدود.",
+      "details": "الانتباه قدرة محدودة؛ كثرة المثيرات والمهام المتنافسة تجعل موضع التركيز هو القيد الحقيقي على الأداء.",
+      "action": "اختر مهمة واحدة وأزل عنها مصدرين للتنافس على الانتباه.",
+      "question": "ما الذي ينافس المهمة الأهم على انتباهك؟",
+      "source": "Focus",
+      "tags": [
+        "التنفيذ",
+        "نظرية القيود",
+        "insight",
+        "مستويات تنفيذية",
+        "Focus"
+      ],
+      "concept_id": "EXEC-005",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "نظرية القيود",
+      "reference": "Daniel Goleman — Focus — الانتباه المحدود كقيد على الأداء",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-004"
+      ],
+      "related": [
+        "SYS-008"
+      ],
+      "source_title_ar": "التركيز",
+      "author": "Daniel Goleman",
+      "source_topic": "الانتباه المحدود كقيد على الأداء",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 76,
+      "status": "Published",
+      "type": "strategy",
+      "category": "التنفيذ",
+      "level": 6,
+      "title": "قلّل العمل الجاري قبل زيادة السرعة",
+      "message": "البدء الكثير يبطئ الإنهاء.",
+      "details": "كل عنصر مفتوح يضيف تنسيقًا وانتظارًا وتبديلًا للسياق؛ حد العمل الجاري يحول الضغط إلى إنهاء الموجود.",
+      "action": "حدد سقفًا للمهام المفتوحة ولا تبدأ جديدًا قبل إغلاق واحدة.",
+      "question": "كم عملًا بدأ ولم يصل إلى نتيجة؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "التنفيذ",
+        "تدفق العمل",
+        "strategy",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "EXEC-006",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "تدفق العمل",
+      "reference": "Daniel J. Levitin — The Organized Mind — تقليل تبديل المهام والعمل المفتوح",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-002"
+      ],
+      "related": [
+        "PLAN-007"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تقليل تبديل المهام والعمل المفتوح",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 77,
+      "status": "Published",
+      "type": "exercise",
+      "category": "التنفيذ",
+      "level": 5,
+      "title": "حوّل الاجتماع إلى سجل التزامات",
+      "message": "الاجتماع الذي لا يغيّر ملكية العمل مجرد حديث.",
+      "details": "تسجيل القرار والمالك والموعد ومعيار الاكتمال يحول الاتفاق الشفهي إلى تنفيذ قابل للمتابعة.",
+      "action": "اختم اجتماعك بجدول: القرار، الإجراء، المالك، الموعد، ومعيار الإنجاز.",
+      "question": "ما الذي سيتغير بعد الاجتماع ومن سيحمله؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "التنفيذ",
+        "إدارة الاجتماعات",
+        "exercise",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "EXEC-007",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "إدارة الاجتماعات",
+      "reference": "Daniel J. Levitin — The Organized Mind — تسجيل الالتزامات خارج الذاكرة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-004"
+      ],
+      "related": [
+        "PLAN-013"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تسجيل الالتزامات خارج الذاكرة",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 78,
+      "status": "Published",
+      "type": "rule",
+      "category": "التنفيذ",
+      "level": 5,
+      "title": "قدّم حزمة قرار واضحة",
+      "message": "تنظيم المعلومات يقلل عبء الحسم.",
+      "details": "تجميع المشكلة والخيارات والبيانات في حزمة خارجية واضحة يحمي ذاكرة متخذ القرار من إعادة بناء السياق.",
+      "action": "لخّص المسألة في: السياق، الخيارات، المعلومة الحاسمة، والقرار المطلوب.",
+      "question": "ما الذي يحتاجه الطرف الآخر ليحسم دون إعادة التحليل من الصفر؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "التنفيذ",
+        "التصعيد",
+        "rule",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "EXEC-008",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "التصعيد",
+      "reference": "Daniel J. Levitin — The Organized Mind — حزمة معلومات خارجية تقلل عبء القرار",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "PLAN-001"
+      ],
+      "related": [
+        "EXEC-007"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "حزمة معلومات خارجية تقلل عبء القرار",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 79,
+      "status": "Published",
+      "type": "question",
+      "category": "التنفيذ",
+      "level": 6,
+      "title": "ما الذي يمنع التسليم الآن؟",
+      "message": "ناقش العائق الحالي لا قائمة الأعذار.",
+      "details": "التقارير العامة تخلط بين ما حدث وما يمنع الخطوة التالية؛ تحديد العائق يركز التدخل على ما يمكن إزالته.",
+      "action": "لكل عمل متأخر اكتب عائقًا واحدًا ومالك إزالته وموعده.",
+      "question": "لو أزلنا عائقًا واحدًا اليوم، أيها يحرك التسليم؟",
+      "source": "The Now Habit",
+      "tags": [
+        "التنفيذ",
+        "إزالة العوائق",
+        "question",
+        "مستويات تنفيذية",
+        "The Now Habit"
+      ],
+      "concept_id": "EXEC-009",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "إزالة العوائق",
+      "reference": "Neil Fiore — The Now Habit — تحويل المشروع الكبير إلى بداية محددة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-005"
+      ],
+      "related": [
+        "PLAN-012"
+      ],
+      "source_title_ar": "عادة الآن",
+      "author": "Neil Fiore",
+      "source_topic": "تحويل المشروع الكبير إلى بداية محددة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 80,
+      "status": "Published",
+      "type": "challenge",
+      "category": "التنفيذ",
+      "level": 5,
+      "title": "سلّم نسخة قابلة للفحص",
+      "message": "التقدم المرئي أفضل من نسبة إنجاز تقديرية.",
+      "details": "نسبة الإنجاز قد تخفي أن الأجزاء لا تعمل معًا؛ مخرج قابل للفحص يكشف الواقع ويولد تغذية راجعة.",
+      "action": "حوّل عمل اليوم إلى نموذج يمكن لشخص آخر مراجعته فعليًا.",
+      "question": "ما الدليل المرئي على أن العمل تقدم؟",
+      "source": "Peak",
+      "tags": [
+        "التنفيذ",
+        "التسليم التكراري",
+        "challenge",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "EXEC-010",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "التسليم التكراري",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — أداء قابل للملاحظة وتغذية راجعة فورية",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-003"
+      ],
+      "related": [
+        "REF-005"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "أداء قابل للملاحظة وتغذية راجعة فورية",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 81,
+      "status": "Published",
+      "type": "mistake",
+      "category": "التنفيذ",
+      "level": 5,
+      "title": "مكافأة الإطفاء وإهمال الوقاية",
+      "message": "البطولة المتكررة قد تخفي نظامًا ضعيفًا.",
+      "details": "تمجيد إنقاذ اللحظة الأخيرة دون معالجة السبب يجعل المؤسسة تعتمد على الأزمات.",
+      "action": "اختر أزمة متكررة وحدد إجراءً وقائيًا ومالكًا له.",
+      "question": "أي بطولة نحتفل بها لأنها تعالج مشكلة كان يمكن منعها؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "التنفيذ",
+        "الوقاية",
+        "mistake",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "EXEC-011",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "الوقاية",
+      "reference": "James Clear — Atomic Habits — النتائج المتكررة انعكاس للنظام",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-005"
+      ],
+      "related": [
+        "REF-007"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "النتائج المتكررة انعكاس للنظام",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 82,
+      "status": "Published",
+      "type": "principle",
+      "category": "التنفيذ",
+      "level": 6,
+      "title": "ارفع سرعة التغذية الراجعة",
+      "message": "كلما تأخر الكشف ارتفعت كلفة التصحيح.",
+      "details": "الدورات الطويلة تسمح للخطأ أن يتراكم؛ نقاط التحقق القصيرة تجعل الانحراف صغيرًا وقابلًا للعكس.",
+      "action": "أضف نقطة فحص مبكرة قبل اكتمال نصف العمل.",
+      "question": "ما الخطأ الذي لن تكتشفه إلا قرب التسليم؟",
+      "source": "Peak",
+      "tags": [
+        "التنفيذ",
+        "التغذية الراجعة",
+        "principle",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "EXEC-012",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "التغذية الراجعة",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — التغذية الراجعة الفورية الدقيقة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-010"
+      ],
+      "related": [
+        "REF-005"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "التغذية الراجعة الفورية الدقيقة",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 83,
+      "status": "Published",
+      "type": "question",
+      "category": "التنفيذ",
+      "level": 6,
+      "title": "لا تخلط تبديل المهام بالتقدم",
+      "message": "الحركة بين الملفات قد تكون كلفة لا إنجازًا.",
+      "details": "كل انتقال يستهلك وقتًا لإسقاط السياق السابق واستعادة الجديد، فيبدو اليوم مزدحمًا دون تقدم مكافئ.",
+      "action": "تتبع عدد مرات تبديل المهمة خلال ساعة وقللها في الجلسة التالية.",
+      "question": "كم من حركتك اليوم كان استعادةً للسياق؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "التنفيذ",
+        "التدفق الكلي",
+        "question",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "EXEC-013",
+      "domain": "التنفيذ",
+      "domain_order": 6,
+      "subcategory": "التدفق الكلي",
+      "reference": "Daniel J. Levitin — The Organized Mind — تبديل المهام ليس تقدمًا",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "EXEC-005"
+      ],
+      "related": [
+        "REF-010"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تبديل المهام ليس تقدمًا",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 84,
+      "status": "Published",
+      "type": "exercise",
+      "category": "الأنظمة والعادات",
+      "level": 4,
+      "title": "صمّم بداية العمل في الليلة السابقة",
+      "message": "بداية الغد تُبنى اليوم.",
+      "details": "القرارات الصغيرة عند البداية ترفع مقاومة المهمة؛ تجهيز المكان والملف والخطوة الأولى يحول الاختيار إلى تنفيذ.",
+      "action": "افتح الملف المطلوب واكتب أول إجراء ستنفذه غدًا.",
+      "question": "ما القرار الصغير الذي يمكن إلغاؤه من بداية يومك؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "الأنظمة والعادات",
+        "تهيئة البيئة",
+        "exercise",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "SYS-004",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "تهيئة البيئة",
+      "reference": "James Clear — Atomic Habits — تهيئة البيئة والخطوة الأولى مسبقًا",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-002"
+      ],
+      "related": [
+        "ATT-002"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "تهيئة البيئة والخطوة الأولى مسبقًا",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 85,
+      "status": "Published",
+      "type": "rule",
+      "category": "الأنظمة والعادات",
+      "level": 5,
+      "title": "اجعل المسار الافتراضي هو الصحيح",
+      "message": "الافتراضات اليومية أقوى من التعليمات الموسمية.",
+      "details": "السلوك يتبع الإعداد الافتراضي؛ إذا احتاج الصواب جهدًا إضافيًا فسيخسر أمام ضغط العمل.",
+      "action": "غيّر إعدادًا افتراضيًا بحيث ينتج السلوك المطلوب دون تذكير.",
+      "question": "أي خطأ يتكرر لأن النظام يجعله الخيار الأسهل؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "الأنظمة والعادات",
+        "التصميم الافتراضي",
+        "rule",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "SYS-005",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "التصميم الافتراضي",
+      "reference": "James Clear — Atomic Habits — جعل السلوك الصحيح هو الأسهل",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-002"
+      ],
+      "related": [
+        "IC-009"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "جعل السلوك الصحيح هو الأسهل",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 86,
+      "status": "Published",
+      "type": "insight",
+      "category": "الأنظمة والعادات",
+      "level": 5,
+      "title": "التوحيد يحرر الحكم للقرارات المهمة",
+      "message": "لا تعِد اختراع العمل المتكرر.",
+      "details": "الإجراءات القياسية تحمي التفكير من الاستنزاف في خطوات معروفة، وتترك الحكم المهني للاستثناءات.",
+      "action": "حوّل مهمة متكررة مستقرة إلى خطوات قياسية قصيرة.",
+      "question": "ما القرار المتكرر الذي لا يضيف قيمة جديدة؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "الأنظمة والعادات",
+        "توحيد العمل",
+        "insight",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "SYS-006",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "توحيد العمل",
+      "reference": "Daniel J. Levitin — The Organized Mind — تحرير الطاقة الذهنية عبر الأنظمة الخارجية",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-001"
+      ],
+      "related": [
+        "IC-012"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "تحرير الطاقة الذهنية عبر الأنظمة الخارجية",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 87,
+      "status": "Published",
+      "type": "strategy",
+      "category": "الأنظمة والعادات",
+      "level": 6,
+      "title": "ضع قواعد للحالات المعتادة",
+      "message": "التصنيف الجيد يقلل القرارات المتكررة.",
+      "details": "القواعد الخارجية تعالج الحالات المعتادة بسرعة، بينما تُرفع الحالات التي لا تطابقها إلى مراجعة واعية.",
+      "action": "حدد قاعدة لحالة متكررة وعلامة واضحة للحالة التي تستحق مراجعة منفصلة.",
+      "question": "ما الحالة التي يمكن للنظام حسمها دون قرار جديد؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "الأنظمة والعادات",
+        "إدارة الاستثناءات",
+        "strategy",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "SYS-007",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "إدارة الاستثناءات",
+      "reference": "Daniel J. Levitin — The Organized Mind — قواعد واضحة للحالات المعتادة ومراجعة الاستثناء",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-006"
+      ],
+      "related": [
+        "PLAN-013"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "قواعد واضحة للحالات المعتادة ومراجعة الاستثناء",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 88,
+      "status": "Published",
+      "type": "challenge",
+      "category": "الأنظمة والعادات",
+      "level": 5,
+      "title": "أزل خطوة لا تضيف قيمة",
+      "message": "التحسين يبدأ أحيانًا بالحذف.",
+      "details": "الموافقات والنماذج تتراكم بعد زوال أسبابها؛ حذف خطوة آمنة قد يرفع السرعة أكثر من أتمتة عملية متضخمة.",
+      "action": "اسأل عن كل خطوة: ما الخطر الذي تمنعه؟ واحذف خطوة بلا جواب.",
+      "question": "أي خطوة باقية فقط لأننا اعتدنا عليها؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "الأنظمة والعادات",
+        "تبسيط العمليات",
+        "challenge",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "SYS-008",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "تبسيط العمليات",
+      "reference": "James Clear — Atomic Habits — تقليل الخطوات والاحتكاك للسلوك المرغوب",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-006"
+      ],
+      "related": [
+        "EXEC-005"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "تقليل الخطوات والاحتكاك للسلوك المرغوب",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 89,
+      "status": "Published",
+      "type": "mistake",
+      "category": "الأنظمة والعادات",
+      "level": 5,
+      "title": "ثبّت السلوك قبل أن تحسّنه",
+      "message": "لا تحسّن نظامًا لا يعمل باستمرار بعد.",
+      "details": "التحسين المبكر يزيد التعقيد؛ الأفضل تثبيت السلوك الأساسي وجعله سهل التكرار قبل رفع مستواه.",
+      "action": "اختر سلوكًا متقطعًا وثبّت نسخته الأساسية أسبوعًا قبل تطويرها.",
+      "question": "هل تحتاج الآن إلى تحسين السلوك أم إلى تثبيته؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "الأنظمة والعادات",
+        "الأتمتة",
+        "mistake",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "SYS-009",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "الأتمتة",
+      "reference": "James Clear — Atomic Habits — التثبيت قبل التحسين",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-008"
+      ],
+      "related": [
+        "SYS-007"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "التثبيت قبل التحسين",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 90,
+      "status": "Published",
+      "type": "question",
+      "category": "الأنظمة والعادات",
+      "level": 6,
+      "title": "صمّم عودة آمنة بعد التعثر",
+      "message": "لا تجعل غيابًا واحدًا يصبح غيابين.",
+      "details": "التعثر جزء متوقع من السلوك؛ قاعدة عدم التفويت مرتين وخطوة استئناف محددة تمنع الانقطاع من التمدد.",
+      "action": "اكتب أصغر خطوة ستعيدك مباشرة بعد أول تفويت.",
+      "question": "كيف ستعود في اليوم التالي دون تفاوض؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "الأنظمة والعادات",
+        "المرونة التشغيلية",
+        "question",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "SYS-010",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "المرونة التشغيلية",
+      "reference": "James Clear — Atomic Habits — عدم تفويت السلوك مرتين وخطة الاستئناف",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-007"
+      ],
+      "related": [
+        "PLAN-011"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "عدم تفويت السلوك مرتين وخطة الاستئناف",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 91,
+      "status": "Published",
+      "type": "rule",
+      "category": "الأنظمة والعادات",
+      "level": 5,
+      "title": "اجعل الجودة جزءًا من العملية",
+      "message": "لا تؤجل اكتشاف الخطأ إلى التفتيش النهائي.",
+      "details": "الفحص النهائي يكتشف العيب بعد تراكم كلفته؛ التحقق عند المصدر يمنع انتقاله للمراحل التالية.",
+      "action": "أضف معيار قبول عند أول نقطة يمكن فيها اكتشاف الخطأ.",
+      "question": "ما العيب الذي يمكن منعه عند المصدر؟",
+      "source": "Peak",
+      "tags": [
+        "الأنظمة والعادات",
+        "الجودة عند المصدر",
+        "rule",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "SYS-011",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "الجودة عند المصدر",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — تصحيح الخطأ قبل أن يترسخ",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-006"
+      ],
+      "related": [
+        "EXEC-012"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "تصحيح الخطأ قبل أن يترسخ",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 92,
+      "status": "Published",
+      "type": "exercise",
+      "category": "الأنظمة والعادات",
+      "level": 5,
+      "title": "اختبر التعليمات بالأداء",
+      "message": "وضوح النص لا يضمن قدرة المتعلم على استخدامه.",
+      "details": "الاسترجاع والأداء من شخص جديد يكشفان فجوات الفهم التي تخفيها إعادة القراءة والألفة.",
+      "action": "اطلب من شخص تنفيذ التعليمات دون مساعدة وسجل مواضع التوقف.",
+      "question": "ما الذي ظنه واضحًا ولم يستطع استرجاعه أو تطبيقه؟",
+      "source": "Make It Stick",
+      "tags": [
+        "الأنظمة والعادات",
+        "وضوح الإجراءات",
+        "exercise",
+        "مستويات تنفيذية",
+        "Make It Stick"
+      ],
+      "concept_id": "SYS-012",
+      "domain": "الأنظمة والعادات",
+      "domain_order": 7,
+      "subcategory": "وضوح الإجراءات",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — اختبار التعليمات بالاسترجاع والأداء",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "SYS-006"
+      ],
+      "related": [
+        "REF-008"
+      ],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "اختبار التعليمات بالاسترجاع والأداء",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 93,
+      "status": "Published",
+      "type": "principle",
+      "category": "المراجعة والتحسين",
+      "level": 5,
+      "title": "قيّم عملية التعلم لا النتيجة وحدها",
+      "message": "النتيجة الواحدة لا تكشف كيف تطورت القدرة.",
+      "details": "العقلية النامية تراجع الاستراتيجية والجهد الفعال والاستفادة من التغذية الراجعة، لا النجاح أو الفشل المنفرد فقط.",
+      "action": "راجع محاولة وفق: الاستراتيجية، التعلم، والتعديل التالي.",
+      "question": "ما الذي تحسن في العملية حتى لو لم تكتمل النتيجة؟",
+      "source": "Mindset",
+      "tags": [
+        "المراجعة والتحسين",
+        "جودة القرار",
+        "principle",
+        "مستويات تنفيذية",
+        "Mindset"
+      ],
+      "concept_id": "REF-005",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "جودة القرار",
+      "reference": "Carol S. Dweck — Mindset — تقييم عملية التعلم لا النتيجة المنفردة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-001"
+      ],
+      "related": [
+        "PLAN-009",
+        "EXEC-010"
+      ],
+      "source_title_ar": "العقلية",
+      "author": "Carol S. Dweck",
+      "source_topic": "تقييم عملية التعلم لا النتيجة المنفردة",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 94,
+      "status": "Published",
+      "type": "insight",
+      "category": "المراجعة والتحسين",
+      "level": 6,
+      "title": "المؤشر يقود السلوك الذي يكافئه",
+      "message": "ما تقيسه يعيد تشكيل العمل.",
+      "details": "عندما يصبح المؤشر هدفًا قد يتحسن رقمه بينما تتدهور الغاية الأصلية.",
+      "action": "اكتب طريقة يمكن بها تحسين مؤشر حالي دون تحسين القيمة.",
+      "question": "ما السلوك غير المقصود الذي يشجعه المؤشر؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "المراجعة والتحسين",
+        "مؤشرات الأداء",
+        "insight",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "REF-006",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "مؤشرات الأداء",
+      "reference": "James Clear — Atomic Habits — حدود القياس وقانون غودهارت",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-005"
+      ],
+      "related": [
+        "PLAN-009"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "حدود القياس وقانون غودهارت",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    },
+    {
+      "id": 95,
+      "status": "Published",
+      "type": "strategy",
+      "category": "المراجعة والتحسين",
+      "level": 6,
+      "title": "راجع النظام لا الشخص فقط",
+      "message": "الخطأ الفردي قد يكون نتيجة متوقعة لتصميم العمل.",
+      "details": "التركيز على آخر شخص يخفي ضغط الوقت والأدوات والحوافز ونقاط التسليم التي صنعت الخطأ.",
+      "action": "حلل حادثة عبر: المهمة، الأداة، المعلومات، الحافز، والرقابة.",
+      "question": "ما الذي جعل الخطأ سهل الوقوع وصعب الاكتشاف؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "المراجعة والتحسين",
+        "تحليل النظام",
+        "strategy",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "REF-007",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "تحليل النظام",
+      "reference": "James Clear — Atomic Habits — السلوك نتاج نظام وبيئة لا صفة ثابتة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-001"
+      ],
+      "related": [
+        "CF-010",
+        "EXEC-011"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "السلوك نتاج نظام وبيئة لا صفة ثابتة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 96,
+      "status": "Published",
+      "type": "challenge",
+      "category": "المراجعة والتحسين",
+      "level": 5,
+      "title": "أغلق المراجعة بدليل تغيير",
+      "message": "التعلم الحقيقي يترك أثرًا في النظام.",
+      "details": "الدروس المستفادة تفقد قيمتها حين تنتهي بتوصيات عامة؛ التعلم يظهر في إجراء أو قالب أو صلاحية تغيرت.",
+      "action": "حوّل درسًا سابقًا إلى تعديل موثق في أداة العمل.",
+      "question": "أين يمكن رؤية الدرس بعد انتهاء الاجتماع؟",
+      "source": "Atomic Habits",
+      "tags": [
+        "المراجعة والتحسين",
+        "التعلم المؤسسي",
+        "challenge",
+        "مستويات تنفيذية",
+        "Atomic Habits"
+      ],
+      "concept_id": "REF-008",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "التعلم المؤسسي",
+      "reference": "James Clear — Atomic Habits — المراجعة والتأمل لتعديل النظام",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-004"
+      ],
+      "related": [
+        "SYS-012"
+      ],
+      "source_title_ar": "العادات الذرية",
+      "author": "James Clear",
+      "source_topic": "المراجعة والتأمل لتعديل النظام",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 97,
+      "status": "Published",
+      "type": "mistake",
+      "category": "المراجعة والتحسين",
+      "level": 5,
+      "title": "لا تدع الأداء السهل يصنع وهم الإتقان",
+      "message": "سهولة المحاولة الآن لا تضمن بقاء المعرفة.",
+      "details": "الاحتفاظ الحقيقي يظهر عند الاسترجاع بعد فاصل وفي سياقات مختلفة، لا من انطباع أو متوسط لحظي.",
+      "action": "أعد اختبار المعلومة بعد يوم وفي سياق مختلف.",
+      "question": "هل بقي التعلم عندما ابتعدت عن جلسة الدراسة؟",
+      "source": "Make It Stick",
+      "tags": [
+        "المراجعة والتحسين",
+        "تحليل البيانات",
+        "mistake",
+        "مستويات تنفيذية",
+        "Make It Stick"
+      ],
+      "concept_id": "REF-009",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "تحليل البيانات",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — اختبار الاحتفاظ عبر أوقات وسياقات متعددة",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-005"
+      ],
+      "related": [
+        "REF-006"
+      ],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "اختبار الاحتفاظ عبر أوقات وسياقات متعددة",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 98,
+      "status": "Published",
+      "type": "question",
+      "category": "المراجعة والتحسين",
+      "level": 6,
+      "title": "قس كلفة تبديل السياق",
+      "message": "الزمن الضائع لا يظهر دائمًا داخل المهمة.",
+      "details": "الانتقال بين الخطوات والملفات يضيف وقتًا لإعادة توجيه الانتباه واسترجاع السياق.",
+      "action": "سجل زمن العمل الصافي وزمن استعادة السياق في جلسة واحدة.",
+      "question": "أي انتقال يمكن حذفه أو تجميعه؟",
+      "source": "The Organized Mind",
+      "tags": [
+        "المراجعة والتحسين",
+        "زمن التدفق",
+        "question",
+        "مستويات تنفيذية",
+        "The Organized Mind"
+      ],
+      "concept_id": "REF-010",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "زمن التدفق",
+      "reference": "Daniel J. Levitin — The Organized Mind — قياس كلفة تبديل السياق",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-005"
+      ],
+      "related": [
+        "EXEC-013"
+      ],
+      "source_title_ar": "العقل المنظم",
+      "author": "Daniel J. Levitin",
+      "source_topic": "قياس كلفة تبديل السياق",
+      "source_basis": "derived",
+      "source_confidence": "Medium"
+    },
+    {
+      "id": 99,
+      "status": "Published",
+      "type": "rule",
+      "category": "المراجعة والتحسين",
+      "level": 6,
+      "title": "محاولة ناجحة واحدة لا تثبت الإتقان",
+      "message": "الإتقان يظهر عندما تستطيع الاسترجاع مرة أخرى.",
+      "details": "النجاح الفوري قد ينتج عن بقاء المعلومة قريبة؛ الاختبار المتباعد والمتنوع يكشف التعلم الأكثر ثباتًا.",
+      "action": "اختبر المهارة لاحقًا دون تلميح وفي سياق مختلف.",
+      "question": "هل تستطيع تكرار الأداء بعد زوال أثر المحاولة الأولى؟",
+      "source": "Make It Stick",
+      "tags": [
+        "المراجعة والتحسين",
+        "الاستدلال",
+        "rule",
+        "مستويات تنفيذية",
+        "Make It Stick"
+      ],
+      "concept_id": "REF-011",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "الاستدلال",
+      "reference": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — المحاولة الناجحة الواحدة لا تثبت الإتقان",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-005"
+      ],
+      "related": [
+        "CF-008"
+      ],
+      "source_title_ar": "اجعل التعلم راسخًا",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "source_topic": "المحاولة الناجحة الواحدة لا تثبت الإتقان",
+      "source_basis": "derived",
+      "source_confidence": "High"
+    },
+    {
+      "id": 100,
+      "status": "Published",
+      "type": "exercise",
+      "category": "المراجعة والتحسين",
+      "level": 6,
+      "title": "ابنِ حلقة تعلم كاملة",
+      "message": "نفّذ، قس، فسّر، ثم عدّل.",
+      "details": "التحسين يبدأ بفرضية، يختبرها بمقياس، يفسر النتيجة، ثم يثبت التعديل أو يتراجع عنه.",
+      "action": "صغ تجربة: الفرضية، التغيير، المقياس، المدة، وقرار الاستمرار.",
+      "question": "ما النتيجة التي ستجعلك تثبت التغيير أو تلغيه؟",
+      "source": "Peak",
+      "tags": [
+        "المراجعة والتحسين",
+        "التجارب",
+        "exercise",
+        "مستويات تنفيذية",
+        "Peak"
+      ],
+      "concept_id": "REF-012",
+      "domain": "المراجعة والتحسين",
+      "domain_order": 8,
+      "subcategory": "التجارب",
+      "reference": "K. Anders Ericsson & Robert Pool — Peak — حلقة المران المتعمد: هدف ومحاولة وقياس وتعديل",
+      "review_status": "CommitteeApproved",
+      "atomic": true,
+      "prerequisites": [
+        "REF-004"
+      ],
+      "related": [
+        "EXEC-012"
+      ],
+      "source_title_ar": "القمة",
+      "author": "K. Anders Ericsson & Robert Pool",
+      "source_topic": "حلقة المران المتعمد: هدف ومحاولة وقياس وتعديل",
+      "source_basis": "direct",
+      "source_confidence": "High"
+    }
   ],
   "validation": {
     "items_count_ok": true,
     "ids_unique": true,
     "concept_ids_unique": true,
+    "approved_sources_only": true,
+    "committee_reviewed": true,
     "missing_fields": []
   }
 }
