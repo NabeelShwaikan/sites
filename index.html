@@ -153,7 +153,7 @@
     .knowledge-dialog-footer{position:sticky;bottom:-22px;margin:8px -22px -22px;padding:14px 22px;background:linear-gradient(180deg,transparent,var(--panel) 24%);display:flex;justify-content:center}.knowledge-apply-btn{width:100%;border:0;border-radius:14px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-family:inherit;font-size:14px;font-weight:900;cursor:pointer;box-shadow:var(--shadow)}.knowledge-apply-btn:disabled{cursor:default;filter:saturate(.4);opacity:.72}
     .today-challenge{display:none;margin-top:13px;padding:13px 14px;border-radius:15px;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(37,99,235,.08));border:1px solid rgba(16,185,129,.27);cursor:default}.today-challenge.is-visible{display:block}.today-challenge-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.today-challenge-title{font-size:12px;font-weight:900;color:#047857}.today-challenge-action{font-size:14px;line-height:1.75;font-weight:800}.today-challenge-done{border:1px solid rgba(16,185,129,.35);background:#fff;color:#047857;border-radius:999px;padding:6px 11px;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer}.today-challenge-done.is-complete{background:#047857;color:#fff}.today-challenge-source{margin-top:5px;color:var(--muted);font-size:11px}
     @media (max-width:520px){.knowledge-modal{padding:10px}.knowledge-dialog{padding:17px;border-radius:18px;max-height:92vh}.knowledge-meta-grid{grid-template-columns:1fr 1fr}.knowledge-dialog-message{font-size:16px}.knowledge-dialog-footer{bottom:-17px;margin:8px -17px -17px;padding:14px 17px}}
-    .pulse-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 10px}
+    .pulse-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 10px}
     .wellness-card{background:var(--panel);border:1.5px solid rgba(37,99,235,.28);border-inline-start:5px solid rgba(37,99,235,.62);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 14px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:104px}
     .wellness-meta{min-width:0}.wellness-title{font-size:13px;font-weight:900;margin-bottom:4px}.wellness-date{color:var(--muted);font-size:11.5px;line-height:1.45}
     .ring-wrap{position:relative;width:76px;height:76px;flex:0 0 76px;display:grid;place-items:center}.ring-svg{width:76px;height:76px;transform:rotate(-90deg)}.ring-bg{fill:none;stroke:rgba(148,163,184,.22);stroke-width:8}.ring-progress{fill:none;stroke:url(#ringGradient);stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease}
@@ -169,6 +169,54 @@
     .gold-status{font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap}
     .gold-ticker.is-up .gold-status{color:#16a34a}.gold-ticker.is-down .gold-status{color:#dc2626}.gold-ticker.is-flat .gold-status{color:#b45309}
     @media (max-width:520px){.wrap{padding:20px}.knowledge-card{padding:15px}.knowledge-head{align-items:flex-start}.knowledge-text{font-size:17px}.pulse-strip{grid-template-columns:1fr 1fr;gap:10px}.wellness-card{padding:10px;min-height:96px;gap:8px}.ring-wrap,.ring-svg{width:66px;height:66px;flex-basis:66px}.ring-number{font-size:19px}.wellness-title{font-size:12px}.wellness-date{font-size:10.5px}.status-line{gap:10px;font-size:12.5px}.gold-ticker{border-radius:18px;align-items:flex-start;flex-direction:column;gap:8px}.gold-ticker-price{width:100%;justify-content:space-between}.gold-price{font-size:17px}}
+
+
+    /* ——— الموسم والطالع الحالي ——— */
+    .season-card{cursor:pointer;position:relative;overflow:hidden;transition:transform .16s ease,border-color .2s ease,box-shadow .2s ease}
+    .season-card:hover{transform:translateY(-2px)}
+    .season-card:focus-visible{outline:3px solid color-mix(in srgb,var(--season-color,#ca8a04) 38%,transparent);outline-offset:3px}
+    .season-card::after{content:"";position:absolute;inset:auto -24px -36px auto;width:92px;height:92px;border-radius:50%;background:color-mix(in srgb,var(--season-color,#ca8a04) 11%,transparent);pointer-events:none}
+    .season-ring{fill:none;stroke:var(--season-color,#ca8a04);stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease,stroke .35s ease}
+    .season-name{font-size:14px;font-weight:900;color:var(--season-color,#ca8a04);line-height:1.3}
+    .season-next{margin-top:3px;color:var(--muted);font-size:10.5px;line-height:1.45;font-weight:800}
+    .season-modal{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.62);backdrop-filter:blur(7px)}
+    .season-modal.is-visible{display:flex}
+    .season-dialog{width:min(620px,100%);max-height:min(88vh,780px);overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 80px rgba(2,6,23,.32);padding:22px;position:relative}
+    .season-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .season-kicker{font-size:12px;font-weight:900;color:var(--season-color,#ca8a04);margin-bottom:4px}
+    .season-dialog-title{margin:0;font-size:clamp(22px,4vw,30px);line-height:1.4}
+    .season-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:36px;height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:20px;font-weight:900;line-height:1;flex:0 0 auto}
+    .season-summary{padding:13px 15px;border-radius:15px;background:color-mix(in srgb,var(--season-color,#ca8a04) 10%,var(--panel));border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 24%,transparent);font-size:15px;line-height:1.85;font-weight:700;margin-bottom:14px}
+    .season-details-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+    .season-detail{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:9px 10px}
+    .season-detail small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}
+    .season-detail strong{display:block;margin-top:2px;font-size:13px;line-height:1.5}
+    .season-section{padding:13px 0;border-top:1px solid var(--border)}
+    .season-section-label{font-size:12px;font-weight:900;color:var(--muted);margin-bottom:7px}
+    .season-folk{display:none;background:color-mix(in srgb,var(--season-color,#ca8a04) 8%,var(--panel));border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 22%,transparent);border-radius:15px;padding:13px 14px}
+    .season-folk.is-visible{display:block}.season-folk-quote{font-size:15px;line-height:1.9;font-weight:900;color:var(--ink)}.season-folk-meaning{margin-top:7px;color:var(--muted);font-size:12.5px;line-height:1.75}
+    .season-traits{display:flex;gap:7px;flex-wrap:wrap}
+    .season-trait{background:color-mix(in srgb,var(--season-color,#ca8a04) 11%,var(--panel));border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 23%,transparent);color:var(--ink);padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:800}
+    .season-note{color:var(--muted);font-size:11.5px;line-height:1.7;margin-top:12px}
+    .season-error{color:#b91c1c;font-weight:800}
+
+    .season-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .season-action-btn{border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 28%,var(--border));background:color-mix(in srgb,var(--season-color,#ca8a04) 10%,var(--panel));color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:900}
+    .season-browser{display:none}
+    .season-browser.is-visible{display:block}
+    .season-current-view.is-hidden{display:none}
+    .season-browser-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+    .season-browser-title{font-size:15px;font-weight:900}
+    .season-browser-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .season-browser-item{border:1px solid var(--border);background:var(--chip);color:var(--ink);border-radius:14px;padding:11px 12px;cursor:pointer;text-align:right;font-family:inherit;display:grid;gap:4px;transition:transform .14s ease,border-color .14s ease,background .14s ease}
+    .season-browser-item:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--item-color,#ca8a04) 45%,var(--border))}
+    .season-browser-item.is-current{border-color:var(--item-color,#ca8a04);background:color-mix(in srgb,var(--item-color,#ca8a04) 11%,var(--panel));box-shadow:inset 4px 0 0 var(--item-color,#ca8a04)}
+    .season-browser-item strong{font-size:13px;line-height:1.45}
+    .season-browser-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:10.5px;font-weight:800}
+    .season-browser-dot{width:8px;height:8px;border-radius:50%;background:var(--item-color,#ca8a04);display:inline-block;margin-inline-end:5px}
+    @media (max-width:520px){.season-browser-list{grid-template-columns:1fr}.season-actions{justify-content:center}.season-action-btn{width:100%}}
+    @media (max-width:720px){.pulse-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.wellness-card{padding:9px 7px;gap:6px}.season-details-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:520px){.pulse-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.wellness-card{min-height:105px;flex-direction:column;text-align:center}.wellness-meta{width:100%}.ring-wrap,.ring-svg{width:58px;height:58px;flex-basis:58px}.ring-number{font-size:17px}.ring-unit{font-size:9px}.wellness-title{font-size:11px}.wellness-date{font-size:9.5px}.season-name{font-size:12px}.season-next{font-size:9px}.season-modal{padding:10px}.season-dialog{padding:17px;border-radius:18px;max-height:92vh}}
 
   </style>
 </head>
@@ -266,7 +314,51 @@
         </div>
         <div class="wellness-meta"><div class="wellness-title">رمضان</div><div class="wellness-date" id="ramadanDate">—</div></div>
       </article>
+      <article class="wellness-card season-card" id="seasonCard" role="button" tabindex="0" aria-label="الموسم الآن — اضغط لعرض تفاصيل الطالع" style="--season-color:#ca8a04">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="season-ring" id="seasonRing" cx="52" cy="52" r="45"></circle></svg>
+          <div class="ring-center"><div class="ring-number" id="seasonDays">--</div><div class="ring-unit">يوماً</div></div>
+        </div>
+        <div class="wellness-meta">
+          <div class="wellness-title">الموسم الآن</div>
+          <div class="season-name" id="seasonName">جاري التحميل</div>
+          <div class="season-next" id="seasonNext">—</div>
+        </div>
+      </article>
     </div>
+
+    <div class="season-modal" id="seasonModal" aria-hidden="true">
+      <article class="season-dialog" role="dialog" aria-modal="true" aria-labelledby="seasonDialogTitle">
+        <div class="season-dialog-head">
+          <div><div class="season-kicker" id="seasonDialogKicker">الموسم الحالي</div><h2 class="season-dialog-title" id="seasonDialogTitle">—</h2></div>
+          <button class="season-close" id="seasonModalClose" type="button" aria-label="إغلاق">×</button>
+        </div>
+        <div class="season-current-view" id="seasonCurrentView">
+          <div class="season-summary" id="seasonDescription">—</div>
+          <div class="season-details-grid">
+            <div class="season-detail"><small>الفصل</small><strong id="seasonDetailSeason">—</strong></div>
+            <div class="season-detail"><small>البداية</small><strong id="seasonDetailStart">—</strong></div>
+            <div class="season-detail"><small>النهاية</small><strong id="seasonDetailEnd">—</strong></div>
+            <div class="season-detail"><small>المدة</small><strong id="seasonDetailDuration">—</strong></div>
+            <div class="season-detail"><small>طول النهار</small><strong id="seasonDetailDay">—</strong></div>
+            <div class="season-detail"><small>طول الليل</small><strong id="seasonDetailNight">—</strong></div>
+            <div class="season-detail"><small>متوسط الحرارة</small><strong id="seasonDetailAverage">—</strong></div>
+            <div class="season-detail"><small>العظمى الموسمية</small><strong id="seasonDetailMax">—</strong></div>
+            <div class="season-detail"><small>الصغرى الموسمية</small><strong id="seasonDetailMin">—</strong></div>
+          </div>
+          <section class="season-section"><div class="season-section-label">أبرز المواصفات</div><div class="season-traits" id="seasonTraits"></div></section>
+          <section class="season-section season-folk" id="seasonFolkSection"><div class="season-section-label">من الموروث الموسمي في الجزيرة العربية</div><div class="season-folk-quote" id="seasonFolkQuote">—</div><div class="season-folk-meaning" id="seasonFolkMeaning">—</div></section>
+          <section class="season-section"><div class="season-section-label">الطالع المقبل</div><div id="seasonUpcoming">—</div></section>
+          <div class="season-actions"><button class="season-action-btn" id="browseSeasonsBtn" type="button">استعراض الأنواء</button></div>
+          <div class="season-note" id="seasonSourceNote">البيانات والمواصفات موسمية تقريبية ومتداولة في التقويم الشعبي، ولا تمثل توقعاً يومياً للطقس.</div>
+        </div>
+        <div class="season-browser" id="seasonBrowser" aria-hidden="true">
+          <div class="season-browser-head"><div class="season-browser-title">الأنواء والطوالع</div><button class="season-action-btn" id="backToCurrentSeason" type="button">العودة للطالع الحالي</button></div>
+          <div class="season-browser-list" id="seasonBrowserList"></div>
+        </div>
+      </article>
+    </div>
+
 
     <div class="gold-ticker is-flat" id="goldCard" aria-label="ذهب اليوم">
       <div class="gold-ticker-main">
@@ -289,6 +381,9 @@
 
     <footer>© <span id="y"></span></footer>
   </div>
+
+  <!-- بيانات الطوالع: يعمل محلياً وعند الاستضافة -->
+  <script src="./Data/seasons-v2.js?v=20260711-3"></script>
 
   <script>
     // ——— البيانات ———
@@ -1067,8 +1162,243 @@
       }
     }
 
+
+
+    // ——— الموسم والطوالع: البيانات في Data/seasons-v2.js (مع دعم JSON عند الاستضافة) ———
+    let SEASONS_DATA = window.MASAR_SEASONS_DATA || null;
+    let currentSeasonState = null;
+    let seasonLastFocused = null;
+
+    function riyadhDateParts(date = new Date()){
+      const parts = new Intl.DateTimeFormat('en-CA', {timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
+      return {
+        year:Number(parts.find(p=>p.type==='year')?.value),
+        month:Number(parts.find(p=>p.type==='month')?.value),
+        day:Number(parts.find(p=>p.type==='day')?.value)
+      };
+    }
+
+    function dateAtRiyadhNoon(year, month, day){
+      return new Date(`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}T12:00:00+03:00`);
+    }
+
+    function seasonStartDate(item, baseYear){
+      return dateAtRiyadhNoon(baseYear, item.start.month, item.start.day);
+    }
+
+    function resolveCurrentSeason(data, now = new Date()){
+      const p = riyadhDateParts(now);
+      const today = dateAtRiyadhNoon(p.year, p.month, p.day);
+      const DAY_MS = 24 * 60 * 60 * 1000;
+
+      // ننشئ لكل طالع أقرب بداية سابقة أو مساوية لليوم،
+      // دون الاعتماد على ترتيب بداية الدورة في ديسمبر.
+      const candidates = data.entries.map((item, index) => {
+        let start = seasonStartDate(item, p.year);
+        if(start > today) start = seasonStartDate(item, p.year - 1);
+        return {item, index, start};
+      });
+
+      candidates.sort((a,b) => b.start - a.start);
+      const currentEntry = candidates[0];
+      const currentIndex = currentEntry.index;
+      const nextIndex = (currentIndex + 1) % data.entries.length;
+      const nextItem = data.entries[nextIndex];
+
+      let nextStart = seasonStartDate(nextItem, p.year);
+      if(nextStart <= today) nextStart = seasonStartDate(nextItem, p.year + 1);
+
+      const daysRemaining = Math.max(0, Math.ceil((nextStart - today) / DAY_MS));
+      const endDate = new Date(nextStart.getTime() - DAY_MS);
+
+      return {
+        current: currentEntry.item,
+        next: nextItem,
+        start: currentEntry.start,
+        nextStart,
+        endDate,
+        daysRemaining,
+        currentIndex
+      };
+    }
+
+    function formatSeasonDate(date){
+      return new Intl.DateTimeFormat('ar-SA-u-ca-gregory',{day:'numeric',month:'long',timeZone:TZ}).format(date);
+    }
+
+    function setSeasonTheme(seasonKey){
+      const cfg = SEASONS_DATA?.seasons?.[seasonKey];
+      const color = cfg?.color || '#ca8a04';
+      document.getElementById('seasonCard')?.style.setProperty('--season-color',color);
+      document.getElementById('seasonModal')?.style.setProperty('--season-color',color);
+    }
+
+    function renderSeasonCard(state){
+      const {current,next,daysRemaining} = state;
+      document.getElementById('seasonDays').textContent = daysRemaining;
+      document.getElementById('seasonName').textContent = current.name;
+      document.getElementById('seasonNext').textContent = `التالي: ${next.name}`;
+      setSeasonTheme(current.season);
+      setRing('seasonRing',(current.days-Math.min(current.days,daysRemaining))/current.days);
+    }
+
+    function renderSeasonModal(state){
+      const {current,next,start,endDate,nextStart,daysRemaining} = state;
+      const seasonCfg = SEASONS_DATA.seasons[current.season] || {};
+      document.getElementById('seasonDialogKicker').textContent = `${seasonCfg.icon||'✦'} ${seasonCfg.label||current.season}`;
+      document.getElementById('seasonDialogTitle').textContent = current.name;
+      document.getElementById('seasonDescription').textContent = current.description;
+      document.getElementById('seasonDetailSeason').textContent = seasonCfg.label || current.season;
+      document.getElementById('seasonDetailStart').textContent = formatSeasonDate(start);
+      document.getElementById('seasonDetailEnd').textContent = formatSeasonDate(endDate);
+      document.getElementById('seasonDetailDuration').textContent = `${current.days} يوماً`;
+      document.getElementById('seasonDetailDay').textContent = current.dayLength;
+      document.getElementById('seasonDetailNight').textContent = current.nightLength;
+      document.getElementById('seasonDetailAverage').textContent = `${current.temperature.average}°`;
+      document.getElementById('seasonDetailMax').textContent = `${current.temperature.max}°`;
+      document.getElementById('seasonDetailMin').textContent = `${current.temperature.min}°`;
+      document.getElementById('seasonTraits').innerHTML = current.traits.map(x=>`<span class="season-trait">${x}</span>`).join('');
+      const folkSection = document.getElementById('seasonFolkSection');
+      if(current.folkSaying?.text){
+        document.getElementById('seasonFolkQuote').textContent = `«${current.folkSaying.text}»`;
+        document.getElementById('seasonFolkMeaning').textContent = current.folkSaying.meaning || '';
+        folkSection?.classList.add('is-visible');
+      }else{
+        folkSection?.classList.remove('is-visible');
+        document.getElementById('seasonFolkQuote').textContent = '—';
+        document.getElementById('seasonFolkMeaning').textContent = '';
+      }
+      document.getElementById('seasonUpcoming').textContent = `${next.name} — ${formatSeasonDate(nextStart)}، بعد ${daysRemaining} أيام`;
+      document.getElementById('seasonSourceNote').textContent = SEASONS_DATA.note || 'البيانات موسمية تقريبية ولا تمثل توقعاً يومياً للطقس.';
+    }
+
+    function buildSeasonStateByIndex(index, now = new Date()){
+      const p = riyadhDateParts(now);
+      const today = dateAtRiyadhNoon(p.year,p.month,p.day);
+      const item = SEASONS_DATA.entries[index];
+      const nextIndex = (index + 1) % SEASONS_DATA.entries.length;
+      const next = SEASONS_DATA.entries[nextIndex];
+      const cycleStartYear = currentSeasonState.start.getFullYear() - (currentSeasonState.current.start.month === 12 ? 0 : 1);
+      const itemYear = item.start.month === 12 ? cycleStartYear : cycleStartYear + 1;
+      const nextYear = next.start.month === 12 ? cycleStartYear + 1 : cycleStartYear + 1;
+      const start = seasonStartDate(item,itemYear);
+      let nextStart = seasonStartDate(next,nextYear);
+      if(nextStart <= start) nextStart = seasonStartDate(next,nextYear + 1);
+      const DAY_MS=86400000;
+      return {current:item,next,start,nextStart,endDate:new Date(nextStart-DAY_MS),daysRemaining:Math.max(0,Math.ceil((nextStart-today)/DAY_MS)),currentIndex:index};
+    }
+
+    function showSeasonDetails(state, isCurrent=false){
+      renderSeasonModal(state);
+      const titlePrefix = isCurrent ? 'الموسم الحالي' : 'تفاصيل الطالع';
+      const seasonCfg = SEASONS_DATA.seasons[state.current.season] || {};
+      document.getElementById('seasonDialogKicker').textContent = `${seasonCfg.icon||'✦'} ${titlePrefix} — ${seasonCfg.label||state.current.season}`;
+      setSeasonTheme(state.current.season);
+      document.getElementById('seasonCurrentView').classList.remove('is-hidden');
+      document.getElementById('seasonBrowser').classList.remove('is-visible');
+      document.getElementById('seasonBrowser').setAttribute('aria-hidden','true');
+      document.getElementById('browseSeasonsBtn').textContent = isCurrent ? 'استعراض الأنواء' : 'العودة إلى قائمة الأنواء';
+      document.getElementById('browseSeasonsBtn').dataset.mode = isCurrent ? 'browse' : 'list';
+    }
+
+    function renderSeasonBrowser(){
+      const list=document.getElementById('seasonBrowserList');
+      const currentIndex=currentSeasonState.currentIndex;
+      list.innerHTML=SEASONS_DATA.entries.map((item,index)=>{
+        const cfg=SEASONS_DATA.seasons[item.season]||{};
+        const isCurrent=index===currentIndex;
+        return `<button class="season-browser-item ${isCurrent?'is-current':''}" type="button" data-season-index="${index}" style="--item-color:${cfg.color||'#ca8a04'}" aria-label="عرض تفاصيل ${item.name}"><strong><span class="season-browser-dot"></span>${item.name}</strong><span class="season-browser-meta"><span>${cfg.icon||'✦'} ${cfg.label||item.season}</span><span>${item.start.day}/${item.start.month}</span></span></button>`;
+      }).join('');
+    }
+
+    function openSeasonBrowser(){
+      renderSeasonBrowser();
+      document.getElementById('seasonCurrentView').classList.add('is-hidden');
+      const browser=document.getElementById('seasonBrowser');
+      browser.classList.add('is-visible');
+      browser.setAttribute('aria-hidden','false');
+      document.getElementById('seasonDialogKicker').textContent='دليل المواسم';
+      document.getElementById('seasonDialogTitle').textContent='استعراض الأنواء';
+      browser.querySelector('.season-browser-item.is-current')?.scrollIntoView({block:'nearest'});
+    }
+
+    function openSeasonModal(){
+      if(!currentSeasonState) return;
+      seasonLastFocused = document.activeElement;
+      showSeasonDetails(currentSeasonState,true);
+      const modal = document.getElementById('seasonModal');
+      modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      document.getElementById('seasonModalClose').focus();
+    }
+
+    function closeSeasonModal(){
+      const modal = document.getElementById('seasonModal');
+      modal.classList.remove('is-visible');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      seasonLastFocused?.focus?.();
+    }
+
+    function showSeasonLoadError(){
+      const name = document.getElementById('seasonName');
+      const next = document.getElementById('seasonNext');
+      if(name){name.textContent='تعذر التحميل';name.classList.add('season-error')}
+      if(next) next.textContent='تحقق من ./Data/seasons-v2.js';
+    }
+
+    async function initSeasons(){
+      try{
+        let data = SEASONS_DATA;
+
+        // عند تشغيل الصفحة مباشرة من الجهاز يعمل seasons-v2.js دون الحاجة إلى خادم محلي.
+        // وعند الاستضافة يمكن استخدام JSON كخيار احتياطي.
+        if(!data){
+          const response = await fetch('./Data/seasons.json',{cache:'no-store'});
+          if(!response.ok) throw new Error(`HTTP ${response.status}`);
+          data = await response.json();
+        }
+
+        if(!Array.isArray(data.entries) || data.entries.length!==28) throw new Error('Invalid seasons data');
+        SEASONS_DATA = data;
+        currentSeasonState = resolveCurrentSeason(data);
+        renderSeasonCard(currentSeasonState);
+      }catch(error){
+        console.error('تعذر تحميل بيانات الطوالع:',error);
+        showSeasonLoadError();
+      }
+    }
+
+    document.getElementById('seasonCard')?.addEventListener('click',openSeasonModal);
+    document.getElementById('seasonCard')?.addEventListener('keydown',(event)=>{
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();openSeasonModal()}
+    });
+    document.getElementById('seasonModalClose')?.addEventListener('click',closeSeasonModal);
+    document.getElementById('seasonModal')?.addEventListener('click',(event)=>{
+      if(event.target===event.currentTarget) closeSeasonModal();
+    });
+    document.addEventListener('keydown',(event)=>{
+      if(event.key==='Escape'&&document.getElementById('seasonModal')?.classList.contains('is-visible')) closeSeasonModal();
+    });
+
+
+    document.getElementById('browseSeasonsBtn')?.addEventListener('click',()=>{
+      const mode=document.getElementById('browseSeasonsBtn').dataset.mode;
+      if(mode==='list') openSeasonBrowser(); else openSeasonBrowser();
+    });
+    document.getElementById('backToCurrentSeason')?.addEventListener('click',()=>showSeasonDetails(currentSeasonState,true));
+    document.getElementById('seasonBrowserList')?.addEventListener('click',(event)=>{
+      const button=event.target.closest('[data-season-index]');
+      if(!button) return;
+      const index=Number(button.dataset.seasonIndex);
+      const state=buildSeasonStateByIndex(index);
+      showSeasonDetails(state,index===currentSeasonState.currentIndex);
+    });
+
     loadKnowledgeBase();
     updateWellnessCounters();
+    initSeasons();
     updateGoldPrice();
     setInterval(updateGoldPrice, 60000);
 
