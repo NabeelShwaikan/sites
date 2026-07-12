@@ -218,6 +218,33 @@
     @media (max-width:720px){.pulse-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.wellness-card{padding:9px 7px;gap:6px}.season-details-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:520px){.pulse-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.wellness-card{min-height:105px;flex-direction:column;text-align:center}.wellness-meta{width:100%}.ring-wrap,.ring-svg{width:58px;height:58px;flex-basis:58px}.ring-number{font-size:17px}.ring-unit{font-size:9px}.wellness-title{font-size:11px}.wellness-date{font-size:9.5px}.season-name{font-size:12px}.season-next{font-size:9px}.season-modal{padding:10px}.season-dialog{padding:17px;border-radius:18px;max-height:92vh}}
 
+
+    /* ——— سجل أسعار الذهب ——— */
+    .gold-ticker{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+    .gold-ticker:hover{transform:translateY(-2px)}
+    .gold-ticker:focus-visible{outline:3px solid rgba(212,175,55,.38);outline-offset:3px}
+    .gold-modal{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.64);backdrop-filter:blur(7px)}
+    .gold-modal.is-visible{display:flex}
+    .gold-dialog{width:min(760px,100%);max-height:min(90vh,860px);overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 80px rgba(2,6,23,.34);padding:22px;position:relative}
+    .gold-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .gold-kicker{font-size:12px;font-weight:900;color:#b45309;margin-bottom:4px}
+    .gold-dialog-title{margin:0;font-size:clamp(21px,4vw,29px);line-height:1.4}
+    .gold-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:36px;height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:20px;font-weight:900;line-height:1}
+    .gold-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0 14px}
+    .gold-stat{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:10px}
+    .gold-stat small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}.gold-stat strong{display:block;margin-top:3px;font-size:14px;line-height:1.4}
+    .gold-stat .up{color:#16a34a}.gold-stat .down{color:#dc2626}.gold-stat .flat{color:#b45309}
+    .gold-range{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+    .gold-range-btn,.gold-data-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:7px 11px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:900}
+    .gold-range-btn.is-active{background:linear-gradient(135deg,#ca8a04,#f59e0b);color:#fff;border-color:transparent}
+    .gold-chart-wrap{position:relative;min-height:300px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,rgba(245,158,11,.07),transparent 72%);padding:12px;overflow:hidden}
+    .gold-chart{display:block;width:100%;height:290px;overflow:visible}
+    .gold-chart-grid{stroke:rgba(148,163,184,.22);stroke-width:1}.gold-chart-line{fill:none;stroke:#d4af37;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.gold-chart-area{fill:url(#goldAreaGradient)}.gold-chart-point{fill:#fff;stroke:#ca8a04;stroke-width:2;cursor:pointer}.gold-chart-label{fill:var(--muted);font-size:10px;font-family:"Cairo",sans-serif}.gold-chart-value{fill:var(--ink);font-size:11px;font-weight:800;font-family:"Cairo",sans-serif}
+    .gold-empty{min-height:260px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding:24px}
+    .gold-tooltip{position:absolute;display:none;pointer-events:none;z-index:2;background:var(--ink);color:var(--panel);border-radius:10px;padding:7px 9px;font-size:11px;font-weight:800;white-space:nowrap;transform:translate(-50%,-115%);box-shadow:var(--shadow)}
+    .gold-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.gold-note{margin-top:10px;color:var(--muted);font-size:11.5px;line-height:1.7}
+    @media(max-width:620px){.gold-modal{padding:10px}.gold-dialog{padding:17px;border-radius:18px;max-height:93vh}.gold-stats{grid-template-columns:1fr 1fr}.gold-chart-wrap{min-height:270px;padding:7px}.gold-chart{height:260px}.gold-data-btn{flex:1}}
+
   </style>
 </head>
 <body>
@@ -360,7 +387,7 @@
     </div>
 
 
-    <div class="gold-ticker is-flat" id="goldCard" aria-label="ذهب اليوم">
+    <div class="gold-ticker is-flat" id="goldCard" role="button" tabindex="0" aria-label="ذهب اليوم — اضغط لعرض سجل الأسعار">
       <div class="gold-ticker-main">
         <span class="gold-badge" aria-hidden="true">🪙</span>
         <span class="gold-title">ذهب اليوم</span>
@@ -371,6 +398,38 @@
         <span class="gold-unit">ر.س / جرام 24K</span>
         <span class="gold-status" id="goldTrend">● سعر لحظي تقريبي</span>
       </div>
+    </div>
+
+    <div class="gold-modal" id="goldModal" aria-hidden="true">
+      <article class="gold-dialog" role="dialog" aria-modal="true" aria-labelledby="goldDialogTitle">
+        <div class="gold-dialog-head">
+          <div><div class="gold-kicker">سجل محلي على هذا الجهاز</div><h2 class="gold-dialog-title" id="goldDialogTitle">اتجاه سعر الذهب 24K</h2></div>
+          <button class="gold-close" id="goldModalClose" type="button" aria-label="إغلاق">×</button>
+        </div>
+        <div class="gold-stats">
+          <div class="gold-stat"><small>آخر سعر</small><strong id="goldStatLatest">—</strong></div>
+          <div class="gold-stat"><small>التغير</small><strong id="goldStatChange">—</strong></div>
+          <div class="gold-stat"><small>الأعلى</small><strong id="goldStatHigh">—</strong></div>
+          <div class="gold-stat"><small>الأدنى</small><strong id="goldStatLow">—</strong></div>
+        </div>
+        <div class="gold-range" aria-label="نطاق المخطط">
+          <button class="gold-range-btn" type="button" data-days="7">7 أيام</button>
+          <button class="gold-range-btn is-active" type="button" data-days="30">30 يوماً</button>
+          <button class="gold-range-btn" type="button" data-days="90">3 أشهر</button>
+          <button class="gold-range-btn" type="button" data-days="0">الكل</button>
+        </div>
+        <div class="gold-chart-wrap" id="goldChartWrap">
+          <svg class="gold-chart" id="goldChart" viewBox="0 0 700 290" preserveAspectRatio="none" aria-label="مخطط أسعار الذهب"></svg>
+          <div class="gold-tooltip" id="goldTooltip"></div>
+          <div class="gold-empty" id="goldEmpty" hidden>يبدأ المخطط بعد تسجيل أول سعر، ويزداد وضوحه مع زياراتك اليومية لبوابة مسار.</div>
+        </div>
+        <div class="gold-actions">
+          <button class="gold-data-btn" id="goldExportBtn" type="button">تصدير السجل</button>
+          <button class="gold-data-btn" id="goldImportBtn" type="button">استيراد سجل</button>
+          <input id="goldImportInput" type="file" accept="application/json,.json" hidden>
+        </div>
+        <div class="gold-note">يحفظ مسار سعراً واحداً لكل يوم داخل متصفح هذا الجهاز. الأيام التي لا تفتح فيها البوابة لن تُسجل تلقائياً.</div>
+      </article>
     </div>
 
 
@@ -1146,7 +1205,8 @@
         // الأونصة = 31.1034768 جرام، والدولار = 3.75 ريال
         const priceSARPerGram = (priceUSDPerOunce * 3.75) / 31.1034768;
         
-        document.getElementById('goldPrice').textContent = Math.round(priceSARPerGram);
+        document.getElementById('goldPrice').textContent = priceSARPerGram.toFixed(2);
+        await saveGoldDailyPrice(priceSARPerGram);
         
         const now = new Date();
         const timeStr = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
@@ -1162,6 +1222,177 @@
       }
     }
 
+
+
+    // ——— سجل أسعار الذهب المحلي (IndexedDB) ———
+    const GOLD_DB_NAME = 'MasarDB';
+    const GOLD_DB_VERSION = 1;
+    const GOLD_STORE = 'goldPriceHistory';
+    let goldCurrentRangeDays = 30;
+    let goldLastFocused = null;
+
+    function openGoldDB(){
+      return new Promise((resolve,reject)=>{
+        if(!('indexedDB' in window)) return reject(new Error('IndexedDB غير مدعوم'));
+        const req=indexedDB.open(GOLD_DB_NAME,GOLD_DB_VERSION);
+        req.onupgradeneeded=()=>{
+          const db=req.result;
+          if(!db.objectStoreNames.contains(GOLD_STORE)){
+            const store=db.createObjectStore(GOLD_STORE,{keyPath:'date'});
+            store.createIndex('capturedAt','capturedAt',{unique:false});
+          }
+        };
+        req.onsuccess=()=>resolve(req.result);
+        req.onerror=()=>reject(req.error || new Error('تعذر فتح قاعدة البيانات'));
+      });
+    }
+
+    function goldDateKey(date=new Date()){
+      const parts=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
+      const get=t=>parts.find(p=>p.type===t)?.value;
+      return `${get('year')}-${get('month')}-${get('day')}`;
+    }
+
+    async function saveGoldDailyPrice(price){
+      if(!Number.isFinite(price) || price<=0) return;
+      const db=await openGoldDB();
+      await new Promise((resolve,reject)=>{
+        const tx=db.transaction(GOLD_STORE,'readwrite');
+        tx.objectStore(GOLD_STORE).put({
+          date:goldDateKey(),
+          price:Number(price.toFixed(2)),
+          unit:'SAR_PER_GRAM_24K',
+          capturedAt:new Date().toISOString()
+        });
+        tx.oncomplete=resolve;
+        tx.onerror=()=>reject(tx.error || new Error('تعذر حفظ سعر الذهب'));
+      });
+      db.close();
+    }
+
+    async function getGoldHistory(){
+      const db=await openGoldDB();
+      const rows=await new Promise((resolve,reject)=>{
+        const tx=db.transaction(GOLD_STORE,'readonly');
+        const req=tx.objectStore(GOLD_STORE).getAll();
+        req.onsuccess=()=>resolve(req.result || []);
+        req.onerror=()=>reject(req.error || new Error('تعذر قراءة سجل الذهب'));
+      });
+      db.close();
+      return rows.filter(r=>r && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && Number.isFinite(Number(r.price))).sort((a,b)=>a.date.localeCompare(b.date));
+    }
+
+    function filterGoldHistory(rows,days){
+      if(!days) return rows;
+      const cutoff=new Date();
+      cutoff.setHours(0,0,0,0);
+      cutoff.setDate(cutoff.getDate()-(days-1));
+      return rows.filter(r=>new Date(`${r.date}T12:00:00+03:00`)>=cutoff);
+    }
+
+    function formatGoldDate(dateKey,withYear=false){
+      return new Intl.DateTimeFormat('ar-SA',{day:'numeric',month:'short',year:withYear?'numeric':undefined,timeZone:TZ}).format(new Date(`${dateKey}T12:00:00+03:00`));
+    }
+
+    function renderGoldStats(rows){
+      const latestEl=document.getElementById('goldStatLatest');
+      const changeEl=document.getElementById('goldStatChange');
+      const highEl=document.getElementById('goldStatHigh');
+      const lowEl=document.getElementById('goldStatLow');
+      if(!rows.length){[latestEl,changeEl,highEl,lowEl].forEach(el=>el.textContent='—');return;}
+      const values=rows.map(r=>Number(r.price));
+      const latest=values.at(-1), first=values[0], diff=latest-first, pct=first?diff/first*100:0;
+      latestEl.textContent=`${latest.toFixed(2)} ر.س`;
+      changeEl.textContent=`${diff>0?'+':''}${diff.toFixed(2)} (${pct>0?'+':''}${pct.toFixed(2)}%)`;
+      changeEl.className=diff>0?'up':diff<0?'down':'flat';
+      highEl.textContent=`${Math.max(...values).toFixed(2)} ر.س`;
+      lowEl.textContent=`${Math.min(...values).toFixed(2)} ر.س`;
+    }
+
+    function renderGoldChart(rows){
+      const svg=document.getElementById('goldChart');
+      const empty=document.getElementById('goldEmpty');
+      const tooltip=document.getElementById('goldTooltip');
+      svg.innerHTML=''; tooltip.style.display='none';
+      if(rows.length<2){
+        svg.hidden=true;empty.hidden=false;
+        renderGoldStats(rows);
+        return;
+      }
+      svg.hidden=false;empty.hidden=true;renderGoldStats(rows);
+      const W=700,H=290,pad={l:52,r:20,t:22,b:40};
+      const vals=rows.map(r=>Number(r.price));
+      let min=Math.min(...vals),max=Math.max(...vals);
+      const spread=Math.max(max-min,1);
+      min-=spread*.16;max+=spread*.16;
+      const x=i=>pad.l+(i/(rows.length-1))*(W-pad.l-pad.r);
+      const y=v=>pad.t+((max-v)/(max-min))*(H-pad.t-pad.b);
+      const ns='http://www.w3.org/2000/svg';
+      const defs=document.createElementNS(ns,'defs');
+      defs.innerHTML='<linearGradient id="goldAreaGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4af37" stop-opacity=".30"/><stop offset="100%" stop-color="#d4af37" stop-opacity="0"/></linearGradient>';
+      svg.appendChild(defs);
+      for(let i=0;i<5;i++){
+        const gy=pad.t+i*(H-pad.t-pad.b)/4;
+        const line=document.createElementNS(ns,'line');line.setAttribute('x1',pad.l);line.setAttribute('x2',W-pad.r);line.setAttribute('y1',gy);line.setAttribute('y2',gy);line.setAttribute('class','gold-chart-grid');svg.appendChild(line);
+        const label=document.createElementNS(ns,'text');label.setAttribute('x',pad.l-8);label.setAttribute('y',gy+4);label.setAttribute('text-anchor','end');label.setAttribute('class','gold-chart-label');label.textContent=(max-i*(max-min)/4).toFixed(0);svg.appendChild(label);
+      }
+      const points=rows.map((r,i)=>[x(i),y(Number(r.price))]);
+      const linePath='M '+points.map(p=>p.join(' ')).join(' L ');
+      const area=document.createElementNS(ns,'path');area.setAttribute('d',`${linePath} L ${points.at(-1)[0]} ${H-pad.b} L ${points[0][0]} ${H-pad.b} Z`);area.setAttribute('class','gold-chart-area');svg.appendChild(area);
+      const path=document.createElementNS(ns,'path');path.setAttribute('d',linePath);path.setAttribute('class','gold-chart-line');svg.appendChild(path);
+      const labelIndexes=[0,Math.floor((rows.length-1)/2),rows.length-1];
+      [...new Set(labelIndexes)].forEach(i=>{const t=document.createElementNS(ns,'text');t.setAttribute('x',x(i));t.setAttribute('y',H-13);t.setAttribute('text-anchor',i===0?'start':i===rows.length-1?'end':'middle');t.setAttribute('class','gold-chart-label');t.textContent=formatGoldDate(rows[i].date);svg.appendChild(t)});
+      rows.forEach((r,i)=>{
+        const c=document.createElementNS(ns,'circle');c.setAttribute('cx',x(i));c.setAttribute('cy',y(Number(r.price)));c.setAttribute('r',rows.length>45?'2.5':'4');c.setAttribute('class','gold-chart-point');
+        const show=(ev)=>{const wrap=document.getElementById('goldChartWrap');const rect=wrap.getBoundingClientRect();const sx=ev.clientX-rect.left,sy=ev.clientY-rect.top;tooltip.textContent=`${formatGoldDate(r.date,true)} — ${Number(r.price).toFixed(2)} ر.س`;tooltip.style.left=`${sx}px`;tooltip.style.top=`${sy}px`;tooltip.style.display='block'};
+        c.addEventListener('pointerenter',show);c.addEventListener('pointermove',show);c.addEventListener('pointerleave',()=>tooltip.style.display='none');c.addEventListener('click',show);svg.appendChild(c);
+      });
+    }
+
+    async function refreshGoldHistory(){
+      try{renderGoldChart(filterGoldHistory(await getGoldHistory(),goldCurrentRangeDays));}
+      catch(err){console.error(err);document.getElementById('goldEmpty').hidden=false;document.getElementById('goldEmpty').textContent='تعذر قراءة السجل المحلي على هذا المتصفح.';}
+    }
+
+    async function openGoldModal(){
+      goldLastFocused=document.activeElement;
+      document.getElementById('goldModal').classList.add('is-visible');
+      document.getElementById('goldModal').setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      await refreshGoldHistory();
+      document.getElementById('goldModalClose').focus();
+    }
+    function closeGoldModal(){
+      document.getElementById('goldModal').classList.remove('is-visible');document.getElementById('goldModal').setAttribute('aria-hidden','true');document.body.style.overflow='';goldLastFocused?.focus?.();
+    }
+
+    async function exportGoldHistory(){
+      const rows=await getGoldHistory();
+      const blob=new Blob([JSON.stringify({app:'Masar',type:'goldPriceHistory',version:1,exportedAt:new Date().toISOString(),records:rows},null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`masar-gold-history-${goldDateKey()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),500);
+    }
+    async function importGoldHistoryFile(file){
+      const data=JSON.parse(await file.text());
+      const records=Array.isArray(data)?data:data.records;
+      if(!Array.isArray(records)) throw new Error('صيغة الملف غير صحيحة');
+      const valid=records.filter(r=>r && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && Number.isFinite(Number(r.price)) && Number(r.price)>0).map(r=>({date:r.date,price:Number(Number(r.price).toFixed(2)),unit:'SAR_PER_GRAM_24K',capturedAt:r.capturedAt||new Date().toISOString()}));
+      if(!valid.length) throw new Error('لا توجد سجلات صالحة');
+      const db=await openGoldDB();
+      await new Promise((resolve,reject)=>{const tx=db.transaction(GOLD_STORE,'readwrite'),store=tx.objectStore(GOLD_STORE);valid.forEach(r=>store.put(r));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});db.close();await refreshGoldHistory();return valid.length;
+    }
+
+    function initGoldHistoryUI(){
+      const card=document.getElementById('goldCard');
+      card.addEventListener('click',openGoldModal);
+      card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGoldModal()}});
+      document.getElementById('goldModalClose').addEventListener('click',closeGoldModal);
+      document.getElementById('goldModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeGoldModal()});
+      document.querySelectorAll('.gold-range-btn').forEach(btn=>btn.addEventListener('click',async()=>{document.querySelectorAll('.gold-range-btn').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');goldCurrentRangeDays=Number(btn.dataset.days);await refreshGoldHistory()}));
+      document.getElementById('goldExportBtn').addEventListener('click',()=>exportGoldHistory().catch(err=>alert(err.message)));
+      document.getElementById('goldImportBtn').addEventListener('click',()=>document.getElementById('goldImportInput').click());
+      document.getElementById('goldImportInput').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const n=await importGoldHistoryFile(file);alert(`تم استيراد ${n} سجل بنجاح.`)}catch(err){alert(`تعذر الاستيراد: ${err.message}`)}finally{e.target.value=''}});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('goldModal').classList.contains('is-visible'))closeGoldModal()});
+    }
 
 
     // ——— الموسم والطوالع: البيانات في Data/seasons-v2.js (مع دعم JSON عند الاستضافة) ———
@@ -1399,6 +1630,7 @@
     loadKnowledgeBase();
     updateWellnessCounters();
     initSeasons();
+    initGoldHistoryUI();
     updateGoldPrice();
     setInterval(updateGoldPrice, 60000);
 
