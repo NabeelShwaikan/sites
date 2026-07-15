@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>بوابة مسار</title>
   <meta name="description" content="فهرس نظيف وهادئ بدون شريط البحث." />
-  <link rel="manifest" href="Data/icons/manifest.json">
-  <link rel="icon" href="Data/icons/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="Data/icons/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="Data/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="Data/icons/icon-192.png">
-  <link rel="apple-touch-icon" href="Data/icons/apple-touch-icon.png">
-  <meta name="theme-color" content="#2563eb">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="مسار">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -55,23 +45,8 @@
 
     header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px}
     .brand{display:flex; align-items:center; gap:14px}
-    .logo{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      overflow:hidden;
-      background:transparent;
-      box-shadow:var(--shadow);
-      display:grid;
-      place-items:center
-    }
-    .logo-img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      border-radius:18px
-    }
+    .logo{width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow); display:grid; place-items:center}
+    .logo svg{width:22px; height:22px; fill:#fff}
     h1{margin:0; font-size:clamp(20px, 3.5vw, 28px)}
     .subtitle{color:var(--muted); font-size:14px; margin-top:2px}
 
@@ -90,169 +65,47 @@
     @keyframes twirl{from{transform:rotate(0deg)} to{transform:rotate(180deg)}}
     .btn.icon.twirl{animation: twirl .45s ease}
 
-    .panel{background: var(--panel); border:1.5px solid rgba(16,185,129,.24); border-inline-start:5px solid rgba(16,185,129,.62); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .panel{background: var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
 
     section{margin-top:18px}
     section h2{margin:0 0 8px; font-size:16px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:18px;padding:18px;align-items:start}
-    .app-tile{display:flex;flex-direction:column;align-items:center;gap:9px;text-decoration:none;color:var(--ink);min-width:0}
-    .app-tile-icon{width:78px;height:78px;border-radius:24px;display:grid;place-items:center;font-size:36px;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.58),0 16px 30px rgba(2,6,23,.14),0 4px 9px rgba(2,6,23,.08);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
-    .app-tile-icon::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.72),transparent 30%),linear-gradient(145deg,rgba(255,255,255,.24),transparent 42%)}
-    .app-tile-icon span{position:relative;z-index:1;filter:drop-shadow(0 4px 7px rgba(0,0,0,.18))}
-    .app-tile:hover .app-tile-icon{transform:translateY(-5px) scale(1.045);box-shadow:inset 0 1px 0 rgba(255,255,255,.68),0 20px 36px rgba(2,6,23,.18),0 5px 12px rgba(2,6,23,.10)}
-    .app-tile:active .app-tile-icon{transform:translateY(-1px) scale(.98)}
-    .app-tile:focus-visible{outline:2px solid rgba(96,165,250,.55);outline-offset:6px;border-radius:18px}
-    .app-tile-name{font-size:13px;font-weight:800;text-align:center;line-height:1.35;max-width:92px;white-space:normal}
-    .cat-religion{background:linear-gradient(145deg,#15803d,#86efac)}
-    .cat-education{background:linear-gradient(145deg,#2563eb,#93c5fd)}
-    .cat-knowledge{background:linear-gradient(145deg,#7c3aed,#c4b5fd)}
-    .cat-personal{background:linear-gradient(145deg,#92400e,#fbbf24)}
-    .cat-health{background:linear-gradient(145deg,#dc2626,#fca5a5)}
-    .cat-family{background:linear-gradient(145deg,#047857,#6ee7b7)}
-    .cat-fun{background:linear-gradient(145deg,#ea580c,#fdba74)}
-    .cat-event{background:linear-gradient(145deg,#ca8a04,#fde68a)}
-    .cat-tool{background:linear-gradient(145deg,#0f172a,#60a5fa)}
-    .cat-stocks{background:linear-gradient(145deg,#047857,#22c55e,#86efac)}
-    @media (max-width:520px){.grid{grid-template-columns:repeat(4,1fr);gap:14px;padding:15px 12px}.app-tile-icon{width:60px;height:60px;border-radius:19px;font-size:28px}.app-tile-name{font-size:11.5px;max-width:72px}}
+    .grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:14px; padding:14px}
+    .card{
+      position:relative; overflow:hidden; background: var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px; display:flex; gap:12px; align-items:flex-start; transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color: rgba(37,99,235,.35)}
+    .ic{min-width:38px; height:38px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; transition: transform .18s ease} 
+    .card:hover .ic, .card:focus-within .ic{ transform: rotate(10deg) } 
+    @media (prefers-reduced-motion: reduce){ .ic{transition:none} }
+    .ic svg{width:18px; height:18px; fill:#fff}
+    .card a{color:inherit; text-decoration:none}
+    .card h3{margin:0 0 6px; font-size:16px}
+    .muted{color:var(--muted)}
 
     footer{margin-top:24px; text-align:center; color:var(--muted); font-size:13px}
-/* انتقال ناعم بين السمات (ثالثًا-2) */
+      .topbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px}
+    .pill{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow); font-size:13px; color:var(--ink)}
+    .pill::before{content:""; width:6px; height:6px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2))}
+
+      /* انتقال ناعم بين السمات (ثالثًا-2) */
     html[data-theme], body{transition: background-color .4s ease, color .4s ease}
-    .panel, .btn, .logo{transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease}
-
-  
-    .status-line{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;margin:2px 0 14px;color:var(--muted);font-size:13px;font-weight:600}
-    .status-line span{white-space:nowrap}.status-line .time-value{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
-
-    .adhkar-card{margin:6px 0 18px;background:radial-gradient(circle at top left,rgba(16,185,129,.10),transparent 34%),radial-gradient(circle at bottom right,rgba(245,158,11,.12),transparent 36%),var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;position:relative;overflow:hidden}
-    .adhkar-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#10b981,#f59e0b)}
-    .adhkar-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-    .adhkar-title{font-size:14px;font-weight:900;color:var(--ink)}
-    .adhkar-controls{display:flex;gap:7px;align-items:center}
-    .adhkar-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:28px;height:28px;border-radius:999px;cursor:pointer;display:grid;place-items:center;font-family:inherit;font-weight:900;line-height:1}
-    .adhkar-body{min-height:76px;display:grid;gap:8px;align-content:center;transition:opacity .28s ease,transform .28s ease}
-    .adhkar-body.is-changing{opacity:0;transform:translateY(6px)}
-    .adhkar-text{font-size:clamp(16px,2vw,20px);line-height:1.9;font-weight:800;color:var(--ink)}
-    .adhkar-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12.5px;font-weight:800}
-    .adhkar-count{color:#b45309;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.22);border-radius:999px;padding:3px 9px}
-    @media (max-width:520px){.adhkar-card{padding:13px 14px}.adhkar-head{align-items:flex-start}.adhkar-text{font-size:16px;line-height:1.85}.adhkar-body{min-height:92px}}
-
-
-    .knowledge-card{margin:6px 0 18px;background:radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 34%),radial-gradient(circle at bottom right,rgba(16,185,129,.10),transparent 36%),var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;position:relative;overflow:hidden}
-    .knowledge-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--brand),var(--brand-2))}
-    .knowledge-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.knowledge-title{font-size:15px;font-weight:800;color:var(--ink)}
-    .knowledge-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:5px 9px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700}
-    .knowledge-text{font-size:clamp(17px,2.2vw,22px);line-height:1.85;font-weight:700;margin:4px 0 12px;color:var(--ink)}
-        .knowledge-practical{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);color:var(--muted);font-size:14px;line-height:1.8}.knowledge-card.is-open .knowledge-practical{display:block}
-    .knowledge-card{cursor:pointer}.knowledge-card:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:3px}
-    .knowledge-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.62);backdrop-filter:blur(7px)}
-    .knowledge-modal.is-visible{display:flex}.knowledge-dialog{width:min(680px,100%);max-height:min(88vh,820px);overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 80px rgba(2,6,23,.32);padding:22px;position:relative}
-    .knowledge-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.knowledge-dialog-kicker{color:var(--brand);font-size:12px;font-weight:900;margin-bottom:4px}.knowledge-dialog-title{font-size:clamp(20px,3vw,27px);line-height:1.45;margin:0}.knowledge-dialog-actions{display:flex;gap:7px;align-items:center}.knowledge-save,.knowledge-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900}.knowledge-close{width:36px;font-size:20px;line-height:1;flex:0 0 auto}.knowledge-save{padding:0 11px;font-size:12px}.knowledge-save[aria-pressed="true"]{color:#b45309;background:rgba(245,158,11,.13);border-color:rgba(245,158,11,.3)}
-    .knowledge-dialog-message{font-size:18px;font-weight:800;line-height:1.8;padding:13px 15px;border-radius:15px;background:linear-gradient(135deg,rgba(37,99,235,.09),rgba(16,185,129,.08));margin-bottom:16px}.knowledge-detail-section{padding:13px 0;border-top:1px solid var(--border)}.knowledge-detail-label{font-size:12px;font-weight:900;color:var(--muted);margin-bottom:5px}.knowledge-detail-value{font-size:15px;line-height:1.85}.knowledge-detail-action{color:#047857;font-weight:800}.knowledge-detail-question{font-weight:800}
-    .knowledge-meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}.knowledge-meta-chip{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:9px 10px}.knowledge-meta-chip small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}.knowledge-meta-chip strong{display:block;margin-top:2px;font-size:12.5px;line-height:1.5}.knowledge-source-card{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.22);border-radius:15px;padding:13px 14px}.knowledge-source-title{font-weight:900;line-height:1.6}.knowledge-source-author,.knowledge-source-topic,.knowledge-source-note{color:var(--muted);font-size:12.5px;line-height:1.7;margin-top:3px}.knowledge-related{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.knowledge-related span{background:var(--chip);border:1px solid var(--border);padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:800}
-    .knowledge-dialog-footer{position:sticky;bottom:-22px;margin:8px -22px -22px;padding:14px 22px;background:linear-gradient(180deg,transparent,var(--panel) 24%);display:flex;justify-content:center}.knowledge-apply-btn{width:100%;border:0;border-radius:14px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-family:inherit;font-size:14px;font-weight:900;cursor:pointer;box-shadow:var(--shadow)}.knowledge-apply-btn:disabled{cursor:default;filter:saturate(.4);opacity:.72}
-    .today-challenge{display:none;margin-top:13px;padding:13px 14px;border-radius:15px;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(37,99,235,.08));border:1px solid rgba(16,185,129,.27);cursor:default}.today-challenge.is-visible{display:block}.today-challenge-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.today-challenge-title{font-size:12px;font-weight:900;color:#047857}.today-challenge-action{font-size:14px;line-height:1.75;font-weight:800}.today-challenge-done{border:1px solid rgba(16,185,129,.35);background:#fff;color:#047857;border-radius:999px;padding:6px 11px;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer}.today-challenge-done.is-complete{background:#047857;color:#fff}.today-challenge-source{margin-top:5px;color:var(--muted);font-size:11px}
-    @media (max-width:520px){.knowledge-modal{padding:10px}.knowledge-dialog{padding:17px;border-radius:18px;max-height:92vh}.knowledge-meta-grid{grid-template-columns:1fr 1fr}.knowledge-dialog-message{font-size:16px}.knowledge-dialog-footer{bottom:-17px;margin:8px -17px -17px;padding:14px 17px}}
-    .pulse-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 10px}
-    .wellness-card{background:var(--panel);border:1.5px solid rgba(37,99,235,.28);border-inline-start:5px solid rgba(37,99,235,.62);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 14px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:104px}
-    .wellness-meta{min-width:0}.wellness-title{font-size:13px;font-weight:900;margin-bottom:4px}.wellness-date{color:var(--muted);font-size:11.5px;line-height:1.45}
-    .ring-wrap{position:relative;width:76px;height:76px;flex:0 0 76px;display:grid;place-items:center}.ring-svg{width:76px;height:76px;transform:rotate(-90deg)}.ring-bg{fill:none;stroke:rgba(148,163,184,.22);stroke-width:8}.ring-progress{fill:none;stroke:url(#ringGradient);stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease}
-    .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}.ring-number{font-size:22px;font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums}.ring-unit{font-size:10px;color:var(--muted);font-weight:800;margin-top:3px}
-    .gold-ticker{position:relative;overflow:hidden;margin:0 0 18px;border-radius:999px;border:1.5px solid rgba(212,175,55,.55);border-inline-start:7px solid #d4af37;background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(251,191,36,.06)),var(--panel);box-shadow:var(--shadow);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .gold-ticker::before{display:none}
-    .gold-ticker-main,.gold-ticker-price{position:relative;z-index:1;display:flex;align-items:center;gap:8px;min-width:0}
-    .gold-badge{width:32px;height:32px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#ca8a04,#fde68a);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 16px rgba(146,64,14,.18);font-size:18px}
-    .gold-title{font-size:13px;font-weight:900;color:#92400e;white-space:nowrap}
-    .gold-sub{font-size:12px;color:var(--muted);white-space:nowrap}
-    .gold-price{font-size:18px;font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-    .gold-unit{font-size:11px;font-weight:900;color:#b45309;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.22);border-radius:999px;padding:3px 8px;white-space:nowrap}
-    .gold-status{font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap}
-    .gold-ticker.is-up .gold-status{color:#16a34a}.gold-ticker.is-down .gold-status{color:#dc2626}.gold-ticker.is-flat .gold-status{color:#b45309}
-    @media (max-width:520px){.wrap{padding:20px}.knowledge-card{padding:15px}.knowledge-head{align-items:flex-start}.knowledge-text{font-size:17px}.pulse-strip{grid-template-columns:1fr 1fr;gap:10px}.wellness-card{padding:10px;min-height:96px;gap:8px}.ring-wrap,.ring-svg{width:66px;height:66px;flex-basis:66px}.ring-number{font-size:19px}.wellness-title{font-size:12px}.wellness-date{font-size:10.5px}.status-line{gap:10px;font-size:12.5px}.gold-ticker{border-radius:18px;align-items:flex-start;flex-direction:column;gap:8px}.gold-ticker-price{width:100%;justify-content:space-between}.gold-price{font-size:17px}}
-
-
-    /* ——— الموسم والطالع الحالي ——— */
-    .season-card{cursor:pointer;position:relative;overflow:hidden;transition:transform .16s ease,border-color .2s ease,box-shadow .2s ease}
-    .season-card:hover{transform:translateY(-2px)}
-    .season-card:focus-visible{outline:3px solid color-mix(in srgb,var(--season-color,#ca8a04) 38%,transparent);outline-offset:3px}
-    .season-card::after{content:"";position:absolute;inset:auto -24px -36px auto;width:92px;height:92px;border-radius:50%;background:color-mix(in srgb,var(--season-color,#ca8a04) 11%,transparent);pointer-events:none}
-    .season-ring{fill:none;stroke:var(--season-color,#ca8a04);stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease,stroke .35s ease}
-    .season-name{font-size:14px;font-weight:900;color:var(--season-color,#ca8a04);line-height:1.3}
-    .season-next{margin-top:3px;color:var(--muted);font-size:10.5px;line-height:1.45;font-weight:800}
-    .season-modal{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.62);backdrop-filter:blur(7px)}
-    .season-modal.is-visible{display:flex}
-    .season-dialog{width:min(620px,100%);max-height:min(88vh,780px);overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 80px rgba(2,6,23,.32);padding:22px;position:relative}
-    .season-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
-    .season-kicker{font-size:12px;font-weight:900;color:var(--season-color,#ca8a04);margin-bottom:4px}
-    .season-dialog-title{margin:0;font-size:clamp(22px,4vw,30px);line-height:1.4}
-    .season-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:36px;height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:20px;font-weight:900;line-height:1;flex:0 0 auto}
-    .season-summary{padding:13px 15px;border-radius:15px;background:color-mix(in srgb,var(--season-color,#ca8a04) 10%,var(--panel));border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 24%,transparent);font-size:15px;line-height:1.85;font-weight:700;margin-bottom:14px}
-    .season-details-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
-    .season-detail{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:9px 10px}
-    .season-detail small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}
-    .season-detail strong{display:block;margin-top:2px;font-size:13px;line-height:1.5}
-    .season-section{padding:13px 0;border-top:1px solid var(--border)}
-    .season-section-label{font-size:12px;font-weight:900;color:var(--muted);margin-bottom:7px}
-    .season-folk{display:none;background:color-mix(in srgb,var(--season-color,#ca8a04) 8%,var(--panel));border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 22%,transparent);border-radius:15px;padding:13px 14px}
-    .season-folk.is-visible{display:block}.season-folk-quote{font-size:15px;line-height:1.9;font-weight:900;color:var(--ink)}.season-folk-meaning{margin-top:7px;color:var(--muted);font-size:12.5px;line-height:1.75}
-    .season-traits{display:flex;gap:7px;flex-wrap:wrap}
-    .season-trait{background:color-mix(in srgb,var(--season-color,#ca8a04) 11%,var(--panel));border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 23%,transparent);color:var(--ink);padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:800}
-    .season-note{color:var(--muted);font-size:11.5px;line-height:1.7;margin-top:12px}
-    .season-error{color:#b91c1c;font-weight:800}
-
-    .season-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-    .season-action-btn{border:1px solid color-mix(in srgb,var(--season-color,#ca8a04) 28%,var(--border));background:color-mix(in srgb,var(--season-color,#ca8a04) 10%,var(--panel));color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:900}
-    .season-browser{display:none}
-    .season-browser.is-visible{display:block}
-    .season-current-view.is-hidden{display:none}
-    .season-browser-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-    .season-browser-title{font-size:15px;font-weight:900}
-    .season-browser-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-    .season-browser-item{border:1px solid var(--border);background:var(--chip);color:var(--ink);border-radius:14px;padding:11px 12px;cursor:pointer;text-align:right;font-family:inherit;display:grid;gap:4px;transition:transform .14s ease,border-color .14s ease,background .14s ease}
-    .season-browser-item:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--item-color,#ca8a04) 45%,var(--border))}
-    .season-browser-item.is-current{border-color:var(--item-color,#ca8a04);background:color-mix(in srgb,var(--item-color,#ca8a04) 11%,var(--panel));box-shadow:inset 4px 0 0 var(--item-color,#ca8a04)}
-    .season-browser-item strong{font-size:13px;line-height:1.45}
-    .season-browser-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:10.5px;font-weight:800}
-    .season-browser-dot{width:8px;height:8px;border-radius:50%;background:var(--item-color,#ca8a04);display:inline-block;margin-inline-end:5px}
-    @media (max-width:520px){.season-browser-list{grid-template-columns:1fr}.season-actions{justify-content:center}.season-action-btn{width:100%}}
-    @media (max-width:720px){.pulse-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.wellness-card{padding:9px 7px;gap:6px}.season-details-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:520px){.pulse-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.wellness-card{min-height:105px;flex-direction:column;text-align:center}.wellness-meta{width:100%}.ring-wrap,.ring-svg{width:58px;height:58px;flex-basis:58px}.ring-number{font-size:17px}.ring-unit{font-size:9px}.wellness-title{font-size:11px}.wellness-date{font-size:9.5px}.season-name{font-size:12px}.season-next{font-size:9px}.season-modal{padding:10px}.season-dialog{padding:17px;border-radius:18px;max-height:92vh}}
-
-
-    /* ——— سجل أسعار الذهب ——— */
-    .gold-ticker{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
-    .gold-ticker:hover{transform:translateY(-2px)}
-    .gold-ticker:focus-visible{outline:3px solid rgba(212,175,55,.38);outline-offset:3px}
-    .gold-modal{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.64);backdrop-filter:blur(7px)}
-    .gold-modal.is-visible{display:flex}
-    .gold-dialog{width:min(760px,100%);max-height:min(90vh,860px);overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:22px;box-shadow:0 30px 80px rgba(2,6,23,.34);padding:22px;position:relative}
-    .gold-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
-    .gold-kicker{font-size:12px;font-weight:900;color:#b45309;margin-bottom:4px}
-    .gold-dialog-title{margin:0;font-size:clamp(21px,4vw,29px);line-height:1.4}
-    .gold-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:36px;height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:20px;font-weight:900;line-height:1}
-    .gold-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0 14px}
-    .gold-stat{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:10px}
-    .gold-stat small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}.gold-stat strong{display:block;margin-top:3px;font-size:14px;line-height:1.4}
-    .gold-stat .up{color:#16a34a}.gold-stat .down{color:#dc2626}.gold-stat .flat{color:#b45309}
-    .gold-range{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
-    .gold-range-btn,.gold-data-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:7px 11px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:11.5px;font-weight:900}
-    .gold-range-btn.is-active{background:linear-gradient(135deg,#ca8a04,#f59e0b);color:#fff;border-color:transparent}
-    .gold-chart-wrap{position:relative;min-height:300px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,rgba(245,158,11,.07),transparent 72%);padding:12px;overflow:hidden}
-    .gold-chart{display:block;width:100%;height:290px;overflow:visible}
-    .gold-chart-grid{stroke:rgba(148,163,184,.22);stroke-width:1}.gold-chart-line{fill:none;stroke:#d4af37;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.gold-chart-area{fill:url(#goldAreaGradient)}.gold-chart-point{fill:#fff;stroke:#ca8a04;stroke-width:2;cursor:pointer}.gold-chart-label{fill:var(--muted);font-size:10px;font-family:"Cairo",sans-serif}.gold-chart-value{fill:var(--ink);font-size:11px;font-weight:800;font-family:"Cairo",sans-serif}
-    .gold-empty{min-height:260px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding:24px}
-    .gold-tooltip{position:absolute;display:none;pointer-events:none;z-index:2;background:var(--ink);color:var(--panel);border-radius:10px;padding:7px 9px;font-size:11px;font-weight:800;white-space:nowrap;transform:translate(-50%,-115%);box-shadow:var(--shadow)}
-    .gold-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.gold-note{margin-top:10px;color:var(--muted);font-size:11.5px;line-height:1.7}
-    @media(max-width:620px){.gold-modal{padding:10px}.gold-dialog{padding:17px;border-radius:18px;max-height:93vh}.gold-stats{grid-template-columns:1fr 1fr}.gold-chart-wrap{min-height:270px;padding:7px}.gold-chart{height:260px}.gold-data-btn{flex:1}}
+    .panel, .card, .pill, .btn, .logo{transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease}
 
   </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- شريط علوي: الوقت واليوم والتاريخ الهجري/الميلادي -->
+    <div class="topbar" role="status" aria-live="polite">
+      <span class="pill" id="timeNow" title="الوقت (الرياض)">--:--</span>
+      <span class="pill" id="dayName" title="اليوم">—</span>
+      <span class="pill" id="hijriDate" title="التاريخ الهجري">—</span>
+      <span class="pill" id="gregDate" title="التاريخ الميلادي">—</span>
+    </div>
     <header>
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <img src="Data/icons/icon-192.png" alt="بوابة مسار" class="logo-img">
+          <svg viewBox="0 0 24 24"><path d="M3 5h8v6H3V5Zm10 0h8v6h-8V5ZM3 13h8v6H3v-6Zm10 0h8v6h-8v-6Z"/></svg>
         </div>
         <div>
           <h1>بوابة مسار</h1>
@@ -262,187 +115,13 @@
       <button class="btn icon" id="themeBtn" aria-label="تبديل السمة" title="تبديل السمة"></button>
     </header>
 
-    <div class="status-line" role="status" aria-live="polite">
-      <span class="time-value" id="timeNow">--:--</span>
-      <span id="dayName">—</span>
-      <span id="hijriDate">—</span>
-      <span id="gregDate">—</span>
-      <span id="contextPulse">—</span>
-    </div>
-
-
-    <section class="adhkar-card" id="adhkarCard" aria-label="ذكر مناسب لهذا الوقت">
-      <div class="adhkar-head">
-        <div class="adhkar-title" id="adhkarTitle">🌿 ذكر هذا الوقت</div>
-        <div class="adhkar-controls">
-          <button class="adhkar-btn" id="prevAdhkar" type="button" aria-label="الذكر السابق">‹</button>
-          <button class="adhkar-btn" id="nextAdhkar" type="button" aria-label="الذكر التالي">›</button>
-        </div>
-      </div>
-      <div class="adhkar-body" id="adhkarBody">
-        <div class="adhkar-text" id="adhkarText">سبحان الله وبحمده، سبحان الله العظيم</div>
-        <div class="adhkar-meta">
-          <span id="adhkarSource">ورد مناسب</span>
-          <span class="adhkar-count" id="adhkarCount">بدون عدد محدد</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="knowledge-card" id="knowledgeCard" aria-label="رسالة اليوم — اضغط لعرض التفاصيل" role="button" tabindex="0">
-      <div class="knowledge-head">
-        <div class="knowledge-title" id="knowledgeTitle">رسالة اليوم</div>
-        <div class="knowledge-actions">
-          <button class="mini-btn" id="toggleKnowledge" type="button">التطبيق العملي</button>
-          <button class="mini-btn" id="nextKnowledge" type="button">رسالة أخرى</button>
-        </div>
-      </div>
-      <div class="knowledge-text" id="knowledgeText">الفعل يسبق الحماس؛ ابدأ بخطوة صغيرة ثم دع الدافع يلحق بك.</div>
-      <div class="knowledge-practical" id="knowledgePractical">ابدأ اليوم بمهمة واحدة لا تتجاوز دقيقتين، ثم وسّعها بعد كسر حاجز البداية.</div>
-      <div class="today-challenge" id="todayChallenge" aria-live="polite">
-        <div class="today-challenge-head"><div class="today-challenge-title">🎯 تحدي اليوم</div><button class="today-challenge-done" id="todayChallengeDone" type="button">تم</button></div>
-        <div class="today-challenge-action" id="todayChallengeAction">—</div>
-        <div class="today-challenge-source" id="todayChallengeSource">—</div>
-      </div>
-    </section>
-
-    <div class="knowledge-modal" id="knowledgeModal" aria-hidden="true">
-      <article class="knowledge-dialog" role="dialog" aria-modal="true" aria-labelledby="knowledgeDialogTitle">
-        <div class="knowledge-dialog-head">
-          <div><div class="knowledge-dialog-kicker" id="knowledgeDialogKicker">تفاصيل القاعدة</div><h2 class="knowledge-dialog-title" id="knowledgeDialogTitle">—</h2></div>
-          <div class="knowledge-dialog-actions"><button class="knowledge-save" id="knowledgeSave" type="button" aria-pressed="false">☆ حفظ</button><button class="knowledge-close" id="knowledgeModalClose" type="button" aria-label="إغلاق">×</button></div>
-        </div>
-        <div class="knowledge-dialog-message" id="knowledgeDialogMessage">—</div>
-        <div class="knowledge-meta-grid">
-          <div class="knowledge-meta-chip"><small>المجال</small><strong id="knowledgeDialogDomain">—</strong></div>
-          <div class="knowledge-meta-chip"><small>النوع</small><strong id="knowledgeDialogType">—</strong></div>
-          <div class="knowledge-meta-chip"><small>المستوى</small><strong id="knowledgeDialogLevel">—</strong></div>
-        </div>
-        <section class="knowledge-detail-section"><div class="knowledge-detail-label">الشرح</div><div class="knowledge-detail-value" id="knowledgeDialogDetails">—</div></section>
-        <section class="knowledge-detail-section"><div class="knowledge-detail-label">التطبيق العملي</div><div class="knowledge-detail-value knowledge-detail-action" id="knowledgeDialogAction">—</div></section>
-        <section class="knowledge-detail-section"><div class="knowledge-detail-label">سؤال للتفكير</div><div class="knowledge-detail-value knowledge-detail-question" id="knowledgeDialogQuestion">—</div></section>
-        <section class="knowledge-detail-section"><div class="knowledge-detail-label">المرجع</div><div class="knowledge-source-card"><div class="knowledge-source-title" id="knowledgeDialogBook">—</div><div class="knowledge-source-author" id="knowledgeDialogAuthor">—</div><div class="knowledge-source-topic" id="knowledgeDialogTopic">—</div><div class="knowledge-source-note" id="knowledgeDialogBasis">—</div></div></section>
-        <section class="knowledge-detail-section" id="knowledgeRelatedSection"><div class="knowledge-detail-label">مفاهيم مرتبطة</div><div class="knowledge-related" id="knowledgeDialogRelated"></div></section>
-        <div class="knowledge-dialog-footer"><button class="knowledge-apply-btn" id="knowledgeApplyToday" type="button">طبّقها اليوم</button></div>
-      </article>
-    </div>
-
-    <div class="pulse-strip" aria-label="عدادات بوابة مسار">
-      <article class="wellness-card">
-        <div class="ring-wrap">
-          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><defs><linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/></linearGradient></defs><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="ring-progress" id="salaryRing" cx="52" cy="52" r="45"></circle></svg>
-          <div class="ring-center"><div class="ring-number" id="salaryDays">--</div><div class="ring-unit">يوماً</div></div>
-        </div>
-        <div class="wellness-meta"><div class="wellness-title">الراتب</div><div class="wellness-date" id="salaryDate">—</div></div>
-      </article>
-      <article class="wellness-card">
-        <div class="ring-wrap">
-          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="ring-progress" id="ramadanRing" cx="52" cy="52" r="45"></circle></svg>
-          <div class="ring-center"><div class="ring-number" id="ramadanDays">--</div><div class="ring-unit">يوماً</div></div>
-        </div>
-        <div class="wellness-meta"><div class="wellness-title">رمضان</div><div class="wellness-date" id="ramadanDate">—</div></div>
-      </article>
-      <article class="wellness-card season-card" id="seasonCard" role="button" tabindex="0" aria-label="الموسم الآن — اضغط لعرض تفاصيل الطالع" style="--season-color:#ca8a04">
-        <div class="ring-wrap">
-          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="season-ring" id="seasonRing" cx="52" cy="52" r="45"></circle></svg>
-          <div class="ring-center"><div class="ring-number" id="seasonDays">--</div><div class="ring-unit">يوماً</div></div>
-        </div>
-        <div class="wellness-meta">
-          <div class="wellness-title">الموسم الآن</div>
-          <div class="season-name" id="seasonName">جاري التحميل</div>
-          <div class="season-next" id="seasonNext">—</div>
-        </div>
-      </article>
-    </div>
-
-    <div class="season-modal" id="seasonModal" aria-hidden="true">
-      <article class="season-dialog" role="dialog" aria-modal="true" aria-labelledby="seasonDialogTitle">
-        <div class="season-dialog-head">
-          <div><div class="season-kicker" id="seasonDialogKicker">الموسم الحالي</div><h2 class="season-dialog-title" id="seasonDialogTitle">—</h2></div>
-          <button class="season-close" id="seasonModalClose" type="button" aria-label="إغلاق">×</button>
-        </div>
-        <div class="season-current-view" id="seasonCurrentView">
-          <div class="season-summary" id="seasonDescription">—</div>
-          <div class="season-details-grid">
-            <div class="season-detail"><small>الفصل</small><strong id="seasonDetailSeason">—</strong></div>
-            <div class="season-detail"><small>البداية</small><strong id="seasonDetailStart">—</strong></div>
-            <div class="season-detail"><small>النهاية</small><strong id="seasonDetailEnd">—</strong></div>
-            <div class="season-detail"><small>المدة</small><strong id="seasonDetailDuration">—</strong></div>
-            <div class="season-detail"><small>طول النهار</small><strong id="seasonDetailDay">—</strong></div>
-            <div class="season-detail"><small>طول الليل</small><strong id="seasonDetailNight">—</strong></div>
-            <div class="season-detail"><small>متوسط الحرارة</small><strong id="seasonDetailAverage">—</strong></div>
-            <div class="season-detail"><small>العظمى الموسمية</small><strong id="seasonDetailMax">—</strong></div>
-            <div class="season-detail"><small>الصغرى الموسمية</small><strong id="seasonDetailMin">—</strong></div>
-          </div>
-          <section class="season-section"><div class="season-section-label">أبرز المواصفات</div><div class="season-traits" id="seasonTraits"></div></section>
-          <section class="season-section season-folk" id="seasonFolkSection"><div class="season-section-label">من الموروث الموسمي في الجزيرة العربية</div><div class="season-folk-quote" id="seasonFolkQuote">—</div><div class="season-folk-meaning" id="seasonFolkMeaning">—</div></section>
-          <section class="season-section"><div class="season-section-label">الطالع المقبل</div><div id="seasonUpcoming">—</div></section>
-          <div class="season-actions"><button class="season-action-btn" id="browseSeasonsBtn" type="button">استعراض الأنواء</button></div>
-          <div class="season-note" id="seasonSourceNote">البيانات والمواصفات موسمية تقريبية ومتداولة في التقويم الشعبي، ولا تمثل توقعاً يومياً للطقس.</div>
-        </div>
-        <div class="season-browser" id="seasonBrowser" aria-hidden="true">
-          <div class="season-browser-head"><div class="season-browser-title">الأنواء والطوالع</div><button class="season-action-btn" id="backToCurrentSeason" type="button">العودة للطالع الحالي</button></div>
-          <div class="season-browser-list" id="seasonBrowserList"></div>
-        </div>
-      </article>
-    </div>
-
-
-    <div class="gold-ticker is-flat" id="goldCard" role="button" tabindex="0" aria-label="ذهب اليوم — اضغط لعرض سجل الأسعار">
-      <div class="gold-ticker-main">
-        <span class="gold-badge" aria-hidden="true">🪙</span>
-        <span class="gold-title">ذهب اليوم</span>
-        <span class="gold-sub" id="goldDate">جاري التحديث...</span>
-      </div>
-      <div class="gold-ticker-price">
-        <span class="gold-price" id="goldPrice">--</span>
-        <span class="gold-unit">ر.س / جرام 24K</span>
-        <span class="gold-status" id="goldTrend">● سعر لحظي تقريبي</span>
-      </div>
-    </div>
-
-    <div class="gold-modal" id="goldModal" aria-hidden="true">
-      <article class="gold-dialog" role="dialog" aria-modal="true" aria-labelledby="goldDialogTitle">
-        <div class="gold-dialog-head">
-          <div><div class="gold-kicker">سجل محلي على هذا الجهاز</div><h2 class="gold-dialog-title" id="goldDialogTitle">اتجاه سعر الذهب 24K</h2></div>
-          <button class="gold-close" id="goldModalClose" type="button" aria-label="إغلاق">×</button>
-        </div>
-        <div class="gold-stats">
-          <div class="gold-stat"><small>آخر سعر</small><strong id="goldStatLatest">—</strong></div>
-          <div class="gold-stat"><small>التغير</small><strong id="goldStatChange">—</strong></div>
-          <div class="gold-stat"><small>الأعلى</small><strong id="goldStatHigh">—</strong></div>
-          <div class="gold-stat"><small>الأدنى</small><strong id="goldStatLow">—</strong></div>
-        </div>
-        <div class="gold-range" aria-label="نطاق المخطط">
-          <button class="gold-range-btn" type="button" data-days="7">7 أيام</button>
-          <button class="gold-range-btn is-active" type="button" data-days="30">30 يوماً</button>
-          <button class="gold-range-btn" type="button" data-days="90">3 أشهر</button>
-          <button class="gold-range-btn" type="button" data-days="0">الكل</button>
-        </div>
-        <div class="gold-chart-wrap" id="goldChartWrap">
-          <svg class="gold-chart" id="goldChart" viewBox="0 0 700 290" preserveAspectRatio="none" aria-label="مخطط أسعار الذهب"></svg>
-          <div class="gold-tooltip" id="goldTooltip"></div>
-          <div class="gold-empty" id="goldEmpty" hidden>يبدأ المخطط بعد تسجيل أول سعر، ويزداد وضوحه مع زياراتك اليومية لبوابة مسار.</div>
-        </div>
-        <div class="gold-actions">
-          <button class="gold-data-btn" id="goldExportBtn" type="button">تصدير السجل</button>
-          <button class="gold-data-btn" id="goldImportBtn" type="button">استيراد سجل</button>
-          <input id="goldImportInput" type="file" accept="application/json,.json" hidden>
-        </div>
-        <div class="gold-note">يحفظ مسار سعراً واحداً لكل يوم داخل متصفح هذا الجهاز. الأيام التي لا تفتح فيها البوابة لن تُسجل تلقائياً.</div>
-      </article>
-    </div>
-
-
     <section class="panel">
-      <h2 style="padding:12px 14px">تطبيقات مسار</h2>
+      <h2 style="padding:12px 14px">📚 الصفحات المتاحة</h2>
       <div class="grid" id="grid"></div>
     </section>
 
     <footer>© <span id="y"></span></footer>
   </div>
-
-  <!-- بيانات الطوالع: يعمل محلياً وعند الاستضافة -->
-  <script src="./Data/seasons-v2.js?v=20260711-3"></script>
 
   <script>
     // ——— البيانات ———
@@ -466,7 +145,6 @@
       // ☕ أسلوب الحياة
       { title: "بوابة القهوة", href: "cafe/index.html", desc: "لمحبي القهوة", emoji: "☕" },
       { title: "قياس المؤشرات الصحية", href: "Pages/vitals.html", desc: "مؤشراتك الحيوية باختصار", emoji: "🩺" },
-      { title: "الأسهم الشرعية", href: "Stocks/index.html", desc: "دليل الأسهم الشرعية السعودية مع الفلاتر وفحص التحديث", emoji: "💹" },
 
       // 👨‍👩‍👧‍👦 العائلة والمجتمع
       { title: "شجرة العائلة", href: "FamilyTree/index.html", desc: "ابني شجرة لعائلتك بخطوات بسيطة", emoji: "🌳" },
@@ -475,7 +153,6 @@
       // 🎮 الترفيه والألعاب
       { title: "لعبة الحروف", href: "LettersGame/index.html", desc: "إنسان، حيوان، نبات ...", emoji: "🎲" },
       { title: "عجلة الحظ", href: "Pages/luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🎡" },
-      { title: "لعبة الثلاثة أحجار", href: "Pages/3stones.html", desc: "كوّن ثلاثة أحجار على خط مستقيم", emoji: "🔳" },
           { title: "كشاف الجالكسي برو",  href: "Pages/torch.html", desc: "SOS، عرض ضوئي تفاعلي",    emoji: "🔦"},
       // ⚽ المناسبات والأحداث
       { title: "مباريات كأس العالم 2026", href: "Pages/WorldCup2026.html", desc: "بوابة كأس العالم 2026", emoji: "🏆" },
@@ -519,52 +196,17 @@
       themeBtn.innerHTML = themeSVG(mode);
     }
 
-    // ——— رسم تطبيقات مسار ———
-    function shortAppName(title){
-      const map = {
-        'متابعة قراءة القرآن الكريم':'متابعة التلاوة',
-        'الأربعون النووية':'الأربعون النووية',
-        'التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ':'التقويم الدراسي',
-        'اختبارات الوعي المعرفي':'اختبارات الوعي',
-        'أدوات التحليل الإداري':'أدوات التحليل الإداري',
-        'تمارين التركيز والانتباه':'تمارين التركيز ',
-        'الساعة الرملية':'الساعة الرملية',
-        'تعلّم الإنجليزية للمبتدئين':'تعلّم الإنجليزية ',
-        'جمل إنجليزية مهمة':'جمل إنجليزية ',
-        'تمارين رياضيات باللعب':'رياضيات 4',
-        'بوابة القهوة':'بوابة القهوة',
-        'قياس المؤشرات الصحية':'مؤشرات الصحة',
-        'الأسهم الشرعية':'الأسهم الشرعية',
-        'شجرة العائلة':'شجرة العائلة',
-        'تصويت':'تصويت',
-        'لعبة الحروف':'لعبة الحروف',
-        'عجلة الحظ':'عجلة الحظ',
-        'لعبة الثلاثة أحجار':'الثلاثة أحجار',
-        'كشاف الجالكسي برو':'الكشاف',
-        'مباريات كأس العالم 2026':'كأس العالم'
-      };
-      return map[title] || title.split(' ').slice(0,2).join(' ');
-    }
-
-    function appCategoryClass(title){
-      if(['متابعة قراءة القرآن الكريم','الأربعون النووية'].includes(title)) return 'cat-religion';
-      if(['التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ','تعلّم الإنجليزية للمبتدئين','جمل إنجليزية مهمة','تمارين رياضيات باللعب'].includes(title)) return 'cat-education';
-      if(['اختبارات الوعي المعرفي','أدوات التحليل الإداري','تمارين التركيز والانتباه'].includes(title)) return 'cat-knowledge';
-      if(['بوابة القهوة','الساعة الرملية','كشاف الجالكسي برو'].includes(title)) return 'cat-personal';
-      if(['الأسهم الشرعية'].includes(title)) return 'cat-stocks';
-      if(['قياس المؤشرات الصحية'].includes(title)) return 'cat-health';
-      if(['شجرة العائلة','تصويت'].includes(title)) return 'cat-family';
-      if(['لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
-      if(['مباريات كأس العالم 2026'].includes(title)) return 'cat-event';
-      return 'cat-tool';
-    }
-
+    // ——— رسم البطاقات ———
     function render(){
+      const icon = `<div class='ic'><svg viewBox='0 0 24 24'><path d='M3 5h8v6H3V5Zm10 0h8v6h-8V5ZM3 13h8v6H3v-6Zm10 0h8v6h-8v-6Z'/></svg></div>`;
       grid.innerHTML = PAGES.map(p => `
-        <a class="app-tile" href="${p.href}" title="${p.desc || p.title}" aria-label="${p.title}">
-          <span class="app-tile-icon ${appCategoryClass(p.title)}"><span>${p.emoji || '•'}</span></span>
-          <span class="app-tile-name">${shortAppName(p.title)}</span>
-        </a>`).join('');
+        <article class='card'>
+          ${icon}
+          <div>
+            <a href='${p.href}'><h3>${p.emoji || ''} ${p.title}</h3></a>
+            ${p.desc ? `<div class='muted'>${p.desc}</div>` : ''}
+          </div>
+        </article>`).join('');
     }
 
     // ——— تبديل السمة ———
@@ -592,166 +234,17 @@
     function greg(d){
       return new Intl.DateTimeFormat('ar-SA-u-ca-gregory', { day:'numeric', month:'long', year:'numeric', timeZone: TZ }).format(d);
     }
-
-    function contextPulse(d){
-      const hour = Number(new Intl.DateTimeFormat('en-US', { hour:'2-digit', hour12:false, timeZone: TZ }).format(d));
-      const weekday = new Intl.DateTimeFormat('en-US', { weekday:'short', timeZone: TZ }).format(d);
-
-      const hijriParts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
-        day:'numeric',
-        month:'numeric',
-        timeZone: TZ
-      }).formatToParts(d);
-
-      const hijriDay = Number(hijriParts.find(p => p.type === 'day')?.value);
-      const hijriMonth = Number(hijriParts.find(p => p.type === 'month')?.value);
-
-      // المناسبات الإسلامية أولاً
-      if(hijriMonth === 9) return '🌙 رمضان مبارك';
-      if(hijriMonth === 10 && hijriDay === 1) return '🎉 عيد فطر مبارك';
-      if(hijriMonth === 12 && hijriDay >= 1 && hijriDay <= 8) return '🕋 عشر ذي الحجة المباركة';
-      if(hijriMonth === 12 && hijriDay === 9) return '🤲 يوم عرفة';
-      if(hijriMonth === 12 && hijriDay >= 10 && hijriDay <= 13) return '🐑 عيد أضحى مبارك';
-
-      // أيام الأسبوع
-      if(weekday === 'Fri') return '🤍 جمعة مباركة';
-      if(weekday === 'Sun' && hour >= 5 && hour < 12) return '🚀 بداية أسبوع جديد';
-      if(weekday === 'Thu' && hour >= 15) return '🎉 بداية عطلة نهاية الأسبوع';
-      if(weekday === 'Sat' && hour >= 16) return '📅 مساء السبت';
-
-      // الوقت
-      if(hour >= 4 && hour < 6) return '🌅 بداية يوم جديد';
-      if(hour >= 6 && hour < 10) return '☀️ صباح الخير';
-      if(hour >= 10 && hour < 12) return '🌞 صباح متأخر';
-      if(hour >= 12 && hour < 15) return '🌤️ منتصف النهار';
-      if(hour >= 15 && hour < 18) return '🌇 مساء الخير';
-      if(hour >= 18 && hour < 22) return '🌙 مساء الخير';
-      if(hour >= 22 || hour < 1) return '🌌 ليلة هادئة';
-      return '😴 تصبح على خير';
-    }
-
     function updateClock(){
       const now = new Date();
       document.getElementById('timeNow').textContent = formatTime(now);
       document.getElementById('dayName').textContent = dayName(now);
       document.getElementById('hijriDate').textContent = hijri(now);
       document.getElementById('gregDate').textContent = greg(now);
-      document.getElementById('contextPulse').textContent = contextPulse(now);
     }
     function scheduleMinuteTick(){
       const now = new Date();
       const ms = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
       setTimeout(()=>{ updateClock(); setInterval(updateClock, 60*1000); }, Math.max(0, ms));
-    }
-
-
-    // ——— شريط الأذكار حسب الوقت ———
-    const ADHKAR_BANK = {
-      morning:{title:'🌅 أذكار الصباح',items:[
-        {text:'آية الكرسي: الله لا إله إلا هو الحي القيوم...',count:'مرة واحدة',source:'أذكار الصباح'},
-        {text:'قل هو الله أحد، قل أعوذ برب الفلق، قل أعوذ برب الناس.',count:'٣ مرات',source:'المعوذات'},
-        {text:'اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت.',count:'٣ مرات',source:'أذكار الصباح'},
-        {text:'حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم.',count:'٧ مرات',source:'أذكار الصباح'},
-        {text:'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.',count:'٣ مرات',source:'أذكار الصباح'},
-        {text:'اللهم بك أصبحنا وبك أمسينا، وبك نحيا وبك نموت وإليك النشور.',count:'مرة واحدة',source:'أذكار الصباح'},
-        {text:'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.',count:'٣ مرات',source:'أذكار الصباح'},
-        {text:'سبحان الله وبحمده.',count:'١٠٠ مرة',source:'ورد الصباح'},
-        {text:'أستغفر الله وأتوب إليه.',count:'١٠٠ مرة',source:'ورد الصباح'},
-        {text:'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.',count:'١٠٠ مرة',source:'ورد الصباح'},
-        {text:'اللهم صل وسلم وبارك على نبينا محمد.',count:'١٠ مرات',source:'الصلاة على النبي ﷺ'},
-        {text:'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، رب أسألك خير ما في هذا اليوم وخير ما بعده، وأعوذ بك من شر ما في هذا اليوم وشر ما بعده، رب أعوذ بك من الكسل وسوء الكبر، رب أعوذ بك من عذاب في النار وعذاب في القبر.',count:'مرة واحدة',source:'أذكار الصباح'},
-        {text:'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليّ وأبوء بذنبي فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.',count:'مرة واحدة',source:'سيد الاستغفار'},
-        {text:'اللهم إني أصبحت أشهدك، وأشهد حملة عرشك، وملائكتك، وجميع خلقك، أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمدًا عبدك ورسولك.',count:'٤ مرات',source:'أذكار الصباح'},
-        {text:'اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي، اللهم استر عوراتي وآمن روعاتي، اللهم احفظني من بين يدي ومن خلفي، وعن يميني وعن شمالي، ومن فوقي، وأعوذ بعظمتك أن أغتال من تحتي.',count:'مرة واحدة',source:'أذكار الصباح'},
-        {text:'اللهم عالم الغيب والشهادة، فاطر السماوات والأرض، رب كل شيء ومليكه، أشهد أن لا إله إلا أنت، أعوذ بك من شر نفسي ومن شر الشيطان وشركه، وأن أقترف على نفسي سوءًا أو أجره إلى مسلم.',count:'مرة واحدة',source:'أذكار الصباح'}
-      ]},
-      dhuha:{title:'☀️ تذكرة الضحى',items:[
-        {text:'يصبح على كل سلامى من أحدكم صدقة، فكل تسبيحة صدقة، وكل تحميدة صدقة، وكل تهليلة صدقة، وكل تكبيرة صدقة، وأمر بالمعروف صدقة، ونهي عن المنكر صدقة، ويجزئ من ذلك ركعتان يركعهما من الضحى.',count:'ركعتان',source:'صلاة الضحى'},
-        {text:'قال الله عز وجل: ابن آدم، صل لي أربع ركعات من أول النهار أكفك آخره.',count:'٤ ركعات',source:'صلاة الضحى'},
-        {text:'أوصاني خليلي صلى الله عليه وسلم بثلاث: صيام ثلاثة أيام من كل شهر، وركعتي الضحى، وأن أوتر قبل أن أنام.',count:'تذكير',source:'وصية نبوية'},
-        {text:'لا يحافظ على صلاة الضحى إلا أواب، وهي صلاة الأوابين.',count:'تذكير',source:'صلاة الضحى'}
-      ]},
-      day:{title:'☀️ ورد النهار',items:[
-        {text:'سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر.',count:'ما تيسر',source:'ذكر مطلق'},
-        {text:'أستغفر الله وأتوب إليه.',count:'ما تيسر',source:'استغفار'},
-        {text:'لا حول ولا قوة إلا بالله.',count:'ما تيسر',source:'ذكر مطلق'},
-        {text:'اللهم أعني على ذكرك وشكرك وحسن عبادتك.',count:'مرة أو أكثر',source:'دعاء'}
-      ]},
-      evening:{title:'🌇 أذكار المساء',items:[
-        {text:'آية الكرسي: الله لا إله إلا هو الحي القيوم...',count:'مرة واحدة',source:'أذكار المساء'},
-        {text:'قل هو الله أحد، قل أعوذ برب الفلق، قل أعوذ برب الناس.',count:'٣ مرات',source:'المعوذات'},
-        {text:'اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت.',count:'٣ مرات',source:'أذكار المساء'},
-        {text:'حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم.',count:'٧ مرات',source:'أذكار المساء'},
-        {text:'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم.',count:'٣ مرات',source:'أذكار المساء'},
-        {text:'اللهم بك أمسينا وبك أصبحنا، وبك نحيا وبك نموت وإليك المصير.',count:'مرة واحدة',source:'أذكار المساء'},
-        {text:'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد صلى الله عليه وسلم نبيًا.',count:'٣ مرات',source:'أذكار المساء'},
-        {text:'سبحان الله وبحمده.',count:'١٠٠ مرة',source:'ورد المساء'},
-        {text:'أعوذ بكلمات الله التامات من شر ما خلق.',count:'٣ مرات',source:'أذكار المساء'},
-        {text:'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.',count:'١٠٠ مرة',source:'ورد المساء'},
-        {text:'اللهم صل وسلم وبارك على نبينا محمد.',count:'١٠ مرات',source:'الصلاة على النبي ﷺ'},
-        {text:'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، رب أسألك خير ما في هذه الليلة وخير ما بعدها، وأعوذ بك من شر ما في هذه الليلة وشر ما بعدها، رب أعوذ بك من الكسل وسوء الكبر، رب أعوذ بك من عذاب في النار وعذاب في القبر.',count:'مرة واحدة',source:'أذكار المساء'},
-        {text:'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليّ وأبوء بذنبي فاغفر لي، فإنه لا يغفر الذنوب إلا أنت.',count:'مرة واحدة',source:'سيد الاستغفار'},
-        {text:'اللهم إني أمسيت أشهدك، وأشهد حملة عرشك، وملائكتك، وجميع خلقك، أنك أنت الله لا إله إلا أنت وحدك لا شريك لك، وأن محمدًا عبدك ورسولك.',count:'٤ مرات',source:'أذكار المساء'},
-        {text:'اللهم إني أسألك العفو والعافية في الدنيا والآخرة، اللهم إني أسألك العفو والعافية في ديني ودنياي وأهلي ومالي، اللهم استر عوراتي وآمن روعاتي، اللهم احفظني من بين يدي ومن خلفي، وعن يميني وعن شمالي، ومن فوقي، وأعوذ بعظمتك أن أغتال من تحتي.',count:'مرة واحدة',source:'أذكار المساء'},
-        {text:'اللهم عالم الغيب والشهادة، فاطر السماوات والأرض، رب كل شيء ومليكه، أشهد أن لا إله إلا أنت، أعوذ بك من شر نفسي ومن شر الشيطان وشركه، وأن أقترف على نفسي سوءًا أو أجره إلى مسلم.',count:'مرة واحدة',source:'أذكار المساء'}
-      ]},
-      night:{title:'🌙 ورد الليل والوتر',items:[
-        {text:'إن الله وتر يحب الوتر، فأوتروا يا أهل القرآن.',count:'تذكير',source:'الوتر'},
-        {text:'من كل الليل قد أوتر رسول الله صلى الله عليه وسلم، من أول الليل وأوسطه وآخره، وانتهى وتره إلى السحر.',count:'تذكير',source:'الوتر'},
-        {text:'من خاف أن لا يقوم من آخر الليل فليوتر أوله، ومن طمع أن يقوم آخره فليوتر آخر الليل، فإن صلاة آخر الليل مشهودة، وذلك أفضل.',count:'تذكير',source:'الوتر'},
-        {text:'اجعلوا آخر صلاتكم بالليل وترًا.',count:'تذكير',source:'الوتر'},
-        {text:'اللهم إنك عفو تحب العفو فاعف عني.',count:'ما تيسر',source:'دعاء'},
-        {text:'أستغفر الله وأتوب إليه.',count:'ما تيسر',source:'استغفار'},
-        {text:'سبحان الله وبحمده، سبحان الله العظيم.',count:'ما تيسر',source:'ذكر مطلق'}
-      ]},
-      sleep:{title:'😴 أذكار النوم',items:[
-        {text:'باسمك اللهم أموت وأحيا.',count:'مرة واحدة',source:'ذكر النوم'},
-        {text:'اللهم قني عذابك يوم تبعث عبادك.',count:'٣ مرات',source:'ذكر النوم'},
-        {text:'سبحان الله، والحمد لله، والله أكبر.',count:'٣٣، ٣٣، ٣٤',source:'قبل النوم'},
-        {text:'اللهم أسلمت نفسي إليك، وفوضت أمري إليك، وألجأت ظهري إليك، رغبة ورهبة إليك.',count:'مرة واحدة',source:'ذكر النوم'}
-      ]}
-    };
-    let adhkarMode='day';
-    let adhkarIndex=0;
-    function getAdhkarMode(d){
-      const hour=Number(new Intl.DateTimeFormat('en-US',{hour:'2-digit',hour12:false,timeZone:TZ}).format(d));
-      if(hour>=4 && hour<9) return 'morning';
-      if(hour>=9 && hour<12) return 'dhuha';
-      if(hour>=12 && hour<16) return 'day';
-      if(hour>=16 && hour<21) return 'evening';
-      if(hour>=21 && hour<23) return 'night';
-      return 'sleep';
-    }
-    function renderAdhkar(animate=true){
-      const group=ADHKAR_BANK[adhkarMode]||ADHKAR_BANK.day;
-      const item=group.items[adhkarIndex%group.items.length];
-      const body=document.getElementById('adhkarBody');
-      const apply=()=>{
-        document.getElementById('adhkarTitle').textContent=group.title;
-        document.getElementById('adhkarText').textContent=item.text;
-        document.getElementById('adhkarSource').textContent=item.source;
-        document.getElementById('adhkarCount').textContent=item.count;
-      };
-      if(!animate){apply();return}
-      body.classList.add('is-changing');
-      setTimeout(()=>{apply();body.classList.remove('is-changing')},260);
-    }
-    function refreshAdhkarByTime(){
-      const mode=getAdhkarMode(new Date());
-      if(mode!==adhkarMode){adhkarMode=mode;adhkarIndex=0}
-      renderAdhkar(false);
-    }
-    function nextAdhkarItem(step=1){
-      const group=ADHKAR_BANK[adhkarMode]||ADHKAR_BANK.day;
-      adhkarIndex=(adhkarIndex+step+group.items.length)%group.items.length;
-      renderAdhkar(true);
-    }
-    function initAdhkar(){
-      refreshAdhkarByTime();
-      document.getElementById('nextAdhkar')?.addEventListener('click',()=>nextAdhkarItem(1));
-      document.getElementById('prevAdhkar')?.addEventListener('click',()=>nextAdhkarItem(-1));
-      setInterval(()=>nextAdhkarItem(1),22000);
-      setInterval(refreshAdhkarByTime,60*1000);
     }
 
     // ——— بدء التشغيل ———
@@ -769,7 +262,6 @@
       themeBtn.addEventListener('click', toggleTheme);
       // تحديث الوقت الآن ثم جدولة التحديث كل دقيقة
       updateClock();
-      initAdhkar();
       scheduleMinuteTick();
       // —— اختبارات بسيطة (test cases) ——
       runTests();
@@ -778,14 +270,26 @@
     // ——— اختبارات (Console) لضمان السلامة ———
     function runTests(){
       try{
-        // 1) يتوافق عدد تطبيقات مسار مع PAGES
-        const apps = document.querySelectorAll('.app-tile');
-        console.assert(apps.length === PAGES.length, `Expected ${PAGES.length} apps, got ${apps.length}`);
-        // 2) الروابط غير فارغة
-        const links = Array.from(document.querySelectorAll('.app-tile'));
-        console.assert(links.every(a => a.getAttribute('href')), 'Every app tile must contain a link with href');
+        // 1) يتوافق عدد البطاقات مع PAGES
+        const cards = document.querySelectorAll('.card');
+        console.assert(cards.length === PAGES.length, `Expected ${PAGES.length} cards, got ${cards.length}`);
 
-        // 3) عناصر الوقت والتواريخ غير فارغة
+        // 2) تبديل السمة يُحدّث localStorage و الأيقونة (عبر data-icon)
+        const beforeMode = document.documentElement.getAttribute('data-theme') || 'light';
+        const beforeIcon = themeBtn.dataset.icon;
+        toggleTheme();
+        const afterMode = document.documentElement.getAttribute('data-theme');
+        const stored = localStorage.getItem('theme');
+        console.assert(afterMode === stored, 'Theme in DOM should match localStorage');
+        console.assert(themeBtn.dataset.icon !== beforeIcon, 'SVG icon state should change after toggle');
+        // ارجاع الحالة الأصلية
+        toggleTheme();
+
+        // 3) الروابط غير فارغة
+        const links = Array.from(document.querySelectorAll('.card a'));
+        console.assert(links.every(a => a.getAttribute('href')), 'Every card must contain a link with href');
+
+        // 4) عناصر الوقت والتواريخ غير فارغة
         const t1 = document.getElementById('timeNow').textContent.trim();
         const d1 = document.getElementById('dayName').textContent.trim();
         const h1 = document.getElementById('hijriDate').textContent.trim();
@@ -797,844 +301,6 @@
         console.error('Tests failed:', err);
       }
     }
-
-
-    const KNOWLEDGE_TYPE_LABELS = {
-      rule: 'قاعدة اليوم',
-      principle: 'مبدأ اليوم',
-      insight: 'بصيرة اليوم',
-      question: 'سؤال اليوم',
-      challenge: 'تحدي اليوم',
-      exercise: 'تمرين اليوم',
-      mistake: 'خطأ شائع',
-      strategy: 'استراتيجية اليوم'
-    };
-
-    const FALLBACK_KNOWLEDGE = [{"id":1,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":1,"title":"ابدأ قبل أن تشعر بالحماس","message":"الفعل يسبق الحماس، ولا ينتظره.","details":"كثير من المهام تتأخر لأننا ننتظر الشعور المناسب، بينما البداية نفسها هي التي تولّد الدافع وتخفف مقاومة العمل.","action":"ابدأ المهمة لمدة دقيقتين فقط، ثم قرر بعدها إن كنت ستتوقف أو تكمل.","question":"ما المهمة التي تؤجلها انتظارًا للحماس؟","source":"Atomic Habits","tags":["الأنظمة والعادات","الانضباط","rule","مستويات تنفيذية","Atomic Habits"],"concept_id":"SYS-001","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"الانضباط","reference":"James Clear — Atomic Habits — قاعدة الدقيقتين للبدء","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العادات الذرية","author":"James Clear","source_topic":"قاعدة الدقيقتين للبدء","source_basis":"direct","source_confidence":"High"},{"id":2,"status":"Published","type":"principle","category":"الانتباه","level":2,"title":"مهمة واحدة أفضل من خمس بدايات","message":"تعدد البدايات يقلل عدد النهايات.","details":"الانتقال بين عدة مهام يستهلك الانتباه ويزيد الحمل الذهني. الإنجاز يظهر عندما تمنح مهمة واحدة وقتًا كافيًا لتتقدم.","action":"اختر مهمة واحدة اليوم، ولا تنتقل لغيرها حتى تصل إلى نقطة توقف واضحة.","question":"كم مهمة بدأت اليوم ولم تُنهِها؟","source":"The Organized Mind","tags":["الانتباه","التركيز","principle","مستويات تنفيذية","The Organized Mind"],"concept_id":"ATT-001","domain":"الانتباه","domain_order":1,"subcategory":"التركيز","reference":"Daniel J. Levitin — The Organized Mind — محدودية الانتباه وتكلفة تبديل المهام","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"محدودية الانتباه وتكلفة تبديل المهام","source_basis":"direct","source_confidence":"High"},{"id":3,"status":"Published","type":"mistake","category":"التنفيذ","level":2,"title":"قياس الجهد بدل الإنجاز","message":"عدد الساعات لا يساوي دائمًا مقدار التقدم.","details":"قد تعمل ساعات طويلة دون مخرجات واضحة. الإنتاجية تقاس بما تغير فعليًا، لا بما شعرت أنك بذلته.","action":"في نهاية اليوم، اكتب ثلاثة مخرجات واضحة بدل حساب ساعات العمل فقط.","question":"هل تقيس وقتك أم نتائجك؟","source":"Peak","tags":["التنفيذ","الإنتاجية","mistake","مستويات تنفيذية","Peak"],"concept_id":"EXEC-001","domain":"التنفيذ","domain_order":6,"subcategory":"الإنتاجية","reference":"K. Anders Ericsson & Robert Pool — Peak — قياس التحسن في المران الهادف","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"القمة","author":"K. Anders Ericsson & Robert Pool","source_topic":"قياس التحسن في المران الهادف","source_basis":"derived","source_confidence":"Medium"},{"id":4,"status":"Published","type":"strategy","category":"التخطيط والتنفيذ","level":3,"title":"اجعل القرار التالي واضحًا","message":"الغموض يؤخر التنفيذ.","details":"عندما لا تعرف الخطوة التالية بدقة، يتحول المشروع إلى عبء ذهني. الوضوح يقلل التردد ويزيد سرعة الحركة.","action":"قبل إنهاء أي جلسة عمل، اكتب أول خطوة ستبدأ بها في الجلسة القادمة.","question":"ما أول خطوة محددة في مشروعك الحالي؟","source":"The Now Habit","tags":["التخطيط والتنفيذ","اتخاذ القرار","strategy","مستويات تنفيذية","The Now Habit"],"concept_id":"PLAN-001","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"اتخاذ القرار","reference":"Neil Fiore — The Now Habit — البدء الآمن بدل ضغط الإنهاء","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"عادة الآن","author":"Neil Fiore","source_topic":"البدء الآمن بدل ضغط الإنهاء","source_basis":"derived","source_confidence":"High"},{"id":5,"status":"Published","type":"exercise","category":"الذاكرة العاملة والتعلم","level":2,"title":"استرجع قبل أن تراجع","message":"الاسترجاع أقوى من إعادة القراءة.","details":"محاولة تذكر المعلومة قبل مراجعتها تنشّط الذاكرة وتكشف الفجوات الحقيقية في الفهم.","action":"أغلق الكتاب أو الملخص، واكتب ما تتذكره خلال دقيقة واحدة، ثم راجع ما فاتك.","question":"ماذا استطعت أن تتذكر دون الرجوع للمصدر؟","source":"Make It Stick","tags":["الذاكرة العاملة والتعلم","التعلم","exercise","مستويات تنفيذية","Make It Stick"],"concept_id":"WM-001","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"التعلم","reference":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — ممارسة الاسترجاع قبل إعادة الدراسة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اجعل التعلم راسخًا","author":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel","source_topic":"ممارسة الاسترجاع قبل إعادة الدراسة","source_basis":"direct","source_confidence":"High"},{"id":6,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":1,"title":"صمّم البيئة قبل مقاومة النفس","message":"البيئة الجيدة تقلل حاجتك للإرادة.","details":"الاعتماد على قوة الإرادة وحدها يجعل السلوك هشًا. البيئة المصممة جيدًا تجعل السلوك الصحيح أسهل والسلوك الخاطئ أصعب.","action":"أزل مشتتًا واحدًا من مكان عملك قبل أن تبدأ.","question":"ما الشيء الموجود حولك ويضعف سلوكك دون أن تنتبه؟","source":"Atomic Habits","tags":["الأنظمة والعادات","العادات","rule","مستويات تنفيذية","Atomic Habits"],"concept_id":"SYS-002","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"العادات","reference":"James Clear — Atomic Habits — تصميم البيئة وجعل السلوك الجيد سهلًا","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العادات الذرية","author":"James Clear","source_topic":"تصميم البيئة وجعل السلوك الجيد سهلًا","source_basis":"direct","source_confidence":"High"},{"id":7,"status":"Published","type":"insight","category":"المرونة المعرفية","level":3,"title":"العقل يرهق من الملفات المفتوحة","message":"المهام غير المحسومة تستهلك انتباهًا صامتًا.","details":"ليست كل الضغوط ظاهرة. بعض التشتت يأتي من مهام معلقة لم تتحول إلى قرار أو موعد أو خطوة واضحة.","action":"اكتب ثلاث مهام مفتوحة، وحوّل كل واحدة منها إلى: قرار، موعد، أو حذف.","question":"ما المهمة التي تشغل بالك لأنها لم تُحسم؟","source":"The Organized Mind","tags":["المرونة المعرفية","التفكير","insight","مستويات تنفيذية","The Organized Mind"],"concept_id":"CF-001","domain":"المرونة المعرفية","domain_order":4,"subcategory":"التفكير","reference":"Daniel J. Levitin — The Organized Mind — تفريغ الالتزامات إلى نظام خارجي","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"تفريغ الالتزامات إلى نظام خارجي","source_basis":"derived","source_confidence":"High"},{"id":8,"status":"Published","type":"challenge","category":"التنفيذ","level":2,"title":"أغلق حلقة واحدة","message":"إنهاء صغير أفضل من نية كبيرة.","details":"الإنجاز لا يحتاج دائمًا إلى قفزة. أحيانًا يكفي إغلاق حلقة مفتوحة لتستعيد الشعور بالسيطرة.","action":"اختر مهمة صغيرة معلقة وأنهِها اليوم بالكامل.","question":"ما الحلقة الصغيرة التي تستطيع إغلاقها الآن؟","source":"The Now Habit","tags":["التنفيذ","challenge","مستويات تنفيذية","The Now Habit"],"concept_id":"EXEC-002","domain":"التنفيذ","domain_order":6,"subcategory":"التنفيذ","reference":"Neil Fiore — The Now Habit — البداية الصغيرة لمقاومة التسويف","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"عادة الآن","author":"Neil Fiore","source_topic":"البداية الصغيرة لمقاومة التسويف","source_basis":"derived","source_confidence":"Medium"},{"id":9,"status":"Published","type":"principle","category":"التخطيط والتنفيذ","level":2,"title":"احجز وقتًا لما يهم","message":"ما لا يدخل التقويم يظل أمنية.","details":"النوايا العامة تنهزم أمام انشغال اليوم. تحويل الشيء المهم إلى موعد يحميه من التأجيل.","action":"احجز 30 دقيقة اليوم لشيء مهم غير عاجل.","question":"ما الشيء المهم الذي لم تخصص له وقتًا؟","source":"The Now Habit","tags":["التخطيط والتنفيذ","إدارة الوقت","principle","مستويات تنفيذية","The Now Habit"],"concept_id":"PLAN-002","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"إدارة الوقت","reference":"Neil Fiore — The Now Habit — الجدولة العكسية وحماية وقت البدء","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"عادة الآن","author":"Neil Fiore","source_topic":"الجدولة العكسية وحماية وقت البدء","source_basis":"derived","source_confidence":"High"},{"id":10,"status":"Published","type":"question","category":"التخطيط والتنفيذ","level":3,"title":"احمِ قراراتك المهمة من الخيارات الصغيرة","message":"القرارات الصغيرة تستهلك من جودة القرارات الكبيرة.","details":"إبقاء الخيارات الروتينية في الذهن يرفع حمل القرار ويترك طاقة أقل للمسائل الأعلى أثرًا.","action":"حوّل قرارًا منخفض القيمة ومتكررًا إلى قاعدة ثابتة.","question":"أي قرار صغير تستطيع حسمه بقاعدة مسبقة؟","source":"The Organized Mind","tags":["التخطيط والتنفيذ","الأولويات","question","مستويات تنفيذية","The Organized Mind"],"concept_id":"PLAN-003","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"الأولويات","reference":"Daniel J. Levitin — The Organized Mind — تقليل إرهاق القرار في الخيارات منخفضة القيمة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"تقليل إرهاق القرار في الخيارات منخفضة القيمة","source_basis":"derived","source_confidence":"Medium"},{"id":11,"status":"Published","type":"strategy","category":"الانتباه","level":2,"title":"اخفض ضجيج البداية","message":"البداية الثقيلة تقتل الاستمرارية.","details":"كلما احتاجت المهمة إلى تجهيز طويل زادت فرصة الهروب منها. تقليل خطوات البداية يجعل الالتزام أسهل.","action":"جهز أدوات مهمة الغد قبل نهاية اليوم.","question":"ما الشيء الذي يمكن تجهيزه الآن ليجعل بداية الغد أسهل؟","source":"Atomic Habits","tags":["الانتباه","التركيز","strategy","مستويات تنفيذية","Atomic Habits"],"concept_id":"ATT-002","domain":"الانتباه","domain_order":1,"subcategory":"التركيز","reference":"James Clear — Atomic Habits — تقليل الاحتكاك وتهيئة البيئة مسبقًا","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العادات الذرية","author":"James Clear","source_topic":"تقليل الاحتكاك وتهيئة البيئة مسبقًا","source_basis":"direct","source_confidence":"High"},{"id":12,"status":"Published","type":"mistake","category":"الذاكرة العاملة والتعلم","level":3,"title":"القراءة بلا اختبار ذاتي","message":"الفهم الذي لا يُختبر قد يكون وهمًا.","details":"الشعور بالألفة أثناء القراءة لا يعني امتلاك المعلومة. الاختبار الذاتي يكشف ما ثبت فعلًا وما مرّ مرورًا سريعًا.","action":"بعد قراءة أي فقرة مهمة، اكتب سؤالًا واحدًا عنها وأجب دون الرجوع للنص.","question":"ما المعلومة التي تظن أنك فهمتها ولم تختبرها؟","source":"Make It Stick","tags":["الذاكرة العاملة والتعلم","التعلم","mistake","مستويات تنفيذية","Make It Stick"],"concept_id":"WM-002","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"التعلم","reference":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — وهم الألفة والاختبار الذاتي","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اجعل التعلم راسخًا","author":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel","source_topic":"وهم الألفة والاختبار الذاتي","source_basis":"direct","source_confidence":"High"},{"id":13,"status":"Published","type":"rule","category":"المراجعة والتحسين","level":4,"title":"راجع قبل أن تزيد","message":"زيادة الجهد دون مراجعة تكرر الخطأ.","details":"عندما لا تتوقف للمراجعة، قد تضاعف العمل في الاتجاه الخطأ. المراجعة القصيرة توفر وقتًا طويلًا لاحقًا.","action":"قبل إضافة مهمة جديدة، راجع آخر نتيجة: ما الذي نجح وما الذي تعطل؟","question":"ما الخطأ الذي تكرره لأنك لم تراجعه؟","source":"Peak","tags":["المراجعة والتحسين","المراجعة","rule","مستويات تنفيذية","Peak"],"concept_id":"REF-001","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"K. Anders Ericsson & Robert Pool — Peak — التغذية الراجعة وتعديل المحاولة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["REF-003","REF-004"],"source_title_ar":"القمة","author":"K. Anders Ericsson & Robert Pool","source_topic":"التغذية الراجعة وتعديل المحاولة","source_basis":"derived","source_confidence":"High"},{"id":14,"status":"Published","type":"insight","category":"الكبح الذاتي","level":3,"title":"الإرادة مورد لا خطة","message":"لا تبنِ يومك على قوة تحملك فقط.","details":"الإرادة تتأثر بالتعب والجوع والضغط. الخطة الجيدة تقلل الحاجة لاستخدام الإرادة في كل قرار صغير.","action":"اختر قرارًا متكررًا واجعله قاعدة ثابتة بدل اتخاذه كل يوم.","question":"ما القرار المتكرر الذي يستنزفك؟","source":"Willpower","tags":["الكبح الذاتي","الإرادة","insight","مستويات تنفيذية","Willpower"],"concept_id":"IC-001","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الإرادة","reference":"Roy F. Baumeister & John Tierney — Willpower — إرهاق القرار ومحدودية ضبط النفس","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"قوة الإرادة","author":"Roy F. Baumeister & John Tierney","source_topic":"إرهاق القرار ومحدودية ضبط النفس","source_basis":"direct","source_confidence":"High"},{"id":15,"status":"Published","type":"principle","category":"التخطيط والتنفيذ","level":4,"title":"حدّد معيار الأداء قبل أن تطلب التنفيذ","message":"المطلوب الغامض لا ينتج تعلمًا دقيقًا.","details":"المران الهادف يحتاج هدفًا محددًا ومعيارًا يمكن مقارنة الأداء به؛ وينطبق ذلك على التكليف المهني.","action":"اكتب النتيجة المطلوبة ومعيار قبول واحد قبل بدء المهمة.","question":"هل يعرف المنفذ كيف يبدو الأداء الجيد؟","source":"Peak","tags":["التخطيط والتنفيذ","القيادة","principle","مستويات تنفيذية","Peak"],"concept_id":"PLAN-004","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"القيادة","reference":"K. Anders Ericsson & Robert Pool — Peak — الأهداف المحددة ومعيار الأداء","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"القمة","author":"K. Anders Ericsson & Robert Pool","source_topic":"الأهداف المحددة ومعيار الأداء","source_basis":"derived","source_confidence":"Medium"},{"id":16,"status":"Published","type":"challenge","category":"الذاكرة العاملة والتعلم","level":3,"title":"حوّل الفكرة إلى أصل","message":"الفكرة غير المحفوظة تُفقد مرتين.","details":"تضيع الفكرة أولًا عندما لا تُكتب، وتضيع ثانيًا عندما تُكتب في مكان لا يمكن الرجوع إليه.","action":"اختر فكرة واحدة اليوم واحفظها في مكان مصنف يمكن البحث فيه لاحقًا.","question":"أين تذهب أفكارك بعد أن تظهر؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","إدارة المعرفة","challenge","مستويات تنفيذية","The Organized Mind"],"concept_id":"WM-003","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"إدارة المعرفة","reference":"Daniel J. Levitin — The Organized Mind — الذاكرة الخارجية القابلة للاسترجاع","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"الذاكرة الخارجية القابلة للاسترجاع","source_basis":"derived","source_confidence":"High"},{"id":17,"status":"Published","type":"strategy","category":"التنفيذ","level":2,"title":"ابدأ بالنسخة الرديئة","message":"المسودة الرديئة تكسر جمود المثالية.","details":"المثالية تجعل البداية صعبة. المسودة الأولى ليست للحكم، بل لإخراج الفكرة من الذهن إلى الواقع.","action":"اكتب نسخة أولى سيئة عمدًا خلال 10 دقائق.","question":"ما العمل الذي تؤخره لأنك تريد بدايته مثالية؟","source":"The Now Habit","tags":["التنفيذ","الإنتاجية","strategy","مستويات تنفيذية","The Now Habit"],"concept_id":"EXEC-003","domain":"التنفيذ","domain_order":6,"subcategory":"الإنتاجية","reference":"Neil Fiore — The Now Habit — المثالية والخوف من الخطأ والتسويف","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"عادة الآن","author":"Neil Fiore","source_topic":"المثالية والخوف من الخطأ والتسويف","source_basis":"direct","source_confidence":"High"},{"id":18,"status":"Published","type":"question","category":"المرونة المعرفية","level":4,"title":"افصل التعثر عن القدرة","message":"النتيجة الحالية لا تحكم على قدرتك النهائية.","details":"العقلية الثابتة تفسر التعثر كدليل عجز، بينما العقلية النامية تستخدمه لتحديد استراتيجية تحتاج إلى تغيير أو مهارة تحتاج إلى تدريب.","action":"اكتب ما كشفه التعثر عن الاستراتيجية بدل وصف نفسك بالفشل.","question":"هل تفسر النتيجة كحكم على هويتك أم كمعلومة للتعلم؟","source":"Mindset","tags":["المرونة المعرفية","التفكير","question","مستويات تنفيذية","Mindset"],"concept_id":"CF-002","domain":"المرونة المعرفية","domain_order":4,"subcategory":"التفكير","reference":"Carol S. Dweck — Mindset — العقلية النامية وإعادة تفسير التعثر","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقلية","author":"Carol S. Dweck","source_topic":"العقلية النامية وإعادة تفسير التعثر","source_basis":"derived","source_confidence":"High"},{"id":19,"status":"Published","type":"rule","category":"الأنظمة والعادات","level":2,"title":"اربط السلوك بمحفز ثابت","message":"العادة تحتاج مرساة.","details":"السلوك الجديد يصبح أسهل عندما يرتبط بشيء يحدث يوميًا بالفعل، مثل صلاة، قهوة، أو بداية دوام.","action":"اختر عادة صغيرة واربطها بحدث ثابت اليوم.","question":"ما الحدث اليومي الذي يمكن أن يصبح مرساة لعادتك؟","source":"Atomic Habits","tags":["الأنظمة والعادات","العادات","rule","مستويات تنفيذية","Atomic Habits"],"concept_id":"SYS-003","domain":"الأنظمة والعادات","domain_order":7,"subcategory":"العادات","reference":"James Clear — Atomic Habits — تكديس العادات وربطها بإشارة ثابتة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العادات الذرية","author":"James Clear","source_topic":"تكديس العادات وربطها بإشارة ثابتة","source_basis":"direct","source_confidence":"High"},{"id":20,"status":"Published","type":"exercise","category":"المرونة المعرفية","level":3,"title":"وسّع انتباهك قبل أن تختار","message":"التضييق المبكر يخفي البدائل.","details":"الوعي المفتوح يسمح بملاحظة إشارات واحتمالات متعددة قبل توجيه الانتباه نحو خيار واحد.","action":"دوّن ثلاث ملاحظات أو احتمالات قبل حسم قرارك.","question":"ما البديل الذي ظهر عندما وسّعت مجال النظر؟","source":"Focus","tags":["المرونة المعرفية","اتخاذ القرار","exercise","مستويات تنفيذية","Focus"],"concept_id":"CF-003","domain":"المرونة المعرفية","domain_order":4,"subcategory":"اتخاذ القرار","reference":"Daniel Goleman — Focus — الوعي المفتوح قبل تضييق الاختيار","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"الوعي المفتوح قبل تضييق الاختيار","source_basis":"derived","source_confidence":"Medium"},{"id":21,"status":"Published","type":"principle","category":"التنفيذ","level":4,"title":"النظام يهزم النية","message":"النية الجيدة لا تكفي بلا مسار واضح.","details":"النية تبدأ الحركة، لكن النظام يحافظ عليها. ما يتكرر يحتاج آلية لا مجرد رغبة.","action":"حوّل هدفًا واحدًا إلى موعد ثابت وخطوة محددة.","question":"ما الهدف الذي بقي نية لأنه بلا نظام؟","source":"Atomic Habits","tags":["التنفيذ","principle","مستويات تنفيذية","Atomic Habits"],"concept_id":"EXEC-004","domain":"التنفيذ","domain_order":6,"subcategory":"التنفيذ","reference":"James Clear — Atomic Habits — الأنظمة أهم من الأهداف المجردة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["EXEC-002","REF-004"],"source_title_ar":"العادات الذرية","author":"James Clear","source_topic":"الأنظمة أهم من الأهداف المجردة","source_basis":"direct","source_confidence":"High"},{"id":22,"status":"Published","type":"mistake","category":"التخطيط والتنفيذ","level":3,"title":"ملء اليوم بلا فواصل","message":"الانتباه المستمر بلا استعادة يفقد جودته.","details":"العقل يتناوب بين التركيز والاسترخاء؛ ملء الجدول حتى الحافة يضعف استعادة الانتباه ويرفع كلفة الانتقال.","action":"ضع فاصلاً قصيرًا بعد جلسة تركيز عميق قبل المهمة التالية.","question":"أين يحتاج يومك إلى مساحة لاستعادة الانتباه؟","source":"The Organized Mind","tags":["التخطيط والتنفيذ","إدارة الوقت","mistake","مستويات تنفيذية","The Organized Mind"],"concept_id":"PLAN-005","domain":"التخطيط والتنفيذ","domain_order":5,"subcategory":"إدارة الوقت","reference":"Daniel J. Levitin — The Organized Mind — تناوب التركيز والراحة واستعادة الانتباه","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"تناوب التركيز والراحة واستعادة الانتباه","source_basis":"derived","source_confidence":"Medium"},{"id":23,"status":"Published","type":"insight","category":"الذاكرة العاملة والتعلم","level":4,"title":"المران المتعمد ليس تكرارًا فقط","message":"التكرار بلا تغذية راجعة يثبت المستوى.","details":"المهارة لا تتحسن بمجرد إعادة العمل. تحتاج إلى هدف دقيق، ملاحظة خطأ، وتصحيح مقصود.","action":"اختر مهارة واحدة وحدد خطأ واحدًا ستراقبه في التدريب القادم.","question":"ما الخطأ المحدد الذي تعمل على تحسينه؟","source":"Peak","tags":["الذاكرة العاملة والتعلم","التعلم","insight","مستويات تنفيذية","Peak"],"concept_id":"WM-004","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"التعلم","reference":"K. Anders Ericsson & Robert Pool — Peak — عناصر المران المتعمد","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"القمة","author":"K. Anders Ericsson & Robert Pool","source_topic":"عناصر المران المتعمد","source_basis":"direct","source_confidence":"High"},{"id":24,"status":"Published","type":"strategy","category":"الانتباه","level":3,"title":"احمِ فترة صفائك","message":"أفضل وقت ذهني يستحق مهمة واحدة.","details":"قيمة الفترة ليست في كونها أول ساعة، بل في ارتفاع اليقظة وقدرتك على حماية الانتباه فيها من الانقطاعات.","action":"حدد أكثر فتراتك صفاءً واحجزها لمهمة واحدة مهمة.","question":"متى يكون انتباهك في أفضل حالاته؟","source":"Focus","tags":["الانتباه","التركيز","strategy","مستويات تنفيذية","Focus"],"concept_id":"ATT-003","domain":"الانتباه","domain_order":1,"subcategory":"التركيز","reference":"Daniel Goleman — Focus — حماية فترة اليقظة من الانقطاعات","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"حماية فترة اليقظة من الانقطاعات","source_basis":"derived","source_confidence":"Medium"},{"id":25,"status":"Published","type":"challenge","category":"المراجعة والتحسين","level":4,"title":"مراجعة نهاية اليوم","message":"اليوم غير المراجع يتكرر كما هو.","details":"مراجعة قصيرة تكشف نمط اليوم: أين ضاع الانتباه، وما الذي يستحق التكرار، وما الذي يحتاج تعديلًا.","action":"اكتب قبل النوم: شيء نجح، شيء تعطل، وخطوة واحدة للغد.","question":"ما التعديل الصغير الذي يجعل الغد أفضل؟","source":"Make It Stick","tags":["المراجعة والتحسين","المراجعة","challenge","مستويات تنفيذية","Make It Stick"],"concept_id":"REF-002","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التأمل والاسترجاع لتحسين التعلم","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اجعل التعلم راسخًا","author":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel","source_topic":"التأمل والاسترجاع لتحسين التعلم","source_basis":"derived","source_confidence":"High"},{"id":26,"status":"Published","type":"principle","category":"الانتباه","level":3,"title":"الانتباه يسبق التحكم","message":"لا يمكنك التحكم فيما لا تنتبه إليه.","details":"الوعي باتجاه الانتباه هو أول خطوة في التحكم التنفيذي؛ فالسلوك يبدأ بما يلتقطه انتباهك.","action":"توقف ثلاث مرات اليوم واسأل: أين يتجه انتباهي الآن؟","question":"ما الذي يستحوذ على انتباهك دون اختيار؟","source":"Focus","tags":["الانتباه","principle","مستويات تنفيذية","Focus"],"concept_id":"ATT-004","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — الوعي بالانتباه أساس التحكم فيه","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["ATT-005","ATT-006","ATT-008"],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"الوعي بالانتباه أساس التحكم فيه","source_basis":"direct","source_confidence":"High"},{"id":27,"status":"Published","type":"insight","category":"الانتباه","level":3,"title":"الانتباه مورد محدود","message":"الانتباه رصيد محدود.","details":"الانتباه مورد محدود، وكل انتقال بين المثيرات يستهلك طاقة ذهنية.","action":"قلل عدد النوافذ والإشعارات أثناء العمل.","question":"ما أكثر مصدر يستنزف انتباهك؟","source":"Focus","tags":["الانتباه","insight","مستويات تنفيذية","Focus"],"concept_id":"ATT-005","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — الانتباه مورد محدود","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["ATT-006","ATT-010"],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"الانتباه مورد محدود","source_basis":"direct","source_confidence":"High"},{"id":28,"status":"Published","type":"mistake","category":"الانتباه","level":3,"title":"تكلفة تبديل الانتباه","message":"تبديل الانتباه له تكلفة.","details":"كل انتقال لمهمة جديدة يفرض تكلفة ذهنية لاستعادة السياق.","action":"خصص فترات عمل بلا مقاطعات لمدة 25 دقيقة.","question":"كم مرة بدلت بين المهام اليوم؟","source":"The Organized Mind","tags":["الانتباه","mistake","مستويات تنفيذية","The Organized Mind"],"concept_id":"ATT-006","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel J. Levitin — The Organized Mind — تكلفة تبديل السياق ووهم تعدد المهام","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["ATT-012","ATT-013"],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"تكلفة تبديل السياق ووهم تعدد المهام","source_basis":"direct","source_confidence":"High"},{"id":29,"status":"Published","type":"rule","category":"الانتباه","level":2,"title":"أضعف المثير الذي يختطف انتباهك","message":"بعض المشتتات تبدأ قبل أن تتخذ قرارًا واعيًا.","details":"المثيرات البارزة تستولي على الانتباه تلقائيًا؛ تقليل ظهورها يحمي التركيز الموجه للهدف.","action":"أخفِ أكثر إشارة بصرية أو صوتية تقطع انتباهك.","question":"ما المثير الذي يختطف انتباهك قبل أن تختاره؟","source":"Focus","tags":["الانتباه","rule","مستويات تنفيذية","Focus"],"concept_id":"ATT-007","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — المثيرات الصاعدة التي تختطف الانتباه","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"المثيرات الصاعدة التي تختطف الانتباه","source_basis":"derived","source_confidence":"High"},{"id":30,"status":"Published","type":"strategy","category":"الانتباه","level":3,"title":"الانتباه الانتقائي","message":"اختر ما يستحق انتباهك.","details":"يمكن تدريب الانتباه على اختيار ما يخدم أهدافك.","action":"حدد هدف المهمة قبل البدء بها.","question":"هل يخدم انتباهك هدفك الحالي؟","source":"Focus","tags":["الانتباه","strategy","مستويات تنفيذية","Focus"],"concept_id":"ATT-008","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — الانتباه الانتقائي الموجه للهدف","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["ATT-011"],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"الانتباه الانتقائي الموجه للهدف","source_basis":"direct","source_confidence":"High"},{"id":31,"status":"Published","type":"exercise","category":"الانتباه","level":2,"title":"تمرين دقيقة الانتباه","message":"دقيقة واعية أفضل من عشر دقائق مشتتة.","details":"الانتباه مهارة تحتاج تدريبًا متكررًا.","action":"راقب تنفسك لمدة دقيقة دون النظر للهاتف.","question":"كم مرة شرد ذهنك؟","source":"Focus","tags":["الانتباه","exercise","مستويات تنفيذية","Focus"],"concept_id":"ATT-009","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — تدريب الانتباه بالملاحظة والعودة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"تدريب الانتباه بالملاحظة والعودة","source_basis":"direct","source_confidence":"High"},{"id":32,"status":"Published","type":"challenge","category":"الانتباه","level":3,"title":"ساعة بلا مقاطعات","message":"التركيز العميق يُبنى ولا يُنتظر.","details":"فترات العمل المتصلة ترفع جودة التفكير.","action":"خصص ساعة واحدة اليوم بلا إشعارات.","question":"هل أكملت الساعة كاملة؟","source":"Focus","tags":["الانتباه","challenge","مستويات تنفيذية","Focus"],"concept_id":"ATT-010","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — حماية الانتباه المستمر من المقاطعات","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"حماية الانتباه المستمر من المقاطعات","source_basis":"derived","source_confidence":"High"},{"id":33,"status":"Published","type":"question","category":"الانتباه","level":4,"title":"ماذا يستحق انتباهك؟","message":"ليست المشكلة فيما يجذبك بل فيما تسمح له بالبقاء.","details":"توجيه الانتباه يصنع الأولويات.","action":"اكتب أهم ثلاثة أشياء تستحق انتباهك هذا الأسبوع.","question":"هل يعيش وقتك أولوياتك؟","source":"Focus","tags":["الانتباه","question","مستويات تنفيذية","Focus"],"concept_id":"ATT-011","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — اختيار ما يستحق الانتباه","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"اختيار ما يستحق الانتباه","source_basis":"derived","source_confidence":"Medium"},{"id":34,"status":"Published","type":"principle","category":"الانتباه","level":4,"title":"استعادة الانتباه مهارة","message":"الشرود طبيعي والعودة هي المهارة.","details":"التركيز لا يعني غياب الشرود بل سرعة العودة.","action":"عند الشرود، عد مباشرة دون لوم نفسك.","question":"كم تستغرق للعودة؟","source":"Focus","tags":["الانتباه","principle","مستويات تنفيذية","Focus"],"concept_id":"ATT-012","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"Daniel Goleman — Focus — استعادة الانتباه بعد الشرود","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"استعادة الانتباه بعد الشرود","source_basis":"direct","source_confidence":"High"},{"id":35,"status":"Published","type":"insight","category":"الانتباه","level":4,"title":"جودة الانتباه تقاس بالنتيجة","message":"التركيز يظهر في الأثر.","details":"أفضل مقياس للانتباه هو مقدار التقدم.","action":"قيّم جلستك بما أنجزته.","question":"ما النتيجة التي حققتها؟","source":"Peak","tags":["الانتباه","insight","مستويات تنفيذية","Peak"],"concept_id":"ATT-013","domain":"الانتباه","domain_order":1,"subcategory":"الانتباه","reference":"K. Anders Ericsson & Robert Pool — Peak — قياس الأداء والتغذية الراجعة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"القمة","author":"K. Anders Ericsson & Robert Pool","source_topic":"قياس الأداء والتغذية الراجعة","source_basis":"derived","source_confidence":"High"},{"id":36,"status":"Published","type":"principle","category":"الذاكرة العاملة والتعلم","level":3,"title":"الذاكرة العاملة مساحة تشغيل لا مستودع","message":"ذهنك مساحة تشغيل لا مستودع.","details":"الذاكرة العاملة محدودة ومخصصة لمعالجة المعلومات الحالية، لا لتخزين كل المهام والمواعيد والأفكار المفتوحة.","action":"اكتب كل مهمة مفتوحة في قائمة خارجية بدل محاولة تذكرها.","question":"ما الشيء الذي تحاول تذكره بينما يجب أن يكون مكتوبًا؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","principle","مستويات تنفيذية","The Organized Mind"],"concept_id":"WM-005","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Daniel J. Levitin — The Organized Mind — محدودية الذاكرة العاملة والذاكرة الخارجية","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["WM-006","WM-007","WM-008"],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"محدودية الذاكرة العاملة والذاكرة الخارجية","source_basis":"direct","source_confidence":"High"},{"id":37,"status":"Published","type":"strategy","category":"الذاكرة العاملة والتعلم","level":3,"title":"قسّم المعلومات قبل معالجتها","message":"قسّم الفوضى إلى كتل.","details":"عندما تكون المعلومات كثيرة ومتناثرة، تضعف القدرة على التفكير. التقسيم يحول الحمل الذهني إلى وحدات قابلة للإدارة.","action":"قسّم أي مهمة كبيرة إلى ثلاث كتل: ما أعرفه، ما أحتاجه، والخطوة التالية.","question":"ما المعلومات التي تحتاج إلى تجميع قبل أن تفكر فيها؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","strategy","مستويات تنفيذية","The Organized Mind"],"concept_id":"WM-006","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Daniel J. Levitin — The Organized Mind — تصنيف المعلومات وتقليل الحمل المعرفي","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["WM-009"],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"تصنيف المعلومات وتقليل الحمل المعرفي","source_basis":"derived","source_confidence":"High"},{"id":38,"status":"Published","type":"mistake","category":"الذاكرة العاملة والتعلم","level":2,"title":"الاعتماد على التذكر اللحظي","message":"لا تترك المهم للذاكرة.","details":"الاعتماد على التذكر أثناء الانشغال يجعل القرارات والمهام عرضة للنسيان. النظام الخارجي يحمي العقل من الحمل الزائد.","action":"حوّل أي فكرة تظهر لك اليوم إلى ملاحظة مكتوبة خلال أقل من دقيقة.","question":"كم فكرة جيدة ضاعت لأنها لم تُسجل؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","mistake","مستويات تنفيذية","The Organized Mind"],"concept_id":"WM-007","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Daniel J. Levitin — The Organized Mind — إخراج التذكر إلى نظام موثوق","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"إخراج التذكر إلى نظام موثوق","source_basis":"direct","source_confidence":"High"},{"id":39,"status":"Published","type":"exercise","category":"الذاكرة العاملة والتعلم","level":3,"title":"تفريغ الحمل الذهني","message":"الكتابة تنظف مساحة التفكير.","details":"تفريغ ما في الذهن على الورق يقلل الضجيج الداخلي، ويجعل التفكير أهدأ وأكثر ترتيبًا.","action":"اكتب لمدة ثلاث دقائق كل ما يدور في ذهنك دون ترتيب، ثم اختر منه إجراءً واحدًا.","question":"ما الفكرة التي تكررت في ذهنك أكثر من مرة؟","source":"The Organized Mind","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","exercise","مستويات تنفيذية","The Organized Mind"],"concept_id":"WM-008","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Daniel J. Levitin — The Organized Mind — التفريغ الذهني لتحرير الانتباه","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العقل المنظم","author":"Daniel J. Levitin","source_topic":"التفريغ الذهني لتحرير الانتباه","source_basis":"derived","source_confidence":"High"},{"id":40,"status":"Published","type":"insight","category":"الذاكرة العاملة والتعلم","level":4,"title":"وضوح الذاكرة يبدأ من وضوح السياق","message":"السياق يخفف حمل الذاكرة.","details":"عندما تعرف لماذا تحتاج المعلومة وأين ستستخدمها، تصبح أسهل في التذكر والمعالجة.","action":"قبل حفظ أي معلومة، اكتب بجانبها: لماذا أحتاجها؟","question":"ما المعلومة التي تحفظها دون أن تعرف استخدامها؟","source":"Make It Stick","tags":["الذاكرة العاملة والتعلم","الذاكرة العاملة","insight","مستويات تنفيذية","Make It Stick"],"concept_id":"WM-009","domain":"الذاكرة العاملة والتعلم","domain_order":2,"subcategory":"الذاكرة العاملة","reference":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التفصيل وربط المعلومة بالمعنى والاستخدام","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اجعل التعلم راسخًا","author":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel","source_topic":"التفصيل وربط المعلومة بالمعنى والاستخدام","source_basis":"direct","source_confidence":"High"},{"id":41,"status":"Published","type":"principle","category":"الكبح الذاتي","level":3,"title":"المسافة بين الرغبة والفعل","message":"اصنع فاصلاً قبل الفعل.","details":"الكبح الذاتي لا يعني منع الرغبة، بل خلق مسافة قصيرة بين ظهورها وتنفيذها حتى يتدخل القرار الواعي.","action":"عند اندفاعك لفعل شيء، انتظر عشر ثوانٍ قبل الاستجابة.","question":"ما السلوك الذي يحتاج منك فاصلاً قبل تنفيذه؟","source":"The Marshmallow Test","tags":["الكبح الذاتي","principle","مستويات تنفيذية","The Marshmallow Test"],"concept_id":"IC-002","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Walter Mischel — The Marshmallow Test — النظام الساخن والبارد والمسافة النفسية","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["IC-003","IC-005","IC-006"],"source_title_ar":"اختبار المارشميلو","author":"Walter Mischel","source_topic":"النظام الساخن والبارد والمسافة النفسية","source_basis":"direct","source_confidence":"High"},{"id":42,"status":"Published","type":"rule","category":"الكبح الذاتي","level":2,"title":"لا تفاوض المشتت وقت الضعف","message":"امنع المشتت قبل لحظة الضعف.","details":"عندما يظهر المشتت في لحظة التعب، تصبح مقاومته أصعب. الأفضل أن تمنعه من الوصول قبل أن يبدأ الصراع.","action":"أبعد أكثر تطبيق يشتتك عن الشاشة الرئيسية اليوم.","question":"ما المشتت الذي يجب أن تمنعه قبل أن تفاوضه؟","source":"Willpower","tags":["الكبح الذاتي","rule","مستويات تنفيذية","Willpower"],"concept_id":"IC-003","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Roy F. Baumeister & John Tierney — Willpower — تجنب الإغراء والالتزام المسبق","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["IC-004"],"source_title_ar":"قوة الإرادة","author":"Roy F. Baumeister & John Tierney","source_topic":"تجنب الإغراء والالتزام المسبق","source_basis":"direct","source_confidence":"High"},{"id":43,"status":"Published","type":"mistake","category":"الكبح الذاتي","level":3,"title":"الاعتماد على المنع المطلق","message":"المنع بلا بديل فراغ.","details":"إيقاف عادة أو اندفاع دون بديل عملي يجعل العودة أسهل. الكبح الناجح يحتاج مسارًا بديلًا جاهزًا.","action":"حدد بديلًا واحدًا لكل سلوك تريد تقليله.","question":"ما السلوك الذي تحاول منعه دون بديل واضح؟","source":"Atomic Habits","tags":["الكبح الذاتي","mistake","مستويات تنفيذية","Atomic Habits"],"concept_id":"IC-004","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"James Clear — Atomic Habits — حلقة العادة واستبدال الاستجابة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"العادات الذرية","author":"James Clear","source_topic":"حلقة العادة واستبدال الاستجابة","source_basis":"derived","source_confidence":"Medium"},{"id":44,"status":"Published","type":"challenge","category":"الكبح الذاتي","level":3,"title":"تحدي التأجيل القصير","message":"تأجيل الاندفاع يضعف قوته.","details":"ليس المطلوب مقاومة دائمة؛ أحيانًا يكفي تأجيل السلوك دقائق قليلة حتى تنخفض شدته.","action":"اختر اندفاعًا واحدًا اليوم وأجّله خمس دقائق قبل الاستجابة.","question":"هل بقيت الرغبة بنفس القوة بعد التأجيل؟","source":"The Marshmallow Test","tags":["الكبح الذاتي","challenge","مستويات تنفيذية","The Marshmallow Test"],"concept_id":"IC-005","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Walter Mischel — The Marshmallow Test — تأخير الإشباع وتبريد الاندفاع","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اختبار المارشميلو","author":"Walter Mischel","source_topic":"تأخير الإشباع وتبريد الاندفاع","source_basis":"direct","source_confidence":"High"},{"id":45,"status":"Published","type":"strategy","category":"الكبح الذاتي","level":4,"title":"حوّل المنع إلى قاعدة مسبقة","message":"القواعد المسبقة تقلل صراع اللحظة.","details":"عندما تحدد مسبقًا متى تفعل ومتى تمتنع، تقل الحاجة لاتخاذ القرار في لحظة الإغراء.","action":"اكتب قاعدة واحدة بصيغة: إذا حدث كذا، فسأفعل كذا.","question":"ما القاعدة التي لو كتبتها ستقلل ترددك؟","source":"The Marshmallow Test","tags":["الكبح الذاتي","strategy","مستويات تنفيذية","The Marshmallow Test"],"concept_id":"IC-006","domain":"الكبح الذاتي","domain_order":3,"subcategory":"الكبح الذاتي","reference":"Walter Mischel — The Marshmallow Test — خطط إذا–فإن لضبط الاستجابة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اختبار المارشميلو","author":"Walter Mischel","source_topic":"خطط إذا–فإن لضبط الاستجابة","source_basis":"direct","source_confidence":"High"},{"id":46,"status":"Published","type":"principle","category":"المرونة المعرفية","level":4,"title":"غيّر الاستراتيجية لا الهدف","message":"غيّر الطريقة لا الهدف.","details":"المرونة المعرفية تسمح لك بتغيير المسار عندما لا يعمل الأسلوب الحالي دون التخلي السريع عن الهدف نفسه.","action":"اختر هدفًا متعثرًا واكتب طريقة بديلة للوصول إليه.","question":"هل تحتاج إلى تغيير الهدف أم تغيير الطريقة؟","source":"Grit","tags":["المرونة المعرفية","principle","مستويات تنفيذية","Grit"],"concept_id":"CF-004","domain":"المرونة المعرفية","domain_order":4,"subcategory":"المرونة المعرفية","reference":"Angela Duckworth — Grit — هرمية الأهداف وثبات الغاية العليا","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["CF-005","CF-006"],"source_title_ar":"العزم","author":"Angela Duckworth","source_topic":"هرمية الأهداف وثبات الغاية العليا","source_basis":"direct","source_confidence":"High"},{"id":47,"status":"Published","type":"insight","category":"المرونة المعرفية","level":4,"title":"التعلق بالخطة قد يعطل التعلم","message":"الخطة أداة لا قيد.","details":"الخطة تساعد على الاتجاه، لكنها تصبح عائقًا إذا منعتك من ملاحظة الواقع وتعديل المسار.","action":"راجع خطة حالية واسأل: ما الدليل أن هذه الطريقة ما زالت مناسبة؟","question":"ما الخطة التي تتمسك بها رغم تغير الظروف؟","source":"Peak","tags":["المرونة المعرفية","insight","مستويات تنفيذية","Peak"],"concept_id":"CF-005","domain":"المرونة المعرفية","domain_order":4,"subcategory":"المرونة المعرفية","reference":"K. Anders Ericsson & Robert Pool — Peak — تعديل التدريب بناءً على التغذية الراجعة","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"القمة","author":"K. Anders Ericsson & Robert Pool","source_topic":"تعديل التدريب بناءً على التغذية الراجعة","source_basis":"derived","source_confidence":"High"},{"id":48,"status":"Published","type":"exercise","category":"المرونة المعرفية","level":3,"title":"تمرين الزاوية الأخرى","message":"رؤية بديلة قد تكشف حلًا مخفيًا.","details":"عندما تنظر للمشكلة من زاوية واحدة، تضيق الحلول. تغيير المنظور يوسع الخيارات.","action":"اكتب المشكلة من وجهة نظر شخص آخر يتأثر بها.","question":"كيف تبدو المشكلة لو نظر إليها شخص مختلف عنك؟","source":"Focus","tags":["المرونة المعرفية","exercise","مستويات تنفيذية","Focus"],"concept_id":"CF-006","domain":"المرونة المعرفية","domain_order":4,"subcategory":"المرونة المعرفية","reference":"Daniel Goleman — Focus — التركيز على الآخر وتبني منظوره","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"التركيز","author":"Daniel Goleman","source_topic":"التركيز على الآخر وتبني منظوره","source_basis":"direct","source_confidence":"High"},{"id":49,"status":"Published","type":"mistake","category":"المراجعة والتحسين","level":4,"title":"المراجعة بعد الفشل فقط","message":"راجع النجاح كما تراجع الخطأ.","details":"النجاح غير المراجع قد يتكرر بالصدفة. فهم سبب النجاح يجعله قابلاً للتكرار.","action":"اكتب سببًا واحدًا لنجاح مهمة أنجزتها هذا الأسبوع.","question":"ما السلوك الذي نجح وتريد تكراره عمدًا؟","source":"Make It Stick","tags":["المراجعة والتحسين","المراجعة","mistake","مستويات تنفيذية","Make It Stick"],"concept_id":"REF-003","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التأمل في أسباب النجاح والفشل","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":["REF-004"],"source_title_ar":"اجعل التعلم راسخًا","author":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel","source_topic":"التأمل في أسباب النجاح والفشل","source_basis":"direct","source_confidence":"High"},{"id":50,"status":"Published","type":"strategy","category":"المراجعة والتحسين","level":5,"title":"حوّل المراجعة إلى تعديل","message":"المراجعة بلا تعديل وصف.","details":"قيمة المراجعة تظهر عندما تنتج عنها خطوة مختلفة في المرة القادمة، لا عندما تكتفي بتفسير ما حدث.","action":"بعد مراجعة أي تعثر، اكتب تعديلًا واحدًا ستطبقه في المحاولة القادمة.","question":"ما التعديل العملي الناتج عن آخر مراجعة؟","source":"Make It Stick","tags":["المراجعة والتحسين","المراجعة","strategy","مستويات تنفيذية","Make It Stick"],"concept_id":"REF-004","domain":"المراجعة والتحسين","domain_order":8,"subcategory":"المراجعة","reference":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel — Make It Stick — التأمل ثم تعديل الاستراتيجية","review_status":"CommitteeApproved","atomic":true,"prerequisites":[],"related":[],"source_title_ar":"اجعل التعلم راسخًا","author":"Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel","source_topic":"التأمل ثم تعديل الاستراتيجية","source_basis":"direct","source_confidence":"High"}];
-
-    let knowledgeItems = [];
-    let typeQueues = {};
-    let typeCycle = [];
-    let lastKnowledgeId = null;
-    let lastKnowledgeType = null;
-    let currentKnowledgeItem = null;
-    const EXEC_STATE_KEY = 'masar.executive.state.v1';
-
-    function riyadhDateKey(date=new Date()){
-      const parts = new Intl.DateTimeFormat('en-US', {year:'numeric',month:'2-digit',day:'2-digit',timeZone:TZ}).formatToParts(date);
-      const get = type => parts.find(p => p.type === type)?.value;
-      return `${get('year')}-${get('month')}-${get('day')}`;
-    }
-
-    function loadExecutiveState(){
-      const empty = {schemaVersion:1,favorites:[],today:null,seen:[]};
-      try{
-        const parsed = JSON.parse(localStorage.getItem(EXEC_STATE_KEY) || 'null');
-        if(!parsed || parsed.schemaVersion !== 1) return empty;
-        return {
-          schemaVersion:1,
-          favorites:Array.isArray(parsed.favorites) ? parsed.favorites.filter(x => typeof x === 'string') : [],
-          today:parsed.today && typeof parsed.today.conceptId === 'string' && typeof parsed.today.date === 'string'
-            ? {conceptId:parsed.today.conceptId,date:parsed.today.date,completed:Boolean(parsed.today.completed)} : null,
-          seen:Array.isArray(parsed.seen) ? [...new Set(parsed.seen.filter(x => typeof x === 'string'))] : []
-        };
-      }catch(error){
-        console.warn('Executive state was reset', error);
-        return empty;
-      }
-    }
-
-    let executiveState = loadExecutiveState();
-
-    function saveExecutiveState(){
-      try{ localStorage.setItem(EXEC_STATE_KEY, JSON.stringify(executiveState)); }
-      catch(error){ console.warn('Executive state could not be saved', error); }
-    }
-
-    function todayChallengeState(){
-      return executiveState.today?.date === riyadhDateKey() ? executiveState.today : null;
-    }
-
-    function isKnowledgeSaved(item){
-      return Boolean(item?.concept_id && executiveState.favorites.includes(item.concept_id));
-    }
-
-    function refreshKnowledgeInteraction(item=currentKnowledgeItem){
-      if(!item) return;
-      const saveBtn = document.getElementById('knowledgeSave');
-      const saved = isKnowledgeSaved(item);
-      saveBtn.setAttribute('aria-pressed', String(saved));
-      saveBtn.textContent = saved ? '★ محفوظة' : '☆ حفظ';
-
-      const applyBtn = document.getElementById('knowledgeApplyToday');
-      const today = todayChallengeState();
-      const isCurrent = today?.conceptId === item.concept_id;
-      applyBtn.disabled = Boolean(isCurrent);
-      applyBtn.textContent = isCurrent ? (today.completed ? 'تم تطبيقها اليوم ✓' : 'تحدي اليوم الحالي') : 'طبّقها اليوم';
-    }
-
-    function renderTodayChallenge(){
-      const box = document.getElementById('todayChallenge');
-      const today = todayChallengeState();
-      const item = today ? getPublishedKnowledge().find(x => x.concept_id === today.conceptId) : null;
-      if(!item){ box.classList.remove('is-visible'); return; }
-      document.getElementById('todayChallengeAction').textContent = item.action || item.message;
-      document.getElementById('todayChallengeSource').textContent = `${item.title} • ${item.source || ''}`;
-      const doneBtn = document.getElementById('todayChallengeDone');
-      doneBtn.textContent = today.completed ? 'تم ✓' : 'تم';
-      doneBtn.classList.toggle('is-complete', today.completed);
-      doneBtn.setAttribute('aria-pressed', String(today.completed));
-      box.classList.add('is-visible');
-    }
-
-    function shuffleArray(arr){
-      const copy = [...arr];
-      for(let i = copy.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        [copy[i], copy[j]] = [copy[j], copy[i]];
-      }
-      return copy;
-    }
-
-    function getPublishedKnowledge(){
-      return (knowledgeItems.length ? knowledgeItems : FALLBACK_KNOWLEDGE)
-        .filter(item => !item.status || item.status === 'Published');
-    }
-
-    function rebuildTypeQueues(){
-      const published = getPublishedKnowledge();
-      const seen = new Set(executiveState.seen || []);
-      let available = published.filter(item => !seen.has(item.concept_id));
-      if(!available.length){
-        executiveState.seen = [];
-        saveExecutiveState();
-        available = published;
-      }
-      typeQueues = {};
-
-      available.forEach(item => {
-        const t = item.type || 'general';
-        if(!typeQueues[t]) typeQueues[t] = [];
-        typeQueues[t].push(item);
-      });
-
-      Object.keys(typeQueues).forEach(t => {
-        typeQueues[t] = shuffleArray(typeQueues[t]);
-      });
-
-      typeCycle = shuffleArray(Object.keys(typeQueues));
-
-      if(typeCycle.length > 1 && lastKnowledgeType && typeCycle[0] === lastKnowledgeType){
-        typeCycle.push(typeCycle.shift());
-      }
-    }
-
-    function pickKnowledge(){
-      const published = getPublishedKnowledge();
-      if(!published.length) return FALLBACK_KNOWLEDGE[0];
-
-      if(!typeCycle.length) rebuildTypeQueues();
-
-      let selectedType = null;
-
-      while(typeCycle.length){
-        const candidateType = typeCycle.shift();
-        if(typeQueues[candidateType] && typeQueues[candidateType].length){
-          selectedType = candidateType;
-          break;
-        }
-      }
-
-      if(!selectedType){
-        rebuildTypeQueues();
-        selectedType = typeCycle.shift();
-      }
-
-      let item = (typeQueues[selectedType] || []).shift();
-
-      if(item && published.length > 1 && item.id === lastKnowledgeId){
-        const alternativeType = typeCycle.find(t => typeQueues[t] && typeQueues[t].length);
-        if(alternativeType){
-          typeCycle = typeCycle.filter(t => t !== alternativeType);
-          typeCycle.unshift(selectedType);
-          selectedType = alternativeType;
-          item = typeQueues[selectedType].shift();
-        }
-      }
-
-      if(typeQueues[selectedType] && typeQueues[selectedType].length){
-        typeCycle.push(selectedType);
-      }
-
-      lastKnowledgeId = item?.id ?? null;
-      lastKnowledgeType = item?.type ?? null;
-
-      if(item?.concept_id && !executiveState.seen.includes(item.concept_id)){
-        executiveState.seen.push(item.concept_id);
-        saveExecutiveState();
-      }
-
-      return item || published[0];
-    }
-
-    function practicalFromItem(item){
-      return item.action || item.practical || 'حوّل هذه الرسالة إلى خطوة صغيرة قابلة للتنفيذ خلال أقل من دقيقتين.';
-    }
-
-    function renderKnowledge(item){
-      const card = document.getElementById('knowledgeCard');
-      if(card) card.classList.remove('is-open');
-      currentKnowledgeItem = item;
-
-      document.getElementById('knowledgeTitle').textContent = KNOWLEDGE_TYPE_LABELS[item.type] || 'رسالة اليوم';
-      document.getElementById('knowledgeText').textContent = item.message || item.content || item.title || 'رسالة اليوم';
-      document.getElementById('knowledgePractical').textContent = practicalFromItem(item);
-    }
-
-    function setKnowledgeDialogText(id, value, fallback='—'){
-      const el = document.getElementById(id);
-      if(el) el.textContent = value || fallback;
-    }
-
-    function openKnowledgeModal(item=currentKnowledgeItem){
-      if(!item) return;
-      const typeLabel = KNOWLEDGE_TYPE_LABELS[item.type] || item.type || 'معرفة تنفيذية';
-      setKnowledgeDialogText('knowledgeDialogKicker', typeLabel);
-      setKnowledgeDialogText('knowledgeDialogTitle', item.title);
-      setKnowledgeDialogText('knowledgeDialogMessage', item.message);
-      setKnowledgeDialogText('knowledgeDialogDomain', item.domain || item.category);
-      setKnowledgeDialogText('knowledgeDialogType', typeLabel.replace(' اليوم',''));
-      setKnowledgeDialogText('knowledgeDialogLevel', item.level ? `المستوى ${item.level}` : '—');
-      setKnowledgeDialogText('knowledgeDialogDetails', item.details);
-      setKnowledgeDialogText('knowledgeDialogAction', item.action || item.practical);
-      setKnowledgeDialogText('knowledgeDialogQuestion', item.question);
-
-      const bookTitle = item.source_title_ar ? `${item.source} — ${item.source_title_ar}` : item.source;
-      setKnowledgeDialogText('knowledgeDialogBook', bookTitle, 'مرجع غير محدد');
-      setKnowledgeDialogText('knowledgeDialogAuthor', item.author || item.reference, '');
-      setKnowledgeDialogText('knowledgeDialogTopic', item.source_topic ? `المفهوم المرجعي: ${item.source_topic}` : '', '');
-      const basis = item.source_basis === 'direct' ? 'فكرة مباشرة من الكتاب' : item.source_basis === 'derived' ? 'تطبيق مستنبط من مفهوم في الكتاب' : '';
-      const confidence = item.source_confidence ? `درجة المطابقة: ${item.source_confidence === 'High' ? 'مرتفعة' : 'متوسطة'}` : '';
-      setKnowledgeDialogText('knowledgeDialogBasis', [basis,confidence].filter(Boolean).join(' • '), '');
-
-      const relatedBox = document.getElementById('knowledgeDialogRelated');
-      const relatedSection = document.getElementById('knowledgeRelatedSection');
-      const allItems = getPublishedKnowledge();
-      const related = (item.related || []).map(id => allItems.find(x => x.concept_id === id)).filter(Boolean);
-      if(related.length){
-        relatedBox.innerHTML = related.map(x => `<span>${x.title}</span>`).join('');
-        relatedSection.hidden = false;
-      }else{
-        relatedBox.innerHTML = '';
-        relatedSection.hidden = true;
-      }
-
-      refreshKnowledgeInteraction(item);
-
-      const modal = document.getElementById('knowledgeModal');
-      modal.classList.add('is-visible');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('knowledgeModalClose').focus();
-    }
-
-    function closeKnowledgeModal(){
-      const modal = document.getElementById('knowledgeModal');
-      modal.classList.remove('is-visible');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-      document.getElementById('knowledgeCard')?.focus();
-    }
-
-    async function loadKnowledgeBase(){
-      try{
-        const res = await fetch('Data/executive_knowledge.json', {cache:'no-store'});
-        if(!res.ok) throw new Error('not found');
-        const data = await res.json();
-        knowledgeItems = Array.isArray(data.items) ? data.items : [];
-      }catch(e){
-        knowledgeItems = FALLBACK_KNOWLEDGE;
-      }
-
-      typeQueues = {};
-      typeCycle = [];
-      renderKnowledge(pickKnowledge());
-      renderTodayChallenge();
-    }
-
-    function daysBetween(from, to){
-      const s = new Date(from.getFullYear(), from.getMonth(), from.getDate());
-      const e = new Date(to.getFullYear(), to.getMonth(), to.getDate());
-      return Math.ceil((e - s) / 86400000);
-    }
-
-    function formatGregReadable(d){
-      return new Intl.DateTimeFormat('ar-SA-u-ca-gregory', {
-        day:'numeric',
-        month:'long',
-        year:'numeric',
-        timeZone:TZ
-      }).format(d);
-    }
-
-    function nextSalaryDate(){
-      const now = new Date();
-      let y = now.getFullYear();
-      let m = now.getMonth();
-
-      function salaryFor(Y, M){
-        const d = new Date(Y, M, 27);
-        const day = d.getDay();
-        if(day === 5) d.setDate(26);
-        else if(day === 6) d.setDate(28);
-        return d;
-      }
-
-      let salary = salaryFor(y, m);
-      if(daysBetween(now, salary) < 0){
-        m++;
-        if(m > 11){ m = 0; y++; }
-        salary = salaryFor(y, m);
-      }
-
-      return salary;
-    }
-
-    function setRing(id, ratio){
-      const el = document.getElementById(id);
-      if(!el) return;
-
-      const c = 2 * Math.PI * 45;
-      el.style.strokeDasharray = String(c);
-      el.style.strokeDashoffset = String(c);
-
-      requestAnimationFrame(() => {
-        const v = Math.max(0, Math.min(1, ratio));
-        el.style.strokeDashoffset = String(c * (1 - v));
-      });
-    }
-
-    function updateWellnessCounters(){
-      const now = new Date();
-
-      const salary = nextSalaryDate();
-      const sd = Math.max(0, daysBetween(now, salary));
-      document.getElementById('salaryDays').textContent = sd;
-      document.getElementById('salaryDate').textContent = formatGregReadable(salary);
-      setRing('salaryRing', (31 - Math.min(31, sd)) / 31);
-
-      const ramadan = new Date(2027, 1, 8);
-      const rd = Math.max(0, daysBetween(now, ramadan));
-      document.getElementById('ramadanDays').textContent = rd;
-      document.getElementById('ramadanDate').textContent = formatGregReadable(ramadan);
-      setRing('ramadanRing', (365 - Math.min(365, rd)) / 365);
-    }
-
-    document.getElementById('nextKnowledge').addEventListener('click', (event) => {
-      event.stopPropagation();
-      renderKnowledge(pickKnowledge());
-    });
-
-    document.getElementById('toggleKnowledge').addEventListener('click', (event) => {
-      event.stopPropagation();
-      document.getElementById('knowledgeCard').classList.toggle('is-open');
-    });
-
-    document.getElementById('knowledgeCard').addEventListener('click', (event) => {
-      if(event.target.closest('button')) return;
-      openKnowledgeModal();
-    });
-    document.getElementById('knowledgeCard').addEventListener('keydown', (event) => {
-      if(event.key === 'Enter' || event.key === ' '){
-        event.preventDefault();
-        openKnowledgeModal();
-      }
-    });
-    document.getElementById('knowledgeModalClose').addEventListener('click', closeKnowledgeModal);
-    document.getElementById('knowledgeSave').addEventListener('click', () => {
-      if(!currentKnowledgeItem?.concept_id) return;
-      const id = currentKnowledgeItem.concept_id;
-      if(isKnowledgeSaved(currentKnowledgeItem)) executiveState.favorites = executiveState.favorites.filter(x => x !== id);
-      else executiveState.favorites = [...new Set([...executiveState.favorites,id])];
-      saveExecutiveState();
-      refreshKnowledgeInteraction();
-    });
-    document.getElementById('knowledgeApplyToday').addEventListener('click', () => {
-      if(!currentKnowledgeItem?.concept_id) return;
-      const existing = todayChallengeState();
-      if(existing && existing.conceptId !== currentKnowledgeItem.concept_id){
-        const replace = window.confirm('لديك تحدٍ لليوم. هل تريد استبداله بهذه القاعدة؟');
-        if(!replace) return;
-      }
-      executiveState.today = {conceptId:currentKnowledgeItem.concept_id,date:riyadhDateKey(),completed:false};
-      saveExecutiveState();
-      renderTodayChallenge();
-      refreshKnowledgeInteraction();
-    });
-    document.getElementById('todayChallengeDone').addEventListener('click', (event) => {
-      event.stopPropagation();
-      const today = todayChallengeState();
-      if(!today) return;
-      executiveState.today = {...today,completed:!today.completed};
-      saveExecutiveState();
-      renderTodayChallenge();
-      refreshKnowledgeInteraction();
-    });
-    document.getElementById('todayChallenge').addEventListener('click', (event) => {
-      event.stopPropagation();
-      if(event.target.closest('button')) return;
-      const today = todayChallengeState();
-      const item = today ? getPublishedKnowledge().find(x => x.concept_id === today.conceptId) : null;
-      if(item) openKnowledgeModal(item);
-    });
-    document.getElementById('knowledgeModal').addEventListener('click', (event) => {
-      if(event.target === event.currentTarget) closeKnowledgeModal();
-    });
-    document.addEventListener('keydown', (event) => {
-      if(event.key === 'Escape' && document.getElementById('knowledgeModal').classList.contains('is-visible')) closeKnowledgeModal();
-    });
-
-    async function updateGoldPrice() {
-      try {
-        const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=PAXGUSDT');
-        if (!response.ok) throw new Error('Network error');
-        const data = await response.json();
-        const priceUSDPerOunce = parseFloat(data.price);
-        
-        // تحويل السعر إلى ريال سعودي لكل جرام
-        // الأونصة = 31.1034768 جرام، والدولار = 3.75 ريال
-        const priceSARPerGram = (priceUSDPerOunce * 3.75) / 31.1034768;
-        
-        document.getElementById('goldPrice').textContent = priceSARPerGram.toFixed(2);
-        await saveGoldDailyPrice(priceSARPerGram);
-        
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-        document.getElementById('goldDate').textContent = `مُحدّث ${timeStr}`;
-        
-        // نطاق السعر المتوقع للدائرة بين 150 و 450 ريال للجرام
-        const minRange = 150;
-        const maxRange = 450;
-        const ratio = (priceSARPerGram - minRange) / (maxRange - minRange);
-      } catch (error) {
-        console.error('Error fetching gold price:', error);
-        document.getElementById('goldDate').textContent = 'خطأ في الاتصال';
-      }
-    }
-
-
-
-    // ——— سجل أسعار الذهب المحلي (IndexedDB) ———
-    const GOLD_DB_NAME = 'MasarDB';
-    const GOLD_DB_VERSION = 1;
-    const GOLD_STORE = 'goldPriceHistory';
-    let goldCurrentRangeDays = 30;
-    let goldLastFocused = null;
-
-    function openGoldDB(){
-      return new Promise((resolve,reject)=>{
-        if(!('indexedDB' in window)) return reject(new Error('IndexedDB غير مدعوم'));
-        const req=indexedDB.open(GOLD_DB_NAME,GOLD_DB_VERSION);
-        req.onupgradeneeded=()=>{
-          const db=req.result;
-          if(!db.objectStoreNames.contains(GOLD_STORE)){
-            const store=db.createObjectStore(GOLD_STORE,{keyPath:'date'});
-            store.createIndex('capturedAt','capturedAt',{unique:false});
-          }
-        };
-        req.onsuccess=()=>resolve(req.result);
-        req.onerror=()=>reject(req.error || new Error('تعذر فتح قاعدة البيانات'));
-      });
-    }
-
-    function goldDateKey(date=new Date()){
-      const parts=new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
-      const get=t=>parts.find(p=>p.type===t)?.value;
-      return `${get('year')}-${get('month')}-${get('day')}`;
-    }
-
-    async function saveGoldDailyPrice(price){
-      if(!Number.isFinite(price) || price<=0) return;
-      const db=await openGoldDB();
-      await new Promise((resolve,reject)=>{
-        const tx=db.transaction(GOLD_STORE,'readwrite');
-        tx.objectStore(GOLD_STORE).put({
-          date:goldDateKey(),
-          price:Number(price.toFixed(2)),
-          unit:'SAR_PER_GRAM_24K',
-          capturedAt:new Date().toISOString()
-        });
-        tx.oncomplete=resolve;
-        tx.onerror=()=>reject(tx.error || new Error('تعذر حفظ سعر الذهب'));
-      });
-      db.close();
-    }
-
-    async function getGoldHistory(){
-      const db=await openGoldDB();
-      const rows=await new Promise((resolve,reject)=>{
-        const tx=db.transaction(GOLD_STORE,'readonly');
-        const req=tx.objectStore(GOLD_STORE).getAll();
-        req.onsuccess=()=>resolve(req.result || []);
-        req.onerror=()=>reject(req.error || new Error('تعذر قراءة سجل الذهب'));
-      });
-      db.close();
-      return rows.filter(r=>r && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && Number.isFinite(Number(r.price))).sort((a,b)=>a.date.localeCompare(b.date));
-    }
-
-    function filterGoldHistory(rows,days){
-      if(!days) return rows;
-      const cutoff=new Date();
-      cutoff.setHours(0,0,0,0);
-      cutoff.setDate(cutoff.getDate()-(days-1));
-      return rows.filter(r=>new Date(`${r.date}T12:00:00+03:00`)>=cutoff);
-    }
-
-    function formatGoldDate(dateKey,withYear=false){
-      return new Intl.DateTimeFormat('ar-SA',{day:'numeric',month:'short',year:withYear?'numeric':undefined,timeZone:TZ}).format(new Date(`${dateKey}T12:00:00+03:00`));
-    }
-
-    function renderGoldStats(rows){
-      const latestEl=document.getElementById('goldStatLatest');
-      const changeEl=document.getElementById('goldStatChange');
-      const highEl=document.getElementById('goldStatHigh');
-      const lowEl=document.getElementById('goldStatLow');
-      if(!rows.length){[latestEl,changeEl,highEl,lowEl].forEach(el=>el.textContent='—');return;}
-      const values=rows.map(r=>Number(r.price));
-      const latest=values.at(-1), first=values[0], diff=latest-first, pct=first?diff/first*100:0;
-      latestEl.textContent=`${latest.toFixed(2)} ر.س`;
-      changeEl.textContent=`${diff>0?'+':''}${diff.toFixed(2)} (${pct>0?'+':''}${pct.toFixed(2)}%)`;
-      changeEl.className=diff>0?'up':diff<0?'down':'flat';
-      highEl.textContent=`${Math.max(...values).toFixed(2)} ر.س`;
-      lowEl.textContent=`${Math.min(...values).toFixed(2)} ر.س`;
-    }
-
-    function renderGoldChart(rows){
-      const svg=document.getElementById('goldChart');
-      const empty=document.getElementById('goldEmpty');
-      const tooltip=document.getElementById('goldTooltip');
-      svg.innerHTML=''; tooltip.style.display='none';
-      if(rows.length<2){
-        svg.hidden=true;empty.hidden=false;
-        renderGoldStats(rows);
-        return;
-      }
-      svg.hidden=false;empty.hidden=true;renderGoldStats(rows);
-      const W=700,H=290,pad={l:52,r:20,t:22,b:40};
-      const vals=rows.map(r=>Number(r.price));
-      let min=Math.min(...vals),max=Math.max(...vals);
-      const spread=Math.max(max-min,1);
-      min-=spread*.16;max+=spread*.16;
-      const x=i=>pad.l+(i/(rows.length-1))*(W-pad.l-pad.r);
-      const y=v=>pad.t+((max-v)/(max-min))*(H-pad.t-pad.b);
-      const ns='http://www.w3.org/2000/svg';
-      const defs=document.createElementNS(ns,'defs');
-      defs.innerHTML='<linearGradient id="goldAreaGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4af37" stop-opacity=".30"/><stop offset="100%" stop-color="#d4af37" stop-opacity="0"/></linearGradient>';
-      svg.appendChild(defs);
-      for(let i=0;i<5;i++){
-        const gy=pad.t+i*(H-pad.t-pad.b)/4;
-        const line=document.createElementNS(ns,'line');line.setAttribute('x1',pad.l);line.setAttribute('x2',W-pad.r);line.setAttribute('y1',gy);line.setAttribute('y2',gy);line.setAttribute('class','gold-chart-grid');svg.appendChild(line);
-        const label=document.createElementNS(ns,'text');label.setAttribute('x',pad.l-8);label.setAttribute('y',gy+4);label.setAttribute('text-anchor','end');label.setAttribute('class','gold-chart-label');label.textContent=(max-i*(max-min)/4).toFixed(0);svg.appendChild(label);
-      }
-      const points=rows.map((r,i)=>[x(i),y(Number(r.price))]);
-      const linePath='M '+points.map(p=>p.join(' ')).join(' L ');
-      const area=document.createElementNS(ns,'path');area.setAttribute('d',`${linePath} L ${points.at(-1)[0]} ${H-pad.b} L ${points[0][0]} ${H-pad.b} Z`);area.setAttribute('class','gold-chart-area');svg.appendChild(area);
-      const path=document.createElementNS(ns,'path');path.setAttribute('d',linePath);path.setAttribute('class','gold-chart-line');svg.appendChild(path);
-      const labelIndexes=[0,Math.floor((rows.length-1)/2),rows.length-1];
-      [...new Set(labelIndexes)].forEach(i=>{const t=document.createElementNS(ns,'text');t.setAttribute('x',x(i));t.setAttribute('y',H-13);t.setAttribute('text-anchor',i===0?'start':i===rows.length-1?'end':'middle');t.setAttribute('class','gold-chart-label');t.textContent=formatGoldDate(rows[i].date);svg.appendChild(t)});
-      rows.forEach((r,i)=>{
-        const c=document.createElementNS(ns,'circle');c.setAttribute('cx',x(i));c.setAttribute('cy',y(Number(r.price)));c.setAttribute('r',rows.length>45?'2.5':'4');c.setAttribute('class','gold-chart-point');
-        const show=(ev)=>{const wrap=document.getElementById('goldChartWrap');const rect=wrap.getBoundingClientRect();const sx=ev.clientX-rect.left,sy=ev.clientY-rect.top;tooltip.textContent=`${formatGoldDate(r.date,true)} — ${Number(r.price).toFixed(2)} ر.س`;tooltip.style.left=`${sx}px`;tooltip.style.top=`${sy}px`;tooltip.style.display='block'};
-        c.addEventListener('pointerenter',show);c.addEventListener('pointermove',show);c.addEventListener('pointerleave',()=>tooltip.style.display='none');c.addEventListener('click',show);svg.appendChild(c);
-      });
-    }
-
-    async function refreshGoldHistory(){
-      try{renderGoldChart(filterGoldHistory(await getGoldHistory(),goldCurrentRangeDays));}
-      catch(err){console.error(err);document.getElementById('goldEmpty').hidden=false;document.getElementById('goldEmpty').textContent='تعذر قراءة السجل المحلي على هذا المتصفح.';}
-    }
-
-    async function openGoldModal(){
-      goldLastFocused=document.activeElement;
-      document.getElementById('goldModal').classList.add('is-visible');
-      document.getElementById('goldModal').setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
-      await refreshGoldHistory();
-      document.getElementById('goldModalClose').focus();
-    }
-    function closeGoldModal(){
-      document.getElementById('goldModal').classList.remove('is-visible');document.getElementById('goldModal').setAttribute('aria-hidden','true');document.body.style.overflow='';goldLastFocused?.focus?.();
-    }
-
-    async function exportGoldHistory(){
-      const rows=await getGoldHistory();
-      const blob=new Blob([JSON.stringify({app:'Masar',type:'goldPriceHistory',version:1,exportedAt:new Date().toISOString(),records:rows},null,2)],{type:'application/json'});
-      const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`masar-gold-history-${goldDateKey()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),500);
-    }
-    async function importGoldHistoryFile(file){
-      const data=JSON.parse(await file.text());
-      const records=Array.isArray(data)?data:data.records;
-      if(!Array.isArray(records)) throw new Error('صيغة الملف غير صحيحة');
-      const valid=records.filter(r=>r && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && Number.isFinite(Number(r.price)) && Number(r.price)>0).map(r=>({date:r.date,price:Number(Number(r.price).toFixed(2)),unit:'SAR_PER_GRAM_24K',capturedAt:r.capturedAt||new Date().toISOString()}));
-      if(!valid.length) throw new Error('لا توجد سجلات صالحة');
-      const db=await openGoldDB();
-      await new Promise((resolve,reject)=>{const tx=db.transaction(GOLD_STORE,'readwrite'),store=tx.objectStore(GOLD_STORE);valid.forEach(r=>store.put(r));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});db.close();await refreshGoldHistory();return valid.length;
-    }
-
-    function initGoldHistoryUI(){
-      const card=document.getElementById('goldCard');
-      card.addEventListener('click',openGoldModal);
-      card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGoldModal()}});
-      document.getElementById('goldModalClose').addEventListener('click',closeGoldModal);
-      document.getElementById('goldModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeGoldModal()});
-      document.querySelectorAll('.gold-range-btn').forEach(btn=>btn.addEventListener('click',async()=>{document.querySelectorAll('.gold-range-btn').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');goldCurrentRangeDays=Number(btn.dataset.days);await refreshGoldHistory()}));
-      document.getElementById('goldExportBtn').addEventListener('click',()=>exportGoldHistory().catch(err=>alert(err.message)));
-      document.getElementById('goldImportBtn').addEventListener('click',()=>document.getElementById('goldImportInput').click());
-      document.getElementById('goldImportInput').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const n=await importGoldHistoryFile(file);alert(`تم استيراد ${n} سجل بنجاح.`)}catch(err){alert(`تعذر الاستيراد: ${err.message}`)}finally{e.target.value=''}});
-      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('goldModal').classList.contains('is-visible'))closeGoldModal()});
-    }
-
-
-    // ——— الموسم والطوالع: البيانات في Data/seasons-v2.js (مع دعم JSON عند الاستضافة) ———
-    let SEASONS_DATA = window.MASAR_SEASONS_DATA || null;
-    let currentSeasonState = null;
-    let seasonLastFocused = null;
-
-    function riyadhDateParts(date = new Date()){
-      const parts = new Intl.DateTimeFormat('en-CA', {timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
-      return {
-        year:Number(parts.find(p=>p.type==='year')?.value),
-        month:Number(parts.find(p=>p.type==='month')?.value),
-        day:Number(parts.find(p=>p.type==='day')?.value)
-      };
-    }
-
-    function dateAtRiyadhNoon(year, month, day){
-      return new Date(`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}T12:00:00+03:00`);
-    }
-
-    function seasonStartDate(item, baseYear){
-      return dateAtRiyadhNoon(baseYear, item.start.month, item.start.day);
-    }
-
-    function resolveCurrentSeason(data, now = new Date()){
-      const p = riyadhDateParts(now);
-      const today = dateAtRiyadhNoon(p.year, p.month, p.day);
-      const DAY_MS = 24 * 60 * 60 * 1000;
-
-      // ننشئ لكل طالع أقرب بداية سابقة أو مساوية لليوم،
-      // دون الاعتماد على ترتيب بداية الدورة في ديسمبر.
-      const candidates = data.entries.map((item, index) => {
-        let start = seasonStartDate(item, p.year);
-        if(start > today) start = seasonStartDate(item, p.year - 1);
-        return {item, index, start};
-      });
-
-      candidates.sort((a,b) => b.start - a.start);
-      const currentEntry = candidates[0];
-      const currentIndex = currentEntry.index;
-      const nextIndex = (currentIndex + 1) % data.entries.length;
-      const nextItem = data.entries[nextIndex];
-
-      let nextStart = seasonStartDate(nextItem, p.year);
-      if(nextStart <= today) nextStart = seasonStartDate(nextItem, p.year + 1);
-
-      const daysRemaining = Math.max(0, Math.ceil((nextStart - today) / DAY_MS));
-      const endDate = new Date(nextStart.getTime() - DAY_MS);
-
-      return {
-        current: currentEntry.item,
-        next: nextItem,
-        start: currentEntry.start,
-        nextStart,
-        endDate,
-        daysRemaining,
-        currentIndex
-      };
-    }
-
-    function formatSeasonDate(date){
-      return new Intl.DateTimeFormat('ar-SA-u-ca-gregory',{day:'numeric',month:'long',timeZone:TZ}).format(date);
-    }
-
-    function setSeasonTheme(seasonKey){
-      const cfg = SEASONS_DATA?.seasons?.[seasonKey];
-      const color = cfg?.color || '#ca8a04';
-      document.getElementById('seasonCard')?.style.setProperty('--season-color',color);
-      document.getElementById('seasonModal')?.style.setProperty('--season-color',color);
-    }
-
-    function renderSeasonCard(state){
-      const {current,next,daysRemaining} = state;
-      document.getElementById('seasonDays').textContent = daysRemaining;
-      document.getElementById('seasonName').textContent = current.name;
-      document.getElementById('seasonNext').textContent = `التالي: ${next.name}`;
-      setSeasonTheme(current.season);
-      setRing('seasonRing',(current.days-Math.min(current.days,daysRemaining))/current.days);
-    }
-
-    function renderSeasonModal(state){
-      const {current,next,start,endDate,nextStart,daysRemaining} = state;
-      const seasonCfg = SEASONS_DATA.seasons[current.season] || {};
-      document.getElementById('seasonDialogKicker').textContent = `${seasonCfg.icon||'✦'} ${seasonCfg.label||current.season}`;
-      document.getElementById('seasonDialogTitle').textContent = current.name;
-      document.getElementById('seasonDescription').textContent = current.description;
-      document.getElementById('seasonDetailSeason').textContent = seasonCfg.label || current.season;
-      document.getElementById('seasonDetailStart').textContent = formatSeasonDate(start);
-      document.getElementById('seasonDetailEnd').textContent = formatSeasonDate(endDate);
-      document.getElementById('seasonDetailDuration').textContent = `${current.days} يوماً`;
-      document.getElementById('seasonDetailDay').textContent = current.dayLength;
-      document.getElementById('seasonDetailNight').textContent = current.nightLength;
-      document.getElementById('seasonDetailAverage').textContent = `${current.temperature.average}°`;
-      document.getElementById('seasonDetailMax').textContent = `${current.temperature.max}°`;
-      document.getElementById('seasonDetailMin').textContent = `${current.temperature.min}°`;
-      document.getElementById('seasonTraits').innerHTML = current.traits.map(x=>`<span class="season-trait">${x}</span>`).join('');
-      const folkSection = document.getElementById('seasonFolkSection');
-      if(current.folkSaying?.text){
-        document.getElementById('seasonFolkQuote').textContent = `«${current.folkSaying.text}»`;
-        document.getElementById('seasonFolkMeaning').textContent = current.folkSaying.meaning || '';
-        folkSection?.classList.add('is-visible');
-      }else{
-        folkSection?.classList.remove('is-visible');
-        document.getElementById('seasonFolkQuote').textContent = '—';
-        document.getElementById('seasonFolkMeaning').textContent = '';
-      }
-      document.getElementById('seasonUpcoming').textContent = `${next.name} — ${formatSeasonDate(nextStart)}، بعد ${daysRemaining} أيام`;
-      document.getElementById('seasonSourceNote').textContent = SEASONS_DATA.note || 'البيانات موسمية تقريبية ولا تمثل توقعاً يومياً للطقس.';
-    }
-
-    function buildSeasonStateByIndex(index, now = new Date()){
-      const p = riyadhDateParts(now);
-      const today = dateAtRiyadhNoon(p.year,p.month,p.day);
-      const item = SEASONS_DATA.entries[index];
-      const nextIndex = (index + 1) % SEASONS_DATA.entries.length;
-      const next = SEASONS_DATA.entries[nextIndex];
-      const cycleStartYear = currentSeasonState.start.getFullYear() - (currentSeasonState.current.start.month === 12 ? 0 : 1);
-      const itemYear = item.start.month === 12 ? cycleStartYear : cycleStartYear + 1;
-      const nextYear = next.start.month === 12 ? cycleStartYear + 1 : cycleStartYear + 1;
-      const start = seasonStartDate(item,itemYear);
-      let nextStart = seasonStartDate(next,nextYear);
-      if(nextStart <= start) nextStart = seasonStartDate(next,nextYear + 1);
-      const DAY_MS=86400000;
-      return {current:item,next,start,nextStart,endDate:new Date(nextStart-DAY_MS),daysRemaining:Math.max(0,Math.ceil((nextStart-today)/DAY_MS)),currentIndex:index};
-    }
-
-    function showSeasonDetails(state, isCurrent=false){
-      renderSeasonModal(state);
-      const titlePrefix = isCurrent ? 'الموسم الحالي' : 'تفاصيل الطالع';
-      const seasonCfg = SEASONS_DATA.seasons[state.current.season] || {};
-      document.getElementById('seasonDialogKicker').textContent = `${seasonCfg.icon||'✦'} ${titlePrefix} — ${seasonCfg.label||state.current.season}`;
-      setSeasonTheme(state.current.season);
-      document.getElementById('seasonCurrentView').classList.remove('is-hidden');
-      document.getElementById('seasonBrowser').classList.remove('is-visible');
-      document.getElementById('seasonBrowser').setAttribute('aria-hidden','true');
-      document.getElementById('browseSeasonsBtn').textContent = isCurrent ? 'استعراض الأنواء' : 'العودة إلى قائمة الأنواء';
-      document.getElementById('browseSeasonsBtn').dataset.mode = isCurrent ? 'browse' : 'list';
-    }
-
-    function renderSeasonBrowser(){
-      const list=document.getElementById('seasonBrowserList');
-      const currentIndex=currentSeasonState.currentIndex;
-      list.innerHTML=SEASONS_DATA.entries.map((item,index)=>{
-        const cfg=SEASONS_DATA.seasons[item.season]||{};
-        const isCurrent=index===currentIndex;
-        return `<button class="season-browser-item ${isCurrent?'is-current':''}" type="button" data-season-index="${index}" style="--item-color:${cfg.color||'#ca8a04'}" aria-label="عرض تفاصيل ${item.name}"><strong><span class="season-browser-dot"></span>${item.name}</strong><span class="season-browser-meta"><span>${cfg.icon||'✦'} ${cfg.label||item.season}</span><span>${item.start.day}/${item.start.month}</span></span></button>`;
-      }).join('');
-    }
-
-    function openSeasonBrowser(){
-      renderSeasonBrowser();
-      document.getElementById('seasonCurrentView').classList.add('is-hidden');
-      const browser=document.getElementById('seasonBrowser');
-      browser.classList.add('is-visible');
-      browser.setAttribute('aria-hidden','false');
-      document.getElementById('seasonDialogKicker').textContent='دليل المواسم';
-      document.getElementById('seasonDialogTitle').textContent='استعراض الأنواء';
-      browser.querySelector('.season-browser-item.is-current')?.scrollIntoView({block:'nearest'});
-    }
-
-    function openSeasonModal(){
-      if(!currentSeasonState) return;
-      seasonLastFocused = document.activeElement;
-      showSeasonDetails(currentSeasonState,true);
-      const modal = document.getElementById('seasonModal');
-      modal.classList.add('is-visible');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
-      document.getElementById('seasonModalClose').focus();
-    }
-
-    function closeSeasonModal(){
-      const modal = document.getElementById('seasonModal');
-      modal.classList.remove('is-visible');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
-      seasonLastFocused?.focus?.();
-    }
-
-    function showSeasonLoadError(){
-      const name = document.getElementById('seasonName');
-      const next = document.getElementById('seasonNext');
-      if(name){name.textContent='تعذر التحميل';name.classList.add('season-error')}
-      if(next) next.textContent='تحقق من ./Data/seasons-v2.js';
-    }
-
-    async function initSeasons(){
-      try{
-        let data = SEASONS_DATA;
-
-        // عند تشغيل الصفحة مباشرة من الجهاز يعمل seasons-v2.js دون الحاجة إلى خادم محلي.
-        // وعند الاستضافة يمكن استخدام JSON كخيار احتياطي.
-        if(!data){
-          const response = await fetch('./Data/seasons.json',{cache:'no-store'});
-          if(!response.ok) throw new Error(`HTTP ${response.status}`);
-          data = await response.json();
-        }
-
-        if(!Array.isArray(data.entries) || data.entries.length!==28) throw new Error('Invalid seasons data');
-        SEASONS_DATA = data;
-        currentSeasonState = resolveCurrentSeason(data);
-        renderSeasonCard(currentSeasonState);
-      }catch(error){
-        console.error('تعذر تحميل بيانات الطوالع:',error);
-        showSeasonLoadError();
-      }
-    }
-
-    document.getElementById('seasonCard')?.addEventListener('click',openSeasonModal);
-    document.getElementById('seasonCard')?.addEventListener('keydown',(event)=>{
-      if(event.key==='Enter'||event.key===' '){event.preventDefault();openSeasonModal()}
-    });
-    document.getElementById('seasonModalClose')?.addEventListener('click',closeSeasonModal);
-    document.getElementById('seasonModal')?.addEventListener('click',(event)=>{
-      if(event.target===event.currentTarget) closeSeasonModal();
-    });
-    document.addEventListener('keydown',(event)=>{
-      if(event.key==='Escape'&&document.getElementById('seasonModal')?.classList.contains('is-visible')) closeSeasonModal();
-    });
-
-
-    document.getElementById('browseSeasonsBtn')?.addEventListener('click',()=>{
-      const mode=document.getElementById('browseSeasonsBtn').dataset.mode;
-      if(mode==='list') openSeasonBrowser(); else openSeasonBrowser();
-    });
-    document.getElementById('backToCurrentSeason')?.addEventListener('click',()=>showSeasonDetails(currentSeasonState,true));
-    document.getElementById('seasonBrowserList')?.addEventListener('click',(event)=>{
-      const button=event.target.closest('[data-season-index]');
-      if(!button) return;
-      const index=Number(button.dataset.seasonIndex);
-      const state=buildSeasonStateByIndex(index);
-      showSeasonDetails(state,index===currentSeasonState.currentIndex);
-    });
-
-    loadKnowledgeBase();
-    updateWellnessCounters();
-    initSeasons();
-    initGoldHistoryUI();
-    updateGoldPrice();
-    setInterval(updateGoldPrice, 60000);
-
-
   </script>
 </body>
 </html>
