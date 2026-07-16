@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#071525">
+  <meta name="theme-color" content="#f4f7f9">
   <title>خريطة هندسة الذكاء الاصطناعي والأوامر 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,146 +13,164 @@
 <body>
 <div class="app">
   <header>
-    <div class="brand"><div class="brand-mark">م</div><div><h1>خريطة هندسة الذكاء الاصطناعي والأوامر</h1><p class="subtitle">بوابة مسار • من الطلب البسيط إلى النظام الذكي</p></div></div>
-    <div class="header-actions"><button class="soft-btn" id="centerBtn">العودة للمركز</button><button class="icon-btn" id="themeBtn" title="تبديل المظهر" aria-label="تبديل المظهر">☾</button><button class="icon-btn" id="resetBtn" title="مسح التقدم">↻</button></div>
+    <div class="brand"><div class="brand-mark" aria-hidden="true">م</div><div><h1>خريطة هندسة الذكاء الاصطناعي والأوامر</h1><p class="subtitle">بوابة مسار • من الطلب البسيط إلى النظام الذكي</p></div></div>
+    <div class="header-actions"><button class="soft-btn" id="centerBtn">العودة للمركز</button><button class="icon-btn" id="themeBtn" title="تبديل المظهر" aria-label="تبديل المظهر">☾</button><button class="icon-btn" id="resetBtn" title="مسح التقدم" aria-label="مسح التقدم">↻</button></div>
   </header>
   <div class="toolbar">
-    <div class="search"><input id="searchInput" type="search" placeholder="ابحث عن مفهوم..." autocomplete="off" aria-label="البحث في المفاهيم"><div class="search-results" id="searchResults"></div></div>
-    <div class="segmented" role="tablist"><button class="active" data-view="map">الخريطة</button><button data-view="index">الفهرس</button></div>
-    <div class="progress-wrap"><span id="progressLabel">0 من 80</span><span class="progress"><i id="progressBar"></i></span></div>
+    <div class="search"><input id="searchInput" type="search" placeholder="ابحث عن مفهوم..." autocomplete="off" aria-label="البحث في المفاهيم" aria-controls="searchResults"><div class="search-results" id="searchResults" role="listbox"></div></div>
+    <div class="segmented" role="tablist" aria-label="طريقة العرض"><button class="active" data-view="map" role="tab" aria-selected="true">الخريطة</button><button data-view="index" role="tab" aria-selected="false">الفهرس</button><button data-view="favorites" role="tab" aria-selected="false">المفضلة</button></div>
+    <div class="progress-wrap"><span id="progressLabel">0 من 80</span><span class="progress" aria-hidden="true"><i id="progressBar"></i></span></div>
   </div>
   <nav class="crumbs" id="crumbs" aria-label="مسار التنقل"></nav>
   <main>
     <section class="stage" id="stage" aria-label="الخريطة المعرفية التفاعلية">
-      <div class="map-controls"><button id="fitBtn" title="ملاءمة الخريطة">⌂</button><button id="collapseBtn" title="طي الفروع">−</button></div>
+      <div class="map-controls"><button id="fitBtn" title="إعادة ضبط العرض" aria-label="إعادة ضبط العرض">⌂</button><button id="collapseBtn" title="طي الفروع" aria-label="طي الفروع">−</button></div>
       <div class="map" id="map"><svg class="connections" id="connections" aria-hidden="true"></svg></div>
       <div class="index-view" id="indexView"><div class="index-grid" id="indexGrid"></div></div>
     </section>
-    <aside class="details" id="details" aria-live="polite">
+    <aside class="details" id="details" aria-live="polite" aria-label="تفاصيل المفهوم">
       <div class="details-head" id="detailsToggle">
-        <div class="details-kicker"><span id="levelLabel">ابدأ من الخريطة</span><button class="fav" id="favBtn" title="إضافة للمفضلة">☆</button></div>
+        <button class="sheet-close" id="detailsClose" aria-label="إغلاق لوحة الشرح">×</button>
+        <div class="details-kicker"><span id="levelLabel">ابدأ من الخريطة</span><button class="fav" id="favBtn" title="إضافة للمفضلة" aria-label="إضافة للمفضلة">☆</button></div>
         <h2 id="detailTitle">هندسة الأوامر 2026</h2>
-        <p class="desc" id="detailDesc">اختر عقدة لعرض تعريفها، ثم استخدم زر «استكشف» لفتح فروعها.</p>
+        <p class="desc" id="detailDesc">اختر عقدة لعرض تعريفها، ثم انتقل إلى فروعها بالتدرج.</p>
       </div>
       <div class="details-body" id="detailBody"></div>
     </aside>
   </main>
 </div>
-<div class="toast" id="toast"></div>
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
-let DATA={};
-let DATABASE=null;
-let conceptIds=[];
+'use strict';
+let DATA={},DATABASE=null,conceptIds=[];
 const TRACK_STYLE={
-  'track-foundations':{color:'#55d98a',icon:'⌨'},
-  'track-reasoning-governance':{color:'#50b8ff',icon:'⚖'},
-  'track-context-memory-rag':{color:'#f5b942',icon:'◫'},
-  'track-agents-tools':{color:'#a983ff',icon:'♙'},
-  'track-architecture-multimodal-production':{color:'#ff796f',icon:'⌘'}
+  'track-foundations':{color:'#39a867',icon:'⌨'},
+  'track-reasoning-governance':{color:'#2586c7',icon:'⚖'},
+  'track-context-memory-rag':{color:'#c18413',icon:'◫'},
+  'track-agents-tools':{color:'#7955c7',icon:'♙'},
+  'track-architecture-multimodal-production':{color:'#d55249',icon:'⌘'}
 };
 const DIFFICULTY_LABELS={beginner:'مبتدئ',intermediate:'متوسط',advanced:'متقدم',production:'إنتاجي'};
+const $=id=>document.getElementById(id);
+const map=$('map'),svg=$('connections'),details=$('details'),backdrop=$('sheetBackdrop');
+function safeArray(key){try{const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?value:[]}catch{return []}}
+const STATE={current:'root',openPath:['root'],view:'map',completed:new Set(safeArray('ai-map-visited')),favorites:new Set(safeArray('ai-map-favs'))};
 function nodeTrackId(node){return node.type==='track'?node.id:node.trackId}
 function buildUiData(database){
   const ui={};
   for(const node of Object.values(database.nodes)){
-    const trackStyle=TRACK_STYLE[nodeTrackId(node)]||{color:'#f5b942',icon:'•'};
-    const isTrack=node.type==='track';
-    const relatedTitles=(node.relatedNodeIds||[]).map(id=>database.nodes[id]?.titleAr).filter(Boolean);
-    const sourceTitles=(node.sourceRefs||[]).map(id=>database.sources[id]?.title).filter(Boolean);
-    const mistakes=(node.commonMistakes||[]).map(x=>`${x.mistake} — التصحيح: ${x.correction}`).join(' • ');
-    ui[node.id]={
-      id:node.id,
+    const style=TRACK_STYLE[nodeTrackId(node)]||{color:'#c18413',icon:'•'},isTrack=node.type==='track';
+    ui[node.id]={...node,
       parent:node.parentId||null,
       title:isTrack?`${node.order}. ${node.titleAr}`:node.titleAr,
-      short:node.summary||'',
-      icon:node.type==='root'?'🧠':trackStyle.icon,
+      short:node.summary||'',icon:node.type==='root'?'🧠':style.icon,
       level:node.type==='root'?'المركز':node.type==='track'?'مسار':node.type==='axis'?'محور':(DIFFICULTY_LABELS[node.difficulty]||'مفهوم'),
-      color:node.type==='root'?'#f5b942':trackStyle.color,
-      children:node.childIds||[],
-      available:true,
-      definition:node.definition||'',
-      why:node.whyItMatters||'',
-      when:node.whenToUse||'',
-      whenNot:node.whenNotToUse||'',
-      how:(node.steps||[]).join(' • '),
-      example:node.exampleInput?`المدخل: ${node.exampleInput} — المخرج المتوقع: ${node.exampleOutput||''}`:'',
-      warning:mistakes,
-      rule:node.goldenRule||'',
-      exercise:node.exercise?`${node.exercise.instruction} — إجابة نموذجية: ${node.exercise.modelAnswer}`:'',
-      related:relatedTitles.join('، '),
-      sources:sourceTitles.join('، '),
+      color:node.type==='root'?'#c18413':style.color,children:node.childIds||[],available:true,
       searchText:[node.titleAr,node.titleEn,node.summary,...(node.keywords||[]),...(node.searchAliases||[])].filter(Boolean).join(' ')
     };
   }
   return ui;
 }
-const STATE={current:'root',openPath:['root'],view:'map',visited:new Set(JSON.parse(localStorage.getItem('ai-map-visited')||'[]')),favorites:new Set(JSON.parse(localStorage.getItem('ai-map-favs')||'[]'))};
-const map=document.getElementById('map'),svg=document.getElementById('connections'),details=document.getElementById('details');
-
-function save(){localStorage.setItem('ai-map-visited',JSON.stringify([...STATE.visited]));localStorage.setItem('ai-map-favs',JSON.stringify([...STATE.favorites]));localStorage.setItem('ai-map-last',STATE.current);updateProgress()}
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2200)}
+function save(){
+  try{localStorage.setItem('ai-map-visited',JSON.stringify([...STATE.completed]));localStorage.setItem('ai-map-favs',JSON.stringify([...STATE.favorites]));localStorage.setItem('ai-map-last',STATE.current)}catch{}
+  updateProgress();
+}
+function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2200)}
 function getPath(id){const p=[];let n=DATA[id];while(n){p.unshift(n.id);n=n.parent?DATA[n.parent]:null}if(p[0]!=='root')p.unshift('root');return p}
-function showDetails(id,open=true){const n=DATA[id];STATE.current=id;STATE.visited.add(id);save();document.getElementById('levelLabel').textContent=n.level||'مفهوم';document.getElementById('detailTitle').textContent=n.title;document.getElementById('detailDesc').textContent=n.short||'';document.getElementById('favBtn').classList.toggle('on',STATE.favorites.has(id));document.getElementById('favBtn').textContent=STATE.favorites.has(id)?'★':'☆';
-  const body=document.getElementById('detailBody');body.innerHTML='';
-  if(n.definition){body.innerHTML=info('التعريف',n.definition)+info('لماذا يهم؟',n.why)+info('متى يستخدم؟',n.when)+info('متى لا يستخدم؟',n.whenNot)+info('خطوات التطبيق',n.how)+info('مثال عملي',n.example,'example')+info('أخطاء شائعة',n.warning,'warning')+info('القاعدة الذهبية',n.rule)+info('تمرين قصير',n.exercise)+info('مفاهيم مرتبطة',n.related)+info('المراجع',n.sources)+`<div class="detail-actions"><button class="primary" onclick="markRead('${id}')">تمت القراءة</button><button class="secondary" onclick="copyExample('${id}')">نسخ المثال</button></div>`}
-  else if(n.children?.length){body.innerHTML=`<div class="info"><h3>الهدف التعليمي</h3><p>${n.short}</p></div><div class="detail-actions"><button class="primary" onclick="explore('${id}')">استكشف الفروع</button>${id!=='root'?'<button class="secondary" onclick="goParent()">رجوع مستوى</button>':''}</div>`}
-  else{body.innerHTML=`<div class="info"><h3>المحتوى</h3><p>${n.short||'لا توجد تفاصيل إضافية لهذه العقدة.'}</p></div>`}
-  renderCrumbs();renderIndex();if(open)details.classList.add('open')
+function openSheet(){if(innerWidth<1180){details.classList.add('open');backdrop.classList.add('show');$('detailsClose').focus({preventScroll:true})}}
+function closeSheet(){details.classList.remove('open');backdrop.classList.remove('show')}
+function section(title,kind=''){
+  const el=document.createElement('section');el.className=`info ${kind}`.trim();const h=document.createElement('h3');h.textContent=title;el.append(h);return el;
 }
-function info(title,text,cls=''){return text?`<section class="info ${cls}"><h3>${title}</h3><p>${text}</p></section>`:''}
-function explore(id){const n=DATA[id];if(n.available===false){toast('هذا المسار ضمن المرحلة التالية');return}STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
-function goParent(){const n=DATA[STATE.current];const id=n.parent||'root';STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
-function markRead(id){STATE.visited.add(id);save();renderMap();toast('تم تسجيل المفهوم كمقروء')}
-function copyExample(id){navigator.clipboard?.writeText(DATA[id].example).then(()=>toast('تم نسخ المثال')).catch(()=>toast('تعذر النسخ'))}
-
-function positionsFor(id,w,h){const mobile=w<560,cx=w/2,cy=h/2;const pos={};if(id==='root'){pos.root=[cx,cy];const rx=mobile?w*.31:w*.34,ry=mobile?h*.35:h*.34;DATA.root.children.forEach((x,i)=>{const a=(-90+i*72)*Math.PI/180;pos[x]=[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]})}
-  else{pos[id]=[cx,cy];const kids=DATA[id].children||[];const rx=mobile?w*.30:w*.33,ry=mobile?h*.31:h*.29;const step=kids.length?360/kids.length:360;kids.forEach((x,i)=>{const a=(-90+i*step)*Math.PI/180;pos[x]=[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]})}
-  return pos
+function addText(body,title,text,kind=''){if(!text)return;const s=section(title,kind),p=document.createElement('p');p.textContent=text;s.append(p);body.append(s)}
+function addList(body,title,items,kind=''){
+  if(!items?.length)return;const s=section(title,kind),ul=document.createElement('ul');
+  items.forEach(item=>{const li=document.createElement('li');li.textContent=typeof item==='string'?item:`${item.mistake} — التصحيح: ${item.correction}`;ul.append(li)});s.append(ul);body.append(s);
 }
-function renderMap(){map.querySelectorAll('.node,.empty-hint').forEach(x=>x.remove());svg.innerHTML='';const focus=STATE.openPath.at(-1)||'root';const rect=map.getBoundingClientRect(),w=rect.width||800,h=rect.height||690;const pos=positionsFor(focus,w,h);Object.entries(pos).forEach(([id,[x,y]])=>{const n=DATA[id],b=document.createElement('button');b.className=`node ${id==='root'?'root':(n.definition?'concept':'axis')} ${id===focus?'focus':''} ${n.available===false?'disabled':''} ${STATE.visited.has(id)?'visited':''}`;b.style.cssText=`left:${x}px;top:${y}px;--accent:${n.color}`;b.setAttribute('aria-label',n.title);b.innerHTML=`<span class="n-head"><span class="emoji">${n.icon||'•'}</span><span><strong>${n.title}</strong><small>${n.short||''}</small></span></span>`;b.onclick=()=>showDetails(id);b.ondblclick=()=>explore(id);map.appendChild(b)});
-  const parent=DATA[focus],kids=parent?.children||[];kids.filter(k=>pos[k]).forEach(k=>drawLine(pos[focus],pos[k],DATA[k].color));
-  const hint=document.createElement('div');hint.className='empty-hint';hint.textContent=parent?.children?.length?'اضغط لقراءة التعريف • اضغط «استكشف» داخل لوحة الشرح للتعمق':'';map.appendChild(hint)
+function addExample(body,n){
+  if(!n.exampleInput&&!n.exampleOutput)return;const s=section('مثال عملي','example');
+  if(n.exampleInput){const label=document.createElement('strong');label.textContent='المدخل';const p=document.createElement('p');p.textContent=n.exampleInput;s.append(label,p)}
+  if(n.exampleOutput){const label=document.createElement('strong');label.textContent='المخرج المتوقع';const p=document.createElement('p');p.textContent=n.exampleOutput;s.append(label,p)}body.append(s);
 }
-function drawLine(a,b,color){const path=document.createElementNS('http://www.w3.org/2000/svg','path'),mx=(a[0]+b[0])/2;path.setAttribute('d',`M ${a[0]} ${a[1]} C ${mx} ${a[1]}, ${mx} ${b[1]}, ${b[0]} ${b[1]}`);path.setAttribute('stroke',color);svg.appendChild(path);const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',b[0]);c.setAttribute('cy',b[1]);c.setAttribute('r',4);c.setAttribute('fill',color);svg.appendChild(c)}
-function renderCrumbs(){const path=getPath(STATE.current),el=document.getElementById('crumbs');el.innerHTML=path.map((id,i)=>`<button onclick="jump('${id}')">${DATA[id].title.replace(/^\d+\.\s*/,'')}</button>${i<path.length-1?'<span>‹</span>':''}`).join('')}
+function addExercise(body,exercise){
+  if(!exercise)return;const s=section('تمرين قصير');const p=document.createElement('p');p.textContent=exercise.instruction;s.append(p);
+  const disclosure=document.createElement('details'),summary=document.createElement('summary'),answer=document.createElement('p');summary.textContent='إظهار الإجابة النموذجية';answer.textContent=exercise.modelAnswer;disclosure.append(summary,answer);s.append(disclosure);body.append(s);
+}
+function addRelated(body,n){
+  const ids=[...(n.prerequisiteNodeIds||[]),...(n.relatedNodeIds||[])].filter((id,i,a)=>DATA[id]&&a.indexOf(id)===i);if(!ids.length)return;
+  const s=section('مفاهيم مرتبطة'),wrap=document.createElement('div');wrap.className='chip-list';ids.forEach(id=>{const b=document.createElement('button');b.className='concept-chip';b.textContent=DATA[id].title;b.onclick=()=>openFromIndex(id);wrap.append(b)});s.append(wrap);body.append(s);
+}
+function addSources(body,n){
+  const refs=(n.sourceRefs||[]).map(id=>DATABASE.sources[id]).filter(Boolean);if(!refs.length)return;const s=section('المراجع'),list=document.createElement('div');list.className='source-list';
+  refs.forEach(source=>{const a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=`${source.title} — ${source.publisher}`;list.append(a)});s.append(list);body.append(s);
+}
+function showDetails(id,open=true){
+  const n=DATA[id];if(!n)return;STATE.current=id;save();$('levelLabel').textContent=n.level||'مفهوم';$('detailTitle').textContent=n.title;$('detailDesc').textContent=n.short||'';
+  const fav=STATE.favorites.has(id);$('favBtn').classList.toggle('on',fav);$('favBtn').textContent=fav?'★':'☆';$('favBtn').setAttribute('aria-label',fav?'إزالة من المفضلة':'إضافة للمفضلة');
+  const body=$('detailBody');body.replaceChildren();
+  if(n.definition){
+    addText(body,'التعريف',n.definition);addText(body,'لماذا يهم؟',n.whyItMatters);addText(body,'متى يستخدم؟',n.whenToUse);addText(body,'متى لا يستخدم؟',n.whenNotToUse);addList(body,'خطوات التطبيق',n.steps);addExample(body,n);addList(body,'أخطاء شائعة',n.commonMistakes,'warning');addText(body,'القاعدة الذهبية',n.goldenRule);addExercise(body,n.exercise);addRelated(body,n);addSources(body,n);
+    const actions=document.createElement('div');actions.className='detail-actions';const read=document.createElement('button');read.className='primary';read.textContent=STATE.completed.has(id)?'مكتمل ✓':'تحديد كمكتمل';read.onclick=()=>markRead(id);const copy=document.createElement('button');copy.className='secondary';copy.textContent='نسخ المثال';copy.disabled=!n.exampleInput;copy.onclick=()=>copyExample(id);actions.append(read,copy);body.append(actions);
+  }else if(n.children?.length){
+    addText(body,'الهدف التعليمي',n.short);const actions=document.createElement('div');actions.className='detail-actions';const exploreBtn=document.createElement('button');exploreBtn.className='primary';exploreBtn.textContent='عرض الفروع';exploreBtn.onclick=()=>explore(id);actions.append(exploreBtn);if(id!=='root'){const back=document.createElement('button');back.className='secondary';back.textContent='رجوع مستوى';back.onclick=goParent;actions.append(back)}body.append(actions);
+  }else addText(body,'المحتوى',n.short||'لا توجد تفاصيل إضافية لهذه العقدة.');
+  renderCrumbs();if(open)openSheet();
+}
+function explore(id){const n=DATA[id];if(!n)return;STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
+function goParent(){const id=DATA[STATE.current]?.parent||'root';STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
+function markRead(id){STATE.completed.has(id)?STATE.completed.delete(id):STATE.completed.add(id);save();renderMap();showDetails(id,false);toast(STATE.completed.has(id)?'تم تسجيل المفهوم كمكتمل':'أزيل المفهوم من المكتمل')}
+function copyExample(id){const n=DATA[id],text=[n.exampleInput&&`المدخل: ${n.exampleInput}`,n.exampleOutput&&`المخرج: ${n.exampleOutput}`].filter(Boolean).join('\n');if(!text)return;navigator.clipboard?.writeText(text).then(()=>toast('تم نسخ المثال')).catch(()=>toast('تعذر النسخ'))}
+function positionsFor(id,w,h){const cx=w/2,cy=h/2,pos={[id]:[cx,cy]},kids=DATA[id]?.children||[],rx=w*.34,ry=h*.34,step=kids.length?360/kids.length:360;kids.forEach((x,i)=>{const a=(-90+i*step)*Math.PI/180;pos[x]=[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]});return pos}
+function makeNode(id,x,y,compact){
+  const n=DATA[id],b=document.createElement('button');b.className=`node ${id==='root'?'root':(n.definition?'concept':'axis')} ${id===(STATE.openPath.at(-1)||'root')?'focus':''} ${STATE.completed.has(id)?'visited':''}`;b.style.setProperty('--accent',n.color);if(!compact){b.style.left=`${x}px`;b.style.top=`${y}px`}
+  b.setAttribute('aria-label',`${n.title}. ${n.short||''}`);const head=document.createElement('span');head.className='n-head';const emoji=document.createElement('span');emoji.className='emoji';emoji.textContent=n.icon||'•';emoji.setAttribute('aria-hidden','true');const texts=document.createElement('span'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=n.title;small.textContent=n.short||'';texts.append(strong,small);head.append(emoji,texts);b.append(head);
+  b.onclick=()=>{showDetails(id);if(n.children?.length){STATE.openPath=getPath(id);renderMap()}};return b;
+}
+function renderMap(){
+  map.querySelectorAll('.node,.empty-hint').forEach(x=>x.remove());svg.replaceChildren();const focus=STATE.openPath.at(-1)||'root',compact=matchMedia('(max-width:1179px)').matches;map.classList.toggle('compact-layout',compact);const rect=map.getBoundingClientRect(),pos=positionsFor(focus,rect.width||800,rect.height||650);
+  Object.entries(pos).forEach(([id,[x,y]])=>map.append(makeNode(id,x,y,compact)));if(!compact)(DATA[focus]?.children||[]).filter(k=>pos[k]).forEach(k=>drawLine(pos[focus],pos[k],DATA[k].color));
+  const hint=document.createElement('div');hint.className='empty-hint';hint.textContent=DATA[focus]?.children?.length?'اختر عقدة لقراءة شرحها والانتقال إلى فروعها':'';map.append(hint);
+}
+function drawLine(a,b,color){const path=document.createElementNS('http://www.w3.org/2000/svg','path'),mx=(a[0]+b[0])/2;path.setAttribute('d',`M ${a[0]} ${a[1]} C ${mx} ${a[1]}, ${mx} ${b[1]}, ${b[0]} ${b[1]}`);path.setAttribute('stroke',color);svg.append(path);const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',b[0]);c.setAttribute('cy',b[1]);c.setAttribute('r','4');c.setAttribute('fill',color);svg.append(c)}
+function renderCrumbs(){
+  const el=$('crumbs');el.replaceChildren();getPath(STATE.current).forEach((id,i,path)=>{const b=document.createElement('button');b.textContent=DATA[id].title.replace(/^\d+\.\s*/,'');b.onclick=()=>jump(id);if(i===path.length-1)b.setAttribute('aria-current','page');el.append(b);if(i<path.length-1){const s=document.createElement('span');s.textContent='‹';el.append(s)}});requestAnimationFrame(()=>el.lastElementChild?.scrollIntoView({inline:'nearest',block:'nearest'}))
+}
 function jump(id){STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
-function updateProgress(){const count=conceptIds.filter(id=>STATE.visited.has(id)).length;document.getElementById('progressLabel').textContent=`${count} من ${conceptIds.length}`;document.getElementById('progressBar').style.width=`${count/conceptIds.length*100}%`}
-function renderIndex(filter=''){const grid=document.getElementById('indexGrid'),q=filter.trim().toLowerCase();const nodes=Object.values(DATA).filter(n=>n.id!=='root'&&(!q||(n.title+' '+(n.short||'')+' '+(n.definition||'')+' '+(n.searchText||'')).toLowerCase().includes(q)));grid.innerHTML=nodes.map(n=>`<article class="index-card" onclick="openFromIndex('${n.id}')"><h3>${n.icon||'•'} ${n.title}</h3><p>${n.short||''}</p><span class="tag">${n.level||'مسار'}</span></article>`).join('')||'<p>لا توجد نتائج.</p>'}
-function openFromIndex(id){STATE.view='map';document.querySelectorAll('.segmented button').forEach(b=>b.classList.toggle('active',b.dataset.view==='map'));document.getElementById('indexView').classList.remove('active');map.style.display='block';STATE.openPath=getPath(DATA[id].parent||id);renderMap();showDetails(id)}
-function doSearch(q){const box=document.getElementById('searchResults');q=q.trim().toLowerCase();if(q.length<2){box.classList.remove('open');return}const found=Object.values(DATA).filter(n=>(n.title+' '+(n.short||'')+' '+(n.definition||'')+' '+(n.searchText||'')).toLowerCase().includes(q)).slice(0,8);box.innerHTML=found.map(n=>`<button class="result" onclick="selectSearch('${n.id}')">${n.title}<small>${getPath(n.id).map(x=>DATA[x].title.replace(/^\d+\.\s*/,'')).join(' ← ')}</small></button>`).join('')||'<div class="result">لا توجد نتائج</div>';box.classList.add('open')}
-function selectSearch(id){document.getElementById('searchResults').classList.remove('open');document.getElementById('searchInput').value='';openFromIndex(id)}
-
-document.getElementById('searchInput').addEventListener('input',e=>doSearch(e.target.value));document.addEventListener('click',e=>{if(!e.target.closest('.search'))document.getElementById('searchResults').classList.remove('open')});
-document.querySelectorAll('.segmented button').forEach(btn=>btn.onclick=()=>{STATE.view=btn.dataset.view;document.querySelectorAll('.segmented button').forEach(b=>b.classList.toggle('active',b===btn));const index=STATE.view==='index';document.getElementById('indexView').classList.toggle('active',index);map.style.display=index?'none':'block';if(index)renderIndex();else renderMap()});
-document.getElementById('favBtn').onclick=e=>{e.stopPropagation();const id=STATE.current;STATE.favorites.has(id)?STATE.favorites.delete(id):STATE.favorites.add(id);save();showDetails(id,false)};
-document.getElementById('detailsToggle').onclick=e=>{if(innerWidth<=900&&!e.target.closest('button'))details.classList.toggle('open')};
-document.getElementById('centerBtn').onclick=()=>jump('root');document.getElementById('fitBtn').onclick=()=>{renderMap();toast('تمت ملاءمة الخريطة')};document.getElementById('collapseBtn').onclick=()=>jump('root');
-const themeBtn=document.getElementById('themeBtn');function applyTheme(theme){document.documentElement.dataset.theme=theme;themeBtn.textContent=theme==='light'?'☾':'☀';document.querySelector('meta[name="theme-color"]').content=theme==='light'?'#f4f7f9':'#071525';localStorage.setItem('masar-theme',theme)}themeBtn.onclick=()=>applyTheme(document.documentElement.dataset.theme==='light'?'dark':'light');applyTheme(localStorage.getItem('masar-theme')||'light');
-document.getElementById('resetBtn').onclick=()=>{if(confirm('هل تريد مسح التقدم والمفضلة؟')){STATE.visited.clear();STATE.favorites.clear();localStorage.removeItem('ai-map-last');save();jump('root');toast('تم مسح التقدم')}};
-addEventListener('resize',()=>{clearTimeout(window.rt);window.rt=setTimeout(renderMap,150)});
-window.explore=explore;window.goParent=goParent;window.markRead=markRead;window.copyExample=copyExample;window.jump=jump;window.openFromIndex=openFromIndex;window.selectSearch=selectSearch;
-async function init(){
-  document.getElementById('detailTitle').textContent='جارٍ تحميل قاعدة المعرفة…';
-  document.getElementById('detailDesc').textContent='يتم الآن تجهيز المسارات والمفاهيم من ملف JSON.';
-  const response=await fetch('./PromptEng/ai_prompt_knowledge.json',{cache:'no-store'});
-  if(!response.ok)throw new Error(`تعذر تحميل قاعدة المعرفة (${response.status})`);
-  DATABASE=await response.json();
-  if(DATABASE.statistics?.conceptCount!==80||!DATABASE.nodes?.root)throw new Error('قاعدة المعرفة غير مكتملة أو غير متوافقة');
-  DATA=buildUiData(DATABASE);
-  conceptIds=Object.values(DATA).filter(n=>n.definition).map(n=>n.id);
-  const last=localStorage.getItem('ai-map-last');
-  STATE.current=last&&DATA[last]?last:'root';
-  const current=DATA[STATE.current];
-  STATE.openPath=getPath(STATE.current==='root'?'root':(current.parent||STATE.current));
-  renderMap();showDetails(STATE.current,false);updateProgress();
+function updateProgress(){const count=conceptIds.filter(id=>STATE.completed.has(id)).length;$('progressLabel').textContent=`${count} من ${conceptIds.length}`;$('progressBar').style.width=`${conceptIds.length?count/conceptIds.length*100:0}%`}
+function matches(n,q){return !q||(n.title+' '+n.short+' '+n.definition+' '+n.searchText).toLowerCase().includes(q)}
+function renderIndex(filter=''){
+  const grid=$('indexGrid'),q=filter.trim().toLowerCase(),onlyFav=STATE.view==='favorites';grid.replaceChildren();
+  const tracks=(DATA.root?.children||[]).map(id=>DATA[id]).filter(Boolean);let count=0;
+  tracks.forEach(track=>{const trackMatch=matches(track,q);const axes=(track.children||[]).map(id=>DATA[id]).filter(Boolean).map(axis=>({axis,concepts:(axis.children||[]).map(id=>DATA[id]).filter(n=>n&&matches(n,q)&&(!onlyFav||STATE.favorites.has(n.id)))})).filter(x=>x.concepts.length||(!onlyFav&&(matches(x.axis,q)||trackMatch)));
+    if(!axes.length)return;count++;const group=document.createElement('details');group.className='index-group';group.open=!!q||onlyFav;const summary=document.createElement('summary');summary.textContent=track.title;summary.style.setProperty('--accent',track.color);group.append(summary);
+    axes.forEach(({axis,concepts})=>{const section=document.createElement('section');section.className='axis-group';const h=document.createElement('h3');h.textContent=axis.title;section.append(h);const cards=document.createElement('div');cards.className='axis-cards';concepts.forEach(n=>{const b=document.createElement('button');b.className='index-card';const title=document.createElement('strong');title.textContent=n.title;const p=document.createElement('span');p.textContent=n.short;const tag=document.createElement('small');tag.className='tag';tag.textContent=n.level;b.append(title,p,tag);b.onclick=()=>openFromIndex(n.id);cards.append(b)});section.append(cards);group.append(section)});grid.append(group);
+  });if(!count){const p=document.createElement('p');p.className='no-results';p.textContent=onlyFav?'لا توجد مفاهيم مفضلة بعد.':'لا توجد نتائج.';grid.append(p)}
 }
-init().catch(error=>{
-  document.getElementById('detailTitle').textContent='تعذر تحميل المحتوى';
-  document.getElementById('detailDesc').textContent=error.message;
-  document.getElementById('detailBody').innerHTML='<div class="info warning"><h3>تحقق من الملفات</h3><p>يجب أن يبقى ملفا الستايل والبيانات داخل مجلد PromptEng، وأن تُفتح الصفحة عبر خادم الموقع.</p></div>';
-  toast('تعذر تحميل قاعدة المعرفة');
-  console.error(error);
-});
+function setView(view){STATE.view=view;document.querySelectorAll('.segmented button').forEach(b=>{const active=b.dataset.view===view;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});const index=view!=='map';$('indexView').classList.toggle('active',index);map.hidden=index;if(index)renderIndex();else renderMap()}
+function openFromIndex(id){setView('map');STATE.openPath=getPath(DATA[id].parent||id);renderMap();showDetails(id)}
+function doSearch(value){
+  const box=$('searchResults'),q=value.trim().toLowerCase();box.replaceChildren();if(q.length<2){box.classList.remove('open');return}const found=Object.values(DATA).filter(n=>matches(n,q)).slice(0,8);
+  found.forEach(n=>{const b=document.createElement('button');b.className='result';b.setAttribute('role','option');b.textContent=n.title;const small=document.createElement('small');small.textContent=getPath(n.id).map(x=>DATA[x].title.replace(/^\d+\.\s*/,'')).join(' ← ');b.append(small);b.onclick=()=>selectSearch(n.id);box.append(b)});if(!found.length){const d=document.createElement('div');d.className='result';d.textContent='لا توجد نتائج';box.append(d)}box.classList.add('open');
+}
+function selectSearch(id){$('searchResults').classList.remove('open');$('searchInput').value='';openFromIndex(id)}
+$('searchInput').addEventListener('input',e=>doSearch(e.target.value));$('searchInput').addEventListener('keydown',e=>{if(e.key==='Escape')$('searchResults').classList.remove('open');if(e.key==='Enter'){const first=$('searchResults').querySelector('button');if(first){e.preventDefault();first.click()}}});
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))$('searchResults').classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+document.querySelectorAll('.segmented button').forEach(btn=>btn.onclick=()=>setView(btn.dataset.view));
+$('favBtn').onclick=e=>{e.stopPropagation();const id=STATE.current;STATE.favorites.has(id)?STATE.favorites.delete(id):STATE.favorites.add(id);save();showDetails(id,false)};
+$('detailsToggle').onclick=e=>{if(innerWidth<1180&&!e.target.closest('button'))details.classList.add('open')};$('detailsClose').onclick=closeSheet;backdrop.onclick=closeSheet;
+$('centerBtn').onclick=()=>jump('root');$('fitBtn').onclick=()=>{jump(STATE.openPath.at(-1)||'root');toast('تمت إعادة ضبط العرض')};$('collapseBtn').onclick=()=>jump('root');
+const themeBtn=$('themeBtn');function applyTheme(theme){document.documentElement.dataset.theme=theme;themeBtn.textContent=theme==='light'?'☾':'☀';document.querySelector('meta[name="theme-color"]').content=theme==='light'?'#f4f7f9':'#071525';try{localStorage.setItem('masar-theme',theme)}catch{}}themeBtn.onclick=()=>applyTheme(document.documentElement.dataset.theme==='light'?'dark':'light');applyTheme(localStorage.getItem('masar-theme')||'light');
+$('resetBtn').onclick=()=>{if(confirm('هل تريد مسح التقدم والمفضلة؟')){STATE.completed.clear();STATE.favorites.clear();try{localStorage.removeItem('ai-map-last')}catch{}save();jump('root');toast('تم مسح التقدم')}};
+addEventListener('resize',()=>{clearTimeout(window.rt);window.rt=setTimeout(()=>{renderMap();if(innerWidth>=1180)closeSheet()},120)});
+async function init(){
+  $('detailTitle').textContent='جارٍ تحميل قاعدة المعرفة…';$('detailDesc').textContent='يتم الآن تجهيز المسارات والمفاهيم من ملف JSON.';
+  const response=await fetch('./PromptEng/ai_prompt_knowledge.json');if(!response.ok)throw new Error(`تعذر تحميل قاعدة المعرفة (${response.status})`);DATABASE=await response.json();
+  const nodes=DATABASE.nodes||{},stats=DATABASE.statistics||{};if(!String(DATABASE.schemaVersion||'').startsWith('1.')||stats.trackCount!==5||stats.axisCount!==20||stats.conceptCount!==80||Object.keys(nodes).length!==106||!nodes.root)throw new Error('قاعدة المعرفة غير مكتملة أو غير متوافقة');
+  for(const node of Object.values(nodes))for(const id of node.childIds||[])if(!nodes[id])throw new Error(`مرجع غير صالح في قاعدة المعرفة: ${id}`);
+  DATA=buildUiData(DATABASE);conceptIds=Object.values(DATA).filter(n=>n.type==='concept').map(n=>n.id);let last;try{last=localStorage.getItem('ai-map-last')}catch{}STATE.current=last&&DATA[last]?last:'root';STATE.openPath=getPath(STATE.current==='root'?'root':(DATA[STATE.current].parent||STATE.current));renderMap();showDetails(STATE.current,false);updateProgress();
+}
+init().catch(error=>{$('detailTitle').textContent='تعذر تحميل المحتوى';$('detailDesc').textContent=error.message;const body=$('detailBody');body.replaceChildren();addText(body,'تحقق من الملفات','يجب أن يبقى ملفا الستايل والبيانات داخل مجلد PromptEng، وأن تُفتح الصفحة عبر خادم الموقع.','warning');toast('تعذر تحميل قاعدة المعرفة');console.error(error)});
 </script>
 </body>
 </html>
