@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "contentVersion": "2026.1.0",
   "contentId": "ai-prompt-engineering-ar",
   "locale": "ar-SA",
@@ -15,7 +15,7 @@
     "axisCount": 20,
     "conceptCount": 80,
     "totalNodeCount": 106,
-    "relationCount": 232
+    "relationCount": 159
   },
   "taxonomies": {
     "difficulty": [
@@ -152,7 +152,9 @@
         "concept-goal-planning",
         "concept-tool-calling",
         "concept-agent-state-memory"
-      ]
+      ],
+      "summary": "فهم دورة الوكيل وتحويل الهدف إلى خطة وربطه بالأدوات والحالة اللازمة لاستمرار المهمة.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-agent-coordination": {
       "id": "axis-agent-coordination",
@@ -163,11 +165,13 @@
       "titleAr": "التنسيق والإشراف",
       "titleEn": "Coordination and Oversight",
       "childIds": [
+        "concept-human-in-the-loop",
         "concept-workflow-orchestration",
         "concept-agent-handoff",
-        "concept-multi-agent-patterns",
-        "concept-human-in-the-loop"
-      ]
+        "concept-multi-agent-patterns"
+      ],
+      "summary": "تنظيم سير العمل وتسليم المهام والتعاون بين الوكلاء مع نقاط إشراف بشري واضحة.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-agent-reliability": {
       "id": "axis-agent-reliability",
@@ -182,7 +186,9 @@
         "concept-agent-guardrails",
         "concept-agent-observability",
         "concept-agent-evaluation"
-      ]
+      ],
+      "summary": "تصميم عقود الأدوات والحواجز والتتبع والتقييم لجعل سلوك الوكيل قابلًا للضبط والاختبار.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-agent-operations": {
       "id": "axis-agent-operations",
@@ -197,7 +203,9 @@
         "concept-idempotency-retries",
         "concept-cost-latency-budget",
         "concept-agent-version-lifecycle"
-      ]
+      ],
+      "summary": "تشغيل الوكلاء بصلاحيات محدودة وإعادة محاولة آمنة وميزانيات واضحة وإصدارات قابلة للتراجع.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-system-architecture": {
       "id": "axis-system-architecture",
@@ -211,8 +219,10 @@
         "concept-model-routing",
         "concept-api-boundary-design",
         "concept-context-pipeline",
-        "concept-structured-output-integration"
-      ]
+        "concept-prompt-rag-finetuning-decision"
+      ],
+      "summary": "فصل النموذج عن أنظمة المؤسسة وتوجيه الطلبات وبناء السياق ودمج المخرجات المنظمة بعقود آمنة.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-multimodal-engineering": {
       "id": "axis-multimodal-engineering",
@@ -227,7 +237,9 @@
         "concept-visual-understanding",
         "concept-video-prompting",
         "concept-audio-speech-engineering"
-      ]
+      ],
+      "summary": "تصميم مدخلات ومخرجات دقيقة للصور والوثائق والفيديو والصوت مع مراعاة الجودة والخصوصية.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-production-engineering": {
       "id": "axis-production-engineering",
@@ -242,7 +254,9 @@
         "concept-evaluation-regression-suite",
         "concept-production-monitoring",
         "concept-caching-batching"
-      ]
+      ],
+      "summary": "نشر الأوامر تدريجيًا واختبارها ومراقبتها وتحسين التكلفة والزمن دون فقد الموثوقية.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-production-safety": {
       "id": "axis-production-safety",
@@ -257,7 +271,9 @@
         "concept-prompt-injection-defense",
         "concept-content-safety-policy",
         "concept-production-incident-response"
-      ]
+      ],
+      "summary": "حماية البيانات والمحتوى والأدوات والاستجابة للحوادث عبر ضوابط متعددة الطبقات ومسؤوليات واضحة.",
+      "lastReviewed": "2026-07-16"
     },
     "axis-context-engineering": {
       "id": "axis-context-engineering",
@@ -272,7 +288,8 @@
         "concept-context-structure",
         "concept-context-compression",
         "concept-token-budget-lost-middle"
-      ]
+      ],
+      "summary": "اختيار السياق وترتيبه وضغطه ضمن ميزانية رموز تحافظ على المعلومات الأكثر تأثيرًا في الإجابة."
     },
     "axis-knowledge-preparation": {
       "id": "axis-knowledge-preparation",
@@ -287,7 +304,8 @@
         "concept-chunking-strategy",
         "concept-metadata-design",
         "concept-embedding-vector-index"
-      ]
+      ],
+      "summary": "تحويل المستندات إلى وحدات نظيفة وقابلة للاسترجاع مع بيانات وصفية وتضمينات وفهرس مناسب."
     },
     "axis-retrieval-generation": {
       "id": "axis-retrieval-generation",
@@ -454,7 +472,7 @@
       "type": "concept",
       "trackId": "track-agents-tools",
       "parentId": "axis-agent-coordination",
-      "order": 1,
+      "order": 2,
       "titleAr": "تنسيق سير العمل",
       "titleEn": "Workflow Orchestration",
       "summary": "ربط خطوات حتمية وقرارات ذكية في مسار مضبوط.",
@@ -514,7 +532,7 @@
       "type": "concept",
       "trackId": "track-agents-tools",
       "parentId": "axis-agent-coordination",
-      "order": 2,
+      "order": 3,
       "titleAr": "تسليم المهمة بين الوكلاء",
       "titleEn": "Agent Handoff",
       "summary": "نقل المهمة والسياق الضروري إلى وكيل متخصص.",
@@ -574,7 +592,7 @@
       "type": "concept",
       "trackId": "track-agents-tools",
       "parentId": "axis-agent-coordination",
-      "order": 3,
+      "order": 4,
       "titleAr": "أنماط تعدد الوكلاء",
       "titleEn": "Multi-Agent Patterns",
       "summary": "تنظيم وكلاء متخصصين تحت قائد أو شبكة تسليم.",
@@ -634,7 +652,7 @@
       "type": "concept",
       "trackId": "track-agents-tools",
       "parentId": "axis-agent-coordination",
-      "order": 4,
+      "order": 1,
       "titleAr": "الإنسان ضمن الحلقة",
       "titleEn": "Human in the Loop",
       "summary": "إدخال مراجعة أو موافقة بشرية عند القرارات الحساسة.",
@@ -698,7 +716,7 @@
       "titleAr": "حلقة الوكيل",
       "titleEn": "Agent Loop",
       "summary": "دورة متكررة من الملاحظة والتفكير والفعل والتحقق.",
-      "definition": "نمط تشغيل يقرأ فيه الوكيل الحالة، يختار فعلًا أو أداة، يفحص النتيجة، ثم يقرر المتابعة أو التوقف.",
+      "definition": "دورة متكررة من قراءة الحالة، واختيار الإجراء، وتنفيذه، والتحقق من النتيجة. ويعد ReAct نمطًا خاصًا يتناوب بين الإجراء والملاحظة وتحديث الخطة، بينما حلقة الوكيل هي الإطار الأوسع.",
       "whyItMatters": "تحول النموذج من مجيب لمرة واحدة إلى منفذ لمهمة متعددة الخطوات.",
       "whenToUse": "عندما تتطلب المهمة قرارات متتابعة أو بيانات تتغير أثناء التنفيذ.",
       "whenNotToUse": "للطلبات البسيطة التي تكفيها إجابة واحدة محسومة.",
@@ -748,7 +766,9 @@
       "version": "1.0.0",
       "lastReviewed": "2026-07-16",
       "searchAliases": [
-        "ReAct Framework"
+        "دورة الوكيل",
+        "Agent loop",
+        "ReAct"
       ],
       "childIds": []
     },
@@ -1178,20 +1198,20 @@
       "trackId": "track-agents-tools",
       "parentId": "axis-agent-reliability",
       "order": 1,
-      "titleAr": "تصميم الأدوات وMCP",
-      "titleEn": "Tool Schema Design and MCP",
-      "summary": "تعريف عقود الأدوات وربطها بالنموذج مباشرة أو عبر بروتوكول MCP.",
-      "definition": "عقد منظم يصف اسم الوظيفة وغرضها وأنواع الحقول والقيم المقبولة والمطلوبة.",
+      "titleAr": "عقود الأدوات وبروتوكول MCP",
+      "titleEn": "Tool Contracts and Model Context Protocol (MCP)",
+      "summary": "تعريف عقود دقيقة للأدوات، ثم عرضها للنموذج مباشرة أو عبر بروتوكول سياق النموذج (MCP) ضمن حدود ثقة وصلاحيات واضحة.",
+      "definition": "عقد الأداة يحدد اسم الوظيفة وغرضها ومدخلاتها ومخرجاتها، بينما يوفّر بروتوكول سياق النموذج (MCP) معيارًا لعرض الأدوات والموارد والقوالب للنماذج عبر خادم وعميل بحدود ثقة وصلاحيات واضحة.",
       "whyItMatters": "يقلل الاستدعاءات الغامضة ويتيح التحقق قبل التنفيذ.",
       "whenToUse": "مع كل أداة يستدعيها نموذج أو وكيل.",
       "whenNotToUse": "لا يوجد استثناء عملي؛ حتى الأدوات البسيطة تحتاج عقدًا محددًا.",
       "steps": [
-        "اكتب غرضًا واحدًا واضحًا",
-        "حدد الحقول والأنواع والقيود",
-        "اختبر حالات صحيحة وخاطئة وحدية"
+        "اكتب عقدًا محدود الغرض ومدخلات قابلة للتحقق",
+        "حدد ما سيعرضه خادم MCP من أدوات وموارد وقوالب",
+        "افصل الصلاحيات ووافق على الأفعال المؤثرة ثم اختبر حالات الفشل"
       ],
-      "exampleInput": "إنشاء موعد بعنوان وتاريخ وحضور.",
-      "exampleOutput": "مخطط يفرض title وstart_time ويقيد attendees إلى عناوين صحيحة.",
+      "exampleInput": "خادم MCP يعرض أداة «إنشاء موعد» ومورد «سياسة الإجازات» للوكيل.",
+      "exampleOutput": "عقد أداة يفرض العنوان ووقت البدء، ومورد للقراءة فقط، وموافقة بشرية قبل إنشاء الموعد.",
       "commonMistakes": [
         {
           "mistake": "أداة تفعل مهامًا متعددة",
@@ -1204,8 +1224,8 @@
       ],
       "goldenRule": "كلما كان العقد أدق قلّ مجال التخمين.",
       "exercise": {
-        "instruction": "صمم مخطط أداة لإضافة مهمة.",
-        "modelAnswer": "title مطلوب، due_date اختياري ISO، priority enum، assignee_id معرف ثابت."
+        "instruction": "صمم عقد أداة لإضافة مهمة وحدد كيف يعرضها خادم MCP بأقل صلاحية.",
+        "modelAnswer": "title مطلوب، due_date اختياري بصيغة ISO، priority قيمة مقيدة، وواجهة MCP تعرض أداة الإنشاء فقط مع تحقق وموافقة قبل التنفيذ."
       },
       "difficulty": "intermediate",
       "estimatedMinutes": 11,
@@ -1224,8 +1244,8 @@
         "MCP",
         "Model Context Protocol"
       ],
-      "learningOutcome": "أن يصمم المتعلم مخطط أداة قابلًا للتحقق.",
-      "evaluationQuestion": "لماذا تكون القيم المقيدة أفضل من النص المفتوح؟",
+      "learningOutcome": "أن يميز المتعلم بين عقد الأداة وبروتوكول MCP ويصمم تكاملًا محدود الصلاحيات.",
+      "evaluationQuestion": "ما الفرق بين مخطط مدخلات الأداة والدور الذي يؤديه MCP؟",
       "sourceRefs": [
         "source-openai-function-calling",
         "source-anthropic-tool-use",
@@ -1235,7 +1255,8 @@
       "lastReviewed": "2026-07-16",
       "searchAliases": [
         "بروتوكول سياق النموذج",
-        "Model Context Protocol"
+        "Model Context Protocol",
+        "MCP"
       ],
       "childIds": []
     },
@@ -1387,7 +1408,7 @@
         },
         {
           "mistake": "مجموعة مثالية سهلة",
-          "correction": "أضف حالات حافة وهجمات وأعطال أدوات."
+          "correction": "أضف حالات حدّية وهجمات وأعطال أدوات."
         }
       ],
       "goldenRule": "قيّم الرحلة كاملة، لا آخر رسالة فقط.",
@@ -1490,7 +1511,7 @@
       "summary": "توجيه النموذج لفحص صورة أو وثيقة وفق مهمة ودليل محددين.",
       "definition": "تحليل محتوى بصري مع تحديد المنطقة أو السؤال أو الحقول المطلوبة وإدارة عدم اليقين.",
       "whyItMatters": "السؤال العام قد ينتج وصفًا عامًا ويتجاهل التفاصيل الحاسمة.",
-      "whenToUse": "للوصول البصري واستخراج الحقول والمقارنة وفهم المخططات.",
+      "whenToUse": "لفهم المحتوى البصري، واستخراج الحقول، والمقارنة، وقراءة المخططات.",
       "whenNotToUse": "إذا كانت الدقة القانونية أو الطبية تتطلب أداة متخصصة ومراجعًا بشريًا.",
       "steps": [
         "حدد نوع الصورة والمهمة",
@@ -1520,7 +1541,7 @@
         "concept-image-prompting"
       ],
       "relatedNodeIds": [
-        "concept-structured-output-integration",
+        "concept-prompt-rag-finetuning-decision",
         "concept-content-safety-policy"
       ],
       "keywords": [
@@ -1618,7 +1639,7 @@
         "راجع الأسماء والأرقام واحذف البيانات غير اللازمة"
       ],
       "exampleInput": "فرغ اجتماعًا عربيًا وحدد المتحدثين والقرارات.",
-      "exampleOutput": "نص مؤقت زمنيًا مع أسماء متحدثين تقريبية وقائمة قرارات تحتاج اعتمادًا.",
+      "exampleOutput": "نص مزوّد بطوابع زمنية مع أسماء متحدثين تقريبية وقائمة قرارات تحتاج اعتمادًا.",
       "commonMistakes": [
         {
           "mistake": "تجاهل الضوضاء وتعدد المتحدثين",
@@ -1665,7 +1686,7 @@
       "order": 1,
       "titleAr": "خط نشر الأوامر والتراجع",
       "titleEn": "Prompt Release and Rollback Pipeline",
-      "summary": "نقل إصدار الأمر المختبر إلى الإنتاج تدريجيًا مع مراقبته وإمكانية التراجع الآمن.",
+      "summary": "يبني على إصدار الطلب، ويركز هنا على النشر التدريجي والمراقبة والتراجع داخل بيئة الإنتاج.",
       "definition": "معاملة تعليمات النظام والقوالب والأمثلة كأصول برمجية مرقمة مرتبطة باختبارات وإصدارات النماذج.",
       "whyItMatters": "يسمح بإعادة إنتاج السلوك ومعرفة التغيير الذي سبب التحسن أو الانحدار.",
       "whenToUse": "من أول اختبار مقارن وحتى الإنتاج.",
@@ -1679,7 +1700,7 @@
       "exampleOutput": "prompt-support-summary v1.3 مع فرق نصي ونتائج تقييم وموافقة.",
       "commonMistakes": [
         {
-          "mistake": "نسخ باسم نهائي-الأخير",
+          "mistake": "حفظ ملفات بأسماء مثل: نهائي، والنهائي الأخير",
           "correction": "استخدم معرفًا ثابتًا وإصدارًا دلاليًا."
         },
         {
@@ -1725,7 +1746,7 @@
       "order": 2,
       "titleAr": "حزمة التقييم واختبار الانحدار",
       "titleEn": "Evaluation and Regression Suite",
-      "summary": "مجموعة حالات ثابتة تكشف تدهور الجودة بعد التغييرات.",
+      "summary": "يبني على اختبارات الانحدار، ويركز هنا على إدارة مجموعة حالات ومقاييس ثابتة للمقارنة بين الإصدارات.",
       "definition": "بيانات اختبار ومعايير ودرجات تجمع حالات طبيعية وحدية وعدائية وتقارن الإصدار المرشح بخط أساس.",
       "whyItMatters": "التحسين في حالات قليلة قد يخفي تراجعًا في مهام أو فئات أخرى.",
       "whenToUse": "قبل كل نشر وبعد تغيير النموذج أو الأمر أو المعرفة أو الأدوات.",
@@ -1845,7 +1866,7 @@
       "order": 4,
       "titleAr": "التخزين المؤقت والتجميع",
       "titleEn": "Caching and Batching",
-      "summary": "خفض التكلفة والزمن بإعادة استخدام الآمن وتجميع الأعمال المتشابهة.",
+      "summary": "خفض التكلفة والزمن بإعادة الاستخدام الآمن للنتائج وتجميع الأعمال المتشابهة.",
       "definition": "سياسات تحفظ نتائج أو أجزاء ثابتة مدة محددة، أو تجمع طلبات غير فورية لمعالجتها بكفاءة.",
       "whyItMatters": "تقلل الاستدعاءات المكررة مع ضرورة موازنة الحداثة والخصوصية.",
       "whenToUse": "للأسئلة المتكررة والتضمينات والمعالجة غير المتزامنة.",
@@ -1905,7 +1926,7 @@
       "order": 1,
       "titleAr": "الخصوصية وتقليل البيانات",
       "titleEn": "Privacy and Data Minimization",
-      "summary": "استخدام أقل قدر من البيانات اللازمة للغرض المعلن.",
+      "summary": "يبني على مبادئ الخصوصية، ويركز هنا على تقليل البيانات المجموعة والمرسلة والمحفوظة عمليًا.",
       "definition": "ضبط جمع البيانات وإرسالها وحفظها ووصولها ومدة بقائها وفق الحساسية والموافقة والحاجة.",
       "whyItMatters": "السياق والذاكرة والسجلات قد تحول نظامًا مفيدًا إلى مخزن بيانات خطير.",
       "whenToUse": "في كل مرحلة تصميم ومع كل مصدر أو سجل جديد.",
@@ -1963,7 +1984,7 @@
       "order": 2,
       "titleAr": "الدفاع ضد حقن الأوامر",
       "titleEn": "Prompt Injection Defense",
-      "summary": "منع محتوى غير موثوق من تغيير تعليمات النظام أو توسيع صلاحياته.",
+      "summary": "يبني على فهم خطر الحقن، ويركز هنا على ضوابط العزل والصلاحيات والتحقق قبل التنفيذ.",
       "definition": "دفاع متعدد الطبقات يعزل البيانات الخارجية ويقيد الأدوات ويكشف الأنماط الخطرة ويتطلب موافقة للأفعال الحساسة.",
       "whyItMatters": "قد تحتوي صفحة أو وثيقة أو رسالة على تعليمات موجهة للنموذج لا للمستخدم.",
       "whenToUse": "عند قراءة محتوى خارجي أو استخدام أدوات أو RAG.",
@@ -2093,7 +2114,7 @@
         "حلل السبب وأصلح وأضف اختبارًا دائمًا"
       ],
       "exampleInput": "بدأ المساعد يعرض بيانات مستخدم لآخر.",
-      "exampleOutput": "تعطيل المسار، سحب cache، حفظ الآثار، إخطار الخصوصية، إصلاح العزل واختبار عدم التكرار.",
+      "exampleOutput": "تعطيل المسار، وإبطال ذاكرة التخزين المؤقت، وحفظ سجلات التتبع والأدلة، وإخطار فريق الخصوصية، وإصلاح العزل، ثم اختبار عدم التكرار.",
       "commonMistakes": [
         {
           "mistake": "حذف السجلات لإخفاء المشكلة",
@@ -2142,15 +2163,15 @@
       "order": 1,
       "titleAr": "اختيار النموذج وتوجيه الطلبات",
       "titleEn": "Model Selection and Routing",
-      "summary": "إرسال كل طلب إلى النموذج الذي يوازن الجودة والزمن والتكلفة.",
-      "definition": "طبقة تصنف المهمة ومخاطرها ووسائطها ثم تختار نموذجًا ومسار معالجة مناسبين وفق سياسة معلنة.",
+      "summary": "إرسال كل طلب إلى النموذج والإصدار والإعدادات التي توازن الجودة والزمن والتكلفة.",
+      "definition": "طبقة تصنف المهمة ومخاطرها ووسائطها، ثم تختار نموذجًا ولقطة إصدار وإعدادات استدلال ومسار معالجة مناسبًا وفق سياسة معلنة.",
       "whyItMatters": "النموذج الأكبر ليس دائمًا الأسرع أو الأرخص أو الأنسب لكل مهمة.",
       "whenToUse": "عند تنوع الطلبات أو وجود أكثر من نموذج ومستوى خدمة.",
       "whenNotToUse": "في نموذج أولي صغير بمهمة واحدة قبل توفر قياسات موثوقة.",
       "steps": [
-        "صنف أنواع المهام ومتطلبات الجودة",
-        "حدد سياسة توجيه وحدود تصعيد",
-        "اختبر المسارات وسجل الجودة والتكلفة"
+        "صنف أنواع المهام ومتطلبات الجودة والمخاطر",
+        "ثبت لقطات النماذج وإعدادات الاستدلال لكل مسار",
+        "اختبر التوجيه وسجل الجودة والتكلفة وحدود التصعيد"
       ],
       "exampleInput": "طلبات تشمل تصنيف رسائل وشرح صور وتحليل عقود.",
       "exampleOutput": "نموذج خفيف للتصنيف، متعدد الوسائط للصور، ومتقدم للعقود عالية المخاطر.",
@@ -2261,7 +2282,7 @@
       "order": 3,
       "titleAr": "خط أنابيب السياق",
       "titleEn": "Context Pipeline",
-      "summary": "جمع السياق وترتيبه وضغطه قبل إرساله للنموذج.",
+      "summary": "يبني على اختيار السياق، ويركز هنا على تشغيل الجمع والترتيب والضغط والإرسال كخط معالجة متكرر.",
       "definition": "مسار يختار تعليمات وذاكرة ووثائق وبيانات مستخدم ذات صلة ضمن نافذة وحدود خصوصية.",
       "whyItMatters": "جودة السياق وترتيبه قد تؤثر أكثر من زيادة حجمه.",
       "whenToUse": "عند دمج RAG أو ذاكرة أو عدة مصادر سياق.",
@@ -2311,67 +2332,6 @@
       "lastReviewed": "2026-07-16",
       "childIds": []
     },
-    "concept-structured-output-integration": {
-      "id": "concept-structured-output-integration",
-      "type": "concept",
-      "trackId": "track-architecture-multimodal-production",
-      "parentId": "axis-system-architecture",
-      "order": 4,
-      "titleAr": "تكامل المخرجات المنظمة",
-      "titleEn": "Structured Output Integration",
-      "summary": "دمج المخرج المنظم في النظام والتحقق تشغيليًا من القيم ومعالجة الرفض والفشل.",
-      "definition": "إنتاج JSON أو بنية محددة الأنواع والحقول والقيود بدل تحليل نص حر هش.",
-      "whyItMatters": "يجعل التكامل موثوقًا ويكشف النقص قبل انتقال البيانات للخطوة التالية.",
-      "whenToUse": "عندما يستهلك تطبيق أو أداة أو سير عمل نتيجة النموذج.",
-      "whenNotToUse": "للنص الإبداعي الحر الذي لا يحتاج معالجة آلية.",
-      "steps": [
-        "عرّف مخططًا بأقل حقول لازمة",
-        "اطلب إخراجًا مطابقًا وتحقق منه",
-        "عالج الرفض أو النقص دون افتراض"
-      ],
-      "exampleInput": "استخرج اسم المورد والمبلغ وتاريخ الفاتورة.",
-      "exampleOutput": "كائن JSON بثلاثة حقول وأنواع وقيمة null للبيانات الغائبة.",
-      "commonMistakes": [
-        {
-          "mistake": "تحليل النص بتعبير منتظم",
-          "correction": "استخدم مخطط مخرجات أصليًا."
-        },
-        {
-          "mistake": "اعتبار المطابقة دليلاً على الصحة",
-          "correction": "تحقق دلاليًا من القيم أيضًا."
-        }
-      ],
-      "goldenRule": "صحة الشكل لا تعني صحة المعلومة.",
-      "exercise": {
-        "instruction": "صمم مخرجًا منظمًا لتقييم طلب دعم.",
-        "modelAnswer": "category enum، urgency من 1 إلى 5، summary، requires_human boolean، confidence."
-      },
-      "difficulty": "intermediate",
-      "estimatedMinutes": 10,
-      "prerequisiteNodeIds": [
-        "concept-api-boundary-design",
-        "concept-structured-outputs"
-      ],
-      "relatedNodeIds": [
-        "concept-tool-schema-design",
-        "concept-agent-handoff"
-      ],
-      "keywords": [
-        "JSON",
-        "مخطط",
-        "مخرجات",
-        "تحقق"
-      ],
-      "learningOutcome": "أن يصمم المتعلم مخطط مخرج صالحًا للتكامل البرمجي.",
-      "evaluationQuestion": "ماذا يجب فعله بعد تحقق المخرج من المخطط؟",
-      "sourceRefs": [
-        "source-openai-structured-outputs",
-        "source-openai-function-calling"
-      ],
-      "version": "1.0.0",
-      "lastReviewed": "2026-07-16",
-      "childIds": []
-    },
     "concept-context-selection": {
       "id": "concept-context-selection",
       "type": "concept",
@@ -2380,7 +2340,7 @@
       "order": 1,
       "titleAr": "اختيار السياق",
       "titleEn": "Context Selection",
-      "summary": "انتقاء المعلومات التي يحتاجها النموذج فعلًا للإجابة عن الطلب الحالي.",
+      "summary": "يركز على قرار ما المعلومات اللازمة للطلب الحالي وما الذي يجب استبعاده.",
       "definition": "عملية تحدد التعليمات والحقائق والأمثلة وسجل الحوار والوثائق ذات الصلة، وتستبعد كل ما لا يغير القرار أو المخرج.",
       "whyItMatters": "السياق الزائد يستهلك الرموز وقد يشتت الانتباه، والناقص يدفع النموذج إلى الافتراض.",
       "whenToUse": "قبل كل استدعاء مركب، وخاصة مع الذاكرة أو الاسترجاع أو عدة مصادر.",
@@ -2947,7 +2907,7 @@
       ],
       "goldenRule": "لا تحول حدثًا إلى حقيقة شخصية بلا تأكيد.",
       "exercise": {
-        "instruction": "صنف: أكمل المستخدم دورة، يفضل العربية، TCP يستخدم المنفذ 80 لـHTTP.",
+        "instruction": "صنف: أكمل المستخدم دورة، يفضل العربية، يستخدم HTTP عادةً منفذ TCP رقم 80.",
         "modelAnswer": "إكمال الدورة حدثي، تفضيل العربية ملف مستخدم، وحقيقة المنفذ دلالية."
       },
       "difficulty": "intermediate",
@@ -3662,7 +3622,7 @@
       ],
       "goldenRule": "أضف ما يغير الإجابة واحذف ما لا يغيرها.",
       "exercise": {
-        "instruction": "اختر ثلاث معلومات لبناء خطة درس.",
+        "instruction": "اختر أربع معلومات لبناء خطة درس.",
         "modelAnswer": "الهدف والمعرفة السابقة والزمن والأدوات."
       },
       "difficulty": "beginner",
@@ -3873,10 +3833,10 @@
       "trackId": "track-foundations",
       "parentId": "axis-prompt-strategies",
       "order": 2,
-      "titleAr": "التعلم بالأمثلة",
+      "titleAr": "التوجيه بأمثلة (Few-shot)",
       "titleEn": "Few-shot Prompting",
       "summary": "توضيح النمط المطلوب بأمثلة مدخل ومخرج ممثلة.",
-      "definition": "يوفر Few-shot أمثلة صحيحة ليحاكي النموذج بنيتها أو حدود التصنيف.",
+      "definition": "تزويد النموذج داخل الطلب بعدد قليل من أمثلة المدخلات والمخرجات لتوضيح النمط، من دون تدريب النموذج أو تعديل أوزانه.",
       "whyItMatters": "يقلل الغموض عندما يصعب وصف النمط بالكلمات وحدها.",
       "whenToUse": "للتصنيف أو الاستخراج أو أسلوب كتابة محدد.",
       "whenNotToUse": "لا تستخدم أمثلة ضعيفة أو متحيزة أو لا تغطي الحالات المهمة.",
@@ -4233,7 +4193,7 @@
       "order": 4,
       "titleAr": "إصدار الأمر وتوثيق تعديلاته",
       "titleEn": "Prompt Versioning and Change Documentation",
-      "summary": "حفظ القالب والإعدادات وأسباب التعديل ونتائج الاختبار لكل إصدار.",
+      "summary": "يبني على إدارة الطلب في التطوير، ويركز هنا على توثيق القالب والإعدادات وسبب كل تعديل.",
       "definition": "إصدار الأمر يمنح كل نسخة معرفًا ويربطها بالمتغيرات والنموذج والإعدادات ومجموعة التقييم.",
       "whyItMatters": "يجعل التحسين قابلًا للتتبع ويتيح المقارنة والرجوع عند التراجع.",
       "whenToUse": "لكل أمر مستخدم في تطبيق أو عملية متكررة.",
@@ -4593,7 +4553,7 @@
       "order": 2,
       "titleAr": "اختبارات الانحدار",
       "titleEn": "Regression Testing",
-      "summary": "التأكد من أن التحسين الجديد لم يفسد سلوكًا كان يعمل سابقًا.",
+      "summary": "يبني على الاختبار الوظيفي، ويركز هنا على منع كسر سلوك كان يعمل بعد أي تعديل.",
       "definition": "اختبار الانحدار يعيد تشغيل حالات ثابتة لكل إصدار ويحدد حالات النجاح التي تحولت إلى فشل.",
       "whyItMatters": "قد يحسن التعديل فئة واحدة ويضعف فئات أخرى بصمت.",
       "whenToUse": "قبل نشر أي تغيير في الأمر أو النموذج أو الأدوات أو البيانات.",
@@ -4831,7 +4791,7 @@
       "order": 2,
       "titleAr": "الخصوصية والإنصاف وسلامة المحتوى",
       "titleEn": "Privacy, Fairness, and Content Safety",
-      "summary": "حماية البيانات والأشخاص من الكشف والتمييز والمحتوى الضار.",
+      "summary": "يركز على تقييم أثر البيانات والمخرجات في الخصوصية والإنصاف وسلامة المحتوى عبر دورة الحياة.",
       "definition": "تشمل الخصوصية تقليل البيانات وحمايتها، والإنصاف فحص تفاوت الأداء والأثر، وسلامة المحتوى وضع حدود للمخرجات الضارة.",
       "whyItMatters": "قد يكون النظام دقيقًا إجمالًا لكنه يضر فئة أو يكشف بيانات أو ينتج محتوى غير مناسب.",
       "whenToUse": "عند جمع بيانات أشخاص أو تخصيص المخرجات أو اتخاذ قرارات تؤثر فيهم.",
@@ -4890,7 +4850,7 @@
       "order": 3,
       "titleAr": "حقن الأوامر وتسرب البيانات",
       "titleEn": "Prompt Injection and Data Leakage",
-      "summary": "منع المحتوى غير الموثوق من تغيير الهدف أو كشف معلومات أو تشغيل أداة بلا حق.",
+      "summary": "يعرّف الخطر ومسارات التسرب عند مزج تعليمات موثوقة بمحتوى غير موثوق.",
       "definition": "حقن الأوامر محاولة إدخال تعليمات مضللة عبر المستخدم أو المحتوى؛ والتسرب كشف بيانات أو سياسات أو نتائج لا يحق للمستخدم رؤيتها.",
       "whyItMatters": "يزداد الأثر عندما يصل النموذج إلى أدوات وذاكرة وبيانات داخلية.",
       "whenToUse": "عند تصميم أي تطبيق يقرأ محتوى خارجيًا أو ينفذ أدوات.",
@@ -4901,7 +4861,7 @@
         "اختبر الحقن المباشر وغير المباشر."
       ],
       "exampleInput": "مستند مسترجع يطلب تجاهل السياسة وإرسال الأسرار.",
-      "exampleOutput": "يعامل الطلب كبيانات مرفوضة ولا تنفذ أداة أو تكشف معلومة.",
+      "exampleOutput": "يعامل الطلب كبيانات مرفوضة، ولا ينفّذ أداة ولا يكشف معلومة.",
       "commonMistakes": [
         {
           "mistake": "قول لا تتبع التعليمات الضارة فقط.",
@@ -5013,7 +4973,7 @@
       "titleAr": "تفكيك المشكلة",
       "titleEn": "Problem Decomposition",
       "summary": "تقسيم المشكلة المركبة إلى أجزاء محددة يمكن حلها والتحقق منها.",
-      "definition": "يفصل التفكيك الهدف والبيانات والقيود والأسئلة الفرعية والعلاقات بينها قبل البدء بالحل.",
+      "definition": "تفكيك المشكلة تقسيم خارجي قابل للفحص إلى هدف وبيانات وقيود وأسئلة فرعية، ولا يعني طلب كشف سلسلة التفكير الداخلية.",
       "whyItMatters": "يقلل السهو ويكشف الاعتماديات والغموض مبكرًا.",
       "whenToUse": "عندما تحتوي المهمة على قرارات أو مصادر أو مخرجات متعددة.",
       "whenNotToUse": "لا تفكك سؤالًا بسيطًا إلى خطوات تزيد العبء دون فائدة.",
@@ -5064,8 +5024,8 @@
       "version": "1.0.0",
       "lastReviewed": "2026-07-16",
       "searchAliases": [
-        "Chain of Thought",
-        "سلسلة التفكير"
+        "تقسيم المهمة",
+        "تحليل المشكلة"
       ],
       "childIds": []
     },
@@ -5138,7 +5098,7 @@
       "titleAr": "البدائل وأشجار القرار",
       "titleEn": "Alternatives and Decision Trees",
       "summary": "توليد بدائل مع شروط واضحة للمقارنة والاختيار.",
-      "definition": "شجرة القرار تربط كل خيار بشرط أو نتيجة، وتمنع القفز إلى أول جواب يبدو مناسبًا.",
+      "definition": "شجرة الأفكار أسلوب لاستكشاف مسارات حلول متعددة وتقييمها، أما شجرة القرار فتمثل قواعد اختيار معلنة تربط الشروط بالنتائج.",
       "whyItMatters": "تحسن القرارات التي تعتمد على مفاضلات أو سيناريوهات متغيرة.",
       "whenToUse": "عند وجود أكثر من حل صحيح أو شروط تقود إلى اختيارات مختلفة.",
       "whenNotToUse": "لا تستخدم شجرة مع قرار قطعي بسيط تحكمه قاعدة واحدة.",
@@ -5189,8 +5149,9 @@
       "version": "1.0.0",
       "lastReviewed": "2026-07-16",
       "searchAliases": [
+        "شجرة الأفكار",
         "Tree of Thoughts",
-        "شجرة الأفكار"
+        "شجرة القرار"
       ],
       "childIds": []
     },
@@ -5253,6 +5214,70 @@
       "version": "1.0.0",
       "lastReviewed": "2026-07-16",
       "childIds": []
+    },
+    "concept-prompt-rag-finetuning-decision": {
+      "id": "concept-prompt-rag-finetuning-decision",
+      "type": "concept",
+      "trackId": "track-architecture-multimodal-production",
+      "parentId": "axis-system-architecture",
+      "order": 4,
+      "titleAr": "اختيار التوجيه أو RAG أو الضبط الدقيق",
+      "titleEn": "Prompting vs RAG vs Fine-tuning Decision",
+      "summary": "اختيار أقل تدخل يحقق الهدف: تحسين الطلب، أو إضافة معرفة مسترجعة، أو ضبط السلوك بأمثلة تدريبية.",
+      "definition": "إطار قرار يفرق بين مشكلة التعليمات التي تعالج بالتوجيه، ومشكلة المعرفة المتغيرة التي تعالج بالتوليد المعزز بالاسترجاع (RAG)، ومشكلة السلوك المتكرر أو الأسلوب التي قد تستدعي الضبط الدقيق.",
+      "whyItMatters": "يمنع استخدام تقنية مكلفة لمشكلة يمكن حلها بتعديل أبسط وأكثر قابلية للصيانة.",
+      "whenToUse": "قبل اعتماد بنية الحل أو عندما تفشل تحسينات الطلب المتكررة في تحقيق معيار الجودة.",
+      "whenNotToUse": "لا تتخذ القرار بالانطباع؛ اجمع حالات تقييم وقياسات أولًا.",
+      "steps": [
+        "حدد هل الفجوة في التعليمات أم المعرفة أم السلوك",
+        "اختبر التوجيه أولًا على مجموعة تقييم",
+        "أضف RAG للمعرفة المتغيرة، وقيّم الضبط الدقيق للسلوك المتكرر بعد حساب التكلفة"
+      ],
+      "exampleInput": "المساعد يجهل سياسات جديدة، وأسلوب الرد غير ثابت.",
+      "exampleOutput": "RAG للسياسات المتغيرة، ثم أمثلة توجيهية للأسلوب؛ يُبحث الضبط الدقيق فقط إذا بقي عدم الاتساق واسعًا ومتكررًا.",
+      "commonMistakes": [
+        {
+          "mistake": "استخدام الضبط الدقيق لتحديث الحقائق",
+          "correction": "استخدم RAG أو مصدرًا متجددًا للمعرفة المتغيرة."
+        },
+        {
+          "mistake": "إضافة RAG لمشكلة صياغة غامضة",
+          "correction": "حسّن التعليمات والعقد أولًا."
+        }
+      ],
+      "goldenRule": "ابدأ بأقل تدخل، وقارن البدائل على مجموعة تقييم ثابتة.",
+      "exercise": {
+        "instruction": "اختر حلًا لمساعد يجيب من دليل يتغير أسبوعيًا ويلتزم بنبرة ثابتة.",
+        "modelAnswer": "RAG للدليل المتغير، وتوجيه بأمثلة للنبرة؛ الضبط الدقيق خيار لاحق إذا لم تحقق الأمثلة الاتساق المطلوب على نطاق واسع."
+      },
+      "difficulty": "intermediate",
+      "estimatedMinutes": 10,
+      "prerequisiteNodeIds": [
+        "concept-prompt-versioning",
+        "concept-query-rewriting-filters"
+      ],
+      "relatedNodeIds": [
+        "concept-model-routing",
+        "concept-context-pipeline",
+        "concept-evaluation-regression-suite"
+      ],
+      "keywords": [
+        "توجيه",
+        "RAG",
+        "ضبط دقيق",
+        "Fine-tuning",
+        "قرار معماري"
+      ],
+      "learningOutcome": "أن يختار المتعلم بين التوجيه وRAG والضبط الدقيق بناء على نوع الفجوة والقياس.",
+      "evaluationQuestion": "أي حل يناسب معرفة تتغير باستمرار، ولماذا؟",
+      "sourceRefs": [
+        "source-openai-prompting",
+        "source-azure-rag",
+        "source-openai-evals"
+      ],
+      "version": "1.0.0",
+      "lastReviewed": "2026-07-16",
+      "childIds": []
     }
   },
   "relations": [
@@ -5266,1619 +5291,1108 @@
     {
       "id": "relation-002",
       "from": "concept-workflow-orchestration",
-      "to": "concept-human-in-the-loop",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-003",
-      "from": "concept-workflow-orchestration",
-      "to": "concept-idempotency-retries",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-004",
-      "from": "concept-workflow-orchestration",
       "to": "concept-agent-handoff",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-005",
+      "id": "relation-003",
       "from": "concept-agent-handoff",
       "to": "concept-multi-agent-patterns",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-006",
+      "id": "relation-004",
       "from": "concept-agent-handoff",
       "to": "concept-structured-outputs",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-007",
+      "id": "relation-005",
       "from": "concept-agent-handoff",
       "to": "concept-multi-agent-patterns",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-008",
-      "from": "concept-multi-agent-patterns",
-      "to": "concept-agent-evaluation",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-009",
-      "from": "concept-multi-agent-patterns",
-      "to": "concept-cost-latency-budget",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-010",
+      "id": "relation-006",
       "from": "concept-workflow-orchestration",
       "to": "concept-human-in-the-loop",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-011",
+      "id": "relation-007",
       "from": "concept-human-in-the-loop",
       "to": "concept-least-privilege-agents",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-012",
+      "id": "relation-008",
       "from": "concept-human-in-the-loop",
       "to": "concept-production-incident-response",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-013",
+      "id": "relation-009",
       "from": "concept-agent-loop",
       "to": "concept-goal-planning",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-014",
+      "id": "relation-010",
       "from": "concept-agent-loop",
       "to": "concept-tool-calling",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-015",
+      "id": "relation-011",
       "from": "concept-agent-loop",
       "to": "concept-goal-planning",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-016",
+      "id": "relation-012",
       "from": "concept-goal-planning",
       "to": "concept-workflow-orchestration",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-017",
-      "from": "concept-goal-planning",
-      "to": "concept-agent-evaluation",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-018",
+      "id": "relation-013",
       "from": "concept-agent-loop",
       "to": "concept-tool-calling",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-019",
+      "id": "relation-014",
       "from": "concept-tool-calling",
       "to": "concept-tool-schema-design",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-020",
-      "from": "concept-tool-calling",
-      "to": "concept-least-privilege-agents",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-021",
+      "id": "relation-015",
       "from": "concept-agent-loop",
       "to": "concept-agent-state-memory",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-022",
+      "id": "relation-016",
       "from": "concept-agent-state-memory",
       "to": "concept-context-pipeline",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-023",
+      "id": "relation-017",
       "from": "concept-agent-state-memory",
       "to": "concept-privacy-data-minimization",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-024",
+      "id": "relation-018",
       "from": "concept-tool-calling",
       "to": "concept-least-privilege-agents",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-025",
-      "from": "concept-least-privilege-agents",
-      "to": "concept-agent-guardrails",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-026",
+      "id": "relation-019",
       "from": "concept-least-privilege-agents",
       "to": "concept-prompt-injection-defense",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-027",
+      "id": "relation-020",
       "from": "concept-workflow-orchestration",
       "to": "concept-idempotency-retries",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-028",
+      "id": "relation-021",
       "from": "concept-idempotency-retries",
       "to": "concept-production-monitoring",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-029",
-      "from": "concept-idempotency-retries",
-      "to": "concept-api-boundary-design",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-030",
+      "id": "relation-022",
       "from": "concept-agent-loop",
       "to": "concept-cost-latency-budget",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-031",
+      "id": "relation-023",
       "from": "concept-cost-latency-budget",
       "to": "concept-model-routing",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-032",
-      "from": "concept-cost-latency-budget",
-      "to": "concept-caching-batching",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-033",
+      "id": "relation-024",
       "from": "concept-agent-evaluation",
       "to": "concept-agent-version-lifecycle",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-034",
+      "id": "relation-025",
       "from": "concept-agent-version-lifecycle",
       "to": "concept-prompt-versioning",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-035",
+      "id": "relation-026",
       "from": "concept-agent-version-lifecycle",
       "to": "concept-production-monitoring",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-036",
+      "id": "relation-027",
       "from": "concept-tool-calling",
       "to": "concept-tool-schema-design",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-037",
-      "from": "concept-tool-schema-design",
-      "to": "concept-structured-outputs",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-038",
-      "from": "concept-tool-schema-design",
-      "to": "concept-constraints-output-contract",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-039",
+      "id": "relation-028",
       "from": "concept-tool-schema-design",
       "to": "concept-agent-guardrails",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-040",
+      "id": "relation-029",
       "from": "concept-agent-guardrails",
       "to": "concept-prompt-injection-defense",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-041",
+      "id": "relation-030",
       "from": "concept-agent-guardrails",
       "to": "concept-least-privilege-agents",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-042",
+      "id": "relation-031",
       "from": "concept-agent-loop",
       "to": "concept-agent-observability",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-043",
+      "id": "relation-032",
       "from": "concept-agent-observability",
       "to": "concept-production-monitoring",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-044",
-      "from": "concept-agent-observability",
-      "to": "concept-agent-evaluation",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-045",
+      "id": "relation-033",
       "from": "concept-agent-observability",
       "to": "concept-agent-evaluation",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-046",
+      "id": "relation-034",
       "from": "concept-agent-evaluation",
       "to": "concept-evaluation-regression-suite",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-047",
+      "id": "relation-035",
       "from": "concept-agent-evaluation",
       "to": "concept-cost-latency-budget",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-048",
+      "id": "relation-036",
       "from": "concept-image-prompting",
       "to": "concept-visual-understanding",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-049",
+      "id": "relation-037",
       "from": "concept-image-prompting",
       "to": "concept-video-prompting",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-050",
+      "id": "relation-038",
       "from": "concept-image-prompting",
       "to": "concept-visual-understanding",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-051",
-      "from": "concept-visual-understanding",
-      "to": "concept-structured-output-integration",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-052",
-      "from": "concept-visual-understanding",
-      "to": "concept-content-safety-policy",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-053",
+      "id": "relation-039",
       "from": "concept-image-prompting",
       "to": "concept-video-prompting",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-054",
-      "from": "concept-video-prompting",
-      "to": "concept-audio-speech-engineering",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-055",
-      "from": "concept-video-prompting",
-      "to": "concept-content-safety-policy",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-056",
+      "id": "relation-040",
       "from": "concept-audio-speech-engineering",
       "to": "concept-privacy-data-minimization",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-057",
+      "id": "relation-041",
       "from": "concept-audio-speech-engineering",
       "to": "concept-video-prompting",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-058",
+      "id": "relation-042",
       "from": "concept-prompt-versioning",
       "to": "concept-production-prompt-releases",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-059",
-      "from": "concept-production-prompt-releases",
-      "to": "concept-agent-version-lifecycle",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-060",
-      "from": "concept-production-prompt-releases",
-      "to": "concept-evaluation-regression-suite",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-061",
+      "id": "relation-043",
       "from": "concept-production-prompt-releases",
       "to": "concept-evaluation-regression-suite",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-062",
-      "from": "concept-evaluation-regression-suite",
-      "to": "concept-agent-evaluation",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-063",
+      "id": "relation-044",
       "from": "concept-evaluation-regression-suite",
       "to": "concept-production-monitoring",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-064",
+      "id": "relation-045",
       "from": "concept-evaluation-regression-suite",
       "to": "concept-production-monitoring",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-065",
-      "from": "concept-production-monitoring",
-      "to": "concept-agent-observability",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-066",
-      "from": "concept-production-monitoring",
-      "to": "concept-production-incident-response",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-067",
+      "id": "relation-046",
       "from": "concept-api-boundary-design",
       "to": "concept-caching-batching",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-068",
+      "id": "relation-047",
       "from": "concept-caching-batching",
       "to": "concept-model-routing",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-069",
+      "id": "relation-048",
       "from": "concept-caching-batching",
       "to": "concept-privacy-data-minimization",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-070",
-      "from": "concept-privacy-data-minimization",
-      "to": "concept-agent-state-memory",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-071",
-      "from": "concept-privacy-data-minimization",
-      "to": "concept-audio-speech-engineering",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-072",
+      "id": "relation-049",
       "from": "concept-context-pipeline",
       "to": "concept-prompt-injection-defense",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-073",
-      "from": "concept-prompt-injection-defense",
-      "to": "concept-agent-guardrails",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-074",
-      "from": "concept-prompt-injection-defense",
-      "to": "concept-least-privilege-agents",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-075",
+      "id": "relation-050",
       "from": "concept-content-safety-policy",
       "to": "concept-visual-understanding",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-076",
+      "id": "relation-051",
       "from": "concept-content-safety-policy",
       "to": "concept-production-incident-response",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-077",
+      "id": "relation-052",
       "from": "concept-production-monitoring",
       "to": "concept-production-incident-response",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-078",
-      "from": "concept-production-incident-response",
-      "to": "concept-human-in-the-loop",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-079",
-      "from": "concept-production-incident-response",
-      "to": "concept-agent-version-lifecycle",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-080",
-      "from": "concept-model-routing",
-      "to": "concept-cost-latency-budget",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-081",
-      "from": "concept-model-routing",
-      "to": "concept-caching-batching",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-082",
+      "id": "relation-053",
       "from": "concept-model-routing",
       "to": "concept-api-boundary-design",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-083",
+      "id": "relation-054",
       "from": "concept-api-boundary-design",
       "to": "concept-tool-schema-design",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-084",
+      "id": "relation-055",
       "from": "concept-api-boundary-design",
       "to": "concept-idempotency-retries",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-085",
-      "from": "concept-context-pipeline",
-      "to": "concept-agent-state-memory",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-086",
+      "id": "relation-056",
       "from": "concept-context-pipeline",
       "to": "concept-prompt-injection-defense",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-087",
-      "from": "concept-api-boundary-design",
-      "to": "concept-structured-output-integration",
-      "type": "prerequisite-of",
-      "directed": true
-    },
-    {
-      "id": "relation-088",
-      "from": "concept-structured-outputs",
-      "to": "concept-structured-output-integration",
-      "type": "prerequisite-of",
-      "directed": true
-    },
-    {
-      "id": "relation-089",
-      "from": "concept-structured-output-integration",
-      "to": "concept-tool-schema-design",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-090",
-      "from": "concept-structured-output-integration",
-      "to": "concept-agent-handoff",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-091",
+      "id": "relation-057",
       "from": "concept-context-selection",
       "to": "concept-context-structure",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-092",
-      "from": "concept-context-selection",
-      "to": "concept-context-pipeline",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-093",
+      "id": "relation-058",
       "from": "concept-context-selection",
       "to": "concept-context-structure",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-094",
+      "id": "relation-059",
       "from": "concept-context-structure",
       "to": "concept-prompt-injection-defense",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-095",
+      "id": "relation-060",
       "from": "concept-context-structure",
       "to": "concept-structured-outputs",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-096",
+      "id": "relation-061",
       "from": "concept-context-selection",
       "to": "concept-context-compression",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-097",
+      "id": "relation-062",
       "from": "concept-context-structure",
       "to": "concept-context-compression",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-098",
+      "id": "relation-063",
       "from": "concept-context-compression",
       "to": "concept-token-budget-lost-middle",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-099",
-      "from": "concept-context-compression",
-      "to": "concept-agent-state-memory",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-100",
+      "id": "relation-064",
       "from": "concept-context-compression",
       "to": "concept-token-budget-lost-middle",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-101",
-      "from": "concept-token-budget-lost-middle",
-      "to": "concept-context-selection",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-102",
-      "from": "concept-token-budget-lost-middle",
-      "to": "concept-chunking-strategy",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-103",
-      "from": "concept-knowledge-extraction-cleaning",
-      "to": "concept-chunking-strategy",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-104",
+      "id": "relation-065",
       "from": "concept-knowledge-extraction-cleaning",
       "to": "concept-metadata-design",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-105",
+      "id": "relation-066",
       "from": "concept-knowledge-extraction-cleaning",
       "to": "concept-chunking-strategy",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-106",
+      "id": "relation-067",
       "from": "concept-chunking-strategy",
       "to": "concept-embedding-vector-index",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-107",
+      "id": "relation-068",
       "from": "concept-chunking-strategy",
       "to": "concept-token-budget-lost-middle",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-108",
+      "id": "relation-069",
       "from": "concept-knowledge-extraction-cleaning",
       "to": "concept-metadata-design",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-109",
-      "from": "concept-metadata-design",
-      "to": "concept-chunking-strategy",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-110",
-      "from": "concept-metadata-design",
-      "to": "concept-embedding-vector-index",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-111",
+      "id": "relation-070",
       "from": "concept-chunking-strategy",
       "to": "concept-embedding-vector-index",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-112",
+      "id": "relation-071",
       "from": "concept-metadata-design",
       "to": "concept-embedding-vector-index",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-113",
-      "from": "concept-embedding-vector-index",
-      "to": "concept-context-selection",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-114",
-      "from": "concept-embedding-vector-index",
-      "to": "concept-context-pipeline",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-115",
+      "id": "relation-072",
       "from": "concept-tokens-context-window",
       "to": "concept-working-conversation-memory",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-116",
+      "id": "relation-073",
       "from": "concept-query-rewriting-filters",
       "to": "concept-working-conversation-memory",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-117",
-      "from": "concept-working-conversation-memory",
-      "to": "concept-semantic-episodic-profile-memory",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-118",
-      "from": "concept-working-conversation-memory",
-      "to": "concept-memory-lifecycle-consent",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-119",
+      "id": "relation-074",
       "from": "concept-working-conversation-memory",
       "to": "concept-semantic-episodic-profile-memory",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-120",
-      "from": "concept-semantic-episodic-profile-memory",
-      "to": "concept-memory-lifecycle-consent",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-121",
-      "from": "concept-semantic-episodic-profile-memory",
-      "to": "concept-privacy-fairness-content-safety",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-122",
+      "id": "relation-075",
       "from": "concept-semantic-episodic-profile-memory",
       "to": "concept-memory-lifecycle-consent",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-123",
+      "id": "relation-076",
       "from": "concept-privacy-fairness-content-safety",
       "to": "concept-memory-lifecycle-consent",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-124",
+      "id": "relation-077",
       "from": "concept-memory-lifecycle-consent",
       "to": "concept-rag-memory-evaluation-safety",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-125",
-      "from": "concept-memory-lifecycle-consent",
-      "to": "concept-human-accountability-incidents",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-126",
+      "id": "relation-078",
       "from": "concept-context-assembly-grounding-citations",
       "to": "concept-rag-memory-evaluation-safety",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-127",
+      "id": "relation-079",
       "from": "concept-memory-lifecycle-consent",
       "to": "concept-rag-memory-evaluation-safety",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-128",
+      "id": "relation-080",
       "from": "concept-metrics-error-analysis",
       "to": "concept-rag-memory-evaluation-safety",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-129",
-      "from": "concept-rag-memory-evaluation-safety",
-      "to": "concept-adversarial-testing",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-130",
-      "from": "concept-rag-memory-evaluation-safety",
-      "to": "concept-prompt-injection-data-leakage",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-131",
+      "id": "relation-081",
       "from": "concept-metadata-design",
       "to": "concept-query-rewriting-filters",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-132",
+      "id": "relation-082",
       "from": "concept-embedding-vector-index",
       "to": "concept-query-rewriting-filters",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-133",
-      "from": "concept-query-rewriting-filters",
-      "to": "concept-hybrid-search",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-134",
+      "id": "relation-083",
       "from": "concept-query-rewriting-filters",
       "to": "concept-working-conversation-memory",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-135",
+      "id": "relation-084",
       "from": "concept-query-rewriting-filters",
       "to": "concept-hybrid-search",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-136",
+      "id": "relation-085",
       "from": "concept-embedding-vector-index",
       "to": "concept-hybrid-search",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-137",
+      "id": "relation-086",
       "from": "concept-hybrid-search",
       "to": "concept-reranking",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-138",
+      "id": "relation-087",
       "from": "concept-hybrid-search",
       "to": "concept-rag-memory-evaluation-safety",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-139",
+      "id": "relation-088",
       "from": "concept-hybrid-search",
       "to": "concept-reranking",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-140",
-      "from": "concept-reranking",
-      "to": "concept-context-assembly-grounding-citations",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-141",
-      "from": "concept-reranking",
-      "to": "concept-rag-memory-evaluation-safety",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-142",
+      "id": "relation-089",
       "from": "concept-reranking",
       "to": "concept-context-assembly-grounding-citations",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-143",
+      "id": "relation-090",
       "from": "concept-instruction-data-separation",
       "to": "concept-context-assembly-grounding-citations",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-144",
+      "id": "relation-091",
       "from": "concept-context-assembly-grounding-citations",
       "to": "concept-rag-memory-evaluation-safety",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-145",
+      "id": "relation-092",
       "from": "concept-context-assembly-grounding-citations",
       "to": "concept-output-validation-retry",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-146",
+      "id": "relation-093",
       "from": "concept-generative-models",
       "to": "concept-model-capabilities",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-147",
+      "id": "relation-094",
       "from": "concept-generative-models",
       "to": "concept-tokens-context-window",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-148",
-      "from": "concept-tokens-context-window",
-      "to": "concept-context-data",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-149",
+      "id": "relation-095",
       "from": "concept-generative-models",
       "to": "concept-message-roles",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-150",
-      "from": "concept-message-roles",
-      "to": "concept-instruction-data-separation",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-151",
+      "id": "relation-096",
       "from": "concept-generative-models",
       "to": "concept-model-capabilities",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-152",
+      "id": "relation-097",
       "from": "concept-model-capabilities",
       "to": "concept-output-validation-retry",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-153",
+      "id": "relation-098",
       "from": "concept-model-capabilities",
       "to": "concept-role-audience",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-154",
+      "id": "relation-099",
       "from": "concept-role-audience",
       "to": "concept-task-scope",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-155",
+      "id": "relation-100",
       "from": "concept-tokens-context-window",
       "to": "concept-context-data",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-156",
+      "id": "relation-101",
       "from": "concept-context-data",
       "to": "concept-instruction-data-separation",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-157",
+      "id": "relation-102",
       "from": "concept-role-audience",
       "to": "concept-task-scope",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-158",
+      "id": "relation-103",
       "from": "concept-context-data",
       "to": "concept-task-scope",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-159",
-      "from": "concept-task-scope",
-      "to": "concept-constraints-output-contract",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-160",
-      "from": "concept-task-scope",
-      "to": "concept-task-decomposition-chaining",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-161",
+      "id": "relation-104",
       "from": "concept-task-scope",
       "to": "concept-constraints-output-contract",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-162",
+      "id": "relation-105",
       "from": "concept-constraints-output-contract",
       "to": "concept-structured-outputs",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-163",
+      "id": "relation-106",
       "from": "concept-constraints-output-contract",
       "to": "concept-zero-shot",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-164",
-      "from": "concept-zero-shot",
-      "to": "concept-few-shot",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-165",
+      "id": "relation-107",
       "from": "concept-zero-shot",
       "to": "concept-few-shot",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-166",
+      "id": "relation-108",
       "from": "concept-few-shot",
       "to": "concept-templates-variables",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-167",
+      "id": "relation-109",
       "from": "concept-zero-shot",
       "to": "concept-task-decomposition-chaining",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-168",
+      "id": "relation-110",
       "from": "concept-constraints-output-contract",
       "to": "concept-task-decomposition-chaining",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-169",
-      "from": "concept-task-decomposition-chaining",
-      "to": "concept-output-validation-retry",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-170",
+      "id": "relation-111",
       "from": "concept-few-shot",
       "to": "concept-templates-variables",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-171",
+      "id": "relation-112",
       "from": "concept-constraints-output-contract",
       "to": "concept-templates-variables",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-172",
-      "from": "concept-templates-variables",
-      "to": "concept-prompt-versioning",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-173",
+      "id": "relation-113",
       "from": "concept-message-roles",
       "to": "concept-instruction-data-separation",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-174",
+      "id": "relation-114",
       "from": "concept-context-data",
       "to": "concept-instruction-data-separation",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-175",
+      "id": "relation-115",
       "from": "concept-instruction-data-separation",
       "to": "concept-structured-outputs",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-176",
+      "id": "relation-116",
       "from": "concept-constraints-output-contract",
       "to": "concept-structured-outputs",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-177",
-      "from": "concept-structured-outputs",
-      "to": "concept-output-validation-retry",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-178",
+      "id": "relation-117",
       "from": "concept-structured-outputs",
       "to": "concept-output-validation-retry",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-179",
+      "id": "relation-118",
       "from": "concept-output-validation-retry",
       "to": "concept-task-decomposition-chaining",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-180",
+      "id": "relation-119",
       "from": "concept-output-validation-retry",
       "to": "concept-prompt-versioning",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-181",
+      "id": "relation-120",
       "from": "concept-templates-variables",
       "to": "concept-prompt-versioning",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-182",
+      "id": "relation-121",
       "from": "concept-output-validation-retry",
       "to": "concept-prompt-versioning",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-183",
-      "from": "concept-prompt-versioning",
-      "to": "concept-model-capabilities",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-184",
+      "id": "relation-122",
       "from": "concept-constraints-output-contract",
       "to": "concept-success-criteria-rubric",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-185",
-      "from": "concept-success-criteria-rubric",
-      "to": "concept-evaluation-dataset",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-186",
-      "from": "concept-success-criteria-rubric",
-      "to": "concept-plan-intermediate-artifacts",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-187",
+      "id": "relation-123",
       "from": "concept-success-criteria-rubric",
       "to": "concept-evaluation-dataset",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-188",
+      "id": "relation-124",
       "from": "concept-model-capabilities",
       "to": "concept-evaluation-dataset",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-189",
+      "id": "relation-125",
       "from": "concept-evaluation-dataset",
       "to": "concept-grader-types",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-190",
-      "from": "concept-evaluation-dataset",
-      "to": "concept-adversarial-testing",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-191",
+      "id": "relation-126",
       "from": "concept-success-criteria-rubric",
       "to": "concept-grader-types",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-192",
+      "id": "relation-127",
       "from": "concept-evaluation-dataset",
       "to": "concept-grader-types",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-193",
+      "id": "relation-128",
       "from": "concept-grader-types",
       "to": "concept-metrics-error-analysis",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-194",
+      "id": "relation-129",
       "from": "concept-grader-types",
       "to": "concept-metrics-error-analysis",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-195",
-      "from": "concept-metrics-error-analysis",
-      "to": "concept-baseline-comparison",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-196",
-      "from": "concept-metrics-error-analysis",
-      "to": "concept-feedback-improvement",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-197",
+      "id": "relation-130",
       "from": "concept-metrics-error-analysis",
       "to": "concept-baseline-comparison",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-198",
+      "id": "relation-131",
       "from": "concept-prompt-versioning",
       "to": "concept-baseline-comparison",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-199",
+      "id": "relation-132",
       "from": "concept-baseline-comparison",
       "to": "concept-regression-testing",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-200",
+      "id": "relation-133",
       "from": "concept-baseline-comparison",
       "to": "concept-regression-testing",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-201",
+      "id": "relation-134",
       "from": "concept-evaluation-dataset",
       "to": "concept-regression-testing",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-202",
-      "from": "concept-regression-testing",
-      "to": "concept-adversarial-testing",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-203",
+      "id": "relation-135",
       "from": "concept-evaluation-dataset",
       "to": "concept-adversarial-testing",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-204",
+      "id": "relation-136",
       "from": "concept-use-case-risk-classification",
       "to": "concept-adversarial-testing",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-205",
+      "id": "relation-137",
       "from": "concept-adversarial-testing",
       "to": "concept-prompt-injection-data-leakage",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-206",
+      "id": "relation-138",
       "from": "concept-metrics-error-analysis",
       "to": "concept-feedback-improvement",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-207",
+      "id": "relation-139",
       "from": "concept-regression-testing",
       "to": "concept-feedback-improvement",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-208",
+      "id": "relation-140",
       "from": "concept-feedback-improvement",
       "to": "concept-human-accountability-incidents",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-209",
+      "id": "relation-141",
       "from": "concept-model-capabilities",
       "to": "concept-use-case-risk-classification",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-210",
-      "from": "concept-use-case-risk-classification",
-      "to": "concept-privacy-fairness-content-safety",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-211",
-      "from": "concept-use-case-risk-classification",
-      "to": "concept-adversarial-testing",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-212",
+      "id": "relation-142",
       "from": "concept-use-case-risk-classification",
       "to": "concept-privacy-fairness-content-safety",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-213",
+      "id": "relation-143",
       "from": "concept-metrics-error-analysis",
       "to": "concept-privacy-fairness-content-safety",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-214",
-      "from": "concept-privacy-fairness-content-safety",
-      "to": "concept-human-accountability-incidents",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-215",
+      "id": "relation-144",
       "from": "concept-instruction-data-separation",
       "to": "concept-prompt-injection-data-leakage",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-216",
+      "id": "relation-145",
       "from": "concept-use-case-risk-classification",
       "to": "concept-prompt-injection-data-leakage",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-217",
-      "from": "concept-prompt-injection-data-leakage",
-      "to": "concept-adversarial-testing",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-218",
+      "id": "relation-146",
       "from": "concept-prompt-injection-data-leakage",
       "to": "concept-tool-assisted-reasoning",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-219",
+      "id": "relation-147",
       "from": "concept-use-case-risk-classification",
       "to": "concept-human-accountability-incidents",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-220",
+      "id": "relation-148",
       "from": "concept-privacy-fairness-content-safety",
       "to": "concept-human-accountability-incidents",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-221",
+      "id": "relation-149",
       "from": "concept-prompt-injection-data-leakage",
       "to": "concept-human-accountability-incidents",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-222",
-      "from": "concept-human-accountability-incidents",
-      "to": "concept-feedback-improvement",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-223",
+      "id": "relation-150",
       "from": "concept-task-decomposition-chaining",
       "to": "concept-problem-decomposition",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-224",
-      "from": "concept-problem-decomposition",
-      "to": "concept-plan-intermediate-artifacts",
-      "type": "related-to",
-      "directed": false
-    },
-    {
-      "id": "relation-225",
+      "id": "relation-151",
       "from": "concept-problem-decomposition",
       "to": "concept-plan-intermediate-artifacts",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-226",
+      "id": "relation-152",
       "from": "concept-structured-outputs",
       "to": "concept-plan-intermediate-artifacts",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-227",
+      "id": "relation-153",
       "from": "concept-plan-intermediate-artifacts",
       "to": "concept-success-criteria-rubric",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-228",
+      "id": "relation-154",
       "from": "concept-problem-decomposition",
       "to": "concept-alternatives-decision-trees",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-229",
+      "id": "relation-155",
       "from": "concept-alternatives-decision-trees",
       "to": "concept-metrics-error-analysis",
       "type": "related-to",
       "directed": false
     },
     {
-      "id": "relation-230",
+      "id": "relation-156",
       "from": "concept-plan-intermediate-artifacts",
       "to": "concept-tool-assisted-reasoning",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-231",
+      "id": "relation-157",
       "from": "concept-structured-outputs",
       "to": "concept-tool-assisted-reasoning",
       "type": "prerequisite-of",
       "directed": true
     },
     {
-      "id": "relation-232",
-      "from": "concept-tool-assisted-reasoning",
-      "to": "concept-prompt-injection-data-leakage",
-      "type": "related-to",
-      "directed": false
+      "id": "relation-158",
+      "from": "concept-prompt-versioning",
+      "to": "concept-prompt-rag-finetuning-decision",
+      "type": "prerequisite-of",
+      "directed": true
+    },
+    {
+      "id": "relation-159",
+      "from": "concept-query-rewriting-filters",
+      "to": "concept-prompt-rag-finetuning-decision",
+      "type": "prerequisite-of",
+      "directed": true
     }
   ],
   "sources": {
@@ -7015,14 +6529,15 @@
   },
   "integrity": {
     "algorithm": "SHA-256",
-    "contentHash": "fbd36a5b5795335367657fbb846669f4b2d64b31ba8ea83325d8e5dbe1c23217"
+    "contentHash": "30112f760a4779fd8489d5b573325ecb863b509deaa4ad48d3cc155c7575a25a"
   },
   "review": {
     "committeeReviewed": true,
     "reviewDate": "2026-07-16",
     "coverageModel": "5 tracks × 4 axes × 4 concepts",
-    "contentStatus": "first complete draft",
-    "requiresEditorialReview": true
+    "contentStatus": "expert-reviewed and revised",
+    "requiresEditorialReview": false,
+    "reviewNotes": "مراجعة مفاهيمية ولغوية شملت المصطلحات المتداخلة، MCP، RAG، والملاءمة للمبتدئين."
   },
   "retiredIds": [],
   "migrations": []
