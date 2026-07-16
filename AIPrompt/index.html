@@ -1,1 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071525">
+  <title>خريطة هندسة الذكاء الاصطناعي والأوامر 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="PromptEng/masar-ai-knowledge-map.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><div class="brand-mark">م</div><div><h1>خريطة هندسة الذكاء الاصطناعي والأوامر</h1><p class="subtitle">بوابة مسار • من الطلب البسيط إلى النظام الذكي</p></div></div>
+    <div class="header-actions"><button class="soft-btn" id="centerBtn">العودة للمركز</button><button class="icon-btn" id="themeBtn" title="تبديل المظهر" aria-label="تبديل المظهر">☾</button><button class="icon-btn" id="resetBtn" title="مسح التقدم">↻</button></div>
+  </header>
+  <div class="toolbar">
+    <div class="search"><input id="searchInput" type="search" placeholder="ابحث عن مفهوم..." autocomplete="off" aria-label="البحث في المفاهيم"><div class="search-results" id="searchResults"></div></div>
+    <div class="segmented" role="tablist"><button class="active" data-view="map">الخريطة</button><button data-view="index">الفهرس</button></div>
+    <div class="progress-wrap"><span id="progressLabel">0 من 80</span><span class="progress"><i id="progressBar"></i></span></div>
+  </div>
+  <nav class="crumbs" id="crumbs" aria-label="مسار التنقل"></nav>
+  <main>
+    <section class="stage" id="stage" aria-label="الخريطة المعرفية التفاعلية">
+      <div class="map-controls"><button id="fitBtn" title="ملاءمة الخريطة">⌂</button><button id="collapseBtn" title="طي الفروع">−</button></div>
+      <div class="map" id="map"><svg class="connections" id="connections" aria-hidden="true"></svg></div>
+      <div class="index-view" id="indexView"><div class="index-grid" id="indexGrid"></div></div>
+    </section>
+    <aside class="details" id="details" aria-live="polite">
+      <div class="details-head" id="detailsToggle">
+        <div class="details-kicker"><span id="levelLabel">ابدأ من الخريطة</span><button class="fav" id="favBtn" title="إضافة للمفضلة">☆</button></div>
+        <h2 id="detailTitle">هندسة الأوامر 2026</h2>
+        <p class="desc" id="detailDesc">اختر عقدة لعرض تعريفها، ثم استخدم زر «استكشف» لفتح فروعها.</p>
+      </div>
+      <div class="details-body" id="detailBody"></div>
+    </aside>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+let DATA={};
+let DATABASE=null;
+let conceptIds=[];
+const TRACK_STYLE={
+  'track-foundations':{color:'#55d98a',icon:'⌨'},
+  'track-reasoning-governance':{color:'#50b8ff',icon:'⚖'},
+  'track-context-memory-rag':{color:'#f5b942',icon:'◫'},
+  'track-agents-tools':{color:'#a983ff',icon:'♙'},
+  'track-architecture-multimodal-production':{color:'#ff796f',icon:'⌘'}
+};
+const DIFFICULTY_LABELS={beginner:'مبتدئ',intermediate:'متوسط',advanced:'متقدم',production:'إنتاجي'};
+function nodeTrackId(node){return node.type==='track'?node.id:node.trackId}
+function buildUiData(database){
+  const ui={};
+  for(const node of Object.values(database.nodes)){
+    const trackStyle=TRACK_STYLE[nodeTrackId(node)]||{color:'#f5b942',icon:'•'};
+    const isTrack=node.type==='track';
+    const relatedTitles=(node.relatedNodeIds||[]).map(id=>database.nodes[id]?.titleAr).filter(Boolean);
+    const sourceTitles=(node.sourceRefs||[]).map(id=>database.sources[id]?.title).filter(Boolean);
+    const mistakes=(node.commonMistakes||[]).map(x=>`${x.mistake} — التصحيح: ${x.correction}`).join(' • ');
+    ui[node.id]={
+      id:node.id,
+      parent:node.parentId||null,
+      title:isTrack?`${node.order}. ${node.titleAr}`:node.titleAr,
+      short:node.summary||'',
+      icon:node.type==='root'?'🧠':trackStyle.icon,
+      level:node.type==='root'?'المركز':node.type==='track'?'مسار':node.type==='axis'?'محور':(DIFFICULTY_LABELS[node.difficulty]||'مفهوم'),
+      color:node.type==='root'?'#f5b942':trackStyle.color,
+      children:node.childIds||[],
+      available:true,
+      definition:node.definition||'',
+      why:node.whyItMatters||'',
+      when:node.whenToUse||'',
+      whenNot:node.whenNotToUse||'',
+      how:(node.steps||[]).join(' • '),
+      example:node.exampleInput?`المدخل: ${node.exampleInput} — المخرج المتوقع: ${node.exampleOutput||''}`:'',
+      warning:mistakes,
+      rule:node.goldenRule||'',
+      exercise:node.exercise?`${node.exercise.instruction} — إجابة نموذجية: ${node.exercise.modelAnswer}`:'',
+      related:relatedTitles.join('، '),
+      sources:sourceTitles.join('، '),
+      searchText:[node.titleAr,node.titleEn,node.summary,...(node.keywords||[]),...(node.searchAliases||[])].filter(Boolean).join(' ')
+    };
+  }
+  return ui;
+}
+const STATE={current:'root',openPath:['root'],view:'map',visited:new Set(JSON.parse(localStorage.getItem('ai-map-visited')||'[]')),favorites:new Set(JSON.parse(localStorage.getItem('ai-map-favs')||'[]'))};
+const map=document.getElementById('map'),svg=document.getElementById('connections'),details=document.getElementById('details');
 
+function save(){localStorage.setItem('ai-map-visited',JSON.stringify([...STATE.visited]));localStorage.setItem('ai-map-favs',JSON.stringify([...STATE.favorites]));localStorage.setItem('ai-map-last',STATE.current);updateProgress()}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2200)}
+function getPath(id){const p=[];let n=DATA[id];while(n){p.unshift(n.id);n=n.parent?DATA[n.parent]:null}if(p[0]!=='root')p.unshift('root');return p}
+function showDetails(id,open=true){const n=DATA[id];STATE.current=id;STATE.visited.add(id);save();document.getElementById('levelLabel').textContent=n.level||'مفهوم';document.getElementById('detailTitle').textContent=n.title;document.getElementById('detailDesc').textContent=n.short||'';document.getElementById('favBtn').classList.toggle('on',STATE.favorites.has(id));document.getElementById('favBtn').textContent=STATE.favorites.has(id)?'★':'☆';
+  const body=document.getElementById('detailBody');body.innerHTML='';
+  if(n.definition){body.innerHTML=info('التعريف',n.definition)+info('لماذا يهم؟',n.why)+info('متى يستخدم؟',n.when)+info('متى لا يستخدم؟',n.whenNot)+info('خطوات التطبيق',n.how)+info('مثال عملي',n.example,'example')+info('أخطاء شائعة',n.warning,'warning')+info('القاعدة الذهبية',n.rule)+info('تمرين قصير',n.exercise)+info('مفاهيم مرتبطة',n.related)+info('المراجع',n.sources)+`<div class="detail-actions"><button class="primary" onclick="markRead('${id}')">تمت القراءة</button><button class="secondary" onclick="copyExample('${id}')">نسخ المثال</button></div>`}
+  else if(n.children?.length){body.innerHTML=`<div class="info"><h3>الهدف التعليمي</h3><p>${n.short}</p></div><div class="detail-actions"><button class="primary" onclick="explore('${id}')">استكشف الفروع</button>${id!=='root'?'<button class="secondary" onclick="goParent()">رجوع مستوى</button>':''}</div>`}
+  else{body.innerHTML=`<div class="info"><h3>المحتوى</h3><p>${n.short||'لا توجد تفاصيل إضافية لهذه العقدة.'}</p></div>`}
+  renderCrumbs();renderIndex();if(open)details.classList.add('open')
+}
+function info(title,text,cls=''){return text?`<section class="info ${cls}"><h3>${title}</h3><p>${text}</p></section>`:''}
+function explore(id){const n=DATA[id];if(n.available===false){toast('هذا المسار ضمن المرحلة التالية');return}STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
+function goParent(){const n=DATA[STATE.current];const id=n.parent||'root';STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
+function markRead(id){STATE.visited.add(id);save();renderMap();toast('تم تسجيل المفهوم كمقروء')}
+function copyExample(id){navigator.clipboard?.writeText(DATA[id].example).then(()=>toast('تم نسخ المثال')).catch(()=>toast('تعذر النسخ'))}
+
+function positionsFor(id,w,h){const mobile=w<560,cx=w/2,cy=h/2;const pos={};if(id==='root'){pos.root=[cx,cy];const rx=mobile?w*.31:w*.34,ry=mobile?h*.35:h*.34;DATA.root.children.forEach((x,i)=>{const a=(-90+i*72)*Math.PI/180;pos[x]=[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]})}
+  else{pos[id]=[cx,cy];const kids=DATA[id].children||[];const rx=mobile?w*.30:w*.33,ry=mobile?h*.31:h*.29;const step=kids.length?360/kids.length:360;kids.forEach((x,i)=>{const a=(-90+i*step)*Math.PI/180;pos[x]=[cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]})}
+  return pos
+}
+function renderMap(){map.querySelectorAll('.node,.empty-hint').forEach(x=>x.remove());svg.innerHTML='';const focus=STATE.openPath.at(-1)||'root';const rect=map.getBoundingClientRect(),w=rect.width||800,h=rect.height||690;const pos=positionsFor(focus,w,h);Object.entries(pos).forEach(([id,[x,y]])=>{const n=DATA[id],b=document.createElement('button');b.className=`node ${id==='root'?'root':(n.definition?'concept':'axis')} ${id===focus?'focus':''} ${n.available===false?'disabled':''} ${STATE.visited.has(id)?'visited':''}`;b.style.cssText=`left:${x}px;top:${y}px;--accent:${n.color}`;b.setAttribute('aria-label',n.title);b.innerHTML=`<span class="n-head"><span class="emoji">${n.icon||'•'}</span><span><strong>${n.title}</strong><small>${n.short||''}</small></span></span>`;b.onclick=()=>showDetails(id);b.ondblclick=()=>explore(id);map.appendChild(b)});
+  const parent=DATA[focus],kids=parent?.children||[];kids.filter(k=>pos[k]).forEach(k=>drawLine(pos[focus],pos[k],DATA[k].color));
+  const hint=document.createElement('div');hint.className='empty-hint';hint.textContent=parent?.children?.length?'اضغط لقراءة التعريف • اضغط «استكشف» داخل لوحة الشرح للتعمق':'';map.appendChild(hint)
+}
+function drawLine(a,b,color){const path=document.createElementNS('http://www.w3.org/2000/svg','path'),mx=(a[0]+b[0])/2;path.setAttribute('d',`M ${a[0]} ${a[1]} C ${mx} ${a[1]}, ${mx} ${b[1]}, ${b[0]} ${b[1]}`);path.setAttribute('stroke',color);svg.appendChild(path);const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',b[0]);c.setAttribute('cy',b[1]);c.setAttribute('r',4);c.setAttribute('fill',color);svg.appendChild(c)}
+function renderCrumbs(){const path=getPath(STATE.current),el=document.getElementById('crumbs');el.innerHTML=path.map((id,i)=>`<button onclick="jump('${id}')">${DATA[id].title.replace(/^\d+\.\s*/,'')}</button>${i<path.length-1?'<span>‹</span>':''}`).join('')}
+function jump(id){STATE.openPath=getPath(id);renderMap();showDetails(id,false)}
+function updateProgress(){const count=conceptIds.filter(id=>STATE.visited.has(id)).length;document.getElementById('progressLabel').textContent=`${count} من ${conceptIds.length}`;document.getElementById('progressBar').style.width=`${count/conceptIds.length*100}%`}
+function renderIndex(filter=''){const grid=document.getElementById('indexGrid'),q=filter.trim().toLowerCase();const nodes=Object.values(DATA).filter(n=>n.id!=='root'&&(!q||(n.title+' '+(n.short||'')+' '+(n.definition||'')+' '+(n.searchText||'')).toLowerCase().includes(q)));grid.innerHTML=nodes.map(n=>`<article class="index-card" onclick="openFromIndex('${n.id}')"><h3>${n.icon||'•'} ${n.title}</h3><p>${n.short||''}</p><span class="tag">${n.level||'مسار'}</span></article>`).join('')||'<p>لا توجد نتائج.</p>'}
+function openFromIndex(id){STATE.view='map';document.querySelectorAll('.segmented button').forEach(b=>b.classList.toggle('active',b.dataset.view==='map'));document.getElementById('indexView').classList.remove('active');map.style.display='block';STATE.openPath=getPath(DATA[id].parent||id);renderMap();showDetails(id)}
+function doSearch(q){const box=document.getElementById('searchResults');q=q.trim().toLowerCase();if(q.length<2){box.classList.remove('open');return}const found=Object.values(DATA).filter(n=>(n.title+' '+(n.short||'')+' '+(n.definition||'')+' '+(n.searchText||'')).toLowerCase().includes(q)).slice(0,8);box.innerHTML=found.map(n=>`<button class="result" onclick="selectSearch('${n.id}')">${n.title}<small>${getPath(n.id).map(x=>DATA[x].title.replace(/^\d+\.\s*/,'')).join(' ← ')}</small></button>`).join('')||'<div class="result">لا توجد نتائج</div>';box.classList.add('open')}
+function selectSearch(id){document.getElementById('searchResults').classList.remove('open');document.getElementById('searchInput').value='';openFromIndex(id)}
+
+document.getElementById('searchInput').addEventListener('input',e=>doSearch(e.target.value));document.addEventListener('click',e=>{if(!e.target.closest('.search'))document.getElementById('searchResults').classList.remove('open')});
+document.querySelectorAll('.segmented button').forEach(btn=>btn.onclick=()=>{STATE.view=btn.dataset.view;document.querySelectorAll('.segmented button').forEach(b=>b.classList.toggle('active',b===btn));const index=STATE.view==='index';document.getElementById('indexView').classList.toggle('active',index);map.style.display=index?'none':'block';if(index)renderIndex();else renderMap()});
+document.getElementById('favBtn').onclick=e=>{e.stopPropagation();const id=STATE.current;STATE.favorites.has(id)?STATE.favorites.delete(id):STATE.favorites.add(id);save();showDetails(id,false)};
+document.getElementById('detailsToggle').onclick=e=>{if(innerWidth<=900&&!e.target.closest('button'))details.classList.toggle('open')};
+document.getElementById('centerBtn').onclick=()=>jump('root');document.getElementById('fitBtn').onclick=()=>{renderMap();toast('تمت ملاءمة الخريطة')};document.getElementById('collapseBtn').onclick=()=>jump('root');
+const themeBtn=document.getElementById('themeBtn');function applyTheme(theme){document.documentElement.dataset.theme=theme;themeBtn.textContent=theme==='light'?'☾':'☀';document.querySelector('meta[name="theme-color"]').content=theme==='light'?'#f4f7f9':'#071525';localStorage.setItem('masar-theme',theme)}themeBtn.onclick=()=>applyTheme(document.documentElement.dataset.theme==='light'?'dark':'light');applyTheme(localStorage.getItem('masar-theme')||'light');
+document.getElementById('resetBtn').onclick=()=>{if(confirm('هل تريد مسح التقدم والمفضلة؟')){STATE.visited.clear();STATE.favorites.clear();localStorage.removeItem('ai-map-last');save();jump('root');toast('تم مسح التقدم')}};
+addEventListener('resize',()=>{clearTimeout(window.rt);window.rt=setTimeout(renderMap,150)});
+window.explore=explore;window.goParent=goParent;window.markRead=markRead;window.copyExample=copyExample;window.jump=jump;window.openFromIndex=openFromIndex;window.selectSearch=selectSearch;
+async function init(){
+  document.getElementById('detailTitle').textContent='جارٍ تحميل قاعدة المعرفة…';
+  document.getElementById('detailDesc').textContent='يتم الآن تجهيز المسارات والمفاهيم من ملف JSON.';
+  const response=await fetch('./PromptEng/ai_prompt_knowledge.json',{cache:'no-store'});
+  if(!response.ok)throw new Error(`تعذر تحميل قاعدة المعرفة (${response.status})`);
+  DATABASE=await response.json();
+  if(DATABASE.statistics?.conceptCount!==80||!DATABASE.nodes?.root)throw new Error('قاعدة المعرفة غير مكتملة أو غير متوافقة');
+  DATA=buildUiData(DATABASE);
+  conceptIds=Object.values(DATA).filter(n=>n.definition).map(n=>n.id);
+  const last=localStorage.getItem('ai-map-last');
+  STATE.current=last&&DATA[last]?last:'root';
+  const current=DATA[STATE.current];
+  STATE.openPath=getPath(STATE.current==='root'?'root':(current.parent||STATE.current));
+  renderMap();showDetails(STATE.current,false);updateProgress();
+}
+init().catch(error=>{
+  document.getElementById('detailTitle').textContent='تعذر تحميل المحتوى';
+  document.getElementById('detailDesc').textContent=error.message;
+  document.getElementById('detailBody').innerHTML='<div class="info warning"><h3>تحقق من الملفات</h3><p>يجب أن يبقى ملفا الستايل والبيانات داخل مجلد PromptEng، وأن تُفتح الصفحة عبر خادم الموقع.</p></div>';
+  toast('تعذر تحميل قاعدة المعرفة');
+  console.error(error);
+});
+</script>
+</body>
+</html>
