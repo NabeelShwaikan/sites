@@ -6,9 +6,16 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
   <title>مِعمار | إدارة تكاليف البناء</title>
     <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    html{scroll-behavior:smooth}
+    .back-to-top-wrap{position:fixed;inset-inline-end:18px;bottom:max(18px,env(safe-area-inset-bottom));z-index:50}
+    .back-to-top{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--brand);text-decoration:none;font-weight:750;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:transform .18s ease,border-color .18s ease}
+    .back-to-top:hover{transform:translateY(-3px);border-color:var(--brand)}
+    .back-to-top:focus-visible{outline:3px solid color-mix(in srgb,var(--brand) 32%,transparent);outline-offset:3px}
+  </style>
 </head>
 <body>
-<main class="shell">
+<main class="shell" id="pageTop">
   <header class="topbar">
     <div class="brand"><div class="logo">م</div><div><h1>مِعمار</h1><div class="sub">إدارة تكاليف البناء</div></div></div>
     <div class="actions">
@@ -67,6 +74,7 @@
     <div class="mobile-records" id="mobileRecords"></div>
   </section>
 </main>
+<div class="back-to-top-wrap"><a class="back-to-top" href="#pageTop" aria-label="العودة إلى أعلى الصفحة"><span aria-hidden="true">↑</span><span>أعلى</span></a></div>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle">
   <form class="dialog" id="expenseForm">
