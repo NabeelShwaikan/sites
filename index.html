@@ -116,6 +116,33 @@
     .cat-stocks{background:linear-gradient(145deg,#047857,#22c55e,#86efac)}
     @media (max-width:520px){.grid{grid-template-columns:repeat(4,1fr);gap:14px;padding:15px 12px}.app-tile-icon{width:60px;height:60px;border-radius:19px;font-size:28px}.app-tile-name{font-size:11.5px;max-width:72px}}
 
+    .app-tile-button{border:0;background:transparent;padding:0;font-family:inherit;cursor:pointer}
+    .folder-icon{padding:13px;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:5px}
+    .folder-icon::before{z-index:0}.folder-mini{position:relative;z-index:1;display:grid;place-items:center;width:100%;height:100%;border-radius:9px;background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.22);font-size:18px;line-height:1;box-shadow:inset 0 1px 0 rgba(255,255,255,.28)}
+    .folder-modal{position:fixed;inset:0;z-index:1350;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.62);backdrop-filter:blur(9px)}
+    .folder-modal.is-visible{display:flex;animation:folderFade .16s ease-out}
+    body.is-app-dragging .folder-modal::before{content:"أفلت هنا لإخراج التطبيق إلى الرئيسية";position:absolute;top:max(18px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);pointer-events:none;background:rgba(15,23,42,.78);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 12px;font-size:11px;font-weight:900;white-space:nowrap;opacity:.72;transition:opacity .12s ease,background .12s ease}
+    body.is-app-dragging .folder-modal.is-drop-target::before{opacity:1;background:var(--brand);box-shadow:0 8px 22px rgba(37,99,235,.34)}
+    .folder-dialog{width:min(520px,100%);max-height:min(88vh,760px);overflow:auto;background:var(--panel);color:var(--ink);border:1px solid var(--border);border-radius:26px;box-shadow:0 30px 80px rgba(2,6,23,.34);padding:20px;animation:folderOpen .2s ease-out}
+    .folder-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+    .folder-title-wrap{display:flex;align-items:center;gap:8px;min-width:0}.folder-dialog-title{margin:0;font-size:20px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .folder-edit,.folder-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:900}.folder-edit{width:36px;font-size:15px}.folder-close{width:36px;font-size:20px;line-height:1}
+    .folder-apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 12px;padding:8px 4px 14px}.folder-apps .app-tile-icon{width:68px;height:68px;border-radius:21px;font-size:31px}.folder-apps .app-tile-name{max-width:108px}
+    .folder-rename{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;padding:13px;margin:2px 0 12px;border:1px solid var(--border);border-radius:16px;background:var(--chip)}.folder-rename[hidden]{display:none}
+    .folder-name-input{min-width:0;border:1px solid var(--border);background:var(--panel);color:var(--ink);border-radius:11px;padding:8px 10px;font-family:inherit;font-size:13px;font-weight:700;outline:none}.folder-name-input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+    .folder-name-action{border:0;border-radius:11px;padding:7px 10px;font-family:inherit;font-size:11.5px;font-weight:900;cursor:pointer}.folder-name-save{background:var(--brand);color:#fff}.folder-name-reset{background:var(--panel);color:var(--muted);border:1px solid var(--border)}
+    .folder-name-delete{grid-column:1/-1;background:rgba(220,38,38,.09);color:#b91c1c;border:1px solid rgba(220,38,38,.22)}.folder-name-delete[hidden]{display:none}
+    .folder-rename-note{grid-column:1/-1;color:var(--muted);font-size:10.5px;min-height:1.5em}
+    .folder-empty{grid-column:1/-1;min-height:150px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding:24px}
+    .folder-move-hint{margin:4px 0 0;text-align:center;color:var(--muted);font-size:10.5px;line-height:1.7}
+    .folder-move-targets{display:none;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border)}
+    body.is-app-dragging .folder-move-targets{display:flex}.folder-drop-target{border:1px solid var(--border);background:var(--chip);color:var(--ink);border-radius:999px;padding:7px 10px;font-family:inherit;font-size:11px;font-weight:900;transition:transform .12s ease,background .12s ease,border-color .12s ease}.folder-drop-target.is-drop-target{transform:scale(1.06);background:rgba(37,99,235,.14);border-color:var(--brand)}
+    .folder-tile.is-drop-target .folder-icon{transform:translateY(-3px) scale(1.08);filter:saturate(1.18);outline:3px solid rgba(37,99,235,.32);outline-offset:3px}
+    .new-folder-icon{background:linear-gradient(145deg,#334155,#64748b);font-size:34px;color:#fff}.new-folder-icon span{filter:none}.folder-create-body{display:grid;gap:10px}.folder-create-actions{display:flex;gap:8px}.folder-create-actions .folder-name-action{flex:1;padding:10px}.folder-create-note{color:var(--muted);font-size:11px;min-height:1.5em}
+    .app-tile[data-page-href]{-webkit-user-drag:element;-webkit-touch-callout:none}.app-tile.is-drag-source{opacity:.34}.drag-ghost{position:fixed;z-index:2500;pointer-events:none;transform:translate3d(-50%,-50%,0) scale(.92);opacity:.94;filter:drop-shadow(0 18px 24px rgba(2,6,23,.35));width:84px;will-change:left,top}.drag-ghost .app-tile-name{display:none}.drag-ghost .app-tile-icon{margin:auto}body.is-app-dragging{user-select:none;-webkit-user-select:none;overscroll-behavior:none}
+    @keyframes folderFade{from{opacity:0}to{opacity:1}}@keyframes folderOpen{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @media (max-width:520px){.folder-icon{padding:10px;gap:4px}.folder-mini{font-size:14px;border-radius:7px}.folder-modal{padding:10px}.folder-dialog{padding:17px;border-radius:23px;max-height:91vh}.folder-apps{gap:16px 8px}.folder-apps .app-tile-icon{width:60px;height:60px;border-radius:19px;font-size:28px}.folder-rename{grid-template-columns:1fr auto}.folder-name-reset{grid-column:1/-1}.folder-dialog-title{font-size:18px}}
+
     footer{margin-top:24px; text-align:center; color:var(--muted); font-size:13px}
 /* انتقال ناعم بين السمات (ثالثًا-2) */
     html[data-theme], body{transition: background-color .4s ease, color .4s ease}
@@ -440,6 +467,45 @@
       <div class="grid" id="grid"></div>
     </section>
 
+    <div class="folder-modal" id="folderModal" aria-hidden="true">
+      <section class="folder-dialog" role="dialog" aria-modal="true" aria-labelledby="folderDialogTitle">
+        <div class="folder-dialog-head">
+          <div class="folder-title-wrap">
+            <h2 class="folder-dialog-title" id="folderDialogTitle">المجلد</h2>
+            <button class="folder-edit" id="folderEditBtn" type="button" aria-label="تغيير اسم المجلد" title="تغيير اسم المجلد">✎</button>
+          </div>
+          <button class="folder-close" id="folderCloseBtn" type="button" aria-label="إغلاق">×</button>
+        </div>
+        <div class="folder-rename" id="folderRename" hidden>
+          <input class="folder-name-input" id="folderNameInput" type="text" maxlength="20" autocomplete="off" aria-label="اسم المجلد الجديد">
+          <button class="folder-name-action folder-name-save" id="folderNameSave" type="button">حفظ</button>
+          <button class="folder-name-action folder-name-reset" id="folderNameReset" type="button">الاسم الأصلي</button>
+          <button class="folder-name-action folder-name-delete" id="folderNameDelete" type="button" hidden>حذف المجلد</button>
+          <div class="folder-rename-note" id="folderRenameNote">من 1 إلى 20 حرفًا</div>
+        </div>
+        <div class="folder-apps" id="folderApps"></div>
+        <div class="folder-move-hint">اضغط مطولًا على الأيقونة ثم اسحبها لنقلها</div>
+        <div class="folder-move-targets" id="folderMoveTargets" aria-label="وجهات نقل التطبيق"></div>
+      </section>
+    </div>
+
+    <div class="folder-modal" id="folderCreateModal" aria-hidden="true">
+      <section class="folder-dialog" role="dialog" aria-modal="true" aria-labelledby="folderCreateTitle">
+        <div class="folder-dialog-head">
+          <h2 class="folder-dialog-title" id="folderCreateTitle">إنشاء مجلد جديد</h2>
+          <button class="folder-close" id="folderCreateClose" type="button" aria-label="إغلاق">×</button>
+        </div>
+        <div class="folder-create-body">
+          <input class="folder-name-input" id="folderCreateInput" type="text" maxlength="20" autocomplete="off" placeholder="اسم المجلد" aria-label="اسم المجلد الجديد">
+          <div class="folder-create-actions">
+            <button class="folder-name-action folder-name-save" id="folderCreateSave" type="button">إنشاء</button>
+            <button class="folder-name-action folder-name-reset" id="folderCreateCancel" type="button">إلغاء</button>
+          </div>
+          <div class="folder-create-note" id="folderCreateNote">سيظهر المجلد فارغًا، ثم اسحب التطبيقات إليه.</div>
+        </div>
+      </section>
+    </div>
+
     <footer>© <span id="y"></span></footer>
   </div>
 
@@ -484,10 +550,171 @@
       { title: "مباريات كأس العالم 2026", href: "Pages/WorldCup2026.html", desc: "بوابة كأس العالم 2026", emoji: "🏆" },
     ];
 
+    const DEFAULT_FOLDERS = [
+      {
+        id:'faith', name:'الدين والعبادة', category:'cat-religion',
+        pages:['متابعة قراءة القرآن الكريم','الأربعون النووية']
+      },
+      {
+        id:'learning', name:'التعليم والتدريب', category:'cat-education',
+        pages:['تعلّم الإنجليزية للمبتدئين','جمل إنجليزية مهمة','تمارين رياضيات باللعب']
+      },
+      {
+        id:'knowledge', name:'المعرفة والتطوير', category:'cat-knowledge',
+        pages:['اختبارات الوعي المعرفي','أدوات التحليل الإداري','خريطة هندسة الذكاء الاصطناعي والأوامر','تمارين التركيز والانتباه']
+      },
+      {
+        id:'life', name:'الحياة والأدوات', category:'cat-personal',
+        pages:['بوابة القهوة','قياس المؤشرات الصحية','الساعة الرملية','كشاف الجالكسي برو']
+      },
+      {
+        id:'family', name:'العائلة والمجتمع', category:'cat-family',
+        pages:['شجرة العائلة','تصويت']
+      },
+      {
+        id:'fun', name:'الألعاب والفعاليات', category:'cat-fun',
+        pages:['لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار','مباريات كأس العالم 2026']
+      }
+    ];
+
+    const CUSTOM_FOLDERS_KEY = 'masar.custom.folders.v1';
+
+    function loadCustomFolders(){
+      try{
+        const parsed = JSON.parse(localStorage.getItem(CUSTOM_FOLDERS_KEY) || '[]');
+        if(!Array.isArray(parsed)) return [];
+        return parsed.filter(folder =>
+          folder && typeof folder.id === 'string' && /^custom-[a-z0-9-]+$/.test(folder.id) &&
+          typeof folder.name === 'string' && folder.name.trim().length >= 1 && folder.name.trim().length <= 20
+        ).slice(0,12).map(folder => ({
+          id:folder.id,
+          name:folder.name.trim(),
+          category:'cat-tool',
+          pages:[],
+          custom:true
+        }));
+      }catch(error){
+        return [];
+      }
+    }
+
+    let customFolders = loadCustomFolders();
+    let FOLDERS = [...DEFAULT_FOLDERS, ...customFolders];
+
+    function saveCustomFolders(){
+      try{
+        localStorage.setItem(CUSTOM_FOLDERS_KEY, JSON.stringify(customFolders.map(folder => ({id:folder.id,name:folder.name}))));
+      }catch(error){
+        console.warn('تعذر حفظ المجلدات الجديدة:', error);
+      }
+    }
+
+    const STANDALONE_PAGE_TITLES = [
+      'التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ',
+      'الأسهم الشرعية'
+    ];
+
+    const LAUNCHER_ITEMS = [
+      {type:'page', title:STANDALONE_PAGE_TITLES[0]},
+      {type:'folder', id:'faith'},
+      {type:'folder', id:'learning'},
+      {type:'folder', id:'knowledge'},
+      {type:'folder', id:'life'},
+      {type:'page', title:STANDALONE_PAGE_TITLES[1]},
+      {type:'folder', id:'family'},
+      {type:'folder', id:'fun'}
+    ];
+
+    const FOLDER_NAMES_KEY = 'masar.folder.names.v1';
+    const APP_LAYOUT_KEY = 'masar.app.layout.v1';
+
     // ——— عناصر DOM ———
     const grid = document.getElementById('grid');
     const y = document.getElementById('y');
     const themeBtn = document.getElementById('themeBtn');
+    const folderModal = document.getElementById('folderModal');
+    const folderDialogTitle = document.getElementById('folderDialogTitle');
+    const folderApps = document.getElementById('folderApps');
+    const folderRename = document.getElementById('folderRename');
+    const folderNameInput = document.getElementById('folderNameInput');
+    const folderRenameNote = document.getElementById('folderRenameNote');
+    const folderNameDelete = document.getElementById('folderNameDelete');
+    const folderMoveTargets = document.getElementById('folderMoveTargets');
+    const folderCreateModal = document.getElementById('folderCreateModal');
+    const folderCreateInput = document.getElementById('folderCreateInput');
+    const folderCreateNote = document.getElementById('folderCreateNote');
+    let activeFolderId = null;
+    let folderLastFocus = null;
+
+    function escapeHTML(value){
+      return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    }
+
+    function loadFolderNames(){
+      try{
+        const parsed = JSON.parse(localStorage.getItem(FOLDER_NAMES_KEY) || '{}');
+        if(!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+        return Object.fromEntries(Object.entries(parsed).filter(([id,name]) =>
+          FOLDERS.some(folder => folder.id === id) && typeof name === 'string' && name.trim().length >= 1 && name.trim().length <= 20
+        ));
+      }catch(error){
+        return {};
+      }
+    }
+
+    let folderNames = loadFolderNames();
+
+    function defaultFolderId(page){
+      return FOLDERS.find(folder => folder.pages.includes(page.title))?.id || null;
+    }
+
+    function loadAppLayout(){
+      try{
+        const parsed = JSON.parse(localStorage.getItem(APP_LAYOUT_KEY) || 'null');
+        if(!parsed || parsed.schemaVersion !== 1 || !parsed.locations || typeof parsed.locations !== 'object'){
+          return {schemaVersion:1,locations:{}};
+        }
+        const validHrefs = new Set(PAGES.map(page => page.href));
+        const validFolders = new Set(FOLDERS.map(folder => folder.id));
+        const locations = {};
+        Object.entries(parsed.locations).forEach(([href,folderId]) => {
+          if(validHrefs.has(href) && (folderId === null || validFolders.has(folderId))) locations[href] = folderId;
+        });
+        return {schemaVersion:1,locations};
+      }catch(error){
+        return {schemaVersion:1,locations:{}};
+      }
+    }
+
+    let appLayout = loadAppLayout();
+
+    function saveAppLayout(){
+      try{ localStorage.setItem(APP_LAYOUT_KEY, JSON.stringify(appLayout)); }
+      catch(error){ console.warn('تعذر حفظ توزيع التطبيقات:', error); }
+    }
+
+    function pageFolderId(page){
+      return Object.prototype.hasOwnProperty.call(appLayout.locations, page.href)
+        ? appLayout.locations[page.href]
+        : defaultFolderId(page);
+    }
+
+    function pagesInFolder(folderId){
+      return PAGES.filter(page => pageFolderId(page) === folderId);
+    }
+
+    function standalonePages(){
+      return PAGES.filter(page => pageFolderId(page) === null);
+    }
+
+    function saveFolderNames(){
+      try{ localStorage.setItem(FOLDER_NAMES_KEY, JSON.stringify(folderNames)); }
+      catch(error){ console.warn('تعذر حفظ أسماء المجلدات:', error); }
+    }
+
+    function getFolderName(folder){
+      return folderNames[folder.id] || folder.name;
+    }
 
     // ——— SVG مولّد ———
     function themeSVG(mode){
@@ -564,12 +791,396 @@
       return 'cat-tool';
     }
 
+    function pageTile(p, extraClass = ''){
+      return `<a class="app-tile ${extraClass}" href="${escapeHTML(p.href)}" title="${escapeHTML(p.desc || p.title)}" aria-label="${escapeHTML(p.title)}" data-page-href="${escapeHTML(p.href)}" draggable="true">
+        <span class="app-tile-icon ${appCategoryClass(p.title)}"><span>${escapeHTML(p.emoji || '•')}</span></span>
+        <span class="app-tile-name">${escapeHTML(shortAppName(p.title))}</span>
+      </a>`;
+    }
+
+    function folderTile(folder){
+      const previews = pagesInFolder(folder.id).slice(0,4);
+      return `<button class="app-tile app-tile-button folder-tile" type="button" data-folder-id="${escapeHTML(folder.id)}" aria-label="فتح مجلد ${escapeHTML(getFolderName(folder))}">
+        <span class="app-tile-icon folder-icon ${folder.category}">${previews.length ? previews.map(page => `<span class="folder-mini">${escapeHTML(page.emoji || '•')}</span>`).join('') : '<span class="folder-mini">＋</span>'}</span>
+        <span class="app-tile-name">${escapeHTML(getFolderName(folder))}</span>
+      </button>`;
+    }
+
+    function newFolderTile(){
+      return `<button class="app-tile app-tile-button new-folder-tile" type="button" aria-label="إنشاء مجلد جديد">
+        <span class="app-tile-icon new-folder-icon"><span>＋</span></span>
+        <span class="app-tile-name">مجلد جديد</span>
+      </button>`;
+    }
+
     function render(){
-      grid.innerHTML = PAGES.map(p => `
-        <a class="app-tile" href="${p.href}" title="${p.desc || p.title}" aria-label="${p.title}">
-          <span class="app-tile-icon ${appCategoryClass(p.title)}"><span>${p.emoji || '•'}</span></span>
-          <span class="app-tile-name">${shortAppName(p.title)}</span>
-        </a>`).join('');
+      const preferred = LAUNCHER_ITEMS.map(item => {
+        if(item.type === 'folder'){
+          const folder = FOLDERS.find(candidate => candidate.id === item.id);
+          return folder ? folderTile(folder) : '';
+        }
+        const page = PAGES.find(candidate => candidate.title === item.title);
+        return page && pageFolderId(page) === null ? pageTile(page) : '';
+      }).join('');
+      const preferredStandalone = new Set(STANDALONE_PAGE_TITLES);
+      const defaultFolderIds = new Set(LAUNCHER_ITEMS.filter(item => item.type === 'folder').map(item => item.id));
+      const custom = FOLDERS.filter(folder => !defaultFolderIds.has(folder.id)).map(folder => folderTile(folder)).join('');
+      const additional = standalonePages().filter(page => !preferredStandalone.has(page.title)).map(page => pageTile(page)).join('');
+      grid.innerHTML = preferred + custom + additional + newFolderTile();
+    }
+
+    function setRenameVisible(visible){
+      folderRename.hidden = !visible;
+      folderRenameNote.textContent = 'من 1 إلى 20 حرفًا';
+      if(visible){
+        const folder = FOLDERS.find(candidate => candidate.id === activeFolderId);
+        folderNameDelete.hidden = !folder?.custom;
+        folderNameInput.value = folder ? getFolderName(folder) : '';
+        setTimeout(() => { folderNameInput.focus(); folderNameInput.select(); }, 0);
+      }
+    }
+
+    function openCreateFolder(){
+      folderCreateNote.textContent = customFolders.length >= 12
+        ? 'وصلت إلى الحد الأعلى للمجلدات الجديدة.'
+        : 'سيظهر المجلد فارغًا، ثم اسحب التطبيقات إليه.';
+      folderCreateInput.value = '';
+      folderCreateModal.classList.add('is-visible');
+      folderCreateModal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => folderCreateInput.focus(), 0);
+    }
+
+    function closeCreateFolder(){
+      folderCreateModal.classList.remove('is-visible');
+      folderCreateModal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    function createFolder(){
+      if(customFolders.length >= 12){
+        folderCreateNote.textContent = 'وصلت إلى الحد الأعلى للمجلدات الجديدة.';
+        return;
+      }
+      const name = folderCreateInput.value.replace(/\s+/g,' ').trim();
+      if(name.length < 1 || name.length > 20){
+        folderCreateNote.textContent = 'اكتب اسمًا من 1 إلى 20 حرفًا.';
+        folderCreateInput.focus();
+        return;
+      }
+      const folder = {
+        id:`custom-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,6)}`,
+        name,
+        category:'cat-tool',
+        pages:[],
+        custom:true
+      };
+      customFolders.push(folder);
+      FOLDERS.push(folder);
+      saveCustomFolders();
+      render();
+      closeCreateFolder();
+      openFolder(folder.id);
+    }
+
+    function renderFolderDialog(folder){
+      folderDialogTitle.textContent = getFolderName(folder);
+      const pages = pagesInFolder(folder.id);
+      folderApps.innerHTML = pages.length
+        ? pages.map(page => pageTile(page, 'folder-app')).join('')
+        : '<div class="folder-empty">المجلد فارغ<br>اسحب إليه تطبيقًا من الشاشة الرئيسية</div>';
+      folderMoveTargets.innerHTML = [
+        '<button class="folder-drop-target" type="button" data-target-folder="__home__">⌂ الرئيسية</button>',
+        ...FOLDERS.filter(candidate => candidate.id !== folder.id).map(candidate => `<button class="folder-drop-target" type="button" data-target-folder="${escapeHTML(candidate.id)}">${escapeHTML(getFolderName(candidate))}</button>`)
+      ].join('');
+    }
+
+    function movePageToFolder(pageHref, folderId){
+      const page = PAGES.find(candidate => candidate.href === pageHref);
+      if(!page) return false;
+      if(folderId !== null && !FOLDERS.some(folder => folder.id === folderId)) return false;
+      appLayout.locations[page.href] = folderId;
+      saveAppLayout();
+      render();
+      if(activeFolderId){
+        const activeFolder = FOLDERS.find(folder => folder.id === activeFolderId);
+        if(activeFolder) renderFolderDialog(activeFolder);
+      }
+      return true;
+    }
+
+    let draggedPageHref = null;
+    let dragSourceElement = null;
+    let dragGhost = null;
+    let activeDropTarget = null;
+    let touchDrag = null;
+    let suppressPageClickUntil = 0;
+
+    function clearDropTarget(){
+      activeDropTarget?.classList.remove('is-drop-target');
+      activeDropTarget = null;
+    }
+
+    function setDropTarget(target){
+      if(activeDropTarget === target) return;
+      clearDropTarget();
+      activeDropTarget = target;
+      activeDropTarget?.classList.add('is-drop-target');
+    }
+
+    function beginAppDrag(pageHref, sourceElement, x, y, withGhost = false){
+      draggedPageHref = pageHref;
+      dragSourceElement = sourceElement;
+      dragSourceElement?.classList.add('is-drag-source');
+      document.body.classList.add('is-app-dragging');
+      if(withGhost && sourceElement){
+        dragGhost = sourceElement.cloneNode(true);
+        dragGhost.className = 'app-tile drag-ghost';
+        dragGhost.removeAttribute('href');
+        dragGhost.removeAttribute('draggable');
+        document.body.appendChild(dragGhost);
+        positionDragGhost(x,y);
+      }
+    }
+
+    function positionDragGhost(x,y){
+      if(!dragGhost) return;
+      dragGhost.style.left = `${x}px`;
+      dragGhost.style.top = `${y}px`;
+    }
+
+    function endAppDrag(){
+      if(touchDrag?.tile) touchDrag.tile.draggable = touchDrag.wasDraggable;
+      dragSourceElement?.classList.remove('is-drag-source');
+      dragGhost?.remove();
+      clearDropTarget();
+      document.body.classList.remove('is-app-dragging');
+      draggedPageHref = null;
+      dragSourceElement = null;
+      dragGhost = null;
+      touchDrag = null;
+    }
+
+    function resolveDropTarget(element){
+      const directTarget = element?.closest?.('.folder-tile, .folder-drop-target');
+      if(directTarget) return directTarget;
+      if(folderModal.classList.contains('is-visible') && element === folderModal) return folderModal;
+      return null;
+    }
+
+    function dropDraggedPage(target){
+      if(!draggedPageHref || !target) return false;
+      const targetId = target === folderModal
+        ? '__home__'
+        : (target.classList.contains('folder-tile') ? target.dataset.folderId : target.dataset.targetFolder);
+      const folderId = targetId === '__home__' ? null : targetId;
+      const moved = movePageToFolder(draggedPageHref, folderId);
+      if(moved && activeFolderId && folderId !== activeFolderId && pagesInFolder(activeFolderId).length === 0){
+        renderFolderDialog(FOLDERS.find(folder => folder.id === activeFolderId));
+      }
+      return moved;
+    }
+
+    function handleNativeDragStart(event){
+      if(touchDrag){ event.preventDefault(); return; }
+      const tile = event.target.closest('.app-tile[data-page-href]');
+      if(!tile) return;
+      beginAppDrag(tile.dataset.pageHref, tile, event.clientX, event.clientY, false);
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/plain', tile.dataset.pageHref);
+    }
+
+    function handleNativeDragOver(event){
+      if(!draggedPageHref) return;
+      const target = resolveDropTarget(event.target);
+      if(!target) return clearDropTarget();
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'move';
+      setDropTarget(target);
+    }
+
+    function handleNativeDrop(event){
+      const target = resolveDropTarget(event.target);
+      if(!target) return;
+      event.preventDefault();
+      dropDraggedPage(target);
+      suppressPageClickUntil = Date.now() + 350;
+      endAppDrag();
+    }
+
+    function findTouch(touchList, identifier){
+      return Array.from(touchList || []).find(touch => touch.identifier === identifier) || null;
+    }
+
+    function cancelPendingTouchDrag(){
+      if(!touchDrag) return;
+      clearTimeout(touchDrag.timer);
+      touchDrag.tile.draggable = touchDrag.wasDraggable;
+      touchDrag = null;
+    }
+
+    function handleTouchStart(event){
+      if(event.touches.length !== 1 || touchDrag) return;
+      const tile = event.target.closest('.app-tile[data-page-href]');
+      if(!tile) return;
+      const touch = event.changedTouches[0];
+      const state = {identifier:touch.identifier,tile,wasDraggable:tile.draggable,startX:touch.clientX,startY:touch.clientY,x:touch.clientX,y:touch.clientY,started:false,timer:null};
+      tile.draggable = false;
+      state.timer = setTimeout(() => {
+        state.started = true;
+        beginAppDrag(tile.dataset.pageHref, tile, state.x, state.y, true);
+        navigator.vibrate?.(25);
+      }, 360);
+      touchDrag = state;
+    }
+
+    function handleTouchMove(event){
+      if(!touchDrag) return;
+      const touch = findTouch(event.touches, touchDrag.identifier);
+      if(!touch) return;
+      touchDrag.x = touch.clientX; touchDrag.y = touch.clientY;
+      if(!touchDrag.started){
+        if(Math.hypot(touch.clientX-touchDrag.startX,touch.clientY-touchDrag.startY) > 9) cancelPendingTouchDrag();
+        return;
+      }
+      event.preventDefault();
+      positionDragGhost(touch.clientX,touch.clientY);
+      if(dragGhost) dragGhost.style.visibility = 'hidden';
+      const beneath = document.elementFromPoint(touch.clientX,touch.clientY);
+      if(dragGhost) dragGhost.style.visibility = 'visible';
+      setDropTarget(resolveDropTarget(beneath));
+    }
+
+    function handleTouchEnd(event){
+      if(!touchDrag || !findTouch(event.changedTouches, touchDrag.identifier)) return;
+      clearTimeout(touchDrag.timer);
+      if(touchDrag.started){
+        if(activeDropTarget) dropDraggedPage(activeDropTarget);
+        suppressPageClickUntil = Date.now() + 500;
+        event.preventDefault();
+        endAppDrag();
+      }else{
+        cancelPendingTouchDrag();
+      }
+    }
+
+    function initAppDragAndDrop(){
+      document.addEventListener('dragstart', handleNativeDragStart);
+      document.addEventListener('dragover', handleNativeDragOver);
+      document.addEventListener('drop', handleNativeDrop);
+      document.addEventListener('dragend', endAppDrag);
+      document.addEventListener('touchstart', handleTouchStart, {passive:true});
+      document.addEventListener('touchmove', handleTouchMove, {passive:false});
+      document.addEventListener('touchend', handleTouchEnd, {passive:false});
+      document.addEventListener('touchcancel', handleTouchEnd, {passive:false});
+      document.addEventListener('contextmenu', event => {
+        if(touchDrag?.started && event.target.closest('.app-tile[data-page-href]')) event.preventDefault();
+      });
+      document.addEventListener('click', event => {
+        if(Date.now() < suppressPageClickUntil && event.target.closest('.app-tile[data-page-href]')){
+          event.preventDefault(); event.stopPropagation();
+        }
+      }, true);
+    }
+
+    function openFolder(folderId){
+      const folder = FOLDERS.find(candidate => candidate.id === folderId);
+      if(!folder) return;
+      activeFolderId = folder.id;
+      folderLastFocus = document.activeElement;
+      renderFolderDialog(folder);
+      setRenameVisible(false);
+      folderModal.classList.add('is-visible');
+      folderModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('folderCloseBtn').focus();
+    }
+
+    function closeFolder(){
+      if(!folderModal.classList.contains('is-visible')) return;
+      folderModal.classList.remove('is-visible');
+      folderModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      activeFolderId = null;
+      setRenameVisible(false);
+      folderLastFocus?.focus?.();
+    }
+
+    function saveActiveFolderName(){
+      const folder = FOLDERS.find(candidate => candidate.id === activeFolderId);
+      if(!folder) return;
+      const name = folderNameInput.value.replace(/\s+/g, ' ').trim();
+      if(name.length < 1 || name.length > 20){
+        folderRenameNote.textContent = 'اكتب اسمًا من 1 إلى 20 حرفًا';
+        folderNameInput.focus();
+        return;
+      }
+      folderNames[folder.id] = name;
+      saveFolderNames();
+      render();
+      renderFolderDialog(folder);
+      setRenameVisible(false);
+    }
+
+    function resetActiveFolderName(){
+      const folder = FOLDERS.find(candidate => candidate.id === activeFolderId);
+      if(!folder) return;
+      delete folderNames[folder.id];
+      saveFolderNames();
+      render();
+      renderFolderDialog(folder);
+      setRenameVisible(false);
+    }
+
+    function deleteActiveFolder(){
+      const folder = FOLDERS.find(candidate => candidate.id === activeFolderId);
+      if(!folder?.custom) return;
+      if(pagesInFolder(folder.id).length){
+        folderRenameNote.textContent = 'أخرج التطبيقات من المجلد أولًا.';
+        return;
+      }
+      if(!window.confirm(`حذف مجلد «${getFolderName(folder)}»؟`)) return;
+      customFolders = customFolders.filter(candidate => candidate.id !== folder.id);
+      FOLDERS = FOLDERS.filter(candidate => candidate.id !== folder.id);
+      delete folderNames[folder.id];
+      saveCustomFolders();
+      saveFolderNames();
+      render();
+      closeFolder();
+    }
+
+    function initFolders(){
+      grid.addEventListener('click', event => {
+        if(event.target.closest('.new-folder-tile')) return openCreateFolder();
+        const tile = event.target.closest('.folder-tile');
+        if(tile) openFolder(tile.dataset.folderId);
+      });
+      document.getElementById('folderCloseBtn').addEventListener('click', closeFolder);
+      document.getElementById('folderEditBtn').addEventListener('click', () => setRenameVisible(folderRename.hidden));
+      document.getElementById('folderNameSave').addEventListener('click', saveActiveFolderName);
+      document.getElementById('folderNameReset').addEventListener('click', resetActiveFolderName);
+      folderNameDelete.addEventListener('click', deleteActiveFolder);
+      document.getElementById('folderCreateClose').addEventListener('click', closeCreateFolder);
+      document.getElementById('folderCreateCancel').addEventListener('click', closeCreateFolder);
+      document.getElementById('folderCreateSave').addEventListener('click', createFolder);
+      folderCreateInput.addEventListener('keydown', event => {
+        if(event.key === 'Enter') createFolder();
+        if(event.key === 'Escape') closeCreateFolder();
+      });
+      folderCreateModal.addEventListener('click', event => {
+        if(event.target === folderCreateModal) closeCreateFolder();
+      });
+      folderNameInput.addEventListener('keydown', event => {
+        if(event.key === 'Enter') saveActiveFolderName();
+        if(event.key === 'Escape') setRenameVisible(false);
+      });
+      folderModal.addEventListener('click', event => {
+        if(event.target === folderModal) closeFolder();
+      });
+      document.addEventListener('keydown', event => {
+        if(event.key === 'Escape' && folderModal.classList.contains('is-visible')) closeFolder();
+        else if(event.key === 'Escape' && folderCreateModal.classList.contains('is-visible')) closeCreateFolder();
+      });
     }
 
     // ——— تبديل السمة ———
@@ -768,6 +1379,8 @@
       if(saved) document.documentElement.setAttribute('data-theme', saved);
       // بناء الشبكة
       render();
+      initFolders();
+      initAppDragAndDrop();
       // أيقونة الزر حسب السمة الحالية (SVG)
       setThemeIconFromAttr();
       // مستمع النقر
@@ -783,12 +1396,15 @@
     // ——— اختبارات (Console) لضمان السلامة ———
     function runTests(){
       try{
-        // 1) يتوافق عدد تطبيقات مسار مع PAGES
-        const apps = document.querySelectorAll('.app-tile');
-        console.assert(apps.length === PAGES.length, `Expected ${PAGES.length} apps, got ${apps.length}`);
-        // 2) الروابط غير فارغة
-        const links = Array.from(document.querySelectorAll('.app-tile'));
-        console.assert(links.every(a => a.getAttribute('href')), 'Every app tile must contain a link with href');
+        // 1) تظهر عناصر المشغل كاملة، مع توزيع كل صفحة مرة واحدة فقط.
+        const launcherTiles = document.querySelectorAll('#grid > .app-tile');
+        console.assert(launcherTiles.length === FOLDERS.length + standalonePages().length + 1, 'Launcher must show all folders, standalone apps, and the new-folder tile');
+        const assignedTitles = [...STANDALONE_PAGE_TITLES, ...FOLDERS.flatMap(folder => folder.pages)];
+        console.assert(new Set(assignedTitles).size === assignedTitles.length, 'A default page must not appear in more than one folder');
+        console.assert(assignedTitles.every(title => PAGES.some(page => page.title === title)), 'Every configured default page must exist in PAGES');
+        // 2) روابط التطبيقات المستقلة غير فارغة
+        const links = Array.from(document.querySelectorAll('#grid > a.app-tile'));
+        console.assert(links.every(link => link.getAttribute('href')), 'Every standalone app tile must contain a link with href');
 
         // 3) عناصر الوقت والتواريخ غير فارغة
         const t1 = document.getElementById('timeNow').textContent.trim();
