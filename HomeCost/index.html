@@ -1,1 +1,117 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+  <title>مِعمار | إدارة تكاليف البناء</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo">م</div><div><h1>مِعمار</h1><div class="sub">إدارة تكاليف البناء</div></div></div>
+    <div class="actions">
+      <button class="btn primary" id="addBtn">＋ <span class="label">إضافة مصروف</span></button>
+      <button class="btn" id="importBtn">↥ <span class="label">استيراد</span></button>
+      <button class="btn" id="exportBtn">↧ <span class="label">تصدير</span></button>
+      <button class="btn iconbtn" id="themeBtn" aria-label="تغيير المظهر">◐</button>
+      <input id="fileInput" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
 
+  <section class="hero">
+    <div class="hero-label">إجمالي المشروع</div>
+    <div class="hero-total"><span id="total">0</span> <small>ريال</small></div>
+    <div class="hero-meta"><span id="lastExpense">لا توجد عمليات بعد</span></div>
+  </section>
+
+  <section class="stats" aria-label="المؤشرات المالية">
+    <button class="stat stat-action" data-filter="all"><span>عدد العمليات</span><strong id="count">0</strong></button>
+    <button class="stat stat-action" data-filter="land"><span>تكلفة الأرض</span><strong id="landTotal">0</strong></button>
+    <button class="stat stat-action" data-filter="construction"><span>البناء والتجهيز</span><strong id="constructionTotal">0</strong></button>
+    <button class="stat stat-action" data-filter="refund"><span>إجمالي المرتجعات</span><strong id="refundTotal">0</strong></button>
+    <button class="stat stat-action" data-filter="missingInvoice"><span>عمليات بلا مستند</span><strong id="missingInvoices">0</strong></button>
+    <button class="stat stat-action" data-filter="reviewDate"><span>تواريخ تحتاج مراجعة</span><strong id="reviewDates">0</strong></button>
+  </section>
+
+  <section class="dashboard-grid">
+    <div class="panel analytics-panel">
+      <div class="panel-head"><h2>مسار الإنفاق السنوي</h2></div>
+      <div class="year-chart" id="yearChart"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>أعلى الموردين</h2></div>
+      <div class="vendor-list" id="topVendors"></div>
+    </div>
+    <div class="panel health-panel">
+      <div class="panel-head"><h2>جودة السجل</h2></div>
+      <div class="health-ring" id="healthRing"><strong id="healthScore">0%</strong><span>مكتمل</span></div>
+      <div class="quality-list" id="qualityList"></div>
+    </div>
+  </section>
+
+  <section class="panel stage-board" id="stageBoard">
+    <div class="panel-head stage-head"><h2>توزيع صافي التكلفة</h2><div class="stage-total"><span>الإجمالي المقارن</span><strong id="stageDenominator">0 ر.س</strong></div></div>
+    <div class="stage-controls"><div class="segment compact-segment"><label><input type="radio" name="stageScope" value="construction" checked><span>تكلفة التنفيذ</span></label><label><input type="radio" name="stageScope" value="all"><span>إجمالي المشروع</span></label></div><select class="field" id="stageSort"><option value="amount">الأعلى إنفاقًا</option><option value="sequence">تسلسل المشروع</option><option value="name">أبجديًا</option></select><input class="field" id="stageSearch" placeholder="ابحث عن مرحلة"><button class="btn" id="toggleStages">عرض الكل</button></div>
+    <div class="land-callout" id="landCallout"></div><div class="stage-list" id="bars"></div>
+  </section>
+
+  <section class="panel expense-ledger" id="expenseLedger">
+    <div class="panel-head"><div><h2>سجل المصروفات</h2><div class="sub" id="shownCount"></div></div><button class="btn" id="exportFiltered">تصدير النتائج</button></div>
+    <div class="ledger-summary"><div><span>عدد النتائج</span><strong id="filteredCount">0</strong></div><div><span>إجمالي المدفوع</span><strong id="filteredGross">0</strong></div><div><span>المرتجعات</span><strong id="filteredRefunds">0</strong></div><div><span>صافي النتائج</span><strong id="filteredNet">0</strong></div><div><span>بلا مستند</span><strong id="filteredMissing">0</strong></div></div>
+    <div class="ledger-toolbar"><input class="field search" id="search" placeholder="ابحث في الوصف أو المورد أو رقم المستند…"><button class="btn" id="toggleFilters">الفلاتر <span class="filter-count" id="filterCount">0</span></button><select class="field" id="sort"><option value="oldest">الأقدم أولًا</option><option value="newest">الأحدث أولًا</option><option value="amountDesc">الأعلى مبلغًا</option><option value="amountAsc">الأقل مبلغًا</option></select><button class="btn" id="clearFilters" type="button">مسح الكل</button></div>
+    <div class="advanced-filters hidden" id="advancedFilters"><select class="field" id="categoryFilter"><option value="">كل المراحل</option></select><select class="field" id="subcategoryFilter"><option value="">كل البنود الفرعية</option></select><select class="field" id="vendorFilter"><option value="">كل الموردين</option></select><select class="field" id="typeFilter"><option value="">كل أنواع العمليات</option><option value="expense">مصروف</option><option value="refund">مرتجع</option><option value="contractPayment">دفعة عقد</option><option value="fee">رسوم</option><option value="adjustment">تسوية</option></select><select class="field" id="documentFilter"><option value="">كل المستندات</option><option value="with">بمستند</option><option value="without">بلا مستند</option></select><label class="date-filter">من<input class="field" type="date" id="dateFrom"></label><label class="date-filter">إلى<input class="field" type="date" id="dateTo"></label></div>
+    <div class="filter-chips" id="filterChips"></div>
+    <div class="tablewrap"><table class="ledger-table"><thead><tr><th>التاريخ</th><th>الوصف والمورد</th><th>المرحلة والبند</th><th>نوع العملية</th><th>رقم المستند</th><th>المبلغ</th><th></th></tr></thead><tbody id="tbody"></tbody></table><div class="empty" id="empty"><b>لا توجد بيانات</b>استورد ملف البيانات الأولي لبدء الاستخدام.</div></div>
+    <div class="mobile-records" id="mobileRecords"></div>
+  </section>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+  <form class="dialog" id="expenseForm">
+    <div class="dialog-head"><h2 id="formTitle">إضافة مصروف</h2><button type="button" class="btn iconbtn" id="closeModal" aria-label="إغلاق نافذة المصروف">×</button></div>
+    <input type="hidden" id="recordId">
+    <div class="formgrid">
+      <div><label>نوع التاريخ الموجود على الفاتورة</label><div class="segment"><label><input type="radio" name="dateType" value="hijri" checked><span>هجري</span></label><label><input type="radio" name="dateType" value="gregorian"><span>ميلادي</span></label></div></div>
+      <div><label for="dateInput">التاريخ</label><input class="field" id="dateInput" placeholder="مثال: 18/02/1440" required><div class="review hidden" id="dateError"></div></div>
+      <div class="wide"><label>التاريخ المقابل تلقائيًا</label><div class="converted" id="convertedDate">أدخل التاريخ ليظهر المقابل</div></div>
+      <div class="wide"><label for="description">الوصف</label><input class="field" id="description" required></div>
+      <div><label for="vendor">البائع أو المقاول</label><input class="field" id="vendor" list="vendors" required><datalist id="vendors"></datalist></div>
+      <div><label for="transactionType">نوع العملية</label><select class="field" id="transactionType"><option value="expense">مصروف</option><option value="refund">مرتجع</option><option value="contractPayment">دفعة عقد</option><option value="fee">رسوم</option><option value="adjustment">تسوية</option></select></div>
+      <div><label for="amount">المبلغ (ريال)</label><input class="field" id="amount" type="number" min="0" step="0.01" required></div>
+      <div><label for="category">التصنيف الرئيسي</label><input class="field" id="category" list="categories" required><datalist id="categories"></datalist></div>
+      <div><label for="subcategory">التصنيف الفرعي المقترح</label><input class="field" id="subcategory" list="subcategories" placeholder="يُقترح تلقائيًا من الوصف"><datalist id="subcategories"></datalist></div>
+      <div><label for="invoiceNumber">رقم الفاتورة (اختياري)</label><input class="field" id="invoiceNumber"></div>
+      <div><label for="paymentMethod">طريقة الدفع</label><select class="field" id="paymentMethod"><option value="">غير محدد</option><option>تحويل</option><option>نقدي</option><option>بطاقة</option><option>شيك</option></select></div>
+      <div class="wide"><label for="notes">ملاحظات</label><textarea class="field" id="notes" rows="2"></textarea></div>
+    </div>
+    <div class="dialog-actions"><button class="btn primary" type="submit">حفظ العملية</button><button class="btn" type="button" id="cancelModal">إلغاء</button></div>
+  </form>
+</div>
+
+<div class="modal" id="categoryModal" role="dialog" aria-modal="true" aria-labelledby="categoryTitle">
+  <div class="dialog category-dialog">
+    <div class="dialog-head"><h2 id="categoryTitle">—</h2><button type="button" class="btn iconbtn" id="closeCategory" aria-label="إغلاق تفاصيل المرحلة">×</button></div>
+    <div class="detail-stats">
+      <div><span>صافي المرحلة</span><strong id="categoryTotal">0</strong></div><div><span>المرتجعات</span><strong id="categoryOperations">0</strong></div><div><span>نسبتها من التنفيذ</span><strong id="categoryAverage">0</strong></div><div><span>التوثيق بالقيمة</span><strong id="categoryMax">0</strong></div>
+    </div>
+    <div class="detail-filters"><input class="field" id="detailSearch" placeholder="ابحث داخل المرحلة"><select class="field" id="detailSubcategory"><option value="">كل التصنيفات الفرعية</option></select><select class="field" id="detailDocument"><option value="">كل السجلات</option><option value="with">بمستند</option><option value="without">بلا مستند</option></select></div>
+    <div class="detail-grid">
+      <section class="detail-box"><h3>التصنيفات الفرعية</h3><div id="subcategoryBreakdown" class="subcat-list"></div></section>
+      <section class="detail-box"><h3>أبرز الموردين</h3><div id="categoryVendors" class="vendor-list"></div></section>
+      <section class="detail-box"><h3>حالة الفواتير</h3><div id="categoryInvoices" class="invoice-summary"></div></section>
+    </div>
+    <h3 class="detail-heading">عمليات المرحلة</h3>
+    <div class="tablewrap detail-table"><table><thead><tr><th>م</th><th>التاريخ</th><th>التصنيف الفرعي</th><th>الوصف</th><th>البائع</th><th>المبلغ</th><th>الإجراء</th></tr></thead><tbody id="categoryRows"></tbody></table></div><div class="mobile-records" id="detailMobileRecords"></div>
+  </div>
+</div>
+<div class="modal" id="importModal" role="dialog" aria-modal="true" aria-labelledby="importTitle">
+  <div class="dialog import-dialog"><div class="dialog-head"><div><div class="eyebrow">استيراد آمن</div><h2 id="importTitle">اختر طريقة الاستيراد</h2></div><button class="btn iconbtn" id="closeImport" aria-label="إلغاء الاستيراد">×</button></div><div class="import-summary" id="importSummary"></div><div class="dialog-actions"><button class="btn primary" id="replaceImport">استبدال بعد إنشاء نسخة احتياطية</button><button class="btn" id="mergeImport">دمج كسجلات جديدة</button><button class="btn" id="cancelImport">إلغاء</button></div></div>
+</div>
+<div class="modal" id="recordModal" role="dialog" aria-modal="true" aria-labelledby="recordTitle"><div class="dialog record-dialog"><div class="dialog-head"><h2 id="recordTitle">—</h2><button class="btn iconbtn" id="closeRecord" aria-label="إغلاق تفاصيل القيد">×</button></div><div class="record-amount" id="recordAmount"></div><div class="record-details" id="recordDetails"></div><div class="dialog-actions"><button class="btn primary" id="recordEdit">تعديل</button><button class="btn danger" id="recordDelete">حذف</button><button class="btn" id="recordClose">إغلاق</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>
