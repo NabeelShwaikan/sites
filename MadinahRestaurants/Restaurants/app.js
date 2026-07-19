@@ -99,12 +99,21 @@ function populateCategories() {
 }
 
 function populateLocations() {
-  const counts=new Map();
-  state.all.forEach(r=>counts.set(r.location,(counts.get(r.location)||0)+1));
-  [...counts.keys()].sort((a,b)=>a.localeCompare(b,'ar')).forEach(location=>{
-    const option=document.createElement('option'); option.value=location;
-    option.textContent=`${location} (${formatNumber(counts.get(location))})`; els.location.append(option);
+  const counts = new Map();
+  state.all.forEach(r => {
+    const locationName = clean(r.location) || 'غير محدد';
+    counts.set(locationName, (counts.get(locationName) || 0) + 1);
   });
+
+  els.location.replaceChildren(new Option('جميع المواقع', 'all'));
+  const fragment = document.createDocumentFragment();
+  [...counts.entries()]
+    .sort(([a],[b]) => a.localeCompare(b, 'ar', { sensitivity: 'base' }))
+    .forEach(([locationName, count]) => {
+      fragment.append(new Option(`${locationName} (${formatNumber(count)})`, locationName));
+    });
+  els.location.append(fragment);
+  els.location.disabled = counts.size === 0;
 }
 
 function updateStats() {
