@@ -1,0 +1,563 @@
+{
+  "metadata": {
+    "city": "المدينة المنورة",
+    "source": "Google Maps / Google local listings",
+    "collected_at": "2026-07-18",
+    "restaurants_count": 69,
+    "notes": "التقييمات وأعداد المراجعات متغيرة بمرور الوقت. القيم غير المتاحة ممثلة بـ null."
+  },
+  "restaurants": [
+    {
+      "name": "Zaitoon Restaurant - مطعم زيتون",
+      "google_rating": 4.8,
+      "reviews_count": 36575,
+      "phone": "+966543163461",
+      "address": "TAIBA Commercial CENTER, 1st Floor, Madinah 42311, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "مطعم قصر الريحان",
+      "google_rating": 4.6,
+      "reviews_count": 4360,
+      "phone": "+966549609972",
+      "address": "4992 Al Abbas Ibn Ubadah, Al Qaswa, Madinah 42391, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "New Al Madina Indian Restaurant",
+      "google_rating": 3.8,
+      "reviews_count": 835,
+      "phone": "+966500425503",
+      "address": "Fahad Road, Masjid Ad Dar, Madinah 42316, Saudi Arabia",
+      "cuisine_category": "هندي"
+    },
+    {
+      "name": "Dar Al Yemeni Restaurant",
+      "google_rating": 4.7,
+      "reviews_count": 1777,
+      "phone": "+966542067937",
+      "address": "Al Jumuah, Madinah 42315, Saudi Arabia",
+      "cuisine_category": "يمني"
+    },
+    {
+      "name": "Ulus restaurant مطعم أولوس التركي",
+      "google_rating": 4.7,
+      "reviews_count": 8143,
+      "phone": "+966506048710",
+      "address": "Riwaq Boulevard, Al Qiblatayn, Madinah 42351, Saudi Arabia",
+      "cuisine_category": "تركي"
+    },
+    {
+      "name": "Sauce Boss",
+      "google_rating": 4.9,
+      "reviews_count": 2622,
+      "phone": null,
+      "address": "Bani Khidrah, Madinah 42311, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "Habbar Seafood Restaurant",
+      "google_rating": 4.9,
+      "reviews_count": 1426,
+      "phone": "+966570576272",
+      "address": "طريق السلام، Madinah 42372, Saudi Arabia",
+      "cuisine_category": "مأكولات بحرية"
+    },
+    {
+      "name": "Sea Spice Restaurant",
+      "google_rating": 4.6,
+      "reviews_count": 2030,
+      "phone": "+966560484888",
+      "address": "Taiba Shopping Center, King Fahd Rd, Madinah 42311, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "Al Rukan Al Shami Restaurant",
+      "google_rating": 3.9,
+      "reviews_count": 5246,
+      "phone": "+966580104925",
+      "address": "King Abdullah Rd, Al Aridh, Madinah 42314, Saudi Arabia",
+      "cuisine_category": "شامي"
+    },
+    {
+      "name": "Swiss Butter - Al Oroba",
+      "google_rating": 4.6,
+      "reviews_count": 2723,
+      "phone": "+966549104466",
+      "address": "Aloroba Mall, King Abdullah Rd, Al Rayah, Madinah 42312, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "GUESTO INDIAN RESTAURANT MADEENA",
+      "google_rating": 4.2,
+      "reviews_count": 108,
+      "phone": "+966547810166",
+      "address": "Qurban, Madinah 42311, Saudi Arabia",
+      "cuisine_category": "هندي"
+    },
+    {
+      "name": "طعم المغش",
+      "google_rating": 4.9,
+      "reviews_count": 50,
+      "phone": "+966558242480",
+      "address": "Alraya, Madinah 42312, Saudi Arabia",
+      "cuisine_category": "يمني"
+    },
+    {
+      "name": "Kervan Turkish Restaurant",
+      "google_rating": 5.0,
+      "reviews_count": 13,
+      "phone": null,
+      "address": "حي الجمعة، Madinah 42315, Saudi Arabia",
+      "cuisine_category": "تركي"
+    },
+    {
+      "name": "Sky Bite burger | سكاي بايت برجر",
+      "google_rating": 4.6,
+      "reviews_count": 1840,
+      "phone": "+966533842955",
+      "address": "حازم بن عطاء، Mahzur, Madinah 42319, Saudi Arabia",
+      "cuisine_category": "برجر"
+    },
+    {
+      "name": "Bangla Fish Restaurant",
+      "google_rating": 4.7,
+      "reviews_count": 1597,
+      "phone": "+966556085050",
+      "address": "طريق الأمير عبدالمحسن، Al Jumuah, Madinah 42315, Saudi Arabia",
+      "cuisine_category": "مأكولات بحرية"
+    },
+    {
+      "name": "Memaz Restaurant & Cafe",
+      "google_rating": 4.7,
+      "reviews_count": 10641,
+      "phone": "+966530300505",
+      "address": "King Abdullah Branch Rd, Mahzur, Madinah 42319, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "Qurnfel Lebanese Restaurant",
+      "google_rating": 4.2,
+      "reviews_count": 6880,
+      "phone": "+966148222266",
+      "address": "طريق سلطانة، القبلتين، Madinah, Saudi Arabia",
+      "cuisine_category": "لبناني"
+    },
+    {
+      "name": "Chef Burak Gurme Madina",
+      "google_rating": 4.8,
+      "reviews_count": 4877,
+      "phone": "+966531515403",
+      "address": "Al Abbas Ibn Ubadah, Al Qaswa, Madinah 42391, Saudi Arabia",
+      "cuisine_category": "تركي"
+    },
+    {
+      "name": "Delhi Darbar Restaurant Madinah",
+      "google_rating": 4.1,
+      "reviews_count": 341,
+      "phone": null,
+      "address": "Prince Abd Al Mouhsen Abd Al Aziz, Al Jumuah, Madinah 42316, Saudi Arabia",
+      "cuisine_category": "هندي"
+    },
+    {
+      "name": "AL SHADEN RESTAURANTS SHURAN BRANCH",
+      "google_rating": 4.3,
+      "reviews_count": 2205,
+      "phone": "+966531515584",
+      "address": "طريق صلاح الدين الأيوبي، شوران، Madinah, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "شعيب - سلطانة",
+      "google_rating": 4.6,
+      "reviews_count": 9813,
+      "phone": "+966537053000",
+      "address": "Sultana Street, Al Dakhil Plaza Complex, Madinah, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "Al Basheer Broast Restaurant",
+      "google_rating": 4.0,
+      "reviews_count": 1631,
+      "phone": "+966548692363",
+      "address": "Qiba Rd, Al Jumuah, Madinah 42315, Saudi Arabia",
+      "cuisine_category": "وجبات سريعة"
+    },
+    {
+      "name": "Reef Al Arab Restaurant | Awali",
+      "google_rating": 4.1,
+      "reviews_count": 2653,
+      "phone": "+966920001411",
+      "address": "العوالي، Qurban, Madinah 42316, Saudi Arabia",
+      "cuisine_category": "عربي"
+    },
+    {
+      "name": "مطعم شوران للمأكولات الشعبية",
+      "google_rating": 4.2,
+      "reviews_count": 31,
+      "phone": "+966562864006",
+      "address": "شارع محمد بن أحمد بن أبي الصقر، Ar Rawabi, Madinah 42382, Saudi Arabia",
+      "cuisine_category": "شعبي"
+    },
+    {
+      "name": "Sireh Khalidiyyah",
+      "google_rating": 4.3,
+      "reviews_count": 3002,
+      "phone": "+966507099827",
+      "address": "Prince Mohammed Bin Abdulaziz St, Al Iskan, Madinah 42317, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "Kurban Fish Market",
+      "google_rating": 4.1,
+      "reviews_count": 2499,
+      "phone": null,
+      "address": "Abdul Muhsin Ibn Abdul Aziz, Qurban, Madinah 42316, Saudi Arabia",
+      "cuisine_category": "مأكولات بحرية"
+    },
+    {
+      "name": "Alqarmoshi Restaurant",
+      "google_rating": 4.0,
+      "reviews_count": 1767,
+      "phone": "+966532441833",
+      "address": "طريق أم منيع أسماء بنت عمرو، شوران، Madinah 42386, Saudi Arabia",
+      "cuisine_category": "شعبي"
+    },
+    {
+      "name": "Social House",
+      "google_rating": 4.1,
+      "reviews_count": 7370,
+      "phone": "+966533008814",
+      "address": "Abo Bakr Al Siddiq, Al Qiblatayn, Madinah 42351, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "FUEGO",
+      "google_rating": 4.4,
+      "reviews_count": 4685,
+      "phone": "+966542001191",
+      "address": "Qiba Rd, Al Hadiqah, Madinah 42383, Saudi Arabia",
+      "cuisine_category": "مكسيكي"
+    },
+    {
+      "name": "Al Nour Al Shami Restaurant",
+      "google_rating": 4.0,
+      "reviews_count": 1699,
+      "phone": "+966561957090",
+      "address": "Al Imam Al Boukhari, Ad Difa, Madinah 42374, Saudi Arabia",
+      "cuisine_category": "شامي"
+    },
+    {
+      "name": "Taiba Restaurant",
+      "google_rating": 3.6,
+      "reviews_count": 223,
+      "phone": "+966502590822",
+      "address": "Shuran, Madinah 42386, Saudi Arabia",
+      "cuisine_category": "دجاج"
+    },
+    {
+      "name": "مطعم الفتح فرع الخالدية",
+      "google_rating": 4.7,
+      "reviews_count": 1287,
+      "phone": "+966581960000",
+      "address": "Al Hijrah Rd, Al Khalidiyyah, Madinah 42317, Saudi Arabia",
+      "cuisine_category": "عربي"
+    },
+    {
+      "name": "Pakistani Multani Restaurant Rukn Rihab",
+      "google_rating": 4.8,
+      "reviews_count": 543,
+      "phone": "+966594493911",
+      "address": "Quran Road, Qurban, Madinah 42254, Saudi Arabia",
+      "cuisine_category": "باكستاني"
+    },
+    {
+      "name": "Beiruti",
+      "google_rating": 4.1,
+      "reviews_count": 2940,
+      "phone": "+966542203300",
+      "address": "طريق سلطانة، Bir Uthman, Madinah, Saudi Arabia",
+      "cuisine_category": "لبناني"
+    },
+    {
+      "name": "Volcano Kebabs - Aziziah Branch",
+      "google_rating": 4.1,
+      "reviews_count": 1137,
+      "phone": "+966597001941",
+      "address": "الإمام البخاري، الدفاع، Madinah 42375, Saudi Arabia",
+      "cuisine_category": "مشويات"
+    },
+    {
+      "name": "51Burger فيفتي ون برغر",
+      "google_rating": 4.4,
+      "reviews_count": 487,
+      "phone": "+966571004030",
+      "address": "King Abdullah Rd, Al Hadiqah, Madinah 42383, Saudi Arabia",
+      "cuisine_category": "برجر"
+    },
+    {
+      "name": "Qasim Restaurant Popular Food",
+      "google_rating": 4.2,
+      "reviews_count": 7343,
+      "phone": "+966508108711",
+      "address": "Prince Abdulmajeed Ibn Abdulaziz, Al Iskan, Madinah 42317, Saudi Arabia",
+      "cuisine_category": "شعبي"
+    },
+    {
+      "name": "زيتونة تراس",
+      "google_rating": 4.6,
+      "reviews_count": 6944,
+      "phone": "+966581389999",
+      "address": "4936 Al Abbas Ibn Ubadah, Al Qaswa, Madinah 42391, Saudi Arabia",
+      "cuisine_category": "لبناني"
+    },
+    {
+      "name": "مطعم حدوتة مصرية",
+      "google_rating": 3.9,
+      "reviews_count": 3597,
+      "phone": "+966549489840",
+      "address": "King Abdullah Rd, Al Mabuth, Madinah 42362, Saudi Arabia",
+      "cuisine_category": "مصري"
+    },
+    {
+      "name": "Pakistani Lahori Restaurant",
+      "google_rating": 3.5,
+      "reviews_count": 404,
+      "phone": "+966582823467",
+      "address": "Bada'ah, Madinah 42313, Saudi Arabia",
+      "cuisine_category": "باكستاني"
+    },
+    {
+      "name": "Sunda Restaurant Al Ansar",
+      "google_rating": 4.6,
+      "reviews_count": 1288,
+      "phone": "+966541011802",
+      "address": "King Faisal Rd, Bada'ah, Madinah 42311, Saudi Arabia",
+      "cuisine_category": "إندونيسي"
+    },
+    {
+      "name": "برجربال",
+      "google_rating": 4.3,
+      "reviews_count": 648,
+      "phone": "+966564222060",
+      "address": "Abo Bakr Al Siddiq, Bir Uthman, Madinah 42331, Saudi Arabia",
+      "cuisine_category": "برجر"
+    },
+    {
+      "name": "Lebanese Grill",
+      "google_rating": 3.9,
+      "reviews_count": 3049,
+      "phone": "+966583676161",
+      "address": "Prince Muhammad Ibn Abd Al Aziz, Bani Harithah, Madinah 42313, Saudi Arabia",
+      "cuisine_category": "لبناني"
+    },
+    {
+      "name": "مطعم البوابة اليمنية للأكلات الشعبية",
+      "google_rating": 4.4,
+      "reviews_count": 4660,
+      "phone": "+966561905944",
+      "address": "Sekkah Alhadeed, Al Anabis, Madinah 42312, Saudi Arabia",
+      "cuisine_category": "يمني"
+    },
+    {
+      "name": "Beiruti Restaurant",
+      "google_rating": 4.1,
+      "reviews_count": 5705,
+      "phone": "+966599577644",
+      "address": "Al Abbas Ibn Ubadah, Ar Ranuna, Madinah 42392, Saudi Arabia",
+      "cuisine_category": "لبناني"
+    },
+    {
+      "name": "مطعم دوار شيخ العرب",
+      "google_rating": 3.9,
+      "reviews_count": 3315,
+      "phone": "+966545130537",
+      "address": "سعد بن خيثمة، Al Ihn, Madinah 42319, Saudi Arabia",
+      "cuisine_category": "مصري"
+    },
+    {
+      "name": "New Jawa Restaurant",
+      "google_rating": 4.2,
+      "reviews_count": 366,
+      "phone": "+966547719795",
+      "address": "King Faisal Rd, Bada'ah, Madinah 42311, Saudi Arabia",
+      "cuisine_category": "إندونيسي"
+    },
+    {
+      "name": "مطعم مشويات جود التركي",
+      "google_rating": 3.9,
+      "reviews_count": 1087,
+      "phone": "+966582660039",
+      "address": "King Fahd, Madinah 42367, Saudi Arabia",
+      "cuisine_category": "تركي"
+    },
+    {
+      "name": "مطعم على كيفك",
+      "google_rating": 4.3,
+      "reviews_count": 103,
+      "phone": "+966580077845",
+      "address": "Al Jumuah, Madinah 42315, Saudi Arabia",
+      "cuisine_category": null
+    },
+    {
+      "name": "مطعم طعمية مصرية",
+      "google_rating": 4.3,
+      "reviews_count": 318,
+      "phone": "+966542092693",
+      "address": "Omar Ibn Hareth, Al Aridh, Madinah 42314, Saudi Arabia",
+      "cuisine_category": "مصري"
+    },
+    {
+      "name": "Flame 92 Restaurants",
+      "google_rating": 4.3,
+      "reviews_count": 356,
+      "phone": "+966503072444",
+      "address": "Al Hussain Ibn Ali, Bani Khidrah, Madinah 42311, Saudi Arabia",
+      "cuisine_category": "باكستاني"
+    },
+    {
+      "name": "Pino",
+      "google_rating": 4.7,
+      "reviews_count": 7312,
+      "phone": null,
+      "address": "King Abdullah Branch Rd, Mahzur, Madinah 42319, Saudi Arabia",
+      "cuisine_category": "إيطالي"
+    },
+    {
+      "name": "Chinese Dragon Restaurant",
+      "google_rating": 4.3,
+      "reviews_count": 4280,
+      "phone": "+966550144114",
+      "address": "Abo Bakr Al Siddiq, Bir Uthman, Madinah 42331, Saudi Arabia",
+      "cuisine_category": "صيني"
+    },
+    {
+      "name": "Into Sushi",
+      "google_rating": 4.5,
+      "reviews_count": 941,
+      "phone": "+966545739439",
+      "address": "Rashid bin Almaali, Al Mughaisilah, Madinah 42315, Saudi Arabia",
+      "cuisine_category": "ياباني"
+    },
+    {
+      "name": "Abu Osaid",
+      "google_rating": 4.7,
+      "reviews_count": 6351,
+      "phone": "+966547226051",
+      "address": "King Abdullah Branch Rd, Al Ihn, Madinah 42319, Saudi Arabia",
+      "cuisine_category": "فطور"
+    },
+    {
+      "name": "Osul Al Mandi Restaurant",
+      "google_rating": 4.4,
+      "reviews_count": 1658,
+      "phone": "+966598414239",
+      "address": "طريق الأمير نايف، Madinah, Saudi Arabia",
+      "cuisine_category": "مندي"
+    },
+    {
+      "name": "مطاعم أبناء جلال - Bin Jalal Bukhari Restaurant",
+      "google_rating": 4.1,
+      "reviews_count": 755,
+      "phone": "+966561250339",
+      "address": "طريق الخالدية، Al Khalidiyyah, Madinah 42317, Saudi Arabia",
+      "cuisine_category": "بخاري"
+    },
+    {
+      "name": "مطعم مدينة زينة",
+      "google_rating": 4.9,
+      "reviews_count": 105,
+      "phone": "+966562832029",
+      "address": "Asem Ibn Souleiman, Al Khalidiyyah, Madinah 42317, Saudi Arabia",
+      "cuisine_category": "إيطالي"
+    },
+    {
+      "name": "Shing Yang Chinese Restaurant",
+      "google_rating": 4.2,
+      "reviews_count": 3120,
+      "phone": "+966550567660",
+      "address": "King Abdullah Branch Rd, Al Mabuth, Madinah 42314, Saudi Arabia",
+      "cuisine_category": "صيني"
+    },
+    {
+      "name": "Maki House | ماكي هاوس",
+      "google_rating": 4.5,
+      "reviews_count": 970,
+      "phone": "+966920033371",
+      "address": "King Abdullah Branch Rd, Al Mabuth, Madinah 42362, Saudi Arabia",
+      "cuisine_category": "ياباني"
+    },
+    {
+      "name": "F6or Faris | فطور فارس",
+      "google_rating": 4.0,
+      "reviews_count": 2391,
+      "phone": null,
+      "address": "Shuran, Madinah, Saudi Arabia",
+      "cuisine_category": "فطور"
+    },
+    {
+      "name": "مطعم بيت المندي",
+      "google_rating": 4.2,
+      "reviews_count": 470,
+      "phone": "+966538244575",
+      "address": "سوق الطباخة، Qurban, Madinah 42315, Saudi Arabia",
+      "cuisine_category": "مندي"
+    },
+    {
+      "name": "مطعم فن رز الغربية",
+      "google_rating": 4.1,
+      "reviews_count": 1479,
+      "phone": "+966549701900",
+      "address": "أم ثابت بنت جابر، Ad Difa, Madinah 42375, Saudi Arabia",
+      "cuisine_category": "أرز"
+    },
+    {
+      "name": "Bahrya Restaurants",
+      "google_rating": 4.0,
+      "reviews_count": 6828,
+      "phone": "+966148344444",
+      "address": "King Abdullah Rd, Al Aridh, Madinah 42314, Saudi Arabia",
+      "cuisine_category": "مأكولات بحرية"
+    },
+    {
+      "name": "Italiani ايتلياني",
+      "google_rating": 4.2,
+      "reviews_count": 1963,
+      "phone": "+966547590303",
+      "address": "طريق الجامعات، Al Jamawat, Madinah 42372, Saudi Arabia",
+      "cuisine_category": "إيطالي"
+    },
+    {
+      "name": "WokTime",
+      "google_rating": 4.8,
+      "reviews_count": 4694,
+      "phone": "+966562083818",
+      "address": "ممشى الهجرة، Al Qaswa, Madinah 42331, Saudi Arabia",
+      "cuisine_category": "صيني"
+    },
+    {
+      "name": "Meshraq",
+      "google_rating": 4.2,
+      "reviews_count": 4855,
+      "phone": "+966506163061",
+      "address": "King Abdullah Rd, Al Hadiqah, Madinah 42383, Saudi Arabia",
+      "cuisine_category": "فطور"
+    },
+    {
+      "name": "فن المندي",
+      "google_rating": 4.1,
+      "reviews_count": 1436,
+      "phone": "+966562302230",
+      "address": "Al Fath, Madinah 42312, Saudi Arabia",
+      "cuisine_category": "مندي"
+    },
+    {
+      "name": "مطعم ركن الأرز للمأكولات الحجازية",
+      "google_rating": 4.4,
+      "reviews_count": 793,
+      "phone": "+966502131131",
+      "address": "شارع صلاح الدين، Shuran, Madinah 42386, Saudi Arabia",
+      "cuisine_category": "حجازي"
+    }
+  ]
+}
