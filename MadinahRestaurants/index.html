@@ -50,12 +50,17 @@
       </div>
       <div class="filters">
         <label><span>المطبخ</span><select id="categoryFilter"><option value="all">جميع التصنيفات</option></select></label>
+        <label><span>الموقع</span><select id="locationFilter"><option value="all">جميع المواقع</option></select></label>
         <label><span>التقييم</span><select id="ratingFilter">
           <option value="0">جميع التقييمات</option><option value="4">4 فأعلى</option><option value="4.5">4.5 فأعلى</option><option value="4.7">4.7 فأعلى</option>
         </select></label>
         <label><span>الترتيب</span><select id="sortSelect">
           <option value="recommended">موصى به</option><option value="rating-desc">الأعلى تقييمًا</option><option value="reviews-desc">الأكثر مراجعات</option><option value="reviews-asc">الأقل مراجعات</option><option value="name-asc">الاسم أبجديًا</option>
         </select></label>
+        <div class="favorites-tools" aria-label="أدوات المطاعم المفضلة">
+          <button id="favoritesOnly" class="favorites-only" type="button" aria-pressed="false">♡ المفضلة <span id="favoritesCount">0</span></button>
+          <button id="copyFavorites" class="copy-favorites" type="button" disabled>نسخ المفضلة</button>
+        </div>
         <button id="clearFilters" class="clear-btn" type="button" hidden>مسح الفلاتر</button>
       </div>
     </section>
@@ -85,7 +90,10 @@
 
   <template id="restaurantCardTemplate">
     <article class="restaurant-card" tabindex="0">
-      <div class="card-top"><div class="category-badge" hidden></div><div class="commercial-badges"></div></div>
+      <div class="card-top">
+        <button class="favorite-btn" type="button" aria-pressed="false" aria-label="إضافة إلى المفضلة" title="إضافة إلى المفضلة">♡</button>
+        <div class="card-labels"><div class="category-badge" hidden></div><div class="commercial-badges"></div></div>
+      </div>
       <h3 class="restaurant-name"></h3>
       <div class="rating-row"><span class="star" aria-hidden="true">★</span><strong class="rating-value"></strong><span class="reviews-count"></span></div>
       <p class="address"></p>
