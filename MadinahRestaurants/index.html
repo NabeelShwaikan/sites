@@ -1,1 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#2f2926">
+  <title>دليل مطاعم المدينة | بوابة مسار</title>
+  <meta name="description" content="دليل تجاري تفاعلي لمطاعم المدينة المنورة حسب تقييمات Google.">
+  <link rel="stylesheet" href="Restaurants/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#restaurantsGrid">انتقل إلى المطاعم</a>
 
+  <header class="site-header">
+    <div class="header-shell">
+      <a class="brand" href="../index.html" aria-label="العودة إلى بوابة مسار">
+        <span class="brand-mark" aria-hidden="true">م</span>
+        <span><strong>مسار</strong><small>دليل المدينة</small></span>
+      </a>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="تفعيل الوضع الداكن" title="تبديل المظهر">
+          <span class="sun" aria-hidden="true">☀</span><span class="moon" aria-hidden="true">◐</span>
+        </button>
+        <a class="portal-link" href="../index.html">بوابة مسار</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero-copy">
+        <span class="eyebrow">اختيارات المدينة المنورة</span>
+        <h1 id="pageTitle">دليل مطاعم المدينة</h1>
+        <p>استكشف المطاعم حسب التقييم، الشعبية، ونوع المطبخ في واجهة سريعة وواضحة.</p>
+      </div>
+      <div class="hero-accent" aria-hidden="true"><span>★</span><b>Google</b><small>Ratings</small></div>
+    </section>
+
+    <section class="stats" aria-label="إحصاءات المطاعم">
+      <article><span>عدد المطاعم</span><strong id="statCount">—</strong></article>
+      <article><span>متوسط التقييم</span><strong id="statAverage">—</strong></article>
+      <article><span>إجمالي المراجعات</span><strong id="statReviews">—</strong></article>
+      <article><span>أنواع المطابخ</span><strong id="statCategories">—</strong></article>
+    </section>
+
+    <section class="discovery-panel" aria-label="البحث والتصفية">
+      <div class="search-wrap">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="ابحث باسم المطعم، العنوان أو التصنيف" aria-label="البحث في المطاعم">
+      </div>
+      <div class="filters">
+        <label><span>المطبخ</span><select id="categoryFilter"><option value="all">جميع التصنيفات</option></select></label>
+        <label><span>التقييم</span><select id="ratingFilter">
+          <option value="0">جميع التقييمات</option><option value="4">4 فأعلى</option><option value="4.5">4.5 فأعلى</option><option value="4.7">4.7 فأعلى</option>
+        </select></label>
+        <label><span>الترتيب</span><select id="sortSelect">
+          <option value="recommended">موصى به</option><option value="rating-desc">الأعلى تقييمًا</option><option value="reviews-desc">الأكثر مراجعات</option><option value="reviews-asc">الأقل مراجعات</option><option value="name-asc">الاسم أبجديًا</option>
+        </select></label>
+        <button id="clearFilters" class="clear-btn" type="button" hidden>مسح الفلاتر</button>
+      </div>
+    </section>
+
+    <section class="results-head">
+      <div><h2>المطاعم</h2><p id="resultsSummary" aria-live="polite">جارٍ تحميل البيانات…</p></div>
+      <div class="view-note">كل فرع يعرض كسجل مستقل</div>
+    </section>
+
+    <section id="statusArea" class="status-card" aria-live="polite">
+      <span class="loader" aria-hidden="true"></span><p>جارٍ تجهيز دليل المطاعم…</p>
+    </section>
+
+    <section id="restaurantsGrid" class="restaurants-grid" aria-label="بطاقات المطاعم" hidden></section>
+
+    <div class="load-more-wrap">
+      <button id="loadMore" class="load-more" type="button" hidden>عرض المزيد</button>
+    </div>
+  </main>
+
+  <button id="toTop" class="to-top" type="button" aria-label="العودة إلى أعلى الصفحة" title="أعلى الصفحة">↑</button>
+
+  <dialog id="detailsDialog" class="details-dialog" aria-labelledby="dialogTitle">
+    <button id="closeDialog" class="dialog-close" type="button" aria-label="إغلاق">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <template id="restaurantCardTemplate">
+    <article class="restaurant-card" tabindex="0">
+      <div class="card-top"><div class="category-badge" hidden></div><div class="commercial-badges"></div></div>
+      <h3 class="restaurant-name"></h3>
+      <div class="rating-row"><span class="star" aria-hidden="true">★</span><strong class="rating-value"></strong><span class="reviews-count"></span></div>
+      <p class="address"></p>
+      <div class="phone-row"><span aria-hidden="true">☎</span><span class="phone-text"></span></div>
+      <div class="card-actions">
+        <button class="details-btn" type="button">التفاصيل</button>
+        <a class="call-btn" href="#">اتصال</a>
+        <a class="map-btn" href="#" target="_blank" rel="noopener">الموقع</a>
+        <button class="copy-btn" type="button" aria-label="نسخ رقم الهاتف" title="نسخ رقم الهاتف">⧉</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="Restaurants/app.js" defer></script>
+</body>
+</html>
