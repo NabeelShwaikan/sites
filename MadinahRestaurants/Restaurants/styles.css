@@ -22,3 +22,21 @@
   .restaurant-name{font-size:1.04rem;line-height:1.55}
   .address{font-size:.84rem;line-height:1.75}
 }
+
+
+/* فلترة المواقع والمفضلة */
+.filters{grid-template-columns:repeat(4,minmax(0,1fr)) auto auto}
+.favorites-tools{display:flex;gap:8px;align-items:end}
+.favorites-only,.copy-favorites{min-height:44px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--text);padding:8px 13px;cursor:pointer;white-space:nowrap}
+.favorites-only span{display:inline-grid;place-items:center;min-width:22px;height:22px;margin-inline-start:4px;border-radius:999px;background:var(--surface-2);font-size:.75rem}
+.favorites-only.is-active{background:color-mix(in srgb,#c55b68 14%,var(--surface));border-color:color-mix(in srgb,#c55b68 48%,var(--line));color:#b54252}
+.copy-favorites:disabled{opacity:.45;cursor:not-allowed}
+.card-top{min-height:34px;align-items:flex-start}
+.card-labels{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex:1;min-width:0}
+.favorite-btn{flex:0 0 36px;width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);color:var(--muted);font-size:1.35rem;line-height:1;cursor:pointer;transition:.16s}
+.favorite-btn:hover{transform:translateY(-1px)}
+.favorite-btn[aria-pressed="true"]{background:color-mix(in srgb,#c55b68 13%,var(--surface));border-color:color-mix(in srgb,#c55b68 42%,var(--line));color:#c24152}
+.dialog-actions button.dialog-favorite{flex:0 0 48px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);border-radius:13px;font-size:1.35rem;cursor:pointer}
+.dialog-actions button.dialog-favorite.is-favorite{color:#c24152;background:color-mix(in srgb,#c55b68 13%,var(--surface))}
+@media(max-width:1100px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.favorites-tools{align-items:stretch}.clear-btn{grid-column:auto}}
+@media(max-width:620px){.filters{grid-template-columns:1fr}.favorites-tools{display:grid;grid-template-columns:1fr 1fr}.favorites-only,.copy-favorites{width:100%}.card-labels{flex-wrap:wrap}.commercial-badges{justify-content:flex-start}.dialog-actions button.dialog-favorite{min-height:44px}}
