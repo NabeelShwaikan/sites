@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadData() {
   try {
-    const dataUrl = new URL('Restaurants/madinah_restaurants.json', window.location.href);
+    const dataUrl = './Restaurants/madinah_restaurants.json';
     const response = await fetch(dataUrl, {
       cache: 'no-store',
       headers: { Accept: 'application/json' }
@@ -59,7 +59,7 @@ function bindEvents() {
   els.closeDialog.addEventListener('click', () => els.dialog.close());
   els.dialog.addEventListener('click', e => { if (e.target === els.dialog) els.dialog.close(); });
   els.theme.addEventListener('click', toggleTheme);
-  window.addEventListener('scroll', () => els.toTop.classList.toggle('visible', window.scrollY > 500), {passive:true});
+  window.addEventListener('scroll', () => els.toTop.classList.toggle('visible', window.scrollY > 850), {passive:true});
   els.toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 }
 
@@ -110,7 +110,9 @@ function renderCards() {
   const slice=state.filtered.slice(0,state.visible);
   els.summary.textContent=`عرض ${formatNumber(slice.length)} من أصل ${formatNumber(state.filtered.length)} نتيجة`;
   if (!state.filtered.length) { els.grid.hidden=true; showStatus('لا توجد مطاعم مطابقة. جرّب تعديل البحث أو إزالة بعض الفلاتر.', false); els.loadMore.hidden=true; return; }
-  els.status.hidden=true; els.grid.hidden=false;
+  els.status.replaceChildren();
+  els.status.hidden = true;
+  els.grid.hidden = false;
   const frag=document.createDocumentFragment();
   slice.forEach((restaurant,index)=>frag.append(createCard(restaurant,index)));
   els.grid.append(frag);
