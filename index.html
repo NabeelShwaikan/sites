@@ -537,6 +537,7 @@
       { title: "قياس المؤشرات الصحية", href: "Pages/vitals.html", desc: "مؤشراتك الحيوية باختصار", emoji: "🩺" },
       { title: "الأسهم الشرعية", href: "Stocks/index.html", desc: "دليل الأسهم الشرعية السعودية مع الفلاتر وفحص التحديث", emoji: "💹" },
       { title: "دليل مطاعم المدينة", href: "MadinahRestaurants/index.html", desc: "استكشف مطاعم المدينة المنورة حسب التقييم والتصنيف", emoji: "🍽️" },
+      { title: "معمار", href: "HomeCost/index.html", desc: "بوابة معمار للتصميم والبناء", emoji: "🏗️" },
 
       // 👨‍👩‍👧‍👦 العائلة والمجتمع
       { title: "شجرة العائلة", href: "FamilyTree/index.html", desc: "ابني شجرة لعائلتك بخطوات بسيطة", emoji: "🌳" },
@@ -613,7 +614,8 @@
     const STANDALONE_PAGE_TITLES = [
       'التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ',
       'الأسهم الشرعية',
-      'دليل مطاعم المدينة'
+      'دليل مطاعم المدينة',
+      'معمار'
     ];
 
     const LAUNCHER_ITEMS = [
@@ -624,6 +626,7 @@
       {type:'folder', id:'life'},
       {type:'page', title:STANDALONE_PAGE_TITLES[1]},
       {type:'page', title:STANDALONE_PAGE_TITLES[2]},
+      {type:'page', title:STANDALONE_PAGE_TITLES[3]},
       {type:'folder', id:'family'},
       {type:'folder', id:'fun'}
     ];
@@ -770,6 +773,7 @@
         'قياس المؤشرات الصحية':'مؤشرات الصحة',
         'الأسهم الشرعية':'الأسهم الشرعية',
         'دليل مطاعم المدينة':'مطاعم المدينة',
+        'معمار':'معمار',
         'شجرة العائلة':'شجرة العائلة',
         'تصويت':'تصويت',
         'لعبة الحروف':'لعبة الحروف',
@@ -789,6 +793,7 @@
       if(['بوابة القهوة','الساعة الرملية','كشاف الجالكسي برو'].includes(title)) return 'cat-personal';
       if(['الأسهم الشرعية'].includes(title)) return 'cat-stocks';
       if(['دليل مطاعم المدينة'].includes(title)) return 'cat-event';
+      if(['معمار'].includes(title)) return 'cat-tool';
       if(['قياس المؤشرات الصحية'].includes(title)) return 'cat-health';
       if(['شجرة العائلة','تصويت'].includes(title)) return 'cat-family';
       if(['لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
