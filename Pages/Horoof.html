@@ -2193,7 +2193,6 @@
         statusHint: document.getElementById("statusHint"),
         roundNumber: document.getElementById("roundNumber"),
         roundLimitValue: document.getElementById("roundLimitValue"),
-        roundsNeededValue: document.getElementById("roundsNeededValue"),
         timer: document.getElementById("timer"),
         timerValue: document.getElementById("timerValue"),
         timerToggleButton: document.getElementById("timerToggleButton"),
@@ -2597,7 +2596,6 @@
         const selectedCell = state.selectedId === null ? null : state.board[state.selectedId];
         els.roundNumber.textContent = toArabicNumber(state.round);
         els.roundLimitValue.textContent = toArabicNumber(state.roundLimit);
-        els.roundsNeededValue.textContent = toArabicNumber(roundsNeededToWin());
         els.questionPointsValue.textContent = toArabicNumber(state.questionPoints);
         els.timerResetButton.setAttribute("aria-label", `إعادة المؤقت إلى ${state.timerSeconds} ثانية`);
         els.cancelQuestionButton.disabled = state.selectedId === null;
