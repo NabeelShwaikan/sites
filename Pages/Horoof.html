@@ -1,0 +1,3320 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb" id="themeColorMeta">
+  <meta name="application-name" content="مسابقة حروف">
+  <meta name="description" content="لعبة حروف التفاعلية ضمن بوابة مسار">
+  <title>مسابقة حروف</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7fb;
+      --bg-soft: #f1f5f9;
+      --panel: #ffffff;
+      --panel-strong: #ffffff;
+      --text: #0f172a;
+      --muted: #5b6270;
+      --line: rgba(15, 23, 42, 0.1);
+      --brand: #2563eb;
+      --brand-2: #10b981;
+      --brand-soft: rgba(37, 99, 235, 0.1);
+      --chip: #eef2ff;
+      --control-bg: #f8fafc;
+      --control-hover: #eff6ff;
+      --topbar-bg: rgba(255, 255, 255, 0.92);
+      --board-bg: rgba(255, 255, 255, 0.88);
+      --dialog-bg: #ffffff;
+      --grid-line: rgba(15, 23, 42, 0.035);
+      --gold: #f4c767;
+      --gold-2: #ffe5a2;
+      --neutral-cell: #fbf4df;
+      --neutral-cell-2: #d9c99e;
+      --blue: #1da9dc;
+      --blue-deep: #0b6f9c;
+      --blue-light: #58c9ee;
+      --blue-border: #c2efff;
+      --blue-soft: rgba(29, 169, 220, 0.18);
+      --blue-glow: rgba(29, 169, 220, 0.26);
+      --blue-ink: #031d24;
+      --red: #ff6478;
+      --red-deep: #a5274d;
+      --red-light: #ff91a0;
+      --red-border: #ffd0d7;
+      --red-soft: rgba(255, 100, 120, 0.18);
+      --red-glow: rgba(255, 100, 120, 0.24);
+      --red-ink: #310817;
+      --danger: #dc2626;
+      --hex-size: clamp(60px, 8vw, 128px);
+      --radius: 16px;
+      --shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1120;
+      --bg-soft: #0b1020;
+      --panel: #0f172a;
+      --panel-strong: #162236;
+      --text: #e5e7eb;
+      --muted: #aab3c5;
+      --line: rgba(148, 163, 184, 0.22);
+      --brand: #60a5fa;
+      --brand-2: #34d399;
+      --brand-soft: rgba(96, 165, 250, 0.12);
+      --chip: #111a2d;
+      --control-bg: rgba(255, 255, 255, 0.055);
+      --control-hover: rgba(96, 165, 250, 0.12);
+      --topbar-bg: rgba(15, 23, 42, 0.92);
+      --board-bg: rgba(15, 23, 42, 0.9);
+      --dialog-bg: #162236;
+      --grid-line: rgba(255, 255, 255, 0.025);
+      --shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      transition: background-color 400ms ease;
+    }
+
+    body {
+      margin: 0;
+      min-width: 300px;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.11), transparent 34%),
+        radial-gradient(circle at 92% 22%, rgba(16, 185, 129, 0.1), transparent 30%),
+        var(--bg);
+      font-family: "Almarai", "Noto Kufi Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 400ms ease, color 400ms ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 1;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--brand) 70%, transparent);
+      outline-offset: 3px;
+    }
+
+    .app {
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 1800px);
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: max(14px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+        max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .topbar {
+      min-height: 68px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--topbar-bg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      transition: background-color 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
+    }
+
+    .status-strip,
+    .board-shell,
+    dialog,
+    .settings-section {
+      transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 15px;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 900;
+      background: linear-gradient(145deg, var(--brand), var(--brand-2));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.58),
+        0 12px 24px rgba(37, 99, 235, 0.2);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 0.65), transparent 30%);
+      pointer-events: none;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy h1 {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(21px, 2.1vw, 31px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .brand-copy p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .round-chip {
+      justify-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border: 1px solid rgba(244, 199, 103, 0.26);
+      border-radius: 999px;
+      border-color: color-mix(in srgb, var(--brand) 24%, transparent);
+      color: var(--brand);
+      background: var(--brand-soft);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .round-chip strong {
+      font-size: 17px;
+    }
+
+    .top-actions {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    .icon-button,
+    .text-button {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--control-bg);
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      touch-action: manipulation;
+    }
+
+    .icon-button {
+      width: 44px;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+    }
+
+    .text-button {
+      padding: 0 15px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .masar-home-button {
+      min-height: 42px;
+      padding: 0 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: 1px solid color-mix(in srgb, var(--brand) 28%, var(--line));
+      border-radius: 12px;
+      color: var(--brand);
+      background: var(--brand-soft);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      touch-action: manipulation;
+    }
+
+    .masar-home-button:hover {
+      border-color: color-mix(in srgb, var(--brand) 48%, transparent);
+      background: var(--control-hover);
+    }
+
+    .masar-home-button:active {
+      transform: scale(0.96);
+    }
+
+    .masar-home-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .icon-button:hover,
+    .text-button:hover {
+      border-color: color-mix(in srgb, var(--brand) 42%, transparent);
+      background: var(--control-hover);
+    }
+
+    .icon-button:active,
+    .text-button:active,
+    .score-button:active,
+    .winner-button:active {
+      transform: scale(0.96);
+    }
+
+    .game-layout {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(190px, 250px) minmax(500px, 1fr) minmax(190px, 250px);
+      grid-template-areas: "blue arena red";
+      align-items: center;
+      gap: clamp(14px, 2vw, 30px);
+    }
+
+    .team-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 330px;
+      padding: 22px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .team-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: var(--team-color);
+      box-shadow: none;
+    }
+
+    .team-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      inset: auto -70px -80px auto;
+      border-radius: 50%;
+      background: var(--team-soft);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .team-card.blue {
+      --team-color: var(--blue);
+      --team-soft: var(--blue-soft);
+      --team-ink: var(--blue-ink);
+      grid-area: blue;
+    }
+
+    .team-card.red {
+      --team-color: var(--red);
+      --team-soft: var(--red-soft);
+      --team-ink: var(--red-ink);
+      grid-area: red;
+    }
+
+    .team-card.is-answering {
+      border-color: color-mix(in srgb, var(--team-color) 65%, transparent);
+      box-shadow: 0 0 0 3px var(--team-soft), var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .team-card.is-buzz-winner {
+      border-color: var(--team-color);
+      box-shadow: 0 0 0 4px var(--team-soft), 0 0 34px var(--team-soft), var(--shadow);
+      animation: buzzWinnerPulse 850ms ease-in-out 2;
+    }
+
+    .team-card.is-buzz-locked {
+      opacity: 0.56;
+      filter: saturate(0.55);
+    }
+
+    .team-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .team-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--team-color);
+      box-shadow: 0 0 16px var(--team-color);
+    }
+
+    .round-wins {
+      margin-inline-start: 4px;
+      padding: 4px 7px;
+      border: 1px solid color-mix(in srgb, var(--team-color) 28%, var(--line));
+      border-radius: 999px;
+      color: var(--text);
+      background: var(--team-soft);
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .round-wins strong {
+      color: var(--team-color);
+      font-size: 12px;
+    }
+
+    .team-name {
+      width: 100%;
+      min-width: 0;
+      padding: 6px 8px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      color: var(--text);
+      background: transparent;
+      text-align: center;
+      font-size: clamp(17px, 1.7vw, 23px);
+      font-weight: 900;
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+
+    .team-name:hover,
+    .team-name:focus {
+      border-color: var(--line);
+      background: var(--control-bg);
+    }
+
+    .score {
+      margin: 2px 0 0;
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(50px, 5.5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      text-shadow: 0 0 28px var(--team-soft);
+    }
+
+    .score-caption {
+      margin-top: -5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .score-controls {
+      display: flex;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    .score-button {
+      width: 44px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--control-bg);
+      font-size: 19px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+      touch-action: manipulation;
+    }
+
+    .score-button:hover {
+      border-color: var(--team-color);
+      background: var(--team-soft);
+    }
+
+    .winner-button {
+      width: 100%;
+      min-height: 48px;
+      margin-top: 5px;
+      border: 1px solid color-mix(in srgb, var(--team-color) 50%, transparent);
+      border-radius: 15px;
+      color: #fff;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--team-color) 55%, #172044), color-mix(in srgb, var(--team-color) 24%, #10162f));
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 150ms ease, filter 150ms ease, box-shadow 150ms ease;
+      touch-action: manipulation;
+    }
+
+    .winner-button:hover {
+      filter: brightness(1.12);
+      box-shadow: 0 8px 22px var(--team-soft);
+    }
+
+    .winner-button[aria-pressed="true"] {
+      box-shadow: 0 0 0 3px var(--team-soft), 0 8px 24px var(--team-soft);
+      filter: brightness(1.18);
+    }
+
+    .winner-button.is-buzzer {
+      border-width: 2px;
+      background: linear-gradient(135deg, var(--team-color), color-mix(in srgb, var(--team-color) 58%, #10162f));
+      letter-spacing: 0;
+    }
+
+    .winner-button.is-buzzer[aria-pressed="true"] {
+      color: var(--team-ink, #fff);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--team-color) 82%, #fff), var(--team-color));
+    }
+
+    .team-goal {
+      margin: 1px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .arena {
+      grid-area: arena;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .status-strip {
+      width: min(100%, 760px);
+      min-height: 58px;
+      padding: 8px 10px 8px 16px;
+      display: grid;
+      grid-template-columns: auto auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .timer {
+      --timer-progress: 100%;
+      position: relative;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: conic-gradient(var(--brand) var(--timer-progress), var(--line) 0);
+      transition: filter 180ms ease;
+      flex: 0 0 auto;
+    }
+
+    .timer::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: inherit;
+      background: var(--panel-strong);
+    }
+
+    .timer-value {
+      position: relative;
+      z-index: 1;
+      font-size: 15px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timer.is-danger {
+      filter: drop-shadow(0 0 10px rgba(255, 100, 120, 0.55));
+      background: conic-gradient(var(--red) var(--timer-progress), rgba(255, 255, 255, 0.1) 0);
+      animation: timerPulse 800ms ease-in-out infinite;
+    }
+
+    .question-points {
+      min-height: 42px;
+      padding: 4px 7px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--chip);
+      white-space: nowrap;
+    }
+
+    .question-points > span {
+      margin-inline-end: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .question-points button {
+      width: 27px;
+      height: 30px;
+      padding: 0;
+      border: 0;
+      border-radius: 9px;
+      color: var(--brand);
+      background: var(--brand-soft);
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .question-points strong {
+      min-width: 34px;
+      color: var(--brand);
+      text-align: center;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .status-copy {
+      min-width: 0;
+    }
+
+    .status-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 14px;
+    }
+
+    .status-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .timer-controls {
+      display: flex;
+      gap: 6px;
+      direction: ltr;
+    }
+
+    .timer-controls button {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--control-bg);
+      cursor: pointer;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+
+    .timer-controls button:hover {
+      border-color: color-mix(in srgb, var(--brand) 40%, transparent);
+      background: var(--control-hover);
+    }
+
+    .board-shell {
+      position: relative;
+      width: min(100%, 900px);
+      display: grid;
+      place-items: center;
+      padding: clamp(16px, 2.2vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at center, var(--brand-soft), transparent 62%),
+        var(--board-bg);
+      box-shadow: var(--shadow);
+    }
+
+    .board-shell::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .hex-grid {
+      --hex-height: calc(var(--hex-size) * 0.52);
+      position: relative;
+      z-index: 3;
+      width: calc(var(--hex-size) * 5.68);
+      height: calc(var(--hex-size) * 3.9);
+      direction: ltr;
+      filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.27));
+    }
+
+    .hex,
+    .edge-hex {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--hex-size);
+      height: var(--hex-height);
+      clip-path: polygon(22% 0, 78% 0, 100% 50%, 78% 100%, 22% 100%, 0 50%);
+      transform: translate(var(--x), var(--y));
+      transform-origin: center;
+    }
+
+    .hex {
+      --cell-fill-a: var(--neutral-cell);
+      --cell-fill-b: var(--neutral-cell-2);
+      --cell-border: var(--gold);
+      z-index: 3;
+      padding: 0;
+      border: 0;
+      color: #211d2c;
+      background: linear-gradient(145deg, var(--cell-border), color-mix(in srgb, var(--cell-border) 62%, #5d4b30));
+      cursor: pointer;
+      transition: transform 170ms ease, filter 170ms ease;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .edge-hex {
+      z-index: 1;
+      background: color-mix(in srgb, var(--text) 82%, #050919);
+      pointer-events: none;
+    }
+
+    .edge-hex::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: linear-gradient(145deg, var(--edge-light), var(--edge-color));
+      clip-path: inherit;
+    }
+
+    .edge-hex::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      opacity: 0.24;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.55), transparent 52%);
+      clip-path: inherit;
+    }
+
+    .edge-hex.edge-blue {
+      --edge-light: var(--blue-light);
+      --edge-color: var(--blue-deep);
+      filter: drop-shadow(0 0 7px var(--blue-glow));
+    }
+
+    .edge-hex.edge-red {
+      --edge-light: var(--red-light);
+      --edge-color: var(--red-deep);
+      filter: drop-shadow(0 0 7px var(--red-glow));
+    }
+
+    .hex::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      background: linear-gradient(150deg, var(--cell-fill-a), var(--cell-fill-b));
+      clip-path: inherit;
+      transition: background 180ms ease;
+    }
+
+    .hex::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      opacity: 0.46;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.58), transparent 46%);
+      clip-path: inherit;
+      pointer-events: none;
+    }
+
+    .hex:hover:not(.is-owned) {
+      z-index: 4;
+      transform: translate(var(--x), var(--y)) translateY(-3px) scale(1.035);
+      filter: brightness(1.06) drop-shadow(0 8px 10px rgba(244, 199, 103, 0.22));
+    }
+
+    .hex:active:not(.is-owned) {
+      transform: translate(var(--x), var(--y)) scale(0.97);
+    }
+
+    .hex-letter {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      font-size: calc(var(--hex-size) * 0.38);
+      font-weight: 900;
+      line-height: 1;
+      transform: translateY(-1px);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .hex.is-selected {
+      --cell-fill-a: #fff0ad;
+      --cell-fill-b: #e8ae44;
+      --cell-border: #fff2bd;
+      z-index: 6;
+      transform: translate(var(--x), var(--y)) scale(1.08);
+      filter: drop-shadow(0 0 18px rgba(255, 214, 105, 0.9));
+      animation: selectedHex 1.15s ease-in-out infinite;
+    }
+
+    .hex.is-blue {
+      --cell-fill-a: var(--blue-light);
+      --cell-fill-b: var(--blue-deep);
+      --cell-border: var(--blue-border);
+      color: var(--blue-ink);
+      cursor: default;
+    }
+
+    .hex.is-red {
+      --cell-fill-a: var(--red-light);
+      --cell-fill-b: var(--red-deep);
+      --cell-border: var(--red-border);
+      color: var(--red-ink);
+      cursor: default;
+    }
+
+    .hex.is-owned .hex-letter {
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.22);
+    }
+
+    .hex.is-winning {
+      z-index: 7;
+      filter: brightness(1.17) drop-shadow(0 0 17px currentColor);
+      animation: winningHex 880ms ease-in-out infinite alternate;
+    }
+
+    .ready-overlay {
+      position: absolute;
+      z-index: 20;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 180ms ease, visibility 180ms ease;
+    }
+
+    .ready-overlay.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .ready-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 24px;
+      background: rgba(5, 8, 24, 0.83);
+      backdrop-filter: blur(8px);
+    }
+
+    .ready-core {
+      position: relative;
+      width: min(260px, 70%);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .ready-ring,
+    .ready-ring::before,
+    .ready-ring::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      border: 2px solid rgba(244, 199, 103, 0.7);
+      border-radius: 50%;
+      animation: readyRing 1.25s ease-out infinite;
+    }
+
+    .ready-ring::before {
+      animation-delay: 230ms;
+    }
+
+    .ready-ring::after {
+      animation-delay: 460ms;
+    }
+
+    .ready-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .ready-label {
+      display: block;
+      color: var(--gold-2);
+      font-size: clamp(15px, 2vw, 21px);
+      font-weight: 900;
+    }
+
+    .ready-letter {
+      display: block;
+      margin-top: 3px;
+      color: #fff;
+      font-size: clamp(74px, 10vw, 118px);
+      font-weight: 900;
+      line-height: 0.95;
+      text-shadow: 0 0 32px rgba(244, 199, 103, 0.62);
+    }
+
+    .bottom-controls {
+      width: min(100%, 760px);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .control-button {
+      min-height: 42px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      color: var(--text);
+      background: var(--control-bg);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+      touch-action: manipulation;
+    }
+
+    .control-button:hover {
+      border-color: color-mix(in srgb, var(--brand) 42%, transparent);
+      background: var(--control-hover);
+    }
+
+    .control-button.primary {
+      border-color: color-mix(in srgb, var(--brand) 46%, transparent);
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+
+    .control-button.danger {
+      border-color: rgba(255, 100, 120, 0.3);
+    }
+
+    .control-button:disabled,
+    .score-button:disabled,
+    .winner-button:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 90;
+      right: 50%;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      min-width: min(340px, calc(100vw - 28px));
+      max-width: calc(100vw - 28px);
+      padding: 12px 18px;
+      border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent);
+      border-radius: 14px;
+      color: var(--text);
+      background: var(--panel-strong);
+      box-shadow: var(--shadow);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(50%, 16px);
+      transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+      backdrop-filter: blur(16px);
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(50%, 0);
+    }
+
+    dialog {
+      width: min(430px, calc(100vw - 30px));
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      color: var(--text);
+      background: var(--dialog-bg);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.28);
+    }
+
+    dialog::backdrop {
+      background: rgba(2, 4, 14, 0.76);
+      backdrop-filter: blur(8px);
+    }
+
+    .dialog-body {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .dialog-icon {
+      width: 70px;
+      height: 60px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: #ffffff;
+      background: linear-gradient(145deg, var(--brand), var(--brand-2));
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .dialog-body h2 {
+      margin: 0;
+      font-size: 23px;
+    }
+
+    .dialog-body p {
+      margin: 10px auto 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .dialog-actions {
+      display: flex;
+      gap: 9px;
+    }
+
+    .dialog-actions button {
+      min-height: 46px;
+      flex: 1;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .dialog-actions .confirm {
+      border-color: color-mix(in srgb, var(--brand) 46%, transparent);
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+
+    .dialog-actions .cancel {
+      color: var(--text);
+      background: var(--control-bg);
+    }
+
+    .settings-feedback {
+      margin: 0 0 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(220, 38, 38, 0.28);
+      border-radius: 12px;
+      color: #b91c1c;
+      background: rgba(220, 38, 38, 0.08);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.7;
+    }
+
+    html[data-theme="dark"] .settings-feedback {
+      color: #fecaca;
+      background: rgba(220, 38, 38, 0.14);
+    }
+
+    .settings-dialog {
+      width: min(680px, calc(100vw - 30px));
+      max-height: calc(100dvh - 30px);
+      overflow: auto;
+    }
+
+    .settings-body {
+      padding: 24px;
+      text-align: right;
+    }
+
+    .settings-header {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .settings-header h2 {
+      margin: 0;
+      font-size: 23px;
+    }
+
+    .settings-header p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .settings-close {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--control-bg);
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .settings-section {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg-soft);
+    }
+
+    .settings-section h3 {
+      margin: 0 0 13px;
+      color: var(--brand);
+      font-size: 14px;
+    }
+
+    .settings-field {
+      display: block;
+      margin-top: 12px;
+    }
+
+    .settings-field:first-of-type {
+      margin-top: 0;
+    }
+
+    .settings-field > span:not(.name-color-control) {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .settings-field small {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+    .name-color-control {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      gap: 8px;
+      direction: rtl;
+    }
+
+    .settings-input {
+      width: 100%;
+      min-width: 0;
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--panel);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .settings-input[type="number"] {
+      direction: ltr;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .color-input {
+      width: 48px;
+      height: 44px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+      cursor: pointer;
+    }
+
+    .color-input::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    .color-input::-webkit-color-swatch {
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .preset-row {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      direction: ltr;
+    }
+
+    .preset-row button {
+      min-height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--muted);
+      background: var(--control-bg);
+      font-size: 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .preset-row button:hover {
+      border-color: color-mix(in srgb, var(--brand) 42%, transparent);
+      color: var(--brand);
+    }
+
+    .settings-reset-grid {
+      margin: 12px 0 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .settings-reset {
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-soft);
+    }
+
+    .settings-reset strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+
+    .settings-reset span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .round-reset-button {
+      min-height: 38px;
+      padding: 0 13px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 176, 79, 0.35);
+      border-radius: 11px;
+      color: #92400e;
+      background: rgba(255, 176, 79, 0.1);
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    html[data-theme="dark"] .round-reset-button {
+      color: #ffe0b1;
+    }
+
+    .score-reset-button {
+      border-color: rgba(220, 38, 38, 0.28);
+      color: #b91c1c;
+      background: rgba(220, 38, 38, 0.07);
+    }
+
+    html[data-theme="dark"] .score-reset-button {
+      color: #fecaca;
+    }
+
+    .win-dialog {
+      overflow: hidden;
+    }
+
+    .win-dialog .dialog-body {
+      position: relative;
+      padding-top: 34px;
+    }
+
+    .win-dialog .winner-crown {
+      margin-bottom: 10px;
+      font-size: 45px;
+      animation: crownFloat 1.5s ease-in-out infinite;
+    }
+
+    .winner-name {
+      color: var(--winner-color, var(--gold-2));
+      font-size: clamp(25px, 5vw, 36px) !important;
+      text-shadow: 0 0 25px var(--winner-glow, rgba(244, 199, 103, 0.42));
+    }
+
+    .confetti {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .confetti i {
+      position: absolute;
+      top: -20px;
+      width: 8px;
+      height: 16px;
+      border-radius: 2px;
+      background: var(--confetti-color);
+      animation: confettiFall var(--fall-time) linear infinite;
+      animation-delay: var(--delay);
+      transform: translateX(var(--x)) rotate(var(--rotate));
+    }
+
+    @keyframes selectedHex {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 214, 105, 0.62)); }
+      50% { filter: drop-shadow(0 0 25px rgba(255, 214, 105, 0.98)); }
+    }
+
+    @keyframes readyRing {
+      0% { opacity: 0.95; transform: scale(0.38); }
+      100% { opacity: 0; transform: scale(1.15); }
+    }
+
+    @keyframes timerPulse {
+      50% { transform: scale(1.055); }
+    }
+
+    @keyframes buzzWinnerPulse {
+      50% { transform: translateY(-4px) scale(1.018); }
+    }
+
+    @keyframes winningHex {
+      from { transform: translate(var(--x), var(--y)) scale(1); }
+      to { transform: translate(var(--x), var(--y)) scale(1.08); }
+    }
+
+    @keyframes crownFloat {
+      50% { transform: translateY(-5px) rotate(2deg); }
+    }
+
+    @keyframes confettiFall {
+      to { transform: translate(var(--x-end), 500px) rotate(calc(var(--rotate) + 540deg)); }
+    }
+
+    @media (max-width: 1050px) {
+      :root {
+        --hex-size: clamp(54px, 9.4vw, 88px);
+      }
+
+      body {
+        overflow-y: auto;
+      }
+
+      .app {
+        min-height: 100dvh;
+      }
+
+      .game-layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "blue red"
+          "arena arena";
+        align-items: stretch;
+      }
+
+      .team-card {
+        min-height: 152px;
+        padding: 15px 14px 13px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto auto;
+        column-gap: 12px;
+        text-align: right;
+      }
+
+      .team-badge,
+      .team-name,
+      .score-caption {
+        justify-self: stretch;
+        text-align: right;
+      }
+
+      .team-name {
+        grid-column: 1;
+        font-size: 18px;
+      }
+
+      .team-badge {
+        align-self: end;
+      }
+
+      .score {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+        font-size: 48px;
+      }
+
+      .score-caption,
+      .team-goal {
+        display: none;
+      }
+
+      .score-controls {
+        grid-column: 2;
+        grid-row: 3;
+        justify-self: center;
+      }
+
+      .winner-button {
+        grid-column: 1;
+        grid-row: 3;
+        margin: 0;
+        min-height: 38px;
+      }
+
+      .arena {
+        padding-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      :root {
+        --hex-size: clamp(48px, 14.2vw, 67px);
+        --radius: 18px;
+      }
+
+      .app {
+        gap: 9px;
+        padding: max(9px, env(safe-area-inset-top)) max(9px, env(safe-area-inset-right))
+          max(12px, env(safe-area-inset-bottom)) max(9px, env(safe-area-inset-left));
+      }
+
+      .topbar {
+        min-height: 58px;
+        padding: 7px 9px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+          "brand actions"
+          "round round";
+        row-gap: 6px;
+        border-radius: 17px;
+      }
+
+      .brand {
+        grid-area: brand;
+        gap: 8px;
+      }
+
+      .brand-mark {
+        width: 39px;
+        height: 39px;
+        font-size: 19px;
+      }
+
+      .brand-copy h1 {
+        font-size: 22px;
+      }
+
+      .brand-copy p {
+        display: none;
+      }
+
+      .round-chip {
+        grid-area: round;
+        position: static;
+        transform: none;
+        justify-self: center;
+        padding: 4px 10px;
+        font-size: 10px;
+      }
+
+      .round-chip strong {
+        font-size: 14px;
+      }
+
+      .top-actions {
+        grid-area: actions;
+        gap: 5px;
+      }
+
+      .top-actions .text-button {
+        display: none;
+      }
+
+      .icon-button {
+        width: 39px;
+        min-height: 39px;
+        border-radius: 12px;
+      }
+
+      .masar-home-button {
+        width: 39px;
+        min-height: 39px;
+        padding: 0;
+      }
+
+      .masar-home-label {
+        display: none;
+      }
+
+      .game-layout {
+        gap: 8px;
+      }
+
+      .team-card {
+        min-width: 0;
+        min-height: 126px;
+        padding: 12px 9px 9px;
+        column-gap: 5px;
+      }
+
+      .team-badge {
+        font-size: 9px;
+      }
+
+      .team-name {
+        padding: 3px 4px;
+        font-size: 14px;
+      }
+
+      .score {
+        font-size: 37px;
+      }
+
+      .score-button {
+        width: 34px;
+        height: 31px;
+        border-radius: 9px;
+        font-size: 16px;
+      }
+
+      .winner-button {
+        min-height: 33px;
+        padding: 0 5px;
+        border-radius: 10px;
+        font-size: 10px;
+      }
+
+      .status-strip {
+        min-height: 52px;
+        padding: 6px 7px 6px 10px;
+        grid-template-columns: auto auto 1fr auto;
+        gap: 8px;
+        border-radius: 15px;
+      }
+
+      .question-points {
+        min-height: 38px;
+        padding: 3px;
+      }
+
+      .question-points > span {
+        display: none;
+      }
+
+      .question-points button {
+        width: 24px;
+        height: 28px;
+      }
+
+      .question-points strong {
+        min-width: 28px;
+        font-size: 11px;
+      }
+
+      .timer {
+        width: 41px;
+        height: 41px;
+      }
+
+      .status-copy strong {
+        margin-bottom: 1px;
+        font-size: 12px;
+      }
+
+      .status-copy span {
+        font-size: 9px;
+      }
+
+      .timer-controls button {
+        width: 33px;
+        height: 33px;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+
+      .board-shell {
+        padding: 13px 12px;
+        border-radius: 20px;
+      }
+
+      .board-shell::before {
+        inset: 7px;
+        border-radius: 15px;
+      }
+
+      .hex::before {
+        inset: 2px;
+      }
+
+      .hex::after {
+        inset: 4px;
+      }
+
+      .bottom-controls {
+        gap: 6px;
+      }
+
+      .control-button {
+        min-height: 38px;
+        padding: 0 11px;
+        border-radius: 11px;
+        font-size: 10px;
+      }
+
+      .settings-body {
+        padding: 18px;
+      }
+
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .settings-reset-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .settings-reset {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #soundButton {
+        display: none;
+      }
+    }
+
+    @media (max-width: 360px) {
+      :root {
+        --hex-size: 46px;
+      }
+
+      .round-chip {
+        padding: 3px 9px;
+        font-size: 9px;
+      }
+
+      .team-card {
+        min-height: 118px;
+      }
+
+      .status-copy span {
+        max-width: 125px;
+      }
+
+      .status-copy {
+        display: none;
+      }
+
+      .status-strip {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .question-points {
+        justify-self: center;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 600px) and (hover: none) and (pointer: coarse) {
+      :root {
+        --hex-size: clamp(39px, min(7vw, 12.6vh), 62px);
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .app {
+        width: 100%;
+        height: 100dvh;
+        min-height: 0;
+        padding: max(4px, env(safe-area-inset-top)) max(6px, env(safe-area-inset-right))
+          max(4px, env(safe-area-inset-bottom)) max(6px, env(safe-area-inset-left));
+        gap: 0;
+        overflow: hidden;
+      }
+
+      .topbar {
+        display: none;
+      }
+
+      .game-layout {
+        height: 100%;
+        min-height: 0;
+        grid-template-columns: minmax(92px, 0.72fr) minmax(0, 3.6fr) minmax(92px, 0.72fr);
+        grid-template-areas: "blue arena red";
+        align-items: stretch;
+        gap: 6px;
+      }
+
+      .team-card {
+        min-height: 0;
+        height: 100%;
+        padding: 7px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        text-align: center;
+      }
+
+      .team-badge,
+      .team-name {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .team-badge {
+        flex-wrap: wrap;
+        gap: 4px;
+        font-size: 8px;
+      }
+
+      .round-wins {
+        margin: 0;
+        padding: 2px 5px;
+        font-size: 7px;
+      }
+
+      .round-wins strong {
+        font-size: 10px;
+      }
+
+      .team-name {
+        width: 100%;
+        padding: 2px;
+        font-size: 11px;
+      }
+
+      .score {
+        font-size: clamp(27px, 7vh, 38px);
+      }
+
+      .score-controls {
+        gap: 4px;
+      }
+
+      .score-button {
+        width: 30px;
+        height: 27px;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      .winner-button {
+        min-height: 31px;
+        margin: 0;
+        padding: 0 4px;
+        border-radius: 9px;
+        font-size: 8px;
+      }
+
+      .score-caption,
+      .team-goal {
+        display: none;
+      }
+
+      .arena {
+        height: 100%;
+        min-height: 0;
+        padding: 0;
+        gap: 4px;
+      }
+
+      .status-strip {
+        width: 100%;
+        min-height: 40px;
+        padding: 3px 5px;
+        grid-template-columns: auto auto minmax(0, 1fr) auto;
+        gap: 4px;
+        border-radius: 10px;
+      }
+
+      .timer {
+        width: 34px;
+        height: 34px;
+      }
+
+      .timer-value {
+        font-size: 11px;
+      }
+
+      .question-points {
+        min-height: 32px;
+        padding: 2px 4px;
+      }
+
+      .question-points > span,
+      .status-copy span {
+        display: none;
+      }
+
+      .question-points button {
+        width: 20px;
+        height: 24px;
+        font-size: 12px;
+      }
+
+      .question-points strong {
+        min-width: 24px;
+        font-size: 9px;
+      }
+
+      .status-copy strong {
+        margin: 0;
+        font-size: 9px;
+      }
+
+      .timer-controls {
+        gap: 3px;
+      }
+
+      .timer-controls button {
+        width: 29px;
+        height: 29px;
+        border-radius: 8px;
+        font-size: 10px;
+      }
+
+      .board-shell {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        padding: 5px;
+        border-radius: 12px;
+      }
+
+      .board-shell::before {
+        inset: 4px;
+        border-radius: 9px;
+      }
+
+      .bottom-controls {
+        gap: 4px;
+      }
+
+      .control-button {
+        min-height: 29px;
+        padding: 0 7px;
+        border-radius: 8px;
+        font-size: 8px;
+      }
+    }
+
+    @media (min-width: 1500px) and (min-height: 850px) {
+      .app {
+        gap: 22px;
+        padding: 22px 30px 26px;
+      }
+
+      .topbar {
+        min-height: 78px;
+      }
+
+      .team-card {
+        min-height: 390px;
+      }
+
+      .status-strip {
+        min-height: 68px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body data-masar-module="huroof">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">ح</div>
+        <div class="brand-copy">
+          <h1>مسابقة حروف</h1>
+        </div>
+      </div>
+
+      <div class="round-chip" aria-label="تقدم جولات المباراة">
+        الجولة <strong id="roundNumber">١</strong>
+        من <span id="roundLimitValue">٥</span>
+        <span aria-hidden="true"></span>
+      </div>
+
+      <div class="top-actions">
+        <a class="masar-home-button" id="masarPortalLink" href="../index.html" target="_top" aria-label="العودة إلى بوابة مسار" title="العودة إلى بوابة مسار">
+          <span class="masar-home-icon" aria-hidden="true">⌂</span>
+          <span class="masar-home-label">بوابة مسار</span>
+        </a>
+        <button class="icon-button" id="themeButton" type="button" aria-label="تفعيل الوضع الداكن" title="تبديل السمة">☾</button>
+        <button class="icon-button" id="soundButton" type="button" aria-label="كتم المؤثرات الصوتية" title="الصوت">🔊</button>
+        <button class="icon-button" id="fullscreenButton" type="button" aria-label="تشغيل وضع ملء الشاشة" title="ملء الشاشة">⛶</button>
+        <button class="icon-button" id="settingsButton" type="button" aria-label="فتح إعدادات اللعبة" title="إعدادات اللعبة">⚙</button>
+        <button class="text-button" id="resetGameButton" type="button">إعادة المباراة</button>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <aside class="team-card blue" id="blueCard">
+        <div class="team-badge">
+          <span class="team-dot"></span> الفريق الأول
+          <span class="round-wins">الجولات <strong id="blueRoundWins">٠</strong>/<span data-round-target>٣</span></span>
+        </div>
+        <input class="team-name" id="blueName" maxlength="22" value="الفريق الأزرق" aria-label="اسم الفريق الأزرق">
+        <div class="score" id="blueScore">٠</div>
+        <div class="score-caption">نقطة</div>
+        <div class="score-controls" aria-label="تعديل نقاط الفريق الأزرق">
+          <button class="score-button" type="button" data-score-team="blue" data-score-direction="-1" aria-label="خصم درجة السؤال">−</button>
+          <button class="score-button" type="button" data-score-team="blue" data-score-direction="1" aria-label="إضافة درجة السؤال">+</button>
+        </div>
+        <button class="winner-button" id="blueWinnerButton" type="button" data-winner-team="blue" aria-pressed="false">
+          إجابة صحيحة للأزرق
+        </button>
+        <p class="team-goal">الهدف: وصل أعلى اللوحة بأسفلها</p>
+      </aside>
+
+      <section class="arena" aria-label="لوحة لعبة حروف">
+        <div class="status-strip">
+          <div class="timer" id="timer" style="--timer-progress: 100%">
+            <span class="timer-value" id="timerValue">٣٠</span>
+          </div>
+          <div class="question-points" aria-label="درجة السؤال الحالية">
+            <span>درجة السؤال</span>
+            <button type="button" data-points-step="-50" aria-label="خفض درجة السؤال">−</button>
+            <strong id="questionPointsValue">١٠٠</strong>
+            <button type="button" data-points-step="50" aria-label="رفع درجة السؤال">+</button>
+          </div>
+          <div class="status-copy" aria-live="polite">
+            <strong id="statusTitle">اختر حرفًا للبدء</strong>
+            <span id="statusHint">الحروف موزعة عشوائيًا — الضغطة الأولى للاستعداد</span>
+          </div>
+          <div class="timer-controls">
+            <button id="timerToggleButton" type="button" aria-label="تشغيل المؤقت" title="تشغيل أو إيقاف المؤقت">▶</button>
+            <button id="timerResetButton" type="button" aria-label="إعادة المؤقت إلى ثلاثين ثانية" title="إعادة المؤقت">↺</button>
+          </div>
+        </div>
+
+        <div class="board-shell">
+          <div class="hex-grid" id="board" role="grid" aria-label="شبكة الحروف"></div>
+
+          <div class="ready-overlay" id="readyOverlay" aria-hidden="true">
+            <div class="ready-core">
+              <span class="ready-ring"></span>
+              <div class="ready-content">
+                <span class="ready-label">استعدوا</span>
+                <span class="ready-letter" id="readyLetter">أ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-controls">
+        <button class="control-button primary" id="newRoundButton" type="button"><span aria-hidden="true">✦</span> <span id="newRoundLabel">إعادة توزيع الجولة</span></button>
+          <button class="control-button" id="resetBuzzButton" type="button" hidden><span aria-hidden="true">↻</span> إعادة فتح الإجابة</button>
+          <button class="control-button" id="undoButton" type="button" disabled><span aria-hidden="true">↶</span> تراجع</button>
+          <button class="control-button danger" id="cancelQuestionButton" type="button" disabled><span aria-hidden="true">×</span> إلغاء الحرف</button>
+        </div>
+      </section>
+
+      <aside class="team-card red" id="redCard">
+        <div class="team-badge">
+          <span class="team-dot"></span> الفريق الثاني
+          <span class="round-wins">الجولات <strong id="redRoundWins">٠</strong>/<span data-round-target>٣</span></span>
+        </div>
+        <input class="team-name" id="redName" maxlength="22" value="الفريق الأحمر" aria-label="اسم الفريق الأحمر">
+        <div class="score" id="redScore">٠</div>
+        <div class="score-caption">نقطة</div>
+        <div class="score-controls" aria-label="تعديل نقاط الفريق الأحمر">
+          <button class="score-button" type="button" data-score-team="red" data-score-direction="-1" aria-label="خصم درجة السؤال">−</button>
+          <button class="score-button" type="button" data-score-team="red" data-score-direction="1" aria-label="إضافة درجة السؤال">+</button>
+        </div>
+        <button class="winner-button" id="redWinnerButton" type="button" data-winner-team="red" aria-pressed="false">
+          إجابة صحيحة للأحمر
+        </button>
+        <p class="team-goal">الهدف: وصل يمين اللوحة بيسارها</p>
+      </aside>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="settings-dialog" id="settingsDialog" aria-labelledby="settingsTitle">
+    <div class="settings-body">
+      <div class="settings-header">
+        <div>
+          <h2 id="settingsTitle">إعدادات اللعبة</h2>
+          <p>خصص الفرق والمؤقت ودرجة السؤال كما يناسب الجولة.</p>
+        </div>
+        <button class="settings-close" id="closeSettingsButton" type="button" aria-label="إغلاق الإعدادات">×</button>
+      </div>
+
+      <div class="settings-grid">
+        <section class="settings-section" aria-labelledby="teamsSettingsTitle">
+          <h3 id="teamsSettingsTitle">الفرق والألوان</h3>
+          <label class="settings-field">
+            <span>الفريق الأول</span>
+            <span class="name-color-control">
+              <input class="settings-input" id="settingsBlueName" maxlength="22" aria-label="اسم الفريق الأول">
+              <input class="color-input" id="settingsBlueColor" type="color" aria-label="لون الفريق الأول">
+            </span>
+          </label>
+          <label class="settings-field">
+            <span>الفريق الثاني</span>
+            <span class="name-color-control">
+              <input class="settings-input" id="settingsRedName" maxlength="22" aria-label="اسم الفريق الثاني">
+              <input class="color-input" id="settingsRedColor" type="color" aria-label="لون الفريق الثاني">
+            </span>
+          </label>
+        </section>
+
+        <section class="settings-section" aria-labelledby="roundSettingsTitle">
+          <h3 id="roundSettingsTitle">المباراة والسؤال</h3>
+          <label class="settings-field">
+            <span>عدد جولات المباراة</span>
+            <select class="settings-input" id="settingsRoundLimit" aria-describedby="roundLimitHint">
+              <option value="3">٣ جولات — الفوز بجولتين</option>
+              <option value="5">٥ جولات — الفوز بثلاث</option>
+              <option value="7">٧ جولات — الفوز بأربع</option>
+              <option value="9">٩ جولات — الفوز بخمس</option>
+            </select>
+            <small id="roundLimitHint">يُحسم الفوز فور بلوغ الأغلبية دون انتظار بقية الجولات.</small>
+          </label>
+          <label class="settings-field">
+            <span>تحديد صاحب أولوية الإجابة</span>
+            <select class="settings-input" id="settingsAnswerControl" aria-describedby="answerControlHint">
+              <option value="presenter">المقدم يختار الفريق</option>
+              <option value="contestants">المتسابقون — الأول في الضغط</option>
+            </select>
+            <small id="answerControlHint">في وضع المتسابقين تقفل أول ضغطة زر الفريق الآخر، بينما يبقى اعتماد الإجابة بيد المقدم.</small>
+          </label>
+          <label class="settings-field">
+            <span>مدة الإجابة بالثواني</span>
+            <input class="settings-input" id="settingsTimerSeconds" type="number" min="5" max="300" step="5" inputmode="numeric">
+          </label>
+          <div class="preset-row" aria-label="قيم سريعة للمؤقت">
+            <button type="button" data-settings-target="settingsTimerSeconds" data-preset-value="15">15</button>
+            <button type="button" data-settings-target="settingsTimerSeconds" data-preset-value="30">30</button>
+            <button type="button" data-settings-target="settingsTimerSeconds" data-preset-value="45">45</button>
+            <button type="button" data-settings-target="settingsTimerSeconds" data-preset-value="60">60</button>
+          </div>
+          <label class="settings-field">
+            <span>درجة السؤال</span>
+            <input class="settings-input" id="settingsQuestionPoints" type="number" min="1" max="10000" step="1" inputmode="numeric">
+          </label>
+          <div class="preset-row" aria-label="قيم سريعة لدرجة السؤال">
+            <button type="button" data-settings-target="settingsQuestionPoints" data-preset-value="50">50</button>
+            <button type="button" data-settings-target="settingsQuestionPoints" data-preset-value="100">100</button>
+            <button type="button" data-settings-target="settingsQuestionPoints" data-preset-value="200">200</button>
+            <button type="button" data-settings-target="settingsQuestionPoints" data-preset-value="500">500</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="settings-reset-grid">
+        <div class="settings-reset">
+          <div>
+            <strong>نقاط الفريقين</strong>
+            <span>يُصفّر نقاط الفريقين فقط مع بقاء اللوحة والجولة.</span>
+          </div>
+          <button class="round-reset-button score-reset-button" id="resetScoresButton" type="button">تصفير النقاط</button>
+        </div>
+        <div class="settings-reset">
+          <div>
+            <strong>نتائج الجولات</strong>
+            <span id="settingsRoundSummary">الجولة ١ من ٥ — النتيجة ٠ مقابل ٠.</span>
+          </div>
+          <button class="round-reset-button" id="resetRoundCounterButton" type="button">تصفير نتائج الجولات</button>
+        </div>
+      </div>
+
+      <p class="settings-feedback" id="settingsFeedback" role="alert" aria-live="assertive" hidden></p>
+      <div class="dialog-actions">
+        <button class="confirm" id="saveSettingsButton" type="button">حفظ الإعدادات</button>
+        <button class="cancel" id="cancelSettingsButton" type="button">إلغاء</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="confirmDialog" aria-labelledby="confirmTitle">
+    <div class="dialog-body">
+      <div class="dialog-icon" id="confirmIcon" aria-hidden="true">✦</div>
+      <h2 id="confirmTitle">بدء جولة جديدة؟</h2>
+      <p id="confirmText">ستُنظّف اللوحة وتُوزّع الحروف عشوائيًا مع الاحتفاظ بالنقاط.</p>
+      <div class="dialog-actions">
+        <button class="confirm" id="confirmActionButton" type="button">ابدأ الجولة</button>
+        <button class="cancel" id="cancelDialogButton" type="button">إلغاء</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="win-dialog" id="winDialog" aria-labelledby="winnerName">
+    <div class="dialog-body">
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+      <div class="winner-crown" aria-hidden="true">♛</div>
+      <h2 class="winner-name" id="winnerName">الفريق الفائز</h2>
+      <p id="winnerMessage">اكتمل المسار بنجاح.</p>
+      <div class="dialog-actions">
+        <button class="confirm" id="winnerNewRoundButton" type="button">الجولة التالية</button>
+        <button class="cancel" id="closeWinButton" type="button">عرض اللوحة</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const LETTERS = ["أ", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"];
+      const BOARD_SIDE = 5;
+      const BOARD_COUNT = BOARD_SIDE * BOARD_SIDE;
+      const DEFAULT_TIMER_SECONDS = 30;
+      const DEFAULT_QUESTION_POINTS = 100;
+      const DEFAULT_ROUND_LIMIT = 5;
+      const ROUND_LIMIT_OPTIONS = [3, 5, 7, 9];
+      const DEFAULT_COLORS = { blue: "#1da9dc", red: "#ff6478" };
+      const READY_DURATION = 1450;
+      const STORAGE_KEY = "huroof-game-state-v2";
+      const ARABIC_DIGITS = "٠١٢٣٤٥٦٧٨٩";
+
+      const els = {
+        themeColorMeta: document.getElementById("themeColorMeta"),
+        masarPortalLink: document.getElementById("masarPortalLink"),
+        board: document.getElementById("board"),
+        blueName: document.getElementById("blueName"),
+        redName: document.getElementById("redName"),
+        blueScore: document.getElementById("blueScore"),
+        redScore: document.getElementById("redScore"),
+        blueRoundWins: document.getElementById("blueRoundWins"),
+        redRoundWins: document.getElementById("redRoundWins"),
+        blueCard: document.getElementById("blueCard"),
+        redCard: document.getElementById("redCard"),
+        blueWinnerButton: document.getElementById("blueWinnerButton"),
+        redWinnerButton: document.getElementById("redWinnerButton"),
+        statusTitle: document.getElementById("statusTitle"),
+        statusHint: document.getElementById("statusHint"),
+        roundNumber: document.getElementById("roundNumber"),
+        roundLimitValue: document.getElementById("roundLimitValue"),
+        roundsNeededValue: document.getElementById("roundsNeededValue"),
+        timer: document.getElementById("timer"),
+        timerValue: document.getElementById("timerValue"),
+        timerToggleButton: document.getElementById("timerToggleButton"),
+        timerResetButton: document.getElementById("timerResetButton"),
+        questionPointsValue: document.getElementById("questionPointsValue"),
+        readyOverlay: document.getElementById("readyOverlay"),
+        readyLetter: document.getElementById("readyLetter"),
+        undoButton: document.getElementById("undoButton"),
+        cancelQuestionButton: document.getElementById("cancelQuestionButton"),
+        resetBuzzButton: document.getElementById("resetBuzzButton"),
+        newRoundButton: document.getElementById("newRoundButton"),
+        newRoundLabel: document.getElementById("newRoundLabel"),
+        resetGameButton: document.getElementById("resetGameButton"),
+        settingsButton: document.getElementById("settingsButton"),
+        themeButton: document.getElementById("themeButton"),
+        fullscreenButton: document.getElementById("fullscreenButton"),
+        soundButton: document.getElementById("soundButton"),
+        toast: document.getElementById("toast"),
+        settingsDialog: document.getElementById("settingsDialog"),
+        closeSettingsButton: document.getElementById("closeSettingsButton"),
+        cancelSettingsButton: document.getElementById("cancelSettingsButton"),
+        saveSettingsButton: document.getElementById("saveSettingsButton"),
+        settingsBlueName: document.getElementById("settingsBlueName"),
+        settingsRedName: document.getElementById("settingsRedName"),
+        settingsBlueColor: document.getElementById("settingsBlueColor"),
+        settingsRedColor: document.getElementById("settingsRedColor"),
+        settingsTimerSeconds: document.getElementById("settingsTimerSeconds"),
+        settingsQuestionPoints: document.getElementById("settingsQuestionPoints"),
+        settingsRoundLimit: document.getElementById("settingsRoundLimit"),
+        settingsAnswerControl: document.getElementById("settingsAnswerControl"),
+        settingsRoundSummary: document.getElementById("settingsRoundSummary"),
+        settingsFeedback: document.getElementById("settingsFeedback"),
+        resetScoresButton: document.getElementById("resetScoresButton"),
+        resetRoundCounterButton: document.getElementById("resetRoundCounterButton"),
+        confirmDialog: document.getElementById("confirmDialog"),
+        confirmTitle: document.getElementById("confirmTitle"),
+        confirmText: document.getElementById("confirmText"),
+        confirmIcon: document.getElementById("confirmIcon"),
+        confirmActionButton: document.getElementById("confirmActionButton"),
+        cancelDialogButton: document.getElementById("cancelDialogButton"),
+        winDialog: document.getElementById("winDialog"),
+        winnerName: document.getElementById("winnerName"),
+        winnerMessage: document.getElementById("winnerMessage"),
+        winnerNewRoundButton: document.getElementById("winnerNewRoundButton"),
+        closeWinButton: document.getElementById("closeWinButton"),
+        confetti: document.getElementById("confetti")
+      };
+
+      let state = {
+        round: 1,
+        roundLimit: DEFAULT_ROUND_LIMIT,
+        roundWins: { blue: 0, red: 0 },
+        roundWinner: null,
+        matchWinner: null,
+        board: [],
+        scores: { blue: 0, red: 0 },
+        names: { blue: "الفريق الأزرق", red: "الفريق الأحمر" },
+        colors: { ...DEFAULT_COLORS },
+        timerSeconds: DEFAULT_TIMER_SECONDS,
+        questionPoints: DEFAULT_QUESTION_POINTS,
+        answerControl: "presenter",
+        selectedId: null,
+        selectedTeam: null,
+        phase: "idle",
+        winningPath: [],
+        history: [],
+        soundOn: true,
+        theme: "light"
+      };
+
+      let readyTimeout = null;
+      let winnerTimeout = null;
+      let toastTimeout = null;
+      let timerInterval = null;
+      let timerRemaining = DEFAULT_TIMER_SECONDS;
+      let timerRunning = false;
+      let timerEndsAt = null;
+      let pendingConfirmAction = null;
+      let audioContext = null;
+      let settingsTimerWasRunning = false;
+
+      function configureMasarPortalLink() {
+        const portalFromQuery = new URLSearchParams(window.location.search).get("portal");
+        const candidate = portalFromQuery || document.referrer;
+        if (!candidate) return;
+
+        try {
+          const target = new URL(candidate, window.location.href);
+          const isSameOrigin = target.origin === window.location.origin;
+          const isLocalFile = window.location.protocol === "file:" && target.protocol === "file:";
+          if (isSameOrigin || isLocalFile) els.masarPortalLink.href = target.href;
+        } catch {
+          // Keep the portable default (../index.html) if the portal address is invalid.
+        }
+      }
+
+      function toArabicNumber(value) {
+        return String(Math.max(0, Math.round(value))).replace(/\d/g, digit => ARABIC_DIGITS[digit]);
+      }
+
+      function formatScore(value) {
+        return Math.max(0, Math.round(value)).toLocaleString("en-US");
+      }
+
+      function clampInteger(value, minimum, maximum, fallback) {
+        const parsed = Math.round(Number(value));
+        return Number.isFinite(parsed) ? Math.max(minimum, Math.min(maximum, parsed)) : fallback;
+      }
+
+      function normalizeRoundLimit(value) {
+        const parsed = Number(value);
+        return ROUND_LIMIT_OPTIONS.includes(parsed) ? parsed : DEFAULT_ROUND_LIMIT;
+      }
+
+      function roundsNeededToWin(limit = state.roundLimit) {
+        return Math.floor(limit / 2) + 1;
+      }
+
+      function isHexColor(value) {
+        return /^#[0-9a-f]{6}$/i.test(String(value || ""));
+      }
+
+      function hexToRgb(hex) {
+        const numeric = Number.parseInt(hex.slice(1), 16);
+        return {
+          r: (numeric >> 16) & 255,
+          g: (numeric >> 8) & 255,
+          b: numeric & 255
+        };
+      }
+
+      function rgbToHex({ r, g, b }) {
+        return `#${[r, g, b].map(value => Math.round(value).toString(16).padStart(2, "0")).join("")}`;
+      }
+
+      function mixColor(color, target, amount) {
+        const sourceRgb = hexToRgb(color);
+        const targetRgb = hexToRgb(target);
+        return rgbToHex({
+          r: sourceRgb.r + (targetRgb.r - sourceRgb.r) * amount,
+          g: sourceRgb.g + (targetRgb.g - sourceRgb.g) * amount,
+          b: sourceRgb.b + (targetRgb.b - sourceRgb.b) * amount
+        });
+      }
+
+      function colorWithAlpha(color, alpha) {
+        const { r, g, b } = hexToRgb(color);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      }
+
+      function readableInk(color) {
+        const { r, g, b } = hexToRgb(color);
+        const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        return luminance > 0.48 ? "#07101f" : "#ffffff";
+      }
+
+      function applyThemeColors() {
+        const root = document.documentElement;
+        for (const team of ["blue", "red"]) {
+          const color = state.colors[team];
+          root.style.setProperty(`--${team}`, color);
+          root.style.setProperty(`--${team}-deep`, mixColor(color, "#020818", 0.48));
+          root.style.setProperty(`--${team}-light`, mixColor(color, "#ffffff", 0.3));
+          root.style.setProperty(`--${team}-border`, mixColor(color, "#ffffff", 0.76));
+          root.style.setProperty(`--${team}-soft`, colorWithAlpha(color, 0.18));
+          root.style.setProperty(`--${team}-glow`, colorWithAlpha(color, 0.26));
+          root.style.setProperty(`--${team}-ink`, readableInk(color));
+        }
+      }
+
+      function applyTheme() {
+        const isDark = state.theme === "dark";
+        document.documentElement.setAttribute("data-theme", state.theme);
+        els.themeButton.textContent = isDark ? "☀" : "☾";
+        els.themeButton.setAttribute("aria-label", isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن");
+        els.themeButton.title = isDark ? "الوضع الفاتح" : "الوضع الداكن";
+        els.themeColorMeta.content = isDark ? "#0b1120" : "#2563eb";
+      }
+
+      function toggleTheme() {
+        state.theme = state.theme === "dark" ? "light" : "dark";
+        saveState();
+        applyTheme();
+      }
+
+      function randomIndex(maxExclusive) {
+        if (window.crypto && window.crypto.getRandomValues) {
+          const values = new Uint32Array(1);
+          window.crypto.getRandomValues(values);
+          return values[0] % maxExclusive;
+        }
+        return Math.floor(Math.random() * maxExclusive);
+      }
+
+      function shuffledLetters() {
+        const shuffled = [...LETTERS];
+        for (let i = shuffled.length - 1; i > 0; i -= 1) {
+          const j = randomIndex(i + 1);
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, BOARD_COUNT);
+      }
+
+      function createBoard() {
+        return shuffledLetters().map((letter, id) => ({
+          id,
+          row: Math.floor(id / BOARD_SIDE),
+          col: id % BOARD_SIDE,
+          letter,
+          owner: null
+        }));
+      }
+
+      function validateSavedBoard(board) {
+        return Array.isArray(board) &&
+          board.length === BOARD_COUNT &&
+          board.every((cell, index) =>
+            cell &&
+            cell.id === index &&
+            cell.row === Math.floor(index / BOARD_SIDE) &&
+            cell.col === index % BOARD_SIDE &&
+            LETTERS.includes(cell.letter) &&
+            (cell.owner === null || cell.owner === "blue" || cell.owner === "red")
+          );
+      }
+
+      function loadSavedState() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+          if (!saved || !validateSavedBoard(saved.board)) return false;
+          state.roundLimit = normalizeRoundLimit(saved.roundLimit);
+          const target = roundsNeededToWin(state.roundLimit);
+          state.round = clampInteger(saved.round, 1, state.roundLimit, 1);
+          state.roundWins.blue = clampInteger(saved.roundWins && saved.roundWins.blue, 0, target, 0);
+          state.roundWins.red = clampInteger(saved.roundWins && saved.roundWins.red, 0, target, 0);
+          state.roundWinner = saved.roundWinner === "blue" || saved.roundWinner === "red" ? saved.roundWinner : null;
+          state.matchWinner = state.roundWins.blue >= target ? "blue" : state.roundWins.red >= target ? "red" : null;
+          state.board = saved.board;
+          state.scores.blue = Math.max(0, Number(saved.scores && saved.scores.blue) || 0);
+          state.scores.red = Math.max(0, Number(saved.scores && saved.scores.red) || 0);
+          state.names.blue = String(saved.names && saved.names.blue || "الفريق الأزرق").slice(0, 22);
+          state.names.red = String(saved.names && saved.names.red || "الفريق الأحمر").slice(0, 22);
+          state.colors.blue = isHexColor(saved.colors && saved.colors.blue) ? saved.colors.blue : DEFAULT_COLORS.blue;
+          state.colors.red = isHexColor(saved.colors && saved.colors.red) ? saved.colors.red : DEFAULT_COLORS.red;
+          state.timerSeconds = clampInteger(saved.timerSeconds, 5, 300, DEFAULT_TIMER_SECONDS);
+          state.questionPoints = clampInteger(saved.questionPoints, 1, 10000, DEFAULT_QUESTION_POINTS);
+          state.answerControl = saved.answerControl === "contestants" ? "contestants" : "presenter";
+          state.soundOn = saved.soundOn !== false;
+          state.theme = saved.theme === "dark" ? "dark" : "light";
+          if (state.roundWinner) state.winningPath = findWinningPath(state.roundWinner, state.board) || [];
+          return true;
+        } catch {
+          return false;
+        }
+      }
+
+      function saveState() {
+        const persistable = {
+          round: state.round,
+          roundLimit: state.roundLimit,
+          roundWins: state.roundWins,
+          roundWinner: state.roundWinner,
+          matchWinner: state.matchWinner,
+          board: state.board,
+          scores: state.scores,
+          names: state.names,
+          colors: state.colors,
+          timerSeconds: state.timerSeconds,
+          questionPoints: state.questionPoints,
+          answerControl: state.answerControl,
+          soundOn: state.soundOn,
+          theme: state.theme
+        };
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(persistable));
+        } catch {
+          // The game remains fully usable when browser storage is unavailable.
+        }
+      }
+
+      function snapshot() {
+        return {
+          board: state.board.map(cell => ({ ...cell })),
+          scores: { ...state.scores },
+          round: state.round,
+          roundWins: { ...state.roundWins },
+          roundWinner: state.roundWinner,
+          matchWinner: state.matchWinner,
+          winningPath: [...state.winningPath]
+        };
+      }
+
+      function pushHistory() {
+        state.history.push(snapshot());
+        if (state.history.length > 40) state.history.shift();
+      }
+
+      function clearQuestion() {
+        window.clearTimeout(readyTimeout);
+        state.selectedId = null;
+        state.selectedTeam = null;
+        state.phase = "idle";
+        els.readyOverlay.classList.remove("is-visible");
+        els.readyOverlay.setAttribute("aria-hidden", "true");
+        resetTimer(false);
+      }
+
+      function renderBoard() {
+        const selected = state.selectedId;
+        const winningIds = new Set(state.winningPath);
+        const fragment = document.createDocumentFragment();
+
+        function positionHex(element, col, row) {
+          const isOffsetColumn = Math.abs(col) % 2 === 1;
+          element.style.setProperty("--x", `${(col + 1) * 78}%`);
+          element.style.setProperty("--y", `${(row + 1 + (isOffsetColumn ? 0.5 : 0)) * 100}%`);
+        }
+
+        function addEdge(team, col, row) {
+          const edge = document.createElement("span");
+          edge.className = `edge-hex edge-${team}`;
+          edge.setAttribute("aria-hidden", "true");
+          positionHex(edge, col, row);
+          fragment.appendChild(edge);
+        }
+
+        for (let col = 0; col < BOARD_SIDE; col += 1) {
+          addEdge("blue", col, -1);
+          addEdge("blue", col, BOARD_SIDE);
+        }
+
+        for (let row = -1; row <= BOARD_SIDE; row += 1) {
+          addEdge("red", -1, row);
+          addEdge("red", BOARD_SIDE, row);
+        }
+
+        for (const cell of state.board) {
+          const button = document.createElement("button");
+          const classNames = ["hex"];
+          if (cell.owner) classNames.push("is-owned", `is-${cell.owner}`);
+          if (selected === cell.id) classNames.push("is-selected");
+          if (winningIds.has(cell.id)) classNames.push("is-winning");
+          button.className = classNames.join(" ");
+          button.type = "button";
+          button.dataset.cellId = String(cell.id);
+          button.setAttribute("role", "gridcell");
+          button.setAttribute("aria-pressed", selected === cell.id ? "true" : "false");
+          const ownerText = cell.owner ? `، ملك ${state.names[cell.owner]}` : "";
+          button.setAttribute("aria-label", `الحرف ${cell.letter}${ownerText}`);
+          if (cell.owner) button.disabled = true;
+          button.innerHTML = `<span class="hex-letter">${cell.letter}</span>`;
+          positionHex(button, cell.col, cell.row);
+          fragment.appendChild(button);
+        }
+
+        els.board.replaceChildren(fragment);
+      }
+
+      function answerButtonText(team) {
+        if (state.answerControl !== "contestants") return `إجابة صحيحة لـ ${state.names[team]}`;
+        if (state.selectedTeam === team) return `الأولوية لـ ${state.names[team]}`;
+        if (state.selectedTeam) return "تم حجز أولوية الإجابة";
+        return `اضغط للإجابة — ${state.names[team]}`;
+      }
+
+      function renderTeams() {
+        els.blueName.value = state.names.blue;
+        els.redName.value = state.names.red;
+        els.blueScore.textContent = formatScore(state.scores.blue);
+        els.redScore.textContent = formatScore(state.scores.red);
+        els.blueRoundWins.textContent = toArabicNumber(state.roundWins.blue);
+        els.redRoundWins.textContent = toArabicNumber(state.roundWins.red);
+        const roundTarget = toArabicNumber(roundsNeededToWin());
+        document.querySelectorAll("[data-round-target]").forEach(element => {
+          element.textContent = roundTarget;
+        });
+        els.blueWinnerButton.textContent = answerButtonText("blue");
+        els.redWinnerButton.textContent = answerButtonText("red");
+
+        document.querySelectorAll("[data-score-team]").forEach(button => {
+          const action = Number(button.dataset.scoreDirection) > 0 ? "إضافة" : "خصم";
+          button.setAttribute("aria-label", `${action} ${state.questionPoints} نقطة`);
+        });
+
+        for (const team of ["blue", "red"]) {
+          const card = team === "blue" ? els.blueCard : els.redCard;
+          const button = team === "blue" ? els.blueWinnerButton : els.redWinnerButton;
+          const isSelected = state.selectedTeam === team;
+          const isContestantMode = state.answerControl === "contestants";
+          card.classList.toggle("is-answering", isSelected);
+          card.classList.toggle("is-buzz-winner", isContestantMode && isSelected);
+          card.classList.toggle("is-buzz-locked", isContestantMode && Boolean(state.selectedTeam) && !isSelected);
+          button.classList.toggle("is-buzzer", isContestantMode);
+          button.setAttribute("aria-pressed", String(isSelected));
+          button.disabled = state.selectedId === null || state.phase === "ready" || (isContestantMode && state.selectedTeam !== null);
+        }
+        els.resetBuzzButton.hidden = state.answerControl !== "contestants" || state.selectedId === null || state.phase === "ready" || state.selectedTeam === null;
+      }
+
+      function renderStatus() {
+        const selectedCell = state.selectedId === null ? null : state.board[state.selectedId];
+        els.roundNumber.textContent = toArabicNumber(state.round);
+        els.roundLimitValue.textContent = toArabicNumber(state.roundLimit);
+        els.roundsNeededValue.textContent = toArabicNumber(roundsNeededToWin());
+        els.questionPointsValue.textContent = toArabicNumber(state.questionPoints);
+        els.timerResetButton.setAttribute("aria-label", `إعادة المؤقت إلى ${state.timerSeconds} ثانية`);
+        els.cancelQuestionButton.disabled = state.selectedId === null;
+        els.undoButton.disabled = state.history.length === 0;
+        els.newRoundLabel.textContent = state.matchWinner
+          ? "مباراة جديدة"
+          : state.roundWinner
+            ? "الجولة التالية"
+            : "إعادة توزيع الجولة";
+
+        if (state.matchWinner) {
+          els.statusTitle.textContent = `بطل المباراة: ${state.names[state.matchWinner]}`;
+          els.statusHint.textContent = `حسم الفوز بنتيجة ${toArabicNumber(state.roundWins[state.matchWinner])} جولات`;
+        } else if (state.winningPath.length) {
+          const winner = state.board[state.winningPath[0]].owner;
+          els.statusTitle.textContent = `فاز ${state.names[winner]} بالجولة`;
+          els.statusHint.textContent = `النتيجة ${toArabicNumber(state.roundWins.blue)} مقابل ${toArabicNumber(state.roundWins.red)}`;
+        } else if (state.phase === "ready" && selectedCell) {
+          els.statusTitle.textContent = `استعدوا للحرف ${selectedCell.letter}`;
+          els.statusHint.textContent = "بعد ظهور الإشارة، اقرأ السؤال للمشاركين";
+        } else if (state.selectedId !== null && selectedCell) {
+          if (state.selectedTeam) {
+            if (state.answerControl === "contestants") {
+              els.statusTitle.textContent = `أولوية الإجابة: ${state.names[state.selectedTeam]}`;
+              els.statusHint.textContent = `المقدم يعتمد الإجابة بالضغط على الحرف ${selectedCell.letter} أو يعيد فتح الإجابة`;
+            } else {
+              els.statusTitle.textContent = `الإجابة الصحيحة: ${state.names[state.selectedTeam]}`;
+              els.statusHint.textContent = `اضغط الحرف ${selectedCell.letter} مرة ثانية لتثبيت اللون`;
+            }
+          } else {
+            if (state.answerControl === "contestants") {
+              els.statusTitle.textContent = `السؤال على الحرف ${selectedCell.letter} — بانتظار أول ضغطة`;
+              els.statusHint.textContent = "أول فريق يضغط زره الملون يحصل على أولوية الإجابة";
+            } else {
+              els.statusTitle.textContent = `السؤال على الحرف ${selectedCell.letter}`;
+              els.statusHint.textContent = "اختر الفريق صاحب الإجابة الصحيحة، ثم اضغط الحرف مرة ثانية";
+            }
+          }
+        } else {
+          els.statusTitle.textContent = "اختر حرفًا للبدء";
+          els.statusHint.textContent = "الحروف موزعة عشوائيًا — الضغطة الأولى للاستعداد";
+        }
+      }
+
+      function render() {
+        applyTheme();
+        applyThemeColors();
+        renderBoard();
+        renderTeams();
+        renderStatus();
+        updateSoundButton();
+      }
+
+      function showToast(message) {
+        window.clearTimeout(toastTimeout);
+        els.toast.textContent = message;
+        els.toast.classList.add("is-visible");
+        toastTimeout = window.setTimeout(() => els.toast.classList.remove("is-visible"), 2200);
+      }
+
+      function getAudioContext() {
+        if (!state.soundOn) return null;
+        const Context = window.AudioContext || window.webkitAudioContext;
+        if (!Context) return null;
+        try {
+          if (!audioContext) audioContext = new Context();
+          if (audioContext.state === "suspended") {
+            const resumeResult = audioContext.resume();
+            if (resumeResult && typeof resumeResult.catch === "function") resumeResult.catch(() => {});
+          }
+          return audioContext;
+        } catch {
+          return null;
+        }
+      }
+
+      function tone(frequency, duration = 0.11, delay = 0, type = "sine", volume = 0.045) {
+        try {
+          const context = getAudioContext();
+          if (!context) return;
+          const oscillator = context.createOscillator();
+          const gain = context.createGain();
+          const start = context.currentTime + delay;
+          oscillator.type = type;
+          oscillator.frequency.setValueAtTime(frequency, start);
+          gain.gain.setValueAtTime(0.0001, start);
+          gain.gain.exponentialRampToValueAtTime(volume, start + 0.018);
+          gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+          oscillator.connect(gain);
+          gain.connect(context.destination);
+          oscillator.start(start);
+          oscillator.stop(start + duration + 0.03);
+        } catch {
+          // Sound is optional and must never interrupt the game flow.
+        }
+      }
+
+      function playReadySound() {
+        tone(440, 0.12, 0);
+        tone(560, 0.12, 0.22);
+        tone(720, 0.2, 0.44);
+      }
+
+      function playBuzzSound(team) {
+        const base = team === "blue" ? 660 : 520;
+        tone(base, 0.1, 0, "square", 0.055);
+        tone(base * 1.34, 0.22, 0.09, "square", 0.055);
+      }
+
+      function playClaimSound(team) {
+        if (team === "blue") {
+          tone(520, 0.13, 0, "triangle");
+          tone(760, 0.2, 0.11, "triangle");
+        } else {
+          tone(430, 0.13, 0, "triangle");
+          tone(650, 0.2, 0.11, "triangle");
+        }
+      }
+
+      function playWinSound() {
+        [523, 659, 784, 1047].forEach((frequency, index) => tone(frequency, 0.25, index * 0.13, "triangle", 0.055));
+      }
+
+      function selectCell(id) {
+        const cell = state.board[id];
+        if (!cell || cell.owner || state.winningPath.length) return;
+
+        if (state.selectedId === null) {
+          state.selectedId = id;
+          state.selectedTeam = null;
+          state.phase = "ready";
+          els.readyLetter.textContent = cell.letter;
+          els.readyOverlay.classList.add("is-visible");
+          els.readyOverlay.setAttribute("aria-hidden", "false");
+          render();
+
+          window.clearTimeout(readyTimeout);
+          readyTimeout = window.setTimeout(() => {
+            if (state.selectedId !== id || state.phase !== "ready") return;
+            state.phase = "answering";
+            els.readyOverlay.classList.remove("is-visible");
+            els.readyOverlay.setAttribute("aria-hidden", "true");
+            startTimer();
+            render();
+          }, READY_DURATION);
+          playReadySound();
+          return;
+        }
+
+        if (state.selectedId !== id) {
+          showToast("أكمل الحرف المحدد أولًا أو استخدم «إلغاء الحرف»");
+          return;
+        }
+
+        if (state.phase === "ready") return;
+
+        if (!state.selectedTeam) {
+          showToast(state.answerControl === "contestants" ? "بانتظار أول فريق يضغط زر الإجابة" : "اختر الفريق صاحب الإجابة الصحيحة أولًا");
+          els.blueWinnerButton.animate(
+            [{ transform: "translateX(0)" }, { transform: "translateX(4px)" }, { transform: "translateX(-4px)" }, { transform: "translateX(0)" }],
+            { duration: 320 }
+          );
+          els.redWinnerButton.animate(
+            [{ transform: "translateX(0)" }, { transform: "translateX(4px)" }, { transform: "translateX(-4px)" }, { transform: "translateX(0)" }],
+            { duration: 320 }
+          );
+          return;
+        }
+
+        claimSelectedCell();
+      }
+
+      function selectAnsweringTeam(team) {
+        if (state.selectedId === null) {
+          showToast("اختر حرفًا من اللوحة أولًا");
+          return;
+        }
+        if (state.phase === "ready") return;
+        if (state.answerControl === "contestants" && state.selectedTeam) {
+          showToast(`الأولوية محجوزة لـ ${state.names[state.selectedTeam]}`);
+          return;
+        }
+        state.selectedTeam = team;
+        renderTeams();
+        renderStatus();
+        if (state.answerControl === "contestants") {
+          playBuzzSound(team);
+          showToast(`الأولوية لـ ${state.names[team]}`);
+        } else {
+          tone(team === "blue" ? 620 : 500, 0.1);
+        }
+      }
+
+      function resetBuzz() {
+        if (state.answerControl !== "contestants" || state.selectedId === null || state.phase === "ready" || state.selectedTeam === null) return;
+        state.selectedTeam = null;
+        renderTeams();
+        renderStatus();
+        tone(360, 0.12, 0, "triangle");
+        showToast("أُعيد فتح أولوية الإجابة للفريقين");
+      }
+
+      function claimSelectedCell() {
+        const id = state.selectedId;
+        const team = state.selectedTeam;
+        if (id === null || !team) return;
+
+        pushHistory();
+        state.board[id].owner = team;
+        state.scores[team] += state.questionPoints;
+        playClaimSound(team);
+
+        const winningPath = findWinningPath(team, state.board);
+        clearQuestion();
+        state.winningPath = winningPath || [];
+        if (state.winningPath.length) {
+          state.roundWinner = team;
+          state.roundWins[team] += 1;
+          if (state.roundWins[team] >= roundsNeededToWin()) state.matchWinner = team;
+        }
+        saveState();
+        render();
+
+        if (state.winningPath.length) {
+          window.clearTimeout(winnerTimeout);
+          winnerTimeout = window.setTimeout(() => {
+            if (state.roundWinner === team) showWinner(team);
+          }, 420);
+        }
+      }
+
+      function neighbors(cell) {
+        const evenColumnOffsets = [[-1, -1], [-1, 0], [0, -1], [0, 1], [1, -1], [1, 0]];
+        const oddColumnOffsets = [[-1, 0], [-1, 1], [0, -1], [0, 1], [1, 0], [1, 1]];
+        return (cell.col % 2 === 0 ? evenColumnOffsets : oddColumnOffsets)
+          .map(([colOffset, rowOffset]) => ({
+            row: cell.row + rowOffset,
+            col: cell.col + colOffset
+          }))
+          .filter(({ row, col }) => row >= 0 && row < BOARD_SIDE && col >= 0 && col < BOARD_SIDE)
+          .map(({ row, col }) => row * BOARD_SIDE + col);
+      }
+
+      function findWinningPath(team, board) {
+        const starts = board.filter(cell =>
+          cell.owner === team && (team === "blue" ? cell.row === 0 : cell.col === 0)
+        );
+        const queue = starts.map(cell => cell.id);
+        const visited = new Set(queue);
+        const previous = new Map();
+
+        while (queue.length) {
+          const currentId = queue.shift();
+          const current = board[currentId];
+          const reachedGoal = team === "blue" ? current.row === BOARD_SIDE - 1 : current.col === BOARD_SIDE - 1;
+          if (reachedGoal) {
+            const path = [currentId];
+            let cursor = currentId;
+            while (previous.has(cursor)) {
+              cursor = previous.get(cursor);
+              path.push(cursor);
+            }
+            return path.reverse();
+          }
+
+          for (const neighborId of neighbors(current)) {
+            if (!visited.has(neighborId) && board[neighborId].owner === team) {
+              visited.add(neighborId);
+              previous.set(neighborId, currentId);
+              queue.push(neighborId);
+            }
+          }
+        }
+        return null;
+      }
+
+      function startTimer() {
+        if (timerRunning || timerRemaining <= 0) return;
+        timerRunning = true;
+        timerEndsAt = Date.now() + timerRemaining * 1000;
+        els.timerToggleButton.textContent = "Ⅱ";
+        els.timerToggleButton.setAttribute("aria-label", "إيقاف المؤقت مؤقتًا");
+        window.clearInterval(timerInterval);
+        timerInterval = window.setInterval(tickTimer, 100);
+        tickTimer();
+      }
+
+      function pauseTimer() {
+        if (!timerRunning) return;
+        timerRemaining = Math.max(0, (timerEndsAt - Date.now()) / 1000);
+        timerRunning = false;
+        timerEndsAt = null;
+        window.clearInterval(timerInterval);
+        els.timerToggleButton.textContent = "▶";
+        els.timerToggleButton.setAttribute("aria-label", "تشغيل المؤقت");
+        updateTimerDisplay();
+      }
+
+      function resetTimer(shouldStart = false) {
+        window.clearInterval(timerInterval);
+        timerRunning = false;
+        timerEndsAt = null;
+        timerRemaining = state.timerSeconds;
+        els.timerToggleButton.textContent = "▶";
+        els.timerToggleButton.setAttribute("aria-label", "تشغيل المؤقت");
+        updateTimerDisplay();
+        if (shouldStart) startTimer();
+      }
+
+      function tickTimer() {
+        if (!timerRunning) return;
+        timerRemaining = Math.max(0, (timerEndsAt - Date.now()) / 1000);
+        updateTimerDisplay();
+        if (timerRemaining <= 0) {
+          timerRunning = false;
+          window.clearInterval(timerInterval);
+          els.timerToggleButton.textContent = "▶";
+          els.timerToggleButton.setAttribute("aria-label", "تشغيل المؤقت");
+          tone(220, 0.45, 0, "square", 0.04);
+          showToast("انتهى وقت الإجابة");
+        }
+      }
+
+      function updateTimerDisplay() {
+        const displayedSeconds = Math.ceil(timerRemaining);
+        const progress = Math.max(0, Math.min(100, (timerRemaining / state.timerSeconds) * 100));
+        els.timerValue.textContent = toArabicNumber(displayedSeconds);
+        els.timer.style.setProperty("--timer-progress", `${progress}%`);
+        els.timer.classList.toggle("is-danger", displayedSeconds <= 5);
+      }
+
+      function toggleTimer() {
+        if (timerRunning) {
+          pauseTimer();
+        } else {
+          if (timerRemaining <= 0) resetTimer(false);
+          startTimer();
+        }
+      }
+
+      function changeScore(team, delta) {
+        pushHistory();
+        state.scores[team] = Math.max(0, state.scores[team] + delta);
+        saveState();
+        renderTeams();
+        renderStatus();
+        els.undoButton.disabled = false;
+      }
+
+      function changeQuestionPoints(delta) {
+        state.questionPoints = clampInteger(state.questionPoints + delta, 1, 10000, DEFAULT_QUESTION_POINTS);
+        saveState();
+        renderTeams();
+        renderStatus();
+      }
+
+      function undo() {
+        const previous = state.history.pop();
+        if (!previous) return;
+        window.clearTimeout(winnerTimeout);
+        clearQuestion();
+        state.board = previous.board;
+        state.scores = previous.scores;
+        state.round = previous.round;
+        state.roundWins = previous.roundWins || { blue: 0, red: 0 };
+        state.roundWinner = previous.roundWinner || null;
+        state.matchWinner = previous.matchWinner || null;
+        state.winningPath = previous.winningPath || [];
+        if (els.winDialog.open) els.winDialog.close();
+        saveState();
+        render();
+        showToast("تم التراجع عن آخر حركة");
+      }
+
+      function cancelQuestion() {
+        if (state.selectedId === null) return;
+        clearQuestion();
+        render();
+        showToast("أُلغي الحرف ويمكن اختياره مرة أخرى");
+      }
+
+      function prepareRoundBoard(message) {
+        window.clearTimeout(readyTimeout);
+        window.clearTimeout(winnerTimeout);
+        state.history = [];
+        state.board = createBoard();
+        state.selectedId = null;
+        state.selectedTeam = null;
+        state.phase = "idle";
+        state.winningPath = [];
+        state.roundWinner = null;
+        resetTimer(false);
+        saveState();
+        render();
+        if (els.winDialog.open) els.winDialog.close();
+        showToast(message);
+      }
+
+      function restartCurrentRound() {
+        if (state.matchWinner) {
+          startNewMatch();
+          return;
+        }
+        prepareRoundBoard("أُعيد توزيع حروف الجولة الحالية");
+      }
+
+      function startNextRound() {
+        if (state.matchWinner) {
+          startNewMatch();
+          return;
+        }
+        state.round = Math.min(state.round + 1, state.roundLimit);
+        prepareRoundBoard(`بدأت الجولة ${toArabicNumber(state.round)} من ${toArabicNumber(state.roundLimit)}`);
+      }
+
+      function startNewMatch() {
+        state.scores = { blue: 0, red: 0 };
+        state.round = 1;
+        state.roundWins = { blue: 0, red: 0 };
+        state.roundWinner = null;
+        state.matchWinner = null;
+        prepareRoundBoard("بدأت مباراة جديدة");
+      }
+
+      function fillSettingsForm() {
+        els.settingsBlueName.value = state.names.blue;
+        els.settingsRedName.value = state.names.red;
+        els.settingsBlueColor.value = state.colors.blue;
+        els.settingsRedColor.value = state.colors.red;
+        els.settingsTimerSeconds.value = String(state.timerSeconds);
+        els.settingsQuestionPoints.value = String(state.questionPoints);
+        els.settingsRoundLimit.value = String(state.roundLimit);
+        els.settingsAnswerControl.value = state.answerControl;
+        els.settingsRoundSummary.textContent = `الجولة ${toArabicNumber(state.round)} من ${toArabicNumber(state.roundLimit)} — ${state.names.blue} ${toArabicNumber(state.roundWins.blue)} مقابل ${toArabicNumber(state.roundWins.red)} ${state.names.red}.`;
+      }
+
+      function openSettings() {
+        fillSettingsForm();
+        els.settingsFeedback.hidden = true;
+        els.settingsFeedback.textContent = "";
+        settingsTimerWasRunning = timerRunning;
+        if (timerRunning) pauseTimer();
+        els.settingsDialog.showModal();
+      }
+
+      function saveSettings() {
+        const blueColor = els.settingsBlueColor.value.toLowerCase();
+        const redColor = els.settingsRedColor.value.toLowerCase();
+        if (blueColor === redColor) {
+          els.settingsFeedback.textContent = "تعذّر الحفظ: اختر لونين مختلفين للفريقين حتى تبقى المسارات واضحة.";
+          els.settingsFeedback.hidden = false;
+          els.settingsRedColor.focus();
+          return;
+        }
+
+        els.settingsFeedback.hidden = true;
+        els.settingsFeedback.textContent = "";
+
+        const previousTimerSeconds = state.timerSeconds;
+        const nextRoundLimit = normalizeRoundLimit(els.settingsRoundLimit.value);
+        const roundLimitChanged = nextRoundLimit !== state.roundLimit;
+        const nextAnswerControl = els.settingsAnswerControl.value === "contestants" ? "contestants" : "presenter";
+        const answerControlChanged = nextAnswerControl !== state.answerControl;
+        state.names.blue = els.settingsBlueName.value.trim().slice(0, 22) || "الفريق الأول";
+        state.names.red = els.settingsRedName.value.trim().slice(0, 22) || "الفريق الثاني";
+        state.colors.blue = blueColor;
+        state.colors.red = redColor;
+        state.roundLimit = nextRoundLimit;
+        state.answerControl = nextAnswerControl;
+        state.timerSeconds = clampInteger(els.settingsTimerSeconds.value, 5, 300, DEFAULT_TIMER_SECONDS);
+        state.questionPoints = clampInteger(els.settingsQuestionPoints.value, 1, 10000, DEFAULT_QUESTION_POINTS);
+
+        if (state.timerSeconds !== previousTimerSeconds) resetTimer(false);
+        if (answerControlChanged) state.selectedTeam = null;
+        if (roundLimitChanged) {
+          window.clearTimeout(winnerTimeout);
+          state.round = 1;
+          state.roundWins = { blue: 0, red: 0 };
+          state.roundWinner = null;
+          state.matchWinner = null;
+          state.winningPath = [];
+          state.history = [];
+          state.board = createBoard();
+          clearQuestion();
+        }
+        saveState();
+        render();
+        els.settingsDialog.close();
+        showToast(roundLimitChanged
+          ? "حُفظ عدد الجولات وبدأت مباراة جديدة"
+          : answerControlChanged
+            ? "تم تغيير طريقة تحديد أولوية الإجابة"
+            : "تم حفظ إعدادات اللعبة");
+      }
+
+      function resetRoundCounter() {
+        if (state.round === 1 && state.roundWins.blue === 0 && state.roundWins.red === 0) {
+          showToast("نتائج الجولات مصفّرة بالفعل");
+          return;
+        }
+        pushHistory();
+        window.clearTimeout(winnerTimeout);
+        state.round = 1;
+        state.roundWins = { blue: 0, red: 0 };
+        state.roundWinner = null;
+        state.matchWinner = null;
+        state.winningPath = [];
+        state.board = createBoard();
+        clearQuestion();
+        saveState();
+        render();
+        fillSettingsForm();
+        showToast("تم تصفير نتائج الجولات — يمكنك التراجع");
+      }
+
+      function resetScores() {
+        if (state.scores.blue === 0 && state.scores.red === 0) {
+          showToast("النقاط مصفّرة بالفعل");
+          return;
+        }
+        pushHistory();
+        state.scores = { blue: 0, red: 0 };
+        saveState();
+        renderTeams();
+        renderStatus();
+        showToast("تم تصفير نقاط الفريقين — يمكنك التراجع");
+      }
+
+      function openConfirmation(type) {
+        if (type === "round") {
+          els.confirmIcon.textContent = "✦";
+          els.confirmTitle.textContent = "إعادة توزيع الجولة؟";
+          els.confirmText.textContent = "ستتغير الحروف دون احتساب فوز أو الانتقال إلى الجولة التالية.";
+          els.confirmActionButton.textContent = "إعادة التوزيع";
+          pendingConfirmAction = restartCurrentRound;
+        } else {
+          els.confirmIcon.textContent = "↺";
+          els.confirmTitle.textContent = "إعادة المباراة؟";
+          els.confirmText.textContent = "ستُصفّر النقاط ونتائج الجولات وتبدأ مباراة جديدة.";
+          els.confirmActionButton.textContent = "إعادة المباراة";
+          pendingConfirmAction = startNewMatch;
+        }
+        els.confirmDialog.showModal();
+      }
+
+      function makeConfetti() {
+        const colors = ["#f4c767", state.colors.blue, state.colors.red, "#ffffff"];
+        const fragment = document.createDocumentFragment();
+        for (let index = 0; index < 28; index += 1) {
+          const piece = document.createElement("i");
+          piece.style.left = `${randomIndex(101)}%`;
+          piece.style.setProperty("--confetti-color", colors[index % colors.length]);
+          piece.style.setProperty("--fall-time", `${2.1 + randomIndex(20) / 10}s`);
+          piece.style.setProperty("--delay", `${-(randomIndex(25) / 10)}s`);
+          piece.style.setProperty("--x", `${randomIndex(20) - 10}px`);
+          piece.style.setProperty("--x-end", `${randomIndex(120) - 60}px`);
+          piece.style.setProperty("--rotate", `${randomIndex(180)}deg`);
+          fragment.appendChild(piece);
+        }
+        els.confetti.replaceChildren(fragment);
+      }
+
+      function showWinner(team) {
+        const isBlue = team === "blue";
+        const matchComplete = state.matchWinner === team;
+        els.winnerName.textContent = matchComplete ? `${state.names[team]} بطل المباراة` : `${state.names[team]} فاز بالجولة`;
+        els.winnerMessage.textContent = matchComplete
+          ? `حسم المباراة بعد الفوز بـ ${toArabicNumber(state.roundWins[team])} جولات من أصل ${toArabicNumber(state.roundLimit)}.`
+          : `أصبحت نتيجة الجولات ${toArabicNumber(state.roundWins.blue)} مقابل ${toArabicNumber(state.roundWins.red)}. الجولة التالية جاهزة.`;
+        els.winnerNewRoundButton.textContent = matchComplete ? "مباراة جديدة" : "الجولة التالية";
+        els.winDialog.style.setProperty("--winner-color", isBlue ? "var(--blue)" : "var(--red)");
+        els.winDialog.style.setProperty("--winner-glow", colorWithAlpha(state.colors[team], 0.46));
+        makeConfetti();
+        playWinSound();
+        els.winDialog.showModal();
+      }
+
+      async function toggleFullscreen() {
+        try {
+          if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch {
+          showToast("وضع ملء الشاشة غير متاح في هذا المتصفح");
+        }
+      }
+
+      function updateFullscreenButton() {
+        const isFullscreen = Boolean(document.fullscreenElement);
+        els.fullscreenButton.textContent = isFullscreen ? "×" : "⛶";
+        els.fullscreenButton.setAttribute("aria-label", isFullscreen ? "الخروج من وضع ملء الشاشة" : "تشغيل وضع ملء الشاشة");
+      }
+
+      function updateSoundButton() {
+        els.soundButton.textContent = state.soundOn ? "🔊" : "🔇";
+        els.soundButton.setAttribute("aria-label", state.soundOn ? "كتم المؤثرات الصوتية" : "تشغيل المؤثرات الصوتية");
+      }
+
+      function toggleSound() {
+        state.soundOn = !state.soundOn;
+        saveState();
+        updateSoundButton();
+        if (state.soundOn) tone(620, 0.12);
+      }
+
+      els.board.addEventListener("click", event => {
+        const button = event.target.closest("[data-cell-id]");
+        if (!button) return;
+        selectCell(Number(button.dataset.cellId));
+      });
+
+      document.querySelectorAll("[data-winner-team]").forEach(button => {
+        button.addEventListener("click", () => selectAnsweringTeam(button.dataset.winnerTeam));
+      });
+
+      document.querySelectorAll("[data-score-team]").forEach(button => {
+        button.addEventListener("click", () => {
+          changeScore(button.dataset.scoreTeam, Number(button.dataset.scoreDirection) * state.questionPoints);
+        });
+      });
+
+      document.querySelectorAll("[data-points-step]").forEach(button => {
+        button.addEventListener("click", () => changeQuestionPoints(Number(button.dataset.pointsStep)));
+      });
+
+      document.querySelectorAll("[data-settings-target]").forEach(button => {
+        button.addEventListener("click", () => {
+          const target = document.getElementById(button.dataset.settingsTarget);
+          if (target) target.value = button.dataset.presetValue;
+        });
+      });
+
+      for (const team of ["blue", "red"]) {
+        const input = team === "blue" ? els.blueName : els.redName;
+        input.addEventListener("input", () => {
+          state.names[team] = input.value.trimStart().slice(0, 22) || (team === "blue" ? "الفريق الأزرق" : "الفريق الأحمر");
+          saveState();
+          const winnerButton = team === "blue" ? els.blueWinnerButton : els.redWinnerButton;
+          winnerButton.textContent = answerButtonText(team);
+          renderStatus();
+        });
+        input.addEventListener("blur", () => {
+          if (!input.value.trim()) {
+            state.names[team] = team === "blue" ? "الفريق الأزرق" : "الفريق الأحمر";
+            input.value = state.names[team];
+            saveState();
+          }
+        });
+      }
+
+      els.timerToggleButton.addEventListener("click", toggleTimer);
+      els.timerResetButton.addEventListener("click", () => resetTimer(state.selectedId !== null && state.phase === "answering"));
+      els.undoButton.addEventListener("click", undo);
+      els.cancelQuestionButton.addEventListener("click", cancelQuestion);
+      els.resetBuzzButton.addEventListener("click", resetBuzz);
+      els.newRoundButton.addEventListener("click", () => {
+        if (state.matchWinner) openConfirmation("game");
+        else if (state.roundWinner) startNextRound();
+        else openConfirmation("round");
+      });
+      els.resetGameButton.addEventListener("click", () => openConfirmation("game"));
+      els.settingsButton.addEventListener("click", openSettings);
+      els.closeSettingsButton.addEventListener("click", () => els.settingsDialog.close());
+      els.cancelSettingsButton.addEventListener("click", () => els.settingsDialog.close());
+      els.saveSettingsButton.addEventListener("click", saveSettings);
+      els.resetScoresButton.addEventListener("click", resetScores);
+      els.resetRoundCounterButton.addEventListener("click", resetRoundCounter);
+      els.settingsDialog.addEventListener("close", () => {
+        if (settingsTimerWasRunning) startTimer();
+        settingsTimerWasRunning = false;
+      });
+      els.themeButton.addEventListener("click", toggleTheme);
+      els.fullscreenButton.addEventListener("click", toggleFullscreen);
+      els.soundButton.addEventListener("click", toggleSound);
+      els.cancelDialogButton.addEventListener("click", () => els.confirmDialog.close());
+      els.confirmActionButton.addEventListener("click", () => {
+        els.confirmDialog.close();
+        if (pendingConfirmAction) pendingConfirmAction();
+        pendingConfirmAction = null;
+      });
+      els.winnerNewRoundButton.addEventListener("click", () => {
+        if (state.matchWinner) startNewMatch();
+        else startNextRound();
+      });
+      els.closeWinButton.addEventListener("click", () => els.winDialog.close());
+      document.addEventListener("fullscreenchange", updateFullscreenButton);
+
+      document.addEventListener("keydown", event => {
+        const isEditing = event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement;
+        if (isEditing) return;
+        if (event.key === "1" || event.key === "١") selectAnsweringTeam("blue");
+        if (event.key === "2" || event.key === "٢") selectAnsweringTeam("red");
+        if (event.key === " ") {
+          event.preventDefault();
+          toggleTimer();
+        }
+        if (event.key === "Escape" && state.selectedId !== null && !els.confirmDialog.open && !els.winDialog.open) cancelQuestion();
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") {
+          event.preventDefault();
+          undo();
+        }
+        if (event.key.toLowerCase() === "f") toggleFullscreen();
+      });
+
+      configureMasarPortalLink();
+
+      if (!loadSavedState()) {
+        state.board = createBoard();
+        saveState();
+      }
+      timerRemaining = state.timerSeconds;
+      applyThemeColors();
+      render();
+      updateTimerDisplay();
+    })();
+  </script>
+</body>
+</html>
