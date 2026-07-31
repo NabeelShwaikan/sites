@@ -544,6 +544,7 @@
       { title: "تصويت", href: "Pages/Poll.html", desc: "صوّت وشارك الرأي", emoji: "🗳️" },
 
       // 🎮 الترفيه والألعاب
+      { title: "حروف", href: "Pages/Horoof.html", desc: "لعبة حروف تنافسية للفرق", emoji: "🔤" },
       { title: "لعبة الحروف", href: "LettersGame/index.html", desc: "إنسان، حيوان، نبات ...", emoji: "🎲" },
       { title: "عجلة الحظ", href: "Pages/luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🎡" },
       { title: "لعبة الثلاثة أحجار", href: "Pages/3stones.html", desc: "كوّن ثلاثة أحجار على خط مستقيم", emoji: "🔳" },
@@ -615,7 +616,8 @@
       'التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ',
       'الأسهم الشرعية',
       'دليل مطاعم المدينة',
-      'معمار'
+      'معمار',
+      'حروف'
     ];
 
     const LAUNCHER_ITEMS = [
@@ -627,6 +629,7 @@
       {type:'page', title:STANDALONE_PAGE_TITLES[1]},
       {type:'page', title:STANDALONE_PAGE_TITLES[2]},
       {type:'page', title:STANDALONE_PAGE_TITLES[3]},
+      {type:'page', title:STANDALONE_PAGE_TITLES[4]},
       {type:'folder', id:'family'},
       {type:'folder', id:'fun'}
     ];
@@ -774,6 +777,7 @@
         'الأسهم الشرعية':'الأسهم الشرعية',
         'دليل مطاعم المدينة':'مطاعم المدينة',
         'معمار':'معمار',
+        'حروف':'حروف',
         'شجرة العائلة':'شجرة العائلة',
         'تصويت':'تصويت',
         'لعبة الحروف':'لعبة الحروف',
@@ -796,7 +800,7 @@
       if(['معمار'].includes(title)) return 'cat-tool';
       if(['قياس المؤشرات الصحية'].includes(title)) return 'cat-health';
       if(['شجرة العائلة','تصويت'].includes(title)) return 'cat-family';
-      if(['لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
+      if(['حروف','لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
       if(['مباريات كأس العالم 2026'].includes(title)) return 'cat-event';
       return 'cat-tool';
     }
