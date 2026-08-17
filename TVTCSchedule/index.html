@@ -1,1 +1,114 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f766e">
+<title>جدولي | مسار</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">م</span><div><small>بوابة مسار</small><strong>جدولي</strong></div></div>
+  <button id="themeBtn" class="iconBtn" aria-label="تغيير المظهر" title="تغيير المظهر">◐</button>
+</header>
 
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1>جدولي</h1>
+      <p>حوّل ملف الجدول إلى عرض أسبوعي واضح.</p>
+    </div>
+    <div class="heroIcon" aria-hidden="true">▦</div>
+  </section>
+
+  <div class="steps" id="steps">
+    <div class="step active"><b>1</b><span>الملف</span></div><i></i>
+    <div class="step"><b>2</b><span>المراجعة</span></div><i></i>
+    <div class="step"><b>3</b><span>الجدول</span></div>
+  </div>
+
+  <section id="uploadView" class="card view active">
+    <div class="sectionTitle">
+      <h2>ارفع ملف الجدول</h2>
+    </div>
+    <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="اختيار ملف الجدول">
+      <input id="fileInput" type="file" hidden accept=".csv,.xlsx,.xls">
+      <div class="uploadCircle">↑</div>
+      <h3>اسحب الملف هنا</h3>
+      <p>أو اختره من جهازك</p>
+      <button id="pickBtn" class="primary" type="button">اختيار ملف</button>
+      <div class="types"><span>XLSX</span><span>XLS</span><span>CSV</span></div>
+    </div>
+    <div class="savedResume"><button id="resumeSavedBtn" class="secondary hidden" type="button">عرض الجدول المحفوظ</button></div>
+
+  </section>
+
+  <section id="reviewView" class="card view">
+    <div class="sectionTitle row">
+      <div><h2>راجع البيانات</h2><p id="sourceNote"></p></div>
+    </div>
+
+    <div id="metaCards" class="metaCards"></div>
+    <div id="reviewAlerts"></div>
+
+    <div class="reviewTools">
+      <span id="reviewCount"></span>
+      <button id="addRowBtn" class="secondary" type="button">+ إضافة جلسة</button>
+    </div>
+
+    <div class="tableWrap">
+      <table>
+        <thead><tr><th>اليوم</th><th>الوقت</th><th>المقرر</th><th>النوع</th><th>القاعة</th><th>الشعبة</th><th>الملاحظات</th><th></th></tr></thead>
+        <tbody id="reviewBody"></tbody>
+      </table>
+    </div>
+    <div id="warnings"></div>
+    <div class="actions reviewActions"><button id="otherFileBtn" class="secondary" type="button">رفع ملف آخر</button><button id="generateBtn" class="primary" type="button">توليد الجدول</button></div>
+  </section>
+
+  <section id="scheduleView" class="card view">
+    <div class="scheduleHead">
+      <div><h2 id="scheduleTitle">جدولي</h2><p id="scheduleSub"></p><span id="saveStatus" class="saveStatus">محفوظ تلقائيًا</span></div>
+      <div class="toolbar">
+        <button id="editBtn" class="secondary" type="button">تعديل البيانات</button>
+        <button id="newBtn" class="secondary" type="button">رفع جدول جديد</button>
+        <button id="printBtn" class="primary" type="button">طباعة / PDF</button>
+      </div>
+    </div>
+
+    <div id="summary" class="summary"></div>
+
+    <div class="visualLegend" aria-label="دليل الجدول">
+      <div class="typeLegend"><span class="legendSwatch theorySwatch"></span><b>نظري</b></div>
+      <div class="typeLegend"><span class="legendSwatch practicalSwatch"></span><b>عملي</b></div>
+      <div class="typeLegend"><span class="sectionLineSample"></span><b>نفس العلامة = نفس الشعبة</b></div>
+    </div>
+    <div id="sectionLegend" class="sectionLegend"></div>
+
+    <div id="weekGrid" class="weekGridWrap"></div>
+    <div id="agenda" class="agenda"></div>
+
+  </section>
+</main>
+
+<div id="noteModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="noteModalTitle">
+  <div class="modalCard">
+    <div class="modalHead"><h3 id="noteModalTitle">ملاحظة المحاضرة</h3><button id="noteCloseBtn" class="iconBtn" type="button" aria-label="إغلاق">×</button></div>
+    <p id="noteSessionLabel" class="modalSub"></p>
+    <textarea id="noteText" rows="5" maxlength="500" placeholder="اكتب ملاحظتك…"></textarea>
+    <div class="modalActions"><button id="noteDeleteBtn" class="secondary dangerText hidden" type="button">حذف الملاحظة</button><div class="modalPrimaryActions"><button id="noteCancelBtn" class="secondary" type="button">إلغاء</button><button id="noteSaveBtn" class="primary" type="button">حفظ</button></div></div>
+  </div>
+</div>
+
+<div id="overlay" class="overlay hidden"><div class="loaderCard"><div class="spinner"></div><h3 id="loaderTitle">جارٍ قراءة الملف</h3><p id="loaderText"></p><div class="bar"><i id="bar"></i></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="assets/parser.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
