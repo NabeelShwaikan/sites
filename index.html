@@ -521,6 +521,7 @@
 
       // 🧠 الثقافية والمعرفية
          {title: "التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ",  href: "Pages/AcademicCalendar.html", desc: "التقويم الدراسي الذكي مع العدادات والمهام والمتابعة 📅",emoji: "🎓" },
+      { title: "جدولي", href: "TVTCSchedual/index.html", desc: "عرض الجدول الأسبوعي من ملف Excel أو CSV", emoji: "🗓️" },
       { title: "اختبارات الوعي المعرفي", href: "Awareness/index.html", desc: "اختبارات مبسطة لرفع وعيك", emoji: "🧠" },
       { title: "أدوات التحليل الإداري", href: "ManagementModels/index.html", desc: "أدوات تحليل احترافية تساعدك على اتخاذ قرارات أفضل", emoji: "🧭" },
       { title: "خريطة هندسة الذكاء الاصطناعي والأوامر", href: "AIPrompt/index.html", desc: "قاعدة معرفة تفاعلية تضم 80 مفهومًا من التأسيس إلى الإنتاج", emoji: "🤖" },
@@ -614,6 +615,7 @@
 
     const STANDALONE_PAGE_TITLES = [
       'التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ',
+      'جدولي',
       'الأسهم الشرعية',
       'دليل مطاعم المدينة',
       'معمار',
@@ -622,14 +624,15 @@
 
     const LAUNCHER_ITEMS = [
       {type:'page', title:STANDALONE_PAGE_TITLES[0]},
+      {type:'page', title:STANDALONE_PAGE_TITLES[1]},
       {type:'folder', id:'faith'},
       {type:'folder', id:'learning'},
       {type:'folder', id:'knowledge'},
       {type:'folder', id:'life'},
-      {type:'page', title:STANDALONE_PAGE_TITLES[1]},
       {type:'page', title:STANDALONE_PAGE_TITLES[2]},
       {type:'page', title:STANDALONE_PAGE_TITLES[3]},
       {type:'page', title:STANDALONE_PAGE_TITLES[4]},
+      {type:'page', title:STANDALONE_PAGE_TITLES[5]},
       {type:'folder', id:'family'},
       {type:'folder', id:'fun'}
     ];
@@ -764,6 +767,7 @@
         'متابعة قراءة القرآن الكريم':'متابعة التلاوة',
         'الأربعون النووية':'الأربعون النووية',
         'التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ':'التقويم الدراسي',
+        'جدولي':'جدولي',
         'اختبارات الوعي المعرفي':'اختبارات الوعي',
         'أدوات التحليل الإداري':'أدوات التحليل الإداري',
         'خريطة هندسة الذكاء الاصطناعي والأوامر':'هندسة الأوامر',
@@ -791,7 +795,7 @@
 
     function appCategoryClass(title){
       if(['متابعة قراءة القرآن الكريم','الأربعون النووية'].includes(title)) return 'cat-religion';
-      if(['التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ','تعلّم الإنجليزية للمبتدئين','جمل إنجليزية مهمة','تمارين رياضيات باللعب'].includes(title)) return 'cat-education';
+      if(['التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ','جدولي','تعلّم الإنجليزية للمبتدئين','جمل إنجليزية مهمة','تمارين رياضيات باللعب'].includes(title)) return 'cat-education';
       if(['اختبارات الوعي المعرفي','أدوات التحليل الإداري','تمارين التركيز والانتباه'].includes(title)) return 'cat-knowledge';
       if(title === 'خريطة هندسة الذكاء الاصطناعي والأوامر') return 'cat-ai';
       if(['بوابة القهوة','الساعة الرملية','كشاف الجالكسي برو'].includes(title)) return 'cat-personal';
