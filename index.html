@@ -527,6 +527,7 @@
       { title: "خريطة هندسة الذكاء الاصطناعي والأوامر", href: "AIPrompt/index.html", desc: "قاعدة معرفة تفاعلية تضم 80 مفهومًا من التأسيس إلى الإنتاج", emoji: "🤖" },
       { title: "تمارين التركيز والانتباه", href: "FucusExcercises/index.html", desc: "جلسات بصرية هادئة لإعادة ضبط الانتباه", emoji: "🎯" },
       { title: "الساعة الرملية", href: "Pages/SandHourglass.html", desc: "مؤقت تفاعلي بساعة رملية واقعية", emoji: "⏳" },
+      { title: "المعلقات", href: "Muallaqat/index.html", desc: "المعلقات بشرح تفاعلي ومعاني المفردات", emoji: "📜" },
 
       // 🎓 التعليمية
       { title: "تعلّم الإنجليزية للمبتدئين", href: "Pages/LearnEnglish.html", desc: "تعلّم الكلمات الإنجليزية ✨", emoji: "📘" },
@@ -619,7 +620,8 @@
       'الأسهم الشرعية',
       'دليل مطاعم المدينة',
       'معمار',
-      'حروف'
+      'حروف',
+      'المعلقات'
     ];
 
     const LAUNCHER_ITEMS = [
@@ -628,6 +630,7 @@
       {type:'folder', id:'faith'},
       {type:'folder', id:'learning'},
       {type:'folder', id:'knowledge'},
+      {type:'page', title:STANDALONE_PAGE_TITLES[6]},
       {type:'folder', id:'life'},
       {type:'page', title:STANDALONE_PAGE_TITLES[2]},
       {type:'page', title:STANDALONE_PAGE_TITLES[3]},
@@ -782,6 +785,7 @@
         'دليل مطاعم المدينة':'مطاعم المدينة',
         'معمار':'معمار',
         'حروف':'حروف',
+        'المعلقات':'المعلقات',
         'شجرة العائلة':'شجرة العائلة',
         'تصويت':'تصويت',
         'لعبة الحروف':'لعبة الحروف',
@@ -796,7 +800,7 @@
     function appCategoryClass(title){
       if(['متابعة قراءة القرآن الكريم','الأربعون النووية'].includes(title)) return 'cat-religion';
       if(['التقويم الدراسي التفاعلي للعام الدراسي 1449/1448هـ','جدولي','تعلّم الإنجليزية للمبتدئين','جمل إنجليزية مهمة','تمارين رياضيات باللعب'].includes(title)) return 'cat-education';
-      if(['اختبارات الوعي المعرفي','أدوات التحليل الإداري','تمارين التركيز والانتباه'].includes(title)) return 'cat-knowledge';
+      if(['اختبارات الوعي المعرفي','أدوات التحليل الإداري','تمارين التركيز والانتباه','المعلقات'].includes(title)) return 'cat-knowledge';
       if(title === 'خريطة هندسة الذكاء الاصطناعي والأوامر') return 'cat-ai';
       if(['بوابة القهوة','الساعة الرملية','كشاف الجالكسي برو'].includes(title)) return 'cat-personal';
       if(['الأسهم الشرعية'].includes(title)) return 'cat-stocks';
