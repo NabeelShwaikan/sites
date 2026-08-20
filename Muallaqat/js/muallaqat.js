@@ -1,6 +1,11 @@
 (() => {
 'use strict';
 
+const POETS = [
+  { id: 'imru-al-qais', name: 'امرؤ القيس' },
+  { id: 'tarafa', name: 'طرفة بن العبد' }
+];
+
 const poem = document.getElementById('poem');
 const sections = document.getElementById('sections');
 const search = document.getElementById('search');
@@ -9,6 +14,7 @@ const progressBar = document.getElementById('progressBar');
 const progressLabel = document.getElementById('progressLabel');
 const topBtn = document.getElementById('topBtn');
 const themeBtn = document.getElementById('themeBtn');
+const poetSelect = document.getElementById('poetSelect');
 const poetName = document.getElementById('poetName');
 const openingLine = document.getElementById('openingLine');
 const metaLine = document.getElementById('metaLine');
@@ -31,7 +37,12 @@ const esc = s => String(s ?? '')
 
 function getPoetId() {
   const raw = new URLSearchParams(location.search).get('poet') || 'imru-al-qais';
-  return /^[a-z0-9-]+$/.test(raw) ? raw : 'imru-al-qais';
+  return POETS.some(p => p.id === raw) ? raw : 'imru-al-qais';
+}
+
+function setupPoetSelector(id) {
+  poetSelect.innerHTML = POETS.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  poetSelect.value = id;
 }
 
 function renderMeta(meta) {
@@ -41,8 +52,12 @@ function renderMeta(meta) {
     <span><b>${esc(meta.verseCount ?? DATA.length)}</b> بيتًا</span>
     <i>•</i><span>البحر ${esc(meta.meter || '—')}</span>
     <i>•</i><span>القافية: ${esc(meta.rhyme || '—')}</span>`;
+
+  const status = meta.textualStatus ? `<p><b>حالة النص:</b> ${esc(meta.textualStatus)}.</p>` : '';
+  const note = meta.textualNote ? `<p>${esc(meta.textualNote)}</p>` : '';
   textInfoBody.innerHTML = `
     <p><b>النص المعتمد:</b> ${esc(meta.narration || '')}${meta.source ? ' — ' + esc(meta.source) : ''}.</p>
+    ${status}${note}
     ${meta.sectionsNote ? `<p>${esc(meta.sectionsNote)}</p>` : ''}`;
   document.title = `${meta.title || meta.poet || 'المعلقات'} — بوابة مسار`;
 }
@@ -91,7 +106,7 @@ function render() {
   setFont();
 
   const saved = +(localStorage.getItem(`masar-muallaqat-last-${poemMeta.id}`) || 0);
-  if (saved && !location.hash) history.replaceState(null, '', '#v' + saved);
+  if (saved && !location.hash) history.replaceState(null, '', location.pathname + location.search + '#v' + saved);
   setTimeout(() => {
     if (location.hash) document.querySelector(location.hash)?.scrollIntoView({block: 'center'});
   }, 80);
@@ -133,8 +148,13 @@ function initTheme() {
 
 function usePoem(meta) {
   if (!meta || !Array.isArray(meta.verses)) throw new Error('Invalid poem data');
+  if (!meta.id || meta.id !== getPoetId()) throw new Error('Poem id mismatch');
+  if (Number(meta.verseCount) !== meta.verses.length) throw new Error('Verse count mismatch');
+
   poemMeta = meta;
   DATA = meta.verses;
+  activeSection = 'الكل';
+  search.value = '';
   sectionNames = ['الكل', ...new Set(DATA.map(x => x.section).filter(Boolean))];
   renderMeta(meta);
   renderSections();
@@ -142,45 +162,25 @@ function usePoem(meta) {
   loadState.hidden = true;
 }
 
-function loadPoetScript(id) {
-  return new Promise((resolve, reject) => {
-    window.MASAR_POETS = window.MASAR_POETS || {};
-    if (window.MASAR_POETS[id]) return resolve(window.MASAR_POETS[id]);
-    const script = document.createElement('script');
-    script.src = `poets/${id}.js`;
-    script.async = true;
-    script.onload = () => window.MASAR_POETS[id]
-      ? resolve(window.MASAR_POETS[id])
-      : reject(new Error('Local poet data not found'));
-    script.onerror = () => reject(new Error('Local poet script failed to load'));
-    document.head.appendChild(script);
-  });
-}
-
 async function loadPoem() {
   const id = getPoetId();
+  setupPoetSelector(id);
   try {
-    // Direct local opening (file://) cannot reliably fetch JSON in browsers.
-    // Load the generated JS mirror instead; on web hosting the canonical JSON is used.
-    if (location.protocol === 'file:') {
-      usePoem(await loadPoetScript(id));
-      return;
-    }
-
-    try {
-      const response = await fetch(`poets/${id}.json`, {cache: 'no-store'});
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      usePoem(await response.json());
-    } catch (fetchErr) {
-      console.warn('JSON load failed; using local-compatible fallback.', fetchErr);
-      usePoem(await loadPoetScript(id));
-    }
+    const response = await fetch(`poets/${id}.json`, {cache: 'no-store'});
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    usePoem(await response.json());
   } catch (err) {
     console.error(err);
-    loadState.innerHTML = '<b>تعذر تحميل بيانات القصيدة.</b><br><span>تأكد من وجود ملف الشاعر داخل مجلد poets.</span>';
+    loadState.innerHTML = '<b>تعذر تحميل بيانات القصيدة.</b><br><span>تأكد من رفع الصفحة عبر خادم ويب ومن وجود ملف الشاعر داخل مجلد poets.</span>';
     loadState.classList.add('error');
   }
 }
+
+poetSelect.addEventListener('change', () => {
+  const id = poetSelect.value;
+  if (!POETS.some(p => p.id === id)) return;
+  location.href = `${location.pathname}?poet=${encodeURIComponent(id)}`;
+});
 
 sections.addEventListener('click', e => {
   const b = e.target.closest('.sec');
@@ -189,16 +189,19 @@ sections.addEventListener('click', e => {
   renderSections();
   applyFilter();
 });
+
 search.addEventListener('input', applyFilter);
 document.getElementById('fontBtn').addEventListener('click', () => {
   fontScale = fontScale >= 1.25 ? .9 : Math.round((fontScale + .1) * 10) / 10;
   setFont();
 });
+
 themeBtn.addEventListener('click', () => {
   const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
   document.documentElement.dataset.theme = t;
   localStorage.setItem('masar-theme', t);
 });
+
 addEventListener('scroll', () => {
   const max = document.documentElement.scrollHeight - innerHeight;
   const pct = max > 0 ? Math.min(100, Math.max(0, scrollY / max * 100)) : 0;
@@ -210,6 +213,7 @@ addEventListener('scroll', () => {
     .filter(v => v.getBoundingClientRect().top < innerHeight * .55);
   if (c.length) localStorage.setItem(`masar-muallaqat-last-${poemMeta.id}`, c.at(-1).dataset.n);
 }, {passive: true});
+
 topBtn.addEventListener('click', () => scrollTo({top: 0, behavior: 'smooth'}));
 
 initTheme();
