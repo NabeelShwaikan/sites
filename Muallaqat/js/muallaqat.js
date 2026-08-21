@@ -4,8 +4,11 @@
 const POETS = [
   { id: 'imru-al-qais', name: 'امرؤ القيس' },
   { id: 'tarafa', name: 'طرفة بن العبد' },
+  { id: 'zuhair', name: 'زهير بن أبي سلمى' },
+  { id: 'labid', name: 'لبيد بن ربيعة' },
+  { id: 'amr-ibn-kulthum', name: 'عمرو بن كلثوم' },
   { id: 'antara', name: 'عنترة بن شداد' },
-  { id: 'zuhair', name: 'زهير بن أبي سلمى' }
+  { id: 'al-harith', name: 'الحارث بن حِلِّزَة' }
 ];
 
 const poem = document.getElementById('poem');
@@ -221,4 +224,3 @@ topBtn.addEventListener('click', () => scrollTo({top: 0, behavior: 'smooth'}));
 initTheme();
 loadPoem();
 })();
-
