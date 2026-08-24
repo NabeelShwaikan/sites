@@ -254,6 +254,35 @@
     @media (max-width:520px){.pulse-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}.wellness-card{min-height:112px;flex-direction:column;text-align:center}.wellness-meta{width:100%}.ring-wrap,.ring-svg{width:58px;height:58px;flex-basis:58px}.ring-number{font-size:17px}.ring-unit{font-size:9px}.wellness-title{font-size:11px}.wellness-date{font-size:9.5px}.season-name{font-size:12px}.season-next{font-size:9px}.season-modal{padding:10px}.season-dialog{padding:17px;border-radius:18px;max-height:92vh}}
 
 
+
+    /* ——— تجربة: إبقاء مؤشرات الدوائر الأربع في صف واحد على جميع المقاسات ——— */
+    @media (max-width:720px){
+      .pulse-strip{grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+      .wellness-card{min-width:0;min-height:104px;padding:10px 5px;gap:5px;flex-direction:column;text-align:center}
+      .wellness-meta{width:100%;min-width:0}
+      .wellness-card:nth-child(even):not(:last-child)::after{display:block}
+      .wellness-card:nth-child(-n+2)::before{display:none}
+      .wellness-card:not(:last-child)::after{inset-block:14px}
+      .ring-wrap,.ring-svg{width:54px;height:54px;flex-basis:54px}
+      .ring-number{font-size:16px}
+      .ring-unit{font-size:8.5px;margin-top:2px}
+      .wellness-title{font-size:10.5px;margin-bottom:2px}
+      .wellness-date{font-size:9px;line-height:1.35;overflow-wrap:anywhere}
+      .season-name{font-size:10.5px;line-height:1.25}
+      .season-next{font-size:8px;line-height:1.3}
+    }
+    @media (max-width:380px){
+      .wellness-card{min-height:98px;padding:8px 3px;gap:4px}
+      .ring-wrap,.ring-svg{width:48px;height:48px;flex-basis:48px}
+      .ring-number{font-size:14px}
+      .ring-unit{font-size:8px}
+      .wellness-title{font-size:9.5px}
+      .wellness-date{font-size:8px}
+      .season-name{font-size:9.5px}
+      .season-next{font-size:7.5px}
+    }
+
+
     /* ——— سجل أسعار الذهب ——— */
     .gold-ticker{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
     .gold-ticker:hover{transform:translateY(-2px)}
