@@ -331,17 +331,24 @@
     @media(max-width:520px){.finance-modal{padding:10px}.finance-dialog{padding:17px;border-radius:18px}.finance-hero{gap:8px}.finance-hero-item{padding:11px 8px}.finance-hero-item strong{font-size:18px}.finance-details{grid-template-columns:1fr 1fr}}
 
 
-    /* توحيد الإطار الرفيع مع لون الحافة اليمنى للحاويات الرئيسية */
-    [data-theme="light"] .pulse-strip{box-shadow:0 0 0 1px rgba(148,163,184,.13),var(--shadow)}
-
-    /* توحيد الحافة اليمنى الملوّنة: 4px كجزء من إطار الحاوية نفسه */
+    /* توحيد سماكة الحاويات الرئيسية على حاوية الذهب: 1.5px محيط + 4px يمين */
     .panel,
     .pulse-strip,
     .gold-ticker,
     .adhkar-card,
     .knowledge-card{
+      border-width:1.5px;
       border-inline-start-width:4px;
     }
+
+    /* سلاسة اتصال الحافة اليمنى بالإطار المحيط — بنفس منطق حاوية الذهب */
+    .panel{border-color:rgba(16,185,129,.55);border-inline-start-color:rgba(16,185,129,.62)}
+    .adhkar-card{border-color:rgba(16,185,129,.55);border-inline-start-color:#10b981}
+    .knowledge-card{border-color:color-mix(in srgb,var(--brand) 55%,transparent);border-inline-start-color:var(--brand)}
+    .pulse-strip{border-color:rgba(255,255,255,.55);border-inline-start-color:#fff}
+
+    /* منع أي إطار إضافي على حاوية الدوائر حتى تطابق سماكة الذهب فعليًا */
+    [data-theme="light"] .pulse-strip{box-shadow:var(--shadow)}
 
   </style>
 </head>
