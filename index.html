@@ -94,6 +94,9 @@
 
     section{margin-top:18px}
     section h2{margin:0 0 8px; font-size:16px}
+    .apps-heading{display:flex;align-items:center;gap:7px;padding:12px 14px;margin:0 0 8px}
+    .apps-count{display:inline-flex;align-items:center;justify-content:center;min-width:27px;height:21px;padding:0 7px;border-radius:999px;background:rgba(16,185,129,.10);border:1px solid rgba(16,185,129,.24);color:#047857;font-size:11px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+    [data-theme="dark"] .apps-count{color:#6ee7b7;background:rgba(16,185,129,.12);border-color:rgba(52,211,153,.28)}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:18px;padding:18px;align-items:start}
     .app-tile{display:flex;flex-direction:column;align-items:center;gap:9px;text-decoration:none;color:var(--ink);min-width:0}
     .app-tile-icon{width:78px;height:78px;border-radius:24px;display:grid;place-items:center;font-size:36px;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.58),0 16px 30px rgba(2,6,23,.14),0 4px 9px rgba(2,6,23,.08);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
@@ -566,7 +569,7 @@
 
 
     <section class="panel">
-      <h2 style="padding:12px 14px">تطبيقات مسار</h2>
+      <h2 class="apps-heading">تطبيقات مسار <span class="apps-count" id="appCount" aria-label="عدد التطبيقات">—</span></h2>
       <div class="grid" id="grid"></div>
     </section>
 
@@ -748,6 +751,8 @@
 
     // ——— عناصر DOM ———
     const grid = document.getElementById('grid');
+    const appCount = document.getElementById('appCount');
+    if(appCount) appCount.textContent = new Intl.NumberFormat('ar-SA').format(PAGES.length);
     const y = document.getElementById('y');
     const themeBtn = document.getElementById('themeBtn');
     const folderModal = document.getElementById('folderModal');
