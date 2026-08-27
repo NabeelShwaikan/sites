@@ -326,12 +326,19 @@
     .finance-kicker{font-size:12px;font-weight:900;color:#7c3aed;margin-bottom:4px}
     .finance-dialog-title{margin:0;font-size:clamp(21px,4vw,29px);line-height:1.4}
     .finance-close{border:1px solid var(--border);background:var(--chip);color:var(--ink);width:36px;height:36px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:20px;font-weight:900;line-height:1;flex:0 0 auto}
-    .finance-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 14px}
-    .finance-hero-item{padding:14px;border-radius:16px;background:linear-gradient(135deg,rgba(124,58,237,.10),rgba(37,99,235,.06));border:1px solid rgba(124,58,237,.18);text-align:center}
-    .finance-hero-item small{display:block;color:var(--muted);font-size:11px;font-weight:800}.finance-hero-item strong{display:block;margin-top:4px;font-size:21px;line-height:1.45;font-variant-numeric:tabular-nums}
-    .finance-details{display:grid;grid-template-columns:1fr 1fr;gap:9px}.finance-detail{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:10px}.finance-detail small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}.finance-detail strong{display:block;margin-top:3px;font-size:13px;line-height:1.55}
-    .finance-note{margin-top:12px;color:var(--muted);font-size:11px;line-height:1.7}
-    @media(max-width:520px){.finance-modal{padding:10px}.finance-dialog{padding:17px;border-radius:18px}.finance-hero{gap:8px}.finance-hero-item{padding:11px 8px}.finance-hero-item strong{font-size:18px}.finance-details{grid-template-columns:1fr 1fr}}
+    .finance-hero{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0 14px}
+    .finance-hero-item{padding:13px 9px;border-radius:16px;background:linear-gradient(135deg,rgba(124,58,237,.10),rgba(37,99,235,.06));border:1px solid rgba(124,58,237,.18);text-align:center}
+    .finance-hero-item.is-primary{background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(124,58,237,.08));border-color:rgba(16,185,129,.26)}
+    .finance-hero-item small{display:block;color:var(--muted);font-size:10.5px;font-weight:800;line-height:1.55}.finance-hero-item strong{display:block;margin-top:4px;font-size:18px;line-height:1.45;font-variant-numeric:tabular-nums}.finance-hero-item.is-primary strong{color:#047857;font-size:20px}
+    [data-theme="dark"] .finance-hero-item.is-primary strong{color:#6ee7b7}
+    .finance-section{margin-top:14px;padding-top:13px;border-top:1px solid var(--border)}
+    .finance-section-title{font-size:12px;font-weight:900;color:var(--muted);margin-bottom:9px}
+    .finance-details{display:grid;grid-template-columns:1fr 1fr;gap:9px}.finance-detail{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:10px}.finance-detail small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}.finance-detail strong{display:block;margin-top:3px;font-size:13px;line-height:1.55;font-variant-numeric:tabular-nums}
+    .finance-progress-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0 10px}.finance-progress-label{font-size:12px;font-weight:900}.finance-progress-value{font-size:12px;font-weight:900;color:#6d28d9}
+    .finance-progress-track{height:8px;border-radius:999px;background:rgba(148,163,184,.20);overflow:hidden}.finance-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#10b981);border-radius:inherit;transition:width .7s ease}
+    .finance-summary{margin-top:14px;padding:12px 13px;border-radius:14px;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(16,185,129,.08));border:1px solid rgba(124,58,237,.17);font-size:12px;line-height:1.85;font-weight:800}
+    .finance-note{margin-top:10px;color:var(--muted);font-size:10.5px;line-height:1.7}
+    @media(max-width:520px){.finance-modal{padding:10px}.finance-dialog{padding:17px;border-radius:18px;max-height:93vh;overflow:auto}.finance-hero{grid-template-columns:1fr 1fr;gap:8px}.finance-hero-item.is-primary{grid-column:1/-1}.finance-hero-item{padding:10px 7px}.finance-hero-item strong{font-size:16px}.finance-hero-item.is-primary strong{font-size:19px}.finance-details{grid-template-columns:1fr 1fr}}
 
 
     /* توحيد سماكة الحاويات الرئيسية على حاوية الذهب: 1.5px محيط + 4px يمين */
@@ -452,9 +459,9 @@
       <article class="wellness-card finance-card" id="financeCard" role="button" tabindex="0" aria-label="التمويل — اضغط لعرض التفاصيل">
         <div class="ring-wrap">
           <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="finance-ring" id="financeRing" cx="52" cy="52" r="45"></circle></svg>
-          <div class="ring-center"><div class="ring-number" id="financeInstallments">109</div><div class="ring-unit">قسط</div></div>
+          <div class="ring-center"><div class="ring-number" id="financeProgress">--</div><div class="ring-unit">%</div></div>
         </div>
-        <div class="wellness-meta"><div class="wellness-title">التمويل</div><div class="wellness-date" id="financeDuration">9 سنوات وشهر</div></div>
+        <div class="wellness-meta"><div class="wellness-title">التمويل العقاري</div><div class="wellness-date" id="financeMonthlyNet">2,777.78 ر.س عليك</div></div>
       </article>
       <article class="wellness-card season-card" id="seasonCard" role="button" tabindex="0" aria-label="الموسم الآن — اضغط لعرض تفاصيل الطالع" style="--season-color:#ca8a04">
         <div class="ring-wrap">
@@ -472,20 +479,41 @@
     <div class="finance-modal" id="financeModal" aria-hidden="true">
       <article class="finance-dialog" role="dialog" aria-modal="true" aria-labelledby="financeDialogTitle">
         <div class="finance-dialog-head">
-          <div><div class="finance-kicker">متابعة الالتزام الشهري</div><h2 class="finance-dialog-title" id="financeDialogTitle">تفاصيل التمويل</h2></div>
+          <div><div class="finance-kicker">ملخص شخصي مبسّط</div><h2 class="finance-dialog-title" id="financeDialogTitle">التمويل العقاري</h2></div>
           <button class="finance-close" id="financeModalClose" type="button" aria-label="إغلاق">×</button>
         </div>
+
         <div class="finance-hero">
-          <div class="finance-hero-item"><small>الأقساط المتبقية</small><strong id="financeDetailInstallments">109 قسط</strong></div>
-          <div class="finance-hero-item"><small>المدة المتبقية</small><strong id="financeDetailDuration">9 سنوات وشهر</strong></div>
+          <div class="finance-hero-item"><small>القسط للبنك</small><strong id="financeDetailPayment">4,011.11 ر.س</strong></div>
+          <div class="finance-hero-item"><small>الدعم الحكومي</small><strong id="financeDetailSupport">1,233.33 ر.س</strong></div>
+          <div class="finance-hero-item is-primary"><small>اللي يطلع من جيبك</small><strong id="financeDetailNet">2,777.78 ر.س</strong></div>
         </div>
-        <div class="finance-details">
-          <div class="finance-detail"><small>القسط الشهري</small><strong id="financeDetailPayment">4,011.11 ر.س</strong></div>
-          <div class="finance-detail"><small>الرصيد المتبقي</small><strong id="financeDetailBalance">437,211.19 ر.س</strong></div>
-          <div class="finance-detail"><small>آخر خصم</small><strong id="financeDetailLast">27 يوليو 2026</strong></div>
-          <div class="finance-detail"><small>الانتهاء المتوقع</small><strong id="financeDetailEnd">أغسطس 2035</strong></div>
+
+        <div class="finance-section">
+          <div class="finance-progress-row"><div class="finance-progress-label">من بداية التمويل</div><div class="finance-progress-value" id="financeProgressText">40% من مدة التمويل</div></div>
+          <div class="finance-progress-track" aria-hidden="true"><div class="finance-progress-fill" id="financeProgressFill"></div></div>
+          <div class="finance-details" style="margin-top:10px">
+            <div class="finance-detail"><small>مبلغ التمويل</small><strong id="financeOriginalPrincipal">500,000 ر.س</strong></div>
+            <div class="finance-detail"><small>ما وصل للبنك</small><strong id="financePaidToBank">—</strong></div>
+            <div class="finance-detail"><small>من جيبك حتى الآن</small><strong id="financePaidByYou">—</strong></div>
+            <div class="finance-detail"><small>الدعم الذي وصلك</small><strong id="financeSupportReceived">—</strong></div>
+          </div>
         </div>
-        <div class="finance-note">المؤشر الدائري يحسب نسبة السداد من أصل 180 شهراً، ويتناقص عدد الأقساط تلقائياً بعد مرور موعد القسط الشهري في اليوم 27 من كل شهر.</div>
+
+        <div class="finance-section">
+          <div class="finance-section-title">المتبقي</div>
+          <div class="finance-details">
+            <div class="finance-detail"><small>الأقساط</small><strong id="financeDetailInstallments">—</strong></div>
+            <div class="finance-detail"><small>المدة</small><strong id="financeDetailDuration">—</strong></div>
+            <div class="finance-detail"><small>من جيبك متوقع</small><strong id="financeRemainingByYou">—</strong></div>
+            <div class="finance-detail"><small>دعم حكومي متوقع</small><strong id="financeRemainingSupport">—</strong></div>
+            <div class="finance-detail"><small>آخر خصم</small><strong id="financeDetailLast">—</strong></div>
+            <div class="finance-detail"><small>الانتهاء المتوقع</small><strong id="financeDetailEnd">—</strong></div>
+          </div>
+        </div>
+
+        <div class="finance-summary" id="financeSummary">—</div>
+        <div class="finance-note">الحساب يفترض استمرار الدعم الحكومي الشهري بالقيمة الحالية طوال المدة، ويُحدّث عدد الأقساط تلقائياً بعد يوم 27 من كل شهر.</div>
       </article>
     </div>
 
@@ -1912,8 +1940,9 @@
     }
 
     const FINANCE = Object.freeze({
+      principal: 500000,
       installment: 4011.11,
-      baseBalance: 437211.19,
+      monthlySupport: 1233.33,
       totalMonths: 180,
       baseRemaining: 109,
       lastPaid: new Date(2026, 6, 27),
@@ -1941,7 +1970,15 @@
     function financeState(date = new Date()){
       const paidAfterBase = Math.min(FINANCE.baseRemaining, monthsPassedSinceFirstDue(date));
       const remaining = Math.max(0, FINANCE.baseRemaining - paidAfterBase);
-      const remainingBalance = Math.max(0, FINANCE.baseBalance - (paidAfterBase * FINANCE.installment));
+      const paidCount = FINANCE.totalMonths - remaining;
+      const progress = FINANCE.totalMonths ? paidCount / FINANCE.totalMonths : 0;
+      const netMonthly = FINANCE.installment - FINANCE.monthlySupport;
+      const paidToBank = paidCount * FINANCE.installment;
+      const supportReceived = paidCount * FINANCE.monthlySupport;
+      const paidByYou = paidCount * netMonthly;
+      const remainingToBank = remaining * FINANCE.installment;
+      const remainingSupport = remaining * FINANCE.monthlySupport;
+      const remainingByYou = remaining * netMonthly;
       const years = Math.floor(remaining / 12);
       const months = remaining % 12;
       const durationParts = [];
@@ -1952,7 +1989,7 @@
       const lastPaid = paidAfterBase > 0
         ? new Date(FINANCE.firstNextDue.getFullYear(), FINANCE.firstNextDue.getMonth() + paidAfterBase - 1, 27)
         : FINANCE.lastPaid;
-      return {paidAfterBase, remaining, remainingBalance, duration, lastPayment, lastPaid};
+      return {paidAfterBase, paidCount, remaining, progress, netMonthly, paidToBank, supportReceived, paidByYou, remainingToBank, remainingSupport, remainingByYou, duration, lastPayment, lastPaid};
     }
 
     function formatMoney(value){
@@ -1965,15 +2002,26 @@
 
     function updateFinanceCounter(){
       const state = financeState(new Date());
-      document.getElementById('financeInstallments').textContent = state.remaining;
-      document.getElementById('financeDuration').textContent = state.duration;
+      const pct = Math.round(state.progress * 100);
+      document.getElementById('financeProgress').textContent = pct;
+      document.getElementById('financeMonthlyNet').textContent = `${formatMoney(state.netMonthly)} عليك`;
       document.getElementById('financeDetailInstallments').textContent = `${state.remaining} قسط`;
       document.getElementById('financeDetailDuration').textContent = state.duration;
       document.getElementById('financeDetailPayment').textContent = formatMoney(FINANCE.installment);
-      document.getElementById('financeDetailBalance').textContent = formatMoney(state.remainingBalance);
+      document.getElementById('financeDetailSupport').textContent = formatMoney(FINANCE.monthlySupport);
+      document.getElementById('financeDetailNet').textContent = formatMoney(state.netMonthly);
+      document.getElementById('financeOriginalPrincipal').textContent = formatMoney(FINANCE.principal);
+      document.getElementById('financePaidToBank').textContent = formatMoney(state.paidToBank);
+      document.getElementById('financePaidByYou').textContent = formatMoney(state.paidByYou);
+      document.getElementById('financeSupportReceived').textContent = formatMoney(state.supportReceived);
+      document.getElementById('financeRemainingByYou').textContent = formatMoney(state.remainingByYou);
+      document.getElementById('financeRemainingSupport').textContent = formatMoney(state.remainingSupport);
       document.getElementById('financeDetailLast').textContent = formatGregReadable(state.lastPaid);
       document.getElementById('financeDetailEnd').textContent = formatMonthYear(state.lastPayment);
-      setRing('financeRing', (FINANCE.totalMonths - state.remaining) / FINANCE.totalMonths);
+      document.getElementById('financeProgressText').textContent = `${pct}% من مدة التمويل · ${state.paidCount} من ${FINANCE.totalMonths} قسط`;
+      document.getElementById('financeProgressFill').style.width = `${pct}%`;
+      document.getElementById('financeSummary').textContent = `موّلت ${formatMoney(FINANCE.principal)}، دفعت من جيبك حتى الآن ${formatMoney(state.paidByYou)}، ووصل لك دعم ${formatMoney(state.supportReceived)}. المتبقي عليك من جيبك تقريباً ${formatMoney(state.remainingByYou)} موزع على ${state.duration}.`;
+      setRing('financeRing', state.progress);
     }
 
     let financeLastFocused = null;
