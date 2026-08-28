@@ -360,6 +360,71 @@
     /* منع أي إطار إضافي على حاوية الدوائر حتى تطابق سماكة الذهب فعليًا */
     [data-theme="light"] .pulse-strip{box-shadow:var(--shadow)}
 
+
+
+    /* ——— شريط الدوائر المتصل: سحب أفقي حر بدون مجموعات ——— */
+    .pulse-strip{
+      display:flex !important;
+      overflow-x:auto;
+      overflow-y:hidden;
+      scroll-behavior:smooth;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior-inline:contain;
+      scrollbar-width:none;
+      touch-action:pan-x pan-y;
+    }
+    .pulse-strip::-webkit-scrollbar{display:none}
+    .pulse-strip .wellness-card{
+      flex:0 0 25%;
+      min-width:25%;
+      max-width:25%;
+    }
+    .pulse-strip:focus-visible{outline:2px solid rgba(96,165,250,.45);outline-offset:3px}
+
+    /* ——— القرض الشخصي ——— */
+    .personal-loan-card{cursor:pointer;position:relative;overflow:hidden;transition:background .2s ease}
+    .personal-loan-card:hover{background:rgba(15,118,110,.045)}
+    .personal-loan-card:focus-visible{outline:3px solid rgba(15,118,110,.30);outline-offset:3px}
+    .personal-loan-ring{fill:none;stroke:#0f766e;stroke-width:8;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset .7s ease}
+    .personal-loan-card .wellness-title{color:#0f766e}
+    [data-theme="dark"] .personal-loan-card .wellness-title{color:#5eead4}
+    .personal-loan-modal .finance-kicker{color:#0f766e}
+    .personal-loan-modal .finance-hero-item{background:linear-gradient(135deg,rgba(15,118,110,.10),rgba(37,99,235,.05));border-color:rgba(15,118,110,.18)}
+    .personal-loan-modal .finance-hero-item.is-primary{background:linear-gradient(135deg,rgba(15,118,110,.15),rgba(16,185,129,.07));border-color:rgba(15,118,110,.27)}
+    .personal-loan-modal .finance-hero-item.is-primary strong{color:#0f766e}
+    [data-theme="dark"] .personal-loan-modal .finance-hero-item.is-primary strong{color:#5eead4}
+    .personal-loan-modal .finance-progress-value{color:#0f766e}
+    .personal-loan-modal .finance-progress-fill{background:linear-gradient(90deg,#0f766e,#2563eb)}
+    @media (max-width:720px){
+      .pulse-strip .wellness-card{flex-basis:25%;min-width:25%;max-width:25%}
+    }
+
+    /* ——— ضبط محاذاة شريط المؤشرات: جميع الحلقات على مستوى واحد ——— */
+    .pulse-strip .wellness-card{box-sizing:border-box}
+    @media (max-width:720px){
+      .pulse-strip .wellness-card{
+        justify-content:flex-start !important;
+        align-items:center;
+        padding-top:10px;
+      }
+      .pulse-strip .ring-wrap{
+        margin:0;
+        flex:0 0 54px;
+      }
+      .pulse-strip .wellness-meta{
+        min-height:40px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-start;
+      }
+    }
+    @media (max-width:380px){
+      .pulse-strip .wellness-card{padding-top:8px}
+      .pulse-strip .ring-wrap{flex-basis:48px}
+      .pulse-strip .wellness-meta{min-height:36px}
+    }
+
   </style>
 </head>
 <body>
@@ -441,62 +506,73 @@
       </article>
     </div>
 
-    <div class="pulse-strip" aria-label="عدادات بوابة مسار">
-      <article class="wellness-card">
+    <div class="pulse-strip" aria-label="مؤشرات بوابة مسار">
+      <article class="wellness-card season-card" id="seasonCard" data-time-kind="season" role="button" tabindex="0" aria-label="الموسم — اضغط لتفاصيل الطالع" style="--season-color:#ca8a04">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="season-ring" id="seasonRing" cx="52" cy="52" r="45"></circle></svg>
+          <div class="ring-center"><div class="ring-number" id="seasonDays">--</div><div class="ring-unit">يوماً</div></div>
+        </div>
+        <div class="wellness-meta">
+          <div class="wellness-title">الموسم</div>
+          <div class="season-name" id="seasonName">جاري التحميل</div>
+          <div class="season-next" id="seasonNext" hidden>—</div>
+        </div>
+      </article>
+
+      <article class="wellness-card" id="salaryCard" data-time-kind="salary">
         <div class="ring-wrap">
           <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><defs><linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/></linearGradient></defs><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="ring-progress" id="salaryRing" cx="52" cy="52" r="45"></circle></svg>
           <div class="ring-center"><div class="ring-number" id="salaryDays">--</div><div class="ring-unit">يوماً</div></div>
         </div>
         <div class="wellness-meta"><div class="wellness-title">الراتب</div><div class="wellness-date" id="salaryDate">—</div></div>
       </article>
-      <article class="wellness-card">
+
+      <article class="wellness-card" id="ramadanCard" data-time-kind="ramadan">
         <div class="ring-wrap">
           <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="ring-progress" id="ramadanRing" cx="52" cy="52" r="45"></circle></svg>
           <div class="ring-center"><div class="ring-number" id="ramadanDays">--</div><div class="ring-unit" id="ramadanUnit">يوماً</div></div>
         </div>
         <div class="wellness-meta"><div class="wellness-title">رمضان</div><div class="wellness-date" id="ramadanDate">—</div></div>
       </article>
-      <article class="wellness-card finance-card" id="financeCard" role="button" tabindex="0" aria-label="التمويل — اضغط لعرض التفاصيل">
+
+      <article class="wellness-card personal-loan-card" id="personalLoanCard" data-time-kind="personal-loan" role="button" tabindex="0" aria-label="القرض الشخصي — اضغط للتفاصيل">
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="personal-loan-ring" id="personalLoanRing" cx="52" cy="52" r="45"></circle></svg>
+          <div class="ring-center"><div class="ring-number" id="personalLoanRemaining">7</div><div class="ring-unit">أقساط</div></div>
+        </div>
+        <div class="wellness-meta"><div class="wellness-title">القرض الشخصي</div><div class="wellness-date" id="personalLoanEnd">مارس 2027</div></div>
+      </article>
+
+      <article class="wellness-card finance-card" id="financeCard" data-time-kind="mortgage" role="button" tabindex="0" aria-label="التمويل العقاري — اضغط للتفاصيل">
         <div class="ring-wrap">
           <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="finance-ring" id="financeRing" cx="52" cy="52" r="45"></circle></svg>
           <div class="ring-center"><div class="ring-number" id="financeProgress">--</div><div class="ring-unit">%</div></div>
         </div>
-        <div class="wellness-meta"><div class="wellness-title">التمويل العقاري</div><div class="wellness-date" id="financeMonthlyNet">2,777.78 ر.س عليك</div></div>
-      </article>
-      <article class="wellness-card season-card" id="seasonCard" role="button" tabindex="0" aria-label="الموسم الآن — اضغط لعرض تفاصيل الطالع" style="--season-color:#ca8a04">
-        <div class="ring-wrap">
-          <svg class="ring-svg" viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-bg" cx="52" cy="52" r="45"></circle><circle class="season-ring" id="seasonRing" cx="52" cy="52" r="45"></circle></svg>
-          <div class="ring-center"><div class="ring-number" id="seasonDays">--</div><div class="ring-unit">يوماً</div></div>
-        </div>
-        <div class="wellness-meta">
-          <div class="wellness-title">الموسم الآن</div>
-          <div class="season-name" id="seasonName">جاري التحميل</div>
-          <div class="season-next" id="seasonNext">—</div>
-        </div>
+        <div class="wellness-meta"><div class="wellness-title">التمويل العقاري</div><div class="wellness-date" id="financeMonthlyNet">2,777.78 ر.س شهرياً</div></div>
       </article>
     </div>
 
     <div class="finance-modal" id="financeModal" aria-hidden="true">
       <article class="finance-dialog" role="dialog" aria-modal="true" aria-labelledby="financeDialogTitle">
         <div class="finance-dialog-head">
-          <div><div class="finance-kicker">ملخص شخصي مبسّط</div><h2 class="finance-dialog-title" id="financeDialogTitle">التمويل العقاري</h2></div>
+          <div><h2 class="finance-dialog-title" id="financeDialogTitle">التمويل العقاري</h2></div>
           <button class="finance-close" id="financeModalClose" type="button" aria-label="إغلاق">×</button>
         </div>
 
         <div class="finance-hero">
-          <div class="finance-hero-item"><small>القسط للبنك</small><strong id="financeDetailPayment">4,011.11 ر.س</strong></div>
-          <div class="finance-hero-item"><small>الدعم الحكومي</small><strong id="financeDetailSupport">1,233.33 ر.س</strong></div>
-          <div class="finance-hero-item is-primary"><small>اللي يطلع من جيبك</small><strong id="financeDetailNet">2,777.78 ر.س</strong></div>
+          <div class="finance-hero-item"><small>القسط</small><strong id="financeDetailPayment">4,011.11 ر.س</strong></div>
+          <div class="finance-hero-item"><small>الدعم</small><strong id="financeDetailSupport">1,233.33 ر.س</strong></div>
+          <div class="finance-hero-item is-primary"><small>عليك شهريًا</small><strong id="financeDetailNet">2,777.78 ر.س</strong></div>
         </div>
 
         <div class="finance-section">
-          <div class="finance-progress-row"><div class="finance-progress-label">من بداية التمويل</div><div class="finance-progress-value" id="financeProgressText">40% من مدة التمويل</div></div>
+          <div class="finance-progress-row"><div class="finance-progress-label">التقدم</div><div class="finance-progress-value" id="financeProgressText">40% من مدة التمويل</div></div>
           <div class="finance-progress-track" aria-hidden="true"><div class="finance-progress-fill" id="financeProgressFill"></div></div>
           <div class="finance-details" style="margin-top:10px">
             <div class="finance-detail"><small>مبلغ التمويل</small><strong id="financeOriginalPrincipal">500,000 ر.س</strong></div>
-            <div class="finance-detail"><small>ما وصل للبنك</small><strong id="financePaidToBank">—</strong></div>
-            <div class="finance-detail"><small>من جيبك حتى الآن</small><strong id="financePaidByYou">—</strong></div>
-            <div class="finance-detail"><small>الدعم الذي وصلك</small><strong id="financeSupportReceived">—</strong></div>
+            <div class="finance-detail" hidden><small>ما وصل للبنك</small><strong id="financePaidToBank">—</strong></div>
+            <div class="finance-detail"><small>دفعت من جيبك</small><strong id="financePaidByYou">—</strong></div>
+            <div class="finance-detail"><small>الدعم المستلم</small><strong id="financeSupportReceived">—</strong></div>
           </div>
         </div>
 
@@ -505,15 +581,56 @@
           <div class="finance-details">
             <div class="finance-detail"><small>الأقساط</small><strong id="financeDetailInstallments">—</strong></div>
             <div class="finance-detail"><small>المدة</small><strong id="financeDetailDuration">—</strong></div>
-            <div class="finance-detail"><small>من جيبك متوقع</small><strong id="financeRemainingByYou">—</strong></div>
-            <div class="finance-detail"><small>دعم حكومي متوقع</small><strong id="financeRemainingSupport">—</strong></div>
-            <div class="finance-detail"><small>آخر خصم</small><strong id="financeDetailLast">—</strong></div>
+            <div class="finance-detail"><small>عليك متوقع</small><strong id="financeRemainingByYou">—</strong></div>
+            <div class="finance-detail"><small>الدعم المتوقع</small><strong id="financeRemainingSupport">—</strong></div>
+            <div class="finance-detail" hidden><small>آخر خصم</small><strong id="financeDetailLast">—</strong></div>
             <div class="finance-detail"><small>الانتهاء المتوقع</small><strong id="financeDetailEnd">—</strong></div>
           </div>
         </div>
 
-        <div class="finance-summary" id="financeSummary">—</div>
-        <div class="finance-note">الحساب يفترض استمرار الدعم الحكومي الشهري بالقيمة الحالية طوال المدة، ويُحدّث عدد الأقساط تلقائياً بعد يوم 27 من كل شهر.</div>
+        <div class="finance-summary" id="financeSummary" hidden>—</div>
+        <div class="finance-note">المبالغ المستقبلية تقديرية بافتراض استمرار الدعم الشهري بالقيمة الحالية.</div>
+      </article>
+    </div>
+
+
+
+    <div class="finance-modal personal-loan-modal" id="personalLoanModal" aria-hidden="true">
+      <article class="finance-dialog" role="dialog" aria-modal="true" aria-labelledby="personalLoanDialogTitle">
+        <div class="finance-dialog-head">
+          <div><h2 class="finance-dialog-title" id="personalLoanDialogTitle">القرض الشخصي</h2></div>
+          <button class="finance-close" id="personalLoanModalClose" type="button" aria-label="إغلاق">×</button>
+        </div>
+
+        <div class="finance-hero">
+          <div class="finance-hero-item"><small>القسط</small><strong id="personalLoanInstallment">9,141.73 ر.س</strong></div>
+          <div class="finance-hero-item is-primary"><small>المبلغ المتبقي</small><strong id="personalLoanBalance">63,992.11 ر.س</strong></div>
+          <div class="finance-hero-item"><small>الأقساط</small><strong id="personalLoanRemainingDetail">7 أقساط</strong></div>
+        </div>
+
+        <div class="finance-section">
+          <div class="finance-progress-row"><div class="finance-progress-label">التقدم</div><div class="finance-progress-value" id="personalLoanProgressText">88% · 53 من 60 قسط</div></div>
+          <div class="finance-progress-track" aria-hidden="true"><div class="finance-progress-fill" id="personalLoanProgressFill"></div></div>
+          <div class="finance-details" style="margin-top:10px">
+            <div class="finance-detail"><small>مبلغ التمويل</small><strong id="personalLoanPrincipal">518,680.00 ر.س</strong></div>
+            <div class="finance-detail"><small>إجمالي الأقساط</small><strong id="personalLoanTotalRepayment">548,503.80 ر.س</strong></div>
+            <div class="finance-detail"><small>تكلفة التمويل الكلية</small><strong id="personalLoanFinanceCost">29,823.80 ر.س</strong></div>
+            <div class="finance-detail"><small>المدفوع</small><strong id="personalLoanPaidToBank">484,511.69 ر.س</strong></div>
+          </div>
+        </div>
+
+        <div class="finance-section">
+          <div class="finance-section-title">المتبقي</div>
+          <div class="finance-details">
+            <div class="finance-detail" hidden><small>آخر خصم</small><strong id="personalLoanLastPaid">27 أغسطس 2026</strong></div>
+            <div class="finance-detail"><small>النهاية</small><strong id="personalLoanExpectedEnd">مارس 2027</strong></div>
+            <div class="finance-detail"><small>المتبقي</small><strong id="personalLoanRemainingDuration">7 أشهر</strong></div>
+            <div class="finance-detail"><small>مدة القرض الأصلية</small><strong>60 شهرًا*</strong></div>
+          </div>
+        </div>
+
+        <div class="finance-summary" id="personalLoanSummary" hidden>بقي 7 أقساط بإجمالي 63,992.11 ر.س، والنهاية المتوقعة في مارس 2027.</div>
+        <div class="finance-note">* مدة 60 شهرًا مستنتجة من البيانات الحالية وليست مؤكدة من العقد.</div>
       </article>
     </div>
 
@@ -2004,7 +2121,7 @@
       const state = financeState(new Date());
       const pct = Math.round(state.progress * 100);
       document.getElementById('financeProgress').textContent = pct;
-      document.getElementById('financeMonthlyNet').textContent = `${formatMoney(state.netMonthly)} عليك`;
+      document.getElementById('financeMonthlyNet').textContent = `${formatMoney(state.netMonthly)} شهرياً`;
       document.getElementById('financeDetailInstallments').textContent = `${state.remaining} قسط`;
       document.getElementById('financeDetailDuration').textContent = state.duration;
       document.getElementById('financeDetailPayment').textContent = formatMoney(FINANCE.installment);
@@ -2043,6 +2160,155 @@
       financeLastFocused?.focus?.();
     }
 
+
+
+    const PERSONAL_LOAN = Object.freeze({
+      principal: 518680,
+      installment: 9141.73,
+      totalMonths: 60,
+      baseRemaining: 7,
+      baseBalance: 63992.11,
+      lastPaid: new Date(2026, 7, 27),
+      firstNextDue: new Date(2026, 8, 27)
+    });
+
+    function personalLoanMonthsPassedSinceFirstDue(date = new Date()){
+      const p = riyadhDateParts(date);
+      const firstY = PERSONAL_LOAN.firstNextDue.getFullYear();
+      const firstM = PERSONAL_LOAN.firstNextDue.getMonth() + 1;
+      let months = (p.year - firstY) * 12 + (p.month - firstM);
+      if(months < 0) return 0;
+      if(p.day < 27) months -= 1;
+      return Math.max(0, months + 1);
+    }
+
+    function personalLoanDurationLabel(remaining){
+      if(remaining <= 0) return 'مكتمل';
+      if(remaining === 1) return 'شهر واحد';
+      if(remaining === 2) return 'شهران';
+      if(remaining <= 10) return `${remaining} أشهر`;
+      return `${remaining} شهرًا`;
+    }
+
+    function personalLoanState(date = new Date()){
+      const paidAfterBase = Math.min(PERSONAL_LOAN.baseRemaining, personalLoanMonthsPassedSinceFirstDue(date));
+      const remaining = Math.max(0, PERSONAL_LOAN.baseRemaining - paidAfterBase);
+      const paidCount = PERSONAL_LOAN.totalMonths - remaining;
+      const progress = PERSONAL_LOAN.totalMonths ? paidCount / PERSONAL_LOAN.totalMonths : 0;
+      const remainingBalance = Math.max(0, PERSONAL_LOAN.baseBalance - (paidAfterBase * PERSONAL_LOAN.installment));
+      const totalRepayment = PERSONAL_LOAN.totalMonths * PERSONAL_LOAN.installment;
+      const financingCost = totalRepayment - PERSONAL_LOAN.principal;
+      const paidToBank = paidCount * PERSONAL_LOAN.installment;
+      const lastPayment = new Date(PERSONAL_LOAN.firstNextDue.getFullYear(), PERSONAL_LOAN.firstNextDue.getMonth() + PERSONAL_LOAN.baseRemaining - 1, 27);
+      const lastPaid = paidAfterBase > 0
+        ? new Date(PERSONAL_LOAN.firstNextDue.getFullYear(), PERSONAL_LOAN.firstNextDue.getMonth() + paidAfterBase - 1, 27)
+        : PERSONAL_LOAN.lastPaid;
+      return {paidAfterBase, remaining, paidCount, progress, remainingBalance, totalRepayment, financingCost, paidToBank, lastPayment, lastPaid};
+    }
+
+    function updatePersonalLoanCounter(){
+      const state = personalLoanState(new Date());
+      const pct = Math.round(state.progress * 100);
+      document.getElementById('personalLoanRemaining').textContent = state.remaining;
+      document.getElementById('personalLoanEnd').textContent = state.remaining ? formatMonthYear(state.lastPayment) : 'مكتمل';
+      document.getElementById('personalLoanInstallment').textContent = formatMoney(PERSONAL_LOAN.installment);
+      document.getElementById('personalLoanBalance').textContent = formatMoney(state.remainingBalance);
+      document.getElementById('personalLoanRemainingDetail').textContent = `${state.remaining} ${state.remaining === 1 ? 'قسط' : 'أقساط'}`;
+      document.getElementById('personalLoanProgressText').textContent = `${pct}% · ${state.paidCount} من ${PERSONAL_LOAN.totalMonths} قسط`;
+      document.getElementById('personalLoanProgressFill').style.width = `${pct}%`;
+      document.getElementById('personalLoanPrincipal').textContent = formatMoney(PERSONAL_LOAN.principal);
+      document.getElementById('personalLoanTotalRepayment').textContent = formatMoney(state.totalRepayment);
+      document.getElementById('personalLoanFinanceCost').textContent = formatMoney(state.financingCost);
+      document.getElementById('personalLoanPaidToBank').textContent = formatMoney(state.paidToBank);
+      document.getElementById('personalLoanLastPaid').textContent = formatGregReadable(state.lastPaid);
+      document.getElementById('personalLoanExpectedEnd').textContent = formatMonthYear(state.lastPayment);
+      document.getElementById('personalLoanRemainingDuration').textContent = personalLoanDurationLabel(state.remaining);
+      document.getElementById('personalLoanSummary').textContent = state.remaining
+        ? `بقي ${state.remaining} ${state.remaining === 1 ? 'قسط' : 'أقساط'} بإجمالي ${formatMoney(state.remainingBalance)}، والنهاية المتوقعة في ${formatMonthYear(state.lastPayment)}.`
+        : 'اكتمل القرض الشخصي.';
+      setRing('personalLoanRing', state.progress);
+    }
+
+    let personalLoanLastFocused = null;
+    function openPersonalLoanModal(){
+      personalLoanLastFocused = document.activeElement;
+      updatePersonalLoanCounter();
+      const modal = document.getElementById('personalLoanModal');
+      modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      document.getElementById('personalLoanModalClose')?.focus();
+    }
+
+    function closePersonalLoanModal(){
+      const modal = document.getElementById('personalLoanModal');
+      modal.classList.remove('is-visible');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      personalLoanLastFocused?.focus?.();
+    }
+
+    function temporalTargetForCard(kind, now = new Date()){
+      const FAR_FUTURE = Number.POSITIVE_INFINITY;
+
+      if(kind === 'salary'){
+        return nextSalaryDate().getTime();
+      }
+
+      if(kind === 'ramadan'){
+        const ramadan = getRamadanState(now);
+        if(!ramadan) return FAR_FUTURE;
+        return ramadan.isCurrent ? now.getTime() : ramadan.start.getTime();
+      }
+
+      if(kind === 'personal-loan'){
+        const state = personalLoanState(now);
+        return state.remaining > 0 ? state.lastPayment.getTime() : FAR_FUTURE;
+      }
+
+      if(kind === 'mortgage'){
+        const state = financeState(now);
+        return state.remaining > 0 ? state.lastPayment.getTime() : FAR_FUTURE;
+      }
+
+      if(kind === 'season'){
+        if(!SEASONS_DATA?.entries?.length) return FAR_FUTURE;
+        const state = resolveCurrentSeason(SEASONS_DATA, now);
+        return state.nextStart.getTime();
+      }
+
+      return FAR_FUTURE;
+    }
+
+    function sortPulseCardsByTime(now = new Date()){
+      const strip = document.querySelector('.pulse-strip');
+      if(!strip) return;
+
+      const cards = Array.from(strip.querySelectorAll(':scope > .wellness-card'));
+      if(cards.length < 2) return;
+
+      const ranked = cards.map((card, index) => ({
+        card,
+        index,
+        target: temporalTargetForCard(card.dataset.timeKind || '', now)
+      })).sort((a,b) => {
+        if(a.target !== b.target) return a.target - b.target;
+        return a.index - b.index;
+      });
+
+      const currentOrder = cards.map(card => card.id || card.dataset.timeKind).join('|');
+      const nextOrder = ranked.map(item => item.card.id || item.card.dataset.timeKind).join('|');
+      if(currentOrder === nextOrder) return;
+
+      ranked.forEach(item => strip.appendChild(item.card));
+    }
+
+    function refreshSeasonCounter(now = new Date()){
+      if(!SEASONS_DATA?.entries?.length) return;
+      currentSeasonState = resolveCurrentSeason(SEASONS_DATA, now);
+      renderSeasonCard(currentSeasonState);
+    }
+
     function updateWellnessCounters(){
       const now = new Date();
 
@@ -2052,6 +2318,7 @@
       document.getElementById('salaryDate').textContent = formatGregReadable(salary);
       setRing('salaryRing', (31 - Math.min(31, sd)) / 31);
       updateFinanceCounter();
+      updatePersonalLoanCounter();
 
       const ramadan = getRamadanState(now);
       const ramadanDays = document.getElementById('ramadanDays');
@@ -2074,6 +2341,9 @@
         ramadanDate.textContent = formatGregReadable(ramadan.start);
         setRing('ramadanRing', (355 - Math.min(355, ramadan.daysUntil)) / 355);
       }
+
+      refreshSeasonCounter(now);
+      sortPulseCardsByTime(now);
     }
 
     document.getElementById('nextKnowledge').addEventListener('click', (event) => {
@@ -2608,6 +2878,7 @@
         SEASONS_DATA = data;
         currentSeasonState = resolveCurrentSeason(data);
         renderSeasonCard(currentSeasonState);
+        sortPulseCardsByTime(new Date());
       }catch(error){
         console.error('تعذر تحميل بيانات الطوالع:',error);
         showSeasonLoadError();
@@ -2624,6 +2895,20 @@
     });
     document.addEventListener('keydown',(event)=>{
       if(event.key==='Escape'&&document.getElementById('financeModal')?.classList.contains('is-visible')) closeFinanceModal();
+    });
+
+
+
+    document.getElementById('personalLoanCard')?.addEventListener('click',openPersonalLoanModal);
+    document.getElementById('personalLoanCard')?.addEventListener('keydown',(event)=>{
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();openPersonalLoanModal()}
+    });
+    document.getElementById('personalLoanModalClose')?.addEventListener('click',closePersonalLoanModal);
+    document.getElementById('personalLoanModal')?.addEventListener('click',(event)=>{
+      if(event.target===event.currentTarget) closePersonalLoanModal();
+    });
+    document.addEventListener('keydown',(event)=>{
+      if(event.key==='Escape'&&document.getElementById('personalLoanModal')?.classList.contains('is-visible')) closePersonalLoanModal();
     });
 
     document.getElementById('seasonCard')?.addEventListener('click',openSeasonModal);
@@ -2654,6 +2939,7 @@
 
     loadKnowledgeBase();
     updateWellnessCounters();
+    setInterval(updateWellnessCounters, 60 * 1000);
     initSeasons();
     initGoldHistoryUI();
     updateGoldPrice();
