@@ -179,7 +179,8 @@
     .knowledge-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.knowledge-title{font-size:15px;font-weight:800;color:var(--ink)}
     .knowledge-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:5px 9px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700}.mini-btn[aria-expanded="true"]{color:var(--brand);border-color:color-mix(in srgb,var(--brand) 42%,var(--border));background:color-mix(in srgb,var(--brand) 9%,var(--panel))}
     .knowledge-progress{margin:2px 0 13px}.knowledge-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;color:var(--muted);font-size:11.5px;font-weight:800}.knowledge-progress-head strong{color:var(--brand);font-size:12px}.knowledge-progress-track{height:7px;border-radius:999px;background:var(--chip);border:1px solid var(--border);overflow:hidden}.knowledge-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:inherit;transition:width .25s ease}.knowledge-mode-note{display:none;align-items:center;justify-content:space-between;gap:9px;margin:-4px 0 10px;color:#7c3aed;font-size:11.5px;font-weight:900}.knowledge-mode-note.is-visible{display:flex}.knowledge-resume-btn{border:1px solid color-mix(in srgb,var(--brand) 35%,var(--border));background:color-mix(in srgb,var(--brand) 8%,var(--panel));color:var(--brand);border-radius:999px;padding:5px 9px;font:900 11px inherit;white-space:nowrap;cursor:pointer}
-    .knowledge-library-panel{display:none;margin-top:13px;padding-top:13px;border-top:1px dashed var(--border)}.knowledge-library-panel.is-visible{display:block}.knowledge-library-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.knowledge-library-tab{border:1px solid var(--border);background:var(--chip);color:var(--muted);border-radius:999px;padding:6px 10px;font:800 11.5px inherit;cursor:pointer}.knowledge-library-tab.is-active{background:var(--brand);border-color:var(--brand);color:#fff}.knowledge-library-list{display:grid;gap:7px;max-height:240px;overflow:auto;padding-inline-end:3px}.knowledge-library-item{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:start;border:1px solid var(--border);background:var(--panel);color:var(--ink);border-radius:12px;padding:9px 10px;font-family:inherit;cursor:pointer}.knowledge-library-item:hover,.knowledge-library-item:focus-visible{border-color:var(--brand);outline:none}.knowledge-library-item strong{font-size:12.5px;line-height:1.55}.knowledge-library-item span{white-space:nowrap;color:var(--muted);font-size:10.5px;font-weight:800}.knowledge-library-empty{padding:16px;text-align:center;color:var(--muted);font-size:12px}
+    .knowledge-library-panel{display:none;margin-top:13px;padding-top:13px;border-top:1px dashed var(--border)}.knowledge-library-panel.is-visible{display:block}.knowledge-library-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.knowledge-library-tab{border:1px solid var(--border);background:var(--chip);color:var(--muted);border-radius:999px;padding:6px 10px;font:800 11.5px inherit;cursor:pointer}.knowledge-library-tab.is-active{background:var(--brand);border-color:var(--brand);color:#fff}.knowledge-reset-btn{margin-inline-start:auto;border:1px solid rgba(220,38,38,.24);background:rgba(220,38,38,.06);color:#b91c1c;border-radius:999px;padding:6px 10px;font:800 11.5px inherit;cursor:pointer}.knowledge-reset-btn:disabled{opacity:.45;cursor:default}.knowledge-library-list{display:grid;gap:7px;max-height:240px;overflow:auto;padding-inline-end:3px}.knowledge-library-item{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:start;border:1px solid var(--border);background:var(--panel);color:var(--ink);border-radius:12px;padding:9px 10px;font-family:inherit;cursor:pointer}.knowledge-library-item:hover,.knowledge-library-item:focus-visible{border-color:var(--brand);outline:none}.knowledge-library-item strong{font-size:12.5px;line-height:1.55}.knowledge-library-item span{white-space:nowrap;color:var(--muted);font-size:10.5px;font-weight:800}.knowledge-library-empty{padding:16px;text-align:center;color:var(--muted);font-size:12px}
+    [data-theme="dark"] .knowledge-reset-btn{color:#fca5a5;background:rgba(248,113,113,.11);border-color:rgba(252,165,165,.35)}
     .knowledge-text{font-size:clamp(17px,2.2vw,22px);line-height:1.85;font-weight:700;margin:4px 0 12px;color:var(--ink)}
         .knowledge-practical{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);color:var(--muted);font-size:14px;line-height:1.8}.knowledge-card.is-open .knowledge-practical{display:block}
     .knowledge-open-area:focus-visible{outline:3px solid rgba(37,99,235,.35)!important;outline-offset:5px;border-radius:10px}
@@ -496,6 +497,7 @@
           <button class="knowledge-library-tab is-active" type="button" data-knowledge-filter="unread" aria-pressed="true">لم تُقرأ <span id="knowledgeUnreadCount">0</span></button>
           <button class="knowledge-library-tab" type="button" data-knowledge-filter="read" aria-pressed="false">المقروءة <span id="knowledgeReadCount">0</span></button>
           <button class="knowledge-library-tab" type="button" data-knowledge-filter="favorites" aria-pressed="false">المحفوظة <span id="knowledgeFavoriteCount">0</span></button>
+          <button class="knowledge-reset-btn" id="knowledgeResetJourney" type="button">إعادة ضبط رحلة القراءة</button>
         </div>
         <div class="knowledge-library-list" id="knowledgeLibraryList"></div>
       </div>
@@ -1816,12 +1818,13 @@
     function getJourneyCurrent(){
       const journey = getJourneyKnowledge();
       if(!journey.length) return FALLBACK_KNOWLEDGE[0];
-      const stored = journey.find(item => item.concept_id === executiveState.currentConceptId);
-      if(stored && !isKnowledgeRead(stored)) return stored;
       const firstUnread = journey.find(item => !isKnowledgeRead(item));
+      const stored = journey.find(item => item.concept_id === executiveState.currentConceptId);
       const selected = firstUnread || stored || journey[journey.length - 1];
-      executiveState.currentConceptId = selected.concept_id;
-      saveExecutiveState();
+      if(executiveState.currentConceptId !== selected.concept_id){
+        executiveState.currentConceptId = selected.concept_id;
+        saveExecutiveState();
+      }
       return selected;
     }
 
@@ -1872,6 +1875,7 @@
       document.getElementById('knowledgeUnreadCount').textContent = String(Math.max(0,total-readCount));
       document.getElementById('knowledgeReadCount').textContent = String(readCount);
       document.getElementById('knowledgeFavoriteCount').textContent = String(journey.filter(isKnowledgeSaved).length);
+      document.getElementById('knowledgeResetJourney').disabled = readCount === 0;
     }
 
     function renderKnowledgeLibrary(filter=knowledgeLibraryFilter){
@@ -2522,6 +2526,17 @@
 
     document.querySelectorAll('[data-knowledge-filter]').forEach(button => {
       button.addEventListener('click', () => renderKnowledgeLibrary(button.dataset.knowledgeFilter));
+    });
+
+    document.getElementById('knowledgeResetJourney').addEventListener('click', () => {
+      if(!executiveState.read.length) return;
+      const confirmed = window.confirm('سيُمسح تقدم القراءة لجميع القواعد وستعود الرحلة إلى أول قاعدة. لن تُحذف القواعد المحفوظة أو تحدي اليوم. هل تريد المتابعة؟');
+      if(!confirmed) return;
+      executiveState.read = [];
+      executiveState.currentConceptId = null;
+      saveExecutiveState();
+      renderKnowledge(getJourneyCurrent(),'journey');
+      renderKnowledgeLibrary('unread');
     });
 
     document.getElementById('toggleKnowledge').addEventListener('click', (event) => {
