@@ -177,7 +177,9 @@
     .knowledge-card{margin:6px 0 18px;background:radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 34%),radial-gradient(circle at bottom right,rgba(16,185,129,.10),transparent 36%),var(--panel);border:1.5px solid rgba(37,99,235,.28);border-inline-start:4px solid var(--brand);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;position:relative;overflow:hidden}
     .knowledge-card::before{display:none}
     .knowledge-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.knowledge-title{font-size:15px;font-weight:800;color:var(--ink)}
-    .knowledge-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:5px 9px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700}
+    .knowledge-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink);padding:5px 9px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700}.mini-btn[aria-expanded="true"]{color:var(--brand);border-color:color-mix(in srgb,var(--brand) 42%,var(--border));background:color-mix(in srgb,var(--brand) 9%,var(--panel))}
+    .knowledge-progress{margin:2px 0 13px}.knowledge-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;color:var(--muted);font-size:11.5px;font-weight:800}.knowledge-progress-head strong{color:var(--brand);font-size:12px}.knowledge-progress-track{height:7px;border-radius:999px;background:var(--chip);border:1px solid var(--border);overflow:hidden}.knowledge-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:inherit;transition:width .25s ease}.knowledge-mode-note{display:none;align-items:center;justify-content:space-between;gap:9px;margin:-4px 0 10px;color:#7c3aed;font-size:11.5px;font-weight:900}.knowledge-mode-note.is-visible{display:flex}.knowledge-resume-btn{border:1px solid color-mix(in srgb,var(--brand) 35%,var(--border));background:color-mix(in srgb,var(--brand) 8%,var(--panel));color:var(--brand);border-radius:999px;padding:5px 9px;font:900 11px inherit;white-space:nowrap;cursor:pointer}
+    .knowledge-library-panel{display:none;margin-top:13px;padding-top:13px;border-top:1px dashed var(--border)}.knowledge-library-panel.is-visible{display:block}.knowledge-library-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.knowledge-library-tab{border:1px solid var(--border);background:var(--chip);color:var(--muted);border-radius:999px;padding:6px 10px;font:800 11.5px inherit;cursor:pointer}.knowledge-library-tab.is-active{background:var(--brand);border-color:var(--brand);color:#fff}.knowledge-library-list{display:grid;gap:7px;max-height:240px;overflow:auto;padding-inline-end:3px}.knowledge-library-item{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:start;border:1px solid var(--border);background:var(--panel);color:var(--ink);border-radius:12px;padding:9px 10px;font-family:inherit;cursor:pointer}.knowledge-library-item:hover,.knowledge-library-item:focus-visible{border-color:var(--brand);outline:none}.knowledge-library-item strong{font-size:12.5px;line-height:1.55}.knowledge-library-item span{white-space:nowrap;color:var(--muted);font-size:10.5px;font-weight:800}.knowledge-library-empty{padding:16px;text-align:center;color:var(--muted);font-size:12px}
     .knowledge-text{font-size:clamp(17px,2.2vw,22px);line-height:1.85;font-weight:700;margin:4px 0 12px;color:var(--ink)}
         .knowledge-practical{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);color:var(--muted);font-size:14px;line-height:1.8}.knowledge-card.is-open .knowledge-practical{display:block}
     .knowledge-open-area:focus-visible{outline:3px solid rgba(37,99,235,.35)!important;outline-offset:5px;border-radius:10px}
@@ -188,9 +190,9 @@
     .knowledge-dialog-message{font-size:18px;font-weight:800;line-height:1.8;padding:13px 15px;border-radius:15px;background:linear-gradient(135deg,color-mix(in srgb,var(--knowledge-accent) 11%,transparent),rgba(16,185,129,.07));margin-bottom:13px}.knowledge-reading-path{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:0 0 15px}.knowledge-reading-path span{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 7px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:900}.knowledge-reading-path span::before{content:attr(data-step);display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:var(--knowledge-accent);color:#fff;font-size:10px}.knowledge-detail-section{padding:14px 0;border-top:1px solid var(--border)}.knowledge-detail-label{font-size:12px;font-weight:900;color:var(--muted);margin-bottom:6px}.knowledge-detail-value{font-size:15px;line-height:1.9}.knowledge-detail-action{color:#047857;font-weight:800}.knowledge-detail-question{font-weight:800}.knowledge-type-block{border:1px solid color-mix(in srgb,var(--knowledge-accent) 28%,var(--border));border-inline-start:4px solid var(--knowledge-accent);background:color-mix(in srgb,var(--knowledge-accent) 7%,var(--panel));border-radius:15px;padding:13px 14px;margin:2px 0 0}.knowledge-type-block .knowledge-detail-label{color:var(--knowledge-accent)}
     .knowledge-disclosure{border-top:1px solid var(--border)}.knowledge-disclosure summary{list-style:none;cursor:pointer;padding:14px 0;font-size:13px;font-weight:900;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:10px}.knowledge-disclosure summary::-webkit-details-marker{display:none}.knowledge-disclosure summary::after{content:"＋";color:var(--knowledge-accent);font-size:18px}.knowledge-disclosure[open] summary::after{content:"−"}.knowledge-disclosure-body{padding:0 0 15px;font-size:15px;line-height:1.9;color:var(--ink)}.knowledge-summary-note{margin-top:9px;padding:9px 11px;border-radius:11px;background:var(--chip);color:var(--muted);font-size:11.5px;line-height:1.7}.knowledge-application-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:11px}.knowledge-application-item{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:10px 11px}.knowledge-application-item small{display:block;color:var(--muted);font-size:10.5px;font-weight:900;margin-bottom:4px}.knowledge-application-item strong{display:block;font-size:12.5px;line-height:1.65}.knowledge-application-item.is-wide{grid-column:1/-1}.knowledge-time-badge{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:5px 9px;border-radius:999px;background:rgba(16,185,129,.1);color:#047857;font-size:11.5px;font-weight:900}
     .knowledge-meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}.knowledge-meta-chip{background:var(--chip);border:1px solid var(--border);border-radius:13px;padding:9px 10px}.knowledge-meta-chip small{display:block;color:var(--muted);font-size:10.5px;font-weight:800}.knowledge-meta-chip strong{display:block;margin-top:2px;font-size:12.5px;line-height:1.5}.knowledge-source-card{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.22);border-radius:15px;padding:13px 14px}.knowledge-source-title{font-weight:900;line-height:1.6}.knowledge-source-author,.knowledge-source-topic,.knowledge-source-note{color:var(--muted);font-size:12.5px;line-height:1.7;margin-top:3px}.knowledge-related{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}.knowledge-related span{background:var(--chip);border:1px solid var(--border);padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:800}
-    .knowledge-dialog-footer{position:sticky;bottom:-22px;margin:8px -22px -22px;padding:14px 22px;background:linear-gradient(180deg,transparent,var(--panel) 24%);display:flex;justify-content:center}.knowledge-apply-btn{width:100%;border:0;border-radius:14px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-family:inherit;font-size:14px;font-weight:900;cursor:pointer;box-shadow:var(--shadow)}.knowledge-apply-btn:disabled{cursor:default;filter:saturate(.4);opacity:.72}
-    .today-challenge{display:none;margin-top:13px;padding:13px 14px;border-radius:15px;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(37,99,235,.08));border:1px solid rgba(16,185,129,.27);cursor:default}.today-challenge.is-visible{display:block}.today-challenge-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.today-challenge-title{font-size:12px;font-weight:900;color:#047857}.today-challenge-action{font-size:14px;line-height:1.75;font-weight:800}.today-challenge-done{border:1px solid rgba(16,185,129,.35);background:#fff;color:#047857;border-radius:999px;padding:6px 11px;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer}.today-challenge-done.is-complete{background:#047857;color:#fff}.today-challenge-source{margin-top:5px;color:var(--muted);font-size:11px}
-    @media (max-width:520px){.knowledge-modal{padding:0;align-items:flex-end}.knowledge-dialog{width:100%;height:min(96dvh,900px);max-height:96dvh;padding:17px;border-radius:22px 22px 0 0}.knowledge-dialog-head{position:sticky;top:-17px;z-index:3;margin:-17px -17px 12px;padding:17px;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.knowledge-meta-grid{grid-template-columns:1fr 1fr}.knowledge-dialog-message{font-size:16px}.knowledge-reading-path{gap:4px}.knowledge-reading-path span{font-size:10px;padding:7px 4px}.knowledge-application-grid{grid-template-columns:1fr}.knowledge-application-item.is-wide{grid-column:auto}.knowledge-dialog-footer{bottom:-17px;margin:8px -17px -17px;padding:14px 17px calc(14px + env(safe-area-inset-bottom))}}
+    .knowledge-dialog-footer{position:sticky;bottom:-22px;margin:8px -22px -22px;padding:14px 22px;background:linear-gradient(180deg,transparent,var(--panel) 24%);display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:8px}.knowledge-read-btn,.knowledge-apply-btn{width:100%;border-radius:14px;padding:12px 13px;font-family:inherit;font-size:13px;font-weight:900;cursor:pointer}.knowledge-read-btn{border:0;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:var(--shadow)}.knowledge-read-btn.is-read{background:#047857}.knowledge-apply-btn{border:1px solid var(--border);background:var(--chip);color:var(--ink)}.knowledge-read-btn:disabled,.knowledge-apply-btn:disabled{cursor:default;filter:saturate(.4);opacity:.72}
+    .today-challenge{display:none;margin-top:13px;padding:13px 14px;border-radius:15px;background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(37,99,235,.08));border:1px solid rgba(16,185,129,.27);cursor:pointer}.today-challenge.is-visible{display:block}.today-challenge:focus-visible{outline:3px solid rgba(16,185,129,.32);outline-offset:3px}.today-challenge-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.today-challenge-title{font-size:12px;font-weight:900;color:#047857}.today-challenge-action{font-size:14px;line-height:1.75;font-weight:800}.today-challenge-done{border:1px solid rgba(16,185,129,.35);background:#fff;color:#047857;border-radius:999px;padding:6px 11px;font-family:inherit;font-size:12px;font-weight:900;cursor:pointer}.today-challenge-done.is-complete{background:#047857;color:#fff}.today-challenge-source{margin-top:5px;color:var(--muted);font-size:11px}
+    @media (max-width:520px){.knowledge-modal{padding:0;align-items:flex-end}.knowledge-dialog{width:100%;height:min(96dvh,900px);max-height:96dvh;padding:17px;border-radius:22px 22px 0 0}.knowledge-dialog-head{position:sticky;top:-17px;z-index:3;margin:-17px -17px 12px;padding:17px;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.knowledge-meta-grid{grid-template-columns:1fr 1fr}.knowledge-dialog-message{font-size:16px}.knowledge-reading-path{gap:4px}.knowledge-reading-path span{font-size:10px;padding:7px 4px}.knowledge-application-grid{grid-template-columns:1fr}.knowledge-application-item.is-wide{grid-column:auto}.knowledge-dialog-footer{bottom:-17px;margin:8px -17px -17px;padding:14px 17px calc(14px + env(safe-area-inset-bottom));grid-template-columns:1fr}.knowledge-read-btn,.knowledge-apply-btn{padding:11px 10px}.knowledge-progress-head{align-items:flex-start;flex-direction:column;gap:2px}}
     @media (prefers-reduced-motion:reduce){.knowledge-modal.is-visible,.knowledge-dialog{animation:none;scroll-behavior:auto}}
     .pulse-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 0 18px;background:var(--panel);border:1px solid rgba(255,255,255,.38);border-inline-start:4px solid #fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
     .wellness-card{background:transparent;border:0;border-radius:0;box-shadow:none;padding:14px 12px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:108px;position:relative}
@@ -476,15 +478,29 @@
         <div class="knowledge-title" id="knowledgeTitle">رسالة اليوم</div>
         <div class="knowledge-actions">
           <button class="mini-btn" id="toggleKnowledge" type="button" aria-expanded="false" aria-controls="knowledgePractical">التطبيق العملي</button>
-          <button class="mini-btn" id="nextKnowledge" type="button">رسالة أخرى</button>
+          <button class="mini-btn" id="randomKnowledge" type="button">استكشف قاعدة</button>
+          <button class="mini-btn" id="toggleKnowledgeLibrary" type="button" aria-expanded="false" aria-controls="knowledgeLibraryPanel">قائمتي</button>
         </div>
       </div>
+      <div class="knowledge-progress" aria-live="polite">
+        <div class="knowledge-progress-head"><strong id="knowledgeResumeLabel">ابدأ رحلة القواعد</strong><span id="knowledgeProgressText">0 من 114 • 0%</span></div>
+        <div class="knowledge-progress-track" role="progressbar" id="knowledgeProgressBar" aria-label="تقدم قراءة القواعد" aria-valuemin="0" aria-valuemax="114" aria-valuenow="0"><div class="knowledge-progress-fill" id="knowledgeProgressFill"></div></div>
+      </div>
+      <div class="knowledge-mode-note" id="knowledgeModeNote"><span id="knowledgeModeText">موضعك في الرحلة محفوظ</span><button class="knowledge-resume-btn" id="resumeKnowledgeJourney" type="button">العودة إلى رحلتي</button></div>
       <button class="knowledge-open-area" id="knowledgeOpen" type="button" aria-haspopup="dialog" aria-controls="knowledgeModal" style="all:unset;display:block;width:100%;cursor:pointer">
         <div class="knowledge-text" id="knowledgeText">الفعل يسبق الحماس؛ ابدأ بخطوة صغيرة ثم دع الدافع يلحق بك.</div>
       </button>
       <div class="knowledge-practical" id="knowledgePractical">ابدأ اليوم بمهمة واحدة لا تتجاوز دقيقتين، ثم وسّعها بعد كسر حاجز البداية.</div>
-      <div class="today-challenge" id="todayChallenge" aria-live="polite">
-        <div class="today-challenge-head"><div class="today-challenge-title">🎯 تحدي اليوم</div><button class="today-challenge-done" id="todayChallengeDone" type="button">تم</button></div>
+      <div class="knowledge-library-panel" id="knowledgeLibraryPanel">
+        <div class="knowledge-library-tabs" aria-label="تصفية قائمة القواعد">
+          <button class="knowledge-library-tab is-active" type="button" data-knowledge-filter="unread" aria-pressed="true">لم تُقرأ <span id="knowledgeUnreadCount">0</span></button>
+          <button class="knowledge-library-tab" type="button" data-knowledge-filter="read" aria-pressed="false">المقروءة <span id="knowledgeReadCount">0</span></button>
+          <button class="knowledge-library-tab" type="button" data-knowledge-filter="favorites" aria-pressed="false">المحفوظة <span id="knowledgeFavoriteCount">0</span></button>
+        </div>
+        <div class="knowledge-library-list" id="knowledgeLibraryList"></div>
+      </div>
+      <div class="today-challenge" id="todayChallenge" role="button" tabindex="0" aria-label="فتح تفاصيل تحدي اليوم" aria-live="polite">
+        <div class="today-challenge-head"><div class="today-challenge-title">🎯 تحدي اليوم</div><button class="today-challenge-done" id="todayChallengeDone" type="button">أنجزت</button></div>
         <div class="today-challenge-action" id="todayChallengeAction">—</div>
         <div class="today-challenge-source" id="todayChallengeSource">—</div>
       </div>
@@ -511,7 +527,7 @@
         <section class="knowledge-detail-section"><div class="knowledge-detail-label">سؤال للتفكير</div><div class="knowledge-detail-value knowledge-detail-question" id="knowledgeDialogQuestion">—</div></section>
         <details class="knowledge-disclosure"><summary>بيانات المرجع</summary><div class="knowledge-disclosure-body"><div class="knowledge-source-card"><div class="knowledge-source-title" id="knowledgeDialogBook">—</div><div class="knowledge-source-author" id="knowledgeDialogAuthor">—</div><div class="knowledge-source-topic" id="knowledgeDialogTopic">—</div><div class="knowledge-source-note" id="knowledgeDialogBasis">—</div></div></div></details>
         <section class="knowledge-detail-section" id="knowledgeRelatedSection"><div class="knowledge-detail-label">مفاهيم مرتبطة</div><div class="knowledge-related" id="knowledgeDialogRelated"></div></section>
-        <div class="knowledge-dialog-footer"><button class="knowledge-apply-btn" id="knowledgeApplyToday" type="button">طبّقها اليوم</button></div>
+        <div class="knowledge-dialog-footer"><button class="knowledge-read-btn" id="knowledgeMarkRead" type="button">قرأت القاعدة — انتقل للتالية</button><button class="knowledge-apply-btn" id="knowledgeApplyToday" type="button">طبّقها اليوم</button></div>
       </article>
     </div>
 
@@ -1726,15 +1742,15 @@
       strategy:{label:'متى تستخدمها؟',prompt:'استخدمها عندما يكون الموقف حاضرًا فعلًا، وحدد المخرج المتوقع قبل البدء.'}
     };
 
-    const FALLBACK_KNOWLEDGE = [{"id":0,"concept_id":"SYSTEM-LOAD-ERROR","status":"Published","type":"insight","category":"النظام","domain":"النظام","level":null,"title":"تعذر تحميل قاعدة المعرفة","message":"المحتوى التنفيذي غير متاح الآن؛ أعد تحميل الصفحة بعد التأكد من وجود ملف المعرفة في مجلد Data.","details":"لم تعرض الصفحة نسخة قديمة أو ناقصة بدل الملف الحقيقي. هذه بطاقة تنبيه واضحة حتى يبقى مصدر المعرفة واحدًا ولا تختلط النسخ.","expanded_details":"تعذر الوصول إلى ملف المعرفة الخارجي أو لم يجتز التحقق البنيوي. حفاظًا على سلامة المحتوى، أوقفت الصفحة عرض النسخة المضمّنة القديمة بدل إظهار قواعد قديمة على أنها النسخة الحالية. تأكد من وجود executive_knowledge.json داخل مجلد Data بجانب الصفحة المنشورة، أو ضعه بجانب index.html؛ ثم أعد تحميل الصفحة. سيحاول النظام المسارين تلقائيًا ويتحقق من عدد العناصر وتفرّد المعرفات والحقول الأساسية قبل العرض.","action":"تحقق من وجود ملف executive_knowledge.json ثم أعد تحميل الصفحة.","question":"هل نُشر ملف المعرفة مع الصفحة وفي المسار الصحيح؟","source":"نظام بوابة مسار","source_title_ar":"","author":"","source_topic":"سلامة تحميل البيانات","source_basis":"system","source_confidence":"High","scenario":"تظهر هذه البطاقة عندما تُفتح الصفحة دون مجلد Data أو عندما يكون ملف JSON تالفًا أو ناقصًا.","completion_evidence":"ظهور قاعدة معرفة فعلية بعد إعادة التحميل.","success_criteria":"تحميل 100 مفهوم والتحقق منها دون أخطاء.","estimated_minutes":1,"source_passage_summary":"هذه رسالة نظام وليست محتوى معرفيًا من الكتب.","adaptation_note":"لا توجد إحالة كتابية لهذه البطاقة لأنها تنبيه تقني.","reference":"","related":[],"prerequisites":[],"is_error":true}];
+    const FALLBACK_KNOWLEDGE = [{"id":0,"concept_id":"SYSTEM-LOAD-ERROR","status":"Published","type":"insight","category":"النظام","domain":"النظام","level":null,"title":"تعذر تحميل قاعدة المعرفة","message":"المحتوى التنفيذي غير متاح الآن؛ أعد تحميل الصفحة بعد التأكد من وجود ملف المعرفة في مجلد Data.","details":"لم تعرض الصفحة نسخة قديمة أو ناقصة بدل الملف الحقيقي. هذه بطاقة تنبيه واضحة حتى يبقى مصدر المعرفة واحدًا ولا تختلط النسخ.","expanded_details":"تعذر الوصول إلى ملف المعرفة الخارجي أو لم يجتز التحقق البنيوي. حفاظًا على سلامة المحتوى، أوقفت الصفحة عرض النسخة المضمّنة القديمة بدل إظهار قواعد قديمة على أنها النسخة الحالية. تأكد من وجود executive_knowledge.json داخل مجلد Data بجانب الصفحة المنشورة، أو ضعه بجانب index.html؛ ثم أعد تحميل الصفحة. سيحاول النظام المسارين تلقائيًا ويتحقق من عدد العناصر وتفرّد المعرفات والحقول الأساسية قبل العرض.","action":"تحقق من وجود ملف executive_knowledge.json ثم أعد تحميل الصفحة.","question":"هل نُشر ملف المعرفة مع الصفحة وفي المسار الصحيح؟","source":"نظام بوابة مسار","source_title_ar":"","author":"","source_topic":"سلامة تحميل البيانات","source_basis":"system","source_confidence":"High","scenario":"تظهر هذه البطاقة عندما تُفتح الصفحة دون مجلد Data أو عندما يكون ملف JSON تالفًا أو ناقصًا.","completion_evidence":"ظهور قاعدة معرفة فعلية بعد إعادة التحميل.","success_criteria":"تحميل 114 مفهومًا والتحقق منها دون أخطاء.","estimated_minutes":1,"source_passage_summary":"هذه رسالة نظام وليست محتوى معرفيًا من الكتب.","adaptation_note":"لا توجد إحالة كتابية لهذه البطاقة لأنها تنبيه تقني.","reference":"","related":[],"prerequisites":[],"is_error":true}];
 
     let knowledgeItems = [];
-    let typeQueues = {};
-    let typeCycle = [];
-    let lastKnowledgeId = null;
-    let lastKnowledgeType = null;
     let currentKnowledgeItem = null;
+    let knowledgeDialogItem = null;
+    let currentKnowledgeMode = 'journey';
+    let knowledgeLibraryFilter = 'unread';
     let knowledgeModalOpener = null;
+    let knowledgeInertSiblings = [];
     const EXEC_STATE_KEY = 'masar.executive.state.v1';
 
     function riyadhDateKey(date=new Date()){
@@ -1744,16 +1760,17 @@
     }
 
     function loadExecutiveState(){
-      const empty = {schemaVersion:1,favorites:[],today:null,seen:[]};
+      const empty = {schemaVersion:2,favorites:[],today:null,read:[],currentConceptId:null};
       try{
         const parsed = JSON.parse(localStorage.getItem(EXEC_STATE_KEY) || 'null');
-        if(!parsed || parsed.schemaVersion !== 1) return empty;
+        if(!parsed || ![1,2].includes(parsed.schemaVersion)) return empty;
         return {
-          schemaVersion:1,
+          schemaVersion:2,
           favorites:Array.isArray(parsed.favorites) ? parsed.favorites.filter(x => typeof x === 'string') : [],
           today:parsed.today && typeof parsed.today.conceptId === 'string' && typeof parsed.today.date === 'string'
             ? {conceptId:parsed.today.conceptId,date:parsed.today.date,completed:Boolean(parsed.today.completed)} : null,
-          seen:Array.isArray(parsed.seen) ? [...new Set(parsed.seen.filter(x => typeof x === 'string'))] : []
+          read:Array.isArray(parsed.read) ? [...new Set(parsed.read.filter(x => typeof x === 'string'))] : [],
+          currentConceptId:typeof parsed.currentConceptId === 'string' ? parsed.currentConceptId : null
         };
       }catch(error){
         console.warn('Executive state was reset', error);
@@ -1776,11 +1793,129 @@
       return Boolean(item?.concept_id && executiveState.favorites.includes(item.concept_id));
     }
 
-    function refreshKnowledgeInteraction(item=currentKnowledgeItem){
+    function isKnowledgeRead(item){
+      return Boolean(item?.concept_id && executiveState.read.includes(item.concept_id));
+    }
+
+    function getJourneyKnowledge(){
+      return getPublishedKnowledge()
+        .filter(item => !item.is_error)
+        .sort((a,b) => (Number(a.level) || 99) - (Number(b.level) || 99)
+          || (Number(a.domain_order) || 99) - (Number(b.domain_order) || 99)
+          || (Number(a.id) || 0) - (Number(b.id) || 0));
+    }
+
+    function normalizeExecutiveState(){
+      const validIds = new Set(getJourneyKnowledge().map(item => item.concept_id));
+      executiveState.favorites = [...new Set(executiveState.favorites.filter(id => validIds.has(id)))];
+      executiveState.read = [...new Set(executiveState.read.filter(id => validIds.has(id)))];
+      if(executiveState.currentConceptId && !validIds.has(executiveState.currentConceptId)) executiveState.currentConceptId = null;
+      saveExecutiveState();
+    }
+
+    function getJourneyCurrent(){
+      const journey = getJourneyKnowledge();
+      if(!journey.length) return FALLBACK_KNOWLEDGE[0];
+      const stored = journey.find(item => item.concept_id === executiveState.currentConceptId);
+      if(stored && !isKnowledgeRead(stored)) return stored;
+      const firstUnread = journey.find(item => !isKnowledgeRead(item));
+      const selected = firstUnread || stored || journey[journey.length - 1];
+      executiveState.currentConceptId = selected.concept_id;
+      saveExecutiveState();
+      return selected;
+    }
+
+    function advanceJourney(afterItem=currentKnowledgeItem){
+      const journey = getJourneyKnowledge();
+      if(!journey.length) return FALLBACK_KNOWLEDGE[0];
+      const start = Math.max(-1, journey.findIndex(item => item.concept_id === afterItem?.concept_id));
+      for(let offset=1; offset<=journey.length; offset++){
+        const candidate = journey[(start + offset) % journey.length];
+        if(!isKnowledgeRead(candidate)){
+          executiveState.currentConceptId = candidate.concept_id;
+          saveExecutiveState();
+          return candidate;
+        }
+      }
+      executiveState.currentConceptId = journey[journey.length - 1].concept_id;
+      saveExecutiveState();
+      return journey[journey.length - 1];
+    }
+
+    function pickRandomKnowledge(){
+      const published = getJourneyKnowledge();
+      if(!published.length) return FALLBACK_KNOWLEDGE[0];
+      const candidates = published.filter(item => item.concept_id !== currentKnowledgeItem?.concept_id);
+      const pool = candidates.length ? candidates : published;
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function renderKnowledgeProgress(){
+      const journey = getJourneyKnowledge();
+      const readCount = journey.filter(isKnowledgeRead).length;
+      const total = journey.length;
+      const percent = total ? Math.round((readCount / total) * 100) : 0;
+      const currentIndex = currentKnowledgeItem ? journey.findIndex(item => item.concept_id === currentKnowledgeItem.concept_id) + 1 : 0;
+      const complete = total > 0 && readCount === total;
+      const resume = document.getElementById('knowledgeResumeLabel');
+      resume.textContent = complete ? 'أتممت قراءة دليل القواعد ✓' : readCount ? 'أكمل من حيث توقفت' : 'ابدأ رحلة القواعد';
+      document.getElementById('knowledgeProgressText').textContent = `${readCount} من ${total} • ${percent}%${currentKnowledgeMode === 'journey' && currentIndex ? ` • القاعدة ${currentIndex}` : ''}`;
+      document.getElementById('knowledgeProgressFill').style.width = `${percent}%`;
+      const bar = document.getElementById('knowledgeProgressBar');
+      bar.setAttribute('aria-valuemax', String(total));
+      bar.setAttribute('aria-valuenow', String(readCount));
+      const modeNote = document.getElementById('knowledgeModeNote');
+      document.getElementById('knowledgeModeText').textContent = currentKnowledgeMode === 'random'
+        ? 'استكشاف عشوائي — موضعك محفوظ، وتزداد نسبة القراءة عند اختيار «قرأت القاعدة»'
+        : 'تصفّح القائمة — موضعك في الرحلة محفوظ';
+      modeNote.classList.toggle('is-visible', currentKnowledgeMode !== 'journey');
+      document.getElementById('knowledgeUnreadCount').textContent = String(Math.max(0,total-readCount));
+      document.getElementById('knowledgeReadCount').textContent = String(readCount);
+      document.getElementById('knowledgeFavoriteCount').textContent = String(journey.filter(isKnowledgeSaved).length);
+    }
+
+    function renderKnowledgeLibrary(filter=knowledgeLibraryFilter){
+      knowledgeLibraryFilter = filter;
+      const journey = getJourneyKnowledge();
+      const filtered = journey.filter(item => filter === 'read' ? isKnowledgeRead(item) : filter === 'favorites' ? isKnowledgeSaved(item) : !isKnowledgeRead(item));
+      document.querySelectorAll('[data-knowledge-filter]').forEach(button => {
+        const active = button.dataset.knowledgeFilter === filter;
+        button.classList.toggle('is-active',active);
+        button.setAttribute('aria-pressed',String(active));
+      });
+      const list = document.getElementById('knowledgeLibraryList');
+      list.replaceChildren();
+      if(!filtered.length){
+        const empty = document.createElement('div');
+        empty.className = 'knowledge-library-empty';
+        empty.textContent = filter === 'favorites' ? 'لا توجد قواعد محفوظة بعد.' : filter === 'read' ? 'لم تقرأ أي قاعدة بعد.' : 'قرأت جميع القواعد.';
+        list.appendChild(empty);
+        return;
+      }
+      filtered.forEach(item => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'knowledge-library-item';
+        const title = document.createElement('strong');
+        title.textContent = item.title;
+        const meta = document.createElement('span');
+        meta.textContent = `المستوى ${item.level}${isKnowledgeSaved(item) ? ' • ★' : ''}`;
+        button.append(title,meta);
+        button.addEventListener('click', () => {
+          currentKnowledgeMode = 'browse';
+          renderKnowledge(item,'browse');
+          openKnowledgeModal(item);
+        });
+        list.appendChild(button);
+      });
+    }
+
+    function refreshKnowledgeInteraction(item=knowledgeDialogItem || currentKnowledgeItem){
       if(!item) return;
       const saveBtn = document.getElementById('knowledgeSave');
       if(item.is_error){
         saveBtn.disabled = true;
+        document.getElementById('knowledgeMarkRead').disabled = true;
         document.getElementById('knowledgeApplyToday').disabled = true;
         return;
       }
@@ -1789,11 +1924,21 @@
       saveBtn.setAttribute('aria-pressed', String(saved));
       saveBtn.textContent = saved ? '★ محفوظة' : '☆ حفظ';
 
+      const readBtn = document.getElementById('knowledgeMarkRead');
+      const read = isKnowledgeRead(item);
+      const journey = getJourneyKnowledge();
+      const journeyComplete = journey.length > 0 && journey.every(isKnowledgeRead);
+      readBtn.disabled = journeyComplete;
+      readBtn.classList.toggle('is-read',read || journeyComplete);
+      readBtn.textContent = journeyComplete ? 'اكتملت رحلة القراءة ✓' : read ? 'مقروءة ✓ — انتقل للتالية' : 'قرأت القاعدة — انتقل للتالية';
+
       const applyBtn = document.getElementById('knowledgeApplyToday');
       const today = todayChallengeState();
       const isCurrent = today?.conceptId === item.concept_id;
       applyBtn.disabled = Boolean(isCurrent);
       applyBtn.textContent = isCurrent ? (today.completed ? 'تم تطبيقها اليوم ✓' : 'تحدي اليوم الحالي') : 'طبّقها اليوم';
+      renderKnowledgeProgress();
+      if(document.getElementById('knowledgeLibraryPanel').classList.contains('is-visible')) renderKnowledgeLibrary();
     }
 
     function renderTodayChallenge(){
@@ -1804,19 +1949,10 @@
       document.getElementById('todayChallengeAction').textContent = item.action || item.message;
       document.getElementById('todayChallengeSource').textContent = `${item.title} • ${item.source || ''}`;
       const doneBtn = document.getElementById('todayChallengeDone');
-      doneBtn.textContent = today.completed ? 'تم ✓' : 'تم';
+      doneBtn.textContent = today.completed ? 'مكتمل ✓' : 'أنجزت';
       doneBtn.classList.toggle('is-complete', today.completed);
       doneBtn.setAttribute('aria-pressed', String(today.completed));
       box.classList.add('is-visible');
-    }
-
-    function shuffleArray(arr){
-      const copy = [...arr];
-      for(let i = copy.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        [copy[i], copy[j]] = [copy[j], copy[i]];
-      }
-      return copy;
     }
 
     function getPublishedKnowledge(){
@@ -1824,85 +1960,15 @@
         .filter(item => !item.status || item.status === 'Published');
     }
 
-    function rebuildTypeQueues(){
-      const published = getPublishedKnowledge();
-      const seen = new Set(executiveState.seen || []);
-      let available = published.filter(item => !seen.has(item.concept_id));
-      if(!available.length){
-        executiveState.seen = [];
-        saveExecutiveState();
-        available = published;
-      }
-      typeQueues = {};
-
-      available.forEach(item => {
-        const t = item.type || 'general';
-        if(!typeQueues[t]) typeQueues[t] = [];
-        typeQueues[t].push(item);
-      });
-
-      Object.keys(typeQueues).forEach(t => {
-        typeQueues[t] = shuffleArray(typeQueues[t]);
-      });
-
-      typeCycle = shuffleArray(Object.keys(typeQueues));
-
-      if(typeCycle.length > 1 && lastKnowledgeType && typeCycle[0] === lastKnowledgeType){
-        typeCycle.push(typeCycle.shift());
-      }
-    }
-
-    function pickKnowledge(){
-      const published = getPublishedKnowledge();
-      if(!published.length) return FALLBACK_KNOWLEDGE[0];
-
-      if(!typeCycle.length) rebuildTypeQueues();
-
-      let selectedType = null;
-
-      while(typeCycle.length){
-        const candidateType = typeCycle.shift();
-        if(typeQueues[candidateType] && typeQueues[candidateType].length){
-          selectedType = candidateType;
-          break;
-        }
-      }
-
-      if(!selectedType){
-        rebuildTypeQueues();
-        selectedType = typeCycle.shift();
-      }
-
-      let item = (typeQueues[selectedType] || []).shift();
-
-      if(item && published.length > 1 && item.id === lastKnowledgeId){
-        const alternativeType = typeCycle.find(t => typeQueues[t] && typeQueues[t].length);
-        if(alternativeType){
-          typeCycle = typeCycle.filter(t => t !== alternativeType);
-          typeCycle.unshift(selectedType);
-          selectedType = alternativeType;
-          item = typeQueues[selectedType].shift();
-        }
-      }
-
-      if(typeQueues[selectedType] && typeQueues[selectedType].length){
-        typeCycle.push(selectedType);
-      }
-
-      lastKnowledgeId = item?.id ?? null;
-      lastKnowledgeType = item?.type ?? null;
-
-      return item || published[0];
-    }
-
     function practicalFromItem(item){
       return item.action || item.practical || 'حوّل هذه الرسالة إلى خطوة صغيرة قابلة للتنفيذ خلال أقل من دقيقتين.';
     }
 
-    function renderKnowledge(item){
+    function renderKnowledge(item,mode='journey'){
       const card = document.getElementById('knowledgeCard');
       if(card) card.classList.remove('is-open');
       currentKnowledgeItem = item;
+      currentKnowledgeMode = mode;
 
       const toggle = document.getElementById('toggleKnowledge');
       toggle.setAttribute('aria-expanded','false');
@@ -1911,6 +1977,7 @@
       document.getElementById('knowledgeText').textContent = item.message || item.content || item.title || 'رسالة اليوم';
       document.getElementById('knowledgePractical').textContent = practicalFromItem(item);
       document.getElementById('knowledgeOpen').setAttribute('aria-label', `فتح تفاصيل: ${item.title || 'رسالة اليوم'}`);
+      renderKnowledgeProgress();
     }
 
     function setKnowledgeDialogText(id, value, fallback='—'){
@@ -1940,6 +2007,7 @@
 
     function openKnowledgeModal(item=currentKnowledgeItem){
       if(!item) return;
+      knowledgeDialogItem = item;
       knowledgeModalOpener = document.activeElement;
       const typeLabel = KNOWLEDGE_TYPE_LABELS[item.type] || item.type || 'معرفة تنفيذية';
       setKnowledgeDialogText('knowledgeDialogKicker', typeLabel);
@@ -1964,7 +2032,7 @@
       setKnowledgeDialogText('knowledgeDialogAuthor', item.author || item.reference, '');
       setKnowledgeDialogText('knowledgeDialogTopic', item.source_topic ? `المفهوم المرجعي: ${item.source_topic}` : '', '');
       const basis = item.source_basis === 'direct' ? 'فكرة مباشرة من الكتاب' : item.source_basis === 'derived' ? 'تطبيق مستنبط من مفهوم في الكتاب' : '';
-      const confidence = item.source_confidence ? `درجة المطابقة: ${item.source_confidence === 'High' ? 'مرتفعة' : 'متوسطة'}` : '';
+      const confidence = item.source_confidence ? `الثقة التحريرية: ${item.source_confidence === 'High' ? 'مرتفعة' : 'متوسطة'}` : '';
       setKnowledgeDialogText('knowledgeDialogBasis', [basis,confidence].filter(Boolean).join(' • '), '');
 
       const relatedBox = document.getElementById('knowledgeDialogRelated');
@@ -1983,16 +2051,23 @@
         relatedSection.hidden = true;
       }
 
-      if(item.concept_id && !executiveState.seen.includes(item.concept_id)){
-        executiveState.seen.push(item.concept_id);
-        saveExecutiveState();
-      }
-
       refreshKnowledgeInteraction(item);
 
       const modal = document.getElementById('knowledgeModal');
       modal.classList.add('is-visible');
       modal.setAttribute('aria-hidden','false');
+      knowledgeInertSiblings = [];
+      let activeBranch = modal;
+      while(activeBranch.parentElement){
+        [...activeBranch.parentElement.children].forEach(element => {
+          if(element !== activeBranch && !element.inert){
+            element.inert = true;
+            knowledgeInertSiblings.push(element);
+          }
+        });
+        if(activeBranch.parentElement === document.body) break;
+        activeBranch = activeBranch.parentElement;
+      }
       document.body.style.overflow = 'hidden';
       document.getElementById('knowledgeDialogTitle').focus();
     }
@@ -2001,10 +2076,14 @@
       const modal = document.getElementById('knowledgeModal');
       modal.classList.remove('is-visible');
       modal.setAttribute('aria-hidden','true');
+      knowledgeInertSiblings.forEach(element => { element.inert = false; });
+      knowledgeInertSiblings = [];
       document.body.style.overflow = '';
-      if(knowledgeModalOpener && typeof knowledgeModalOpener.focus === 'function') knowledgeModalOpener.focus();
+      if(knowledgeModalOpener?.isConnected && typeof knowledgeModalOpener.focus === 'function') knowledgeModalOpener.focus();
+      else if(document.getElementById('knowledgeLibraryPanel')?.classList.contains('is-visible')) document.getElementById('toggleKnowledgeLibrary')?.focus();
       else document.getElementById('knowledgeOpen')?.focus();
       knowledgeModalOpener = null;
+      knowledgeDialogItem = null;
     }
 
     async function loadKnowledgeBase(){
@@ -2024,11 +2103,14 @@
       if(lastError){
         console.error('تعذر تحميل قاعدة المعرفة التنفيذية', lastError);
         knowledgeItems = FALLBACK_KNOWLEDGE;
+        renderKnowledge(FALLBACK_KNOWLEDGE[0],'journey');
+        renderTodayChallenge();
+        return;
       }
 
-      typeQueues = {};
-      typeCycle = [];
-      renderKnowledge(pickKnowledge());
+      normalizeExecutiveState();
+      renderKnowledge(getJourneyCurrent(),'journey');
+      renderKnowledgeLibrary();
       renderTodayChallenge();
     }
 
@@ -2420,9 +2502,26 @@
       sortPulseCardsByTime(now);
     }
 
-    document.getElementById('nextKnowledge').addEventListener('click', (event) => {
+    document.getElementById('randomKnowledge').addEventListener('click', (event) => {
       event.stopPropagation();
-      renderKnowledge(pickKnowledge());
+      renderKnowledge(pickRandomKnowledge(),'random');
+    });
+
+    document.getElementById('resumeKnowledgeJourney').addEventListener('click', (event) => {
+      event.stopPropagation();
+      renderKnowledge(getJourneyCurrent(),'journey');
+    });
+
+    document.getElementById('toggleKnowledgeLibrary').addEventListener('click', (event) => {
+      event.stopPropagation();
+      const panel = document.getElementById('knowledgeLibraryPanel');
+      const visible = panel.classList.toggle('is-visible');
+      event.currentTarget.setAttribute('aria-expanded',String(visible));
+      if(visible) renderKnowledgeLibrary();
+    });
+
+    document.querySelectorAll('[data-knowledge-filter]').forEach(button => {
+      button.addEventListener('click', () => renderKnowledgeLibrary(button.dataset.knowledgeFilter));
     });
 
     document.getElementById('toggleKnowledge').addEventListener('click', (event) => {
@@ -2435,24 +2534,36 @@
     document.getElementById('knowledgeOpen').addEventListener('click', () => openKnowledgeModal());
     document.getElementById('knowledgeModalClose').addEventListener('click', closeKnowledgeModal);
     document.getElementById('knowledgeSave').addEventListener('click', () => {
-      if(!currentKnowledgeItem?.concept_id) return;
-      const id = currentKnowledgeItem.concept_id;
-      if(isKnowledgeSaved(currentKnowledgeItem)) executiveState.favorites = executiveState.favorites.filter(x => x !== id);
+      const item = knowledgeDialogItem || currentKnowledgeItem;
+      if(!item?.concept_id) return;
+      const id = item.concept_id;
+      if(isKnowledgeSaved(item)) executiveState.favorites = executiveState.favorites.filter(x => x !== id);
       else executiveState.favorites = [...new Set([...executiveState.favorites,id])];
       saveExecutiveState();
-      refreshKnowledgeInteraction();
+      refreshKnowledgeInteraction(item);
+    });
+    document.getElementById('knowledgeMarkRead').addEventListener('click', () => {
+      const completedItem = knowledgeDialogItem || currentKnowledgeItem;
+      if(!completedItem?.concept_id || completedItem.is_error) return;
+      if(!isKnowledgeRead(completedItem)) executiveState.read = [...new Set([...executiveState.read,completedItem.concept_id])];
+      saveExecutiveState();
+      const next = executiveState.currentConceptId === completedItem.concept_id ? advanceJourney(completedItem) : getJourneyCurrent();
+      renderKnowledge(next,'journey');
+      renderKnowledgeLibrary();
+      closeKnowledgeModal();
     });
     document.getElementById('knowledgeApplyToday').addEventListener('click', () => {
-      if(!currentKnowledgeItem?.concept_id) return;
+      const item = knowledgeDialogItem || currentKnowledgeItem;
+      if(!item?.concept_id) return;
       const existing = todayChallengeState();
-      if(existing && existing.conceptId !== currentKnowledgeItem.concept_id){
+      if(existing && existing.conceptId !== item.concept_id){
         const replace = window.confirm('لديك تحدٍ لليوم. هل تريد استبداله بهذه القاعدة؟');
         if(!replace) return;
       }
-      executiveState.today = {conceptId:currentKnowledgeItem.concept_id,date:riyadhDateKey(),completed:false};
+      executiveState.today = {conceptId:item.concept_id,date:riyadhDateKey(),completed:false};
       saveExecutiveState();
       renderTodayChallenge();
-      refreshKnowledgeInteraction();
+      refreshKnowledgeInteraction(item);
     });
     document.getElementById('todayChallengeDone').addEventListener('click', (event) => {
       event.stopPropagation();
@@ -2470,6 +2581,13 @@
       const item = today ? getPublishedKnowledge().find(x => x.concept_id === today.conceptId) : null;
       if(item) openKnowledgeModal(item);
     });
+    document.getElementById('todayChallenge').addEventListener('keydown', (event) => {
+      if(event.target !== event.currentTarget || !['Enter',' '].includes(event.key)) return;
+      event.preventDefault();
+      const today = todayChallengeState();
+      const item = today ? getPublishedKnowledge().find(x => x.concept_id === today.conceptId) : null;
+      if(item) openKnowledgeModal(item);
+    });
     document.getElementById('knowledgeModal').addEventListener('click', (event) => {
       if(event.target === event.currentTarget) closeKnowledgeModal();
     });
@@ -2481,12 +2599,14 @@
         return;
       }
       if(event.key === 'Tab'){
-        const focusable = [...modal.querySelectorAll('button,[href],input,select,textarea,summary,[tabindex]:not([tabindex="-1"])')]
+        const dialog = document.getElementById('knowledgeDialog');
+        const title = document.getElementById('knowledgeDialogTitle');
+        const focusable = [...dialog.querySelectorAll('button,[href],input,select,textarea,summary,[tabindex]:not([tabindex="-1"])')]
           .filter(el => !el.disabled && el.getClientRects().length);
         if(!focusable.length) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
-        if(event.shiftKey && document.activeElement === first){ event.preventDefault(); last.focus(); }
+        if(event.shiftKey && (document.activeElement === first || document.activeElement === title || !dialog.contains(document.activeElement))){ event.preventDefault(); last.focus(); }
         else if(!event.shiftKey && document.activeElement === last){ event.preventDefault(); first.focus(); }
       }
     });
