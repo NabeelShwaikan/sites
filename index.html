@@ -431,6 +431,16 @@
       .pulse-strip .wellness-meta{min-height:36px}
     }
 
+    /* حاوية محاضرات اليوم */
+    .daily-schedule-card{margin:0 0 18px;background:radial-gradient(circle at top left,rgba(37,99,235,.10),transparent 38%),radial-gradient(circle at bottom right,rgba(16,185,129,.09),transparent 40%),var(--panel);border:1.5px solid rgba(37,99,235,.28);border-inline-start:4px solid var(--brand);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 16px;overflow:hidden;position:relative}
+    .daily-schedule-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.daily-schedule-heading{min-width:0}.daily-schedule-kicker{font-size:11px;font-weight:900;color:var(--brand);margin-bottom:2px}.daily-schedule-title{margin:0;font-size:18px;line-height:1.5}.daily-schedule-date{color:var(--muted);font-size:11.5px;font-weight:700;margin-top:2px}.daily-schedule-open{display:inline-flex;align-items:center;justify-content:center;gap:5px;flex:0 0 auto;border:1px solid var(--border);background:var(--chip);color:var(--ink);text-decoration:none;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:900}
+    .daily-schedule-open:hover,.daily-schedule-open:focus-visible{border-color:var(--brand);color:var(--brand);outline:none}.daily-schedule-track{display:flex;gap:11px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;padding:2px 1px 7px;direction:rtl}.daily-schedule-track::-webkit-scrollbar{display:none}
+    .daily-lecture{scroll-snap-align:center;flex:0 0 min(430px,86%);border:1px solid var(--border);border-radius:17px;background:color-mix(in srgb,var(--panel) 93%,var(--brand) 7%);padding:14px;direction:rtl;position:relative;transition:border-color .2s ease,background .2s ease,transform .2s ease}.daily-lecture.is-current{border-color:#10b981;background:linear-gradient(135deg,rgba(16,185,129,.13),rgba(37,99,235,.06)),var(--panel);box-shadow:0 0 0 2px rgba(16,185,129,.10) inset}.daily-lecture.is-next{border-color:rgba(37,99,235,.48)}.daily-lecture.is-ended{opacity:.72}
+    .daily-lecture-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.daily-lecture-status{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:var(--chip);color:var(--muted);padding:5px 8px;font-size:10.5px;font-weight:900}.daily-lecture.is-current .daily-lecture-status{background:#10b981;color:#fff}.daily-lecture.is-next .daily-lecture-status{background:var(--brand);color:#fff}.daily-lecture-time{font-size:13px;font-weight:900;color:var(--ink);direction:rtl;unicode-bidi:plaintext}.daily-lecture-course{font-size:16px;font-weight:900;line-height:1.65;margin-bottom:10px}.daily-lecture-meta{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}.daily-lecture-chip{display:flex;flex-direction:column;justify-content:center;border:1px solid var(--border);background:var(--chip);border-radius:13px;padding:8px 10px;min-width:92px}.daily-lecture-chip small{color:var(--muted);font-size:9.5px;font-weight:800;margin-bottom:2px}.daily-lecture-chip strong{font-size:13px;line-height:1.4}.daily-room{margin-inline-start:auto;min-width:118px;border-color:rgba(217,119,6,.30);background:rgba(245,158,11,.10)}.daily-room strong{color:#b45309;font-size:20px;letter-spacing:.6px}.daily-room small{color:#92400e}
+    [data-theme="dark"] .daily-room strong,[data-theme="dark"] .daily-room small{color:#fcd34d}.daily-schedule-nav{display:flex;align-items:center;justify-content:center;gap:9px;min-height:20px;margin-top:3px}.daily-schedule-count{color:var(--muted);font-size:10.5px;font-weight:900;min-width:42px;text-align:center}.daily-schedule-dots{display:flex;align-items:center;gap:5px}.daily-schedule-dot{width:6px;height:6px;border:0;border-radius:999px;background:var(--border);padding:0;transition:width .18s ease,background .18s ease}.daily-schedule-dot.is-active{width:18px;background:var(--brand)}
+    .daily-state{min-height:126px;border:1px solid var(--border);border-radius:17px;background:var(--chip);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}.daily-state-inner{max-width:560px}.daily-state-icon{font-size:32px;line-height:1;margin-bottom:9px}.daily-state h3{margin:0 0 5px;font-size:17px}.daily-state p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}.daily-state.is-holiday{border-color:rgba(217,119,6,.30);background:rgba(245,158,11,.09)}.daily-state.is-exam{border-color:rgba(220,38,38,.30);background:rgba(220,38,38,.07)}.daily-source-frame{display:none!important;width:0;height:0;border:0;position:absolute}
+    @media(max-width:520px){.daily-schedule-card{padding:13px 12px}.daily-schedule-head{align-items:flex-start}.daily-schedule-title{font-size:16px}.daily-schedule-open{padding:6px 9px;font-size:10px}.daily-lecture{flex-basis:91%;padding:12px}.daily-lecture-course{font-size:15px}.daily-lecture-meta{display:grid;grid-template-columns:1fr 1.15fr}.daily-lecture-chip{min-width:0}.daily-room{margin-inline-start:0;min-width:0}.daily-room strong{font-size:19px}}
+
   </style>
 </head>
 <body>
@@ -693,6 +703,25 @@
       </article>
     </div>
 
+    <section class="daily-schedule-card" id="dailyScheduleCard" aria-labelledby="dailyScheduleTitle">
+      <div class="daily-schedule-head">
+        <div class="daily-schedule-heading">
+          <div class="daily-schedule-kicker" id="dailyScheduleKicker">يومك التدريبي</div>
+          <h2 class="daily-schedule-title" id="dailyScheduleTitle">محاضرات اليوم</h2>
+          <div class="daily-schedule-date" id="dailyScheduleDate">جاري التحقق من الجدول والتقويم…</div>
+        </div>
+        <a class="daily-schedule-open" id="dailyScheduleOpen" href="TVTCSchedule/index.html">فتح جدولي <span aria-hidden="true">↗</span></a>
+      </div>
+      <div id="dailyScheduleContent" aria-live="polite" aria-busy="true">
+        <div class="daily-state"><div class="daily-state-inner"><div class="daily-state-icon">🗓️</div><h3>جاري تجهيز يومك</h3><p>نتحقق من التقويم الدراسي وجدول المحاضرات المحفوظ.</p></div></div>
+      </div>
+      <div class="daily-schedule-nav" id="dailyScheduleNav" hidden>
+        <span class="daily-schedule-count" id="dailyScheduleCount">1 من 1</span>
+        <div class="daily-schedule-dots" id="dailyScheduleDots" aria-label="التنقل بين محاضرات اليوم"></div>
+      </div>
+      <iframe class="daily-source-frame" id="dailyCalendarSource" title="مصدر التقويم الدراسي" src="Pages/AcademicCalendar.html" tabindex="-1" aria-hidden="true"></iframe>
+      <iframe class="daily-source-frame" id="dailyTimetableSource" title="مصدر الجدول التدريبي" src="TVTCSchedule/index.html" tabindex="-1" aria-hidden="true"></iframe>
+    </section>
 
     <div class="gold-ticker is-flat" id="goldCard" role="button" tabindex="0" aria-label="ذهب اليوم — اضغط لعرض سجل الأسعار">
       <div class="gold-ticker-main">
@@ -3160,6 +3189,161 @@
     initGoldHistoryUI();
     updateGoldPrice();
     setInterval(updateGoldPrice, 60000);
+
+    /* محاضرات اليوم: قراءة التقويم والجدول من الصفحتين الموجودتين دون تعديلهما */
+    const DAILY_DAY_NAMES=[
+      ['الأحد','الاحد','sunday','sun'],['الاثنين','الإثنين','الاثنين','monday','mon'],
+      ['الثلاثاء','tuesday','tue'],['الأربعاء','الاربعاء','wednesday','wed'],
+      ['الخميس','thursday','thu'],['الجمعة','friday','fri'],['السبت','saturday','sat']
+    ];
+    const DAILY_FIELDS={
+      day:['day','days','dayname','weekday','meetingday','meetingdays','classday','اليوم','الأيام','ايام','أيام'],
+      course:['coursename','course','subjectname','subject','title','coursetitle','name','المقرر','اسم المقرر','المادة','اسم المادة'],
+      start:['starttime','timestart','timefrom','fromtime','meetingstart','classtimefrom','وقت البداية','بداية اللقاء'],
+      end:['endtime','timeend','timeto','totime','meetingend','classtimeto','وقت النهاية','نهاية اللقاء'],
+      range:['time','meetingtime','timerange','period','الوقت','وقت اللقاء','الفترة'],
+      section:['section','sectionno','sectionnumber','crn','referenceno','reference','الشعبة','رقم الشعبة','الرقم المرجعي','مرجع'],
+      room:['shortroom','roomshort','room','roomcode','classroom','location','القاعة','رقم القاعة','رمز القاعة','المكان'],
+      type:['meetingtype','type','activity','نوع اللقاء','نوع المحاضرة','النوع']
+    };
+    let dailyCalendarReady=false,dailyCalendarEvent=null,dailyScheduleReady=false,dailyScheduleRecognized=false,dailyLectures=[],dailyScheduleTimer=null;
+
+    function dailyDigits(value){return String(value??'').replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d))}
+    function dailyKey(value){return dailyDigits(value).toLowerCase().replace(/[\s_\-\/]/g,'').replace(/[إأآ]/g,'ا')}
+    function dailyText(value){if(value==null)return '';if(Array.isArray(value))return value.join(' ');if(typeof value==='object')return '';return dailyDigits(value).trim()}
+    function dailyValue(object,names){
+      if(!object||typeof object!=='object'||Array.isArray(object))return '';
+      const wanted=new Set(names.map(dailyKey));
+      for(const [key,value] of Object.entries(object)) if(wanted.has(dailyKey(key))&&value!=null&&typeof value!=='object') return dailyText(value);
+      return '';
+    }
+    function dailyDayMatches(value,index){const text=dailyKey(dailyText(value));return !!text&&DAILY_DAY_NAMES[index].some(name=>text.includes(dailyKey(name)))}
+    function dailyLocalISO(date=new Date()){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
+    function dailyMinutes(value){
+      if(typeof value==='number'&&value>=0&&value<1)return Math.round(value*1440);
+      const text=dailyDigits(value).toLowerCase().replace(/\s+/g,' ');
+      const match=text.match(/(\d{1,2})(?::(\d{1,2}))?\s*(ص|م|am|pm)?/i);
+      if(!match)return null;
+      let hour=Number(match[1]),minute=Number(match[2]||0),marker=match[3];
+      if((marker==='م'||marker==='pm')&&hour<12)hour+=12;
+      if((marker==='ص'||marker==='am')&&hour===12)hour=0;
+      if(hour>23||minute>59)return null;
+      return hour*60+minute;
+    }
+    function dailyFormatMinutes(minutes){if(minutes==null)return '—';let hour=Math.floor(minutes/60),minute=minutes%60,marker=hour>=12?'م':'ص',shown=hour%12||12;return `${shown}:${String(minute).padStart(2,'0')} ${marker}`}
+    function dailyShortRoom(value){const text=dailyDigits(value),groups=text.match(/\d+/g)||[];if(!groups.length)return text||'—';const digits=groups.join('');return digits.length>4?digits.slice(-4):digits.padStart(4,'0')}
+    function dailySplitRange(value){const text=dailyDigits(value),matches=[...text.matchAll(/\d{1,2}(?::\d{1,2})?\s*(?:ص|م|am|pm)?/gi)].map(x=>x[0].trim());return [matches[0]||'',matches[1]||'']}
+    function dailyCandidate(object,context,index){
+      const next={
+        day:dailyValue(object,DAILY_FIELDS.day)||context.day||'',course:dailyValue(object,DAILY_FIELDS.course)||context.course||'',
+        section:dailyValue(object,DAILY_FIELDS.section)||context.section||'',room:dailyValue(object,DAILY_FIELDS.room)||context.room||'',
+        type:dailyValue(object,DAILY_FIELDS.type)||context.type||'',start:dailyValue(object,DAILY_FIELDS.start)||context.start||'',
+        end:dailyValue(object,DAILY_FIELDS.end)||context.end||''
+      };
+      const range=dailyValue(object,DAILY_FIELDS.range);if(range){const parts=dailySplitRange(range);if(dailyMinutes(next.start)==null)next.start=parts[0];if(dailyMinutes(next.end)==null)next.end=parts[1]}
+      const startMinutes=dailyMinutes(next.start),endMinutes=dailyMinutes(next.end);
+      const lecture=dailyDayMatches(next.day,index)&&next.course&&startMinutes!=null?{
+        course:next.course,section:next.section||'—',room:dailyShortRoom(next.room),type:next.type||'لقاء',
+        start:startMinutes,end:endMinutes!=null?endMinutes:startMinutes+50,startLabel:dailyFormatMinutes(startMinutes),endLabel:dailyFormatMinutes(endMinutes!=null?endMinutes:startMinutes+50)
+      }:null;
+      return {next,lecture};
+    }
+    function dailyWalk(node,index,out,context={},depth=0){
+      if(depth>8||node==null)return;
+      if(Array.isArray(node)){node.forEach(item=>dailyWalk(item,index,out,context,depth+1));return}
+      if(typeof node!=='object')return;
+      const result=dailyCandidate(node,context,index);if(result.lecture)out.push(result.lecture);
+      Object.values(node).forEach(value=>{if(value&&typeof value==='object')dailyWalk(value,index,out,result.next,depth+1)});
+    }
+    function dailyDeduplicate(items){
+      const seen=new Set();return items.filter(item=>{const key=[dailyKey(item.course),dailyKey(item.section),item.start,item.end,dailyKey(item.room)].join('|');if(seen.has(key))return false;seen.add(key);return true}).sort((a,b)=>a.start-b.start||a.end-b.end);
+    }
+    function dailyReadStorage(){
+      const index=new Date().getDay(),found=[];let recognized=false;
+      for(let i=0;i<localStorage.length;i++){
+        const key=localStorage.key(i)||'',raw=localStorage.getItem(key)||'';
+        if(/schedule|timetable|tvtc|jadwal|جدول|محاضر/i.test(key))recognized=true;
+        if(!raw||raw.length>12000000)continue;
+        try{const parsed=JSON.parse(raw);const before=found.length;dailyWalk(parsed,index,found);if(found.length>before)recognized=true}catch(_error){}
+      }
+      return {lectures:dailyDeduplicate(found),recognized};
+    }
+    function dailyEscape(value){return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
+    function dailyDateLabel(){return new Intl.DateTimeFormat('ar-SA',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date())}
+    function dailyRenderState(icon,title,description,className='',calendarLink=false){
+      const content=document.getElementById('dailyScheduleContent'),nav=document.getElementById('dailyScheduleNav'),open=document.getElementById('dailyScheduleOpen');
+      content.innerHTML=`<div class="daily-state ${className}"><div class="daily-state-inner"><div class="daily-state-icon">${icon}</div><h3>${dailyEscape(title)}</h3><p>${dailyEscape(description)}</p></div></div>`;
+      content.setAttribute('aria-busy','false');nav.hidden=true;open.href=calendarLink?'Pages/AcademicCalendar.html':'TVTCSchedule/index.html';open.firstChild.textContent=calendarLink?'فتح التقويم ':'فتح جدولي ';
+    }
+    function dailyLectureState(item,nowMinutes){if(nowMinutes>=item.start&&nowMinutes<item.end)return ['is-current','جارية الآن'];if(nowMinutes<item.start)return ['','لاحقًا'];return ['is-ended','انتهت']}
+    function dailyRenderLectures(items){
+      const content=document.getElementById('dailyScheduleContent'),nav=document.getElementById('dailyScheduleNav'),dots=document.getElementById('dailyScheduleDots');
+      const now=new Date(),nowMinutes=now.getHours()*60+now.getMinutes(),nextIndex=items.findIndex(item=>item.start>nowMinutes),currentIndex=items.findIndex(item=>nowMinutes>=item.start&&nowMinutes<item.end),focusIndex=currentIndex>=0?currentIndex:(nextIndex>=0?nextIndex:items.length-1);
+      content.innerHTML=`<div class="daily-schedule-track" id="dailyScheduleTrack" tabindex="0" aria-label="اسحب أفقياً لاستعراض محاضرات اليوم">${items.map((item,index)=>{
+        let [cls,status]=dailyLectureState(item,nowMinutes);if(index===nextIndex&&currentIndex<0){cls='is-next';status='المحاضرة القادمة'}
+        return `<article class="daily-lecture ${cls}" data-lecture-index="${index}"><div class="daily-lecture-top"><span class="daily-lecture-status">${status}</span><span class="daily-lecture-time">${dailyEscape(item.startLabel)} – ${dailyEscape(item.endLabel)}</span></div><div class="daily-lecture-course">${dailyEscape(item.course)}</div><div class="daily-lecture-meta"><div class="daily-lecture-chip"><small>الشعبة${item.type&&item.type!=='لقاء'?' • '+dailyEscape(item.type):''}</small><strong>${dailyEscape(item.section)}</strong></div><div class="daily-lecture-chip daily-room"><small>📍 القاعة</small><strong>${dailyEscape(item.room)}</strong></div></div></article>`
+      }).join('')}</div>`;
+      content.setAttribute('aria-busy','false');nav.hidden=items.length<2;dots.innerHTML=items.map((_,index)=>`<button class="daily-schedule-dot ${index===focusIndex?'is-active':''}" type="button" data-daily-dot="${index}" aria-label="المحاضرة ${index+1}"></button>`).join('');
+      const track=document.getElementById('dailyScheduleTrack'),cards=[...track.children],count=document.getElementById('dailyScheduleCount');
+      function select(index,move=false){index=Math.max(0,Math.min(cards.length-1,index));count.textContent=`${index+1} من ${cards.length}`;dots.querySelectorAll('.daily-schedule-dot').forEach((dot,i)=>dot.classList.toggle('is-active',i===index));if(move)cards[index].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}
+      let scrollTimer;track.addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{const center=track.getBoundingClientRect().left+track.clientWidth/2;let best=0,distance=Infinity;cards.forEach((card,index)=>{const rect=card.getBoundingClientRect(),d=Math.abs(rect.left+rect.width/2-center);if(d<distance){distance=d;best=index}});select(best)},80)},{passive:true});
+      dots.querySelectorAll('[data-daily-dot]').forEach(dot=>dot.addEventListener('click',()=>select(Number(dot.dataset.dailyDot),true)));select(focusIndex);requestAnimationFrame(()=>cards[focusIndex]?.scrollIntoView({block:'nearest',inline:'center'}));
+    }
+    function dailyResolve(){
+      document.getElementById('dailyScheduleDate').textContent=dailyDateLabel();
+      if(!dailyCalendarReady)return;
+      if(dailyCalendarEvent){
+        const exam=dailyCalendarEvent.type==='exam';document.getElementById('dailyScheduleKicker').textContent=exam?'تنبيه أكاديمي':'التقويم الدراسي';
+        dailyRenderState(exam?'📝':'🎉',dailyCalendarEvent.title,exam?'يبدأ اليوم موعد الاختبارات حسب التقويم الدراسي.':'اليوم ضمن هذه الإجازة؛ لا توجد محاضرات مجدولة.',exam?'is-exam':'is-holiday',true);return;
+      }
+      const day=new Date().getDay();if(day===5||day===6){document.getElementById('dailyScheduleKicker').textContent='نهاية الأسبوع';dailyRenderState('☕','عطلة نهاية الأسبوع','استمتع بيوم هادئ؛ تعود المحاضرات في أول يوم دراسي.');return}
+      if(!dailyScheduleReady)return;
+      document.getElementById('dailyScheduleKicker').textContent='يومك التدريبي';
+      if(dailyLectures.length){dailyRenderLectures(dailyLectures);return}
+      if(!dailyScheduleRecognized){dailyRenderState('🗂️','لم يتم العثور على جدول محفوظ','افتح صفحة «جدولي» واحفظ جدولك مرة واحدة، ثم ستظهر محاضرات اليوم هنا تلقائيًا.');return}
+      dailyRenderState('✅','لا توجد محاضرات اليوم','اليوم دراسي، لكن لا توجد لقاءات مسجلة في جدولك لهذا اليوم.');
+    }
+    function dailyCalendarLoaded(){
+      const frame=document.getElementById('dailyCalendarSource');
+      try{const win=frame.contentWindow,id=dailyLocalISO();if(typeof win.eventsForDay==='function'){
+        const events=win.eventsForDay(id)||[];dailyCalendarEvent=events.find(event=>event.type==='holiday'||event.type==='national')||events.find(event=>event.type==='exam')||null;
+      }}catch(_error){}
+      dailyCalendarReady=true;dailyResolve();
+    }
+    function dailyLectureFromText(element,index){
+      const text=dailyDigits(element.innerText||element.textContent||'').replace(/\s+/g,' ').trim();if(text.length<8||text.length>1200)return null;
+      const data={...element.dataset},day=data.day||data.weekday||text;
+      if(!dailyDayMatches(day,index))return null;
+      const times=dailySplitRange(data.time||data.meetingTime||text),start=dailyMinutes(data.start||data.startTime||times[0]),end=dailyMinutes(data.end||data.endTime||times[1]);if(start==null)return null;
+      const section=(text.match(/(?:رقم\s*)?الشعبة\s*[:：-]?\s*([\d]+)/i)||[])[1]||data.section||data.crn||'—';
+      const room=(text.match(/(?:رقم\s*)?(?:القاعة|قاعة|رمز القاعة)\s*[:：-]?\s*([\w\-\/]+)/i)||[])[1]||data.room||data.location||'';
+      const type=(text.match(/(?:نوع اللقاء|نوع المحاضرة)\s*[:：-]?\s*([^|،\d]{2,20})/i)||[])[1]||data.type||'لقاء';
+      const heading=element.querySelector('h2,h3,h4,h5,strong,.course-name,.subject-name');let course=data.course||data.courseName||data.subject||heading?.textContent?.trim()||'';
+      if(!course||dailyDayMatches(course,index)||/^(الشعبة|القاعة|جارية|انتهت)/.test(course))course=(text.match(/(?:اسم المقرر|المقرر|المادة)\s*[:：-]?\s*([^|]{3,80}?)(?=\s+(?:الشعبة|القاعة|من|\d{1,2}:\d{2})|$)/i)||[])[1]||'';
+      if(!course)return null;return {course,section,room:dailyShortRoom(room),type,start,end:end!=null?end:start+50,startLabel:dailyFormatMinutes(start),endLabel:dailyFormatMinutes(end!=null?end:start+50)};
+    }
+    function dailyReadScheduleFrame(){
+      const frame=document.getElementById('dailyTimetableSource');let documentInside;
+      const resumeSaved=()=>{try{documentInside=frame.contentDocument;const resume=documentInside?.getElementById('resumeSavedBtn');if(resume&&!resume.classList.contains('hidden')){dailyScheduleRecognized=true;resume.click()}}catch(_error){}};
+      resumeSaved();setTimeout(resumeSaved,350);
+      clearTimeout(dailyScheduleTimer);dailyScheduleTimer=setTimeout(()=>{
+        const storage=dailyReadStorage();let found=storage.lectures,recognized=storage.recognized;
+        try{
+          documentInside=frame.contentDocument;const agenda=documentInside?.getElementById('agenda');if(agenda&&agenda.children.length){recognized=true;const index=new Date().getDay(),blocks=agenda.querySelectorAll('[data-day],[data-weekday],[data-start],[data-start-time],article,tr,.lecture,.meeting,.agenda-item,.session-card,.class-card');blocks.forEach(block=>{const item=dailyLectureFromText(block,index);if(item)found.push(item)})}
+        }catch(_error){}
+        dailyLectures=dailyDeduplicate(found);dailyScheduleRecognized=dailyScheduleRecognized||recognized;dailyScheduleReady=true;dailyResolve();
+      },1200);
+    }
+    function initDailySchedule(){
+      document.getElementById('dailyScheduleDate').textContent=dailyDateLabel();
+      const storage=dailyReadStorage();dailyLectures=storage.lectures;dailyScheduleRecognized=storage.recognized||dailyLectures.length>0;dailyScheduleReady=dailyScheduleRecognized;
+      const calendarFrame=document.getElementById('dailyCalendarSource'),scheduleFrame=document.getElementById('dailyTimetableSource');
+      calendarFrame.addEventListener('load',dailyCalendarLoaded,{once:true});scheduleFrame.addEventListener('load',dailyReadScheduleFrame,{once:true});
+      if(calendarFrame.contentDocument?.readyState==='complete')dailyCalendarLoaded();if(scheduleFrame.contentDocument?.readyState==='complete')dailyReadScheduleFrame();
+      setTimeout(()=>{if(!dailyCalendarReady){dailyCalendarReady=true;dailyResolve()}if(!dailyScheduleReady){dailyScheduleReady=true;dailyResolve()}},3500);
+      setInterval(()=>{if(dailyLectures.length&&dailyCalendarReady&&!dailyCalendarEvent)dailyResolve()},60000);
+    }
+    initDailySchedule();
 
 
   </script>
