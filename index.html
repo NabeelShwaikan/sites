@@ -3234,7 +3234,7 @@
       return hour*60+minute;
     }
     function dailyFormatMinutes(minutes){if(minutes==null)return '—';let hour=Math.floor(minutes/60),minute=minutes%60,marker=hour>=12?'م':'ص',shown=hour%12||12;return `${shown}:${String(minute).padStart(2,'0')} ${marker}`}
-    function dailyShortRoom(value){const text=dailyDigits(value),groups=text.match(/\d+/g)||[];if(!groups.length)return text||'—';const digits=groups.join('');return digits.length>4?digits.slice(-4):digits.padStart(4,'0')}
+function dailyShortRoom(value){const text=dailyDigits(value),groups=text.match(/\d+/g)||[];if(!groups.length)return text||'—';const digits=groups.join('');if(digits.length===10)return digits.charAt(4)+digits.charAt(digits.length-5)+digits.slice(-2);return digits.length>4?digits.slice(-4):digits.padStart(4,'0')}
     function dailySplitRange(value){const text=dailyDigits(value),matches=[...text.matchAll(/\d{1,2}(?::\d{1,2})?\s*(?:ص|م|am|pm)?/gi)].map(x=>x[0].trim());return [matches[0]||'',matches[1]||'']}
     function dailyCandidate(object,context,index){
       const next={
