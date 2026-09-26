@@ -3218,7 +3218,10 @@
       return '';
     }
     function dailyDayMatches(value,index){const text=dailyKey(dailyText(value));return !!text&&DAILY_DAY_NAMES[index].some(name=>text.includes(dailyKey(name)))}
-    function dailyLocalISO(date=new Date()){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
+    function dailyRiyadhParts(date=new Date()){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Riyadh',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date),out={};parts.forEach(part=>{if(part.type!=='literal')out[part.type]=part.value});return out}
+    function dailyRiyadhDayIndex(date=new Date()){const day=new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:'Asia/Riyadh'}).format(date).toLowerCase();return ['sun','mon','tue','wed','thu','fri','sat'].indexOf(day)}
+    function dailyNowMinutes(){const parts=dailyRiyadhParts();return Number(parts.hour)*60+Number(parts.minute)}
+    function dailyLocalISO(date=new Date()){const parts=dailyRiyadhParts(date);return `${parts.year}-${parts.month}-${parts.day}`}
     function dailyMinutes(value){
       if(typeof value==='number'&&value>=0&&value<1)return Math.round(value*1440);
       const text=dailyDigits(value).toLowerCase().replace(/\s+/g,' ');
@@ -3259,7 +3262,25 @@
       const seen=new Set();return items.filter(item=>{const key=[dailyKey(item.course),dailyKey(item.section),item.start,item.end,dailyKey(item.room)].join('|');if(seen.has(key))return false;seen.add(key);return true}).sort((a,b)=>a.start-b.start||a.end-b.end);
     }
     function dailyReadStorage(){
-      const index=new Date().getDay(),found=[];let recognized=false;
+      const index=dailyRiyadhDayIndex(),found=[];let recognized=false;
+      try{
+        const saved=JSON.parse(localStorage.getItem('masar.schedule.current.v1')||'null');
+        if(saved&&Array.isArray(saved.sessions)&&saved.sessions.length){
+          recognized=true;
+          saved.sessions.forEach(session=>{
+            if(!dailyDayMatches(session.day,index))return;
+            const start=dailyMinutes(session.start),end=dailyMinutes(session.end);
+            const course=dailyText(session.courseName||session.courseCode);
+            if(start==null||!course)return;
+            found.push({
+              course,section:dailyText(session.crn)||'—',room:dailyShortRoom(session.roomNo||session.roomName),
+              type:dailyText(session.type)||'لقاء',start,end:end!=null?end:start+50,
+              startLabel:dailyFormatMinutes(start),endLabel:dailyFormatMinutes(end!=null?end:start+50)
+            });
+          });
+          return {lectures:dailyDeduplicate(found),recognized:true};
+        }
+      }catch(_error){}
       for(let i=0;i<localStorage.length;i++){
         const key=localStorage.key(i)||'',raw=localStorage.getItem(key)||'';
         if(/schedule|timetable|tvtc|jadwal|جدول|محاضر/i.test(key))recognized=true;
@@ -3269,7 +3290,7 @@
       return {lectures:dailyDeduplicate(found),recognized};
     }
     function dailyEscape(value){return String(value??'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
-    function dailyDateLabel(){return new Intl.DateTimeFormat('ar-SA',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date())}
+    function dailyDateLabel(){return new Intl.DateTimeFormat('ar-SA',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Riyadh'}).format(new Date())}
     function dailyRenderState(icon,title,description,className='',calendarLink=false){
       const content=document.getElementById('dailyScheduleContent'),nav=document.getElementById('dailyScheduleNav'),open=document.getElementById('dailyScheduleOpen');
       content.innerHTML=`<div class="daily-state ${className}"><div class="daily-state-inner"><div class="daily-state-icon">${icon}</div><h3>${dailyEscape(title)}</h3><p>${dailyEscape(description)}</p></div></div>`;
@@ -3278,7 +3299,7 @@
     function dailyLectureState(item,nowMinutes){if(nowMinutes>=item.start&&nowMinutes<item.end)return ['is-current','جارية الآن'];if(nowMinutes<item.start)return ['','لاحقًا'];return ['is-ended','انتهت']}
     function dailyRenderLectures(items){
       const content=document.getElementById('dailyScheduleContent'),nav=document.getElementById('dailyScheduleNav'),dots=document.getElementById('dailyScheduleDots');
-      const now=new Date(),nowMinutes=now.getHours()*60+now.getMinutes(),nextIndex=items.findIndex(item=>item.start>nowMinutes),currentIndex=items.findIndex(item=>nowMinutes>=item.start&&nowMinutes<item.end),focusIndex=currentIndex>=0?currentIndex:(nextIndex>=0?nextIndex:items.length-1);
+      const nowMinutes=dailyNowMinutes(),nextIndex=items.findIndex(item=>item.start>nowMinutes),currentIndex=items.findIndex(item=>nowMinutes>=item.start&&nowMinutes<item.end),focusIndex=currentIndex>=0?currentIndex:(nextIndex>=0?nextIndex:items.length-1);
       content.innerHTML=`<div class="daily-schedule-track" id="dailyScheduleTrack" tabindex="0" aria-label="اسحب أفقياً لاستعراض محاضرات اليوم">${items.map((item,index)=>{
         let [cls,status]=dailyLectureState(item,nowMinutes);if(index===nextIndex&&currentIndex<0){cls='is-next';status='المحاضرة القادمة'}
         return `<article class="daily-lecture ${cls}" data-lecture-index="${index}"><div class="daily-lecture-top"><span class="daily-lecture-status">${status}</span><span class="daily-lecture-time">${dailyEscape(item.startLabel)} – ${dailyEscape(item.endLabel)}</span></div><div class="daily-lecture-course">${dailyEscape(item.course)}</div><div class="daily-lecture-meta"><div class="daily-lecture-chip"><small>الشعبة${item.type&&item.type!=='لقاء'?' • '+dailyEscape(item.type):''}</small><strong>${dailyEscape(item.section)}</strong></div><div class="daily-lecture-chip daily-room"><small>📍 القاعة</small><strong>${dailyEscape(item.room)}</strong></div></div></article>`
@@ -3296,7 +3317,7 @@
         const exam=dailyCalendarEvent.type==='exam';document.getElementById('dailyScheduleKicker').textContent=exam?'تنبيه أكاديمي':'التقويم الدراسي';
         dailyRenderState(exam?'📝':'🎉',dailyCalendarEvent.title,exam?'يبدأ اليوم موعد الاختبارات حسب التقويم الدراسي.':'اليوم ضمن هذه الإجازة؛ لا توجد محاضرات مجدولة.',exam?'is-exam':'is-holiday',true);return;
       }
-      const day=new Date().getDay();if(day===5||day===6){document.getElementById('dailyScheduleKicker').textContent='نهاية الأسبوع';dailyRenderState('☕','عطلة نهاية الأسبوع','استمتع بيوم هادئ؛ تعود المحاضرات في أول يوم دراسي.');return}
+      const day=dailyRiyadhDayIndex();if(day===5||day===6){document.getElementById('dailyScheduleKicker').textContent='نهاية الأسبوع';dailyRenderState('☕','عطلة نهاية الأسبوع','استمتع بيوم هادئ؛ تعود المحاضرات في أول يوم دراسي.');return}
       if(!dailyScheduleReady)return;
       document.getElementById('dailyScheduleKicker').textContent='يومك التدريبي';
       if(dailyLectures.length){dailyRenderLectures(dailyLectures);return}
@@ -3329,7 +3350,7 @@
       clearTimeout(dailyScheduleTimer);dailyScheduleTimer=setTimeout(()=>{
         const storage=dailyReadStorage();let found=storage.lectures,recognized=storage.recognized;
         try{
-          documentInside=frame.contentDocument;const agenda=documentInside?.getElementById('agenda');if(agenda&&agenda.children.length){recognized=true;const index=new Date().getDay(),blocks=agenda.querySelectorAll('[data-day],[data-weekday],[data-start],[data-start-time],article,tr,.lecture,.meeting,.agenda-item,.session-card,.class-card');blocks.forEach(block=>{const item=dailyLectureFromText(block,index);if(item)found.push(item)})}
+          documentInside=frame.contentDocument;const agenda=documentInside?.getElementById('agenda');if(agenda&&agenda.children.length){recognized=true;const index=dailyRiyadhDayIndex(),blocks=agenda.querySelectorAll('[data-day],[data-weekday],[data-start],[data-start-time],article,tr,.lecture,.meeting,.agenda-item,.session-card,.class-card');blocks.forEach(block=>{const item=dailyLectureFromText(block,index);if(item)found.push(item)})}
         }catch(_error){}
         dailyLectures=dailyDeduplicate(found);dailyScheduleRecognized=dailyScheduleRecognized||recognized;dailyScheduleReady=true;dailyResolve();
       },1200);
