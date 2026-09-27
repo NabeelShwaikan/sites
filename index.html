@@ -3306,9 +3306,10 @@ function dailyShortRoom(value){const text=dailyDigits(value),groups=text.match(/
       }).join('')}</div>`;
       content.setAttribute('aria-busy','false');nav.hidden=items.length<2;dots.innerHTML=items.map((_,index)=>`<button class="daily-schedule-dot ${index===focusIndex?'is-active':''}" type="button" data-daily-dot="${index}" aria-label="المحاضرة ${index+1}"></button>`).join('');
       const track=document.getElementById('dailyScheduleTrack'),cards=[...track.children],count=document.getElementById('dailyScheduleCount');
-      function select(index,move=false){index=Math.max(0,Math.min(cards.length-1,index));count.textContent=`${index+1} من ${cards.length}`;dots.querySelectorAll('.daily-schedule-dot').forEach((dot,i)=>dot.classList.toggle('is-active',i===index));if(move)cards[index].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}
+      function centerCard(index,behavior='auto'){const card=cards[index];if(!card)return;const trackRect=track.getBoundingClientRect(),cardRect=card.getBoundingClientRect(),delta=(cardRect.left+cardRect.width/2)-(trackRect.left+trackRect.width/2);track.scrollBy({left:delta,behavior})}
+      function select(index,move=false){index=Math.max(0,Math.min(cards.length-1,index));count.textContent=`${index+1} من ${cards.length}`;dots.querySelectorAll('.daily-schedule-dot').forEach((dot,i)=>dot.classList.toggle('is-active',i===index));if(move)centerCard(index,'smooth')}
       let scrollTimer;track.addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{const center=track.getBoundingClientRect().left+track.clientWidth/2;let best=0,distance=Infinity;cards.forEach((card,index)=>{const rect=card.getBoundingClientRect(),d=Math.abs(rect.left+rect.width/2-center);if(d<distance){distance=d;best=index}});select(best)},80)},{passive:true});
-      dots.querySelectorAll('[data-daily-dot]').forEach(dot=>dot.addEventListener('click',()=>select(Number(dot.dataset.dailyDot),true)));select(focusIndex);requestAnimationFrame(()=>cards[focusIndex]?.scrollIntoView({block:'nearest',inline:'center'}));
+      dots.querySelectorAll('[data-daily-dot]').forEach(dot=>dot.addEventListener('click',()=>select(Number(dot.dataset.dailyDot),true)));select(focusIndex);requestAnimationFrame(()=>centerCard(focusIndex));
     }
     function dailyResolve(){
       document.getElementById('dailyScheduleDate').textContent=dailyDateLabel();
