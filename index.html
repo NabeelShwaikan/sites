@@ -882,6 +882,7 @@
       { title: "تصويت", href: "Pages/Poll.html", desc: "صوّت وشارك الرأي", emoji: "🗳️" },
 
       // 🎮 الترفيه والألعاب
+      { title: "Lingo", href: "Pages/lingo.html", desc: "تحدّي تخمين الكلمات بالعربية والإنجليزية", emoji: "🔠" },
       { title: "حروف", href: "Pages/Horoof.html", desc: "لعبة حروف تنافسية للفرق", emoji: "🔤" },
       { title: "لعبة الحروف", href: "LettersGame/index.html", desc: "إنسان، حيوان، نبات ...", emoji: "🎲" },
       { title: "عجلة الحظ", href: "Pages/luck.html", desc: "تجارب عشوائية خفيفة", emoji: "🎡" },
@@ -914,7 +915,7 @@
       },
       {
         id:'fun', name:'الألعاب والفعاليات', category:'cat-fun',
-        pages:['لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار','مباريات كأس العالم 2026']
+        pages:['Lingo','لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار','مباريات كأس العالم 2026']
       }
     ];
 
@@ -1146,14 +1147,28 @@
       if(['معمار'].includes(title)) return 'cat-tool';
       if(['قياس المؤشرات الصحية'].includes(title)) return 'cat-health';
       if(['شجرة العائلة','تصويت'].includes(title)) return 'cat-family';
-      if(['حروف','لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
+      if(['Lingo','حروف','لعبة الحروف','عجلة الحظ','لعبة الثلاثة أحجار'].includes(title)) return 'cat-fun';
       if(['مباريات كأس العالم 2026'].includes(title)) return 'cat-event';
       return 'cat-tool';
     }
 
+    function appIconMarkup(page){
+      if(page.href !== 'Pages/lingo.html') return escapeHTML(page.emoji || '•');
+      return `<svg viewBox="0 0 64 64" width="100%" height="100%" style="display:block" aria-hidden="true" focusable="false">
+        <rect x="5" y="5" width="25" height="25" rx="6" fill="#16a34a" stroke="#bbf7d0" stroke-width="1.2"/>
+        <rect x="34" y="5" width="25" height="25" rx="6" fill="#eab308" stroke="#fef08a" stroke-width="1.2"/>
+        <rect x="5" y="34" width="25" height="25" rx="6" fill="#2563eb" stroke="#bfdbfe" stroke-width="1.2"/>
+        <rect x="34" y="34" width="25" height="25" rx="6" fill="#16a34a" stroke="#bbf7d0" stroke-width="1.2"/>
+        <g fill="#fff" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" direction="ltr">
+          <text x="17.5" y="24">L</text><text x="46.5" y="24" fill="#422006">I</text>
+          <text x="17.5" y="53">N</text><text x="46.5" y="53">G</text>
+        </g>
+      </svg>`;
+    }
+
     function pageTile(p, extraClass = ''){
       return `<a class="app-tile ${extraClass}" href="${escapeHTML(p.href)}" title="${escapeHTML(p.desc || p.title)}" aria-label="${escapeHTML(p.title)}" data-page-href="${escapeHTML(p.href)}" draggable="true">
-        <span class="app-tile-icon ${appCategoryClass(p.title)}"><span>${escapeHTML(p.emoji || '•')}</span></span>
+        <span class="app-tile-icon ${appCategoryClass(p.title)}"><span${p.href === 'Pages/lingo.html' ? ' style="width:76%;height:76%"' : ''}>${appIconMarkup(p)}</span></span>
         <span class="app-tile-name">${escapeHTML(shortAppName(p.title))}</span>
       </a>`;
     }
@@ -1161,7 +1176,7 @@
     function folderTile(folder){
       const previews = pagesInFolder(folder.id).slice(0,4);
       return `<button class="app-tile app-tile-button folder-tile" type="button" data-folder-id="${escapeHTML(folder.id)}" aria-label="فتح مجلد ${escapeHTML(getFolderName(folder))}">
-        <span class="app-tile-icon folder-icon ${folder.category}">${previews.length ? previews.map(page => `<span class="folder-mini">${escapeHTML(page.emoji || '•')}</span>`).join('') : '<span class="folder-mini">＋</span>'}</span>
+        <span class="app-tile-icon folder-icon ${folder.category}">${previews.length ? previews.map(page => `<span class="folder-mini">${appIconMarkup(page)}</span>`).join('') : '<span class="folder-mini">＋</span>'}</span>
         <span class="app-tile-name">${escapeHTML(getFolderName(folder))}</span>
       </button>`;
     }
