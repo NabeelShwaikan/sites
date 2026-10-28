@@ -645,6 +645,7 @@
         <div class="finance-section">
           <div class="finance-section-title">المتبقي</div>
           <div class="finance-details">
+            <div class="finance-detail" style="grid-column:1/-1"><small>إجمالي الأقساط المتبقية للبنك</small><strong id="financeRemainingToBank">—</strong></div>
             <div class="finance-detail"><small>الأقساط</small><strong id="financeDetailInstallments">—</strong></div>
             <div class="finance-detail"><small>المدة</small><strong id="financeDetailDuration">—</strong></div>
             <div class="finance-detail"><small>عليك متوقع</small><strong id="financeRemainingByYou">—</strong></div>
@@ -2411,6 +2412,7 @@
       document.getElementById('financePaidToBank').textContent = formatMoney(state.paidToBank);
       document.getElementById('financePaidByYou').textContent = formatMoney(state.paidByYou);
       document.getElementById('financeSupportReceived').textContent = formatMoney(state.supportReceived);
+      document.getElementById('financeRemainingToBank').textContent = formatMoney(state.remainingToBank);
       document.getElementById('financeRemainingByYou').textContent = formatMoney(state.remainingByYou);
       document.getElementById('financeRemainingSupport').textContent = formatMoney(state.remainingSupport);
       document.getElementById('financeDetailLast').textContent = formatGregReadable(state.lastPaid);
